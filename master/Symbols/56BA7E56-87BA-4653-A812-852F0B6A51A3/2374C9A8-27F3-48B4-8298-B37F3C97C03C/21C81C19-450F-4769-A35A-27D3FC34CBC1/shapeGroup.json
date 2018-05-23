@@ -39,6 +39,7 @@
   "name": "添加",
   "nameIsFixed": true,
   "originalObjectID": "158B9C0A-F955-4764-B626-A08F9911E8F4",
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
   "shouldBreakMaskChain": false,

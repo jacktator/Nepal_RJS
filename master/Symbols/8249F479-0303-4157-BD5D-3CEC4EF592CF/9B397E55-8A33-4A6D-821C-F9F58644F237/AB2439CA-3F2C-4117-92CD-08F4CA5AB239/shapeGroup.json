@@ -34,6 +34,7 @@
   ],
   "name": "Oval 61",
   "nameIsFixed": false,
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
   "shouldBreakMaskChain": false,
@@ -72,7 +73,6 @@
           "elipseLength": 1,
           "from": "{0.84855769230769229, 0.83942307692307694}",
           "gradientType": 0,
-          "shouldSmoothenOpacity": false,
           "stops": [
             {
               "_class": "gradientStop",

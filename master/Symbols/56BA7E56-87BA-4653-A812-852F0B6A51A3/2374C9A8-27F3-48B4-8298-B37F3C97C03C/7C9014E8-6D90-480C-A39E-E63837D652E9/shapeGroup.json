@@ -39,6 +39,7 @@
   "name": "Shape",
   "nameIsFixed": false,
   "originalObjectID": "8F663339-BF69-46A5-A284-36A64BF7AEBF",
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
   "shouldBreakMaskChain": false,

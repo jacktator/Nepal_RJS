@@ -35,6 +35,7 @@
   "name": "Rectangle 46",
   "nameIsFixed": false,
   "originalObjectID": "96F175AE-105E-496A-95F1-3E92E0F16A58",
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
   "shouldBreakMaskChain": false,
@@ -73,7 +74,6 @@
           "elipseLength": 1,
           "from": "{0.5, 0}",
           "gradientType": 0,
-          "shouldSmoothenOpacity": false,
           "stops": [
             {
               "_class": "gradientStop",

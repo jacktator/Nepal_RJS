@@ -36,6 +36,7 @@
   ],
   "name": "fill",
   "nameIsFixed": true,
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 315,
   "shouldBreakMaskChain": false,

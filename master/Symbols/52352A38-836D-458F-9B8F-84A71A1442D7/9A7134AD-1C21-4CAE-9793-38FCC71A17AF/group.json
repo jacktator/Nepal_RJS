@@ -36,6 +36,7 @@
   ],
   "name": "图标/弹出菜单/取消",
   "nameIsFixed": true,
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
   "shouldBreakMaskChain": false,

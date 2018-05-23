@@ -50,6 +50,7 @@
   ],
   "name": "联系人",
   "nameIsFixed": true,
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
   "shouldBreakMaskChain": false,
@@ -88,7 +89,6 @@
           "elipseLength": 0,
           "from": "{0.58682408883346515, 0.0075961234938959482}",
           "gradientType": 0,
-          "shouldSmoothenOpacity": false,
           "stops": [
             {
               "_class": "gradientStop",

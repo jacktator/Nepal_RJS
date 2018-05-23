@@ -24,22 +24,30 @@
   "isLocked": false,
   "isVisible": true,
   "layerListExpandedType": 0,
-  "masterInfluenceEdgeMaxXPadding": 1,
-  "masterInfluenceEdgeMaxYPadding": 1,
-  "masterInfluenceEdgeMinXPadding": 0,
-  "masterInfluenceEdgeMinYPadding": 0,
   "name": "searchbar/normal",
   "nameIsFixed": false,
+  "overrideValues": [
+    {
+      "_class": "overrideValue",
+      "overrideName": "A58D9DDA-272C-4302-9524-9E9C7D1243A8_symbolID",
+      "value": "8A89CF8F-104E-491B-86E3-D22A75F42AA0"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "A58D9DDA-272C-4302-9524-9E9C7D1243A8/2CCC4FDE-2F65-420B-A877-85B105E956E0_stringValue",
+      "value": "搜索"
+    }
+  ],
   "overrides": {
-    "0": {
-      "A58D9DDA-272C-4302-9524-9E9C7D1243A8": {
-        "2CCC4FDE-2F65-420B-A877-85B105E956E0": "搜索",
-        "symbolID": "8A89CF8F-104E-491B-86E3-D22A75F42AA0"
-      }
+    "A58D9DDA-272C-4302-9524-9E9C7D1243A8": {
+      "2CCC4FDE-2F65-420B-A877-85B105E956E0": "搜索",
+      "symbolID": "8A89CF8F-104E-491B-86E3-D22A75F42AA0"
     }
   },
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
+  "scale": 0,
   "shouldBreakMaskChain": false,
   "style": {
     "_class": "style",

@@ -35,6 +35,7 @@
   "name": "Background",
   "nameIsFixed": true,
   "originalObjectID": "8F9A2F9F-BD6D-4AA2-A960-A9598F9C47BF",
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
   "shouldBreakMaskChain": false,
