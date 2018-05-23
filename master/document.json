@@ -30,7 +30,7 @@
   },
   "pages": [
     "UI KIT",
-    "LaunchScreen",
+    "SplashScreen",
     "Auth",
     "Main",
     "Symbols"
