@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { List, TextareaItem, WhiteSpace, Button, NavBar, Icon, } from 'antd-mobile';
 import { createForm } from 'rc-form';
 
+import {Link} from 'react-router-dom';
+
 export default class Login extends Component {
 
 
@@ -16,15 +18,19 @@ export default class Login extends Component {
   }
 
 
+
   render(){
     return(
           <div>
+
+            <Link to='signup'>
             <NavBar
               mode="light"
               leftContent="Register"
               onLeftClick={() => console.log('onLeftClick')}
             >Login
             </NavBar>
+            </Link>
 
             <List renderHeader={() => 'Personal Information'}>
             <form onSubmit={(e)=>this.transferAccountAndPassword(e)}>
@@ -50,7 +56,11 @@ export default class Login extends Component {
                   style={{ width: '100%', color: '#108ee9', textAlign: 'center' }}
                   onClick={() => this.customFocusInst.focus(console.log('click password'))}
                 >
-                Forget Password?
+
+
+                  <Link to='forgotpassword'>
+                  <Button type="primary">Forgot password</Button><WhiteSpace />
+                </Link>
                 </div>
               </List.Item>
 
