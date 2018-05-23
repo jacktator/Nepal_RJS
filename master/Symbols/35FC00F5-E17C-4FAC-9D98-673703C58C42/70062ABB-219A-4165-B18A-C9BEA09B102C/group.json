@@ -1,0 +1,53 @@
+{
+  "_class": "group",
+  "do_objectID": "70062ABB-219A-4165-B18A-C9BEA09B102C",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "height": 48,
+    "width": 244,
+    "x": 0,
+    "y": 0
+  },
+  "hasClickThrough": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "layers": [
+    {
+      "class": "group",
+      "id": "E45029FC-3E52-46D2-8F96-37E538A2F092"
+    },
+    {
+      "class": "group",
+      "id": "F5A35519-485D-4D3E-B804-B95CDDCA987A"
+    },
+    {
+      "class": "text",
+      "id": "CCEA9802-A644-4477-8939-C4565EB13D41"
+    }
+  ],
+  "name": "input/stepper/circle/tap/+",
+  "nameIsFixed": true,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

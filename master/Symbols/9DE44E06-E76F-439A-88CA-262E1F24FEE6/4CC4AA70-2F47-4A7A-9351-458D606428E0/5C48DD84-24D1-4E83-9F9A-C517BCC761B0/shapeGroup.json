@@ -1,0 +1,94 @@
+{
+  "_class": "shapeGroup",
+  "clippingMaskMode": 0,
+  "do_objectID": "5C48DD84-24D1-4E83-9F9A-C517BCC761B0",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "height": 59.99999999999983,
+    "width": 71.99999999999893,
+    "x": 486,
+    "y": 140
+  },
+  "hasClickThrough": false,
+  "hasClippingMask": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 1,
+  "layers": [
+    {
+      "class": "shapePath",
+      "id": "4CFCD6BA-E13D-4618-8F45-F9D811522135"
+    },
+    {
+      "class": "shapePath",
+      "id": "6E510052-FF03-4C90-99FB-433E0A54CED9"
+    },
+    {
+      "class": "shapePath",
+      "id": "C9297221-650A-4592-A768-9A3233247103"
+    },
+    {
+      "class": "shapePath",
+      "id": "325FCCBA-A653-4542-B2DE-F6CB33ACF091"
+    },
+    {
+      "class": "shapePath",
+      "id": "F6F606A4-3466-43C4-9349-C5A8CF899627"
+    },
+    {
+      "class": "shapePath",
+      "id": "4F772FFD-03E5-4127-9CDF-DED7D2064F63"
+    }
+  ],
+  "name": "微信好友",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "blur": {
+      "_class": "blur",
+      "center": "{0.5, 0.5}",
+      "isEnabled": false,
+      "motionAngle": 0,
+      "radius": 12,
+      "type": 0
+    },
+    "endDecorationType": 0,
+    "fills": [
+      {
+        "_class": "fill",
+        "color": {
+          "_class": "color",
+          "alpha": 1,
+          "blue": 0,
+          "green": 0.7490196078431373,
+          "red": 0.2980392156862745
+        },
+        "fillType": 0,
+        "isEnabled": true,
+        "noiseIndex": 0,
+        "noiseIntensity": 0,
+        "patternFillType": 0,
+        "patternTileScale": 1
+      }
+    ],
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "windingRule": 1
+}
