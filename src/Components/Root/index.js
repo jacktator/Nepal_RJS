@@ -4,10 +4,7 @@ import { Button } from 'antd-mobile';
 import Launch from '../Launch/';
 import Login from '../Login/';
 
-
-
-
-export default class Root extends Component{
+export default class Root extends Component {
   render(){
     return(
       <div>
