@@ -1,0 +1,121 @@
+{
+  "_class": "shapeGroup",
+  "clippingMaskMode": 0,
+  "do_objectID": "55311B5A-D170-4659-AE0C-B40B93660ECB",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": true,
+    "height": 44,
+    "width": 44,
+    "x": 0,
+    "y": 0
+  },
+  "hasClickThrough": false,
+  "hasClippingMask": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 1,
+  "layers": [
+    {
+      "class": "shapePath",
+      "id": "D6926837-175F-4869-8EA7-8B9A75151FF1"
+    },
+    {
+      "class": "shapePath",
+      "id": "71856991-02DA-4CB5-880C-E69087A5ED0B"
+    },
+    {
+      "class": "shapePath",
+      "id": "F5901E7A-F3FB-4E7F-B662-4FB3E384410A"
+    },
+    {
+      "class": "shapePath",
+      "id": "A847EDB7-BCF0-4518-B316-F9BE7FEF23D5"
+    },
+    {
+      "class": "shapePath",
+      "id": "20EF35A1-5540-4B98-9289-35EF72C28B05"
+    },
+    {
+      "class": "shapePath",
+      "id": "4F315664-9492-4FFB-A9DA-211855AC99D1"
+    },
+    {
+      "class": "shapePath",
+      "id": "8A9DB935-2E76-44CF-93BD-8BF578A66A6E"
+    },
+    {
+      "class": "shapePath",
+      "id": "D88507FF-FAD1-4B6F-B939-9B61D7BB84F4"
+    },
+    {
+      "class": "shapePath",
+      "id": "F31677CF-AAAA-4F6C-A796-D74A81CD19DE"
+    },
+    {
+      "class": "shapePath",
+      "id": "51A0C9E8-25D4-4482-B4F8-4FE2526F3E88"
+    },
+    {
+      "class": "shapePath",
+      "id": "488FB17A-E179-41DF-A05B-28147EC6700B"
+    },
+    {
+      "class": "shapePath",
+      "id": "CDF207B6-7A4A-431E-9B14-E236D933D06A"
+    },
+    {
+      "class": "shapePath",
+      "id": "D2D90B8B-FAFC-4637-AED0-972800C24AF6"
+    },
+    {
+      "class": "shapePath",
+      "id": "C7146EE3-5BD8-4270-AE9C-19F6EEDCF52A"
+    }
+  ],
+  "name": "bg",
+  "nameIsFixed": true,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "borders": [
+      {
+        "_class": "border",
+        "color": {
+          "_class": "color",
+          "alpha": 0.7000000000000001,
+          "blue": 0.5676946320878118,
+          "green": 0.5676946320878118,
+          "red": 0.5729963860544217
+        },
+        "fillType": 0,
+        "isEnabled": true,
+        "position": 0,
+        "thickness": 0.5
+      }
+    ],
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "userInfo": {
+    "com.animaapp.stc-sketch-plugin": {
+      "kModelPropertiesKey": {
+      }
+    }
+  },
+  "windingRule": 1
+}

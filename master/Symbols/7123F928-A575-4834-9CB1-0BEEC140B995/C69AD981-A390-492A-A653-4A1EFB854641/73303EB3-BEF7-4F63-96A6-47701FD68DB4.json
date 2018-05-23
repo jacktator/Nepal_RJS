@@ -1,0 +1,46 @@
+{
+  "_class": "text",
+  "attributedString": {
+    "_class": "MSAttributedString",
+    "archivedAttributedString": {
+      "_archive": "YnBsaXN0MDDUAQIDBAUGY2RYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QGQcIDxAeHyAhIisyNj4/KUBBRUlRVVlcXV9VJG51bGzTCQoLDA0OWE5TU3RyaW5nViRjbGFzc1xOU0F0dHJpYnV0ZXOAAoAYgANjd+WQU06G0xESChMYHVdOUy5rZXlzWk5TLm9iamVjdHOkFBUWF4AEgAWABoAHpBkaGxyACIAKgBKAFoAXXxAQTlNQYXJhZ3JhcGhTdHlsZV8QH01TQXR0cmlidXRlZFN0cmluZ0ZvbnRBdHRyaWJ1dGVXTlNDb2xvclZOU0tlcm7VIyQlCiYnKCkqKVtOU0FsaWdubWVudFpOU1RhYlN0b3BzXxAPTlNNaW5MaW5lSGVpZ2h0XxAPTlNNYXhMaW5lSGVpZ2h0EAKAACNAQgAAAAAAAIAJ0iwtLi9aJGNsYXNzbmFtZVgkY2xhc3Nlc18QF05TTXV0YWJsZVBhcmFncmFwaFN0eWxloy4wMV8QEE5TUGFyYWdyYXBoU3R5bGVYTlNPYmplY3TSCjM0NV8QGk5TRm9udERlc2NyaXB0b3JBdHRyaWJ1dGVzgBGAC9MREgo3Oj2iODmADIANojs8gA6AD4AQXxATTlNGb250U2l6ZUF0dHJpYnV0ZV8QE05TRm9udE5hbWVBdHRyaWJ1dGVfEBJQaW5nRmFuZ1NDLVJlZ3VsYXLSLC1CQ18QE05TTXV0YWJsZURpY3Rpb25hcnmjQkQxXE5TRGljdGlvbmFyedIsLUZHXxAQTlNGb250RGVzY3JpcHRvcqJIMV8QEE5TRm9udERlc2NyaXB0b3LUSktMCk1OT1BVTlNSR0JcTlNDb2xvclNwYWNlXxASTlNDdXN0b21Db2xvclNwYWNlTxAoMC4wNjI3NDUwOTgwNCAwLjU1Njg2Mjc0NTEgMC45MTM3MjU0OTAyABABgBOAFdJSClNUVE5TSUQQAYAU0iwtVldcTlNDb2xvclNwYWNlolgxXE5TQ29sb3JTcGFjZdIsLVpbV05TQ29sb3KiWjEQANIsLUReokQx0iwtYGFfEBJOU0F0dHJpYnV0ZWRTdHJpbmeiYjFfEBJOU0F0dHJpYnV0ZWRTdHJpbmdfEA9OU0tleWVkQXJjaGl2ZXLRZWZUcm9vdIABAAgAEQAaACMALQAyADcAUwBZAGAAaQBwAH0AfwCBAIMAigCRAJkApACpAKsArQCvALEAtgC4ALoAvAC+AMAA0wD1AP0BBAEPARsBJgE4AUoBTAFOAVcBWQFeAWkBcgGMAZABowGsAbEBzgHQAdIB2QHcAd4B4AHjAeUB5wHpAf8CFQIqAi8CRQJJAlYCWwJuAnEChAKNApMCoAK1AuAC4gLkAuYC6wLwAvIC9AL5AwYDCQMWAxsDIwMmAygDLQMwAzUDSgNNA2IDdAN3A3wAAAAAAAACAQAAAAAAAABnAAAAAAAAAAAAAAAAAAADfg=="
+    }
+  },
+  "automaticallyDrawOnUnderlyingPath": false,
+  "do_objectID": "73303EB3-BEF7-4F63-96A6-47701FD68DB4",
+  "dontSynchroniseWithSymbol": false,
+  "exportOptions": {
+    "_class": "exportOptions",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "height": 36,
+    "width": 108,
+    "x": 211,
+    "y": 203
+  },
+  "glyphBounds": "{{0, 0}, {104, 35}}",
+  "heightIsClipped": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "lineSpacingBehaviour": 2,
+  "name": "知道了",
+  "nameIsFixed": false,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "sharedObjectID": "D47DE093-6064-4B2A-8BDA-21405F0081C8"
+  },
+  "textBehaviour": 1
+}

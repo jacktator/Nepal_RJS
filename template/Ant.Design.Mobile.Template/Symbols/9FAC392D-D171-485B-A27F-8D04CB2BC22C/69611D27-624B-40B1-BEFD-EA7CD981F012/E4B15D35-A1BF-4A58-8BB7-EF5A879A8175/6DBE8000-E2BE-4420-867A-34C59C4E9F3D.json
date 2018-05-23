@@ -1,0 +1,46 @@
+{
+  "_class": "text",
+  "attributedString": {
+    "_class": "MSAttributedString",
+    "archivedAttributedString": {
+      "_archive": "YnBsaXN0MDDUAQIDBAUGZWZYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QGQcIDxAcHR4fJysyNT5BREhMVFU8VldbX2FVJG51bGzTCQoLDA0OWE5TU3RyaW5nViRjbGFzc1xOU0F0dHJpYnV0ZXOAAoAYgANjkAmYeU4A0xESChMXG1dOUy5rZXlzWk5TLm9iamVjdHOjFBUWgASABYAGoxgZGoAHgAuAD4AXV05TQ29sb3JfEBBOU1BhcmFncmFwaFN0eWxlXxAfTVNBdHRyaWJ1dGVkU3RyaW5nRm9udEF0dHJpYnV0ZdQgISIKIyQlJlVOU1JHQlxOU0NvbG9yU3BhY2VfEBJOU0N1c3RvbUNvbG9yU3BhY2VGMCAwIDAAEAGACIAK0igKKSpUTlNJRBABgAnSLC0uL1okY2xhc3NuYW1lWCRjbGFzc2VzXE5TQ29sb3JTcGFjZaIwMVxOU0NvbG9yU3BhY2VYTlNPYmplY3TSLC0zNFdOU0NvbG9yojMx1TY3OAo5Ojs8PTxaTlNUYWJTdG9wc1tOU1RleHRMaXN0c18QD05TTWluTGluZUhlaWdodF8QD05TTWF4TGluZUhlaWdodIAAgAwjQEAAAAAAAACADtISCj9AoIAN0iwtQkNXTlNBcnJheaJCMdIsLUVGXxAXTlNNdXRhYmxlUGFyYWdyYXBoU3R5bGWjRUcxXxAQTlNQYXJhZ3JhcGhTdHlsZdIKSUpLXxAaTlNGb250RGVzY3JpcHRvckF0dHJpYnV0ZXOAFoAQ0xESCk1QU6JOT4ARgBKiUVKAE4AUgBVfEBNOU0ZvbnRTaXplQXR0cmlidXRlXxATTlNGb250TmFtZUF0dHJpYnV0ZV8QElBpbmdGYW5nU0MtUmVndWxhctIsLVhZXxATTlNNdXRhYmxlRGljdGlvbmFyeaNYWjFcTlNEaWN0aW9uYXJ50iwtXF1fEBBOU0ZvbnREZXNjcmlwdG9yol4xXxAQTlNGb250RGVzY3JpcHRvctIsLVpgolox0iwtYmNfEBJOU0F0dHJpYnV0ZWRTdHJpbmeiZDFfEBJOU0F0dHJpYnV0ZWRTdHJpbmdfEA9OU0tleWVkQXJjaGl2ZXLRZ2hUcm9vdIABAAgAEQAaACMALQAyADcAUwBZAGAAaQBwAH0AfwCBAIMAigCRAJkApACoAKoArACuALIAtAC2ALgAugDCANUA9wEAAQYBEwEoAS8BMQEzATUBOgE/AUEBQwFIAVMBXAFpAWwBeQGCAYcBjwGSAZ0BqAG0AcYB2AHaAdwB5QHnAewB7QHvAfQB/AH/AgQCHgIiAjUCOgJXAlkCWwJiAmUCZwJpAmwCbgJwAnICiAKeArMCuALOAtIC3wLkAvcC+gMNAxIDFQMaAy8DMgNHA1kDXANhAAAAAAAAAgEAAAAAAAAAaQAAAAAAAAAAAAAAAAAAA2M="
+    }
+  },
+  "automaticallyDrawOnUnderlyingPath": false,
+  "do_objectID": "6DBE8000-E2BE-4420-867A-34C59C4E9F3D",
+  "dontSynchroniseWithSymbol": false,
+  "exportOptions": {
+    "_class": "exportOptions",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "height": 32,
+    "width": 96.00000000000003,
+    "x": 30,
+    "y": 28.00000000000002
+  },
+  "glyphBounds": "{{0, 0}, {95, 32}}",
+  "heightIsClipped": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "lineSpacingBehaviour": 2,
+  "name": "选项一 copy",
+  "nameIsFixed": false,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "sharedObjectID": "614209F9-A77A-4A2C-87E9-B5084780C089"
+  },
+  "textBehaviour": 1
+}

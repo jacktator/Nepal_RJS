@@ -1,0 +1,55 @@
+{
+  "_class": "text",
+  "attributedString": {
+    "_class": "MSAttributedString",
+    "archivedAttributedString": {
+      "_archive": "YnBsaXN0MDDUAQIDBAUGYGFYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QFwcIDxAcHR4fJysyNT5CRk5PUFFSVlpcVSRudWxs0wkKCwwNDlhOU1N0cmluZ1YkY2xhc3NcTlNBdHRyaWJ1dGVzgAKAFoADZWIRZi9ml2PQeTrTERIKExcbV05TLmtleXNaTlMub2JqZWN0c6MUFRaABIAFgAajGBkagAeAC4ANgBVXTlNDb2xvcl8QEE5TUGFyYWdyYXBoU3R5bGVfEB9NU0F0dHJpYnV0ZWRTdHJpbmdGb250QXR0cmlidXRl1CAhIgojJCUmVU5TUkdCXE5TQ29sb3JTcGFjZV8QEk5TQ3VzdG9tQ29sb3JTcGFjZU8QJzAuNzMzMzMzMzMzMyAwLjczMzMzMzMzMzMgMC43MzMzMzMzMzMzABABgAiACtIoCikqVE5TSUQQAYAJ0iwtLi9aJGNsYXNzbmFtZVgkY2xhc3Nlc1xOU0NvbG9yU3BhY2WiMDFcTlNDb2xvclNwYWNlWE5TT2JqZWN00iwtMzRXTlNDb2xvcqIzMdU2NzgKOTo7PD08W05TQWxpZ25tZW50Wk5TVGFiU3RvcHNfEA9OU01pbkxpbmVIZWlnaHRfEA9OU01heExpbmVIZWlnaHQQBIAAI0BJgAAAAAAAgAzSLC0/QF8QF05TTXV0YWJsZVBhcmFncmFwaFN0eWxloz9BMV8QEE5TUGFyYWdyYXBoU3R5bGXSCkNERV8QGk5TRm9udERlc2NyaXB0b3JBdHRyaWJ1dGVzgBSADtMREgpHSk2iSEmAD4AQoktMgBGAEoATXxATTlNGb250U2l6ZUF0dHJpYnV0ZV8QE05TRm9udE5hbWVBdHRyaWJ1dGUjQEEAAAAAAABfEBJQaW5nRmFuZ1NDLVJlZ3VsYXLSLC1TVF8QE05TTXV0YWJsZURpY3Rpb25hcnmjU1UxXE5TRGljdGlvbmFyedIsLVdYXxAQTlNGb250RGVzY3JpcHRvcqJZMV8QEE5TRm9udERlc2NyaXB0b3LSLC1VW6JVMdIsLV1eXxASTlNBdHRyaWJ1dGVkU3RyaW5nol8xXxASTlNBdHRyaWJ1dGVkU3RyaW5nXxAPTlNLZXllZEFyY2hpdmVy0WJjVHJvb3SAAQAIABEAGgAjAC0AMgA3AFEAVwBeAGcAbgB7AH0AfwCBAIwAkwCbAKYAqgCsAK4AsAC0ALYAuAC6ALwAxADXAPkBAgEIARUBKgFUAVYBWAFaAV8BZAFmAWgBbQF4AYEBjgGRAZ4BpwGsAbQBtwHCAc4B2QHrAf0B/wIBAgoCDAIRAisCLwJCAkcCZAJmAmgCbwJyAnQCdgJ5AnsCfQJ/ApUCqwK0AskCzgLkAugC9QL6Aw0DEAMjAygDKwMwA0UDSANdA28DcgN3AAAAAAAAAgEAAAAAAAAAZAAAAAAAAAAAAAAAAAAAA3k="
+    }
+  },
+  "automaticallyDrawOnUnderlyingPath": false,
+  "do_objectID": "7F84ED9B-31C1-47D0-BF49-A969D4EA7900",
+  "dontSynchroniseWithSymbol": false,
+  "exportOptions": {
+    "_class": "exportOptions",
+    "exportFormats": [
+      {
+        "_class": "exportFormat",
+        "absoluteSize": 0,
+        "fileFormat": "jpg",
+        "name": "",
+        "namingScheme": 0,
+        "scale": 1,
+        "visibleScaleType": 0
+      }
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "height": 51,
+    "width": 170,
+    "x": 0,
+    "y": 0
+  },
+  "glyphBounds": "{{0, 0}, {168, 42}}",
+  "heightIsClipped": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "lineSpacingBehaviour": 2,
+  "name": "我是暗提示",
+  "nameIsFixed": false,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "sharedObjectID": "49CC946C-6813-44F5-BA72-65CA70CB36B7"
+  },
+  "textBehaviour": 0
+}

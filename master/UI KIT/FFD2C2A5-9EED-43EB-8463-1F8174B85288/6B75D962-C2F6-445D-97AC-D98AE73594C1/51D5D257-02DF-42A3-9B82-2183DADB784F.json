@@ -1,0 +1,78 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "51D5D257-02DF-42A3-9B82-2183DADB784F",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "height": 90,
+    "width": 750,
+    "x": 0,
+    "y": 48
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "masterInfluenceEdgeMaxXPadding": 0,
+  "masterInfluenceEdgeMaxYPadding": 0,
+  "masterInfluenceEdgeMinXPadding": 0,
+  "masterInfluenceEdgeMinYPadding": 0,
+  "name": "input/normal/container",
+  "nameIsFixed": true,
+  "overrides": {
+    "0": {
+      "24D06539-9501-41E4-B41D-C23F8328DD76": {
+        "E77CCF71-9A15-4250-A875-0FC5AB63547D": {
+          "128303D2-1898-471A-9FD6-96FF1245B0F9": "元"
+        }
+      },
+      "62BE5F2B-0B56-4FFF-88E5-BF13B1F7D287": {
+        "128303D2-1898-471A-9FD6-96FF1245B0F9": "元",
+        "symbolID": "0776A1C7-A97C-4BDA-BEAD-3F4EF7972AB7"
+      },
+      "62D6E134-F09E-4427-8A1E-755E44B5AE02": {
+        "B831E873-6BB2-4874-891C-3B947EC3274D": {
+          "7D90A4FB-51E4-42DD-A020-6E5CF9161160": "0.00",
+          "94405B7C-A506-4553-A9E6-857051BAED24": "0.00",
+          "symbolID": "3BE7E4DE-5B49-4E96-B995-3BA46213B1DC"
+        },
+        "symbolID": "B2D998E2-4C84-4F92-A821-5696FCCFB532"
+      },
+      "8E81B3DB-7D19-4147-9082-44EB6C0FFCC5": {
+        "symbolID": "ED6338F4-6DE6-451C-8C6A-8C04BF62D5D2"
+      },
+      "A1FF6AD4-15F2-4ECB-AD93-02CFC6A7CC12": {
+        "9D8AD00A-613B-49E7-9026-6FB723FEC102": "价格"
+      },
+      "ACD36610-0D5E-43F3-A2EA-C077E79ECB6E": {
+        "4868F7E8-3C00-4F1D-98EE-177340AC01CC": "元",
+        "A8EA2914-5471-410F-A501-747CECCF87EF": "元"
+      },
+      "C2141451-15C8-4A01-95BA-6A6F586E224D": {
+        "symbolID": "208C87E3-D3E1-4447-A7BA-51835D29542C"
+      }
+    }
+  },
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "320051BE-75B9-485E-9F87-BD1EC9696E73",
+  "verticalSpacing": 0
+}

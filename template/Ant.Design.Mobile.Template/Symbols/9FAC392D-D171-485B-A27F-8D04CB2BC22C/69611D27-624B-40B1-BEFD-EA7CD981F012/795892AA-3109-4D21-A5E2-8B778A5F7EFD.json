@@ -1,0 +1,46 @@
+{
+  "_class": "text",
+  "attributedString": {
+    "_class": "MSAttributedString",
+    "archivedAttributedString": {
+      "_archive": "YnBsaXN0MDDUAQIDBAUGZWZYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QGQcIDxAcHR4fJysyNT5BREhMVFU8VldbX2FVJG51bGzTCQoLDA0OWE5TU3RyaW5nViRjbGFzc1xOU0F0dHJpYnV0ZXOAAoAYgANiTj1OutMREgoTFxtXTlMua2V5c1pOUy5vYmplY3RzoxQVFoAEgAWABqMYGRqAB4ALgA+AF1dOU0NvbG9yXxAQTlNQYXJhZ3JhcGhTdHlsZV8QH01TQXR0cmlidXRlZFN0cmluZ0ZvbnRBdHRyaWJ1dGXUICEiCiMkJSZVTlNSR0JcTlNDb2xvclNwYWNlXxASTlNDdXN0b21Db2xvclNwYWNlRjAgMCAwABABgAiACtIoCikqVE5TSUQQAYAJ0iwtLi9aJGNsYXNzbmFtZVgkY2xhc3Nlc1xOU0NvbG9yU3BhY2WiMDFcTlNDb2xvclNwYWNlWE5TT2JqZWN00iwtMzRXTlNDb2xvcqIzMdU2NzgKOTo7PD08Wk5TVGFiU3RvcHNbTlNUZXh0TGlzdHNfEA9OU01pbkxpbmVIZWlnaHRfEA9OU01heExpbmVIZWlnaHSAAIAMI0BAAAAAAAAAgA7SEgo/QKCADdIsLUJDV05TQXJyYXmiQjHSLC1FRl8QF05TTXV0YWJsZVBhcmFncmFwaFN0eWxlo0VHMV8QEE5TUGFyYWdyYXBoU3R5bGXSCklKS18QGk5TRm9udERlc2NyaXB0b3JBdHRyaWJ1dGVzgBaAENMREgpNUFOiTk+AEYASolFSgBOAFIAVXxATTlNGb250U2l6ZUF0dHJpYnV0ZV8QE05TRm9udE5hbWVBdHRyaWJ1dGVfEBJQaW5nRmFuZ1NDLVJlZ3VsYXLSLC1YWV8QE05TTXV0YWJsZURpY3Rpb25hcnmjWFoxXE5TRGljdGlvbmFyedIsLVxdXxAQTlNGb250RGVzY3JpcHRvcqJeMV8QEE5TRm9udERlc2NyaXB0b3LSLC1aYKJaMdIsLWJjXxASTlNBdHRyaWJ1dGVkU3RyaW5nomQxXxASTlNBdHRyaWJ1dGVkU3RyaW5nXxAPTlNLZXllZEFyY2hpdmVy0WdoVHJvb3SAAQAIABEAGgAjAC0AMgA3AFMAWQBgAGkAcAB9AH8AgQCDAIgAjwCXAKIApgCoAKoArACwALIAtAC2ALgAwADTAPUA/gEEAREBJgEtAS8BMQEzATgBPQE/AUEBRgFRAVoBZwFqAXcBgAGFAY0BkAGbAaYBsgHEAdYB2AHaAeMB5QHqAesB7QHyAfoB/QICAhwCIAIzAjgCVQJXAlkCYAJjAmUCZwJqAmwCbgJwAoYCnAKxArYCzALQAt0C4gL1AvgDCwMQAxMDGAMtAzADRQNXA1oDXwAAAAAAAAIBAAAAAAAAAGkAAAAAAAAAAAAAAAAAAANh"
+    }
+  },
+  "automaticallyDrawOnUnderlyingPath": false,
+  "do_objectID": "795892AA-3109-4D21-A5E2-8B778A5F7EFD",
+  "dontSynchroniseWithSymbol": false,
+  "exportOptions": {
+    "_class": "exportOptions",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "height": 31.99999999999999,
+    "width": 64,
+    "x": 28,
+    "y": 299
+  },
+  "glyphBounds": "{{0, 0}, {63, 32}}",
+  "heightIsClipped": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "lineSpacingBehaviour": 2,
+  "name": "丽人",
+  "nameIsFixed": false,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "sharedObjectID": "614209F9-A77A-4A2C-87E9-B5084780C089"
+  },
+  "textBehaviour": 0
+}
