@@ -1,0 +1,61 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "E45DDB28-47D9-4313-AF23-21229705E3F6",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "F1881795-2684-4D38-962A-3D631FF32364",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "35AE5A4F-3C9C-4B38-9F5D-E099474262AE",
+    "height": 37,
+    "width": 37,
+    "x": 683,
+    "y": 640
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "icon/下拉",
+  "nameIsFixed": false,
+  "overrideValues": [
+  ],
+  "overrides": {
+  },
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "contextSettings": {
+      "_class": "graphicsContextSettings",
+      "blendMode": 0,
+      "do_objectID": "8766CE61-C801-4648-8611-4340F310A3F7",
+      "opacity": 0.4439538043478261
+    },
+    "do_objectID": "FA453D3C-7B7F-494C-A613-FB279A0DBDA2",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "E4E68AD2-6F6D-4F52-BDBA-DA3AE0C9894E",
+  "userInfo": {
+    "com.animaapp.stc-sketch-plugin": {
+      "kModelPropertiesKey": {
+      }
+    }
+  },
+  "verticalSpacing": 0
+}

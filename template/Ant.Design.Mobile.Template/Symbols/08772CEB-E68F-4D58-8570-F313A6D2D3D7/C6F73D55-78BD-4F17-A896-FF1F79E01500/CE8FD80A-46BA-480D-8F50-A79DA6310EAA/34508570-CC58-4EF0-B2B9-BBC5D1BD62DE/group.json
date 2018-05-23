@@ -52,6 +52,7 @@
   ],
   "name": "2 copy",
   "nameIsFixed": true,
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
   "shouldBreakMaskChain": false,

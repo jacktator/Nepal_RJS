@@ -1,0 +1,62 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "B0DF041D-A38D-445F-A9FF-1697C37F255A",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "F84AB27F-0A67-48FB-85B3-D2CEE47B136E",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "B86B18BF-7CE2-44C7-8CBF-854DFCDA58DC",
+    "height": 51,
+    "width": 375,
+    "x": 225,
+    "y": 781
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "input/normal/content/input",
+  "nameIsFixed": false,
+  "overrideValues": [
+    {
+      "_class": "overrideValue",
+      "do_objectID": "FF05ECF8-5FC0-4725-AC91-89F9A3AD91B3",
+      "overrideName": "D1DB1070-5228-4492-B05E-35D10DE04787_stringValue",
+      "value": "E-mail "
+    }
+  ],
+  "overrides": {
+    "D1DB1070-5228-4492-B05E-35D10DE04787": "E-mail "
+  },
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "contextSettings": {
+      "_class": "graphicsContextSettings",
+      "blendMode": 0,
+      "do_objectID": "C6C30AFA-8992-4AD7-8872-73401880A1F6",
+      "opacity": 0.3058763586956522
+    },
+    "do_objectID": "3453FE1F-15CF-415D-B19B-9E709841DA5A",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "B2D998E2-4C84-4F92-A821-5696FCCFB532",
+  "verticalSpacing": 0
+}

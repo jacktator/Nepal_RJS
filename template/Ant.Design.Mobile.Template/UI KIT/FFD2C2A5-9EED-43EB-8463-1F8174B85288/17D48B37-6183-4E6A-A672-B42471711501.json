@@ -24,27 +24,50 @@
   "isLocked": false,
   "isVisible": true,
   "layerListExpandedType": 0,
-  "masterInfluenceEdgeMaxXPadding": 0,
-  "masterInfluenceEdgeMaxYPadding": 1,
-  "masterInfluenceEdgeMinXPadding": 0,
-  "masterInfluenceEdgeMinYPadding": 0,
   "name": "list/singleline/container copy",
   "nameIsFixed": false,
+  "overrideValues": [
+    {
+      "_class": "overrideValue",
+      "overrideName": "FA4C84B0-AE94-4E89-A7B4-85109BBC2E89_symbolID",
+      "value": "D16B9CA1-87BA-4997-893C-5474340210D8"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "FA4C84B0-AE94-4E89-A7B4-85109BBC2E89/B6E61F3E-68AC-4D7E-A228-6114350E5B11_stringValue",
+      "value": "我是单行标题文字"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "FA4C84B0-AE94-4E89-A7B4-85109BBC2E89/CFBB3388-0BD1-437B-8F82-6F40BAF03FA8_stringValue",
+      "value": "单行列表"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "D8776306-7902-4C0D-BC3E-591811FCB791_symbolID",
+      "value": "49B38D15-C185-4320-A31F-DDFE2E7B149B"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "D8776306-7902-4C0D-BC3E-591811FCB791/F7DF962C-6C54-4E3F-A486-B0A11297E82C_stringValue",
+      "value": "详细信息"
+    }
+  ],
   "overrides": {
-    "0": {
-      "D8776306-7902-4C0D-BC3E-591811FCB791": {
-        "F7DF962C-6C54-4E3F-A486-B0A11297E82C": "详细信息",
-        "symbolID": "49B38D15-C185-4320-A31F-DDFE2E7B149B"
-      },
-      "FA4C84B0-AE94-4E89-A7B4-85109BBC2E89": {
-        "B6E61F3E-68AC-4D7E-A228-6114350E5B11": "我是单行标题文字",
-        "CFBB3388-0BD1-437B-8F82-6F40BAF03FA8": "单行列表",
-        "symbolID": "D16B9CA1-87BA-4997-893C-5474340210D8"
-      }
+    "D8776306-7902-4C0D-BC3E-591811FCB791": {
+      "F7DF962C-6C54-4E3F-A486-B0A11297E82C": "详细信息",
+      "symbolID": "49B38D15-C185-4320-A31F-DDFE2E7B149B"
+    },
+    "FA4C84B0-AE94-4E89-A7B4-85109BBC2E89": {
+      "B6E61F3E-68AC-4D7E-A228-6114350E5B11": "我是单行标题文字",
+      "CFBB3388-0BD1-437B-8F82-6F40BAF03FA8": "单行列表",
+      "symbolID": "D16B9CA1-87BA-4997-893C-5474340210D8"
     }
   },
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
+  "scale": 0,
   "shouldBreakMaskChain": false,
   "style": {
     "_class": "style",

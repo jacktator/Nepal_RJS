@@ -69,6 +69,7 @@
   ],
   "name": "小黄条/提示公告/可关闭",
   "nameIsFixed": true,
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
   "shouldBreakMaskChain": false,

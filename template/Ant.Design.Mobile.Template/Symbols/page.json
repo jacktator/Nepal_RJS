@@ -739,10 +739,27 @@
     {
       "class": "symbolMaster",
       "id": "E5993DAF-9BC6-4359-BBAD-E9EBD5592608"
+    },
+    {
+      "class": "symbolInstance",
+      "id": "6F887161-0DE9-4B0C-915A-8995178EEE5A"
+    },
+    {
+      "class": "symbolMaster",
+      "id": "B050CD3D-6EA3-4AF2-A256-B1156DBD00BD"
+    },
+    {
+      "class": "symbolInstance",
+      "id": "D2249386-C580-46B3-9474-B2E1DC69E926"
+    },
+    {
+      "class": "symbolMaster",
+      "id": "0484CB82-7A55-476F-8B4D-7FD418252FA1"
     }
   ],
   "name": "Symbols",
   "nameIsFixed": false,
+  "resizingConstraint": 0,
   "resizingType": 0,
   "rotation": 0,
   "shouldBreakMaskChain": false,

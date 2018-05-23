@@ -24,19 +24,22 @@
   "isLocked": false,
   "isVisible": true,
   "layerListExpandedType": 0,
-  "masterInfluenceEdgeMaxXPadding": 1,
-  "masterInfluenceEdgeMaxYPadding": 1,
-  "masterInfluenceEdgeMinXPadding": 1,
-  "masterInfluenceEdgeMinYPadding": 1,
   "name": "button/big/secondary/normal",
   "nameIsFixed": false,
-  "overrides": {
-    "0": {
-      "579AC841-1C60-4CB9-B804-19A782850308": "上一页"
+  "overrideValues": [
+    {
+      "_class": "overrideValue",
+      "overrideName": "579AC841-1C60-4CB9-B804-19A782850308_stringValue",
+      "value": "上一页"
     }
+  ],
+  "overrides": {
+    "579AC841-1C60-4CB9-B804-19A782850308": "上一页"
   },
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
+  "scale": 0,
   "shouldBreakMaskChain": false,
   "style": {
     "_class": "style",

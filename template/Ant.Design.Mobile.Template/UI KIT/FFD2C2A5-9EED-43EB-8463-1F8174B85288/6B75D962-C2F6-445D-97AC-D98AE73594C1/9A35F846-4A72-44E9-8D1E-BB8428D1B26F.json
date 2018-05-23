@@ -24,56 +24,112 @@
   "isLocked": false,
   "isVisible": true,
   "layerListExpandedType": 0,
-  "masterInfluenceEdgeMaxXPadding": 0,
-  "masterInfluenceEdgeMaxYPadding": 0,
-  "masterInfluenceEdgeMinXPadding": 0,
-  "masterInfluenceEdgeMinYPadding": 0,
   "name": "input/normal/container",
   "nameIsFixed": true,
+  "overrideValues": [
+    {
+      "_class": "overrideValue",
+      "overrideName": "BE5616C5-1972-4434-A3EE-EDE2EAC981B3_symbolID",
+      "value": ""
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "6910ED3D-DD2E-47B3-9173-7448D3645A13_symbolID",
+      "value": "0776A1C7-A97C-4BDA-BEAD-3F4EF7972AB7"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "A1FF6AD4-15F2-4ECB-AD93-02CFC6A7CC12/9D8AD00A-613B-49E7-9026-6FB723FEC102_stringValue",
+      "value": "密码"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "C2141451-15C8-4A01-95BA-6A6F586E224D_symbolID",
+      "value": "208C87E3-D3E1-4447-A7BA-51835D29542C"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "ACD36610-0D5E-43F3-A2EA-C077E79ECB6E/A8EA2914-5471-410F-A501-747CECCF87EF_stringValue",
+      "value": "元"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "ACD36610-0D5E-43F3-A2EA-C077E79ECB6E/4868F7E8-3C00-4F1D-98EE-177340AC01CC_stringValue",
+      "value": "元"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "62BE5F2B-0B56-4FFF-88E5-BF13B1F7D287_symbolID",
+      "value": ""
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "62D6E134-F09E-4427-8A1E-755E44B5AE02/B831E873-6BB2-4874-891C-3B947EC3274D_symbolID",
+      "value": ""
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "62D6E134-F09E-4427-8A1E-755E44B5AE02/B831E873-6BB2-4874-891C-3B947EC3274D/7D90A4FB-51E4-42DD-A020-6E5CF9161160_stringValue",
+      "value": "0.00"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "BA2F1798-2545-464F-8C9C-C3C2D1580068_symbolID",
+      "value": "0776A1C7-A97C-4BDA-BEAD-3F4EF7972AB7"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "753B69B2-3093-4871-835D-B66B84D0373C/9D8AD00A-613B-49E7-9026-6FB723FEC102_stringValue",
+      "value": "密码"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "24D06539-9501-41E4-B41D-C23F8328DD76/E77CCF71-9A15-4250-A875-0FC5AB63547D_symbolID",
+      "value": ""
+    }
+  ],
   "overrides": {
-    "0": {
-      "24D06539-9501-41E4-B41D-C23F8328DD76": {
-        "E77CCF71-9A15-4250-A875-0FC5AB63547D": {
-          "symbolID": ""
-        }
-      },
-      "62BE5F2B-0B56-4FFF-88E5-BF13B1F7D287": {
+    "24D06539-9501-41E4-B41D-C23F8328DD76": {
+      "E77CCF71-9A15-4250-A875-0FC5AB63547D": {
         "symbolID": ""
-      },
-      "62D6E134-F09E-4427-8A1E-755E44B5AE02": {
-        "B831E873-6BB2-4874-891C-3B947EC3274D": {
-          "7D90A4FB-51E4-42DD-A020-6E5CF9161160": "0.00",
-          "symbolID": ""
-        }
-      },
-      "6910ED3D-DD2E-47B3-9173-7448D3645A13": {
-        "symbolID": "0776A1C7-A97C-4BDA-BEAD-3F4EF7972AB7"
-      },
-      "753B69B2-3093-4871-835D-B66B84D0373C": {
-        "9D8AD00A-613B-49E7-9026-6FB723FEC102": "密码"
-      },
-      "A1FF6AD4-15F2-4ECB-AD93-02CFC6A7CC12": {
-        "9D8AD00A-613B-49E7-9026-6FB723FEC102": "密码"
-      },
-      "ACD36610-0D5E-43F3-A2EA-C077E79ECB6E": {
-        "4868F7E8-3C00-4F1D-98EE-177340AC01CC": "元",
-        "A8EA2914-5471-410F-A501-747CECCF87EF": "元"
-      },
-      "BA2F1798-2545-464F-8C9C-C3C2D1580068": {
-        "E77CCF71-9A15-4250-A875-0FC5AB63547D": {
-        },
-        "symbolID": "0776A1C7-A97C-4BDA-BEAD-3F4EF7972AB7"
-      },
-      "BE5616C5-1972-4434-A3EE-EDE2EAC981B3": {
-        "symbolID": ""
-      },
-      "C2141451-15C8-4A01-95BA-6A6F586E224D": {
-        "symbolID": "208C87E3-D3E1-4447-A7BA-51835D29542C"
       }
+    },
+    "62BE5F2B-0B56-4FFF-88E5-BF13B1F7D287": {
+      "symbolID": ""
+    },
+    "62D6E134-F09E-4427-8A1E-755E44B5AE02": {
+      "B831E873-6BB2-4874-891C-3B947EC3274D": {
+        "7D90A4FB-51E4-42DD-A020-6E5CF9161160": "0.00",
+        "symbolID": ""
+      }
+    },
+    "6910ED3D-DD2E-47B3-9173-7448D3645A13": {
+      "symbolID": "0776A1C7-A97C-4BDA-BEAD-3F4EF7972AB7"
+    },
+    "753B69B2-3093-4871-835D-B66B84D0373C": {
+      "9D8AD00A-613B-49E7-9026-6FB723FEC102": "密码"
+    },
+    "A1FF6AD4-15F2-4ECB-AD93-02CFC6A7CC12": {
+      "9D8AD00A-613B-49E7-9026-6FB723FEC102": "密码"
+    },
+    "ACD36610-0D5E-43F3-A2EA-C077E79ECB6E": {
+      "4868F7E8-3C00-4F1D-98EE-177340AC01CC": "元",
+      "A8EA2914-5471-410F-A501-747CECCF87EF": "元"
+    },
+    "BA2F1798-2545-464F-8C9C-C3C2D1580068": {
+      "symbolID": "0776A1C7-A97C-4BDA-BEAD-3F4EF7972AB7"
+    },
+    "BE5616C5-1972-4434-A3EE-EDE2EAC981B3": {
+      "symbolID": ""
+    },
+    "C2141451-15C8-4A01-95BA-6A6F586E224D": {
+      "symbolID": "208C87E3-D3E1-4447-A7BA-51835D29542C"
     }
   },
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
+  "scale": 0,
   "shouldBreakMaskChain": false,
   "style": {
     "_class": "style",

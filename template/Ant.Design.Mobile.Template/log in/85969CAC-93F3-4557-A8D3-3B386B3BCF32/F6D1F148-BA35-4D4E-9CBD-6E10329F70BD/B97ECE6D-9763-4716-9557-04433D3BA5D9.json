@@ -1,0 +1,56 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "B97ECE6D-9763-4716-9557-04433D3BA5D9",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "52F3748B-C9B0-4B51-B544-EA3AABBC921B",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "997C2454-9175-45A5-B1F3-12A0DA9C2DAD",
+    "height": 94,
+    "width": 690,
+    "x": 0,
+    "y": 0
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "button/big/primary/tap",
+  "nameIsFixed": true,
+  "overrideValues": [
+    {
+      "_class": "overrideValue",
+      "do_objectID": "A286B3EF-7163-49ED-9948-AF949A3B801E",
+      "overrideName": "957D38A3-1BD2-4F94-937F-D605205481B2_stringValue",
+      "value": "Log in"
+    }
+  ],
+  "overrides": {
+    "957D38A3-1BD2-4F94-937F-D605205481B2": "Log in"
+  },
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "978DF08C-C9A7-4DAA-8808-9D77FBE48455",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "EFFFA57E-972B-4F91-9B34-C3B51A265B59",
+  "verticalSpacing": 0
+}

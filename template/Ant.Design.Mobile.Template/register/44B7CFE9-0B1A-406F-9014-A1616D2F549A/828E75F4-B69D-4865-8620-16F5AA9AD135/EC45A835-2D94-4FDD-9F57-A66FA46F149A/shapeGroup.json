@@ -1,0 +1,107 @@
+{
+  "_class": "shapeGroup",
+  "clippingMaskMode": 0,
+  "do_objectID": "EC45A835-2D94-4FDD-9F57-A66FA46F149A",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "D7A12AB5-DC85-4284-A472-EC04D4CDC343",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "7D4EF471-31F8-44C1-B42E-BF6EF0DA27E2",
+    "height": 94.00000000000001,
+    "width": 690.0000000000005,
+    "x": 0,
+    "y": 0
+  },
+  "hasClickThrough": false,
+  "hasClippingMask": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "layers": [
+    {
+      "class": "rectangle",
+      "id": "C65B8B0F-9525-4883-9BA8-B0ADE7E655DC"
+    }
+  ],
+  "name": "Rectangle 46",
+  "nameIsFixed": false,
+  "originalObjectID": "96F175AE-105E-496A-95F1-3E92E0F16A58",
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "F40855F6-3231-4468-8DF3-250355C33594",
+    "endDecorationType": 0,
+    "fills": [
+      {
+        "_class": "fill",
+        "color": {
+          "_class": "color",
+          "alpha": 1,
+          "blue": 0.5417729591836735,
+          "green": 0.3572672965255272,
+          "red": 0.1007594240495678
+        },
+        "fillType": 0,
+        "gradient": {
+          "_class": "gradient",
+          "elipseLength": 1,
+          "from": "{0.5, 0}",
+          "gradientType": 0,
+          "stops": [
+            {
+              "_class": "gradientStop",
+              "color": {
+                "_class": "color",
+                "alpha": 1,
+                "blue": 0.9568452380952381,
+                "green": 0.5121749723800508,
+                "red": 0.2157281285699254
+              },
+              "position": 0
+            },
+            {
+              "_class": "gradientStop",
+              "color": {
+                "_class": "color",
+                "alpha": 1,
+                "blue": 0.9607843137254902,
+                "green": 0.4941176470588237,
+                "red": 0.2235294117647059
+              },
+              "position": 0.9954559948979592
+            }
+          ],
+          "to": "{0.5, 0.98301977040816324}"
+        },
+        "isEnabled": true,
+        "noiseIndex": 0,
+        "noiseIntensity": 0,
+        "patternFillType": 0,
+        "patternTileScale": 1
+      }
+    ],
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "userInfo": {
+    "com.animaapp.stc-sketch-plugin": {
+      "kModelPropertiesKey": {
+      }
+    }
+  },
+  "windingRule": 1
+}

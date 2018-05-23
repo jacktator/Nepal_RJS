@@ -35,6 +35,7 @@
   "name": "bg",
   "nameIsFixed": true,
   "originalObjectID": "75D264C5-8CBA-46EF-B0AF-B094540D8905",
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
   "shouldBreakMaskChain": false,

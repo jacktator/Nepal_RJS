@@ -17,7 +17,7 @@
     "height": 3.158777142857148,
     "width": 37.90304571428572,
     "x": 0,
-    "y": 0.005493714285708423
+    "y": 0.005493714285708427
   },
   "hasClickThrough": false,
   "hasClippingMask": true,
@@ -34,6 +34,7 @@
   ],
   "name": "Clip 2",
   "nameIsFixed": false,
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
   "shouldBreakMaskChain": false,

@@ -20,6 +20,7 @@
     "x": 10.25062899006657,
     "y": 3.355312806496386
   },
+  "isClosed": true,
   "isFlippedHorizontal": false,
   "isFlippedVertical": false,
   "isLocked": false,
@@ -30,6 +31,7 @@
   "path": {
     "_class": "path",
     "isClosed": true,
+    "pointRadiusBehaviour": 0,
     "points": [
       {
         "_class": "curvePoint",
@@ -83,6 +85,60 @@
       }
     ]
   },
+  "pointRadiusBehaviour": 0,
+  "points": [
+    {
+      "_class": "curvePoint",
+      "cornerRadius": 0,
+      "curveFrom": "{0.82978469197574389, 0}",
+      "curveMode": 3,
+      "curveTo": "{0.077142282587636002, 0}",
+      "hasCurveFrom": true,
+      "hasCurveTo": true,
+      "point": "{0.53573212818412308, 0}"
+    },
+    {
+      "_class": "curvePoint",
+      "cornerRadius": 0,
+      "curveFrom": "{1, 0.69724440531589416}",
+      "curveMode": 4,
+      "curveTo": "{1, 0.31609041517699915}",
+      "hasCurveFrom": false,
+      "hasCurveTo": true,
+      "point": "{1, 0.69724440531589416}"
+    },
+    {
+      "_class": "curvePoint",
+      "cornerRadius": 0,
+      "curveFrom": "{0.99999999999997713, 1}",
+      "curveMode": 1,
+      "curveTo": "{0.99999999999997713, 1}",
+      "hasCurveFrom": false,
+      "hasCurveTo": false,
+      "point": "{0.99999999999997713, 1}"
+    },
+    {
+      "_class": "curvePoint",
+      "cornerRadius": 0,
+      "curveFrom": "{5.9806780423093449e-15, 1}",
+      "curveMode": 1,
+      "curveTo": "{5.9806780423093449e-15, 1}",
+      "hasCurveFrom": false,
+      "hasCurveTo": false,
+      "point": "{5.9806780423093449e-15, 1}"
+    },
+    {
+      "_class": "curvePoint",
+      "cornerRadius": 0,
+      "curveFrom": "{6.7962250480788006e-17, 0.56083236448742446}",
+      "curveMode": 4,
+      "curveTo": "{6.7962250480788006e-17, 0.69724440531589416}",
+      "hasCurveFrom": true,
+      "hasCurveTo": false,
+      "point": "{6.7962250480788006e-17, 0.69724440531589416}"
+    }
+  ],
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
   "shouldBreakMaskChain": false

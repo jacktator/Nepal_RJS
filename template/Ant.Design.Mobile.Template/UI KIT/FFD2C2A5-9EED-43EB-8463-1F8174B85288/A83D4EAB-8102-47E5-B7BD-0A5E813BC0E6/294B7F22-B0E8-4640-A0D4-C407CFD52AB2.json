@@ -24,21 +24,24 @@
   "isLocked": false,
   "isVisible": true,
   "layerListExpandedType": 0,
-  "masterInfluenceEdgeMaxXPadding": 1,
-  "masterInfluenceEdgeMaxYPadding": 0,
-  "masterInfluenceEdgeMinXPadding": 0,
-  "masterInfluenceEdgeMinYPadding": 1,
   "name": "imagepicker/add/container",
   "nameIsFixed": true,
+  "overrideValues": [
+    {
+      "_class": "overrideValue",
+      "overrideName": "8ED07049-F4C9-4FF0-8B3F-BBEA9547D4F2_symbolID",
+      "value": "E0D1631C-AD86-4C18-8E97-73BCE7221B7A"
+    }
+  ],
   "overrides": {
-    "0": {
-      "8ED07049-F4C9-4FF0-8B3F-BBEA9547D4F2": {
-        "symbolID": "E0D1631C-AD86-4C18-8E97-73BCE7221B7A"
-      }
+    "8ED07049-F4C9-4FF0-8B3F-BBEA9547D4F2": {
+      "symbolID": "E0D1631C-AD86-4C18-8E97-73BCE7221B7A"
     }
   },
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
+  "scale": 0,
   "shouldBreakMaskChain": false,
   "style": {
     "_class": "style",

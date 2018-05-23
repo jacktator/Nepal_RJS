@@ -1,0 +1,63 @@
+{
+  "_class": "page",
+  "do_objectID": "3B127585-B682-492A-B6C7-51FACCA9BA33",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "63F4C4DA-D5F4-4E38-92F3-FFF1DC5950CF",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "DA5C7B6F-FFB4-41C3-ACA4-982BDAC771B4",
+    "height": 300,
+    "width": 300,
+    "x": 0,
+    "y": 0
+  },
+  "hasClickThrough": true,
+  "horizontalRulerData": {
+    "_class": "rulerData",
+    "base": -297,
+    "do_objectID": "C140057D-57A0-40E8-B296-BD603D6BACDB",
+    "guides": [
+    ]
+  },
+  "includeInCloudUpload": true,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "layers": [
+    {
+      "class": "artboard",
+      "id": "4212B452-D331-4B6D-BB52-C05FBF6CAAAB"
+    }
+  ],
+  "name": "forgot password",
+  "nameIsFixed": true,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "BDE9B4C7-FABC-43DA-B92F-B952A4280AE5",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "verticalRulerData": {
+    "_class": "rulerData",
+    "base": -168,
+    "do_objectID": "31E4FF7E-F2CD-4FCF-97A2-A66878DB5581",
+    "guides": [
+    ]
+  }
+}
