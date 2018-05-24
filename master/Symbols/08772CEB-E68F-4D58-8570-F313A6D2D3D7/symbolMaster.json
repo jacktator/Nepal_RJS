@@ -7,7 +7,6 @@
     "green": 1,
     "red": 1
   },
-  "changeIdentifier": 0,
   "do_objectID": "08772CEB-E68F-4D58-8570-F313A6D2D3D7",
   "exportOptions": {
     "_class": "exportOptions",
@@ -39,7 +38,6 @@
   "includeInCloudUpload": true,
   "isFlippedHorizontal": false,
   "isFlippedVertical": false,
-  "isFlowHome": false,
   "isLocked": false,
   "isVisible": true,
   "layerListExpandedType": 0,
@@ -51,11 +49,9 @@
   ],
   "name": "steps/horizon",
   "nameIsFixed": false,
-  "resizesContent": false,
-  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
-  "shouldBreakMaskChain": true,
+  "shouldBreakMaskChain": false,
   "style": {
     "_class": "style",
     "endDecorationType": 0,

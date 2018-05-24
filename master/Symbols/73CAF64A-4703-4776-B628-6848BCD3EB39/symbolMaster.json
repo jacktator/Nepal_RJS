@@ -7,7 +7,6 @@
     "green": 1,
     "red": 1
   },
-  "changeIdentifier": 0,
   "do_objectID": "73CAF64A-4703-4776-B628-6848BCD3EB39",
   "exportOptions": {
     "_class": "exportOptions",
@@ -39,7 +38,6 @@
   "includeInCloudUpload": true,
   "isFlippedHorizontal": false,
   "isFlippedVertical": false,
-  "isFlowHome": false,
   "isLocked": false,
   "isVisible": true,
   "layerListExpandedType": 2,
@@ -51,11 +49,9 @@
   ],
   "name": "imagepicker/add/add-icon2",
   "nameIsFixed": true,
-  "resizesContent": false,
-  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
-  "shouldBreakMaskChain": true,
+  "shouldBreakMaskChain": false,
   "style": {
     "_class": "style",
     "endDecorationType": 0,

@@ -27,6 +27,7 @@
     "y": 24
   },
   "glyphBounds": "{{0, 0}, {88, 36}}",
+  "heightIsClipped": false,
   "isFlippedHorizontal": false,
   "isFlippedVertical": false,
   "isLocked": false,
@@ -35,7 +36,6 @@
   "lineSpacingBehaviour": 0,
   "name": "space",
   "nameIsFixed": false,
-  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
   "shouldBreakMaskChain": false,
@@ -68,13 +68,12 @@
         "MSAttributedStringFontAttribute": {
           "_archive": "YnBsaXN0MDDUAQIDBAUGJidYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKkHCA0XGBkaGyJVJG51bGzSCQoLDFYkY2xhc3NfEBpOU0ZvbnREZXNjcmlwdG9yQXR0cmlidXRlc4AIgALTDg8JEBMWV05TLmtleXNaTlMub2JqZWN0c6IREoADgASiFBWABYAGgAdfEBNOU0ZvbnRTaXplQXR0cmlidXRlXxATTlNGb250TmFtZUF0dHJpYnV0ZSNAQAAAAAAAAF8QEFNGVUlUZXh0LVJlZ3VsYXLSHB0eH1okY2xhc3NuYW1lWCRjbGFzc2VzXxATTlNNdXRhYmxlRGljdGlvbmFyeaMeICFcTlNEaWN0aW9uYXJ5WE5TT2JqZWN00hwdIyRfEBBOU0ZvbnREZXNjcmlwdG9yoiUhXxAQTlNGb250RGVzY3JpcHRvcl8QD05TS2V5ZWRBcmNoaXZlctEoKVRyb290gAEACAARABoAIwAtADIANwBBAEcATABTAHAAcgB0AHsAgwCOAJEAkwCVAJgAmgCcAJ4AtADKANMA5gDrAPYA/wEVARkBJgEvATQBRwFKAV0BbwFyAXcAAAAAAAACAQAAAAAAAAAqAAAAAAAAAAAAAAAAAAABeQ=="
         },
-        "kerning": -0.3199999928474426,
-        "ligature": 0,
-        "paragraphStyle": {
+        "NSKern": -0.3199999928474426,
+        "NSLigature": 0,
+        "NSParagraphStyle": {
           "_archive": "YnBsaXN0MDDUAQIDBAUGGBlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKMHCBFVJG51bGzUCQoLDA0ODxBaTlNUYWJTdG9wc11OU0xpbmVTcGFjaW5nW05TQWxpZ25tZW50ViRjbGFzc4AAI0BAAAAAAAAAEASAAtISExQVWiRjbGFzc25hbWVYJGNsYXNzZXNfEBdOU011dGFibGVQYXJhZ3JhcGhTdHlsZaMUFhdfEBBOU1BhcmFncmFwaFN0eWxlWE5TT2JqZWN0XxAPTlNLZXllZEFyY2hpdmVy0RobVHJvb3SAAQgRGiMtMjc7QUpVY292eIGDhYqVnri8z9jq7fIAAAAAAAABAQAAAAAAAAAcAAAAAAAAAAAAAAAAAAAA9A=="
         }
-      },
-      "verticalAlignment": 0
+      }
     }
   },
   "textBehaviour": 0

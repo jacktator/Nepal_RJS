@@ -24,102 +24,49 @@
   "isLocked": false,
   "isVisible": true,
   "layerListExpandedType": 0,
+  "masterInfluenceEdgeMaxXPadding": 0,
+  "masterInfluenceEdgeMaxYPadding": 0,
+  "masterInfluenceEdgeMinXPadding": 0,
+  "masterInfluenceEdgeMinYPadding": 0,
   "name": "input/normal/container",
   "nameIsFixed": false,
-  "overrideValues": [
-    {
-      "_class": "overrideValue",
-      "overrideName": "BE5616C5-1972-4434-A3EE-EDE2EAC981B3/D1DB1070-5228-4492-B05E-35D10DE04787_stringValue",
-      "value": "内容"
-    },
-    {
-      "_class": "overrideValue",
-      "overrideName": "6910ED3D-DD2E-47B3-9173-7448D3645A13/D940BC92-7964-4F0F-94A8-D8DF1B07BD78_stringValue",
-      "value": "注释"
-    },
-    {
-      "_class": "overrideValue",
-      "overrideName": "A1FF6AD4-15F2-4ECB-AD93-02CFC6A7CC12/9D8AD00A-613B-49E7-9026-6FB723FEC102_stringValue",
-      "value": "阿里云邮箱"
-    },
-    {
-      "_class": "overrideValue",
-      "overrideName": "62D6E134-F09E-4427-8A1E-755E44B5AE02_symbolID",
-      "value": "B2D998E2-4C84-4F92-A821-5696FCCFB532"
-    },
-    {
-      "_class": "overrideValue",
-      "overrideName": "62D6E134-F09E-4427-8A1E-755E44B5AE02/B831E873-6BB2-4874-891C-3B947EC3274D_symbolID",
-      "value": "65B1F441-B738-4C76-8ED5-A1828F748858"
-    },
-    {
-      "_class": "overrideValue",
-      "overrideName": "62D6E134-F09E-4427-8A1E-755E44B5AE02/B831E873-6BB2-4874-891C-3B947EC3274D/7D90A4FB-51E4-42DD-A020-6E5CF9161160_stringValue",
-      "value": "yanhui.wyh"
-    },
-    {
-      "_class": "overrideValue",
-      "overrideName": "ACD36610-0D5E-43F3-A2EA-C077E79ECB6E_symbolID",
-      "value": "0776A1C7-A97C-4BDA-BEAD-3F4EF7972AB7"
-    },
-    {
-      "_class": "overrideValue",
-      "overrideName": "62BE5F2B-0B56-4FFF-88E5-BF13B1F7D287_symbolID",
-      "value": ""
-    },
-    {
-      "_class": "overrideValue",
-      "overrideName": "62BE5F2B-0B56-4FFF-88E5-BF13B1F7D287/128303D2-1898-471A-9FD6-96FF1245B0F9_stringValue",
-      "value": "yahoo.com.cn"
-    },
-    {
-      "_class": "overrideValue",
-      "overrideName": "753B69B2-3093-4871-835D-B66B84D0373C/9D8AD00A-613B-49E7-9026-6FB723FEC102_stringValue",
-      "value": "标题"
-    },
-    {
-      "_class": "overrideValue",
-      "overrideName": "24D06539-9501-41E4-B41D-C23F8328DD76/E77CCF71-9A15-4250-A875-0FC5AB63547D/128303D2-1898-471A-9FD6-96FF1245B0F9_stringValue",
-      "value": "yahoo.com.cn"
-    }
-  ],
   "overrides": {
-    "24D06539-9501-41E4-B41D-C23F8328DD76": {
-      "E77CCF71-9A15-4250-A875-0FC5AB63547D": {
-        "128303D2-1898-471A-9FD6-96FF1245B0F9": "yahoo.com.cn"
-      }
-    },
-    "62BE5F2B-0B56-4FFF-88E5-BF13B1F7D287": {
-      "128303D2-1898-471A-9FD6-96FF1245B0F9": "yahoo.com.cn",
-      "symbolID": ""
-    },
-    "62D6E134-F09E-4427-8A1E-755E44B5AE02": {
-      "B831E873-6BB2-4874-891C-3B947EC3274D": {
-        "7D90A4FB-51E4-42DD-A020-6E5CF9161160": "yanhui.wyh",
-        "symbolID": "65B1F441-B738-4C76-8ED5-A1828F748858"
+    "0": {
+      "24D06539-9501-41E4-B41D-C23F8328DD76": {
+        "E77CCF71-9A15-4250-A875-0FC5AB63547D": {
+          "128303D2-1898-471A-9FD6-96FF1245B0F9": "yahoo.com.cn"
+        }
       },
-      "symbolID": "B2D998E2-4C84-4F92-A821-5696FCCFB532"
-    },
-    "6910ED3D-DD2E-47B3-9173-7448D3645A13": {
-      "D940BC92-7964-4F0F-94A8-D8DF1B07BD78": "注释"
-    },
-    "753B69B2-3093-4871-835D-B66B84D0373C": {
-      "9D8AD00A-613B-49E7-9026-6FB723FEC102": "标题"
-    },
-    "A1FF6AD4-15F2-4ECB-AD93-02CFC6A7CC12": {
-      "9D8AD00A-613B-49E7-9026-6FB723FEC102": "阿里云邮箱"
-    },
-    "ACD36610-0D5E-43F3-A2EA-C077E79ECB6E": {
-      "symbolID": "0776A1C7-A97C-4BDA-BEAD-3F4EF7972AB7"
-    },
-    "BE5616C5-1972-4434-A3EE-EDE2EAC981B3": {
-      "D1DB1070-5228-4492-B05E-35D10DE04787": "内容"
+      "62BE5F2B-0B56-4FFF-88E5-BF13B1F7D287": {
+        "128303D2-1898-471A-9FD6-96FF1245B0F9": "yahoo.com.cn",
+        "symbolID": ""
+      },
+      "62D6E134-F09E-4427-8A1E-755E44B5AE02": {
+        "B831E873-6BB2-4874-891C-3B947EC3274D": {
+          "7D90A4FB-51E4-42DD-A020-6E5CF9161160": "yanhui.wyh",
+          "symbolID": "65B1F441-B738-4C76-8ED5-A1828F748858"
+        },
+        "symbolID": "B2D998E2-4C84-4F92-A821-5696FCCFB532"
+      },
+      "6910ED3D-DD2E-47B3-9173-7448D3645A13": {
+        "D940BC92-7964-4F0F-94A8-D8DF1B07BD78": "注释"
+      },
+      "753B69B2-3093-4871-835D-B66B84D0373C": {
+        "9D8AD00A-613B-49E7-9026-6FB723FEC102": "标题"
+      },
+      "A1FF6AD4-15F2-4ECB-AD93-02CFC6A7CC12": {
+        "9D8AD00A-613B-49E7-9026-6FB723FEC102": "阿里云邮箱"
+      },
+      "ACD36610-0D5E-43F3-A2EA-C077E79ECB6E": {
+        "symbolID": "0776A1C7-A97C-4BDA-BEAD-3F4EF7972AB7"
+      },
+      "BE5616C5-1972-4434-A3EE-EDE2EAC981B3": {
+        "D1DB1070-5228-4492-B05E-35D10DE04787": "内容"
+      }
     }
   },
-  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
-  "scale": 0,
   "shouldBreakMaskChain": false,
   "style": {
     "_class": "style",

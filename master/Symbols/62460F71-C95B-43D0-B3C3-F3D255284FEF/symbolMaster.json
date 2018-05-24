@@ -7,7 +7,6 @@
     "green": 1,
     "red": 1
   },
-  "changeIdentifier": 0,
   "do_objectID": "62460F71-C95B-43D0-B3C3-F3D255284FEF",
   "exportOptions": {
     "_class": "exportOptions",
@@ -39,7 +38,6 @@
   "includeInCloudUpload": true,
   "isFlippedHorizontal": false,
   "isFlippedVertical": false,
-  "isFlowHome": false,
   "isLocked": false,
   "isVisible": true,
   "layerListExpandedType": 1,
@@ -51,11 +49,9 @@
   ],
   "name": "badge/point",
   "nameIsFixed": true,
-  "resizesContent": false,
-  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
-  "shouldBreakMaskChain": true,
+  "shouldBreakMaskChain": false,
   "style": {
     "_class": "style",
     "endDecorationType": 0,

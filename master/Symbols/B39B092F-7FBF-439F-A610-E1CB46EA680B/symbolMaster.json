@@ -7,7 +7,6 @@
     "green": 1,
     "red": 1
   },
-  "changeIdentifier": 0,
   "do_objectID": "B39B092F-7FBF-439F-A610-E1CB46EA680B",
   "exportOptions": {
     "_class": "exportOptions",
@@ -39,7 +38,6 @@
   "includeInCloudUpload": true,
   "isFlippedHorizontal": false,
   "isFlippedVertical": false,
-  "isFlowHome": false,
   "isLocked": false,
   "isVisible": true,
   "layerListExpandedType": 0,
@@ -51,18 +49,9 @@
   ],
   "name": "drawer",
   "nameIsFixed": false,
-  "presetDictionary": {
-    "allowResizedMatching": 1,
-    "height": 667,
-    "name": "iPhone 8",
-    "offersLandscapeVariant": 1,
-    "width": 375
-  },
-  "resizesContent": false,
-  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
-  "shouldBreakMaskChain": true,
+  "shouldBreakMaskChain": false,
   "style": {
     "_class": "style",
     "endDecorationType": 0,

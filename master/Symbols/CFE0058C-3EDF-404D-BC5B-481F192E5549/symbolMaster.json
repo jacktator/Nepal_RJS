@@ -7,7 +7,6 @@
     "green": 1,
     "red": 1
   },
-  "changeIdentifier": 0,
   "do_objectID": "CFE0058C-3EDF-404D-BC5B-481F192E5549",
   "exportOptions": {
     "_class": "exportOptions",
@@ -39,7 +38,6 @@
   "includeInCloudUpload": true,
   "isFlippedHorizontal": false,
   "isFlippedVertical": false,
-  "isFlowHome": false,
   "isLocked": false,
   "isVisible": true,
   "layerListExpandedType": 0,
@@ -59,11 +57,9 @@
   ],
   "name": "icon/分享控件/分享到互联网",
   "nameIsFixed": true,
-  "resizesContent": false,
-  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
-  "shouldBreakMaskChain": true,
+  "shouldBreakMaskChain": false,
   "style": {
     "_class": "style",
     "endDecorationType": 0,

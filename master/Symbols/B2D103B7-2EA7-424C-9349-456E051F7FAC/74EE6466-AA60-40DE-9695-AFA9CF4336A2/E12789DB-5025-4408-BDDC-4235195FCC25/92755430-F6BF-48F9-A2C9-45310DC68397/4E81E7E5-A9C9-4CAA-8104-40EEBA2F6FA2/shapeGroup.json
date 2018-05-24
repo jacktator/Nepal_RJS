@@ -16,7 +16,7 @@
     "constrainProportions": false,
     "height": 17.37053409090909,
     "width": 17.48998857142858,
-    "x": 0.009337142857142856,
+    "x": 0.009337142857142858,
     "y": 20.41355681818183
   },
   "hasClickThrough": false,
@@ -38,7 +38,6 @@
   ],
   "name": "Fill 7",
   "nameIsFixed": false,
-  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
   "shouldBreakMaskChain": false,

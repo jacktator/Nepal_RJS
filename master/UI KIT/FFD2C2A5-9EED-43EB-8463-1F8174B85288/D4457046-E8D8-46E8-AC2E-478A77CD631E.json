@@ -24,16 +24,14 @@
   "isLocked": false,
   "isVisible": true,
   "layerListExpandedType": 0,
+  "masterInfluenceEdgeMaxXPadding": 1,
+  "masterInfluenceEdgeMaxYPadding": 1,
+  "masterInfluenceEdgeMinXPadding": 1,
+  "masterInfluenceEdgeMinYPadding": 1,
   "name": "icon/下拉",
   "nameIsFixed": false,
-  "overrideValues": [
-  ],
-  "overrides": {
-  },
-  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
-  "scale": 0,
   "shouldBreakMaskChain": false,
   "style": {
     "_class": "style",

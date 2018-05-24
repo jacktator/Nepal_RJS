@@ -20,7 +20,6 @@
     "x": 0,
     "y": 0
   },
-  "isClosed": false,
   "isFlippedHorizontal": false,
   "isFlippedVertical": false,
   "isLocked": false,
@@ -31,7 +30,6 @@
   "path": {
     "_class": "path",
     "isClosed": false,
-    "pointRadiusBehaviour": 0,
     "points": [
       {
         "_class": "curvePoint",
@@ -145,120 +143,6 @@
       }
     ]
   },
-  "pointRadiusBehaviour": 0,
-  "points": [
-    {
-      "_class": "curvePoint",
-      "cornerRadius": 0,
-      "curveFrom": "{0.16434673516936521, 0.0036275111549414984}",
-      "curveMode": 4,
-      "curveTo": "{0.18575382838480994, 0.0080687985765810887}",
-      "hasCurveFrom": true,
-      "hasCurveTo": false,
-      "point": "{0.18575382838480994, 0.0080687985765810887}"
-    },
-    {
-      "_class": "curvePoint",
-      "cornerRadius": 0,
-      "curveFrom": "{0.053766652727164431, 0}",
-      "curveMode": 3,
-      "curveTo": "{0.14297946910408835, 0}",
-      "hasCurveFrom": true,
-      "hasCurveTo": true,
-      "point": "{0.11711173506979705, 0}"
-    },
-    {
-      "_class": "curvePoint",
-      "cornerRadius": 0,
-      "curveFrom": "{0.0023697154350120425, 0.055564367633773017}",
-      "curveMode": 2,
-      "curveTo": "{0.0023697154350120425, 0.0177996317317572}",
-      "hasCurveFrom": true,
-      "hasCurveTo": true,
-      "point": "{0.0023697154350120425, 0.039744005296441988}"
-    },
-    {
-      "_class": "curvePoint",
-      "cornerRadius": 0,
-      "curveFrom": "{0.48907740406635197, 0.16063115935532371}",
-      "curveMode": 4,
-      "curveTo": "{0.029531831849772063, 0.068288242312227937}",
-      "hasCurveFrom": true,
-      "hasCurveTo": true,
-      "point": "{0.067885377461815541, 0.075501886167872248}"
-    },
-    {
-      "_class": "curvePoint",
-      "cornerRadius": 0,
-      "curveFrom": "{0.77238783678833856, 0.68076522554705765}",
-      "curveMode": 2,
-      "curveTo": "{0.77238783678833856, 0.31868306172975719}",
-      "hasCurveFrom": true,
-      "hasCurveTo": true,
-      "point": "{0.77238783678833856, 0.49978276311524583}"
-    },
-    {
-      "_class": "curvePoint",
-      "cornerRadius": 0,
-      "curveFrom": "{0.03178206583427929, 0.93082901733067591}",
-      "curveMode": 4,
-      "curveTo": "{0.48941593484278217, 0.83872057819493395}",
-      "hasCurveFrom": true,
-      "hasCurveTo": true,
-      "point": "{0.068701834040265572, 0.92389122983662408}"
-    },
-    {
-      "_class": "curvePoint",
-      "cornerRadius": 0,
-      "curveFrom": "{0, 0.98220036826824275}",
-      "curveMode": 2,
-      "curveTo": "{0, 0.94398736577863918}",
-      "hasCurveFrom": true,
-      "hasCurveTo": true,
-      "point": "{0, 0.96025599470355782}"
-    },
-    {
-      "_class": "curvePoint",
-      "cornerRadius": 0,
-      "curveFrom": "{0.1401716550172255, 1}",
-      "curveMode": 3,
-      "curveTo": "{0.051357110141983929, 1}",
-      "hasCurveFrom": true,
-      "hasCurveTo": true,
-      "point": "{0.11472210605970078, 1}"
-    },
-    {
-      "_class": "curvePoint",
-      "cornerRadius": 0,
-      "curveFrom": "{0.67124678893601752, 0.89337461983545174}",
-      "curveMode": 3,
-      "curveTo": "{0.16046358802795849, 0.99660696675241212}",
-      "hasCurveFrom": true,
-      "hasCurveTo": true,
-      "point": "{0.18248800207101207, 0.99217947214885216}"
-    },
-    {
-      "_class": "curvePoint",
-      "cornerRadius": 0,
-      "curveFrom": "{1.0000199135750836, 0.29009054985069271}",
-      "curveMode": 2,
-      "curveTo": "{1, 0.70995772501258592}",
-      "hasCurveFrom": true,
-      "hasCurveTo": true,
-      "point": "{1, 0.49978965952428567}"
-    },
-    {
-      "_class": "curvePoint",
-      "cornerRadius": 0,
-      "curveFrom": "{0.18575382838480994, 0.0080687985765810887}",
-      "curveMode": 4,
-      "curveTo": "{0.67272039349224366, 0.10702537188885733}",
-      "hasCurveFrom": false,
-      "hasCurveTo": true,
-      "point": "{0.18575382838480994, 0.0080687985765810887}"
-    }
-  ],
-  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
   "shouldBreakMaskChain": false

@@ -7,7 +7,6 @@
     "green": 1,
     "red": 1
   },
-  "changeIdentifier": 0,
   "do_objectID": "8249F479-0303-4157-BD5D-3CEC4EF592CF",
   "exportOptions": {
     "_class": "exportOptions",
@@ -39,7 +38,6 @@
   "includeInCloudUpload": true,
   "isFlippedHorizontal": false,
   "isFlippedVertical": false,
-  "isFlowHome": false,
   "isLocked": false,
   "isVisible": true,
   "layerListExpandedType": 0,
@@ -51,18 +49,9 @@
   ],
   "name": "steps/vertical",
   "nameIsFixed": false,
-  "presetDictionary": {
-    "allowResizedMatching": 1,
-    "height": 320,
-    "name": "iPhone SE",
-    "offersLandscapeVariant": 1,
-    "width": 568
-  },
-  "resizesContent": false,
-  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
-  "shouldBreakMaskChain": true,
+  "shouldBreakMaskChain": false,
   "style": {
     "_class": "style",
     "endDecorationType": 0,

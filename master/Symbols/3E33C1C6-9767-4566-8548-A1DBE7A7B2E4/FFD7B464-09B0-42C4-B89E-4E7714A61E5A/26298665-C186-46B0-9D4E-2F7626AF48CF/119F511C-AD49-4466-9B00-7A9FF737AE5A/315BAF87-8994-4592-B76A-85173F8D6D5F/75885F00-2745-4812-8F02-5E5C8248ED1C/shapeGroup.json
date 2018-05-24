@@ -38,7 +38,6 @@
   ],
   "name": "Combined Shape",
   "nameIsFixed": false,
-  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
   "shouldBreakMaskChain": false,
@@ -77,6 +76,7 @@
           "elipseLength": 0,
           "from": "{0.85355339059327384, 0.14644660940672627}",
           "gradientType": 0,
+          "shouldSmoothenOpacity": false,
           "stops": [
             {
               "_class": "gradientStop",

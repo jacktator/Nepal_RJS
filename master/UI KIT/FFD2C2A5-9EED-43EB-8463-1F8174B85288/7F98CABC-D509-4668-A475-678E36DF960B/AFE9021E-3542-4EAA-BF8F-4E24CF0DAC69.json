@@ -24,24 +24,21 @@
   "isLocked": false,
   "isVisible": true,
   "layerListExpandedType": 0,
+  "masterInfluenceEdgeMaxXPadding": 0,
+  "masterInfluenceEdgeMaxYPadding": 0,
+  "masterInfluenceEdgeMinXPadding": 0,
+  "masterInfluenceEdgeMinYPadding": 0,
   "name": "list/checkbox copy",
   "nameIsFixed": false,
-  "overrideValues": [
-    {
-      "_class": "overrideValue",
-      "overrideName": "C9E9260F-BD55-4CCF-855C-6B41A43C874A_symbolID",
-      "value": "2D891A4A-9EA2-4E89-9212-11075A07F0BC"
-    }
-  ],
   "overrides": {
-    "C9E9260F-BD55-4CCF-855C-6B41A43C874A": {
-      "symbolID": "2D891A4A-9EA2-4E89-9212-11075A07F0BC"
+    "0": {
+      "C9E9260F-BD55-4CCF-855C-6B41A43C874A": {
+        "symbolID": "2D891A4A-9EA2-4E89-9212-11075A07F0BC"
+      }
     }
   },
-  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
-  "scale": 0,
   "shouldBreakMaskChain": false,
   "style": {
     "_class": "style",

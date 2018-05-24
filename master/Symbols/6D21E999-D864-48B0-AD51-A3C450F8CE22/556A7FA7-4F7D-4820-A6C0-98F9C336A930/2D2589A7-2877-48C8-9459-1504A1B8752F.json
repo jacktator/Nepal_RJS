@@ -24,22 +24,20 @@
   "isLocked": false,
   "isVisible": true,
   "layerListExpandedType": 0,
+  "masterInfluenceEdgeMaxXPadding": 0,
+  "masterInfluenceEdgeMaxYPadding": 0,
+  "masterInfluenceEdgeMinXPadding": 0,
+  "masterInfluenceEdgeMinYPadding": 0,
   "name": "textareaitem/input/count",
   "nameIsFixed": false,
-  "overrideValues": [
-    {
-      "_class": "overrideValue",
-      "overrideName": "05D252E5-41C3-4FDA-9EE4-B9A975742184_stringValue",
-      "value": "122"
-    }
-  ],
   "overrides": {
-    "05D252E5-41C3-4FDA-9EE4-B9A975742184": "122"
+    "0": {
+      "05D252E5-41C3-4FDA-9EE4-B9A975742184": "122"
+    },
+    "symbolID": "2CE337F9-1CF3-4886-84D1-17AB1F896D2D"
   },
-  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
-  "scale": 0,
   "shouldBreakMaskChain": false,
   "style": {
     "_class": "style",

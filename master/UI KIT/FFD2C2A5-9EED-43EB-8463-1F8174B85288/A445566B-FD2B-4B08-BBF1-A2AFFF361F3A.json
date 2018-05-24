@@ -24,24 +24,21 @@
   "isLocked": false,
   "isVisible": true,
   "layerListExpandedType": 0,
+  "masterInfluenceEdgeMaxXPadding": 0,
+  "masterInfluenceEdgeMaxYPadding": 0,
+  "masterInfluenceEdgeMinXPadding": 0,
+  "masterInfluenceEdgeMinYPadding": 0,
   "name": "list/multiline/container copy",
   "nameIsFixed": false,
-  "overrideValues": [
-    {
-      "_class": "overrideValue",
-      "overrideName": "1DFBF774-89A0-4B9A-A2E8-09B33DB35151_symbolID",
-      "value": "DCDDFDE3-B52A-4F6C-9D91-3C6FD629CC11"
-    }
-  ],
   "overrides": {
-    "1DFBF774-89A0-4B9A-A2E8-09B33DB35151": {
-      "symbolID": "DCDDFDE3-B52A-4F6C-9D91-3C6FD629CC11"
+    "0": {
+      "1DFBF774-89A0-4B9A-A2E8-09B33DB35151": {
+        "symbolID": "DCDDFDE3-B52A-4F6C-9D91-3C6FD629CC11"
+      }
     }
   },
-  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
-  "scale": 0,
   "shouldBreakMaskChain": false,
   "style": {
     "_class": "style",

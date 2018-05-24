@@ -44,7 +44,6 @@
   ],
   "name": "tabs/scroll",
   "nameIsFixed": true,
-  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
   "shouldBreakMaskChain": false,
