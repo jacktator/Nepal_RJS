@@ -12,7 +12,6 @@ var buttonStyle={
 }
 
 var screenStyle = {
-  height:'624px',
   backgroundColor: 'pink',
 };
 
@@ -24,12 +23,12 @@ export default class Launch extends Component {
         <div>
         <LogoLocation/>
         <WingBlank>
-
           <Link to='login' >
             <Button type="primary" style={buttonStyle} >Get Started</Button>
           </Link>
 
         </WingBlank>
+
         </div>
       </div>
     );

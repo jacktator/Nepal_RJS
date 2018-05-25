@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {BrowserRouter, Route, Switch,} from 'react-router-dom';
 import Launch from '../Launch/';
 import Login from '../Login/';
+import SignUp from '../SignUp/';
+import LoginDetails from '../LoginDetails/';
 
 
 export default class Root extends Component{
@@ -11,11 +13,16 @@ export default class Root extends Component{
       <div>
         <BrowserRouter>
           <Switch>
-            <Route path="/" exact component={Launch} />
-            <Route path="/login" exact component={Login} />
+            <Route path="/" exact component={Launch}/>
+            <Route path="/login" exact component={Login}/>
+            <Route path="/signup" exact component={SignUp} />
+            <Route path="/login/logindetails" exact component={LoginDetails} />
           </Switch>
         </BrowserRouter>
       </div>
     );
   }
 }
+
+// <Route path="/signup" exact component={SignUp} />
+// </Route>

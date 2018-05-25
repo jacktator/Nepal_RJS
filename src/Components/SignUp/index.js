@@ -13,7 +13,7 @@ import {Link} from 'react-router-dom';
 
 
 
-class Signup extends Component {
+export default class SignUp extends Component {
   render() {
     return (
       <div className="App">
@@ -90,6 +90,3 @@ class Signup extends Component {
     );
   }
 }
-
-
-export default Signup;
