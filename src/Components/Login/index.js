@@ -16,8 +16,8 @@ export default class Login extends Component {
     return(
           <div>
             <LogoLocation/>
-
               <WingBlank>
+                
                 <Button>Register</Button><WhiteSpace /><WhiteSpace />
                 <Button type="primary">Login</Button><WhiteSpace /><WhiteSpace /><WhiteSpace />
               </WingBlank>
