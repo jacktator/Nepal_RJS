@@ -1,14 +1,36 @@
 import React, { Component } from 'react';
-import { Button, WhiteSpace, WingBlank } from 'antd-mobile';
+import { Button, WingBlank } from 'antd-mobile';
 import {Link} from 'react-router-dom';
+import LogoLocation from '../LogoLocation/';
+// import Background from '../../assets/launchscreen.png';
+// backgroundImage: `url(${Background})`,
+
+var buttonStyle={
+  justifyContent: 'center',
+  alignItems: 'end',
+  backgroundColor: 'green',
+}
+
+var screenStyle = {
+  height:'624px',
+  backgroundColor: 'pink',
+};
 
 export default class Launch extends Component {
+
   render() {
     return (
-      <div className="Launch">
-        <Link to='login'>
-          <Button>Start</Button>
-        </Link>
+      <div style={screenStyle}>
+        <div>
+        <LogoLocation/>
+        <WingBlank>
+
+          <Link to='login' >
+            <Button type="primary" style={buttonStyle} >Get Started</Button>
+          </Link>
+
+        </WingBlank>
+        </div>
       </div>
     );
   }

@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
 import {BrowserRouter, Route, Switch,} from 'react-router-dom';
-import { Button } from 'antd-mobile';
 import Launch from '../Launch/';
 import Login from '../Login/';
-
-
 
 
 export default class Root extends Component{
