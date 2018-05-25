@@ -8,11 +8,11 @@ import LogoLocation from '../LogoLocation/';
 var buttonStyle={
   justifyContent: 'center',
   alignItems: 'end',
-  backgroundColor: 'green',
+  backgroundColor: '#4CA0CC',
 }
 
 var screenStyle = {
-  backgroundColor: 'pink',
+  backgroundColor: '#2E344C',
 };
 
 export default class Launch extends Component {
@@ -22,14 +22,18 @@ export default class Launch extends Component {
       <div style={screenStyle}>
         <div>
         <LogoLocation/>
+        <div style={{height: '300px'}}>
+        </div>
         <WingBlank>
           <Link to='login' >
             <Button type="primary" style={buttonStyle} >Get Started</Button>
           </Link>
-
         </WingBlank>
+        <div style={{height: '100px'}}>
+        </div>
 
         </div>
+
       </div>
     );
   }
