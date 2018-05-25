@@ -34,6 +34,7 @@
   ],
   "name": "Fill 5",
   "nameIsFixed": false,
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": -90,
   "shouldBreakMaskChain": false,

@@ -24,20 +24,28 @@
   "isLocked": false,
   "isVisible": true,
   "layerListExpandedType": 0,
-  "masterInfluenceEdgeMaxXPadding": 0,
-  "masterInfluenceEdgeMaxYPadding": 0,
-  "masterInfluenceEdgeMinXPadding": 0,
-  "masterInfluenceEdgeMinYPadding": 0,
   "name": "navbar/light",
   "nameIsFixed": true,
-  "overrides": {
-    "0": {
-      "E0691FE9-4340-4E16-B8F0-10B93DA7E219": "文本",
-      "FEA85E6F-4474-40E4-B07A-6B74235D7B1D": "标题"
+  "overrideValues": [
+    {
+      "_class": "overrideValue",
+      "overrideName": "E0691FE9-4340-4E16-B8F0-10B93DA7E219_stringValue",
+      "value": "文本"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "FEA85E6F-4474-40E4-B07A-6B74235D7B1D_stringValue",
+      "value": "标题"
     }
+  ],
+  "overrides": {
+    "E0691FE9-4340-4E16-B8F0-10B93DA7E219": "文本",
+    "FEA85E6F-4474-40E4-B07A-6B74235D7B1D": "标题"
   },
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
+  "scale": 0,
   "shouldBreakMaskChain": false,
   "style": {
     "_class": "style",

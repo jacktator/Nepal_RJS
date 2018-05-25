@@ -49,6 +49,7 @@
   "name": "Signal",
   "nameIsFixed": true,
   "originalObjectID": "0703CA2C-7249-4DD2-9C87-D8AE156760DB",
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
   "shouldBreakMaskChain": false,

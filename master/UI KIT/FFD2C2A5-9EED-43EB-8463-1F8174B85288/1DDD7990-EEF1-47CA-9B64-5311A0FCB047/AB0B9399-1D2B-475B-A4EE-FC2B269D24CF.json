@@ -24,22 +24,30 @@
   "isLocked": false,
   "isVisible": true,
   "layerListExpandedType": 0,
-  "masterInfluenceEdgeMaxXPadding": 0,
-  "masterInfluenceEdgeMaxYPadding": 0,
-  "masterInfluenceEdgeMinXPadding": 0,
-  "masterInfluenceEdgeMinYPadding": 0,
   "name": "textareaitem/input/style",
   "nameIsFixed": false,
+  "overrideValues": [
+    {
+      "_class": "overrideValue",
+      "overrideName": "2D2589A7-2877-48C8-9459-1504A1B8752F_symbolID",
+      "value": "7FC2662C-45D3-4A65-86B6-0F548EEE5BA4"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "2D2589A7-2877-48C8-9459-1504A1B8752F/05D252E5-41C3-4FDA-9EE4-B9A975742184_stringValue",
+      "value": "3/100"
+    }
+  ],
   "overrides": {
-    "0": {
-      "2D2589A7-2877-48C8-9459-1504A1B8752F": {
-        "05D252E5-41C3-4FDA-9EE4-B9A975742184": "3/100",
-        "symbolID": "7FC2662C-45D3-4A65-86B6-0F548EEE5BA4"
-      }
+    "2D2589A7-2877-48C8-9459-1504A1B8752F": {
+      "05D252E5-41C3-4FDA-9EE4-B9A975742184": "3/100",
+      "symbolID": "7FC2662C-45D3-4A65-86B6-0F548EEE5BA4"
     }
   },
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
+  "scale": 0,
   "shouldBreakMaskChain": false,
   "style": {
     "_class": "style",

@@ -43,6 +43,7 @@
   "name": "Wifi",
   "nameIsFixed": true,
   "originalObjectID": "0D9652A3-4A4D-4474-9440-E4E96A38530C",
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
   "shouldBreakMaskChain": false,

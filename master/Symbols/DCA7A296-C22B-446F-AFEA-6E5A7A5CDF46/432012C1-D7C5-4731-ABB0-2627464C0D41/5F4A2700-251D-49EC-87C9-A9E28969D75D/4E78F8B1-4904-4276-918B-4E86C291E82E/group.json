@@ -37,6 +37,7 @@
   "name": "Key",
   "nameIsFixed": true,
   "originalObjectID": "9589F66C-85EA-4B0C-B88C-357547D2F48A",
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
   "shouldBreakMaskChain": false,

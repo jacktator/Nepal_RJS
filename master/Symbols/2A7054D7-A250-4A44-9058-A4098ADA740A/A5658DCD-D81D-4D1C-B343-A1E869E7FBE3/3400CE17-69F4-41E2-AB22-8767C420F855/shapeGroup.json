@@ -43,6 +43,7 @@
   "name": "Bluetooth",
   "nameIsFixed": true,
   "originalObjectID": "194D5ABA-80CA-456D-97D2-A89EB55D0BBD",
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
   "shouldBreakMaskChain": false,

@@ -17,7 +17,7 @@
     "height": 3.158777142857141,
     "width": 37.90315428571429,
     "x": -0.0001085714285688612,
-    "y": 0.005493714285714595
+    "y": 0.005493714285714594
   },
   "hasClickThrough": false,
   "hasClippingMask": false,
@@ -34,6 +34,7 @@
   ],
   "name": "Fill 1",
   "nameIsFixed": false,
+  "resizingConstraint": 63,
   "resizingType": 0,
   "rotation": 0,
   "shouldBreakMaskChain": false,
