@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "antd-mobile": "^2.1.9",
+    "flow": "^0.2.3",
     "rc-form": "^2.2.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "babel-plugin-import": "^1.7.0",
+    "flow-bin": "^0.73.0",
     "gh-pages": "^1.1.0",
     "react-app-rewired": "^1.5.2"
   }
