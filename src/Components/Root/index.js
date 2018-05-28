@@ -5,6 +5,7 @@ import Launch from '../Launch/';
 import Login from '../Login/';
 import SignUp from '../SignUp/';
 import LoginDetails from '../LoginDetails/';
+import Questionnaire from '../../Containers/Registration/Questionnaire';
 
 
 export default class Root extends Component{
@@ -12,6 +13,7 @@ export default class Root extends Component{
   render(){
     return(
       <div>
+      < Questionnaire />
         <BrowserRouter>
           <Switch>
             <Route path="/" exact component={Launch}/>
