@@ -17,7 +17,6 @@ export default class SignUp extends Component {
   render() {
     return (
       <div className="App">
-
             <NavBar
               mode="light"
               icon={<Icon type="left" />}
