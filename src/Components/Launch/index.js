@@ -25,7 +25,6 @@ export default class Launch extends Component {
         <div style={{height: '300px'}}>
         </div>
         <WingBlank>
-        <div>
           <Link to='login' >
             <Button type="primary" style={buttonStyle}>Get Started</Button>
           </Link>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import { List, InputItem, WhiteSpace, WingBlank,Button } from 'antd-mobile';
 import { createForm } from 'rc-form';
-import Locker from '../../assets/locker.png';
+// import Locker from '../../assets/locker.png';
 import LogoLocation from '../LogoLocation';
 var lockerstyle={
   backgroundImage: 'url(https://png.icons8.com/ios/50/000000/lock.png)',
