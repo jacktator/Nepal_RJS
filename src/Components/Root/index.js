@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {BrowserRouter, Route, Switch,} from 'react-router-dom';
+import 'antd-mobile/dist/antd-mobile.css';
 import Launch from '../Launch/';
 import Login from '../Login/';
 import SignUp from '../SignUp/';
