@@ -6,6 +6,6 @@ import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(<App/>, document.getElementById('root'));
 
-//ReactDOM.render(<App />, mountNode)
+
 
 registerServiceWorker();

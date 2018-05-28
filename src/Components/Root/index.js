@@ -6,6 +6,7 @@ import Login from '../Login/';
 import SignUp from '../SignUp/';
 import LoginDetails from '../LoginDetails/';
 import Questionnaire from '../../Containers/Registration/Questionnaire';
+import Check from '../../Containers/Registration/check';
 
 
 export default class Root extends Component{
@@ -22,6 +23,8 @@ export default class Root extends Component{
             <Route path="/login/logindetails" exact component={LoginDetails} />
           </Switch>
         </BrowserRouter>
+
+        <Check />
       </div>
     );
   }
