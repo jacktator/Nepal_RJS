@@ -18,14 +18,12 @@ const steps = [{
 
 const CurrentStep = (props) => {
   return(
-      <div>
+      <div style = {{ margin: '2%'}}>
         <WingBlank mode={20} className="stepsExample">
-          <div className="sub-title">Horizontal small size</div>
           <WhiteSpace />
           <Steps current={3} direction="horizontal" size="small">{steps}</Steps>
         </WingBlank>
       </div>
   )
 }
-
 export default CurrentStep;

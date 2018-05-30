@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import CurrentStep  from '../../Components/Registration/Questionnaire/Progress';
 import StepOne from '../../Components/Registration/Questionnaire/StepOne';
-import { InputItem, Button, WhiteSpace, Icon, List, Radio, Flex, Checkbox, Progress } from 'antd-mobile';
+import { InputItem, Button, WhiteSpace, Icon, List, Radio, Flex, Checkbox, Progress, Picker, Card } from 'antd-mobile';
+
+
 
 const RadioItem = Radio.RadioItem;
 const CheckboxItem = Checkbox.CheckboxItem;
+
 
 class Questionnaire extends Component {
   constructor(props){
@@ -14,7 +17,7 @@ class Questionnaire extends Component {
         name:"",
         age:"",
         gender: "Male",
-        currentBodyWeight: "",
+        currentBodyWeight: 1,
       },
       program: {
         days: 2,
@@ -26,7 +29,12 @@ class Questionnaire extends Component {
       generalActivity: [],
       currentPage: 1,
       hasError: false,
-      value: ''
+      value: '',
+      weightArray: [
+        {value: 1, label: '1 KG'},{value: 2, label: '2 KG'},{value: 3, label: '3 KG'},{value: 4, label: '4 KG'},{value: 5, label: '5 KG'},{value: 6, label: '6 KG'},
+        {value: 7, label: '7 KG'},{value: 8, label: '8 KG'},{value: 8, label: '8 KG'},
+      ],
+
     }
   }
 
@@ -76,7 +84,28 @@ inputItemHandler = (step, assignTo, data) => {
       this.setState({ detail: detail})
     }
   }
+  onWeightPicker(weight){
+    let detail = {...this.state.detail}
+    detail['currentBodyWeight'] = weight[0];
+    this.setState({detail})
+    // this.setState({ weightPicker: weight[0]})
+  }
 
+  previousButtonHandler = () =>{
+    let currentPage = this.state.currentPage;
+    if(currentPage>1){
+        currentPage -= 1;
+        this.setState({ currentPage })
+    }
+
+  }
+  nextButtonHandler = () =>{
+    let currentPage = this.state.currentPage;
+    if(currentPage < 6){
+        currentPage += 1;
+        this.setState({ currentPage })
+    }
+  }
 
   render() {
     const { gender } = this.state.detail;
@@ -100,7 +129,7 @@ inputItemHandler = (step, assignTo, data) => {
           <h2>Your Detail</h2>
             <InputItem
               type="text"
-              placeholder="Please enter your name"
+              placeholder="Please enter your name (letters only)"
               error={this.state.hasError}
               onChange={this.inputItemHandler.bind(this, 'one', 'name')}
               value={this.state.detail.name}
@@ -108,7 +137,7 @@ inputItemHandler = (step, assignTo, data) => {
 
             <InputItem
               type="number"
-              placeholder="Please enter your age"
+              placeholder="Please enter your age (numbers only)"
               error={this.state.hasError}
               onChange={this.inputItemHandler.bind(this, 'one', 'age')}
               value={this.state.detail.age}
@@ -122,13 +151,16 @@ inputItemHandler = (step, assignTo, data) => {
               ))}
             </List>
             <WhiteSpace size="lg" />
-            <InputItem
-              type="number"
-              placeholder="input enter your weight"
-              error={this.state.hasError}
-              onChange={this.inputItemHandler.bind(this, 'one', 'weight')}
-              value={this.state.detail.weight}
-            >Weight(kg) </InputItem>
+
+            <Picker
+              data={this.state.weightArray}
+              cols={1}
+              value={[this.state.detail.currentBodyWeight]}
+              onOk={v => this.onWeightPicker(v)}
+              >
+              <List.Item arrow="horizontal">Current Body Weight:</List.Item>
+            </Picker>
+
           </div>
       );
 
@@ -152,9 +184,10 @@ inputItemHandler = (step, assignTo, data) => {
             <br />
 
             <div>
+
               {data.map(i => (
                 <CheckboxItem key={i.value} onChange={() => this.onChange(i.value)}>
-                  <span><strong>{i.label}</strong> <br/> {i.description}</span>
+                  <strong>{i.label}</strong><List.Item.Brief>{i.description}</List.Item.Brief>
                 </CheckboxItem>
               ))}
             </div>
@@ -196,17 +229,38 @@ inputItemHandler = (step, assignTo, data) => {
           </CheckboxItem>
           </div>
       );
+    } else if(this.state.currentPage === 0){
+      RenderPage = (
+          <div>
+            <Picker
+              data={this.state.weightArray}
+              cols={1}
+              value={[this.state.detail.currentBodyWeight]}
+              onOk={v => this.onWeightPicker(v)}
+              >
+              <List.Item arrow="horizontal">Current Body Weight:</List.Item>
+            </Picker>
+          </div>
+      );
     }
-
     return(
       <div className="container">
+      <div className="show-info">
+        <div className="progress"><Progress percent={percent} position="normal" /></div>
+        <div aria-hidden="true">{percent}%</div>
+      </div>
         <CurrentStep/>
-        <div className="show-info">
-          <div className="progress"><Progress percent={percent} position="normal" /></div>
-          <div aria-hidden="true">{percent}%</div>
-        </div>
 
         {RenderPage}
+        <div>
+           <Button type="primary" onClick={() => this.previousButtonHandler()} inline size="medium" style={{ float: 'left', marginLeft: '4px' }}>
+              previous
+          </Button>
+          <span>{this.state.currentPage}/6</span>
+          <Button type="primary" onClick={() => this.nextButtonHandler()} inline size="medium" style={{ float: 'right', marginRight: '4px' }}>
+             Next
+         </Button>
+       </div>
       </div>
 
 
