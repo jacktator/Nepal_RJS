@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, List, Checkbox, InputItem, Radio, Picker, WhiteSpace} from 'antd-mobile';
+import { List, InputItem, Radio, Picker, WhiteSpace} from 'antd-mobile';
 
 const RadioItem = Radio.RadioItem;
 // const CheckboxItem = Checkbox.CheckboxItem;
