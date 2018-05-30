@@ -14,17 +14,18 @@ export default class Root extends Component{
   render(){
     return(
       <div>
-      < Questionnaire />
         <BrowserRouter>
           <Switch>
             <Route path="/" exact component={Launch}/>
             <Route path="/login" exact component={Login}/>
             <Route path="/signup" exact component={SignUp} />
             <Route path="/login/logindetails" exact component={LoginDetails} />
+            <Route path="/questionnaire" exact component={Questionnaire} />
+            <Route path="/check" exact component={Check} />
+
           </Switch>
         </BrowserRouter>
 
-        <Check />
       </div>
     );
   }
