@@ -14,6 +14,7 @@ var flexContainer = {
   width: 150,
 }
 
+
 const PlaceHolder = ({ className = '', ...restProps }) => (
   <div className={`${className} placeholder`} {...restProps} style={{alignItems: 'center'}}></div>
 );
@@ -27,19 +28,11 @@ export default class LogoLocation extends Component{
         <WingBlank>
           <Flex align="baseline">
             <Flex.Item style={flexContainer}><PlaceHolder/></Flex.Item>
-          </Flex>
-        </WingBlank>
-        <WingBlank>
-          <Flex align="baseline">
-            <Flex.Item style={flexContainer}><PlaceHolder/></Flex.Item>
             <img src={Logo}  style={logoStyle} alt="this is a logo"/>
             <Flex.Item style={flexContainer}><PlaceHolder/></Flex.Item>
           </Flex>
         </WingBlank>
-        <WingBlank>
-          <Flex.Item style={flexContainer}><PlaceHolder/></Flex.Item>
-        </WingBlank>
-        <WhiteSpace /><WhiteSpace />
+
       </div>
     );
   }

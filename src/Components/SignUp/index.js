@@ -1,91 +1,115 @@
 import React, { Component } from 'react';
-import { Button } from 'antd-mobile';
-
-import { NavBar, Icon } from 'antd-mobile';
-
-import { List, TextareaItem } from 'antd-mobile';
-import { createForm } from 'rc-form';
-
-import { WhiteSpace, WingBlank } from 'antd-mobile';
-
 import {Link} from 'react-router-dom';
+import { List, InputItem, WhiteSpace, WingBlank,Button, Flex } from 'antd-mobile';
+import { createForm } from 'rc-form';
+// import Locker from '../../assets/locker.png';
+import LogoLocation from '../LogoLocation';
+var lockerstyle={
+  backgroundImage: 'url(https://png.icons8.com/ios/50/000000/lock.png)',
+  backgroundSize: 'cover',
+  height: '22px',
+  width: '22px',
+}
 
+var humeniconstyle={
+  backgroundImage: 'url(https://png.icons8.com/ios/50/000000/gender-neutral-user.png)',
+  backgroundSize: 'cover',
+  height: '22px',
+  width: '22px',
+}
+var emailiconstyle={
+  backgroundImage: 'url(https://png.icons8.com/ios/50/000000/new-post.png)',
+  backgroundSize: 'cover',
+  height: '22px',
+  width: '22px',
+}
+var pastyle={
+  color: '#bbb',
+  textAlign: 'center',
+}
 
+var flexContainer = {
+  height: 100,
+  width: 150,
+}
 
+const isIPhone = new RegExp('\\biPhone\\b|\\biPod\\b', 'i').test(window.navigator.userAgent);
+let moneyKeyboardWrapProps;
+if (isIPhone) {
+  moneyKeyboardWrapProps = {
+    onTouchStart: e => e.preventDefault(),
+  };
+}
 
-export default class SignUp extends Component {
+class SignUp extends React.Component {
+  componentDidMount() {
+    // this.autoFocusInst.focus();
+  }
+  handleClick = () => {
+    this.customFocusInst.focus();
+  }
+  state = {
+    type: 'money',
+  }
   render() {
+    const { getFieldProps } = this.props.form;
     return (
-      <div className="App">
-            <NavBar
-              mode="light"
-              icon={<Icon type="left" />}
-              onLeftClick={() => console.log('onLeftClick')}
-              rightContent={[
-                <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
-                <Icon key="1" type="ellipsis" />,
-              ]}
-            >SignUp</NavBar>
-
-
-            <List renderHeader={() => 'Name'}>
-              <TextareaItem
-                title=""
-                placeholder="Enter your firstname here"
-                data-seed="logId"
-                ref={el => this.autoFocusInst = el}
-                autoHeight
-              />
-
-              <TextareaItem
-                title=""
-                placeholder="Enter your lastname here"
-                data-seed="logId"
-                autoHeight
-                ref={el => this.customFocusInst = el}
-              />
-            </List>
-
-            <List renderHeader={() => 'Email'}>
-              <TextareaItem
-                title=""
-                placeholder="Enter your email address here"
-                data-seed="logId"
-                autoHeight
-                ref={el => this.customFocusInst = el}
-              />
-
-
-            </List>
-
-            <List renderHeader={() => 'Password'}>
-              <TextareaItem
-                title=""
-                placeholder="Enter your password here"
-                data-seed="logId"
-                autoHeight
-                ref={el => this.customFocusInst = el}
-              />
-
-              <TextareaItem
-                title=""
-                placeholder="Conform your password"
-                data-seed="logId"
-                autoHeight
-                ref={el => this.customFocusInst = el}
-              />
-
-            </List>
-
-
-            <List>
-              <TextareaItem></TextareaItem>
-            </List>
-
-            <Button type="primary">Submit</Button><WhiteSpace />
-
-
+      <div style={{backgroundColor: 'white'}}>
+        <WingBlank>
+          <Flex align="baseline">
+            <Flex.Item style={flexContainer}></Flex.Item>
+          </Flex>
+        </WingBlank>
+        <LogoLocation/>
+        <WhiteSpace />
+        <List renderHeader={() => ''}>
+          <InputItem
+            {...getFieldProps('inputtitle2')}
+            placeholder="Full Name"
+          >
+            <div style={humeniconstyle} />
+          </InputItem>
+          <InputItem
+            {...getFieldProps('inputtitle2')}
+            placeholder="E-mail"
+          >
+            <div style={emailiconstyle} />
+          </InputItem>
+          <InputItem
+            {...getFieldProps('inputtitle2')}
+            placeholder="Password"
+          >
+            <div style={lockerstyle} />
+          </InputItem>
+        </List>
+        <WhiteSpace /><WhiteSpace /><WhiteSpace />
+        <WingBlank>
+          <Link to='' >
+            <Button type="primary">Create Account</Button>
+          </Link>
+        </WingBlank>
+        <List.Item style={{height: '80px'}}>
+          <div
+              style={{ width: '100%', color: 'grey', textAlign: 'center' }}
+          >
+            OR
+          </div>
+        </List.Item>
+        <WingBlank>
+          <Link to='' >
+            <Button style={{backgroundColor: '#1E5C88', color: 'white'}}> Sign up with Facebook </Button>
+          </Link>
+        </WingBlank>
+        <WhiteSpace /><WhiteSpace />
+        <WingBlank>
+          <Link to='' >
+            <Button style={{ backgroundColor:'#51BD21', color: 'white'}}>Sign up with Wechat</Button>
+          </Link>
+        </WingBlank>
       </div>
     );
   }
 }
+  const SignUpWrapper = createForm()(SignUp);
+
+  export default SignUpWrapper;

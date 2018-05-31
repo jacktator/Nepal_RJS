@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import { List, InputItem, WhiteSpace, WingBlank,Button } from 'antd-mobile';
+import { List, InputItem, WhiteSpace, WingBlank,Button, Flex } from 'antd-mobile';
 import { createForm } from 'rc-form';
 // import Locker from '../../assets/locker.png';
 import LogoLocation from '../LogoLocation';
@@ -20,6 +20,11 @@ var humeniconstyle={
 var pastyle={
   color: '#bbb',
   textAlign: 'center',
+}
+
+var flexContainer = {
+  height: 140,
+  width: 150,
 }
 
 const isIPhone = new RegExp('\\biPhone\\b|\\biPod\\b', 'i').test(window.navigator.userAgent);
@@ -44,6 +49,11 @@ class LoginInput extends React.Component {
     const { getFieldProps } = this.props.form;
     return (
       <div style={{backgroundColor: 'white'}}>
+        <WingBlank>
+          <Flex align="baseline">
+            <Flex.Item style={flexContainer}></Flex.Item>
+          </Flex>
+        </WingBlank>
         <LogoLocation/>
         <WhiteSpace />
         <List renderHeader={() => ''}>
@@ -75,22 +85,20 @@ class LoginInput extends React.Component {
             >
               Forget Password?
             </div>
-            <div style={{height: '250px', backgroundColor: '#fff' }}>
+            <div style={{height: '100px', backgroundColor: '#fff' }}>
             </div>
-
-          <div style={{height: '200px', backgroundColor: '#fff' }}>
             <div style={pastyle} >
               Do not have account?
             </div>
-            <WhiteSpace />
             <div>
             <WingBlank>
-              <Link to='' >
+              <Link to='/login/logindetails/signup' >
                 <Button>Register</Button>
               </Link>
             </WingBlank>
             </div>
-          </div>
+            <div style={{height: '90px', backgroundColor: '#fff' }}>
+            </div>
           </List.Item>
         </div>
       );
