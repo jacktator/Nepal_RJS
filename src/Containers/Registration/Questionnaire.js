@@ -4,7 +4,7 @@ import StepOne from '../../Components/Registration/Questionnaire/StepOne';
 import StepTwo from '../../Components/Registration/Questionnaire/StepTwo';
 import StepThree from '../../Components/Registration/Questionnaire/StepThree';
 
-import { Progress, Pagination, List, Picker, Icon } from 'antd-mobile';
+import { Progress, Pagination, List, Picker, Icon, NoticeBar} from 'antd-mobile';
 import './Questionnaire.css';
 import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
 
@@ -127,7 +127,6 @@ class Questionnaire extends Component {
 
   makeNextToFinish = () => {
     let {buttonText, currentPage} = this.state;
-    console.log("xxxxxxx")
     if(currentPage === 6){
       buttonText = 'Finish'
     }
@@ -175,6 +174,9 @@ class Questionnaire extends Component {
     }else if(this.state.currentPage === 4){
       RenderPage = (
         <div>
+        <NoticeBar icon={null}>
+          The following information is anonymous
+          </NoticeBar>
           <h2 style={{textAlign: 'center'}}>Stress and Productivity</h2>
           <br/><br/>
 
