@@ -116,7 +116,7 @@ inputItemHandler = (step, assignTo, data) => {
   }
 
   render() {
-    const percent  = (this.state.currentPage-1)*20;
+    const percent  = (this.state.currentPage-1)*17;
     const radioData = [
       { value: "Male", label: 'Male' },
       { value: "Female", label: 'Female' },
