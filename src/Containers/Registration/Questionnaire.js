@@ -54,9 +54,9 @@ class Questionnaire extends Component {
     }
   }
 
-onChange = (value) => {
-  console.log("value",value);
-}
+  onChange = (value) => {
+    console.log("value",value);
+  }
 
   nextButtonHandler = () => {
     console.log("Next button clicked");

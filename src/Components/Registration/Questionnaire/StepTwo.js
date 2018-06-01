@@ -22,7 +22,6 @@ const StepTwo = (props) => {
         </span>
       </div>
       <br />
-
       <div>
 
         {props.data.map(i => (
@@ -31,8 +30,6 @@ const StepTwo = (props) => {
           </CheckboxItem>
         ))}
       </div>
-
-
     </div>
   )
 }
