@@ -84,7 +84,7 @@ class SignUp extends React.Component {
         </List>
         <WhiteSpace /><WhiteSpace /><WhiteSpace />
         <WingBlank>
-          <Link to='' >
+          <Link to='/questionnaire' >
             <Button type="primary">Create Account</Button>
           </Link>
         </WingBlank>
