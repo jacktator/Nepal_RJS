@@ -1,14 +1,14 @@
 import React from 'react';
-import { Icon, List, Checkbox} from 'antd-mobile';
+import { Icon, List, Checkbox, WhiteSpace} from 'antd-mobile';
 
 const CheckboxItem = Checkbox.CheckboxItem;
 
 const StepTwo = (props) => {
   return(
     <div>
-    <h2>Create Your Program</h2>
-      <div>
-        <span style={{ marginLeft: "50px"}}> <strong> Days :</strong> </span>
+    <h2 style={{textAlign: 'center'}}>Create Your Program</h2>
+      <div style={{ float: 'right' }}>
+        <span > <strong> Days :</strong> </span>
         &nbsp;&nbsp;
         <span>
           <button onClick={props.minus}>
@@ -21,7 +21,9 @@ const StepTwo = (props) => {
           </button>
         </span>
       </div>
-      <br />
+      <WhiteSpace/>
+      <WhiteSpace/>
+      <WhiteSpace/>
       <div>
 
         {props.data.map(i => (

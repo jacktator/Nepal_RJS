@@ -1,7 +1,7 @@
 import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
 
 <div>
-  <h2>Stress and Productivity</h2>
+  <h2 style={{textAlign: 'center'}}>Stress and Productivity</h2>
   <br/><br/>
 
   <p>How often do you feel stressed at work?</p>
