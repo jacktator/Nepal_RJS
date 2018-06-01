@@ -6,7 +6,6 @@ const CheckboxItem = Checkbox.CheckboxItem;
 const StepTwo = (props) => {
   return(
     <div>
-
       <div>
         <span style={{ marginLeft: "50px"}}> <strong> Days :</strong> </span>
         &nbsp;&nbsp;
@@ -22,7 +21,6 @@ const StepTwo = (props) => {
         </span>
       </div>
       <br />
-
       <div>
 
         {props.data.map(i => (
@@ -31,8 +29,6 @@ const StepTwo = (props) => {
           </CheckboxItem>
         ))}
       </div>
-
-
     </div>
   )
 }

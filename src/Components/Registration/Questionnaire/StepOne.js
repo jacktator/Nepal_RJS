@@ -31,7 +31,6 @@ const StepOne = (props) => {
           ))}
         </List>
         <WhiteSpace size="lg" />
-
         <Picker
           data={props.weightArray}
           cols={1}

@@ -3,10 +3,9 @@ import { Steps, WingBlank, WhiteSpace } from 'antd-mobile';
 
 const Step = Steps.Step;
 
-var prossstyle={
+var stepstyle={
   justifyContent: 'center',
   alignItems: 'center',
-  //margin: '2%',
 }
 
 const steps = [{
@@ -16,18 +15,22 @@ const steps = [{
   title: 'Step 2',
   // description: 'This is description',
 }, {
-  title: '',
+  title: 'Step 3',
   // description: 'This is description',
 },{
-  title: '',
-}].map((s, i) => <Step key={i} title={s.title} description={s.description} />);
+  title: '...Waiting',
+}].map((s) => <Step key={s.title} title={s.title} />);
+
+
+
+
 
 const CurrentStep = (props) => {
   return(
-      <div style = {prossstyle}>
+      <div style = {{margin: '2%'}}>
         <WingBlank mode={20} className="stepsExample">
           <WhiteSpace />
-          <Steps current={3} direction="horizontal" size="small">{steps}</Steps>
+          <Steps style={stepstyle} current={props.currentPage} direction="horizontal" size="small">{steps}</Steps>
         </WingBlank>
       </div>
   )

@@ -36,9 +36,9 @@ class Questionnaire extends Component {
     }
   }
 
-onChange = (value) => {
-  console.log("value",value);
-}
+  onChange = (value) => {
+    console.log("value",value);
+  }
 
   nextButtonHandler = () => {
     console.log("Next button clicked");
@@ -146,12 +146,11 @@ inputItemHandler = (step, assignTo, data) => {
       <div className="container">
 
       <div className="progress-bar">
-        <div className="progress"><Progress percent={percent} position="normal" /></div>
+        <div className="progress"><Progress percent={percent} position="normal"/></div>
         <div aria-hidden="true">{percent}%</div>
       </div>
 
-        <CurrentStep/>
-
+        <CurrentStep currentPage = {this.state.currentPage-1}/>
 
         {RenderPage}
 
