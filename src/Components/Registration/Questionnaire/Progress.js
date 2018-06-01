@@ -3,24 +3,6 @@ import { Steps, WingBlank, WhiteSpace } from 'antd-mobile';
 
 const Step = Steps.Step;
 
-var stepstyle={
-  justifyContent: 'center',
-  alignItems: 'center',
-}
-
-const steps = [{
-  title: 'Step 1',
-  // description: 'This is description',
-}, {
-  title: 'Step 2',
-  // description: 'This is description',
-}, {
-  title: 'Step 3',
-  // description: 'This is description',
-},{
-  title: '...Waiting',
-}].map((s) => <Step key={s.title} title={s.title} />);
-
 
 const customIcon = () => (
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42" className="am-icon am-icon-md">
@@ -40,7 +22,7 @@ const CurrentStep = (props) => {
         <Steps direction="horizontal">
           <Step status="error" title="Step 1" icon={customIcon()} />
           <Step title="Step 2" icon={customIcon()} />
-          <Step title="Waiting ..." icon={customIcon()} />
+          <Step title="Step 6" icon={customIcon()} />
         </Steps>
       </div>
     )
@@ -51,7 +33,7 @@ const CurrentStep = (props) => {
         <Steps direction="horizontal">
           <Step status="completed" title="Step 1" icon={customIcon()} />
           <Step status="error" title="Step 2" icon={customIcon()} />
-          <Step  title="Waiting ..." icon={customIcon()} />
+          <Step  title="Step 6" icon={customIcon()} />
         </Steps>
       </div>
     )
@@ -62,7 +44,7 @@ const CurrentStep = (props) => {
         <Steps direction="horizontal">
           <Step status="completed" title="Step 2" icon={customIcon()} />
           <Step status="error" title="Step 3" icon={customIcon()} />
-          <Step  title="Waiting ..." icon={customIcon()} />
+          <Step  title="Step 6" icon={customIcon()} />
         </Steps>
       </div>
     )
@@ -73,7 +55,7 @@ const CurrentStep = (props) => {
         <Steps direction="horizontal">
           <Step status="completed" title="Step 3" icon={customIcon()} />
           <Step status="error" title="Step 4" icon={customIcon()} />
-          <Step  title="Waiting ..." icon={customIcon()} />
+          <Step  title="Step 6" icon={customIcon()} />
         </Steps>
       </div>
     )

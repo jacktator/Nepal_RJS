@@ -14,12 +14,17 @@ class Questionnaire extends Component {
       detail: {
         name:"",
         age:"",
-        gender: "Male",
-        currentBodyWeight: 0,
+        gender: "",
+        currentBodyWeight: "",
       },
       program: {
         days: 2,
-        trainingGoal: {}
+        trainingGoals: [
+          { value: 0, isChecked: false, label: 'Muscle size and strength', description:"Weight training principles designed to build muscle and strength" },
+          { value: 1, isChecked: false, label: 'fat loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition "},
+          { value: 2, isChecked: false, label: 'Decrease stress', description:"Using exercise strategies to reduce stress levels and restore balance back in your body"},
+          { value: 3, isChecked: false, label: 'Improve posture', description:"Utilising specific exercises and weight training to correct postural imbalances "}
+        ]
       },
       injuryManagement: [],
       stressAndProductivity: [],
@@ -27,7 +32,6 @@ class Questionnaire extends Component {
       generalActivity: [],
       currentPage: 1,
       hasError: false,
-      value: '',
       weightArray: [
         {value: 1, label: '1 KG'},{value: 2, label: '2 KG'},{value: 3, label: '3 KG'},{value: 4, label: '4 KG'},{value: 5, label: '5 KG'},{value: 6, label: '6 KG'},
         {value: 7, label: '7 KG'},{value: 8, label: '8 KG'},{value: 8, label: '8 KG'},
@@ -54,16 +58,18 @@ class Questionnaire extends Component {
     }
   }
 
-  onChange = (value) => {
-    console.log("value",value);
+  //handle the checkbox for injury management in questionnaire (third page)
+  injuryManagementCheckboxHandler = (value) => {
+    console.log('injury management', value);
   }
 
-  nextButtonHandler = () => {
-    console.log("Next button clicked");
+  //handle the checkbox for program in questionnaire (second page)
+  programCheckboxHandler = (value) => {
+    let trainingGoals = { ...this.state.program.trainingGoals}
+    trainingGoals[value].isChecked = !trainingGoals[value].isChecked;
+    this.setState( trainingGoals );
   }
-  previousButtonHandler = () => {
-    console.log("previouse button clicked");
-  }
+
 
   detailHandler = () => {
     console.log("DetailHander");
@@ -122,12 +128,6 @@ inputItemHandler = (step, assignTo, data) => {
       { value: "Female", label: 'Female' },
       { value: "Others", label: 'Others' },
     ];
-    const data = [
-       { value: 0, label: 'Muscle size and strength', description:"Weight training principles designed to build muscle and strength" },
-       { value: 1, label: 'fat loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition "},
-       { value: 2, label: 'Decrease stress', description:"Using exercise strategies to reduce stress levels and restore balance back in your body"},
-       { value: 3, label: 'Improve posture', description:"Utilising specific exercises and weight training to correct postural imbalances "}
-     ];
 
     let RenderPage = null;
     if(this.state.currentPage === 1){
@@ -147,14 +147,14 @@ inputItemHandler = (step, assignTo, data) => {
          plus={this.plusHandler}
          minus={this.minusHandler}
          days={this.state.program.days}
-         change={() => this.onChange()}
-         data={data}
+         change={this.programCheckboxHandler}
+         data={this.state.program.trainingGoals}
         />
       );
     } else if(this.state.currentPage === 3){
       RenderPage = (
         <StepThree
-         change={this.onChange}
+         change={this.injuryManagementCheckboxHandler}
         />
       );
     }else if(this.state.currentPage === 4){

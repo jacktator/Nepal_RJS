@@ -25,7 +25,7 @@ const StepTwo = (props) => {
       <div>
 
         {props.data.map(i => (
-          <CheckboxItem key={i.value} onChange={() => props.change(i.value)}>
+          <CheckboxItem key={i.value} checked={i.isChecked} onChange={() => props.change(i.value)}>
             <strong>{i.label}</strong><List.Item.Brief>{i.description}</List.Item.Brief>
           </CheckboxItem>
         ))}
