@@ -25,8 +25,8 @@ const StepOne = (props) => {
         >Age</InputItem>
 
         <List renderHeader={() => 'Please select your gender Gender'}>
-          {props.radioData.map(i => (
-            <RadioItem key={i.value} checked={gender === i.value} onChange={() => props.radioHandler(i.value)}>
+          {props.radioData.map((i,key) => (
+            <RadioItem key={key} checked={gender === i.value} onChange={() => props.radioHandler(i.value)}>
               {i.label}
             </RadioItem>
           ))}

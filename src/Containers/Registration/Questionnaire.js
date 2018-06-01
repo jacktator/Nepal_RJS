@@ -36,7 +36,7 @@ class Questionnaire extends Component {
       hasError: false,
       weightArray: [
         {value: 1, label: '1 KG'},{value: 2, label: '2 KG'},{value: 3, label: '3 KG'},{value: 4, label: '4 KG'},{value: 5, label: '5 KG'},{value: 6, label: '6 KG'},
-        {value: 7, label: '7 KG'},{value: 8, label: '8 KG'},{value: 8, label: '8 KG'},
+        {value: 7, label: '7 KG'},{value: 8, label: '8 KG'},{value: 9, label: '8 KG'},
       ],
       stressArray: [
         {value: 1, label: 'Stress free'},{value: 2, label: 'Minimally stressed'},{value: 3, label: 'Moderately stressed'},{value: 4, label: 'Highly stressed'},{value: 5, label: 'Extrembly stressed'},
