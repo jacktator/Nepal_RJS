@@ -6,7 +6,7 @@ const CheckboxItem = Checkbox.CheckboxItem;
 const StepTwo = (props) => {
   return(
     <div>
-
+    <h2>Create Your Program</h2>
       <div>
         <span style={{ marginLeft: "50px"}}> <strong> Days :</strong> </span>
         &nbsp;&nbsp;

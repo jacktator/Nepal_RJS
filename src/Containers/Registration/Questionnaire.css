@@ -1,3 +1,27 @@
-.pagination {
-   height: 20px; }
-.child { line-height: 20px; vertical-align: middle; }
+.content-without-pagination {
+
+}
+.pagination-container {
+  width:100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+
+.custom-pagination-with-icon .am-pagination-wrap-btn-prev .am-button-inline{
+  padding-left: 0;
+  padding-right: 10px;
+}
+.custom-pagination-with-icon .am-pagination-wrap-btn-next .am-button-inline{
+  padding-left: 10px;
+  padding-right: 0;
+}
+.arrow-align {
+  display: flex;
+  align-items: center;
+}
+.sub-title {
+  color: #888;
+  font-size: 14px;
+  padding: 30px 0 18px 0;
+}

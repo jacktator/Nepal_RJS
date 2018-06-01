@@ -6,7 +6,7 @@ const CheckboxItem = Checkbox.CheckboxItem;
 const StepThree = (props) => {
   return(
     <div>
-      <h3>Injury Management</h3>
+      <h2>Injury Management</h2>
 
       <CheckboxItem onChange={() => props.change(1)}>
         <label>

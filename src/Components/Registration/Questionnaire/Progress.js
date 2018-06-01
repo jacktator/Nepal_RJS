@@ -21,7 +21,7 @@ const CurrentStep = (props) => {
       <div style = {{ margin: '2%'}}>
         <WingBlank mode={20} className="stepsExample">
           <WhiteSpace />
-          <Steps current={3} direction="horizontal" size="small">{steps}</Steps>
+          <Steps current={props.currentPage} direction="horizontal" size="small">{steps}</Steps>
         </WingBlank>
       </div>
   )
