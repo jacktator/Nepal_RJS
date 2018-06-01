@@ -7,6 +7,7 @@ import SignUp from '../SignUp/';
 import LoginDetails from '../LoginDetails/';
 import Questionnaire from '../../Containers/Registration/Questionnaire';
 import Check from '../../Containers/Registration/check';
+import ForgetPassWord from '../ForgetPassWord/';
 
 
 
@@ -23,7 +24,7 @@ export default class Root extends Component{
             <Route path="/login/logindetails" exact component={LoginDetails} />
             <Route path="/questionnaire" exact component={Questionnaire} />
             <Route path="/check" exact component={Check} />
-
+            <Route path="/forgetpassword" exact component={ForgetPassWord} />
           </Switch>
         </BrowserRouter>
 

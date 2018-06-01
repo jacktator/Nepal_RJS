@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Flex, WhiteSpace, WingBlank} from 'antd-mobile';
-import Logo from '../../assets/Logo.png';
+import LogoLighter from '../../assets/LogoLighter.png';
 
 var logoStyle = {
   height: 170,
@@ -28,11 +28,10 @@ export default class LogoLocation extends Component{
         <WingBlank>
           <Flex align="baseline">
             <Flex.Item style={flexContainer}><PlaceHolder/></Flex.Item>
-            <img src={Logo}  style={logoStyle} alt="this is a logo"/>
+            <img src={LogoLighter}  style={logoStyle} alt="this is a logo"/>
             <Flex.Item style={flexContainer}><PlaceHolder/></Flex.Item>
           </Flex>
         </WingBlank>
-
       </div>
     );
   }

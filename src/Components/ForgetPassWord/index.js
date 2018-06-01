@@ -3,12 +3,19 @@ import {Link} from 'react-router-dom';
 import { List, InputItem, WhiteSpace, WingBlank,Button, Flex } from 'antd-mobile';
 import { createForm } from 'rc-form';
 // import Locker from '../../assets/locker.png';
-import LogoLocation from '../LogoLocation';
-var lockerstyle={
-  backgroundImage: 'url(https://png.icons8.com/ios/50/000000/lock.png)',
-  backgroundSize: 'cover',
-  height: '22px',
-  width: '22px',
+//import LogoLocation from '../LogoLocation';
+import Locker from '../../assets/Locker.png';
+
+var logoStyle = {
+  height: 170,
+  width: 160,
+  justifyContent: 'center',
+  alignItems: 'center',
+};
+
+var flexContainer = {
+  height: 140,
+  width: 150,
 }
 
 var humeniconstyle={
@@ -28,6 +35,11 @@ var flexContainer = {
 }
 
 const isIPhone = new RegExp('\\biPhone\\b|\\biPod\\b', 'i').test(window.navigator.userAgent);
+
+const PlaceHolder = ({ className = '', ...restProps }) => (
+  <div className={`${className} placeholder`} {...restProps} style={{alignItems: 'center'}}></div>
+);
+
 let moneyKeyboardWrapProps;
 if (isIPhone) {
   moneyKeyboardWrapProps = {
@@ -35,7 +47,7 @@ if (isIPhone) {
   };
 }
 
-class LoginInput extends React.Component {
+class ForgetPassWord extends React.Component {
   componentDidMount() {
     // this.autoFocusInst.focus();
   }
@@ -54,8 +66,21 @@ class LoginInput extends React.Component {
             <Flex.Item style={flexContainer}></Flex.Item>
           </Flex>
         </WingBlank>
-        <LogoLocation/>
+
+        <WingBlank>
+          <Flex align="baseline">
+            <Flex.Item style={flexContainer}><PlaceHolder/></Flex.Item>
+            <img src={Locker}  style={logoStyle} alt="this is a logo"/>
+            <Flex.Item style={flexContainer}><PlaceHolder/></Flex.Item>
+          </Flex>
+        </WingBlank>
+
         <WhiteSpace />
+        <div style={{textAlign: 'center', color: '#61ABE1'}}>
+          <p>Do not worry,</p>
+          <p>We just need your register email</p>
+          <p>address to send you password reset.</p>
+        </div>
         <List renderHeader={() => ''}>
           <InputItem
             {...getFieldProps('inputtitle2')}
@@ -63,30 +88,17 @@ class LoginInput extends React.Component {
           >
             <div style={humeniconstyle} />
           </InputItem>
-          <InputItem
-            {...getFieldProps('inputtitle2')}
-            placeholder="Password"
-          >
-            <div style={lockerstyle} />
-          </InputItem>
         </List>
         <WhiteSpace /><WhiteSpace /><WhiteSpace />
         <WingBlank>
           <Link to='' >
-            <Button type="primary">Log in</Button>
+            <Button type="primary">Reset Password</Button>
           </Link>
         </WingBlank>
 
           <List.Item>
             <WhiteSpace />
-            <div
-              style={{ width: '100%', color: '#108ee9', textAlign: 'center' }}
-            >
-            <Link to='/forgetpassword'>
-              Forget Password?
-            </Link>
-            </div>
-            <div style={{height: '100px', backgroundColor: '#fff' }}>
+            <div style={{height: '50px', backgroundColor: '#fff' }}>
             </div>
             <div style={pastyle} >
               Do not have account?
@@ -97,14 +109,15 @@ class LoginInput extends React.Component {
                 <Button>Register</Button>
               </Link>
             </WingBlank>
+              </div>
+              <div style={{height: '100px', backgroundColor: '#fff' }}>
             </div>
-            <div style={{height: '90px', backgroundColor: '#fff' }}>
-            </div>
+
           </List.Item>
         </div>
       );
     }
   }
-  const LoginInputWrapper = createForm()(LoginInput);
+  const ForgetPassWordWrapper = createForm()(ForgetPassWord);
 
-  export default LoginInputWrapper;
+  export default ForgetPassWordWrapper;
