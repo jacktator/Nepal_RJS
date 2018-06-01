@@ -1,5 +1,6 @@
 import React from 'react';
 import { List, InputItem, Radio, Picker, WhiteSpace} from 'antd-mobile';
+import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
 
 const RadioItem = Radio.RadioItem;
 // const CheckboxItem = Checkbox.CheckboxItem;
@@ -33,6 +34,7 @@ const StepOne = (props) => {
         <WhiteSpace size="lg" />
         <Picker
           data={props.weightArray}
+          locale={enUs}
           cols={1}
           value={[props.detail.currentBodyWeight]}
           onOk={v => props.selectWeight(v)}

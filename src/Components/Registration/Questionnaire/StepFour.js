@@ -1,3 +1,5 @@
+import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
+
 <div>
   <h2>Stress and Productivity</h2>
   <br/><br/>
@@ -16,6 +18,7 @@
   <p>How productive do you feel each day?</p>
   <Picker
     data={this.state.productivityArray}
+    local={enUs}
     cols={1}
     value={[this.state.detail.currentBodyWeight]}
     onOk={v => this.onWeightPicker(v)}

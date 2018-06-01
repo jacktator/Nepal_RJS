@@ -6,6 +6,8 @@ import StepThree from '../../Components/Registration/Questionnaire/StepThree';
 
 import { Progress, Pagination, List, Picker } from 'antd-mobile';
 import './Questionnaire.css';
+import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
+
 
 class Questionnaire extends Component {
   constructor(props){
@@ -165,6 +167,7 @@ inputItemHandler = (step, assignTo, data) => {
 
           <p>How often do you feel stressed at work?</p>
           <Picker
+            locale={enUs}
             data={this.state.stressArray}
             cols={1}
             value={[this.state.detail.currentBodyWeight]}
@@ -176,6 +179,7 @@ inputItemHandler = (step, assignTo, data) => {
 
           <p>How productive do you feel each day?</p>
           <Picker
+            locale={enUs}
             data={this.state.productivityArray}
             cols={1}
             value={[this.state.detail.currentBodyWeight]}
@@ -194,6 +198,7 @@ inputItemHandler = (step, assignTo, data) => {
 
           <p>Do you experience injury or posture related pain at work?</p>
           <Picker
+            locale={enUs}
             data={this.state.injuryArray}
             cols={1}
             value={[this.state.detail.currentBodyWeight]}
@@ -205,6 +210,7 @@ inputItemHandler = (step, assignTo, data) => {
 
           <p>How do you feel your health and wellbeing right now?</p>
           <Picker
+            locale={enUs}
             data={this.state.healthArray}
             cols={1}
             value={[this.state.detail.currentBodyWeight]}
@@ -223,6 +229,7 @@ inputItemHandler = (step, assignTo, data) => {
 
           <p>How active are you on a daily basis?</p>
           <Picker
+            locale={enUs}
             data={this.state.activityArray}
             cols={1}
             value={[this.state.detail.currentBodyWeight]}
@@ -234,6 +241,7 @@ inputItemHandler = (step, assignTo, data) => {
 
           <p>What is your current exercise activity level?</p>
           <Picker
+            locale={enUs}
             data={this.state.exerciseArray}
             cols={1}
             value={[this.state.detail.currentBodyWeight]}
