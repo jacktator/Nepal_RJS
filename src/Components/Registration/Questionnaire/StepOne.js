@@ -9,17 +9,17 @@ const StepOne = (props) => {
   const gender = props.detail.gender;
   return(
     <div>
-      <h2>Your Detail</h2>
+      <h2 style={{textAlign: 'center'}}>Your Detail</h2>
         <InputItem
           type="text"
-          placeholder="Please enter your name (letters only)"
+          placeholder="Please enter your name"
           onChange={props.change.bind(this, 'one', 'name')}
           value={props.detail.name}
         >Name</InputItem>
 
         <InputItem
           type="number"
-          placeholder="Please enter your age (numbers only)"
+          placeholder="Please enter your age"
           onChange={props.change.bind(this, 'one', 'age')}
           value={props.detail.age}
         >Age</InputItem>

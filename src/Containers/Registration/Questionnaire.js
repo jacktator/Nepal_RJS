@@ -4,7 +4,7 @@ import StepOne from '../../Components/Registration/Questionnaire/StepOne';
 import StepTwo from '../../Components/Registration/Questionnaire/StepTwo';
 import StepThree from '../../Components/Registration/Questionnaire/StepThree';
 
-import { Progress, Pagination, List, Picker } from 'antd-mobile';
+import { Progress, Pagination, List, Picker, Icon } from 'antd-mobile';
 import './Questionnaire.css';
 import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
 
@@ -56,8 +56,10 @@ class Questionnaire extends Component {
       exerciseArray: [
         {value: 1, label: 'Sendentary'},{value: 2, label: 'Lightly active'},{value: 3, label: 'Moderately active'},{value: 4, label: 'Very active'},{value: 5, label: 'Extrembly active'},
       ],
+      buttonText: 'Next',
 
     }
+    // this.makeNextToFinish=this.makeNextToFinish.bind(this);
   }
 
   //handle the checkbox for injury management in questionnaire (third page)
@@ -101,7 +103,7 @@ class Questionnaire extends Component {
   };
 
 //handle the input filed for stepOne
-inputItemHandler = (step, assignTo, data) => {
+  inputItemHandler = (step, assignTo, data) => {
     //step refers to the six different steps
     //assign refers to particular data such as name or age.
     //data is the data being entered in input field
@@ -122,6 +124,17 @@ inputItemHandler = (step, assignTo, data) => {
   onPaginationHandler = (currentPage) => {
     this.setState({ currentPage })
   }
+
+  makeNextToFinish = () => {
+    let {buttonText, currentPage} = this.state;
+    console.log("xxxxxxx")
+    if(currentPage === 6){
+      buttonText = 'Finish'
+    }
+    return buttonText
+  }
+
+
 
   render() {
     const percent  = (this.state.currentPage-1)*17;
@@ -162,7 +175,7 @@ inputItemHandler = (step, assignTo, data) => {
     }else if(this.state.currentPage === 4){
       RenderPage = (
         <div>
-          <h2>Stress and Productivity</h2>
+          <h2 style={{textAlign: 'center'}}>Stress and Productivity</h2>
           <br/><br/>
 
           <p>How often do you feel stressed at work?</p>
@@ -193,7 +206,7 @@ inputItemHandler = (step, assignTo, data) => {
     } else if(this.state.currentPage === 5){
       RenderPage = (
         <div>
-          <h2>Health and Wellbeing</h2>
+          <h2 style={{textAlign: 'center'}}>Health and Wellbeing</h2>
           <br/><br/>
 
           <p>Do you experience injury or posture related pain at work?</p>
@@ -224,7 +237,7 @@ inputItemHandler = (step, assignTo, data) => {
     }else if(this.state.currentPage === 6){
       RenderPage = (
         <div>
-          <h2>General Activity and Exercise Level</h2>
+          <h2 style={{textAlign: 'center'}}>General Activity and Exercise Level</h2>
           <br/><br/>
 
           <p>How active are you on a daily basis?</p>
@@ -270,7 +283,14 @@ inputItemHandler = (step, assignTo, data) => {
           {RenderPage}
         </div>
         <div className="pagination-container">
-            <Pagination total={6} current={this.state.currentPage} onChange={p => this.onPaginationHandler(p)} locale={locale}  />
+            <Pagination
+              total={6}
+              current={this.state.currentPage}
+              onChange={p => this.onPaginationHandler(p)}
+              locale={{
+                prevText: (<span className="arrow-align"><Icon type="left" />Prev</span>),
+                nextText: (<span className="arrow-align"><Icon type="right" />{this.makeNextToFinish()}</span>),
+              }} />
          </div>
       </div>
 

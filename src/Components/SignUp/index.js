@@ -82,30 +82,20 @@ class SignUp extends React.Component {
             <div style={lockerstyle} />
           </InputItem>
         </List>
-        <WhiteSpace /><WhiteSpace /><WhiteSpace />
+        <div style={{height: '50px'}}>
+        </div>
         <WingBlank>
           <Link to='/questionnaire' >
             <Button type="primary">Create Account</Button>
           </Link>
         </WingBlank>
-        <List.Item style={{height: '80px'}}>
+        <List.Item style={{height: '300px'}}>
           <div
               style={{ width: '100%', color: 'grey', textAlign: 'center' }}
           >
-            OR
+
           </div>
         </List.Item>
-        <WingBlank>
-          <Link to='' >
-            <Button style={{backgroundColor: '#1E5C88', color: 'white'}}> Sign up with Facebook </Button>
-          </Link>
-        </WingBlank>
-        <WhiteSpace /><WhiteSpace />
-        <WingBlank>
-          <Link to='' >
-            <Button style={{ backgroundColor:'#51BD21', color: 'white'}}>Sign up with Wechat</Button>
-          </Link>
-        </WingBlank>
       </div>
     );
   }

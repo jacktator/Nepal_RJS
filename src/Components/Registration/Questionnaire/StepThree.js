@@ -6,7 +6,7 @@ const CheckboxItem = Checkbox.CheckboxItem;
 const StepThree = (props) => {
   return(
     <div>
-      <h2>Injury Management</h2>
+      <h2 style={{textAlign: 'center'}}>Injury Management</h2>
       <Flex>
            <Flex.Item>
              <CheckboxItem onChange={() => props.change("Posture Correction")}>
