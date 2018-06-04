@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { loginDetails } from '../../Actions';
 import { List, InputItem, WhiteSpace, WingBlank,Button, Flex } from 'antd-mobile';
 import { createForm } from 'rc-form';
 // import Locker from '../../assets/locker.png';
@@ -36,15 +38,33 @@ if (isIPhone) {
 }
 
 class LoginInput extends React.Component {
+  state = {
+    type: 'money',
+    login: {
+      email: "",
+      password: ""
+    }
+  }
+
   componentDidMount() {
     // this.autoFocusInst.focus();
   }
   handleClick = () => {
     this.customFocusInst.focus();
   }
-  state = {
-    type: 'money',
+
+  //Handle the input of the field to the state
+  inputHandler = (key, val) => {
+    let login = { ...this.state.login};
+    login[key] = val;
+    this.setState({login});
   }
+
+  //Handle the click event for login button
+  loginClickHandler = () => {
+    this.props.loginDetails(this.state.login);
+  }
+
   render() {
     const { getFieldProps } = this.props.form;
     return (
@@ -58,23 +78,27 @@ class LoginInput extends React.Component {
         <WhiteSpace />
         <List renderHeader={() => ''}>
           <InputItem
-            {...getFieldProps('inputtitle2')}
+            name="email"
             placeholder="E-mail"
-          >
+            value={this.state.login.email}
+            onChange={this.inputHandler.bind(null, 'email')}
+            >
             <div style={humeniconstyle} />
           </InputItem>
           <InputItem
-            {...getFieldProps('inputtitle2')}
             placeholder="Password"
-          >
+            type="Password"
+            value={this.state.login.password}
+            onChange={this.inputHandler.bind(null, 'password')}
+            >
             <div style={lockerstyle} />
           </InputItem>
         </List>
         <WhiteSpace /><WhiteSpace /><WhiteSpace />
         <WingBlank>
-          <Link to='' >
-            <Button type="primary">Log in</Button>
-          </Link>
+        <Link to=''>
+            <Button type="primary" onClick={this.loginClickHandler.bind()}>Log in</Button>
+        </Link>
         </WingBlank>
 
           <List.Item>
@@ -105,6 +129,6 @@ class LoginInput extends React.Component {
       );
     }
   }
-  const LoginInputWrapper = createForm()(LoginInput);
+  const LoginInputWrapper = createForm()(connect (null, { loginDetails } )(LoginInput));
 
   export default LoginInputWrapper;

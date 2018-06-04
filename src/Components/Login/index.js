@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { WhiteSpace, Button, WingBlank, Flex } from 'antd-mobile';
 import LogoLocation from '../LogoLocation/';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+import {connect} from 'react-redux';
 
 var pastyle={
   color: '#bbb',
@@ -10,17 +12,16 @@ var pastyle={
 var normalstyle={
   backgroundColor: 'white',
   height: '200px',
-
 }
-
 var flexContainer = {
   height: 140,
   width: 150,
 }
 
+class Login extends Component {
+  state = {
 
-export default class Login extends Component {
-
+  }
   render(){
     return(
           <div style={{backgroundColor: 'white'}}>
@@ -47,5 +48,11 @@ export default class Login extends Component {
           </div>
     );
   }
-
 }
+function mapStateToProps(state){
+  console.log("mapStateToProps", state);
+  const loginDetail = state.loginDetail.loginDetail ? state.loginDetail.loginDetail: null;
+
+  return loginDetail;
+}
+export default connect(mapStateToProps)(Login);
