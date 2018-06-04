@@ -3,6 +3,9 @@ import CurrentStep  from '../../Components/Registration/Questionnaire/Progress';
 import StepOne from '../../Components/Registration/Questionnaire/StepOne';
 import StepTwo from '../../Components/Registration/Questionnaire/StepTwo';
 import StepThree from '../../Components/Registration/Questionnaire/StepThree';
+import StepFour from '../../Components/Registration/Questionnaire/StepFour';
+import StepFive from '../../Components/Registration/Questionnaire/StepFive';
+import StepSix from '../../Components/Registration/Questionnaire/StepSix';
 
 import { Progress, Pagination, List, Picker, Icon, NoticeBar} from 'antd-mobile';
 import './Questionnaire.css';
@@ -28,10 +31,19 @@ class Questionnaire extends Component {
           { value: 3, isChecked: false, label: 'Improve posture', description:"Utilising specific exercises and weight training to correct postural imbalances "}
         ]
       },
-      injuryManagement: [],
-      stressAndProductivity: [],
-      healthAndWellbeing: [],
-      generalActivity: [],
+      // injuryManagement: [],
+      stressAndProductivity: {
+        currentStress:"",
+        currentProductivity:"",
+      },
+      healthAndWellbeing: {
+        currentInjury:"",
+        currentHealth:"",
+      },
+      generalActivity: {
+        currentActivity:"",
+        currentExercise:"",
+      },
       currentPage: 1,
       hasError: false,
       weightArray: [
@@ -118,12 +130,61 @@ class Questionnaire extends Component {
     let detail = {...this.state.detail}
     detail['currentBodyWeight'] = weight[0];
     this.setState({detail})
-    this.setState({ weightPicker: weight[0]})
+    // this.setState({ weightPicker: weight[0]})
   }
   //handle the pagination onChange event
   onPaginationHandler = (currentPage) => {
     this.setState({ currentPage })
   }
+
+  //handle the value for stress picker
+  onStressPicker = (stress) => {
+    let stressAndProductivity = {...this.state.stressAndProductivity}
+    stressAndProductivity['currentStress'] = stress[0];
+    this.setState({stressAndProductivity})
+    // this.setState({ weightPicker: weight[0]})
+  }
+
+  //handle the value for productivity picker
+  onProductivityPicker = (productivity) => {
+    let stressAndProductivity = {...this.state.stressAndProductivity}
+    stressAndProductivity['currentProductivity'] = productivity[0];
+    this.setState({stressAndProductivity})
+    // this.setState({ weightPicker: weight[0]})
+  }
+
+  //handle the value for injury picker
+  onInjuryPicker = (injury) => {
+    let healthAndWellbeing = {...this.state.healthAndWellbeing}
+    healthAndWellbeing['currentInjury'] = injury[0];
+    this.setState({healthAndWellbeing})
+    // this.setState({ weightPicker: weight[0]})
+  }
+
+  //handle the value for health picker
+  onHealthPicker = (health) => {
+    let healthAndWellbeing = {...this.state.healthAndWellbeing}
+    healthAndWellbeing['currentHealth'] = health[0];
+    this.setState({healthAndWellbeing})
+    // this.setState({ weightPicker: weight[0]})
+  }
+
+  //handle the value for activity picker
+  onActivityPicker = (activity) => {
+    let generalActivity = {...this.state.generalActivity}
+    generalActivity['currentActivity'] = activity[0];
+    this.setState({generalActivity})
+    // this.setState({ weightPicker: weight[0]})
+  }
+
+  //handle the value for exercise picker
+  onExercisePicker = (exercise) => {
+    let generalActivity = {...this.state.generalActivity}
+    generalActivity['currentExercise'] = exercise[0];
+    this.setState({generalActivity})
+    // this.setState({ weightPicker: weight[0]})
+  }
+
 
   makeNextToFinish = () => {
     let {buttonText, currentPage} = this.state;
@@ -173,99 +234,35 @@ class Questionnaire extends Component {
       );
     }else if(this.state.currentPage === 4){
       RenderPage = (
-        <div>
-        <NoticeBar icon={null}>
-          The following information is anonymous
-          </NoticeBar>
-          <h2 style={{textAlign: 'center'}}>Stress and Productivity</h2>
-          <br/><br/>
-
-          <p>How often do you feel stressed at work?</p>
-          <Picker
-            locale={enUs}
-            data={this.state.stressArray}
-            cols={1}
-            value={[this.state.detail.currentBodyWeight]}
-            onOk={v => this.onWeightPicker(v)}
-            >
-            <List.Item arrow="horizontal">Stress:</List.Item>
-          </Picker>
-          <br/><br/>
-
-          <p>How productive do you feel each day?</p>
-          <Picker
-            locale={enUs}
-            data={this.state.productivityArray}
-            cols={1}
-            value={[this.state.detail.currentBodyWeight]}
-            onOk={v => this.onWeightPicker(v)}
-            >
-            <List.Item arrow="horizontal">Productivity:</List.Item>
-          </Picker>
-
-        </div>
+        <StepFour
+          stressArray={this.state.stressArray}
+          selectStress={this.onStressPicker}
+          stressAndProductivity = {this.state.stressAndProductivity}
+          productivityArray={this.state.productivityArray}
+          selectProductivity={this.onProductivityPicker}
+        />
       );
+
     } else if(this.state.currentPage === 5){
       RenderPage = (
-        <div>
-          <h2 style={{textAlign: 'center'}}>Health and Wellbeing</h2>
-          <br/><br/>
-
-          <p>Do you experience injury or posture related pain at work?</p>
-          <Picker
-            locale={enUs}
-            data={this.state.injuryArray}
-            cols={1}
-            value={[this.state.detail.currentBodyWeight]}
-            onOk={v => this.onWeightPicker(v)}
-            >
-            <List.Item arrow="horizontal">Injury:</List.Item>
-          </Picker>
-          <br/><br/>
-
-          <p>How do you feel your health and wellbeing right now?</p>
-          <Picker
-            locale={enUs}
-            data={this.state.healthArray}
-            cols={1}
-            value={[this.state.detail.currentBodyWeight]}
-            onOk={v => this.onWeightPicker(v)}
-            >
-            <List.Item arrow="horizontal">Health:</List.Item>
-          </Picker>
-
-        </div>
+        <StepFive
+          injuryArray={this.state.injuryArray}
+          selectInjury={this.onInjuryPicker}
+          healthAndWellbeing = {this.state.healthAndWellbeing}
+          healthArray={this.state.healthArray}
+          selectHealth={this.onHealthPicker}
+        />
       );
+
     }else if(this.state.currentPage === 6){
       RenderPage = (
-        <div>
-          <h2 style={{textAlign: 'center'}}>General Activity and Exercise Level</h2>
-          <br/><br/>
-
-          <p>How active are you on a daily basis?</p>
-          <Picker
-            locale={enUs}
-            data={this.state.activityArray}
-            cols={1}
-            value={[this.state.detail.currentBodyWeight]}
-            onOk={v => this.onWeightPicker(v)}
-            >
-            <List.Item arrow="horizontal">Injury:</List.Item>
-          </Picker>
-          <br/><br/>
-
-          <p>What is your current exercise activity level?</p>
-          <Picker
-            locale={enUs}
-            data={this.state.exerciseArray}
-            cols={1}
-            value={[this.state.detail.currentBodyWeight]}
-            onOk={v => this.onWeightPicker(v)}
-            >
-            <List.Item arrow="horizontal">Health:</List.Item>
-          </Picker>
-
-        </div>
+        <StepSix
+          activityArray={this.state.activityArray}
+          selectActivity={this.onActivityPicker}
+          generalActivity = {this.state.generalActivity}
+          exerciseArray={this.state.exerciseArray}
+          selectExercise={this.onExercisePicker}
+        />
       );
     }
 
