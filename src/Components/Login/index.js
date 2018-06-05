@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { WhiteSpace, Button, WingBlank, Flex } from 'antd-mobile';
 import LogoLocation from '../LogoLocation/';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
 import {connect} from 'react-redux';
 
 var pastyle={
@@ -20,8 +20,18 @@ var flexContainer = {
 
 class Login extends Component {
   state = {
-
+    Nepal: []
   }
+
+componentDidMount() {
+  // console.log("componentDidMount");
+  // axios.get('https://jsonplaceholder.typicode.com/posts')
+  //   .then(response => {
+  //     console.log("componentDidMount");
+  //     console.log(response);
+  //   })
+}
+
   render(){
     return(
           <div style={{backgroundColor: 'white'}}>
