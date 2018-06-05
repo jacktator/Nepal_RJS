@@ -1,0 +1,10 @@
+.screen-login-style{
+  background: white;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+.logo-login-position  {
+  margin-top: 30%;
+  margin-bottom: 45%;
+}
