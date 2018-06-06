@@ -5,6 +5,6 @@ import promise from 'redux-promise-middleware';
 import reducer from '../Reducers/';
 //this folder is only for creating the store which is more like a bridge to connect the reducers(data) and comtainers(dynamicly display data)
 //All data has been put in the reducer folder(specificly in the indicvidual xxReducers.js)
-// const middleware = applyMiddleware(promise(), thunk, logger())
+//const middleware = applyMiddleware(promise(), thunk, logger())
 
-export default createStore (reducer)
+export default createStore (reducer, applyMiddleware(thunk))

@@ -57,15 +57,23 @@ class LoginInput extends React.Component {
     this.props.loginDetails(this.state.login);
   }
 
+
+
+
+  
+
   render() {
     const { getFieldProps } = this.props.form;
     return (
       <div className="screen-logindetails-style">
-        <div>
+        <div className="logo-logindetails-position">
           <LogoLocation/>
         </div>
+
         <div className="input-info-style">
-          <List renderHeader={() => ''}>
+
+          <form className="form" onSubmit={this.submitInfo}>
+
             <InputItem
               {...getFieldProps('inputtitle2')}
               placeholder="E-mail"
@@ -78,8 +86,13 @@ class LoginInput extends React.Component {
             >
               <div style={lockerstyle} />
             </InputItem>
-          </List>
+
+          </form>
+
         </div>
+
+
+
         <div className="login-button-style">
           <WingBlank>
             <Link to='' >

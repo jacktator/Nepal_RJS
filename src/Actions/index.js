@@ -1,8 +1,8 @@
 import { LOGIN_DETAILS} from '../constants';
 import { QUESTIONNAIRE } from '../constants';
 
-
-import Axios from 'axios';
+//axios is for getting data from database and put them into the redux
+import axios from 'axios';
 
 
 export function loginDetails(loginDetail) {
@@ -20,33 +20,38 @@ export function addQuestionnaire(questionnaire) {
   }
   return action;
 }
+
 //==================================================================================
+
+
+
+export function loadColor(){
+  return(dispatch)=>{
+    return axios.get("http://www.colr.org/json/color/random").then((response)=>{
+      dispatch(changeColor("#"+response.data.new_color));
+    }).catch((error)=>{
+      dispatch(catchError(error))
+    })
+  };
+}
+
+
 //dispatch is for fire the functions
 //functions are for store the values that are used to change the state
 //in functions the values are binded with type which will be used in the Reducer
 
-
-export function loadColor(){
-  return(dispatch: Function)=>{
-    return Axios.get("http://www.colr.org/json/colors/random/7").then((response)=>{
-      dispatch(changeColor("#"+response.data.hex));
-    }).catch((error)=>{
-      dispatch(catchError(error))
-    })
-
-  }
-}
-
-export function changeColor(color: Object){
+export function changeColor(color){
   return {
     type:"CHANGE_COLOR",
-    color: color
+    payload: color
   }
 }
 
-export function catchError(error: Object){
+export function catchError(error){
   return{
     type: "CATCH_ERROR",
-    error: error
+    payload: error
   }
 }
+
+

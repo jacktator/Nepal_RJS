@@ -4,6 +4,7 @@ import LogoLocation from '../LogoLocation/';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import {connect} from 'react-redux';
+import './Login.css';
 
 var pastyle={
   color: '#bbb',
@@ -33,11 +34,6 @@ componentDidMount() {
           <div className="screen-login-style">
             <div className="logo-login-position">
               <LogoLocation/>
-              <WingBlank>
-                <Flex align="baseline">
-                  <Flex.Item></Flex.Item>
-                </Flex>
-              </WingBlank>
             </div>
             <div class>
               <WingBlank>
