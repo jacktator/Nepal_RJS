@@ -6,6 +6,9 @@ const StepFive = (props) => {
 
   return(
     <div>
+      <NoticeBar icon={null}>
+        The following information is anonymous
+        </NoticeBar>
       <h2 style={{textAlign: 'center'}}>Health and Wellbeing</h2>
       <br/><br/>
 

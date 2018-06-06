@@ -13,10 +13,6 @@ var normalstyle={
   backgroundColor: 'white',
   height: '200px',
 }
-var flexContainer = {
-  height: 140,
-  width: 150,
-}
 
 class Login extends Component {
   state = {
@@ -34,27 +30,22 @@ componentDidMount() {
 
   render(){
     return(
-          <div style={{backgroundColor: 'white'}}>
-            <WingBlank>
-              <Flex align="baseline">
-                <Flex.Item style={flexContainer}></Flex.Item>
-              </Flex>
-            </WingBlank>
-            <LogoLocation/>
-            <WingBlank>
-              <Flex align="baseline">
-                <Flex.Item style={flexContainer}></Flex.Item>
-              </Flex>
-            </WingBlank>
-            <div style={{height: '100px'}}>
+          <div className="screen-login-style">
+            <div className="logo-login-position">
+              <LogoLocation/>
+              <WingBlank>
+                <Flex align="baseline">
+                  <Flex.Item></Flex.Item>
+                </Flex>
+              </WingBlank>
             </div>
-            <WingBlank>
-              <Link to='signup' ><Button>Register</Button></Link><WhiteSpace /><WhiteSpace />
-              <Link to='/login/logindetails'><Button type="primary">Login</Button></Link><WhiteSpace /><WhiteSpace /><WhiteSpace />
-              <p style={pastyle}>Copyright @ 2018 Nepal</p>
-              <div style={{height: '80px', backgroundColor: '#fff' }}>
-              </div>
-            </WingBlank>
+            <div class>
+              <WingBlank>
+                <Link to='signup' ><Button>Register</Button></Link><WhiteSpace /><WhiteSpace />
+                <Link to='/login/logindetails'><Button type="primary">Login</Button></Link><WhiteSpace /><WhiteSpace /><WhiteSpace />
+                <p style={pastyle}>Copyright @ 2018 Nepal</p>
+              </WingBlank>
+            </div>
           </div>
     );
   }

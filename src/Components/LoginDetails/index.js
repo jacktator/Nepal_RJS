@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { loginDetails } from '../../Actions';
 import { List, InputItem, WhiteSpace, WingBlank,Button, Flex } from 'antd-mobile';
 import { createForm } from 'rc-form';
+import './LoginDetails.css';
 // import Locker from '../../assets/locker.png';
 import LogoLocation from '../LogoLocation';
 var lockerstyle={
@@ -18,15 +19,6 @@ var humeniconstyle={
   backgroundSize: 'cover',
   height: '22px',
   width: '22px',
-}
-var pastyle={
-  color: '#bbb',
-  textAlign: 'center',
-}
-
-var flexContainer = {
-  height: 140,
-  width: 150,
 }
 
 const isIPhone = new RegExp('\\biPhone\\b|\\biPod\\b', 'i').test(window.navigator.userAgent);
@@ -68,65 +60,50 @@ class LoginInput extends React.Component {
   render() {
     const { getFieldProps } = this.props.form;
     return (
-      <div style={{backgroundColor: 'white'}}>
-        <WingBlank>
-          <Flex align="baseline">
-            <Flex.Item style={flexContainer}></Flex.Item>
-          </Flex>
-        </WingBlank>
-        <LogoLocation/>
-        <WhiteSpace />
-        <List renderHeader={() => ''}>
-          <InputItem
-            name="email"
-            placeholder="E-mail"
-            value={this.state.login.email}
-            onChange={this.inputHandler.bind(null, 'email')}
-            >
-            <div style={humeniconstyle} />
-          </InputItem>
-          <InputItem
-            placeholder="Password"
-            type="Password"
-            value={this.state.login.password}
-            onChange={this.inputHandler.bind(null, 'password')}
-            >
-            <div style={lockerstyle} />
-          </InputItem>
-        </List>
-        <WhiteSpace /><WhiteSpace /><WhiteSpace />
-        <WingBlank>
-        <Link to=''>
-            <Button type="primary" onClick={this.loginClickHandler.bind()}>Log in</Button>
-        </Link>
-        </WingBlank>
-
-          <List.Item>
-            <WhiteSpace />
-            <div
-              style={{ width: '100%', color: '#108ee9', textAlign: 'center' }}
-            >
-            <Link to='/forgetpassword'>
-              Forget Password?
-            </Link>
-            </div>
-            <div style={{height: '100px', backgroundColor: '#fff' }}>
-            </div>
-            <div style={pastyle} >
-              Do not have account?
-            </div>
-            <div>
-            <WingBlank>
-              <Link to='/signup' >
-                <Button>Register</Button>
-              </Link>
-            </WingBlank>
-            </div>
-            <div style={{height: '90px', backgroundColor: '#fff' }}>
-            </div>
-          </List.Item>
+      <div className="screen-logindetails-style">
+        <div className="logo-logindetails-position">
+          <LogoLocation/>
         </div>
-      );
+        <div className="input-info-style">
+          <List renderHeader={() => ''}>
+            <InputItem
+              {...getFieldProps('inputtitle2')}
+              placeholder="E-mail"
+            >
+              <div style={humeniconstyle} />
+            </InputItem>
+            <InputItem
+              {...getFieldProps('inputtitle2')}
+              placeholder="Password"
+            >
+              <div style={lockerstyle} />
+            </InputItem>
+          </List>
+        </div>
+        <div className="login-button-style">
+          <WingBlank>
+            <Link to='' >
+              <Button type="primary">Log in</Button>
+            </Link>
+          </WingBlank>
+        </div>
+        <div className="forgetpassword-style">
+          <Link to='/forgetpassword' style={{color: '#bbb'}}>
+            Forget Password?
+          </Link>
+        </div>
+        <div className="doyouhaveaccount-style" >
+          Do not have account?
+        </div>
+        <div>
+          <WingBlank>
+            <Link to='/signup' >
+              <Button>Register</Button>
+            </Link>
+          </WingBlank>
+        </div>
+      </div>
+    );
     }
   }
   const LoginInputWrapper = createForm()(connect (null, { loginDetails } )(LoginInput));
