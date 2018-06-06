@@ -61,7 +61,7 @@ class LoginInput extends React.Component {
     const { getFieldProps } = this.props.form;
     return (
       <div className="screen-logindetails-style">
-        <div className="logo-logindetails-position">
+        <div>
           <LogoLocation/>
         </div>
         <div className="input-info-style">
