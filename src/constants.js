@@ -1,1 +1,2 @@
 export const LOGIN_DETAILS = 'LOGIN_DETAILS';
+export const QUESTIONNAIRE = "QUESTIONNAIRE";

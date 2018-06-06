@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import { Progress, Pagination, List, Picker, Icon, NoticeBar} from 'antd-mobile';
+
+import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
+import { connect } from 'react-redux';
+import { addQuestionnaire } from '../../Actions';
 import CurrentStep  from '../../Components/Registration/Questionnaire/Progress';
 import StepOne from '../../Components/Registration/Questionnaire/StepOne';
 import StepTwo from '../../Components/Registration/Questionnaire/StepTwo';
@@ -7,21 +12,22 @@ import StepFour from '../../Components/Registration/Questionnaire/StepFour';
 import StepFive from '../../Components/Registration/Questionnaire/StepFive';
 import StepSix from '../../Components/Registration/Questionnaire/StepSix';
 
-import { Progress, Pagination, List, Picker, Icon, NoticeBar} from 'antd-mobile';
+
 import './Questionnaire.css';
-import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
 
 
 class Questionnaire extends Component {
   constructor(props){
     super(props);
     this.state = {
+
       detail: {
         name:"",
         age:"",
         gender: "",
         currentBodyWeight: "",
       },
+
       program: {
         days: 2,
         trainingGoals: [
@@ -46,28 +52,7 @@ class Questionnaire extends Component {
       },
       currentPage: 1,
       hasError: false,
-      weightArray: [
-        {value: 1, label: '1 KG'},{value: 2, label: '2 KG'},{value: 3, label: '3 KG'},{value: 4, label: '4 KG'},{value: 5, label: '5 KG'},{value: 6, label: '6 KG'},
-        {value: 7, label: '7 KG'},{value: 8, label: '8 KG'},{value: 9, label: '8 KG'},
-      ],
-      stressArray: [
-        {value: 1, label: 'Stress free'},{value: 2, label: 'Minimally stressed'},{value: 3, label: 'Moderately stressed'},{value: 4, label: 'Highly stressed'},{value: 5, label: 'Extrembly stressed'},
-      ],
-      productivityArray: [
-        {value: 1, label: 'Not productive at all'},{value: 2, label: 'Minimally productive'},{value: 3, label: 'Moderately productive'},{value: 4, label: 'Highly productive'},{value: 5, label: 'Extrembly produvtive'},
-      ],
-      injuryArray: [
-        {value: 1, label: 'No pain'},{value: 2, label: 'Rarely in pain'},{value: 3, label: 'Sometimes in pain'},{value: 4, label: 'Regularly in pain'},{value: 5, label: 'Always in pain'},
-      ],
-      healthArray: [
-        {value: 1, label: 'Poor'},{value: 2, label: 'Fairly good'},{value: 3, label: 'Good'},{value: 4, label: 'Excellent'},
-      ],
-      activityArray: [
-        {value: 1, label: 'Sendentary'},{value: 2, label: 'Lightly active'},{value: 3, label: 'Moderately active'},{value: 4, label: 'Very active'},{value: 5, label: 'Extrembly active'},
-      ],
-      exerciseArray: [
-        {value: 1, label: 'Sendentary'},{value: 2, label: 'Lightly active'},{value: 3, label: 'Moderately active'},{value: 4, label: 'Very active'},{value: 5, label: 'Extrembly active'},
-      ],
+
       buttonText: 'Next',
 
     }
@@ -81,15 +66,11 @@ class Questionnaire extends Component {
 
   //handle the checkbox for program in questionnaire (second page)
   programCheckboxHandler = (value) => {
-    let trainingGoals = { ...this.state.program.trainingGoals}
-    trainingGoals[value].isChecked = !trainingGoals[value].isChecked;
-    this.setState( trainingGoals );
+    let program = { ...this.state.program}
+    program['trainingGoals'][value].isChecked = !program['trainingGoals'][value].isChecked;
+    this.setState( program );
   }
 
-
-  detailHandler = () => {
-    console.log("DetailHander");
-  }
   plusHandler = () =>{
     let program = this.state.program;
     program['days'] = program['days'] + 1;
@@ -185,6 +166,11 @@ class Questionnaire extends Component {
     // this.setState({ weightPicker: weight[0]})
   }
 
+//Handle the finish button of sixth page
+  onFinishButtonHandler = () => {
+    console.log("finish Button Clicked");
+    this.props.addQuestionnaire(this.state);
+  }
 
   makeNextToFinish = () => {
     let {buttonText, currentPage} = this.state;
@@ -203,6 +189,28 @@ class Questionnaire extends Component {
       { value: "Female", label: 'Female' },
       { value: "Others", label: 'Others' },
     ];
+    const weightArray= [
+      {value: 1, label: '1 KG'},{value: 2, label: '2 KG'},{value: 3, label: '3 KG'},{value: 4, label: '4 KG'},{value: 5, label: '5 KG'},{value: 6, label: '6 KG'},
+      {value: 7, label: '7 KG'},{value: 8, label: '8 KG'},{value: 9, label: '8 KG'},
+    ];
+    const stressArray= [
+      {value: 1, label: 'Stress free'},{value: 2, label: 'Minimally stressed'},{value: 3, label: 'Moderately stressed'},{value: 4, label: 'Highly stressed'},{value: 5, label: 'Extrembly stressed'},
+    ];
+    const productivityArray = [
+      {value: 1, label: 'Not productive at all'},{value: 2, label: 'Minimally productive'},{value: 3, label: 'Moderately productive'},{value: 4, label: 'Highly productive'},{value: 5, label: 'Extrembly produvtive'},
+    ];
+    const injuryArray = [
+      {value: 1, label: 'No pain'},{value: 2, label: 'Rarely in pain'},{value: 3, label: 'Sometimes in pain'},{value: 4, label: 'Regularly in pain'},{value: 5, label: 'Always in pain'},
+    ];
+    const healthArray = [
+      {value: 1, label: 'Poor'},{value: 2, label: 'Fairly good'},{value: 3, label: 'Good'},{value: 4, label: 'Excellent'},
+    ];
+    const activityArray= [
+      {value: 1, label: 'Sendentary'},{value: 2, label: 'Lightly active'},{value: 3, label: 'Moderately active'},{value: 4, label: 'Very active'},{value: 5, label: 'Extrembly active'},
+    ];
+    const exerciseArray= [
+      {value: 1, label: 'Sendentary'},{value: 2, label: 'Lightly active'},{value: 3, label: 'Moderately active'},{value: 4, label: 'Very active'},{value: 5, label: 'Extrembly active'},
+    ];
 
     let RenderPage = null;
     if(this.state.currentPage === 1){
@@ -211,7 +219,7 @@ class Questionnaire extends Component {
            change={this.inputItemHandler}
            detail={this.state.detail}
            radioData={radioData}
-           weightArray={this.state.weightArray}
+           weightArray={weightArray}
            selectWeight={this.onWeightPicker}
            radioHandler = {this.genderHandler}
         />
@@ -235,10 +243,10 @@ class Questionnaire extends Component {
     }else if(this.state.currentPage === 4){
       RenderPage = (
         <StepFour
-          stressArray={this.state.stressArray}
+          stressArray={stressArray}
           selectStress={this.onStressPicker}
           stressAndProductivity = {this.state.stressAndProductivity}
-          productivityArray={this.state.productivityArray}
+          productivityArray={productivityArray}
           selectProductivity={this.onProductivityPicker}
         />
       );
@@ -246,10 +254,10 @@ class Questionnaire extends Component {
     } else if(this.state.currentPage === 5){
       RenderPage = (
         <StepFive
-          injuryArray={this.state.injuryArray}
+          injuryArray={injuryArray}
           selectInjury={this.onInjuryPicker}
           healthAndWellbeing = {this.state.healthAndWellbeing}
-          healthArray={this.state.healthArray}
+          healthArray={healthArray}
           selectHealth={this.onHealthPicker}
         />
       );
@@ -257,11 +265,12 @@ class Questionnaire extends Component {
     }else if(this.state.currentPage === 6){
       RenderPage = (
         <StepSix
-          activityArray={this.state.activityArray}
+          activityArray={activityArray}
           selectActivity={this.onActivityPicker}
           generalActivity = {this.state.generalActivity}
-          exerciseArray={this.state.exerciseArray}
+          exerciseArray={exerciseArray}
           selectExercise={this.onExercisePicker}
+          finishButtonHandler = {this.onFinishButtonHandler}
         />
       );
     }
@@ -296,4 +305,8 @@ class Questionnaire extends Component {
     )
   }
 }
-export default Questionnaire;
+function mapStateToProps(state){
+  console.log(state);
+  return null;
+}
+export default connect (mapStateToProps, { addQuestionnaire })(Questionnaire);

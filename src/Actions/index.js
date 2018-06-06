@@ -1,4 +1,5 @@
 import { LOGIN_DETAILS} from '../constants';
+import { QUESTIONNAIRE } from '../constants';
 
 export function loginDetails(loginDetail) {
   const action = {
@@ -7,10 +8,11 @@ export function loginDetails(loginDetail) {
   }
   return action;
 }
-export function Questionnaire(detail) {
+
+export function addQuestionnaire(questionnaire) {
   const action = {
-    type: LOGIN_DETAILS,
-    detail
+    type: QUESTIONNAIRE,
+    questionnaire
   }
   return action;
 }

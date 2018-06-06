@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, InputItem, Radio, Picker, WhiteSpace, NoticeBar} from 'antd-mobile';
+import { List, InputItem, Radio, Picker, WhiteSpace, NoticeBar, Button} from 'antd-mobile';
 import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
 
 const StepSix = (props) => {
@@ -34,7 +34,11 @@ const StepSix = (props) => {
         >
         <List.Item arrow="horizontal">Health:</List.Item>
       </Picker>
-
+      <div className="finish-button">
+        <Button type="primary" onClick={() => props.finishButtonHandler()} inline size="medium" style={{ float: 'right', marginTop:'10px', marginRight: '4px' }}>
+           Finish
+        </Button>
+      </div>
     </div>
   )
 
