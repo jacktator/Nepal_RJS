@@ -24,7 +24,7 @@ export default class Launch extends Component {
   render() {
     return (
       <div className="screen-launch-style">
-        <div className="logo-launch-position">
+        <div >
           <WingBlank>
             <Flex align="baseline">
               <Flex.Item ></Flex.Item>
