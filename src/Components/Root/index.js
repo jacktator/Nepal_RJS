@@ -8,6 +8,7 @@ import LoginDetails from '../LoginDetails/';
 import Questionnaire from '../../Containers/Registration/Questionnaire';
 import Check from '../../Containers/Registration/check';
 import ForgetPassWord from '../ForgetPassWord/';
+//import hashHistory from 'react-router-dom';
 
 
 

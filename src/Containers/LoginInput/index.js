@@ -22,18 +22,19 @@ class LoginInput extends Component{
   componentDidMount() {
     // this.autoFocusInst.focus();
   }
-  handleClick = () => {
-    this.inputRef.focus();
+  clickHandler = () => {
+    console.log();
   }
 
   render(){
     return(
       <div className="input-info-style">
-        <form className="form" onSubmit={this.props.getEmail}>
+        <form className="form" onSubmit={this.props.getInput}>
           <InputItem
             placeholder="E-mail"
             type="text"
             name="email"
+
           >
             <div style={humeniconstyle} />
           </InputItem>
@@ -42,11 +43,13 @@ class LoginInput extends Component{
             type="password"
             name="password"
             // ref={re => this.inputValue = re}
-            // onChange={this.props.handleChange(this.inputRef)}
+            // onChange={this.props.handleChange}
           >
             <div style={lockerstyle} />
           </InputItem>
-          <button className="login-button-style">Submit</button>
+          <div >
+            <button className="login-button-style" ><Button type="primary">Submit</Button></button>
+          </div>
         </form>
       </div>
     )

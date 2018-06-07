@@ -1,4 +1,6 @@
 import axios from 'axios';
+import hashHistory from 'react-router';
+
 
 export function LoginAction(email, password){
   return(dispatch)=>{
@@ -9,13 +11,16 @@ export function LoginAction(email, password){
     .then((response)=>{
       let token = response.data.token
       console.log("%%%%%%%%%" + token);
+
       // dispatch(upDateToken(token))
 
-      // dispatch(addEmail(email)),
-      // console.log(email)
-      //
-      // dispatch(addPassword(password)),
-      // console.log(password)
+      dispatch(addEmail(email));
+      console.log(email)
+      dispatch(addPassword(password));
+      console.log(password)
+
+
+
 
     }).catch((error)=>{
       dispatch(catchError(error))

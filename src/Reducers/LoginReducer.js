@@ -1,3 +1,4 @@
+//this file is for getting the email and password
 
 let DefaultState=
   {
@@ -11,8 +12,8 @@ const LoginReducer = (state=DefaultState, action)=>{
     return {
       ...state, email: action.payload
     }
-
   }
+
   else if (action.type==="ADD_PASSWORD"){
     console.log("add email: "+ action.payload)
     return {
@@ -21,5 +22,4 @@ const LoginReducer = (state=DefaultState, action)=>{
   }
   return state;
 }
-
 export default LoginReducer;

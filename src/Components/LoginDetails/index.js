@@ -14,21 +14,25 @@ import axios from 'axios';
 
 
 class ComponentLoginInput extends React.Component {
+  state={
+    email:'',
+    password:'',
+
+  }
 
 //this function is for input values(onChange())
-  handleChange=(inputValue)=>{
+  // handleChange = (value) => {
+  //   this.setState({email: value});
+  //   console.log(this.state.email);
+  // }
 
-    this.setState({name: inputValue})
-    console.log(this.state.name)
-  }
-
-  submitInfo=(e)=>{
-    e.preventDefault();
-    console.log('this is working ')
-  }
+  // submitInfo=(e)=>{
+  //   e.preventDefault();
+  //   console.log('this is working ')
+  // }
 
 //this function is for submit value(onSubmit())
-  getEmail = (e) =>{
+  getInput = (e) =>{
     e.preventDefault();
     const email = e.target.email.value;
     console.log('now i get the email value is : '+ email);
@@ -70,7 +74,7 @@ class ComponentLoginInput extends React.Component {
           <LogoLocation/>
         </div>
         <div>
-        <LoginInput getEmail={this.getEmail} handleChange={this.handleChange}/>
+          <LoginInput getInput={this.getInput.bind(this)}/>
         </div>
         <div className="forgetpassword-style">
           <Link to='/forgetpassword' style={{color: '#bbb'}}>
