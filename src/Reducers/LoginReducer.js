@@ -1,27 +1,25 @@
 
-let infiState=
+let DefaultState=
   {
     email:'',
     password:'',
   }
 
-const loginReducer = (state=infiState, action)=>{
+const LoginReducer = (state=DefaultState, action)=>{
   if(action.type==="ADD_EMAIL"){
+    console.log("add email: "+ action.payload)
     return {
       ...state, email: action.payload
     }
 
   }
   else if (action.type==="ADD_PASSWORD"){
+    console.log("add email: "+ action.payload)
     return {
       ...state, password: action.payload
     }
   }
-  else{
-    return {
-      ...state
-    }
-  }
+  return state;
 }
 
-export default loginReducer
+export default LoginReducer;

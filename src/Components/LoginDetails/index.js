@@ -1,49 +1,20 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import { loginDetails } from '../../Actions';
+// import { loginDetails } from '../../Actions';
 import { List, InputItem, WhiteSpace, WingBlank,Button, Flex } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import './LoginDetails.css';
 import LogoLocation from '../LogoLocation';
 import LoginInput from '../../Containers/LoginInput/';
-//================================================================================
+
 import {connect} from 'react-redux';
 import {LoginAction} from '../../Actions/LoginAction';
 import {bindActionCreators} from 'redux';
 import axios from 'axios';
 
 
-
 class ComponentLoginInput extends React.Component {
 
-  constructor(props){
-    super(props);
-    this.state={
-      email:'',
-      password:'',
-      name: '',
-    }
-  }
-
-  componentDidMount() {
-    // this.autoFocusInst.focus();
-  }
-  handleClick = () => {
-    this.customFocusInst.focus();
-  }
-
-  //Handle the input of the field to the state
-  inputHandler = (key, val) => {
-    let login = { ...this.state.login};
-    login[key] = val;
-    this.setState({login});
-  }
-
-  //Handle the click event for login button
-  loginClickHandler = () => {
-    this.props.loginDetails(this.state.login);
-  }
-//==============================================================================
 //this function is for input values(onChange())
   handleChange=(inputValue)=>{
 
@@ -60,19 +31,23 @@ class ComponentLoginInput extends React.Component {
   getEmail = (e) =>{
     e.preventDefault();
     const email = e.target.email.value;
-    console.log(email);
-
+    console.log('now i get the email value is : '+ email);
     const password = e.target.password.value;
-    console.log(password);
+    console.log('now i get the password value is : '+ password);
+    this.props.LoginAction(email,password);
 
     // axios.get(`https://api.github.com/users/${email}`)
     // .then((res)=>{
     //   console.log(res);
     //   console.log(res.data);
     // })
+  }
 
-    this.props.LoginAction(email, password);
-
+  getPassword=(e)=>{
+    e.preventDefault();
+    const password = e.target.password.value;
+    console.log('now i get the password value is : '+ password);
+    this.props.addPassword(password);
   }
 
   infoSubmit=(e)=>{
@@ -116,7 +91,6 @@ class ComponentLoginInput extends React.Component {
     );
     }
   }
-  const ComponentLoginInputWrapper = createForm()(connect (null, { loginDetails } )(ComponentLoginInput));
 
   function mapStateToProps(state){
      return {
@@ -125,11 +99,40 @@ class ComponentLoginInput extends React.Component {
   }
 
   function matchDispatchToProps(dispatch){
-    return bindActionCreators({
-      LoginAction: LoginAction
-    }, dispatch);
+    return bindActionCreators({LoginAction: LoginAction}, dispatch);
   }
 
 
+  const ComponentLoginInputWrapper = createForm()(connect (mapStateToProps, matchDispatchToProps )(ComponentLoginInput));
 
-  export default connect(mapStateToProps, matchDispatchToProps)(ComponentLoginInputWrapper);
+  export default ComponentLoginInputWrapper;
+
+
+
+  // constructor(props){
+  //   super(props);
+  //   this.state={
+  //     email:'',
+  //     password:'',
+  //     name: '',
+  //   }
+  // }
+
+  // componentDidMount() {
+  //   // this.autoFocusInst.focus();
+  // }
+  // handleClick = () => {
+  //   this.customFocusInst.focus();
+  // }
+  //
+  // //Handle the input of the field to the state
+  // inputHandler = (key, val) => {
+  //   let login = { ...this.state.login};
+  //   login[key] = val;
+  //   this.setState({login});
+  // }
+  //
+  // //Handle the click event for login button
+  // loginClickHandler = () => {
+  //   this.props.loginDetails(this.state.login);
+  // }

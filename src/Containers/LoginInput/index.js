@@ -18,7 +18,6 @@ var humeniconstyle={
   width: '22px',
 }
 
-
 class LoginInput extends Component{
   componentDidMount() {
     // this.autoFocusInst.focus();
@@ -35,7 +34,6 @@ class LoginInput extends Component{
             placeholder="E-mail"
             type="text"
             name="email"
-            onChange={this.props.handleChange}
           >
             <div style={humeniconstyle} />
           </InputItem>
@@ -43,6 +41,8 @@ class LoginInput extends Component{
             placeholder="Password"
             type="password"
             name="password"
+            // ref={re => this.inputValue = re}
+            // onChange={this.props.handleChange(this.inputRef)}
           >
             <div style={lockerstyle} />
           </InputItem>
