@@ -30,6 +30,16 @@ if (isIPhone) {
 }
 
 class LoginInput extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state={
+      email:'',
+      password:'',
+    }
+    this.onChange = this.onChange.bind(this);
+  }
+
   state = {
     type: 'money',
     login: {
@@ -57,10 +67,18 @@ class LoginInput extends React.Component {
     this.props.loginDetails(this.state.login);
   }
 
+  submitInfo=(e)=>{
+    e.preventDefault();
+    console.log('this is working ')
+
+  }
+  onChange(e){
+    const a = e.target.value;
+    this.setState({email: a})
+  }
 
 
 
-  
 
   render() {
     const { getFieldProps } = this.props.form;
@@ -70,19 +88,27 @@ class LoginInput extends React.Component {
           <LogoLocation/>
         </div>
 
+
+
         <div className="input-info-style">
 
-          <form className="form" onSubmit={this.submitInfo}>
+          <form className="form" onSubmit={this.submitInfo.bind(this)}>
 
             <InputItem
-              {...getFieldProps('inputtitle2')}
+              {...getFieldProps('inputInfo1')}
               placeholder="E-mail"
+              type="text"
+              name="email"
+              onChange={this.onChange}
             >
               <div style={humeniconstyle} />
             </InputItem>
             <InputItem
-              {...getFieldProps('inputtitle2')}
+              {...getFieldProps('inputInfo2')}
               placeholder="Password"
+              type="password"
+              name="password"
+
             >
               <div style={lockerstyle} />
             </InputItem>
@@ -96,7 +122,7 @@ class LoginInput extends React.Component {
         <div className="login-button-style">
           <WingBlank>
             <Link to='' >
-              <Button type="primary">Log in</Button>
+              <Button type="primary" onClick={this.submitInfo}>Log in</Button>
             </Link>
           </WingBlank>
         </div>
