@@ -69,6 +69,8 @@ class Launch extends Component {
  function matchDispatchToProps(dispatch){
    return bindActionCreators({loadColor: loadColor}, dispatch);
  }
-
+// return bindActionCreators({
+//   loadColor: (ele)=> dispatch(loadColor(ele)),
+// });
 
  export default connect(mapStateToProps, matchDispatchToProps)(Launch);

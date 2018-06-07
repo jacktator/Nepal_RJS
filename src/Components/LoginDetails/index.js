@@ -1,50 +1,27 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import { connect } from 'react-redux';
 import { loginDetails } from '../../Actions';
 import { List, InputItem, WhiteSpace, WingBlank,Button, Flex } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import './LoginDetails.css';
-// import Locker from '../../assets/locker.png';
 import LogoLocation from '../LogoLocation';
-var lockerstyle={
-  backgroundImage: 'url(https://png.icons8.com/ios/50/000000/lock.png)',
-  backgroundSize: 'cover',
-  height: '22px',
-  width: '22px',
-}
+import LoginInput from '../../Containers/LoginInput/';
+//================================================================================
+import {connect} from 'react-redux';
+import {LoginAction} from '../../Actions/LoginAction';
+import {bindActionCreators} from 'redux';
+import axios from 'axios';
 
-var humeniconstyle={
-  backgroundImage: 'url(https://png.icons8.com/ios/50/000000/gender-neutral-user.png)',
-  backgroundSize: 'cover',
-  height: '22px',
-  width: '22px',
-}
 
-const isIPhone = new RegExp('\\biPhone\\b|\\biPod\\b', 'i').test(window.navigator.userAgent);
-let moneyKeyboardWrapProps;
-if (isIPhone) {
-  moneyKeyboardWrapProps = {
-    onTouchStart: e => e.preventDefault(),
-  };
-}
 
-class LoginInput extends React.Component {
+class ComponentLoginInput extends React.Component {
 
   constructor(props){
     super(props);
     this.state={
       email:'',
       password:'',
-    }
-    this.onChange = this.onChange.bind(this);
-  }
-
-  state = {
-    type: 'money',
-    login: {
-      email: "",
-      password: ""
+      name: '',
     }
   }
 
@@ -66,19 +43,49 @@ class LoginInput extends React.Component {
   loginClickHandler = () => {
     this.props.loginDetails(this.state.login);
   }
+//==============================================================================
+//this function is for input values(onChange())
+  handleChange=(inputValue)=>{
+
+    this.setState({name: inputValue})
+    console.log(this.state.name)
+  }
 
   submitInfo=(e)=>{
     e.preventDefault();
     console.log('this is working ')
-
-  }
-  onChange(e){
-    const a = e.target.value;
-    this.setState({email: a})
   }
 
+//this function is for submit value(onSubmit())
+  getEmail = (e) =>{
+    e.preventDefault();
+    const email = e.target.email.value;
+    console.log(email);
 
+    const password = e.target.password.value;
+    console.log(password);
 
+    // axios.get(`https://api.github.com/users/${email}`)
+    // .then((res)=>{
+    //   console.log(res);
+    //   console.log(res.data);
+    // })
+
+    this.props.LoginAction(email, password);
+
+  }
+
+  infoSubmit=(e)=>{
+    e.preventDefault();
+    const user = {
+      name: this.state.name,
+    };
+
+    axios.post(`https://jsonplaceholder.typicode.com/users`, {user})
+    .then((res)=>{
+      console.log(res);
+    })
+  }
 
   render() {
     const { getFieldProps } = this.props.form;
@@ -87,44 +94,8 @@ class LoginInput extends React.Component {
         <div className="logo-logindetails-position">
           <LogoLocation/>
         </div>
-
-
-
-        <div className="input-info-style">
-
-          <form className="form" onSubmit={this.submitInfo.bind(this)}>
-
-            <InputItem
-              {...getFieldProps('inputInfo1')}
-              placeholder="E-mail"
-              type="text"
-              name="email"
-              onChange={this.onChange}
-            >
-              <div style={humeniconstyle} />
-            </InputItem>
-            <InputItem
-              {...getFieldProps('inputInfo2')}
-              placeholder="Password"
-              type="password"
-              name="password"
-
-            >
-              <div style={lockerstyle} />
-            </InputItem>
-
-          </form>
-
-        </div>
-
-
-
-        <div className="login-button-style">
-          <WingBlank>
-            <Link to='' >
-              <Button type="primary" onClick={this.submitInfo}>Log in</Button>
-            </Link>
-          </WingBlank>
+        <div>
+        <LoginInput getEmail={this.getEmail} handleChange={this.handleChange}/>
         </div>
         <div className="forgetpassword-style">
           <Link to='/forgetpassword' style={{color: '#bbb'}}>
@@ -145,6 +116,20 @@ class LoginInput extends React.Component {
     );
     }
   }
-  const LoginInputWrapper = createForm()(connect (null, { loginDetails } )(LoginInput));
+  const ComponentLoginInputWrapper = createForm()(connect (null, { loginDetails } )(ComponentLoginInput));
 
-  export default LoginInputWrapper;
+  function mapStateToProps(state){
+     return {
+       LoginState: state.Login,
+     }
+  }
+
+  function matchDispatchToProps(dispatch){
+    return bindActionCreators({
+      LoginAction: LoginAction
+    }, dispatch);
+  }
+
+
+
+  export default connect(mapStateToProps, matchDispatchToProps)(ComponentLoginInputWrapper);
