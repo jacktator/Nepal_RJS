@@ -46,10 +46,11 @@ componentDidMount() {
     );
   }
 }
-function mapStateToProps(state){
-  console.log("mapStateToProps", state);
-  const loginDetail = state.loginDetail.loginDetail ? state.loginDetail.loginDetail: null;
-
-  return loginDetail;
-}
-export default connect(mapStateToProps)(Login);
+// function mapStateToProps(state){
+//   console.log("mapStateToProps", state);
+//   const loginDetail = state.loginDetail.loginDetail ? state.loginDetail.loginDetail: null;
+//
+//   return loginDetail;
+// }
+// export default connect(mapStateToProps)(Login);
+export default Login;

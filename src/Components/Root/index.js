@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter, Route, Switch,} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import 'antd-mobile/dist/antd-mobile.css';
 import Launch from '../Launch/';
 import Login from '../Login/';
@@ -8,11 +8,10 @@ import LoginDetails from '../LoginDetails/';
 import Questionnaire from '../../Containers/Registration/Questionnaire';
 import Check from '../../Containers/Registration/check';
 import ForgetPassWord from '../ForgetPassWord/';
-//import hashHistory from 'react-router-dom';
+//import {connect} from 'react-redux';
 
 
-
-export default class Root extends Component{
+class Root extends Component{
 
   render(){
     return(
@@ -28,11 +27,9 @@ export default class Root extends Component{
             <Route path="/forgetpassword" exact component={ForgetPassWord} />
           </Switch>
         </BrowserRouter>
-
       </div>
     );
   }
 }
 
-// <Route path="/signup" exact component={SignUp} />
-// </Route>
+export default Root;

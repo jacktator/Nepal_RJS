@@ -6,7 +6,6 @@ import { createForm } from 'rc-form';
 import './LoginDetails.css';
 import LogoLocation from '../LogoLocation';
 import LoginInput from '../../Containers/LoginInput/';
-
 import {connect} from 'react-redux';
 import {LoginAction} from '../../Actions/LoginAction';
 import {bindActionCreators} from 'redux';
@@ -14,12 +13,6 @@ import axios from 'axios';
 
 
 class ComponentLoginInput extends React.Component {
-  state={
-    email:'',
-    password:'',
-
-  }
-
 //this function is for input values(onChange())
   // handleChange = (value) => {
   //   this.setState({email: value});
@@ -32,39 +25,39 @@ class ComponentLoginInput extends React.Component {
   // }
 
 //this function is for submit value(onSubmit())
+  // componentWillUpdate(nextProps, nextState){
+  //   window.localStorage.setItem('token', this.props.LoginState.token);
+  //   console.log("I have got the token value :" + window.localStorage.token)
+  // }
+
   getInput = (e) =>{
     e.preventDefault();
     const email = e.target.email.value;
-    console.log('now i get the email value is : '+ email);
+    //console.log('now i get the email value is : '+ email);
     const password = e.target.password.value;
-    console.log('now i get the password value is : '+ password);
+    //console.log('now i get the password value is : '+ password);
     this.props.LoginAction(email,password);
 
-    // axios.get(`https://api.github.com/users/${email}`)
-    // .then((res)=>{
-    //   console.log(res);
-    //   console.log(res.data);
-    // })
   }
 
-  getPassword=(e)=>{
-    e.preventDefault();
-    const password = e.target.password.value;
-    console.log('now i get the password value is : '+ password);
-    this.props.addPassword(password);
-  }
-
-  infoSubmit=(e)=>{
-    e.preventDefault();
-    const user = {
-      name: this.state.name,
-    };
-
-    axios.post(`https://jsonplaceholder.typicode.com/users`, {user})
-    .then((res)=>{
-      console.log(res);
-    })
-  }
+  // getPassword=(e)=>{
+  //   e.preventDefault();
+  //   const password = e.target.password.value;
+  //   console.log('now i get the password value is : '+ password);
+  //   this.props.addPassword(password);
+  // }
+  //
+  // infoSubmit=(e)=>{
+  //   e.preventDefault();
+  //   const user = {
+  //     name: this.state.name,
+  //   };
+  //
+  //   axios.post(`https://jsonplaceholder.typicode.com/users`, {user})
+  //   .then((res)=>{
+  //     console.log(res);
+  //   })
+  // }
 
   render() {
     const { getFieldProps } = this.props.form;
