@@ -1,3 +1,4 @@
+//@flow
 import React, { Component } from 'react';
 import { Progress, Pagination, List, Picker, Icon, NoticeBar} from 'antd-mobile';
 
@@ -95,7 +96,7 @@ class Questionnaire extends Component {
     console.log(this.state.detail);
   };
 
-//handle the input filed for stepOne
+  //handle the input filed for stepOne
   inputItemHandler = (step, assignTo, data) => {
     //step refers to the six different steps
     //assign refers to particular data such as name or age.
@@ -166,7 +167,7 @@ class Questionnaire extends Component {
     // this.setState({ weightPicker: weight[0]})
   }
 
-//Handle the finish button of sixth page
+  //Handle the finish button of sixth page
   onFinishButtonHandler = () => {
     console.log("finish Button Clicked");
     this.props.addQuestionnaire(this.state);
@@ -216,61 +217,61 @@ class Questionnaire extends Component {
     if(this.state.currentPage === 1){
       RenderPage = (
         <StepOne
-           change={this.inputItemHandler}
-           detail={this.state.detail}
-           radioData={radioData}
-           weightArray={weightArray}
-           selectWeight={this.onWeightPicker}
-           radioHandler = {this.genderHandler}
+        change={this.inputItemHandler}
+        detail={this.state.detail}
+        radioData={radioData}
+        weightArray={weightArray}
+        selectWeight={this.onWeightPicker}
+        radioHandler = {this.genderHandler}
         />
       );
     } else if(this.state.currentPage === 2){
       RenderPage = (
         <StepTwo
-         plus={this.plusHandler}
-         minus={this.minusHandler}
-         days={this.state.program.days}
-         change={this.programCheckboxHandler}
-         data={this.state.program.trainingGoals}
+        plus={this.plusHandler}
+        minus={this.minusHandler}
+        days={this.state.program.days}
+        change={this.programCheckboxHandler}
+        data={this.state.program.trainingGoals}
         />
       );
     } else if(this.state.currentPage === 3){
       RenderPage = (
         <StepThree
-         change={this.injuryManagementCheckboxHandler}
+        change={this.injuryManagementCheckboxHandler}
         />
       );
     }else if(this.state.currentPage === 4){
       RenderPage = (
         <StepFour
-          stressArray={stressArray}
-          selectStress={this.onStressPicker}
-          stressAndProductivity = {this.state.stressAndProductivity}
-          productivityArray={productivityArray}
-          selectProductivity={this.onProductivityPicker}
+        stressArray={stressArray}
+        selectStress={this.onStressPicker}
+        stressAndProductivity = {this.state.stressAndProductivity}
+        productivityArray={productivityArray}
+        selectProductivity={this.onProductivityPicker}
         />
       );
 
     } else if(this.state.currentPage === 5){
       RenderPage = (
         <StepFive
-          injuryArray={injuryArray}
-          selectInjury={this.onInjuryPicker}
-          healthAndWellbeing = {this.state.healthAndWellbeing}
-          healthArray={healthArray}
-          selectHealth={this.onHealthPicker}
+        injuryArray={injuryArray}
+        selectInjury={this.onInjuryPicker}
+        healthAndWellbeing = {this.state.healthAndWellbeing}
+        healthArray={healthArray}
+        selectHealth={this.onHealthPicker}
         />
       );
 
     }else if(this.state.currentPage === 6){
       RenderPage = (
         <StepSix
-          activityArray={activityArray}
-          selectActivity={this.onActivityPicker}
-          generalActivity = {this.state.generalActivity}
-          exerciseArray={exerciseArray}
-          selectExercise={this.onExercisePicker}
-          finishButtonHandler = {this.onFinishButtonHandler}
+        activityArray={activityArray}
+        selectActivity={this.onActivityPicker}
+        generalActivity = {this.state.generalActivity}
+        exerciseArray={exerciseArray}
+        selectExercise={this.onExercisePicker}
+        finishButtonHandler = {this.onFinishButtonHandler}
         />
       );
     }
@@ -282,24 +283,24 @@ class Questionnaire extends Component {
     };
     return(
       <div className="container">
-        <div className= "content-without-pagination">
-          <div className="progress-bar">
-            <div className="progress"><Progress percent={percent} position="normal" /></div>
-            <div aria-hidden="true">{percent}%</div>
-          </div>
-          <CurrentStep currentPage={this.state.currentPage}/>
-          {RenderPage}
-        </div>
-        <div className="pagination-container">
-            <Pagination
-              total={6}
-              current={this.state.currentPage}
-              onChange={p => this.onPaginationHandler(p)}
-              locale={{
-                prevText: (<span className="arrow-align"><Icon type="left" />Prev</span>),
-                nextText: (<span className="arrow-align"><Icon type="right" />{this.makeNextToFinish()}</span>),
-              }} />
-         </div>
+      <div className= "content-without-pagination">
+      <div className="progress-bar">
+      <div className="progress"><Progress percent={percent} position="normal" /></div>
+      <div aria-hidden="true">{percent}%</div>
+      </div>
+      <CurrentStep currentPage={this.state.currentPage}/>
+      {RenderPage}
+      </div>
+      <div className="pagination-container">
+      <Pagination
+      total={6}
+      current={this.state.currentPage}
+      onChange={p => this.onPaginationHandler(p)}
+      locale={{
+        prevText: (<span className="arrow-align"><Icon type="left" />Prev</span>),
+        nextText: (<span className="arrow-align"><Icon type="right" />{this.makeNextToFinish()}</span>),
+      }} />
+      </div>
       </div>
 
     )
