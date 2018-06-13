@@ -20,14 +20,14 @@ class Login extends Component {
     Nepal: []
   }
 
-componentDidMount() {
-  // console.log("componentDidMount");
-  // axios.get('https://jsonplaceholder.typicode.com/posts')
-  //   .then(response => {
-  //     console.log("componentDidMount");
-  //     console.log(response);
-  //   })
-}
+  componentDidMount() {
+    // console.log("componentDidMount");
+    // axios.get('https://jsonplaceholder.typicode.com/posts')
+    //   .then(response => {
+    //     console.log("componentDidMount");
+    //     console.log(response);
+    //   })
+  }
 
   render(){
     return(

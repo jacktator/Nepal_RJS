@@ -4,13 +4,13 @@ import { Progress, Pagination, List, Picker, Icon, NoticeBar} from 'antd-mobile'
 import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
 import { connect } from 'react-redux';
 import { addQuestionnaire } from '../../Actions';
-import CurrentStep  from '../../Components/Registration/Questionnaire/Progress';
-import StepOne from '../../Components/Registration/Questionnaire/StepOne';
-import StepTwo from '../../Components/Registration/Questionnaire/StepTwo';
-import StepThree from '../../Components/Registration/Questionnaire/StepThree';
-import StepFour from '../../Components/Registration/Questionnaire/StepFour';
-import StepFive from '../../Components/Registration/Questionnaire/StepFive';
-import StepSix from '../../Components/Registration/Questionnaire/StepSix';
+import CurrentStep  from '../../Components/Questionnaire/Progress';
+import StepOne from '../../Components/Questionnaire/StepOne';
+import StepTwo from '../../Components/Questionnaire/StepTwo';
+import StepThree from '../../Components/Questionnaire/StepThree';
+import StepFour from '../../Components/Questionnaire/StepFour';
+import StepFive from '../../Components/Questionnaire/StepFive';
+import StepSix from '../../Components/Questionnaire/StepSix';
 
 
 import './Questionnaire.css';

@@ -12,23 +12,7 @@ import {bindActionCreators} from 'redux';
 import axios from 'axios';
 
 
-class ComponentLoginInput extends React.Component {
-//this function is for input values(onChange())
-  // handleChange = (value) => {
-  //   this.setState({email: value});
-  //   console.log(this.state.email);
-  // }
-
-  // submitInfo=(e)=>{
-  //   e.preventDefault();
-  //   console.log('this is working ')
-  // }
-
-//this function is for submit value(onSubmit())
-  // componentWillUpdate(nextProps, nextState){
-  //   window.localStorage.setItem('token', this.props.LoginState.token);
-  //   console.log("I have got the token value :" + window.localStorage.token)
-  // }
+class LoginDetails extends React.Component {
 
   getInput = (e) =>{
     e.preventDefault();
@@ -39,25 +23,6 @@ class ComponentLoginInput extends React.Component {
     this.props.LoginAction(email,password);
 
   }
-
-  // getPassword=(e)=>{
-  //   e.preventDefault();
-  //   const password = e.target.password.value;
-  //   console.log('now i get the password value is : '+ password);
-  //   this.props.addPassword(password);
-  // }
-  //
-  // infoSubmit=(e)=>{
-  //   e.preventDefault();
-  //   const user = {
-  //     name: this.state.name,
-  //   };
-  //
-  //   axios.post(`https://jsonplaceholder.typicode.com/users`, {user})
-  //   .then((res)=>{
-  //     console.log(res);
-  //   })
-  // }
 
   render() {
     const { getFieldProps } = this.props.form;
@@ -100,9 +65,9 @@ class ComponentLoginInput extends React.Component {
   }
 
 
-  const ComponentLoginInputWrapper = createForm()(connect (mapStateToProps, matchDispatchToProps )(ComponentLoginInput));
+  const LoginDetailsWrapper = createForm()(connect (null, null )(LoginDetails));
 
-  export default ComponentLoginInputWrapper;
+  export default LoginDetailsWrapper;
 
 
 
@@ -133,3 +98,39 @@ class ComponentLoginInput extends React.Component {
   // loginClickHandler = () => {
   //   this.props.loginDetails(this.state.login);
   // }
+
+  // getPassword=(e)=>{
+  //   e.preventDefault();
+  //   const password = e.target.password.value;
+  //   console.log('now i get the password value is : '+ password);
+  //   this.props.addPassword(password);
+  // }
+  //
+  // infoSubmit=(e)=>{
+  //   e.preventDefault();
+  //   const user = {
+  //     name: this.state.name,
+  //   };
+  //
+  //   axios.post(`https://jsonplaceholder.typicode.com/users`, {user})
+  //   .then((res)=>{
+  //     console.log(res);
+  //   })
+  // }
+
+  //this function is for input values(onChange())
+    // handleChange = (value) => {
+    //   this.setState({email: value});
+    //   console.log(this.state.email);
+    // }
+
+    // submitInfo=(e)=>{
+    //   e.preventDefault();
+    //   console.log('this is working ')
+    // }
+
+  //this function is for submit value(onSubmit())
+    // componentWillUpdate(nextProps, nextState){
+    //   window.localStorage.setItem('token', this.props.LoginState.token);
+    //   console.log("I have got the token value :" + window.localStorage.token)
+    // }

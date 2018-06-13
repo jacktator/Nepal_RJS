@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
 import UserReducer from './userReducers';
 import ActReducer from './actReducer';
-import loginDetail from './login_detail';
+import LoginDetailsReducers from '../Containers/LoginDetailsContainer/reducer';
 import questionnaire from './questionnaire';
 import Test from './test';
 import Login from './LoginReducer';
@@ -10,12 +10,11 @@ import Login from './LoginReducer';
 //now Reducer represnts data union
 
 const Reducer = combineReducers({
-  loginDetail,
   questionnaire,
   Users: UserReducer,
   Act: ActReducer,
   Test,
-  Login,
+  LoginDetailsStates: LoginDetailsReducers
 })
 
 export default Reducer;

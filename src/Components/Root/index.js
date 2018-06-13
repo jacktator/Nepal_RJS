@@ -5,7 +5,7 @@ import Launch from '../Launch/';
 import Login from '../Login/';
 import SignUp from '../SignUp/';
 import LoginDetails from '../LoginDetails/';
-import Questionnaire from '../../Containers/Registration/Questionnaire';
+import Questionnaire from '../../Containers/QuestionnaireContainer/';
 import Check from '../../Containers/Registration/check';
 import ForgetPassWord from '../ForgetPassWord/';
 //import {connect} from 'react-redux';
