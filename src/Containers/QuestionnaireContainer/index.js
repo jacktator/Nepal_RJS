@@ -1,4 +1,4 @@
-//@flow
+// @flow
 import React, { Component } from 'react';
 import { Progress, Pagination, List, Picker, Icon, NoticeBar} from 'antd-mobile';
 
@@ -39,7 +39,13 @@ class Questionnaire extends Component {
           { value: 3, isChecked: false, label: 'Improve posture', description:"Utilising specific exercises and weight training to correct postural imbalances "}
         ]
       },
-      // injuryManagement: [],
+      injuryManagement: [
+        { value: 0, isChecked: false, description: 'Posture Correction', imgurl: 'http://livebiomechanix.com/wp-content/uploads/2015/12/Screen-shot-2015-11-30-at-7.49.40-PM-596x191.png'},
+        { value: 1, isChecked: false, description: 'Lower Back Pain', imgurl: 'http://totalphysiocare.com.au/wp-content/uploads/2017/05/lower-back-pain-relief.png'},
+        { value: 2, isChecked: false, description: 'Neck Pain', imgurl: 'https://static.wixstatic.com/media/b1546b_f6a11249f1a346e08fc817d7cece04c3~mv2.jpg/v1/fill/w_630,h_382,al_c,lg_1,q_80/b1546b_f6a11249f1a346e08fc817d7cece04c3~mv2.webp'},
+        { value: 3, isChecked: false, description: 'Shoulder Pain', imgurl: 'https://feelpainrelief.com/wp-content/uploads/2015/09/shoulder-pain-300x200.jpg'},
+        { value: 4, isChecked: false, description: 'Hip Pain', imgurl: 'https://qph.fs.quoracdn.net/main-qimg-4d054f876feaa4b3d4944914a6f7cb66-c'},
+      ],
       stressAndProductivity: {
         currentStress:"",
         currentProductivity:"",
@@ -63,14 +69,39 @@ class Questionnaire extends Component {
 
   //handle the checkbox for injury management in questionnaire (third page)
   injuryManagementCheckboxHandler = (value) => {
-    console.log('injury management', value);
+    let injuryManagement = [ ...this.state.injuryManagement]
+    let count = 0;
+    injuryManagement.map(i =>{
+      if(i.isChecked === true){
+        count ++;
+      }
+    })
+
+    if(count < 2 || injuryManagement[value].isChecked){
+      injuryManagement[value].isChecked = !injuryManagement[value].isChecked;
+      this.setState({ injuryManagement });
+    }
+    else{
+      alert('Exceeded maximun number of selection');
+    }
+
   }
 
   //handle the checkbox for program in questionnaire (second page)
   programCheckboxHandler = (value) => {
     let program = { ...this.state.program}
-    program['trainingGoals'][value].isChecked = !program['trainingGoals'][value].isChecked;
-    this.setState( program );
+    let count = 0;
+    program['trainingGoals'].map(i => {
+      if(i.isChecked === true) {
+        count ++;
+      }
+    })
+    if(count < 2 || program['trainingGoals'][value].isChecked) {
+      program['trainingGoals'][value].isChecked = !program['trainingGoals'][value].isChecked;
+      this.setState({ program });
+    } else {
+      alert('You can select only two at most');
+    }
   }
 
   plusHandler = () =>{
@@ -240,6 +271,7 @@ class Questionnaire extends Component {
       RenderPage = (
         <StepThree
         change={this.injuryManagementCheckboxHandler}
+        data = {this.state.injuryManagement}
         />
       );
     }else if(this.state.currentPage === 4){

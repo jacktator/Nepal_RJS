@@ -1,4 +1,4 @@
-//@flow
+// @flow
 import { QUESTIONNAIRE } from '../../constants';
 
 export function addQuestionnaire(questionnaire) {
