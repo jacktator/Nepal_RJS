@@ -1,4 +1,4 @@
-import { QUESTIONNAIRE } from '../constants';
+import { QUESTIONNAIRE } from '../../constants';
 
 export default (state = [], action) => {
   switch (action.type) {

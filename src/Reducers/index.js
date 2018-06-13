@@ -2,7 +2,7 @@ import {combineReducers} from 'redux';
 import UserReducer from './userReducers';
 import ActReducer from './actReducer';
 import LoginDetailsReducers from '../Containers/LoginDetailsContainer/reducer';
-import questionnaire from './questionnaire';
+import questionnaire from '../Containers/QuestionnaireContainer/reducer';
 import Test from './test';
 import Login from './LoginReducer';
 

@@ -6,7 +6,6 @@ import Login from '../Login/';
 import SignUp from '../SignUp/';
 import LoginDetails from '../LoginDetails/';
 import Questionnaire from '../../Containers/QuestionnaireContainer/';
-import Check from '../../Containers/Registration/check';
 import ForgetPassWord from '../ForgetPassWord/';
 //import {connect} from 'react-redux';
 
@@ -23,7 +22,7 @@ class Root extends Component{
             <Route path="/signup" exact component={SignUp} />
             <Route path="/login/logindetails" exact component={LoginDetails} />
             <Route path="/questionnaire" exact component={Questionnaire} />
-            <Route path="/check" exact component={Check} />
+
             <Route path="/forgetpassword" exact component={ForgetPassWord} />
           </Switch>
         </BrowserRouter>
