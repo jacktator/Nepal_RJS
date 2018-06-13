@@ -47,9 +47,6 @@ class Launch extends Component {
               <Button type="primary" style={{backgroundColor: '#4CA0CC'}}>Get Started</Button>
             </Link>
             <WhiteSpace/>
-            <div>
-              <Button type="primary" >test button</Button>
-            </div>
           </WingBlank>
         </div>
       </div>

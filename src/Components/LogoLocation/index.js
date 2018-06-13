@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Flex, WhiteSpace, WingBlank} from 'antd-mobile';
-import LogoLighter from '../../assets/LogoLighter.png';
+import LogoLighter from '../../Assets/LogoLighter.png';
 
 var logoStyle = {
   height: 170,
