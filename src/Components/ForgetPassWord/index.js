@@ -5,7 +5,7 @@ import { createForm } from 'rc-form';
 import './ForgetPassWord.css';
 // import Locker from '../../assets/locker.png';
 //import LogoLocation from '../LogoLocation';
-import Locker from '../../assets/Locker.png';
+import Locker from '../../Assets/Locker.png';
 
 var logoStyle = {
   height: 170,

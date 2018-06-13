@@ -3,7 +3,7 @@ import { Progress, Pagination, List, Picker, Icon, NoticeBar} from 'antd-mobile'
 
 import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
 import { connect } from 'react-redux';
-import { addQuestionnaire } from '../../Actions';
+//import { addQuestionnaire } from '../../Actions';
 import CurrentStep  from '../../Components/Questionnaire/Progress';
 import StepOne from '../../Components/Questionnaire/StepOne';
 import StepTwo from '../../Components/Questionnaire/StepTwo';
@@ -309,4 +309,4 @@ function mapStateToProps(state){
   console.log(state);
   return null;
 }
-export default connect (mapStateToProps, { addQuestionnaire })(Questionnaire);
+export default connect (mapStateToProps, null)(Questionnaire);

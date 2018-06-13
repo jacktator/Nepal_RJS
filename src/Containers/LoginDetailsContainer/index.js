@@ -6,10 +6,26 @@ import {bindActionCreators} from 'redux';
 
 
 class LoginDetailsContainer extends Component{
+  constructor(props){
+    super(props);
+    this.onChange=this.onChange.bind(this);
+  }
+
+  onChange(e){
+    console.log(e.target.value)
+  }
+
+
   render(){
     return(
       <div>
-        <LoginDetailsWrapper value={this.props.LoginDetailsStates}/>
+        <LoginDetailsWrapper
+          value={this.props.LoginDetailsStates}
+          pressButton={this.props.LoginDetailsActions}
+          onChange={this.}
+
+
+        />
       </div>
     );
   }

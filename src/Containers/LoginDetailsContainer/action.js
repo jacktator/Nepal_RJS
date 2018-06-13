@@ -16,7 +16,6 @@ export function LoginDetailsActions(email, password){
       //console.log(email)
       dispatch(addPassword(password));
       //console.log(password)
-
     }).catch((error)=>{
       dispatch(catchError(error))
     })

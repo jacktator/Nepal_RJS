@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import { Button, WingBlank, Flex, WhiteSpace } from 'antd-mobile';
 import {Link} from 'react-router-dom';
 import './Launch.css';
-import Logo from '../../assets/Logo.png';
+import Logo from '../../Assets/Logo.png';
 //=========================================================================
-import {connect} from 'react-redux';
-import {loadColor} from '../../Actions/';
-import {bindActionCreators} from 'redux';
 
 // var colorstyle={
 //   color: this.props.testState.color,
@@ -51,7 +48,7 @@ class Launch extends Component {
             </Link>
             <WhiteSpace/>
             <div>
-              <Button type="primary" onClick={this.props.loadColor}  style={{backgroundColor: `${this.props.testState.color}`}}>test button</Button>
+              <Button type="primary" >test button</Button>
             </div>
           </WingBlank>
         </div>
@@ -60,17 +57,7 @@ class Launch extends Component {
   }
 }
 
- function mapStateToProps(state){
-    return {
-      testState: state.Test,
-    }
- }
 
- function matchDispatchToProps(dispatch){
-   return bindActionCreators({loadColor: loadColor}, dispatch);
- }
-// return bindActionCreators({
-//   loadColor: (ele)=> dispatch(loadColor(ele)),
-// });
+ export default Launch;
 
- export default connect(mapStateToProps, matchDispatchToProps)(Launch);
+// onClick={this.props.loadColor}  style={{backgroundColor: `${this.props.testState.color}`}

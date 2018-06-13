@@ -1,28 +1,26 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-// import { loginDetails } from '../../Actions';
 import { List, InputItem, WhiteSpace, WingBlank,Button, Flex } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import './LoginDetails.css';
 import LogoLocation from '../LogoLocation';
-import LoginInput from '../../Containers/LoginInput/';
 import {connect} from 'react-redux';
-import {LoginAction} from '../../Actions/LoginAction';
-import {bindActionCreators} from 'redux';
-import axios from 'axios';
 
+var lockerstyle={
+  backgroundImage: 'url(https://png.icons8.com/ios/50/000000/lock.png)',
+  backgroundSize: 'cover',
+  height: '22px',
+  width: '22px',
+}
+
+var humeniconstyle={
+  backgroundImage: 'url(https://png.icons8.com/ios/50/000000/gender-neutral-user.png)',
+  backgroundSize: 'cover',
+  height: '22px',
+  width: '22px',
+}
 
 class LoginDetails extends React.Component {
-
-  getInput = (e) =>{
-    e.preventDefault();
-    const email = e.target.email.value;
-    //console.log('now i get the email value is : '+ email);
-    const password = e.target.password.value;
-    //console.log('now i get the password value is : '+ password);
-    this.props.LoginAction(email,password);
-
-  }
 
   render() {
     const { getFieldProps } = this.props.form;
@@ -31,8 +29,30 @@ class LoginDetails extends React.Component {
         <div className="logo-logindetails-position">
           <LogoLocation/>
         </div>
-        <div>
-          <LoginInput getInput={this.getInput.bind(this)}/>
+        <div className="input-info-style">
+          <form className="form">
+            <InputItem
+              placeholder="E-mail"
+              type="text"
+              name="email"
+            >
+            <div style={humeniconstyle} />
+            </InputItem>
+            <InputItem
+              placeholder="Password"
+              type="password"
+              name="password"
+            >
+            <div style={lockerstyle} />
+            </InputItem>
+            <div >
+              <button className="login-button-style">
+                <Button type="primary">
+                  Submit
+                </Button>
+              </button>
+            </div>
+          </form>
         </div>
         <div className="forgetpassword-style">
           <Link to='/forgetpassword' style={{color: '#bbb'}}>
@@ -54,22 +74,17 @@ class LoginDetails extends React.Component {
     }
   }
 
-  function mapStateToProps(state){
-     return {
-       LoginState: state.Login,
-     }
-  }
-
-  function matchDispatchToProps(dispatch){
-    return bindActionCreators({LoginAction: LoginAction}, dispatch);
-  }
-
 
   const LoginDetailsWrapper = createForm()(connect (null, null )(LoginDetails));
 
   export default LoginDetailsWrapper;
 
 
+  // {this.props.status ?
+  //   <div><Link to="/questionnaire">Submit</Link></div>
+  // :
+  //   null
+  // }
 
   // constructor(props){
   //   super(props);
@@ -133,4 +148,14 @@ class LoginDetails extends React.Component {
     // componentWillUpdate(nextProps, nextState){
     //   window.localStorage.setItem('token', this.props.LoginState.token);
     //   console.log("I have got the token value :" + window.localStorage.token)
+    // }
+
+    // getInput = (e) =>{
+    //   e.preventDefault();
+    //   const email = e.target.email.value;
+    //   //console.log('now i get the email value is : '+ email);
+    //   const password = e.target.password.value;
+    //   //console.log('now i get the password value is : '+ password);
+    //   this.props.LoginAction(email,password);
+    //
     // }
