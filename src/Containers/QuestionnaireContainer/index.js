@@ -4,7 +4,7 @@ import { Progress, Pagination, List, Picker, Icon, NoticeBar} from 'antd-mobile'
 
 import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
 import { connect } from 'react-redux';
-import { addQuestionnaire } from '../../Actions';
+import { addQuestionnaire } from './actions';
 import CurrentStep  from '../../Components/Questionnaire/Progress';
 import StepOne from '../../Components/Questionnaire/StepOne';
 import StepTwo from '../../Components/Questionnaire/StepTwo';
@@ -191,8 +191,8 @@ class Questionnaire extends Component {
       { value: "Others", label: 'Others' },
     ];
     const weightArray= [
-      {value: 1, label: '1 KG'},{value: 2, label: '2 KG'},{value: 3, label: '3 KG'},{value: 4, label: '4 KG'},{value: 5, label: '5 KG'},{value: 6, label: '6 KG'},
-      {value: 7, label: '7 KG'},{value: 8, label: '8 KG'},{value: 9, label: '8 KG'},
+      {value: 70, label: '70 KG'},{value: 71, label: '71 KG'},{value: 72, label: '72 KG'},{value: 73, label: '73 KG'},{value: 74, label: '74 KG'},{value: 75, label: '75 KG'},
+      {value: 76, label: '76 KG'},{value: 77, label: '77 KG'},{value: 78, label: '78 KG'},{value: 79, label: '79 KG'},{value: 80, label: '80 KG'},
     ];
     const stressArray= [
       {value: 1, label: 'Stress free'},{value: 2, label: 'Minimally stressed'},{value: 3, label: 'Moderately stressed'},{value: 4, label: 'Highly stressed'},{value: 5, label: 'Extrembly stressed'},
