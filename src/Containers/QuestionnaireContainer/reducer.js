@@ -1,3 +1,4 @@
+// @flow
 import { QUESTIONNAIRE } from '../../constants';
 
 export default (state = [], action) => {
