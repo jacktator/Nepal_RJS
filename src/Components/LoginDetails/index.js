@@ -1,3 +1,4 @@
+//@flow
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import { List, InputItem, WhiteSpace, WingBlank,Button, Flex } from 'antd-mobile';
@@ -20,33 +21,49 @@ var humeniconstyle={
   width: '22px',
 }
 
-class LoginDetails extends React.Component {
+type Props = {
+  foo: number,
+  email: string,
+  form: string,
+  password: number,
+  onClickButton: Function,
+  onChangeEmail: Function,
+  onChangePassword: Function,
+  pageChange: Function,
+};
+
+
+
+
+class LoginDetails extends Component<Props> {
 
   render() {
-    const { getFieldProps } = this.props.form;
+    const {email, password} = this.props
     return (
       <div className="screen-logindetails-style">
         <div className="logo-logindetails-position">
           <LogoLocation/>
         </div>
         <div className="input-info-style">
-          <form className="form">
+          <form onSubmit={this.props.pageChange}>
             <InputItem
-              placeholder="E-mail"
+              value={email}
               type="text"
               name="email"
+              onChange={this.props.onChangeEmail}
             >
-            <div style={humeniconstyle} />
+              <div style={humeniconstyle} />
             </InputItem>
             <InputItem
-              placeholder="Password"
+              value={password}
               type="password"
               name="password"
+              onChange={this.props.onChangePassword}
             >
-            <div style={lockerstyle} />
+              <div style={lockerstyle} />
             </InputItem>
             <div >
-              <button className="login-button-style">
+              <button className="login-button-style" onClick={this.props.onClickButton}>
                 <Button type="primary">
                   Submit
                 </Button>
@@ -74,10 +91,9 @@ class LoginDetails extends React.Component {
     }
   }
 
+const LoginDetailsWrapper = createForm()(LoginDetails);
 
-  const LoginDetailsWrapper = createForm()(connect (null, null )(LoginDetails));
-
-  export default LoginDetailsWrapper;
+export default LoginDetailsWrapper;
 
 
   // {this.props.status ?
