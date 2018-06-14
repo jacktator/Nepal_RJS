@@ -21,23 +21,18 @@ type State ={
 
 
 class LoginDetailsContainer extends Component<Props, State>{
-  pageChange=(e)=>{
-    
-    console.log('this function has been called')
-  }
 
   render(){
-    const {email, password} = this.props.LoginDetailsStates
-
+    const {email, password, token} = this.props.LoginDetailsStates
     return(
       <div>
         <LoginDetailsWrapper
-          email={this.props.LoginDetailsStates.email}
-          password={this.props.LoginDetailsStates.password}
+          email={email}
+          password={password}
+          token={token}
           onChangeEmail={this.props.addEmail}
           onChangePassword={this.props.addPassword}
           onClickButton={this.props.LoginDetailsActions}
-          pageChange={this.pageChange}
         />
       </div>
     );

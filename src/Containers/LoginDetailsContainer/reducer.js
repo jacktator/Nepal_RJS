@@ -2,10 +2,10 @@
 
 let DefaultState=
   {
-    email:'E-mail',
-    password:123,
+    email:'boy@test.com',
+    password:12345678,
     token: '',
-    status:false,
+    status: false,
   }
 
 const LoginDetailsReducers = (state=DefaultState, action)=>{
@@ -29,13 +29,13 @@ const LoginDetailsReducers = (state=DefaultState, action)=>{
     }
   }
   else if (action.type==="IS_AUTHENTICATED"){
-    console.log(action.payload)
+    //console.log(action.payload)
     return {
       ...state, status: action.payload
     }
   }
   else if (action.type==="TEST"){
-    console.log(action.payload)
+    //console.log(action.payload)
     return {
       ...state, status: action.payload
     }

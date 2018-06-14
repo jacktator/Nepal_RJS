@@ -1,7 +1,7 @@
 //@flow
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import { List, InputItem, WhiteSpace, WingBlank,Button, Flex } from 'antd-mobile';
+import { List, InputItem, WhiteSpace, WingBlank,Button, Flex, NoticeBar } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import './LoginDetails.css';
 import LogoLocation from '../LogoLocation';
@@ -21,6 +21,11 @@ var humeniconstyle={
   width: '22px',
 }
 
+type State={
+  display: string,
+
+}
+
 type Props = {
   foo: number,
   email: string,
@@ -30,47 +35,69 @@ type Props = {
   onChangeEmail: Function,
   onChangePassword: Function,
   pageChange: Function,
+  token: string,
+
 };
 
+class LoginDetails extends Component<Props, State> {
 
+  successfulLogin = (token) =>{
+    if(!token){
+      return(
+        <div>
+          <Button type="primary">
+            Submit
+          </Button>
+        </div>
+      )
+    }
+    return(
+      <div>
+        <Link to="/questionnaire">
+          <Button type="primary">
+            Press to the questionnaires
+          </Button>
+        </Link>
+      </div>
+    )
+  }
 
-
-class LoginDetails extends Component<Props> {
 
   render() {
-    const {email, password} = this.props
+    const {email, password, token} = this.props;
+    console.log(email)
+    console.log(password)
+    console.log(token)
+
     return (
       <div className="screen-logindetails-style">
         <div className="logo-logindetails-position">
           <LogoLocation/>
         </div>
         <div className="input-info-style">
-          <form onSubmit={this.props.pageChange}>
-            <InputItem
-              value={email}
-              type="text"
-              name="email"
-              onChange={this.props.onChangeEmail}
-            >
-              <div style={humeniconstyle} />
-            </InputItem>
-            <InputItem
-              value={password}
-              type="password"
-              name="password"
-              onChange={this.props.onChangePassword}
-            >
-              <div style={lockerstyle} />
-            </InputItem>
-            <div >
-              <button className="login-button-style" onClick={this.props.onClickButton}>
-                <Button type="primary">
-                  Submit
-                </Button>
-              </button>
-            </div>
-          </form>
+          <InputItem
+            value={email}
+            type="text"
+            name="email"
+            onChange={(value)=>this.props.onChangeEmail(value)}
+          >
+            <div style={humeniconstyle} />
+          </InputItem>
+          <InputItem
+            value={password}
+            type="password"
+            name="password"
+            onChange={(value)=>this.props.onChangePassword(value)}
+          >
+            <div style={lockerstyle} />
+          </InputItem>
+          <div >
+            <button className="login-button-style" onClick={()=>this.props.onClickButton(email, password)}>
+              {this.successfulLogin(token)}
+            </button>
+          </div>
         </div>
+
         <div className="forgetpassword-style">
           <Link to='/forgetpassword' style={{color: '#bbb'}}>
             Forget Password?
@@ -88,13 +115,17 @@ class LoginDetails extends Component<Props> {
         </div>
       </div>
     );
-    }
   }
+}
 
 const LoginDetailsWrapper = createForm()(LoginDetails);
 
 export default LoginDetailsWrapper;
 
+
+
+
+// {!token? <div>Submit</div>: <Link to="/questionnaire"><div>Submit</div></Link>}
 
   // {this.props.status ?
   //   <div><Link to="/questionnaire">Submit</Link></div>
@@ -137,17 +168,6 @@ export default LoginDetailsWrapper;
   //   this.props.addPassword(password);
   // }
   //
-  // infoSubmit=(e)=>{
-  //   e.preventDefault();
-  //   const user = {
-  //     name: this.state.name,
-  //   };
-  //
-  //   axios.post(`https://jsonplaceholder.typicode.com/users`, {user})
-  //   .then((res)=>{
-  //     console.log(res);
-  //   })
-  // }
 
   //this function is for input values(onChange())
     // handleChange = (value) => {

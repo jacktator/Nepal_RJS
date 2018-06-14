@@ -3,9 +3,11 @@ import axios from 'axios';
 export function SignUpActions(email, password){
 
   return(dispatch)=>{
-    return axios.post("https://nepal.sk8tech.io/wp-json/jwt-auth/v1/token/", {
-      username: email,
+    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/users/register", {
+      username: username,
+      email: email,
       password: password,
+      
     })
     .then((response)=>{
       let token = response.data.token

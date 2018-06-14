@@ -1,6 +1,9 @@
 import axios from 'axios';
 
 export function LoginDetailsActions(email, password){
+  console.log('this function LoginDetailsActions is running')
+  console.log('email:'+ email)
+  console.log('password'+ password)
 
   return(dispatch)=>{
     return axios.post("https://nepal.sk8tech.io/wp-json/jwt-auth/v1/token/", {
@@ -10,12 +13,9 @@ export function LoginDetailsActions(email, password){
     .then((response)=>{
       let token = response.data.token
       window.localStorage.setItem('token', token);
-      dispatch(validToken(token));
-      //dispatch(upDateToken(token));
-      dispatch(addEmail(email));
-      //console.log(email)
-      dispatch(addPassword(password));
-      //console.log(password)
+      dispatch(upDateToken(token));
+      // dispatch(validToken(token));
+
     }).catch((error)=>{
       dispatch(catchError(error))
     })
@@ -55,6 +55,7 @@ export function isAuthenticated(status){
 }
 
 export function upDateToken(token){
+  //console.log("now the token is :"+ token)
   return {
     type:"UPDATE_TOKEN",
     payload: token
@@ -62,7 +63,7 @@ export function upDateToken(token){
 }
 
 export function addEmail(email){
-  //console.log("#####the value of email has been input into action")
+  //console.log("#####the value of email has been input into action:" + email)
   return {
     type:"ADD_EMAIL",
     payload: email
