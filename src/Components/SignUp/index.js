@@ -1,3 +1,4 @@
+//@flow
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import { List, InputItem, WhiteSpace, WingBlank,Button, Flex } from 'antd-mobile';
@@ -24,27 +25,19 @@ var emailiconstyle={
   height: '22px',
   width: '22px',
 }
-
-const isIPhone = new RegExp('\\biPhone\\b|\\biPod\\b', 'i').test(window.navigator.userAgent);
-let moneyKeyboardWrapProps;
-if (isIPhone) {
-  moneyKeyboardWrapProps = {
-    onTouchStart: e => e.preventDefault(),
-  };
+type Props={
+  username: string,
+  email:string,
+  password: number,
+  onChangeEmail: Function,
+  onChangePassword: Function,
+  onChangeUsername: Function,
+  onClickButton: Function,
 }
+class SignUp extends Component<Props> {
 
-class SignUp extends React.Component {
-  componentDidMount() {
-    // this.autoFocusInst.focus();
-  }
-  handleClick = () => {
-    this.customFocusInst.focus();
-  }
-  state = {
-    type: 'money',
-  }
   render() {
-    const { getFieldProps } = this.props.form;
+    const {username, email, password}= this.props;
     return (
       <div className="screen-signup-style">
         <div className="logo-signup-position">
@@ -53,20 +46,26 @@ class SignUp extends React.Component {
         <div className="signup-info-style">
           <List renderHeader={() => ''}>
             <InputItem
-              {...getFieldProps('inputtitle2')}
-              placeholder="Full Name"
+              value={username}
+              type="text"
+              name="username"
+              onChange={(value)=>this.props.onChangeUsername(value)}
             >
               <div style={humeniconstyle} />
             </InputItem>
             <InputItem
-              {...getFieldProps('inputtitle2')}
-              placeholder="E-mail"
+              value={email}
+              type="text"
+              name="email"
+              onChange={(value)=>this.props.onChangeEmail(value)}
             >
               <div style={emailiconstyle} />
             </InputItem>
             <InputItem
-              {...getFieldProps('inputtitle2')}
-              placeholder="Password"
+              value={password}
+              type="password"
+              name="password"
+              onChange={(value)=>this.props.onChangePassword(value)}
             >
               <div style={lockerstyle} />
             </InputItem>
@@ -74,9 +73,7 @@ class SignUp extends React.Component {
         </div>
         <div>
           <WingBlank>
-            <Link to='/questionnaire' >
-              <Button type="primary">Create Account</Button>
-            </Link>
+            <Button type="primary" onClick={()=>this.props.onClickButton(username, email, password)}>Create Account</Button>
           </WingBlank>
         </div>
       </div>

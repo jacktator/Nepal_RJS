@@ -1,4 +1,5 @@
 //this file is for getting the email and password
+//@flow
 
 let DefaultState=
   {
@@ -8,7 +9,7 @@ let DefaultState=
     status: false,
   }
 
-const LoginDetailsReducers = (state=DefaultState, action)=>{
+const LoginDetailsReducers = (state: Object=DefaultState, action: Function)=>{
   if(action.type==="ADD_EMAIL"){
     //console.log("add email: "+ action.payload)
     return {

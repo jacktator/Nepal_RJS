@@ -2,10 +2,10 @@
 
 let DefaultState=
   {
-    email:'',
-    password:'',
-    token: '',
-    status:false,
+    username:'Username@com',
+    email:'E-mail',
+    password:'1235678',
+
   }
 
 const SignUpReducers = (state=DefaultState, action)=>{
@@ -22,19 +22,12 @@ const SignUpReducers = (state=DefaultState, action)=>{
       ...state, password: action.payload
     }
   }
-  else if (action.type==="UPDATE_TOKEN"){
+  else if (action.type==="ADD_USERNAME"){
     //console.log("add token: "+ action.payload)
     return {
-      ...state, token: action.payload
+      ...state, username: action.payload
     }
   }
-  else if (action.type==="IS_AUTHENTICATED"){
-    console.log(action.payload)
-    return {
-      ...state, status: action.payload
-    }
-  }
-
   return state;
 }
 export default SignUpReducers;

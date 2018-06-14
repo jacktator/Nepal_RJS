@@ -21,29 +21,8 @@ var humeniconstyle={
   width: '22px',
 }
 
-const isIPhone = new RegExp('\\biPhone\\b|\\biPod\\b', 'i').test(window.navigator.userAgent);
-
-const PlaceHolder = ({ className = '', ...restProps }) => (
-  <div className={`${className} placeholder`} {...restProps} style={{alignItems: 'center'}}></div>
-);
-
-let moneyKeyboardWrapProps;
-if (isIPhone) {
-  moneyKeyboardWrapProps = {
-    onTouchStart: e => e.preventDefault(),
-  };
-}
 
 class ForgetPassWord extends React.Component {
-  componentDidMount() {
-    // this.autoFocusInst.focus();
-  }
-  handleClick = () => {
-    this.customFocusInst.focus();
-  }
-  state = {
-    type: 'money',
-  }
   render() {
     const { getFieldProps } = this.props.form;
     return (

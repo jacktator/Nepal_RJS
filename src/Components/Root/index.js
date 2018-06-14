@@ -4,10 +4,10 @@ import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import 'antd-mobile/dist/antd-mobile.css';
 import Launch from '../Launch/';
 import Login from '../../Containers/LoginDetailsContainer/';
-import SignUp from '../SignUp/';
+import SignUp from '../../Containers/SignUpContainer/';
 import LoginDetails from '../../Containers/LoginDetailsContainer/';
 import Questionnaire from '../../Containers/QuestionnaireContainer/';
-import ForgetPassWord from '../ForgetPassWord/';
+import ForgetPassWord from '../../Containers/ForgetPasswordContainer/';
 //import {connect} from 'react-redux';
 
 type Props = {

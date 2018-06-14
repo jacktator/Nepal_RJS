@@ -1,23 +1,16 @@
 import axios from 'axios';
 
-export function SignUpActions(email, password){
+export function SignUpActions(username, email, password){
 
   return(dispatch)=>{
     return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/users/register", {
       username: username,
       email: email,
       password: password,
-      
     })
     .then((response)=>{
-      let token = response.data.token
-      window.localStorage.setItem('token', token);
-      dispatch(validToken(token));
-      //dispatch(upDateToken(token));
-      dispatch(addEmail(email));
-      //console.log(email)
-      dispatch(addPassword(password));
-      //console.log(password)
+      console.log('register successfully!!')
+      console.log(response.data.message);
 
     }).catch((error)=>{
       dispatch(catchError(error))
@@ -25,42 +18,10 @@ export function SignUpActions(email, password){
   };
 }
 
-//dispatch is for fire the functions
-//functions are for store the values that are used to change the state
-//in functions the values are binded with type which will be used in the Reducer
-
-
-export function validToken(token){
-  return(dispatch)=>{
-    return axios.post("https://nepal.sk8tech.io/wp-json/jwt-auth/v1/token/validate",
-      null, {
-        headers:{
-          Authorization: "Bearer" + token
-        }
-      }
-    )
-    .then((response)=>{
-      console.log(response.data.data.status)
-      dispatch(isAuthenticated());
-    })
-    .catch((error)=>{
-      dispatch(catchError(error));
-    })
-  };
-}
-
-export function isAuthenticated(status){
-  console.log(status)
-  return{
-    type:"IS_AUTHENTICATED",
-    payload:true
-  }
-}
-
-export function upDateToken(token){
+export function addUsername(username){
   return {
-    type:"UPDATE_TOKEN",
-    payload: token
+    type:"ADD_USERNAME",
+    payload: username
   }
 }
 
