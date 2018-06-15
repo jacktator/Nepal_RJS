@@ -27,6 +27,7 @@ class Root extends Component<Props>{
               <Route path="/" exact component={Launch}/>
               <Route path="/login" exact component={Login}/>
               <Route path="/signup" exact component={SignUp} />
+              <Route path="/questionnaire" exact component={LoginDetails} />
               <Route path="/login/logindetails" exact component={LoginDetails} />
               <Route path="/forgetpassword" exact component={ForgetPassWord} />
             </Switch>

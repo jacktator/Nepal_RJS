@@ -44,18 +44,18 @@ class LoginDetails extends Component<Props, State> {
     if(!token){
       return(
         <div>
-          <Button type="primary">
+
             Submit
-          </Button>
+
         </div>
       )
     }
     return(
       <div>
         <Link to="/questionnaire">
-          <Button type="primary">
+
             Press to the questionnaires
-          </Button>
+
         </Link>
       </div>
     )
@@ -103,9 +103,9 @@ class LoginDetails extends Component<Props, State> {
             <div style={lockerstyle} />
           </InputItem>
           <div >
-            <button className="login-button-style" onClick={()=>this.props.onClickButton(email, password)}>
+            <Button type="primary" className="login-button-style" onClick={()=>this.props.onClickButton(email, password)}>
               {this.successfulLogin(token)}
-            </button>
+            </Button>
           </div>
         </div>
 

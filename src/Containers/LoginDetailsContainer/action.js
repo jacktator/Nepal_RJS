@@ -1,5 +1,6 @@
 //@flow
 import axios from 'axios';
+import {checkLogin} from '../RootContainer/action';
 
 export function LoginDetailsActions(email:string, password:string){
   console.log('this function LoginDetailsActions is running')
@@ -15,6 +16,9 @@ export function LoginDetailsActions(email:string, password:string){
       let token = response.data.token
       window.localStorage.setItem('token', token);
       dispatch(upDateToken(token));
+      dispatch(checkLogin());
+
+
       // dispatch(validToken(token));
 
     }).catch((error)=>{
