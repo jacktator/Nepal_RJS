@@ -22,7 +22,7 @@ var humeniconstyle={
 }
 
 
-class ForgetPassWord extends React.Component {
+class ForgetPassWord extends Component {
   render() {
     const { getFieldProps } = this.props.form;
     return (

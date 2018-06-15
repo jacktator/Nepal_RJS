@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Flex, WhiteSpace, WingBlank} from 'antd-mobile';
+import {Flex, WingBlank} from 'antd-mobile';
 import LogoLighter from '../../Assets/LogoLighter.png';
 
 var logoStyle = {
