@@ -14,13 +14,13 @@ type Props = {
   addPassword: Function,
 }
 
-type State ={
-  email: string,
-  password: number,
-}
+// type State ={
+//   email: string,
+//   password: number,
+// }
 
 
-class LoginDetailsContainer extends Component<Props, State>{
+class LoginDetailsContainer extends Component<Props>{
 
   render(){
     const {email, password, token} = this.props.LoginDetailsStates

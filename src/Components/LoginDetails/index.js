@@ -61,6 +61,18 @@ class LoginDetails extends Component<Props, State> {
     )
   }
 
+  // callFunction=(email, password)=>{
+  //     ()=>this.props.onClickButton(email, password)
+  //     if(!this.props.token){
+  //       return(
+  //
+  //       )
+  //     }
+  //     return (
+  //
+  //     )
+  // }
+
 
   render() {
     const {email, password, token} = this.props;

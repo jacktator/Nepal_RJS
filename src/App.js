@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Root from './Components/Root/';
+import Root from './Containers/RootContainer/';
 
 class App extends Component {
+
   render() {
     return (
       <div>

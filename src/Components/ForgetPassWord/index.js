@@ -1,3 +1,4 @@
+//@flow
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import { List, InputItem, WhiteSpace, WingBlank,Button, Flex } from 'antd-mobile';
@@ -21,10 +22,16 @@ var humeniconstyle={
   width: '22px',
 }
 
+type Props={
+  email: string,
+  onChangeInput: Function,
+  onClickButton: Function,
+}
 
-class ForgetPassWord extends Component {
+
+class ForgetPassWord extends Component<Props> {
   render() {
-    const { getFieldProps } = this.props.form;
+    const {email}=this.props
     return (
       <div className="screen-forgetpassword-style">
         <div className="logo-forgetpassword-position">
@@ -44,8 +51,8 @@ class ForgetPassWord extends Component {
         <div>
           <List renderHeader={() => ''}>
             <InputItem
-              {...getFieldProps('inputtitle2')}
-              placeholder="E-mail"
+              value={email}
+              onChange={(value)=>this.props.onChangeInput(value)}
             >
               <div style={humeniconstyle} />
             </InputItem>
@@ -54,9 +61,7 @@ class ForgetPassWord extends Component {
         <WhiteSpace /><WhiteSpace /><WhiteSpace />
         <div className="forgetpassword-reset-password-style">
           <WingBlank>
-            <Link to='' >
-              <Button type="primary">Reset Password</Button>
-            </Link>
+            <Button type="primary" onClick={()=>this.props.onClickButton(email)}>Reset Password</Button>
           </WingBlank>
         </div>
         <div className="forgetpassword-doyouhaveaccount-style">

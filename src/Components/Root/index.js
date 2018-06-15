@@ -12,11 +12,14 @@ import ForgetPassWord from '../../Containers/ForgetPasswordContainer/';
 
 type Props = {
   path: string,
+  check?: Boolean,
 };
 
 class Root extends Component<Props>{
-
   render(){
+    // if(!check){
+    //   return("no running")
+    // }
     return(
       <div>
         <BrowserRouter>

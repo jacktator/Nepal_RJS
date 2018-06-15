@@ -2,9 +2,9 @@
 import axios from 'axios';
 
 export function ForgetPasswordActions(email: string){
-
+  console.log('the reset has been successful!!')
   return(dispatch: Function)=>{
-    return axios.post("https://nepal.sk8tech.io/wp-json/jwt-auth/v1/token/", {
+    return axios.post("", {
       email: email,
     })
     .then((response)=>{

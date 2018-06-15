@@ -5,36 +5,16 @@ type Props={
   DefaultState: Object,
 }
 
-let DefaultState=
+const DefaultState=
   {
-    email:'',
+    email:'E-Mail',
   }
 
 
 const ForgetPasswordReducers = (state: Object=DefaultState, action:Function)=>{
   if(action.type==="ADD_EMAIL"){
-    //console.log("add email: "+ action.payload)
     return {
       ...state, email: action.payload
-    }
-  }
-
-  else if (action.type==="ADD_PASSWORD"){
-    //console.log("add password: "+ action.payload)
-    return {
-      ...state, password: action.payload
-    }
-  }
-  else if (action.type==="UPDATE_TOKEN"){
-    //console.log("add token: "+ action.payload)
-    return {
-      ...state, token: action.payload
-    }
-  }
-  else if (action.type==="IS_AUTHENTICATED"){
-    console.log(action.payload)
-    return {
-      ...state, status: action.payload
     }
   }
 

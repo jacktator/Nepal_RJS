@@ -1,7 +1,8 @@
+//@Flow
 import React, {Component} from 'react';
 import ForgetPasswordWrapper from '../../Components/ForgetPassWord/';
 import {connect} from 'react-redux';
-import {ForgetPasswordActions} from './action';
+import {ForgetPasswordActions, addEmail} from './action';
 import {bindActionCreators} from 'redux';
 
 
@@ -9,7 +10,11 @@ class ForgetPasswordContainer extends Component{
   render(){
     return(
       <div>
-        <ForgetPasswordWrapper value={this.props.ForgetPassWordStates}/>
+        <ForgetPasswordWrapper
+          email={this.props.ForgetPasswordStates.email}
+          onChangeInput={this.props.addEmail}
+          onClickButton={this.props.ForgetPasswordActions}
+        />
       </div>
     );
   }
@@ -17,12 +22,15 @@ class ForgetPasswordContainer extends Component{
 
 function mapStateToProps(state){
    return {
-     ForgetPasswordStates: state.LoginDetailsStates,
+     ForgetPasswordStates: state.ForgetPasswordStates,
    }
 }
 
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({ForgetPasswordActions: ForgetPasswordActions}, dispatch);
+  return bindActionCreators({
+    ForgetPasswordActions: ForgetPasswordActions,
+    addEmail: addEmail,
+  }, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(ForgetPasswordContainer);
