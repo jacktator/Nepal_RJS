@@ -2,8 +2,6 @@ import React from 'react';
 import { Steps, WingBlank, WhiteSpace } from 'antd-mobile';
 
 const Step = Steps.Step;
-
-
 const customIcon = () => (
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42" className="am-icon am-icon-md">
   <g fillRule="evenodd" stroke="transparent" strokeWidth="4">

@@ -1,10 +1,10 @@
 // @flow
 import { QUESTIONNAIRE } from '../../constants';
 
-export function addQuestionnaire(questionnaire) {
+export function addQuestionnaire(fields) {
   const action = {
     type: QUESTIONNAIRE,
-    questionnaire
+    fields
   }
   return action;
 }

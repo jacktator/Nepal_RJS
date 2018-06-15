@@ -6,7 +6,7 @@ const RadioItem = Radio.RadioItem;
 // const CheckboxItem = Checkbox.CheckboxItem;
 
 const StepOne = (props) => {
-  const gender = props.detail.gender;
+  const gender = props.fields.gender;
   return(
     <div>
       <h2 style={{textAlign: 'center'}}>Your Detail</h2>
@@ -14,14 +14,14 @@ const StepOne = (props) => {
           type="text"
           placeholder="Please enter your name"
           onChange={props.change.bind(this, 'one', 'name')}
-          value={props.detail.name}
+          value={props.fields.name}
         >Name</InputItem>
 
         <InputItem
           type="number"
           placeholder="Please enter your age"
           onChange={props.change.bind(this, 'one', 'age')}
-          value={props.detail.age}
+          value={props.fields.age}
         >Age</InputItem>
 
         <List renderHeader={() => 'Please select your gender Gender'}>
@@ -36,7 +36,7 @@ const StepOne = (props) => {
           data={props.weightArray}
           locale={enUs}
           cols={1}
-          value={[props.detail.currentBodyWeight]}
+          value={[props.fields.weight]}
           onOk={v => props.selectWeight(v)}
           >
           <List.Item arrow="horizontal">Current Body Weight:</List.Item>

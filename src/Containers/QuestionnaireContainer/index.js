@@ -1,8 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import { Progress, Pagination, List, Picker, Icon, NoticeBar} from 'antd-mobile';
-
-import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
+import { Progress, Pagination, Icon} from 'antd-mobile';
 import { connect } from 'react-redux';
 import { addQuestionnaire } from './actions';
 
@@ -22,16 +20,24 @@ class Questionnaire extends Component {
   constructor(props){
     super(props);
     this.state = {
-
-      detail: {
-        name:"",
-        age:"",
+      fields: {
+        name: "",
+        age: "",
         gender: "",
-        currentBodyWeight: "",
-      },
+        weight: "",
+        days_per_week: 2,
+        goals: [],
+        rehab_focus: [],
+        stress: null,
+        productivity: null,
+        productive_after_exercise: null,
+        work_injury: null,
+        health_feeling: null,
+        daily_activity: null,
+        current_activity: null
 
+      },
       program: {
-        days: 2,
         trainingGoals: [
           { value: 0, isChecked: false, label: 'Muscle size and strength', description:"Weight training principles designed to build muscle and strength" },
           { value: 1, isChecked: false, label: 'fat loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition "},
@@ -46,6 +52,7 @@ class Questionnaire extends Component {
         { value: 3, isChecked: false, description: 'Shoulder Pain', imgurl: 'https://feelpainrelief.com/wp-content/uploads/2015/09/shoulder-pain-300x200.jpg'},
         { value: 4, isChecked: false, description: 'Hip Pain', imgurl: 'https://qph.fs.quoracdn.net/main-qimg-4d054f876feaa4b3d4944914a6f7cb66-c'},
       ],
+
       stressAndProductivity: {
         currentStress:"",
         currentProductivity:"",
@@ -60,7 +67,6 @@ class Questionnaire extends Component {
       },
       currentPage: 1,
       hasError: false,
-
       buttonText: 'Next',
 
     }
@@ -69,63 +75,72 @@ class Questionnaire extends Component {
 
   //handle the checkbox for injury management in questionnaire (third page)
   injuryManagementCheckboxHandler = (value) => {
-    let injuryManagement = [ ...this.state.injuryManagement]
+    let injuryManagement = [ ...this.state.injuryManagement];
+    let fields = { ...this.state.fields };
+    let tempRehabFocus = [];
     let count = 0;
     injuryManagement.map(i =>{
       if(i.isChecked === true){
         count ++;
+        tempRehabFocus.push(i.value);
       }
+      return null;
     })
-
     if(count < 2 || injuryManagement[value].isChecked){
       injuryManagement[value].isChecked = !injuryManagement[value].isChecked;
-      this.setState({ injuryManagement });
+      tempRehabFocus.push(value);
+      fields['rehab_focus'] = tempRehabFocus;
+      this.setState({ injuryManagement, fields });
     }
     else{
       alert('Exceeded maximun number of selection');
     }
-
   }
-
   //handle the checkbox for program in questionnaire (second page)
   programCheckboxHandler = (value) => {
-    let program = { ...this.state.program}
+    let tempGoals = [];
+    let program = { ...this.state.program };
+    let fields = { ...this.state.fields };
     let count = 0;
+
     program['trainingGoals'].map(i => {
       if(i.isChecked === true) {
+        tempGoals.push(i.value);
         count ++;
       }
+      return null;
     })
     if(count < 2 || program['trainingGoals'][value].isChecked) {
       program['trainingGoals'][value].isChecked = !program['trainingGoals'][value].isChecked;
-      this.setState({ program });
+      tempGoals.push(value);
+      fields['goals'] = tempGoals;
+      this.setState({ program, fields });
+
     } else {
       alert('You can select only two at most');
     }
   }
 
   plusHandler = () =>{
-    let program = this.state.program;
-    program['days'] = program['days'] + 1;
-    this.setState({ program: program })
+    let fields = this.state.fields;
+    fields['days_per_week'] = fields['days_per_week'] + 1;
+    this.setState({ fields })
   }
   minusHandler = () =>{
-    let program = this.state.program;
-    if(program['days']>1){
-      program['days'] = program['days'] - 1;
-      this.setState({ program: program })
+    let fields = this.state.fields;
+    if(fields['days_per_week']>1){
+      fields['days_per_week'] = fields['days_per_week'] - 1;
+      this.setState({ fields })
     }
   }
 
   //handle to radio button for gender selection
   genderHandler = (value) => {
-    console.log('checkbox',value);
-    let detail = {...this.state.detail}
-    detail['gender'] = value;
+    let fields = {...this.state.fields}
+    fields['gender'] = value;
     this.setState({
-      detail
+      fields
     });
-    console.log(this.state.detail);
   };
 
   //handle the input filed for stepOne
@@ -134,16 +149,16 @@ class Questionnaire extends Component {
     //assign refers to particular data such as name or age.
     //data is the data being entered in input field
     if( step === 'one'){
-      let detail = {...this.state.detail}
-      detail[assignTo] = data;
-      this.setState({ detail: detail})
+      let fields = {...this.state.fields}
+      fields[assignTo] = data;
+      this.setState({ fields })
     }
   }
   //handle the value for weight picker
   onWeightPicker = (weight) => {
-    let detail = {...this.state.detail}
-    detail['currentBodyWeight'] = weight[0];
-    this.setState({detail})
+    let fields = {...this.state.fields}
+    fields['weight'] = weight[0];
+    this.setState({fields})
     // this.setState({ weightPicker: weight[0]})
   }
   //handle the pagination onChange event
@@ -202,7 +217,7 @@ class Questionnaire extends Component {
   //Handle the finish button of sixth page
   onFinishButtonHandler = () => {
     console.log("finish Button Clicked");
-    this.props.addQuestionnaire(this.state);
+    this.props.addQuestionnaire(this.state.fields);
   }
 
   makeNextToFinish = () => {
@@ -216,6 +231,9 @@ class Questionnaire extends Component {
 
 
   render() {
+
+    console.log(this.state);
+
     const percent  = (this.state.currentPage-1)*17;
     const radioData = [
       { value: "Male", label: 'Male' },
@@ -250,7 +268,7 @@ class Questionnaire extends Component {
       RenderPage = (
         <StepOne
         change={this.inputItemHandler}
-        detail={this.state.detail}
+        fields={this.state.fields}
         radioData={radioData}
         weightArray={weightArray}
         selectWeight={this.onWeightPicker}
@@ -262,7 +280,7 @@ class Questionnaire extends Component {
         <StepTwo
         plus={this.plusHandler}
         minus={this.minusHandler}
-        days={this.state.program.days}
+        days={this.state.fields.days_per_week}
         change={this.programCheckboxHandler}
         data={this.state.program.trainingGoals}
         />
@@ -309,11 +327,7 @@ class Questionnaire extends Component {
       );
     }
 
-    //for pagination
-    const locale = {
-      prevText: 'Prev',
-      nextText: 'Next',
-    };
+
     return(
       <div className="container">
       <div className= "content-without-pagination">
@@ -343,4 +357,4 @@ function mapStateToProps(state){
   console.log(state);
   return null;
 }
-export default connect (mapStateToProps, null)(Questionnaire);
+export default connect (mapStateToProps, { addQuestionnaire })(Questionnaire);
