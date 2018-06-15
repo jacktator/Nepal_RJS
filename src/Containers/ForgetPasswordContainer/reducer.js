@@ -1,14 +1,17 @@
+//@flow
 //this file is for getting the email and password
+
+type Props={
+  DefaultState: Object,
+}
 
 let DefaultState=
   {
     email:'',
-    password:'',
-    token: '',
-    status:false,
   }
 
-const ForgetPasswordReducers = (state=DefaultState, action)=>{
+
+const ForgetPasswordReducers = (state: Object=DefaultState, action:Function)=>{
   if(action.type==="ADD_EMAIL"){
     //console.log("add email: "+ action.payload)
     return {

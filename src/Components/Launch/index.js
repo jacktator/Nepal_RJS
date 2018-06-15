@@ -16,18 +16,8 @@ var logoStyle = {
   alignItems: 'center',
 };
 
-const PlaceHolder = ({ className = '', ...restProps }) => (
-  <div className={`${className} placeholder`} {...restProps} style={{alignItems: 'center'}}></div>
-);
 
 class Launch extends Component {
-  constructor(props){
-    super(props);
-  }
-
-  testFun =() => {
-    console.log(this.props.testState)
-  }
 
   render() {
     return (

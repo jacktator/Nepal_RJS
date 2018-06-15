@@ -1,10 +1,10 @@
+//@flow
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import { List, InputItem, WhiteSpace, WingBlank,Button, Flex } from 'antd-mobile';
+import {InputItem, WingBlank,Button, NoticeBar } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import './LoginDetails.css';
 import LogoLocation from '../LogoLocation';
-import {connect} from 'react-redux';
 
 var lockerstyle={
   backgroundImage: 'url(https://png.icons8.com/ios/50/000000/lock.png)',
@@ -20,40 +20,83 @@ var humeniconstyle={
   width: '22px',
 }
 
-class LoginDetails extends React.Component {
+type State={
+  display: string,
+
+}
+
+type Props = {
+  foo: number,
+  email: string,
+  form: string,
+  password: number,
+  onClickButton: Function,
+  onChangeEmail: Function,
+  onChangePassword: Function,
+  pageChange: Function,
+  token: string,
+
+};
+
+class LoginDetails extends Component<Props, State> {
+
+  successfulLogin = (token) =>{
+    if(!token){
+      return(
+        <div>
+          <Button type="primary">
+            Submit
+          </Button>
+        </div>
+      )
+    }
+    return(
+      <div>
+        <Link to="/questionnaire">
+          <Button type="primary">
+            Press to the questionnaires
+          </Button>
+        </Link>
+      </div>
+    )
+  }
+
 
   render() {
-    const { getFieldProps } = this.props.form;
+    const {email, password, token} = this.props;
+    console.log(email)
+    console.log(password)
+    console.log(token)
+
     return (
       <div className="screen-logindetails-style">
         <div className="logo-logindetails-position">
           <LogoLocation/>
         </div>
         <div className="input-info-style">
-          <form className="form">
-            <InputItem
-              placeholder="E-mail"
-              type="text"
-              name="email"
-            >
+          <InputItem
+            value={email}
+            type="text"
+            name="email"
+            onChange={(value)=>this.props.onChangeEmail(value)}
+          >
             <div style={humeniconstyle} />
-            </InputItem>
-            <InputItem
-              placeholder="Password"
-              type="password"
-              name="password"
-            >
+          </InputItem>
+          <InputItem
+            value={password}
+            type="password"
+            name="password"
+            onChange={(value)=>this.props.onChangePassword(value)}
+          >
             <div style={lockerstyle} />
-            </InputItem>
-            <div >
-              <button className="login-button-style">
-                <Button type="primary">
-                  Submit
-                </Button>
-              </button>
-            </div>
-          </form>
+          </InputItem>
+          <div >
+            <button className="login-button-style" onClick={()=>this.props.onClickButton(email, password)}>
+              {this.successfulLogin(token)}
+            </button>
+          </div>
         </div>
+
         <div className="forgetpassword-style">
           <Link to='/forgetpassword' style={{color: '#bbb'}}>
             Forget Password?
@@ -71,14 +114,17 @@ class LoginDetails extends React.Component {
         </div>
       </div>
     );
-    }
   }
+}
+
+const LoginDetailsWrapper = createForm()(LoginDetails);
+
+export default LoginDetailsWrapper;
 
 
-  const LoginDetailsWrapper = createForm()(connect (null, null )(LoginDetails));
 
-  export default LoginDetailsWrapper;
 
+// {!token? <div>Submit</div>: <Link to="/questionnaire"><div>Submit</div></Link>}
 
   // {this.props.status ?
   //   <div><Link to="/questionnaire">Submit</Link></div>
@@ -121,17 +167,6 @@ class LoginDetails extends React.Component {
   //   this.props.addPassword(password);
   // }
   //
-  // infoSubmit=(e)=>{
-  //   e.preventDefault();
-  //   const user = {
-  //     name: this.state.name,
-  //   };
-  //
-  //   axios.post(`https://jsonplaceholder.typicode.com/users`, {user})
-  //   .then((res)=>{
-  //     console.log(res);
-  //   })
-  // }
 
   //this function is for input values(onChange())
     // handleChange = (value) => {

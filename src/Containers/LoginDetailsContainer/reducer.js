@@ -1,14 +1,15 @@
 //this file is for getting the email and password
+//@flow
 
 let DefaultState=
   {
-    email:'',
-    password:'',
+    email:'boy@test.com',
+    password:12345678,
     token: '',
-    status:false,
+    status: false,
   }
 
-const LoginDetailsReducers = (state=DefaultState, action)=>{
+const LoginDetailsReducers = (state: Object=DefaultState, action: Function)=>{
   if(action.type==="ADD_EMAIL"){
     //console.log("add email: "+ action.payload)
     return {
@@ -29,7 +30,13 @@ const LoginDetailsReducers = (state=DefaultState, action)=>{
     }
   }
   else if (action.type==="IS_AUTHENTICATED"){
-    console.log(action.payload)
+    //console.log(action.payload)
+    return {
+      ...state, status: action.payload
+    }
+  }
+  else if (action.type==="TEST"){
+    //console.log(action.payload)
     return {
       ...state, status: action.payload
     }
