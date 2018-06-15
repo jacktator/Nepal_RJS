@@ -1,11 +1,10 @@
 //@flow
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import { List, InputItem, WhiteSpace, WingBlank,Button, Flex, NoticeBar } from 'antd-mobile';
+import {InputItem, WingBlank,Button, NoticeBar } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import './LoginDetails.css';
 import LogoLocation from '../LogoLocation';
-import {connect} from 'react-redux';
 
 var lockerstyle={
   backgroundImage: 'url(https://png.icons8.com/ios/50/000000/lock.png)',
