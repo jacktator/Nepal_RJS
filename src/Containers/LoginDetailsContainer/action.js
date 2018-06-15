@@ -16,8 +16,8 @@ export function LoginDetailsActions(email:string, password:string){
       let token = response.data.token
       window.localStorage.setItem('token', token);
       dispatch(upDateToken(token));
+      dispatch(setGlobalAxiosDefault(token));
       dispatch(checkLogin());
-
 
       // dispatch(validToken(token));
 
@@ -49,6 +49,14 @@ export function validToken(token:string){
       dispatch(catchError(error));
     })
   };
+}
+
+export function setGlobalAxiosDefault(token: string){
+  const newToken = "Bearer " + token;
+  axios.defaults.headers.common["Authorization"] = newToken;
+  return (dispatch: Function) => {
+    console.log('setGlobalAxiosDefault run successfully')
+  }
 }
 
 export function isAuthenticated(status: string){
