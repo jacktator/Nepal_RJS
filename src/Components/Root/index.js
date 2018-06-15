@@ -17,9 +17,23 @@ type Props = {
 
 class Root extends Component<Props>{
   render(){
-    // if(!check){
-    //   return("no running")
-    // }
+    const {check} = this.props
+
+    if(!check){
+      return(
+        <div>
+          <BrowserRouter>
+            <Switch>
+              <Route path="/" exact component={Launch}/>
+              <Route path="/login" exact component={Login}/>
+              <Route path="/signup" exact component={SignUp} />
+              <Route path="/login/logindetails" exact component={LoginDetails} />
+              <Route path="/forgetpassword" exact component={ForgetPassWord} />
+            </Switch>
+          </BrowserRouter>
+        </div>
+      )
+    }
     return(
       <div>
         <BrowserRouter>
