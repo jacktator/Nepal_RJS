@@ -5,13 +5,34 @@ import { QUESTIONNAIRE } from '../../constants';
 export function stepOne(age: number, gender: string, weight: number) {
   let token = localStorage.getItem('token');
   return(dispatch: Function) => {
-    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/",
+    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/"+963,
     {
-          fields: {
-            age,
-            gender,
-            weight
-          }
+      fields: { age, gender, weight: weight[0] }
+    }, {
+      headers:{
+        Authorization: "Bearer" + token
+      }
+    }
+  ).then((response) => {
+    console.log("Response",response.data)
+    let id = response.data.id;
+    let fields = response.data.acf;
+    window.localStorage.setItem('questionnaire_id',id)
+
+    dispatch(getDataFromServer(fields));
+    }).catch((error) => {
+      console.log("Error",error)
+    })
+  }
+}
+
+export function stepTwo(days_per_week: number, goals: Object) {
+  return(dispatch: Function) => {
+    let token = localStorage.getItem('token');
+    let id = localStorage.getItem('questionnaire_id')
+    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/"+id,
+    {
+      fields: { days_per_week, goals }
     }, {
       headers:{
         Authorization: "Bearer" + token
@@ -19,11 +40,77 @@ export function stepOne(age: number, gender: string, weight: number) {
     }
   ).then((response) => {
     console.log("Response",response)
-  }).catch((error) => {
-    console.log("Error",error)
-  })
+    let fields = response.data.acf;
+    dispatch(getDataFromServer(fields));
+    }).catch((error) => {
+      console.log("Error",error)
+    })
+  }
 }
+export function stepThree(rehab_focus: Object) {
+  return(dispatch: Function) => {
+    let token = localStorage.getItem('token');
+    let id = localStorage.getItem('questionnaire_id')
+    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/"+id,
+    {
+      fields: { rehab_focus }
+    }, {
+      headers:{
+        Authorization: "Bearer" + token
+      }
+    }
+  ).then((response) => {
+    console.log("Response",response)
+    let fields = response.data.acf;
+    dispatch(getDataFromServer(fields));
+    }).catch((error) => {
+      console.log("Error",error)
+    })
+  }
 }
+export function stepFour(stress, productivity) {
+  return(dispatch: Function) => {
+    let token = localStorage.getItem('token');
+    let id = localStorage.getItem('questionnaire_id')
+    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/"+id,
+    {
+      fields: { stress, productivity }
+    }, {
+      headers:{
+        Authorization: "Bearer" + token
+      }
+    }
+  ).then((response) => {
+    console.log("Response",response)
+    let fields = response.data.acf;
+    dispatch(getDataFromServer(fields));
+    }).catch((error) => {
+      console.log("Error",error)
+    })
+  }
+}
+export function stepFive(work_injury, health_feeling) {
+  return(dispatch: Function) => {
+    let token = localStorage.getItem('token');
+    let id = localStorage.getItem('questionnaire_id')
+    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/"+id,
+    {
+      fields: { work_injury, health_feeling }
+    }, {
+      headers:{
+        Authorization: "Bearer" + token
+      }
+    }
+  ).then((response) => {
+    console.log("Response",response)
+    let fields = response.data.acf;
+    dispatch(getDataFromServer(fields));
+    }).catch((error) => {
+      console.log("Error",error)
+    })
+  }
+}
+
 export function addQuestionnaire(state) {
   let token = localStorage.getItem('token');
   return(dispatch: Function) => {
@@ -38,7 +125,7 @@ export function addQuestionnaire(state) {
     }
   ).then((response) => {
     console.log("Response",response)
-    dispatch(questionnaire(state));
+    // dispatch(questionnaire(state));
   }).catch((error) => {
     console.log("Error",error)
   })
@@ -139,10 +226,10 @@ export function addCurrentActivity (current_activity: number) {
   }
 }
 
-export function questionnaire(state) {
+export function getDataFromServer(data) {
   const action = {
-    type: QUESTIONNAIRE,
-    state
+    type: "DATA_FROM_SERVER",
+    payload: data
   }
   return action;
 }

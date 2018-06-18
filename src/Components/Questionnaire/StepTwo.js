@@ -37,8 +37,8 @@ const StepTwo = (props) => {
     <span style={{ margin: "0 0 0 4%"}}>
       Traning Goals:
     </span>
-    {props.data.map(i => (
-      <CheckboxItem key={i.value} checked={i.isChecked} onChange={() => props.change(i.value)}>
+    {props.data.map((i,key) => (
+      <CheckboxItem key={key} checked={i.isChecked} onChange={() => props.change(i.value)}>
       <div onClick= {() => showAlert(i.label, i.description, i.value, props)}>
       <strong>{i.label}</strong><List.Item.Brief>{i.description}</List.Item.Brief>
       </div>

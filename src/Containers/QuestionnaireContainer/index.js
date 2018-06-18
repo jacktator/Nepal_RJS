@@ -8,7 +8,7 @@ import { addQuestionnaire, addName, addAge, addGender, addWeight,
         addProductivity, addProductiveAfterExercise,
         addWorkInjury, addHealthFeeling,
         addDailyActivity, addCurrentActivity,
-        stepOne
+        stepOne, stepTwo, stepThree, stepFour, stepFive
       }from './actions';
 import {bindActionCreators} from 'redux';
 
@@ -150,9 +150,6 @@ class Questionnaire extends Component {
   }
   buttonHandler = (button) =>{
     let currentPage = this.state.currentPage;
-    if(currentPage === 6 && button === "next"){
-      this.props.addQuestionnaire(this.state);
-    }
     if(button === "previous"){
       if(currentPage>1){
           currentPage -= 1;
@@ -165,8 +162,28 @@ class Questionnaire extends Component {
         this.props.stepOne(age, gender, weight);
         this.increaseCurrentPage(currentPage);
       }else if(currentPage === 2) {
+        let {days_per_week, goals} = this.props.QuestionnaireReducers.fields;
+        this.props.stepTwo(days_per_week, goals);
+        this.increaseCurrentPage(currentPage);
+      }else if(currentPage === 3) {
+        let {rehab_focus} = this.props.QuestionnaireReducers.fields;
+        this.props.stepThree(rehab_focus);
+        this.increaseCurrentPage(currentPage);
+      }else if(currentPage === 4) {
+        let {stress, productivity} = this.props.QuestionnaireReducers.fields;
+        console.log("Stress", stress);
+        console.log("productive", productivity)
+        this.props.stepFour(stress, productivity);
+        this.increaseCurrentPage(currentPage);
+      }else if(currentPage === 5) {
+        let {work_injury, health_feeling} = this.props.QuestionnaireReducers.fields;
+        this.props.stepFive(work_injury, health_feeling);
+        this.increaseCurrentPage(currentPage);
+      }else if(currentPage === 6) {
 
       }
+
+
     }
   }
   render() {
@@ -219,18 +236,18 @@ class Questionnaire extends Component {
     } else if(this.state.currentPage === 2){
       RenderPage = (
         <StepTwo
-        daysArray = {daysArray}
-        days= {fields.days_per_week}
-        selectDays = {this.props.addDays}
-        change={this.programCheckboxHandler}
-        data={this.state.trainingGoals}
+          daysArray = {daysArray}
+          days= {fields.days_per_week}
+          selectDays = {this.props.addDays}
+          change={this.programCheckboxHandler}
+          data={this.state.trainingGoals}
         />
       );
     } else if(this.state.currentPage === 3){
       RenderPage = (
         <StepThree
-        change={this.injuryManagementCheckboxHandler}
-        data = {this.state.injuryManagement}
+          change={this.injuryManagementCheckboxHandler}
+          data = {this.state.injuryManagement}
         />
       );
     }else if(this.state.currentPage === 4){
@@ -291,7 +308,6 @@ class Questionnaire extends Component {
   }
 }
 function mapStateToProps(state){
-  console.log('mapStatetoProps',state);
   return {
     QuestionnaireReducers: state.QuestionnaireReducers
   }
@@ -304,7 +320,7 @@ function matchDispatchToProps(dispatch){
       addProductivity, addProductiveAfterExercise,
       addWorkInjury, addHealthFeeling,
       addDailyActivity, addCurrentActivity,
-      stepOne
+      stepOne, stepTwo, stepThree, stepFour, stepFive
     }, dispatch
   );
 }

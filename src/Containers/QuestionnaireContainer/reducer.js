@@ -18,7 +18,6 @@ let DefaultState = {
     daily_activity: null,
     current_activity: null
   }
-
 }
 
 const QuestionnaireReducers =(state: Object= DefaultState, action: Function) => {
@@ -122,7 +121,12 @@ const QuestionnaireReducers =(state: Object= DefaultState, action: Function) => 
         ...state, fields
       }
 
-
+      case "DATA_FROM_SERVER" :
+        fields = { ...state.fields};
+        fields = action.payload
+        return {
+          ...state, fields
+        }
     case QUESTIONNAIRE:
       const data = action.state;
       return {
