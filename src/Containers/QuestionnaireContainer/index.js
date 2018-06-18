@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import { Progress, Pagination, Icon} from 'antd-mobile';
+import { Progress, Pagination, Icon, Button} from 'antd-mobile';
 import { connect } from 'react-redux';
 import { addQuestionnaire } from './actions';
 
@@ -12,14 +12,13 @@ import StepFour from '../../Components/Questionnaire/StepFour';
 import StepFive from '../../Components/Questionnaire/StepFive';
 import StepSix from '../../Components/Questionnaire/StepSix';
 
-
 import './Questionnaire.css';
-
 
 class Questionnaire extends Component {
   constructor(props){
     super(props);
     this.state = {
+      nick_name: "",
       fields: {
         name: "",
         age: "",
@@ -35,7 +34,6 @@ class Questionnaire extends Component {
         health_feeling: null,
         daily_activity: null,
         current_activity: null
-
       },
       program: {
         trainingGoals: [
@@ -52,7 +50,6 @@ class Questionnaire extends Component {
         { value: 3, isChecked: false, description: 'Shoulder Pain', imgurl: 'https://feelpainrelief.com/wp-content/uploads/2015/09/shoulder-pain-300x200.jpg'},
         { value: 4, isChecked: false, description: 'Hip Pain', imgurl: 'https://qph.fs.quoracdn.net/main-qimg-4d054f876feaa4b3d4944914a6f7cb66-c'},
       ],
-
       stressAndProductivity: {
         currentStress:"",
         currentProductivity:"",
@@ -214,10 +211,33 @@ class Questionnaire extends Component {
     // this.setState({ weightPicker: weight[0]})
   }
 
+  buttonHandler = (button) =>{
+    console.log(button)
+    let currentPage = this.state.currentPage;
+    if(currentPage == 6 && button === "next"){
+      this.props.addQuestionnaire(this.state);
+    }
+    if(button === "previous"){
+      if(currentPage>1){
+          currentPage -= 1;
+          this.setState({ currentPage })
+      }
+    }
+    if(button === "next"){
+      if(this.state.fields.name === "" && this.state.fields.age === "" && this.state.fields.weight === "" && this.state.fields.gender === ""){
+        alert("please enter the data")
+      }else{
+        if(currentPage < 6){
+            currentPage += 1;
+            this.setState({ currentPage })
+        }
+      }
+    }
+  }
   //Handle the finish button of sixth page
   onFinishButtonHandler = () => {
     console.log("finish Button Clicked");
-    this.props.addQuestionnaire(this.state.fields);
+
   }
 
   makeNextToFinish = () => {
@@ -228,17 +248,16 @@ class Questionnaire extends Component {
     return buttonText
   }
 
-
-
   render() {
-
     console.log(this.state);
-
     const percent  = (this.state.currentPage-1)*17;
     const radioData = [
       { value: "Male", label: 'Male' },
       { value: "Female", label: 'Female' },
       { value: "Others", label: 'Others' },
+    ];
+    const daysArray= [
+      {value: 3},{value: 4},{value: 5},
     ];
     const weightArray= [
       {value: 70, label: '70 KG'},{value: 71, label: '71 KG'},{value: 72, label: '72 KG'},{value: 73, label: '73 KG'},{value: 74, label: '74 KG'},{value: 75, label: '75 KG'},
@@ -327,27 +346,29 @@ class Questionnaire extends Component {
       );
     }
 
-
     return(
       <div className="container">
-      <div className= "content-without-pagination">
-      <div className="progress-bar">
-      <div className="progress"><Progress percent={percent} position="normal" /></div>
-      <div aria-hidden="true">{percent}%</div>
-      </div>
-      <CurrentStep currentPage={this.state.currentPage}/>
-      {RenderPage}
-      </div>
-      <div className="pagination-container">
-      <Pagination
-      total={6}
-      current={this.state.currentPage}
-      onChange={p => this.onPaginationHandler(p)}
-      locale={{
-        prevText: (<span className="arrow-align"><Icon type="left" />Prev</span>),
-        nextText: (<span className="arrow-align"><Icon type="right" />{this.makeNextToFinish()}</span>),
-      }} />
-      </div>
+        <div className= "content-without-pagination">
+          <div className="progress-bar">
+            <div className="progress"><Progress percent={percent} position="normal" /></div>
+            <div aria-hidden="true">{percent}%</div>
+          </div>
+          <CurrentStep currentPage={this.state.currentPage}/>
+          {RenderPage}
+        </div>
+        <div className="pagination-container" style ={{textAlign: 'center'}}>
+          <Button type="primary" disabled={this.state.currentPage === 1 ? true: false}  onClick={() => this.buttonHandler('previous')}
+            inline size="medium" style={{ float: 'left'}}>
+              previous
+        </Button>
+
+        <span id="footer_page" style ={{}}>{this.state.currentPage}/6</span>
+
+        <Button type="primary" onClick={() => this.buttonHandler('next')}
+          inline size="medium" style={{ float: 'right'}}>
+           {this.state.currentPage === 6 ? "Finish": "Next"}
+       </Button>
+     </div>
       </div>
 
     )

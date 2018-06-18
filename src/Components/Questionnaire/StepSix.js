@@ -34,11 +34,6 @@ const StepSix = (props) => {
         >
         <List.Item arrow="horizontal">Health:</List.Item>
       </Picker>
-      <div className="finish-button">
-        <Button type="primary" onClick={() => props.finishButtonHandler()} inline size="medium" style={{ float: 'right', marginTop:'10px', marginRight: '4px' }}>
-           Finish
-        </Button>
-      </div>
     </div>
   )
 

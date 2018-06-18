@@ -2,11 +2,12 @@
 import { QUESTIONNAIRE } from '../../constants';
 
 export default (state = [], action) => {
+  console.log("questionnaire reducer");
   switch (action.type) {
     case QUESTIONNAIRE:
-      const { fields } = action;
+      const data = action.state;
       return {
-        fields
+        data
       }
     default:
       return state;
