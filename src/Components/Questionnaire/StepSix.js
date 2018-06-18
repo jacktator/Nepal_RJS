@@ -17,7 +17,7 @@ const StepSix = (props) => {
         locale={enUs}
         data={props.activityArray}
         cols={1}
-        value={[props.generalActivity.currentActivity]}
+        value={[props.fields.daily_activity]}
         onOk={v => props.selectActivity(v)}
         >
         <List.Item arrow="horizontal">Injury:</List.Item>
@@ -29,7 +29,7 @@ const StepSix = (props) => {
         locale={enUs}
         data={props.exerciseArray}
         cols={1}
-        value={[props.generalActivity.currentExercise]}
+        value={[props.fields.current_activity]}
         onOk={v => props.selectExercise(v)}
         >
         <List.Item arrow="horizontal">Health:</List.Item>

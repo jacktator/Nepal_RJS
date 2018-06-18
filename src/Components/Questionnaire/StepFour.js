@@ -1,7 +1,7 @@
 import React from 'react';
 import { List, InputItem, Radio, Picker, WhiteSpace, NoticeBar} from 'antd-mobile';
 import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
-
+const RadioItem = Radio.RadioItem;
 const StepFour = (props) => {
 
   return(
@@ -10,30 +10,29 @@ const StepFour = (props) => {
         The following information is anonymous
         </NoticeBar>
         <h2 style={{textAlign: 'center'}}>Stress and Productivity</h2>
-        <br/><br/>
 
-        <p>How often do you feel stressed at work?</p>
-        <Picker
-          locale={enUs}
-          data={props.stressArray}
-          cols={1}
-          value={[props.stressAndProductivity.currentStress]}
-          onOk={v => props.selectStress(v)}
-          >
-          <List.Item arrow="horizontal">Stress:</List.Item>
-        </Picker>
-        <br/><br/>
+        <List renderHeader={() => 'How often do you feel stressed at work?'}>
+        {props.stressArray.map(i => (
+          <RadioItem
+              key={i.value}
+              checked={props.fields.stress === i.value}
+              onChange={() => props.selectStress(i.value)}>
+            {i.label}
+          </RadioItem>
+        ))}
+      </List>
 
-        <p>How productive do you feel each day?</p>
-        <Picker
-          locale={enUs}
-          data={props.productivityArray}
-          cols={1}
-          value={[props.stressAndProductivity.currentProductivity]}
-          onOk={v => props.selectProductivity(v)}
-          >
-          <List.Item arrow="horizontal">Productivity:</List.Item>
-        </Picker>
+        <List renderHeader={() => 'How productive do you feel each day?'}>
+        {props.productivityArray.map(i => (
+          <RadioItem
+              key={i.value}
+              checked={props.fields.productivity === i.value}
+              onChange={() => props.selectProductivity(i.value)}>
+            {i.label}
+          </RadioItem>
+        ))}
+      </List>
+
       </div>
 
   )

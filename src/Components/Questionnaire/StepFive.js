@@ -17,7 +17,7 @@ const StepFive = (props) => {
         locale={enUs}
         data={props.injuryArray}
         cols={1}
-        value={[props.healthAndWellbeing.currentInjury]}
+        value={[props.fields.work_injury]}
         onOk={v => props.selectInjury(v)}
         >
         <List.Item arrow="horizontal">Injury:</List.Item>
@@ -29,7 +29,7 @@ const StepFive = (props) => {
         locale={enUs}
         data={props.healthArray}
         cols={1}
-        value={[props.healthAndWellbeing.currentHealth]}
+        value={[props.fields.health_feeling]}
         onOk={v => props.selectHealth(v)}
         >
         <List.Item arrow="horizontal">Health:</List.Item>

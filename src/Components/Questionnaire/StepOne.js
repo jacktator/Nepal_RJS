@@ -13,14 +13,14 @@ const StepOne = (props) => {
         <InputItem
           type="text"
           placeholder="Please enter your name"
-          onChange={props.change.bind(this, 'one', 'name')}
-          value={props.fields.name}
+          onChange={(v) => props.nameHandler(v)}
+          value={props.name}
         >Name</InputItem>
 
         <InputItem
           type="number"
           placeholder="Please enter your age"
-          onChange={props.change.bind(this, 'one', 'age')}
+          onChange={(v) => props.ageHandler(v)}
           value={props.fields.age}
         >Age</InputItem>
 

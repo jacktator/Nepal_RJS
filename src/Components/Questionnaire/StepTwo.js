@@ -1,5 +1,6 @@
 import React from 'react';
-import { Icon, List, Checkbox, Modal, WhiteSpace} from 'antd-mobile';
+import { List, Checkbox, Modal, WhiteSpace, Picker} from 'antd-mobile';
+import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
 
 const CheckboxItem = Checkbox.CheckboxItem;
 const alert = Modal.alert;
@@ -18,21 +19,17 @@ const StepTwo = (props) => {
       <div style={{ margin: "0 0 0 4%"}}>
         How many days per week do you want to go to the gym?
         <div>
-          <span style={{ float: 'left'}}> <strong> Days :</strong> </span>
-          &nbsp;&nbsp;
-          <span style={{ float: 'right', margin: "0 3% 0 0" }}>
-            <button onClick={props.minus}>
-              <Icon type="minus" style={{width:"12px", height: "12px"}}/>
-            </button>&nbsp;
-            <span>{props.days }</span>
-            &nbsp;
-            <button onClick={props.plus}>
-              <Icon type="plus" style={{width:"12px", height: "12px"}}/>
-            </button>
-          </span>
+          <Picker
+            data={props.daysArray}
+            locale={enUs}
+            cols={1}
+            value={[props.days]}
+            onOk={v => props.selectDays(v)}
+            >
+            <List.Item arrow="horizontal">Days:</List.Item>
+          </Picker>
         </div>
     </div>
-
     <WhiteSpace/>
     <WhiteSpace/>
     <WhiteSpace/>

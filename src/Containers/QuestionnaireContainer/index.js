@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import { Progress, Pagination, Icon, Button} from 'antd-mobile';
+import { Progress, Button} from 'antd-mobile';
 import { connect } from 'react-redux';
 import { addQuestionnaire } from './actions';
 
@@ -50,14 +50,6 @@ class Questionnaire extends Component {
         { value: 3, isChecked: false, description: 'Shoulder Pain', imgurl: 'https://feelpainrelief.com/wp-content/uploads/2015/09/shoulder-pain-300x200.jpg'},
         { value: 4, isChecked: false, description: 'Hip Pain', imgurl: 'https://qph.fs.quoracdn.net/main-qimg-4d054f876feaa4b3d4944914a6f7cb66-c'},
       ],
-      stressAndProductivity: {
-        currentStress:"",
-        currentProductivity:"",
-      },
-      healthAndWellbeing: {
-        currentInjury:"",
-        currentHealth:"",
-      },
       generalActivity: {
         currentActivity:"",
         currentExercise:"",
@@ -118,18 +110,6 @@ class Questionnaire extends Component {
     }
   }
 
-  plusHandler = () =>{
-    let fields = this.state.fields;
-    fields['days_per_week'] = fields['days_per_week'] + 1;
-    this.setState({ fields })
-  }
-  minusHandler = () =>{
-    let fields = this.state.fields;
-    if(fields['days_per_week']>1){
-      fields['days_per_week'] = fields['days_per_week'] - 1;
-      this.setState({ fields })
-    }
-  }
 
   //handle to radio button for gender selection
   genderHandler = (value) => {
@@ -139,6 +119,16 @@ class Questionnaire extends Component {
       fields
     });
   };
+//handle the input for name in step One
+  nameHandler = (nick_name) => {
+    this.setState({ nick_name })
+  }
+  ageHandler = (age) => {
+    let fields = { ...this.state.fields}
+    fields['age']= age;
+    this.setState({ fields })
+
+  }
 
   //handle the input filed for stepOne
   inputItemHandler = (step, assignTo, data) => {
@@ -158,6 +148,13 @@ class Questionnaire extends Component {
     this.setState({fields})
     // this.setState({ weightPicker: weight[0]})
   }
+
+  onDaysPicker = (days) => {
+    let fields = {...this.state.fields}
+    fields['days_per_week'] = days[0];
+    this.setState({fields})
+  }
+
   //handle the pagination onChange event
   onPaginationHandler = (currentPage) => {
     this.setState({ currentPage })
@@ -165,56 +162,51 @@ class Questionnaire extends Component {
 
   //handle the value for stress picker
   onStressPicker = (stress) => {
-    let stressAndProductivity = {...this.state.stressAndProductivity}
-    stressAndProductivity['currentStress'] = stress[0];
-    this.setState({stressAndProductivity})
-    // this.setState({ weightPicker: weight[0]})
+    let fields = {...this.state.fields}
+    fields['stress'] = stress
+    this.setState({fields})
   }
 
   //handle the value for productivity picker
   onProductivityPicker = (productivity) => {
-    let stressAndProductivity = {...this.state.stressAndProductivity}
-    stressAndProductivity['currentProductivity'] = productivity[0];
-    this.setState({stressAndProductivity})
-    // this.setState({ weightPicker: weight[0]})
+    let fields = {...this.state.fields}
+    fields['productivity'] = productivity;
+    this.setState({fields})
   }
 
   //handle the value for injury picker
   onInjuryPicker = (injury) => {
-    let healthAndWellbeing = {...this.state.healthAndWellbeing}
-    healthAndWellbeing['currentInjury'] = injury[0];
-    this.setState({healthAndWellbeing})
-    // this.setState({ weightPicker: weight[0]})
+    let fields = {...this.state.fields}
+    fields['work_injury'] = injury[0];
+    this.setState({fields})
+
   }
 
   //handle the value for health picker
   onHealthPicker = (health) => {
-    let healthAndWellbeing = {...this.state.healthAndWellbeing}
-    healthAndWellbeing['currentHealth'] = health[0];
-    this.setState({healthAndWellbeing})
-    // this.setState({ weightPicker: weight[0]})
+    let fields = {...this.state.fields}
+    fields['health_feeling'] = health[0];
+    this.setState({fields})
   }
 
   //handle the value for activity picker
   onActivityPicker = (activity) => {
-    let generalActivity = {...this.state.generalActivity}
-    generalActivity['currentActivity'] = activity[0];
-    this.setState({generalActivity})
-    // this.setState({ weightPicker: weight[0]})
+    let fields = {...this.state.fields}
+    fields['daily_activity'] = activity[0];
+    this.setState({fields})
   }
 
   //handle the value for exercise picker
   onExercisePicker = (exercise) => {
-    let generalActivity = {...this.state.generalActivity}
-    generalActivity['currentExercise'] = exercise[0];
-    this.setState({generalActivity})
-    // this.setState({ weightPicker: weight[0]})
+      let fields = {...this.state.fields}
+      fields['current_activity'] = exercise[0];
+      this.setState({fields})
   }
 
   buttonHandler = (button) =>{
-    console.log(button)
+
     let currentPage = this.state.currentPage;
-    if(currentPage == 6 && button === "next"){
+    if(currentPage === 6 && button === "next"){
       this.props.addQuestionnaire(this.state);
     }
     if(button === "previous"){
@@ -236,7 +228,6 @@ class Questionnaire extends Component {
   }
   //Handle the finish button of sixth page
   onFinishButtonHandler = () => {
-    console.log("finish Button Clicked");
 
   }
 
@@ -249,7 +240,6 @@ class Questionnaire extends Component {
   }
 
   render() {
-    console.log(this.state);
     const percent  = (this.state.currentPage-1)*17;
     const radioData = [
       { value: "Male", label: 'Male' },
@@ -257,7 +247,7 @@ class Questionnaire extends Component {
       { value: "Others", label: 'Others' },
     ];
     const daysArray= [
-      {value: 3},{value: 4},{value: 5},
+      {value: 3, label: '3'},{value: 4, label: '4'},{value: 5, label: '5'},
     ];
     const weightArray= [
       {value: 70, label: '70 KG'},{value: 71, label: '71 KG'},{value: 72, label: '72 KG'},{value: 73, label: '73 KG'},{value: 74, label: '74 KG'},{value: 75, label: '75 KG'},
@@ -286,7 +276,9 @@ class Questionnaire extends Component {
     if(this.state.currentPage === 1){
       RenderPage = (
         <StepOne
-        change={this.inputItemHandler}
+        nameHandler={this.nameHandler}
+        name={this.state.nick_name}
+        ageHandler={this.ageHandler}
         fields={this.state.fields}
         radioData={radioData}
         weightArray={weightArray}
@@ -297,8 +289,8 @@ class Questionnaire extends Component {
     } else if(this.state.currentPage === 2){
       RenderPage = (
         <StepTwo
-        plus={this.plusHandler}
-        minus={this.minusHandler}
+        daysArray = {daysArray}
+        selectDays = {this.onDaysPicker}
         days={this.state.fields.days_per_week}
         change={this.programCheckboxHandler}
         data={this.state.program.trainingGoals}
@@ -316,7 +308,7 @@ class Questionnaire extends Component {
         <StepFour
         stressArray={stressArray}
         selectStress={this.onStressPicker}
-        stressAndProductivity = {this.state.stressAndProductivity}
+        fields = {this.state.fields}
         productivityArray={productivityArray}
         selectProductivity={this.onProductivityPicker}
         />
@@ -327,7 +319,7 @@ class Questionnaire extends Component {
         <StepFive
         injuryArray={injuryArray}
         selectInjury={this.onInjuryPicker}
-        healthAndWellbeing = {this.state.healthAndWellbeing}
+        fields = {this.state.fields}
         healthArray={healthArray}
         selectHealth={this.onHealthPicker}
         />
@@ -338,14 +330,13 @@ class Questionnaire extends Component {
         <StepSix
         activityArray={activityArray}
         selectActivity={this.onActivityPicker}
-        generalActivity = {this.state.generalActivity}
+        fields = {this.state.fields}
         exerciseArray={exerciseArray}
         selectExercise={this.onExercisePicker}
         finishButtonHandler = {this.onFinishButtonHandler}
         />
       );
     }
-
     return(
       <div className="container">
         <div className= "content-without-pagination">
@@ -361,21 +352,19 @@ class Questionnaire extends Component {
             inline size="medium" style={{ float: 'left'}}>
               previous
         </Button>
-
         <span id="footer_page" style ={{}}>{this.state.currentPage}/6</span>
-
         <Button type="primary" onClick={() => this.buttonHandler('next')}
           inline size="medium" style={{ float: 'right'}}>
            {this.state.currentPage === 6 ? "Finish": "Next"}
        </Button>
-     </div>
       </div>
+    </div>
 
     )
   }
 }
 function mapStateToProps(state){
-  console.log(state);
+  console.log('mapStatetoProps',state);
   return null;
 }
 export default connect (mapStateToProps, { addQuestionnaire })(Questionnaire);
