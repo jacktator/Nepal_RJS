@@ -23,7 +23,7 @@ const StepTwo = (props) => {
             data={props.daysArray}
             locale={enUs}
             cols={1}
-            value={[props.days]}
+            value={[props.days[0]]}
             onOk={v => props.selectDays(v)}
             >
             <List.Item arrow="horizontal">Days:</List.Item>

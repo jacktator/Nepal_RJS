@@ -2,50 +2,147 @@
 import axios from 'axios';
 import { QUESTIONNAIRE } from '../../constants';
 
-export function stepOne(state) {
+export function stepOne(age: number, gender: string, weight: number) {
   let token = localStorage.getItem('token');
   return(dispatch: Function) => {
     return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/",
-      {
-        title: "AutoTitle",
-        fields: state.fields
-      }, {
-        headers:{
-          Authorization: "Bearer" + token
-        }
+    {
+          fields: {
+            age,
+            gender,
+            weight
+          }
+    }, {
+      headers:{
+        Authorization: "Bearer" + token
       }
-    ).then((response) => {
-      console.log("Response",response)
-    }).catch((error) => {
-      console.log("Error",error)
-    })
-  }
+    }
+  ).then((response) => {
+    console.log("Response",response)
+  }).catch((error) => {
+    console.log("Error",error)
+  })
+}
 }
 export function addQuestionnaire(state) {
   let token = localStorage.getItem('token');
   return(dispatch: Function) => {
     return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/",
-      {
-        title: "Questionnaire",
-        fields: state.fields
-      }, {
-        headers:{
-          Authorization: "Bearer" + token
-        }
+    {
+      title: "Questionnaire",
+      fields: state.fields
+    }, {
+      headers:{
+        Authorization: "Bearer" + token
       }
-    ).then((response) => {
-      console.log("Response",response)
-      dispatch(questionnaire(state));
-    }).catch((error) => {
-      console.log("Error",error)
-    })
+    }
+  ).then((response) => {
+    console.log("Response",response)
+    dispatch(questionnaire(state));
+  }).catch((error) => {
+    console.log("Error",error)
+  })
+}
+}
+
+export function addName (nick_name: string) {
+  return {
+    type: "ADD_NAME",
+    payload: nick_name
+  }
+}
+
+export function addAge (age: number) {
+  return {
+    type: "ADD_AGE",
+    payload: age
+  }
+}
+export function addGender (gender: string) {
+  return {
+    type: "ADD_GENDER",
+    payload: gender
+  }
+}
+export function addWeight (weight: number) {
+  return {
+    type: "ADD_WEIGHT",
+    payload: weight
+  }
+}
+
+export function addDays (days_per_week: number) {
+  return {
+    type: "ADD_DAYS",
+    payload: days_per_week
+  }
+}
+
+export function addGoals (goals: Object) {
+  return {
+    type: "ADD_GOALS",
+    payload: goals
+  }
+}
+
+export function addRehabFocus (rehab_focus: Object) {
+  return {
+    type: "ADD_REHAB_FOCUS",
+    payload: rehab_focus
+  }
+}
+
+export function addStress (stress: number) {
+  return {
+    type: "ADD_STRESS",
+    payload: stress
+  }
+}
+export function addProductivity (productivity: number) {
+  return{
+    type : "ADD_PRODUCITIVITY",
+    payload: productivity
+  }
+}
+export function addProductiveAfterExercise (productive_after_exercise) {
+  return {
+    type: "ADD_PRODCTIVE_AFTER_EXERCISE",
+    payload: productive_after_exercise
+  }
+}
+
+export function addWorkInjury (work_injury : number) {
+  return {
+    type: "ADD_WORK_INJURY",
+    payload: work_injury
+  }
+}
+
+export function addHealthFeeling (health_feeling: number) {
+  return {
+    type: "ADD_HEALTH_FEELING",
+    payload: health_feeling
+  }
+}
+
+export function addDailyActivity (daily_activity: number) {
+  return {
+    type: "ADD_DAILY_ACTIVITY",
+    payload: daily_activity
+  }
+}
+
+export function addCurrentActivity (current_activity: number) {
+  return {
+    type: "ADD_CURRENT_ACTIVITY",
+    payload: current_activity
   }
 }
 
 export function questionnaire(state) {
-    const action = {
+  const action = {
     type: QUESTIONNAIRE,
     state
-   }
+  }
   return action;
 }

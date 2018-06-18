@@ -26,7 +26,7 @@ const StepOne = (props) => {
 
         <List renderHeader={() => 'Please select your gender Gender'}>
           {props.radioData.map((i,key) => (
-            <RadioItem key={key} checked={gender === i.value} onChange={() => props.radioHandler(i.value)}>
+            <RadioItem key={key} checked={gender === i.value} onChange={() => props.genderHandler(i.value)}>
               {i.label}
             </RadioItem>
           ))}
@@ -36,7 +36,7 @@ const StepOne = (props) => {
           data={props.weightArray}
           locale={enUs}
           cols={1}
-          value={[props.fields.weight]}
+          value={[props.fields.weight[0]]}
           onOk={v => props.selectWeight(v)}
           >
           <List.Item arrow="horizontal">Current Body Weight:</List.Item>
