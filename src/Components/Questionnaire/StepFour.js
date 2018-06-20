@@ -1,6 +1,5 @@
 import React from 'react';
-import { List, InputItem, Radio, Picker, WhiteSpace, NoticeBar,Modal} from 'antd-mobile';
-import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
+import { List, Radio, NoticeBar, Modal} from 'antd-mobile';
 const RadioItem = Radio.RadioItem;
 const alert = Modal.alert;
 

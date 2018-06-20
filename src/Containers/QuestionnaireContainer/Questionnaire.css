@@ -1,6 +1,5 @@
 .container {
   display:inline-block;
-
   flex-direction: column;
   justify-content: space-around;
   overflow-y: scroll;
@@ -15,17 +14,19 @@
   flex-direction: column;
   position: relative;
   width: inherit;
-  height: 80%;
-
+  padding-bottom: 70px;
 }
 .pagination-container {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  width: inherit;
-  position: relative;
-  left: 0;
-  bottom: 0;
+  padding-top: 10px;
+  position: fixed;
+  height: 50px;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: white;
+   color: white;
+   text-align: center;
+   z-index: 999;
 
 
 

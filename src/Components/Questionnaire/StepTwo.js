@@ -14,7 +14,7 @@ const showAlert = (label, description, value, props) => {
 
 const StepTwo = (props) => {
   const days = [];
-  days.push(parseInt(props.days))
+  days.push(parseInt(props.days,10));
   return(
     <div >
       <h2 style={{textAlign: 'center'}}>Create Your Program</h2>

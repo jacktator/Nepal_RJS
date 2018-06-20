@@ -1,12 +1,10 @@
 // @flow
 import axios from 'axios';
-import { QUESTIONNAIRE } from '../../constants';
 
 export function stepOne(age: number, gender: string, weight: number) {
-  console.log("weight in step one",weight);
   let token = localStorage.getItem('token');
   return(dispatch: Function) => {
-    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/"+1531,
+    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/",
     {
       fields: { age, gender, weight:weight }
     }, {
@@ -15,16 +13,15 @@ export function stepOne(age: number, gender: string, weight: number) {
       }
     }
   ).then((response) => {
-    console.log("Response",response.data)
+    console.log("Response +1531",response.data)
     let id = response.data.id;
     let fields = response.data.acf;
     window.localStorage.setItem('questionnaire_id',id)
-
     dispatch(getDataFromServer(fields));
-    }).catch((error) => {
-      console.log("Error",error)
-    })
-  }
+  }).catch((error) => {
+    console.log("Error",error)
+  })
+}
 }
 
 export function stepTwo(days_per_week: number, goals: Object) {
@@ -43,10 +40,10 @@ export function stepTwo(days_per_week: number, goals: Object) {
     console.log("Response",response)
     let fields = response.data.acf;
     dispatch(getDataFromServer(fields));
-    }).catch((error) => {
-      console.log("Error",error)
-    })
-  }
+  }).catch((error) => {
+    console.log("Error",error)
+  })
+}
 }
 export function stepThree(rehab_focus: Object) {
   return(dispatch: Function) => {
@@ -64,10 +61,10 @@ export function stepThree(rehab_focus: Object) {
     console.log("Response",response)
     let fields = response.data.acf;
     dispatch(getDataFromServer(fields));
-    }).catch((error) => {
-      console.log("Error",error)
-    })
-  }
+  }).catch((error) => {
+    console.log("Error",error)
+  })
+}
 }
 export function stepFour(stress, productivity) {
   return(dispatch: Function) => {
@@ -85,10 +82,10 @@ export function stepFour(stress, productivity) {
     console.log("Response",response)
     let fields = response.data.acf;
     dispatch(getDataFromServer(fields));
-    }).catch((error) => {
-      console.log("Error",error)
-    })
-  }
+  }).catch((error) => {
+    console.log("Error",error)
+  })
+}
 }
 export function stepFive(work_injury, health_feeling) {
   return(dispatch: Function) => {
@@ -106,10 +103,31 @@ export function stepFive(work_injury, health_feeling) {
     console.log("Response",response)
     let fields = response.data.acf;
     dispatch(getDataFromServer(fields));
-    }).catch((error) => {
-      console.log("Error",error)
-    })
-  }
+  }).catch((error) => {
+    console.log("Error",error)
+  })
+}
+}
+export function stepSix(current_activity, daily_activity) {
+  return(dispatch: Function) => {
+    let token = localStorage.getItem('token');
+    let id = localStorage.getItem('questionnaire_id')
+    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/"+id,
+    {
+      fields: { current_activity, daily_activity }
+    }, {
+      headers:{
+        Authorization: "Bearer" + token
+      }
+    }
+  ).then((response) => {
+    console.log("Response",response)
+    let fields = response.data.acf;
+    dispatch(getDataFromServer(fields));
+  }).catch((error) => {
+    console.log("Error",error)
+  })
+}
 }
 
 export function addQuestionnaire(state) {

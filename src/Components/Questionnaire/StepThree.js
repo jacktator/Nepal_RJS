@@ -19,8 +19,8 @@ const StepThree = (props) => {
       <span>
         <h3> What is your current rehab focus? </h3>
       </span>
-        {props.data.map(i => (
-          <Flex>
+        {props.data.map((i,key) => (
+          <Flex key={key}>
             <Flex.Item>
               <CheckboxItem key={i.value} checked={i.isChecked} onChange={() => props.change(i.value)}>
                 <div onClick = {() => showAlert(i.value, i.description, props)}>

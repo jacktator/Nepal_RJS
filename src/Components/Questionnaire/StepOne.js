@@ -8,7 +8,7 @@ const RadioItem = Radio.RadioItem;
 const StepOne = (props) => {
   const gender = props.fields.gender;
   const weight = [];
-  weight.push(parseInt(props.fields.weight));
+  weight.push(parseInt(props.fields.weight,10));
 
   return(
     <div>
