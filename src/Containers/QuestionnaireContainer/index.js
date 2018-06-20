@@ -171,8 +171,6 @@ class Questionnaire extends Component {
         this.increaseCurrentPage(currentPage);
       }else if(currentPage === 4) {
         let {stress, productivity} = this.props.QuestionnaireReducers.fields;
-        console.log("Stress", stress);
-        console.log("productive", productivity)
         this.props.stepFour(stress, productivity);
         this.increaseCurrentPage(currentPage);
       }else if(currentPage === 5) {
@@ -187,7 +185,8 @@ class Questionnaire extends Component {
     }
   }
   render() {
-    const {nick_name, fields} = this.props.QuestionnaireReducers
+    const {nick_name, fields} = this.props.QuestionnaireReducers;
+    console.log("Data from redux in questionnaire", fields);
     const percent  = (this.state.currentPage-1)*17;
     const radioData = [
       { value: "Male", label: 'Male' },
@@ -202,22 +201,33 @@ class Questionnaire extends Component {
       {value: 76, label: '76 KG'},{value: 77, label: '77 KG'},{value: 78, label: '78 KG'},{value: 79, label: '79 KG'},{value: 80, label: '80 KG'},
     ];
     const stressArray= [
-      {value: 1, label: 'Stress free'},{value: 2, label: 'Minimally stressed'},{value: 3, label: 'Moderately stressed'},{value: 4, label: 'Highly stressed'},{value: 5, label: 'Extrembly stressed'},
+      {value: '1', label: 'Stress free', description:'I never feel stressed'},{value: '2', label: 'Minimally stressed', description:'I rarely feel stressed'},
+      {value: '3', label: 'Moderately stressed', description:'I feel stressed occasionally'},{value:'4', label: 'Highly stressed', description:'I feel quite stressed most days'},
+      {value: '5', label: 'Extrembly stressed', description:'I feel highly stressed every day'},
     ];
     const productivityArray = [
-      {value: 1, label: 'Not productive at all'},{value: 2, label: 'Minimally productive'},{value: 3, label: 'Moderately productive'},{value: 4, label: 'Highly productive'},{value: 5, label: 'Extrembly produvtive'},
+      {value: '1', label: 'Not productive at all', description:'I never feel productive'},{value: '2', label: 'Minimally productive', description:'I don’t feel productive very often'},
+      {value: '3', label: 'Moderately productive', description:'I feel fairly productive most days'},{value: '4', label: 'Highly productive', description:'I feel highly productive most days'},
+      {value: '5', label: 'Extrembly productive', description:'I feel highly productive every day'},
     ];
     const injuryArray = [
-      {value: 1, label: 'No pain'},{value: 2, label: 'Rarely in pain'},{value: 3, label: 'Sometimes in pain'},{value: 4, label: 'Regularly in pain'},{value: 5, label: 'Always in pain'},
+      {value: '1', label: 'No pain', description:'I never feel injury or posture related pain'},{value: '2', label: 'Rarely in pain', description:'I feel injury or posture related pain every few weeks or months'},
+      {value: '3', label: 'Sometimes in pain', description:'I feel injury or posture related pain 1-2 times a week'},{value: '4', label: 'Regularly in pain', description:'I feel injury or posture related pain most days of the week'},
+      {value: '5', label: 'Always in pain', description:'I feel consistent injury or posture related pain every day of the week'},
     ];
     const healthArray = [
-      {value: 1, label: 'Poor'},{value: 2, label: 'Fairly good'},{value: 3, label: 'Good'},{value: 4, label: 'Excellent'},
+      {value: '1', label: 'Poor', description:'I feel like my health and wellbeing is poor right now'},{value: '2', label: 'Fairly good', description:'I feel like my health and wellbeing is fairly good right now'},
+      {value: '3', label: 'Good', description:'I feel like my health and wellbeing is very good right now'},{value: '4', label: 'Excellent', description:'I feel like my health and wellbeing are excellent right now'},
     ];
     const activityArray= [
-      {value: 1, label: 'Sendentary'},{value: 2, label: 'Lightly active'},{value: 3, label: 'Moderately active'},{value: 4, label: 'Very active'},{value: 5, label: 'Extrembly active'},
+      {value: 1, label: 'Sendentary', description:'I am sitting all day'},{value: 2, label: 'Lightly active', description:'Most of my day is sitting but I walk and stand for short periods of the day'},
+      {value: 3, label: 'Moderately active', description:'I am walking and standing for most of the day'},{value: 4, label: 'Very active', description:'I am walking or standing all day long'},
+      {value: 5, label: 'Extrembly active', description:'I do heavy lifting/labour type work or highly intense activity nearly all of the day'},
     ];
     const exerciseArray= [
-      {value: 1, label: 'Sendentary'},{value: 2, label: 'Lightly active'},{value: 3, label: 'Moderately active'},{value: 4, label: 'Very active'},{value: 5, label: 'Extrembly active'},
+      {value: 1, label: 'Sendentary', description:'I do no exercise '},{value: 2, label: 'Lightly active', description:'I do some light cardio or weight training 1-2 times a week'},
+      {value: 3, label: 'Moderately active', description:'I do cardio or weight training 3-4 times a week'},{value: 4, label: 'Very active', description:'I do cardio or weight training 5-6 times a week'},
+      {value: 5, label: 'Extrembly active', description:'I do intense cardio or weight training 6+ times a week'},
     ];
     let RenderPage = null;
     if(this.state.currentPage === 1){
@@ -254,20 +264,20 @@ class Questionnaire extends Component {
       RenderPage = (
         <StepFour
         stressArray={stressArray}
-        selectStress={this.onStressPicker}
-        fields = {this.state.fields}
+        selectStress={this.props.addStress}
+        fields = {fields}
         productivityArray={productivityArray}
-        selectProductivity={this.onProductivityPicker}
+        selectProductivity={this.props.addProductivity}
         />
       );
     } else if(this.state.currentPage === 5){
       RenderPage = (
         <StepFive
         injuryArray={injuryArray}
-        selectInjury={this.onInjuryPicker}
-        fields = {this.state.fields}
+        selectInjury={this.props.addWorkInjury}
+        fields = {fields}
         healthArray={healthArray}
-        selectHealth={this.onHealthPicker}
+        selectHealth={this.props.addHealthFeeling}
         />
       );
     }else if(this.state.currentPage === 6){

@@ -13,6 +13,8 @@ const showAlert = (label, description, value, props) => {
 }
 
 const StepTwo = (props) => {
+  const days = [];
+  days.push(parseInt(props.days))
   return(
     <div >
       <h2 style={{textAlign: 'center'}}>Create Your Program</h2>
@@ -23,7 +25,7 @@ const StepTwo = (props) => {
             data={props.daysArray}
             locale={enUs}
             cols={1}
-            value={[props.days[0]]}
+            value={[days[0]]}
             onOk={v => props.selectDays(v)}
             >
             <List.Item arrow="horizontal">Days:</List.Item>

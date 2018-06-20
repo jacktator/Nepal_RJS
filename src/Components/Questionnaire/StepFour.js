@@ -1,9 +1,17 @@
 import React from 'react';
-import { List, InputItem, Radio, Picker, WhiteSpace, NoticeBar} from 'antd-mobile';
+import { List, InputItem, Radio, Picker, WhiteSpace, NoticeBar,Modal} from 'antd-mobile';
 import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
 const RadioItem = Radio.RadioItem;
-const StepFour = (props) => {
+const alert = Modal.alert;
 
+const showAlert = (i, props) => {
+  const alertInstance = alert(i.label, i.description, [
+    { text: 'Cancel', style: 'default' },
+    { text: 'Ok', onPress: () => props(i.value) },
+  ]);
+}
+
+const StepFour = (props) => {
   return(
     <div>
       <NoticeBar icon={null}>
@@ -11,24 +19,28 @@ const StepFour = (props) => {
         </NoticeBar>
         <h2 style={{textAlign: 'center'}}>Stress and Productivity</h2>
 
-        <List renderHeader={() => 'How often do you feel stressed at work?'}>
-        {props.stressArray.map(i => (
+        <List renderHeader={() => <h3>How often do you feel stressed at work? </h3>}>
+        {props.stressArray.map((i,key) => (
           <RadioItem
-              key={i.value}
-              checked={props.fields.stress === i.value}
-              onChange={() => props.selectStress(i.value)}>
-            {i.label}
+            key={key}
+            checked={props.fields.stress === i.value}
+            onChange={() => props.selectStress(i.value)}>
+            <div onClick= {() => showAlert(i, props.selectStress)}>
+              {i.label} ({i.value}/5) <List.Item.Brief>{i.description}</List.Item.Brief>
+            </div>
           </RadioItem>
         ))}
       </List>
 
-        <List renderHeader={() => 'How productive do you feel each day?'}>
-        {props.productivityArray.map(i => (
+        <List renderHeader={() => <h3>How productive do you feel each day?</h3>}>
+        {props.productivityArray.map((i,key) => (
           <RadioItem
               key={i.value}
               checked={props.fields.productivity === i.value}
               onChange={() => props.selectProductivity(i.value)}>
-            {i.label}
+            <div onClick= {() => showAlert(i, props.selectProductivity)}>
+              {i.label} ({i.value}/5) <List.Item.Brief>{i.description}</List.Item.Brief>
+            </div>
           </RadioItem>
         ))}
       </List>

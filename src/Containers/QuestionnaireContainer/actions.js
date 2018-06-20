@@ -3,11 +3,12 @@ import axios from 'axios';
 import { QUESTIONNAIRE } from '../../constants';
 
 export function stepOne(age: number, gender: string, weight: number) {
+  console.log("weight in step one",weight);
   let token = localStorage.getItem('token');
   return(dispatch: Function) => {
-    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/"+963,
+    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/"+1531,
     {
-      fields: { age, gender, weight: weight[0] }
+      fields: { age, gender, weight:weight }
     }, {
       headers:{
         Authorization: "Bearer" + token
@@ -32,7 +33,7 @@ export function stepTwo(days_per_week: number, goals: Object) {
     let id = localStorage.getItem('questionnaire_id')
     return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/"+id,
     {
-      fields: { days_per_week, goals }
+      fields: { days_per_week:days_per_week, goals }
     }, {
       headers:{
         Authorization: "Bearer" + token
@@ -152,16 +153,17 @@ export function addGender (gender: string) {
   }
 }
 export function addWeight (weight: number) {
+
   return {
     type: "ADD_WEIGHT",
-    payload: weight
+    payload: weight.toString()
   }
 }
 
 export function addDays (days_per_week: number) {
   return {
     type: "ADD_DAYS",
-    payload: days_per_week
+    payload: days_per_week.toString()
   }
 }
 
@@ -179,13 +181,13 @@ export function addRehabFocus (rehab_focus: Object) {
   }
 }
 
-export function addStress (stress: number) {
+export function addStress (stress: string) {
   return {
     type: "ADD_STRESS",
     payload: stress
   }
 }
-export function addProductivity (productivity: number) {
+export function addProductivity (productivity: string) {
   return{
     type : "ADD_PRODUCITIVITY",
     payload: productivity
@@ -198,28 +200,28 @@ export function addProductiveAfterExercise (productive_after_exercise) {
   }
 }
 
-export function addWorkInjury (work_injury : number) {
+export function addWorkInjury (work_injury : string) {
   return {
     type: "ADD_WORK_INJURY",
     payload: work_injury
   }
 }
 
-export function addHealthFeeling (health_feeling: number) {
+export function addHealthFeeling (health_feeling: string) {
   return {
     type: "ADD_HEALTH_FEELING",
     payload: health_feeling
   }
 }
 
-export function addDailyActivity (daily_activity: number) {
+export function addDailyActivity (daily_activity: string) {
   return {
     type: "ADD_DAILY_ACTIVITY",
     payload: daily_activity
   }
 }
 
-export function addCurrentActivity (current_activity: number) {
+export function addCurrentActivity (current_activity: string) {
   return {
     type: "ADD_CURRENT_ACTIVITY",
     payload: current_activity

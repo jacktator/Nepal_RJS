@@ -7,6 +7,9 @@ const RadioItem = Radio.RadioItem;
 
 const StepOne = (props) => {
   const gender = props.fields.gender;
+  const weight = [];
+  weight.push(parseInt(props.fields.weight));
+
   return(
     <div>
       <h2 style={{textAlign: 'center'}}>Your Detail</h2>
@@ -36,7 +39,7 @@ const StepOne = (props) => {
           data={props.weightArray}
           locale={enUs}
           cols={1}
-          value={[props.fields.weight[0]]}
+          value={[weight[0]]}
           onOk={v => props.selectWeight(v)}
           >
           <List.Item arrow="horizontal">Current Body Weight:</List.Item>

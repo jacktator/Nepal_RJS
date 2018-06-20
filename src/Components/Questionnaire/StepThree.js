@@ -3,11 +3,7 @@ import { Checkbox, Flex, Modal } from 'antd-mobile';
 
 const CheckboxItem = Checkbox.CheckboxItem;
 const alert = Modal.alert;
-// <CheckboxItem checked={data.isChecked} onChange={() => props.change(data.value)}>
-//   <label>
-//   <img style={{ height:"100px", width:"300px"}} src={data.imgurl}  alt={data.description}/>
-//   </label>
-// </CheckboxItem>
+
 const showAlert = (value, description, props) => {
   const alertInstance = alert("Do you want to focus on:",description+"?", [
     { text: 'Cancel', style: 'default' },
@@ -34,7 +30,6 @@ const StepThree = (props) => {
             </Flex.Item>
           </Flex>
           ))}
-
       </div>
     </div>
   )
