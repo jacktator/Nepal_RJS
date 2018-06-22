@@ -11,13 +11,13 @@ let DefaultState = {
     days_per_week: 3,
     goals: [],
     rehab_focus: [],
-    stress: null,
-    productivity: null,
-    productive_after_exercise: null,
-    work_injury: null,
-    health_feeling: null,
-    daily_activity: null,
-    current_activity: null
+    stress: "",
+    productivity: "",
+    productive_after_exercise: "",
+    work_injury: "",
+    health_feeling: "",
+    daily_activity: "",
+    current_activity: ""
   }
 }
 

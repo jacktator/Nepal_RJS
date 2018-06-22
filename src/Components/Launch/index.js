@@ -33,7 +33,7 @@ class Launch extends Component {
         </div>
         <div className="launch-getstart-position">
           <WingBlank>
-            <Link to='login' >
+            <Link to='login'>
               <Button type="primary" style={{backgroundColor: '#4CA0CC'}}>Get Started</Button>
             </Link>
             <WhiteSpace/>

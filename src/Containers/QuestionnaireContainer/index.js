@@ -192,7 +192,7 @@ class Questionnaire extends Component {
     }
   }
   render() {
-    console.log(this.props.QuestionnaireReducers)
+    console.log("Component state",this.props.QuestionnaireReducers)
     const {nick_name, fields} = this.props.QuestionnaireReducers;
     const percent  = (this.state.currentPage-1)*17;
     const genderArray = [

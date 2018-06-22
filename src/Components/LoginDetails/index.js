@@ -87,6 +87,8 @@ class LoginDetails extends Component<Props, State> {
             type="text"
             name="email"
             onChange={(value)=>this.props.onChangeEmail(value)}
+            onExtraClick = {()=> console.log('onExtraClick')}
+            onErrorClick = {()=> console.log('onErrorClick')}
           >
             <div style={humeniconstyle} />
           </InputItem>

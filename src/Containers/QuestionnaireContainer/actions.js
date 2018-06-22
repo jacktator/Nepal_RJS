@@ -4,7 +4,7 @@ import axios from 'axios';
 export function stepOne(nick_name: string, age: number, gender: string, weight: number, exercisePlace: string) {
   let token = localStorage.getItem('token');
   return(dispatch: Function) => {
-    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/",
+    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/"+1531,
     {
       fields: { age, gender, weight, exercisePlace }
     }, {
@@ -17,7 +17,7 @@ export function stepOne(nick_name: string, age: number, gender: string, weight: 
     let id = response.data.id;
     let fields = response.data.acf;
     window.localStorage.setItem('questionnaire_id',id)
-    dispatch(getDataFromServer(fields));
+    // dispatch(getDataFromServer(fields));
   }).catch((error) => {
     console.log("Error",error)
   })
@@ -39,7 +39,7 @@ export function stepTwo(days_per_week: number, goals: Object) {
   ).then((response) => {
       console.log("Response",response)
       let fields = response.data.acf;
-      dispatch(getDataFromServer(fields));
+      // dispatch(getDataFromServer(fields));
     }).catch((error) => {
       console.log("Error",error)
     })
@@ -60,7 +60,7 @@ export function stepThree(rehab_focus: Object) {
   ).then((response) => {
     console.log("Response",response)
     let fields = response.data.acf;
-    dispatch(getDataFromServer(fields));
+    // dispatch(getDataFromServer(fields));
   }).catch((error) => {
     console.log("Error",error)
   })
@@ -81,7 +81,7 @@ export function stepFour(stress, productivity) {
   ).then((response) => {
     console.log("Response",response)
     let fields = response.data.acf;
-    dispatch(getDataFromServer(fields));
+    // dispatch(getDataFromServer(fields));
   }).catch((error) => {
     console.log("Error",error)
   })
@@ -102,7 +102,7 @@ export function stepFive(work_injury, health_feeling) {
   ).then((response) => {
     console.log("Response",response)
     let fields = response.data.acf;
-    dispatch(getDataFromServer(fields));
+    // dispatch(getDataFromServer(fields));
   }).catch((error) => {
     console.log("Error",error)
   })
@@ -123,7 +123,7 @@ export function stepSix(current_activity, daily_activity) {
   ).then((response) => {
     console.log("Response",response)
     let fields = response.data.acf;
-    dispatch(getDataFromServer(fields));
+    // dispatch(getDataFromServer(fields));
   }).catch((error) => {
     console.log("Error",error)
   })
