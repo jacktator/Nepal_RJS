@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Progress, Button} from 'antd-mobile';
 import { connect } from 'react-redux';
-import { addName, addAge, addGender, addWeight,
+import { addName, addAge, addGender, addWeight, addExercisePlace,
   addDays, addGoals,
   addRehabFocus, addStress,
   addProductivity, addProductiveAfterExercise,
@@ -32,9 +32,14 @@ class Questionnaire extends Component {
     this.state = {
       trainingGoals: [
         { value: 0, isChecked: false, label: 'Muscle size and strength', description:"Weight training principles designed to build muscle and strength" },
-        { value: 1, isChecked: false, label: 'fat loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition "},
+        { value: 1, isChecked: false, label: 'Fat Loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition "},
         { value: 2, isChecked: false, label: 'Decrease stress', description:"Using exercise strategies to reduce stress levels and restore balance back in your body"},
         { value: 3, isChecked: false, label: 'Improve posture', description:"Utilising specific exercises and weight training to correct postural imbalances "}
+      ],
+      trainingGoalsForHome: [
+        { value: 0, isChecked: false, label: 'Fat Loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition "},
+        { value: 1, isChecked: false, label: 'Decrease stress', description:"Using exercise strategies to reduce stress levels and restore balance back in your body"},
+        { value: 2, isChecked: false, label: 'Fitness', description:"xxxxxxxxxx xxxxxxxx xxxxxx xxxxx "}
       ],
       injuryManagement: [
         { value: 0, isChecked: false, description: 'Posture Correction', imgurl: 'http://livebiomechanix.com/wp-content/uploads/2015/12/Screen-shot-2015-11-30-at-7.49.40-PM-596x191.png'},
@@ -91,8 +96,9 @@ class Questionnaire extends Component {
   }
   //handle the checkbox for program in questionnaire (second page)
   programCheckboxHandler = (value) => {
+    const {exercisePlace} = this.props.QuestionnaireReducers.fields;
     let tempGoals = [];
-    let trainingGoals = [ ...this.state.trainingGoals ];
+    let trainingGoals = exercisePlace === 'home'? [ ...this.state.trainingGoalsForHome ] : [ ...this.state.trainingGoals ];
     let count = 0;
     trainingGoals.map(i => {
       if(i.isChecked === true) {
@@ -127,40 +133,72 @@ class Questionnaire extends Component {
       }
     }
     if(button === "next"){
+
       if(currentPage === 1 ){
-        let {age, gender, weight} = this.props.QuestionnaireReducers.fields;
-        this.props.stepOne(age, gender, weight);
+        let {nick_name} = this.props.QuestionnaireReducers
+        let {age, gender, weight, exercisePlace} = this.props.QuestionnaireReducers.fields;
+        if(age === "" || gender === "" || weight === "" || nick_name === "" || exercisePlace === ""){
+          alert("please insert all the data to proceed to next step");
+          return;
+        }
+        this.props.stepOne(nick_name, age, gender, weight, exercisePlace);
         this.increaseCurrentPage(currentPage);
+
       }else if(currentPage === 2) {
         let {days_per_week, goals} = this.props.QuestionnaireReducers.fields;
+        if(goals.length===0){
+          alert("please insert all the data to proceed to next step");
+          return;
+        }
         this.props.stepTwo(days_per_week, goals);
         this.increaseCurrentPage(currentPage);
+
       }else if(currentPage === 3) {
         let {rehab_focus} = this.props.QuestionnaireReducers.fields;
+        if( rehab_focus.length === 0){
+          alert("Please insert all the data to proceed to next step");
+          return;
+        }
         this.props.stepThree(rehab_focus);
         this.increaseCurrentPage(currentPage);
+
       }else if(currentPage === 4) {
         let {stress, productivity} = this.props.QuestionnaireReducers.fields;
+        if( stress == "" || productivity === ""){
+          alert("Please insert all the data to proceed to next step");
+          return;
+        }
         this.props.stepFour(stress, productivity);
         this.increaseCurrentPage(currentPage);
+
       }else if(currentPage === 5) {
         let {work_injury, health_feeling} = this.props.QuestionnaireReducers.fields;
+        if( work_injury === "" || health_feeling === ""){
+          alert("Please insert all the data to proceed to next step");
+          return;
+        }
         this.props.stepFive(work_injury, health_feeling);
         this.increaseCurrentPage(currentPage);
+
       }else if(currentPage === 6) {
         let {current_activity, daily_activity} = this.props.QuestionnaireReducers.fields;
+        if( current_activity === "" || daily_activity === "" ){
+          alert("Please insert all the data to proceed to next step");
+          return;
+        }
         this.props.stepSix(current_activity, daily_activity);
         alert("Finish questionnaire");
       }
     }
   }
   render() {
+    console.log(this.props.QuestionnaireReducers)
     const {nick_name, fields} = this.props.QuestionnaireReducers;
     const percent  = (this.state.currentPage-1)*17;
-    const radioData = [
-      { value: "Male", label: 'Male' },
-      { value: "Female", label: 'Female' },
-      { value: "Others", label: 'Others' },
+    const genderArray = [
+      { value: "male", label: 'Male' },
+      { value: "female", label: 'Female' },
+      { value: "others", label: 'Others' },
     ];
     const daysArray= [
       {value: 3, label: '3'},{value: 4, label: '4'},{value: 5, label: '5'},
@@ -168,6 +206,10 @@ class Questionnaire extends Component {
     const weightArray= [
       {value: 70, label: '70 KG'},{value: 71, label: '71 KG'},{value: 72, label: '72 KG'},{value: 73, label: '73 KG'},{value: 74, label: '74 KG'},{value: 75, label: '75 KG'},
       {value: 76, label: '76 KG'},{value: 77, label: '77 KG'},{value: 78, label: '78 KG'},{value: 79, label: '79 KG'},{value: 80, label: '80 KG'},
+    ];
+    const exercisePlaceArray = [
+      { value: "gym", label: 'Gym' },
+      { value: "home", label: 'Home' },
     ];
     const stressArray= [
       {value: '1', label: 'Stress free', description:'I never feel stressed'},{value: '2', label: 'Minimally stressed', description:'I rarely feel stressed'},
@@ -202,14 +244,16 @@ class Questionnaire extends Component {
     if(this.state.currentPage === 1){
       RenderPage = (
         <StepOne
-        nameHandler={this.props.addName}
-        name={nick_name}
-        ageHandler={this.props.addAge}
         fields={fields}
-        radioData={radioData}
+        name={nick_name}
+        nameHandler={this.props.addName}
+        ageHandler={this.props.addAge}
+        genderArray={genderArray}
+        genderHandler = {this.props.addGender}
         weightArray={weightArray}
         selectWeight={this.props.addWeight}
-        genderHandler = {this.props.addGender}
+        exercisePlaceArray={exercisePlaceArray}
+        selectExercisePlace={this.props.addExercisePlace}
         />
       );
     } else if(this.state.currentPage === 2){
@@ -219,7 +263,7 @@ class Questionnaire extends Component {
         days= {fields.days_per_week}
         selectDays = {this.props.addDays}
         change={this.programCheckboxHandler}
-        data={this.state.trainingGoals}
+        data = { fields.exercisePlace ==='home' ? this.state.trainingGoalsForHome : this.state.trainingGoals }
         />
       );
     } else if(this.state.currentPage === 3){
@@ -292,7 +336,7 @@ function mapStateToProps(state){
 }
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
-    addName, addAge, addGender, addWeight,
+    addName, addAge, addGender, addWeight, addExercisePlace,
     addDays, addGoals,
     addRehabFocus, addStress,
     addProductivity, addProductiveAfterExercise,

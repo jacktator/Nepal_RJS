@@ -44,18 +44,14 @@ class LoginDetails extends Component<Props, State> {
     if(!token){
       return(
         <div>
-
             Submit
-
         </div>
       )
     }
     return(
       <div>
         <Link to="/questionnaire">
-
             Press to the questionnaires
-
         </Link>
       </div>
     )

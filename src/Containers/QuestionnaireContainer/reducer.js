@@ -7,6 +7,7 @@ let DefaultState = {
     age: "",
     gender: "",
     weight: "",
+    exercisePlace: "",
     days_per_week: 3,
     goals: [],
     rehab_focus: [],
@@ -46,6 +47,12 @@ const QuestionnaireReducers =(state: Object= DefaultState, action: Function) => 
     case "ADD_WEIGHT":
     fields = {...state.fields};
     fields['weight']= action.payload
+    return {
+      ...state, fields
+    }
+    case "ADD_EXERCISE_PLACE" :
+    fields = {...state.fields};
+    fields['exercisePlace']= action.payload
     return {
       ...state, fields
     }

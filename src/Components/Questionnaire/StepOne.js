@@ -7,6 +7,7 @@ const RadioItem = Radio.RadioItem;
 
 const StepOne = (props) => {
   const gender = props.fields.gender;
+  const exercisePlace = props.fields.exercisePlace;
   const weight = [];
   weight.push(parseInt(props.fields.weight,10));
 
@@ -28,7 +29,7 @@ const StepOne = (props) => {
         >Age</InputItem>
 
         <List renderHeader={() => 'Please select your gender Gender'}>
-          {props.radioData.map((i,key) => (
+          {props.genderArray.map((i,key) => (
             <RadioItem key={key} checked={gender === i.value} onChange={() => props.genderHandler(i.value)}>
               {i.label}
             </RadioItem>
@@ -44,6 +45,15 @@ const StepOne = (props) => {
           >
           <List.Item arrow="horizontal">Current Body Weight:</List.Item>
         </Picker>
+
+        <List renderHeader={() => 'Where do you want to exercise?'}>
+          {props.exercisePlaceArray.map((i,key) => (
+            <RadioItem key={key} checked={exercisePlace === i.value} onChange={() => props.selectExercisePlace(i.value)}>
+              {i.label}
+            </RadioItem>
+          ))}
+        </List>
+
 
     </div>
   )

@@ -1,12 +1,12 @@
 // @flow
 import axios from 'axios';
 
-export function stepOne(age: number, gender: string, weight: number) {
+export function stepOne(nick_name: string, age: number, gender: string, weight: number, exercisePlace: string) {
   let token = localStorage.getItem('token');
   return(dispatch: Function) => {
     return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/",
     {
-      fields: { age, gender, weight:weight }
+      fields: { age, gender, weight, exercisePlace }
     }, {
       headers:{
         Authorization: "Bearer" + token
@@ -37,13 +37,13 @@ export function stepTwo(days_per_week: number, goals: Object) {
       }
     }
   ).then((response) => {
-    console.log("Response",response)
-    let fields = response.data.acf;
-    dispatch(getDataFromServer(fields));
-  }).catch((error) => {
-    console.log("Error",error)
-  })
-}
+      console.log("Response",response)
+      let fields = response.data.acf;
+      dispatch(getDataFromServer(fields));
+    }).catch((error) => {
+      console.log("Error",error)
+    })
+  }
 }
 export function stepThree(rehab_focus: Object) {
   return(dispatch: Function) => {
@@ -171,10 +171,16 @@ export function addGender (gender: string) {
   }
 }
 export function addWeight (weight: number) {
-
   return {
     type: "ADD_WEIGHT",
     payload: weight.toString()
+  }
+}
+
+export function addExercisePlace (exercisePlace: string) {
+  return {
+    type: "ADD_EXERCISE_PLACE",
+    payload: exercisePlace
   }
 }
 
