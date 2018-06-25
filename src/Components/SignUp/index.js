@@ -1,4 +1,4 @@
-//@flow
+
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import { List, InputItem, WingBlank, Button,} from 'antd-mobile';
@@ -36,6 +36,18 @@ type Props={
 
 }
 class SignUp extends Component<Props> {
+  constructor(props){
+    super(props)
+    this.state={
+      able: 'false',
+    }
+  }
+
+  onAbleChange(){
+    const able = !this.state.able;
+    this.setState({able: able})
+  }
+
 
   render() {
     const {username, email, password}= this.props;
@@ -74,8 +86,17 @@ class SignUp extends Component<Props> {
         </div>
         <div>
           <WingBlank>
-            <Button type="primary" onClick={()=>this.props.onClickButton(username, email, password)}>Create Account</Button>
+            <Button
+              type="primary"
+              onClick={()=>this.props.onClickButton(username, email, password)}
+              disabled={this.state.able}
+            >
+              Create Account
+            </Button>
           </WingBlank>
+        </div>
+        <div className="checkbox">
+          <input type="checkbox" onChange={()=>this.onAbleChange()}/><a target="_blank" href="https://www.google.com">Term & Condition</a>
         </div>
       </div>
     );
