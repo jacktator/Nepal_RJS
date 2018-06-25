@@ -17,8 +17,10 @@ export function stepOne(nick_name: string, age: number, gender: string, weight: 
     let id = response.data.id;
     let fields = response.data.acf;
     window.localStorage.setItem('questionnaire_id',id)
+      dispatch(setError(''));
     // dispatch(getDataFromServer(fields));
   }).catch((error) => {
+    dispatch(setError('unable to uplaod to server'));
     console.log("Error",error)
   })
 }
@@ -39,8 +41,10 @@ export function stepTwo(days_per_week: number, goals: Object) {
   ).then((response) => {
       console.log("Response",response)
       let fields = response.data.acf;
+      dispatch(setError(''));
       // dispatch(getDataFromServer(fields));
     }).catch((error) => {
+      dispatch(setError('unable to uplaod to server'));
       console.log("Error",error)
     })
   }
@@ -60,8 +64,10 @@ export function stepThree(rehab_focus: Object) {
   ).then((response) => {
     console.log("Response",response)
     let fields = response.data.acf;
+    dispatch(setError(''));
     // dispatch(getDataFromServer(fields));
   }).catch((error) => {
+    dispatch(setError('unable to uplaod to server'));
     console.log("Error",error)
   })
 }
@@ -81,8 +87,10 @@ export function stepFour(stress, productivity) {
   ).then((response) => {
     console.log("Response",response)
     let fields = response.data.acf;
+    dispatch(setError(''));
     // dispatch(getDataFromServer(fields));
   }).catch((error) => {
+    dispatch(setError('unable to uplaod to server'));
     console.log("Error",error)
   })
 }
@@ -102,8 +110,10 @@ export function stepFive(work_injury, health_feeling) {
   ).then((response) => {
     console.log("Response",response)
     let fields = response.data.acf;
+    dispatch(setError(''));
     // dispatch(getDataFromServer(fields));
   }).catch((error) => {
+    dispatch(setError('unable to uplaod to server'));
     console.log("Error",error)
   })
 }
@@ -256,6 +266,13 @@ export function getDataFromServer(data) {
   const action = {
     type: "DATA_FROM_SERVER",
     payload: data
+  }
+  return action;
+}
+export function setError(errorMessage) {
+  const action = {
+    type: "SET_ERROR",
+    payload: errorMessage
   }
   return action;
 }
