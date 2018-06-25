@@ -10,10 +10,11 @@ export function SignUpActions(username, email, password){
     })
     .then((response)=>{
       console.log('register successfully!!')
-      console.log(response.data.message);
+      console.log(response.data);
 
     }).catch((error)=>{
-      dispatch(catchError(error))
+      //dispatch(catchError(error))
+      console.log(error)
     })
   };
 }

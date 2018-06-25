@@ -11,3 +11,9 @@
 .signup-info-style{
   margin-bottom: 10%;
 }
+
+.checkbox{
+  position: fixed;
+  margin: 20px;
+  margin-left: 30%;
+}
