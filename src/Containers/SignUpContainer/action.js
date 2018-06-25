@@ -13,8 +13,8 @@ export function SignUpActions(username, email, password){
       console.log(response.data);
 
     }).catch((error)=>{
-      //dispatch(catchError(error))
-      console.log(error)
+      dispatch(catchError(error.response.data.message))
+      console.log(error.response.data)
     })
   };
 }

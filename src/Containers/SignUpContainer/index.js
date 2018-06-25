@@ -4,10 +4,13 @@ import {connect} from 'react-redux';
 import {SignUpActions, addUsername, addEmail, addPassword } from './action';
 import {bindActionCreators} from 'redux';
 
-
 class SignUpContainer extends Component{
+
   render(){
-    const {username, email, password}= this.props.SignUpStates;
+    const {username, email, password, error}= this.props.SignUpStates;
+    if(error){
+      alert(error)
+    }
     return(
       <div>
         <SignUpWrapper
