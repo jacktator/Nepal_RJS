@@ -18,6 +18,10 @@ let DefaultState = {
     health_feeling: "",
     daily_activity: "",
     current_activity: ""
+  },
+  error: {
+    hasError: false,
+    message: ''
   }
 }
 
@@ -133,6 +137,21 @@ const QuestionnaireReducers =(state: Object= DefaultState, action: Function) => 
     return {
       ...state, fields
     }
+
+    case "SET_ERROR" :
+      let error = { ...state.error };
+      let errorMessage = action.payload;
+      if( errorMessage === ""){
+        error['hasError'] = false
+      }else{
+        error['hasError'] = true
+      }
+      error['errorMessage'] = errorMessage;
+      return {
+        ...state, error
+      }
+      break;
+
     case QUESTIONNAIRE:
     const data = action.state;
     return {
