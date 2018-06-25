@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import { Progress, Button} from 'antd-mobile';
+import { Progress, Button, WingBlank} from 'antd-mobile';
 import { connect } from 'react-redux';
 import { addName, addAge, addGender, addWeight, addExercisePlace,
   addDays, addGoals,
@@ -305,6 +305,7 @@ class Questionnaire extends Component {
       );
     }
     return(
+      <WingBlank>
       <div className="container">
       <div className= "content-without-pagination">
       <div className="progress-bar">
@@ -316,16 +317,17 @@ class Questionnaire extends Component {
       </div>
       <div className="pagination-container" style ={{textAlign: 'center'}}>
       <Button type="primary" disabled={this.state.currentPage === 1 ? true: false}  onClick={() => this.buttonHandler('previous')}
-      inline size="medium" style={{ float: 'left'}}>
+      inline size="medium" style={{ float: 'left', marginLeft: '12px'}}>
       previous
       </Button>
       <span id="footer_page" style ={{}}>{this.state.currentPage}/6</span>
       <Button type="primary" onClick={() => this.buttonHandler('next')}
-      inline size="medium" style={{ float: 'right'}}>
+      inline size="medium" style={{ float: 'right', marginRight: '12px'}}>
       {this.state.currentPage === 6 ? "Finish": "Next"}
       </Button>
       </div>
       </div>
+      </WingBlank>
     )
   }
 }
