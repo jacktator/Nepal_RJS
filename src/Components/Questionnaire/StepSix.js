@@ -5,8 +5,8 @@ const alert = Modal.alert;
 
 const showAlert = (i, props) => {
   const alertInstance = alert(i.label, i.description, [
-    { text: 'Cancel', style: 'default' },
-    { text: 'Ok', onPress: () => props(i.value) },
+    { text: 'Go back', style: 'default' },
+    { text: 'Select', onPress: () => props(i.value) },
   ]);
 }
 const StepSix = (props) => {
@@ -19,26 +19,26 @@ const StepSix = (props) => {
 
       <List renderHeader={() => <h3>How active are you on a daily basis? </h3>}>
       {props.activityArray.map((i,key) => (
-        <RadioItem
-          key={key}
-          checked={props.fields.daily_activity === i.value}
-          onChange={() => props.selectActivity(i.value)}>
-          <div onClick= {() => showAlert(i, props.selectActivity)}>
-            {i.label} ({i.value}/5) <List.Item.Brief>{i.description}</List.Item.Brief>
-          </div>
-        </RadioItem>
+        <div onClick= {() => showAlert(i, props.selectActivity)}>
+          <RadioItem
+            key={key}
+            checked={props.fields.daily_activity === i.value}
+            >
+            {i.label} <List.Item.Brief>{i.description}</List.Item.Brief>
+          </RadioItem>
+        </div>
       ))}
     </List>
     <List renderHeader={() => <h3>What is your current exercise activity level? </h3>}>
     {props.exerciseArray.map((i,key) => (
-      <RadioItem
-        key={key}
-        checked={props.fields.current_activity === i.value}
-        onChange={() => props.selectExercise(i.value)}>
-        <div onClick= {() => showAlert(i, props.selectExercise)}>
-          {i.label} ({i.value}/5) <List.Item.Brief>{i.description}</List.Item.Brief>
-        </div>
-      </RadioItem>
+      <div onClick= {() => showAlert(i, props.selectExercise)}>
+        <RadioItem
+          key={key}
+          checked={props.fields.current_activity === i.value}
+          >
+            {i.label} <List.Item.Brief>{i.description}</List.Item.Brief>
+        </RadioItem>
+      </div>
     ))}
   </List>
     </div>

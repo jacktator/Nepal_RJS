@@ -13,9 +13,10 @@ import { addName, addAge, addGender, addWeight, addExercisePlace,
 import {bindActionCreators} from 'redux';
 
 import CurrentStep  from '../../Components/Questionnaire/Progress';
-import StepOne from '../../Components/Questionnaire/StepOne';
-import StepTwo from '../../Components/Questionnaire/StepTwo';
-import StepThree from '../../Components/Questionnaire/StepThree';
+import Detail from '../../Components/Questionnaire/Detail';
+import Program from '../../Components/Questionnaire/Program';
+import InjuryManagement from '../../Components/Questionnaire/InjuryManagement';
+import PostureCorrection from '../../Components/Questionnaire/PostureCorrection';
 import StepFour from '../../Components/Questionnaire/StepFour';
 import StepFive from '../../Components/Questionnaire/StepFive';
 import StepSix from '../../Components/Questionnaire/StepSix';
@@ -42,11 +43,16 @@ class Questionnaire extends Component {
         { value: 2, isChecked: false, label: 'Fitness', description:"xxxxxxxxxx xxxxxxxx xxxxxx xxxxx "}
       ],
       injuryManagement: [
-        { value: 0, isChecked: false, description: 'Posture Correction', imgurl: 'http://livebiomechanix.com/wp-content/uploads/2015/12/Screen-shot-2015-11-30-at-7.49.40-PM-596x191.png'},
-        { value: 1, isChecked: false, description: 'Lower Back Pain', imgurl: 'http://totalphysiocare.com.au/wp-content/uploads/2017/05/lower-back-pain-relief.png'},
-        { value: 2, isChecked: false, description: 'Neck Pain', imgurl: 'https://static.wixstatic.com/media/b1546b_f6a11249f1a346e08fc817d7cece04c3~mv2.jpg/v1/fill/w_630,h_382,al_c,lg_1,q_80/b1546b_f6a11249f1a346e08fc817d7cece04c3~mv2.webp'},
-        { value: 3, isChecked: false, description: 'Shoulder Pain', imgurl: 'https://feelpainrelief.com/wp-content/uploads/2015/09/shoulder-pain-300x200.jpg'},
-        { value: 4, isChecked: false, description: 'Hip Pain', imgurl: 'https://qph.fs.quoracdn.net/main-qimg-4d054f876feaa4b3d4944914a6f7cb66-c'},
+        { value: '2', isChecked: false, description: 'Lower Back Pain', imgurl: 'http://totalphysiocare.com.au/wp-content/uploads/2017/05/lower-back-pain-relief.png'},
+        { value: '3', isChecked: false, description: 'Neck Pain', imgurl: 'https://static.wixstatic.com/media/b1546b_f6a11249f1a346e08fc817d7cece04c3~mv2.jpg/v1/fill/w_630,h_382,al_c,lg_1,q_80/b1546b_f6a11249f1a346e08fc817d7cece04c3~mv2.webp'},
+        { value: '4', isChecked: false, description: 'Shoulder Pain', imgurl: 'https://feelpainrelief.com/wp-content/uploads/2015/09/shoulder-pain-300x200.jpg'},
+        { value: '5', isChecked: false, description: 'Hip Pain', imgurl: 'https://qph.fs.quoracdn.net/main-qimg-4d054f876feaa4b3d4944914a6f7cb66-c'},
+      ],
+      postureManagement: [
+        { value: '1a', isChecked: false, description: 'Rounded shoulder and forward head', imgurl: 'http://livebiomechanix.com/wp-content/uploads/2015/12/Screen-shot-2015-11-30-at-7.49.40-PM-596x191.png'},
+        { value: '1b', isChecked: false, description: 'Anterior pelvic tilt', imgurl: 'http://totalphysiocare.com.au/wp-content/uploads/2017/05/lower-back-pain-relief.png'},
+        { value: '1c', isChecked: false, description: 'Sway posture', imgurl: 'https://static.wixstatic.com/media/b1546b_f6a11249f1a346e08fc817d7cece04c3~mv2.jpg/v1/fill/w_630,h_382,al_c,lg_1,q_80/b1546b_f6a11249f1a346e08fc817d7cece04c3~mv2.webp'},
+
       ],
       currentPage: 1,
       hasError: false,
@@ -54,7 +60,7 @@ class Questionnaire extends Component {
     // this.makeNextToFinish=this.makeNextToFinish.bind(this);
   }//constructor ends
 
-  componentWillReceiveProps(nextProps) {
+  componentWillMount(nextProps) {
     const {goals, rehab_focus} = this.props.QuestionnaireReducers.fields;
     const trainingGoals = [ ...this.state.trainingGoals ];
     const injuryManagement = [ ...this.state.injuryManagement];
@@ -69,26 +75,28 @@ class Questionnaire extends Component {
     this.setState({ trainingGoals, injuryManagement })
   }
   //handle the checkbox for injury management in questionnaire (third page)
-  injuryManagementCheckboxHandler = (value) => {
-    let injuryManagement = [ ...this.state.injuryManagement];
-    let tempRehabFocus = [];
-    let count = 0;
-    injuryManagement.map(i =>{
-      if(i.isChecked === true){
-        count ++;
-        tempRehabFocus.push(i.value);
-      }
-      return null;
-    })
-    if(count < 2 || injuryManagement[value].isChecked){
-      injuryManagement[value].isChecked = !injuryManagement[value].isChecked;
-      if(tempRehabFocus.includes(value)){
-        tempRehabFocus = removeArrayItem(tempRehabFocus, value)
+  rehabFocusCheckboxHandler = (value, type) => {
+    alert(type);
+    let injury_posture = type === 'forInjury' ? [ ...this.state.injuryManagement] : [ ... this.state.postureManagement]
+    let { rehab_focus } = this.props.QuestionnaireReducers.fields;
+    //let injuryManagement = [ ...this.state.injuryManagement];
+    let count = rehab_focus.length;
+    let index = injury_posture.findIndex(i => {return i.value === value});
+
+    if(count < 2 || injury_posture[index].isChecked){
+      injury_posture[index].isChecked = !injury_posture[index].isChecked;
+      if(rehab_focus.includes(value)){
+        rehab_focus = removeArrayItem(rehab_focus, value)
       }else{
-        tempRehabFocus.push(value);
+        rehab_focus.push(value);
       }
-      this.props.addRehabFocus(tempRehabFocus);
-      this.setState({ injuryManagement });
+      this.props.addRehabFocus(rehab_focus);
+      if( type === 'forInjury'){
+          this.setState({ injuryManagement : injury_posture });
+      }
+      else {
+        this.setState({ postureManagement : injury_posture });
+      }
     }
     else{
       alert('Exceeded maximun number of selection');
@@ -133,7 +141,6 @@ class Questionnaire extends Component {
       }
     }
     if(button === "next"){
-
       if(currentPage === 1 ){
         let {nick_name} = this.props.QuestionnaireReducers
         let {age, gender, weight, exercisePlace} = this.props.QuestionnaireReducers.fields;
@@ -154,20 +161,29 @@ class Questionnaire extends Component {
         this.increaseCurrentPage(currentPage);
 
       }else if(currentPage === 3) {
+        // let {rehab_focus} = this.props.QuestionnaireReducers.fields;
+        // if( rehab_focus.length === 0){
+        //   alert("Please insert all the data to proceed to next step");
+        //   return;
+        // }
+        this.increaseCurrentPage(currentPage);
+
+      }else if(currentPage === 4) {
         let {rehab_focus} = this.props.QuestionnaireReducers.fields;
         if( rehab_focus.length === 0){
-          alert("Please insert all the data to proceed to next step");
+          alert("Please select at least one option for injury management or posture correction");
           return;
         }
         this.props.stepThree(rehab_focus);
         this.increaseCurrentPage(currentPage);
 
-      }else if(currentPage === 4) {
+      }else if(currentPage === 999) {
         let {stress, productivity} = this.props.QuestionnaireReducers.fields;
         if( stress == "" || productivity === ""){
           alert("Please insert all the data to proceed to next step");
           return;
         }
+
         this.props.stepFour(stress, productivity);
         this.increaseCurrentPage(currentPage);
 
@@ -243,7 +259,7 @@ class Questionnaire extends Component {
     let RenderPage = null;
     if(this.state.currentPage === 1){
       RenderPage = (
-        <StepOne
+        <Detail
         fields={fields}
         name={nick_name}
         nameHandler={this.props.addName}
@@ -258,7 +274,7 @@ class Questionnaire extends Component {
       );
     } else if(this.state.currentPage === 2){
       RenderPage = (
-        <StepTwo
+        <Program
         daysArray = {daysArray}
         days= {fields.days_per_week}
         selectDays = {this.props.addDays}
@@ -268,12 +284,19 @@ class Questionnaire extends Component {
       );
     } else if(this.state.currentPage === 3){
       RenderPage = (
-        <StepThree
-        change={this.injuryManagementCheckboxHandler}
+        <InjuryManagement
+        change={this.rehabFocusCheckboxHandler}
         data = {this.state.injuryManagement}
         />
       );
     }else if(this.state.currentPage === 4){
+      RenderPage = (
+        <PostureCorrection
+        change={this.rehabFocusCheckboxHandler}
+        data = {this.state.postureManagement}
+        />
+      );
+    }else if(this.state.currentPage === 5){
       RenderPage = (
         <StepFour
         stressArray={stressArray}
@@ -283,7 +306,7 @@ class Questionnaire extends Component {
         selectProductivity={this.props.addProductivity}
         />
       );
-    } else if(this.state.currentPage === 5){
+    } else if(this.state.currentPage === 6){
       RenderPage = (
         <StepFive
         injuryArray={injuryArray}
@@ -293,7 +316,7 @@ class Questionnaire extends Component {
         selectHealth={this.props.addHealthFeeling}
         />
       );
-    }else if(this.state.currentPage === 6){
+    }else if(this.state.currentPage === 7){
       RenderPage = (
         <StepSix
         activityArray={activityArray}

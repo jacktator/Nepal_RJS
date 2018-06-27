@@ -6,12 +6,12 @@ const alert = Modal.alert;
 
 const showAlert = (value, description, props) => {
   const alertInstance = alert("Do you want to focus on:",description+"?", [
-    { text: 'Cancel', style: 'default' },
-    { text: 'Ok', onPress: () => props.change(value) },
+    { text: 'Go back', style: 'default' },
+    { text: 'Select', onPress: () => props.change(value, 'forPosture') },
   ]);
 }
 
-const StepThree = (props) => {
+const PostureCorrection = (props) => {
   return(
     <div>
       <h2 style={{textAlign: 'center'}}>Injury Management</h2>
@@ -22,7 +22,7 @@ const StepThree = (props) => {
         {props.data.map((i,key) => (
           <Flex key={key}>
             <Flex.Item>
-              <CheckboxItem key={i.value} checked={i.isChecked} onChange={() => props.change(i.value)}>
+              <CheckboxItem key={i.value} checked={i.isChecked} onChange={() => props.change(i.value, 'forPosture')}>
                 <div onClick = {() => showAlert(i.value, i.description, props)}>
                 <img style={{ height:"80px", width:"200px"}} src={i.imgurl}  alt={i.description}/>
                 </div>
@@ -35,4 +35,4 @@ const StepThree = (props) => {
   )
 }
 
-export default StepThree;
+export default PostureCorrection;

@@ -5,7 +5,7 @@ import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
 const RadioItem = Radio.RadioItem;
 // const CheckboxItem = Checkbox.CheckboxItem;
 
-const StepOne = (props) => {
+const Detail = (props) => {
   const gender = props.fields.gender;
   const exercisePlace = props.fields.exercisePlace;
   const weight = [];
@@ -60,4 +60,4 @@ const StepOne = (props) => {
 
 }
 
-export default StepOne;
+export default Detail;

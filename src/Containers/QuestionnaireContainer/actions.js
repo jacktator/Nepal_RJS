@@ -14,6 +14,7 @@ export function stepOne(nick_name: string, age: number, gender: string, weight: 
     }
   ).then((response) => {
     console.log("Response +1531",response.data)
+    console.log("Response: ", response)
     let id = response.data.id;
     let fields = response.data.acf;
     window.localStorage.setItem('questionnaire_id',id)

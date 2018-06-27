@@ -7,12 +7,12 @@ const alert = Modal.alert;
 
 const showAlert = (label, description, value, props) => {
   const alertInstance = alert(label, description, [
-    { text: 'Cancel', style: 'default' },
-    { text: 'Ok', onPress: () => props.change(value) },
+    { text: 'Go Back', style: 'default' },
+    { text: 'Select', onPress: () => props.change(value) },
   ]);
 }
 
-const StepTwo = (props) => {
+const Program = (props) => {
   const days = [];
   days.push(parseInt(props.days,10));
   return(
@@ -51,4 +51,4 @@ const StepTwo = (props) => {
   )
 }
 
-export default StepTwo;
+export default Program;

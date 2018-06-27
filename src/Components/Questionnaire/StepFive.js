@@ -4,8 +4,8 @@ const RadioItem = Radio.RadioItem;const alert = Modal.alert;
 
 const showAlert = (i, props) => {
   const alertInstance = alert(i.label, i.description, [
-    { text: 'Cancel', style: 'default' },
-    { text: 'Ok', onPress: () => props(i.value) },
+    { text: 'Go back', style: 'default' },
+    { text: 'Select', onPress: () => props(i.value) },
   ]);
 }
 const StepFive = (props) => {
@@ -19,14 +19,14 @@ const StepFive = (props) => {
 
       <List renderHeader={() => <h3>Do you experience injury or posture related pain at work? </h3>}>
       {props.injuryArray.map((i,key) => (
-        <RadioItem
-          key={key}
-          checked={props.fields.work_injury === i.value}
-          onChange={() => props.selectInjury(i.value)}>
-          <div onClick= {() => showAlert(i, props.selectInjury)}>
-            {i.label} ({i.value}/5) <List.Item.Brief>{i.description}</List.Item.Brief>
-          </div>
-        </RadioItem>
+        <div onClick= {() => showAlert(i, props.selectInjury)}>
+          <RadioItem
+            key={key}
+            checked={props.fields.work_injury === i.value}
+          >
+              {i.label} <List.Item.Brief>{i.description}</List.Item.Brief>
+          </RadioItem>
+        </div>
       ))}
     </List>
 
@@ -38,7 +38,7 @@ const StepFive = (props) => {
           onChange={() => props.selectHealth(i.value)}
         >
         <div onClick= {() => showAlert(i, props.selectHealth)}>
-          {i.label} ({i.value}/4) <List.Item.Brief>{i.description}</List.Item.Brief>
+          {i.label} <List.Item.Brief>{i.description}</List.Item.Brief>
         </div>
         </RadioItem>
         ))}
