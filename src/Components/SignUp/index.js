@@ -1,4 +1,4 @@
-
+//@flow
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import { List, InputItem, WingBlank, Button,} from 'antd-mobile';
@@ -35,19 +35,23 @@ type Props={
   onClickButton: Function,
 
 }
-class SignUp extends Component<Props> {
+
+type State={
+  able: boolean
+}
+
+class SignUp extends Component<Props, State> {
   constructor(props){
     super(props)
     this.state={
-      able: 'false',
+      able: true,
     }
   }
 
   onAbleChange(){
     const able = !this.state.able;
-    this.setState({able: able})
+    this.setState({able})
   }
-
 
   render() {
     const {username, email, password}= this.props;

@@ -21,7 +21,8 @@ var humeniconstyle={
 }
 
 type State={
-  display: string,
+
+  loading: boolean,
 
 }
 
@@ -38,23 +39,20 @@ type Props = {
 
 };
 
+
 class LoginDetails extends Component<Props, State> {
+  constructor(props){
+    super(props);
+    this.state={
+      loading: false,
+    }
+  }
 
   successfulLogin = (token) =>{
     if(!token){
-      return(
-        <div>
-            Submit
-        </div>
-      )
+      const loading = !this.state.loading
+      this.setState({loading})
     }
-    return(
-      <div>
-        <Link to="/questionnaire">
-            Press to the questionnaires
-        </Link>
-      </div>
-    )
   }
 
   // callFunction=(email, password)=>{
@@ -101,9 +99,16 @@ class LoginDetails extends Component<Props, State> {
             <div style={lockerstyle} />
           </InputItem>
           <div >
-            <Button type="primary" className="login-button-style" onClick={()=>this.props.onClickButton(email, password)}>
-              {this.successfulLogin(token)}
-            </Button>
+            <WingBlank>
+              <Button
+                type="primary"
+                className="login-button-style"
+                onClick={()=>this.props.onClickButton(email, password)}
+                loading={this.state.loading}
+              >
+                Submit
+              </Button>
+            </WingBlank>
           </div>
         </div>
 
