@@ -40,11 +40,11 @@ const Program = (props) => {
       Traning Goals:
     </span>
     {props.data.map((i,key) => (
-      <CheckboxItem key={key} checked={i.isChecked} onChange={() => props.change(i.value)}>
       <div onClick= {() => showAlert(i.label, i.description, i.value, props)}>
-      <strong>{i.label}</strong><List.Item.Brief>{i.description}</List.Item.Brief>
+        <CheckboxItem key={key} checked={i.isChecked} >
+            <strong>{i.label}</strong>
+        </CheckboxItem>
       </div>
-      </CheckboxItem>
     ))}
     </div>
     </div>

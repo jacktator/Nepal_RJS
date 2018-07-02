@@ -1,15 +1,7 @@
 import React from 'react';
-import { Checkbox, Flex, Modal } from 'antd-mobile';
+import { Checkbox, Flex} from 'antd-mobile';
 
 const CheckboxItem = Checkbox.CheckboxItem;
-const alert = Modal.alert;
-
-const showAlert = (value, description, props) => {
-  const alertInstance = alert("Do you want to focus on:",description+"?", [
-    { text: 'Go back', style: 'default' },
-    { text: 'Select', onPress: () => props.change(value, 'forInjury') },
-  ]);
-}
 
 const InjuryManagement = (props) => {
   return(
@@ -22,11 +14,11 @@ const InjuryManagement = (props) => {
         {props.data.map((i,key) => (
           <Flex key={key}>
             <Flex.Item>
-              <CheckboxItem key={i.value} checked={i.isChecked} onChange={() => props.change(i.value, 'forInjury')}>
-                <div onClick = {() => showAlert(i.value, i.description, props)}>
-                <img style={{ height:"80px", width:"200px"}} src={i.imgurl}  alt={i.description}/>
-                </div>
-              </CheckboxItem>
+              <div onClick = {() => props.showModal(i, 'forInjury')}>
+                <CheckboxItem key={i.value} checked={i.isChecked} >
+                    <strong> {i.description} </strong>
+                </CheckboxItem>
+              </div>
             </Flex.Item>
           </Flex>
           ))}

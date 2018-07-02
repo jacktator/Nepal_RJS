@@ -1,7 +1,11 @@
 // @flow
 import React, { Component } from 'react';
-import { Progress, Button, WingBlank} from 'antd-mobile';
+import { Progress, Button} from 'antd-mobile';
 import { connect } from 'react-redux';
+
+import Modal from '../../Components/UI/Modal';
+import RehabModal from '../../Components/Questionnaire/Popup/RehabModal';
+
 import { addName, addAge, addGender, addWeight, addExercisePlace,
   addDays, addGoals,
   addRehabFocus, addStress,
@@ -11,7 +15,6 @@ import { addName, addAge, addGender, addWeight, addExercisePlace,
   stepOne, stepTwo, stepThree, stepFour, stepFive, stepSix
 }from './actions';
 import {bindActionCreators} from 'redux';
-
 import CurrentStep  from '../../Components/Questionnaire/Progress';
 import Detail from '../../Components/Questionnaire/Detail';
 import Program from '../../Components/Questionnaire/Program';
@@ -49,11 +52,15 @@ class Questionnaire extends Component {
         { value: '5', isChecked: false, description: 'Hip Pain', imgurl: 'https://qph.fs.quoracdn.net/main-qimg-4d054f876feaa4b3d4944914a6f7cb66-c'},
       ],
       postureManagement: [
-        { value: '1a', isChecked: false, description: 'Rounded shoulder and forward head', imgurl: 'http://livebiomechanix.com/wp-content/uploads/2015/12/Screen-shot-2015-11-30-at-7.49.40-PM-596x191.png'},
-        { value: '1b', isChecked: false, description: 'Anterior pelvic tilt', imgurl: 'http://totalphysiocare.com.au/wp-content/uploads/2017/05/lower-back-pain-relief.png'},
-        { value: '1c', isChecked: false, description: 'Sway posture', imgurl: 'https://static.wixstatic.com/media/b1546b_f6a11249f1a346e08fc817d7cece04c3~mv2.jpg/v1/fill/w_630,h_382,al_c,lg_1,q_80/b1546b_f6a11249f1a346e08fc817d7cece04c3~mv2.webp'},
+        { value: '1a', isChecked: false, description: 'Rounded shoulder and forward head', imgurl: 'https://muscularstrength.com/uploads/froala/18fc5d8c9a007cb8238d910aa106b91ad7e0066f.png'},
+        { value: '1b', isChecked: false, description: 'Anterior pelvic tilt', imgurl: 'http://fitness4backpain.com/wp-content/uploads/Kyphosis-Normal-vs-Hyper.jpg'},
+        { value: '1c', isChecked: false, description: 'Sway posture', imgurl: 'http://www.joannasoh.com/uploads/authors/1/fitness/posts/bad-posture/swayback-new.jpg'},
 
       ],
+      rehabTypeForModal: '',
+      dataForModal: { },
+      modal: false,
+
       currentPage: 1,
       hasError: false,
     }//state ends
@@ -76,13 +83,13 @@ class Questionnaire extends Component {
   }
   //handle the checkbox for injury management in questionnaire (third page)
   rehabFocusCheckboxHandler = (value, type) => {
-    alert(type);
     let injury_posture = type === 'forInjury' ? [ ...this.state.injuryManagement] : [ ... this.state.postureManagement]
     let { rehab_focus } = this.props.QuestionnaireReducers.fields;
     //let injuryManagement = [ ...this.state.injuryManagement];
     let count = rehab_focus.length;
     let index = injury_posture.findIndex(i => {return i.value === value});
-
+    //close the modal
+    this.cancelModalHandler();
     if(count < 2 || injury_posture[index].isChecked){
       injury_posture[index].isChecked = !injury_posture[index].isChecked;
       if(rehab_focus.includes(value)){
@@ -128,10 +135,12 @@ class Questionnaire extends Component {
       alert('You can select only two at most');
     }
   }
+  //Icrease the currentPage of state by 1
   increaseCurrentPage = (currentPage) => {
     currentPage += 1;
     this.setState({ currentPage })
   }
+  //Handle when next or previous button is clicked
   buttonHandler = (button) =>{
     let currentPage = this.state.currentPage;
     if(button === "previous"){
@@ -177,9 +186,9 @@ class Questionnaire extends Component {
         this.props.stepThree(rehab_focus);
         this.increaseCurrentPage(currentPage);
 
-      }else if(currentPage === 999) {
+      }else if(currentPage ===  5) {
         let {stress, productivity} = this.props.QuestionnaireReducers.fields;
-        if( stress == "" || productivity === ""){
+        if( stress === "" || productivity === ""){
           alert("Please insert all the data to proceed to next step");
           return;
         }
@@ -187,7 +196,7 @@ class Questionnaire extends Component {
         this.props.stepFour(stress, productivity);
         this.increaseCurrentPage(currentPage);
 
-      }else if(currentPage === 5) {
+      }else if(currentPage === 6) {
         let {work_injury, health_feeling} = this.props.QuestionnaireReducers.fields;
         if( work_injury === "" || health_feeling === ""){
           alert("Please insert all the data to proceed to next step");
@@ -196,7 +205,7 @@ class Questionnaire extends Component {
         this.props.stepFive(work_injury, health_feeling);
         this.increaseCurrentPage(currentPage);
 
-      }else if(currentPage === 6) {
+      }else if(currentPage === 7) {
         let {current_activity, daily_activity} = this.props.QuestionnaireReducers.fields;
         if( current_activity === "" || daily_activity === "" ){
           alert("Please insert all the data to proceed to next step");
@@ -207,10 +216,19 @@ class Questionnaire extends Component {
       }
     }
   }
+
+  //Display Modal
+  showModal = (data, type) => {
+    this.setState({ rehabTypeForModal: type, dataForModal:data, modal:true});
+  }
+  cancelModalHandler = () => {
+    this.setState({ modal: false })
+  }
+
   render() {
     console.log("Component state",this.props.QuestionnaireReducers)
     const {nick_name, fields} = this.props.QuestionnaireReducers;
-    const percent  = (this.state.currentPage-1)*17;
+    const percent  = (this.state.currentPage-1)*15;
     const genderArray = [
       { value: "male", label: 'Male' },
       { value: "female", label: 'Female' },
@@ -285,15 +303,18 @@ class Questionnaire extends Component {
     } else if(this.state.currentPage === 3){
       RenderPage = (
         <InjuryManagement
-        change={this.rehabFocusCheckboxHandler}
-        data = {this.state.injuryManagement}
+          change={this.rehabFocusCheckboxHandler}
+          data = {this.state.injuryManagement}
+          showModal = {this.showModal}
         />
+
       );
     }else if(this.state.currentPage === 4){
       RenderPage = (
         <PostureCorrection
-        change={this.rehabFocusCheckboxHandler}
-        data = {this.state.postureManagement}
+          change={this.rehabFocusCheckboxHandler}
+          data = {this.state.postureManagement}
+          showModal = {this.showModal}
         />
       );
     }else if(this.state.currentPage === 5){
@@ -328,8 +349,8 @@ class Questionnaire extends Component {
       );
     }
     return(
-      <WingBlank>
       <div className="container">
+
       <div className= "content-without-pagination">
       <div className="progress-bar">
       <div className="progress"><Progress percent={percent} position="normal" /></div>
@@ -346,11 +367,23 @@ class Questionnaire extends Component {
       <span id="footer_page" style ={{}}>{this.state.currentPage}/6</span>
       <Button type="primary" onClick={() => this.buttonHandler('next')}
       inline size="medium" style={{ float: 'right', marginRight: '12px'}}>
-      {this.state.currentPage === 6 ? "Finish": "Next"}
+      {this.state.currentPage === 7 ? "Finish": "Next"}
       </Button>
       </div>
+      {(this.state.modal) && (
+          <Modal>
+            <RehabModal
+              data = {this.state.dataForModal}
+              type = {this.state.rehabTypeForModal}
+              cancel = {this.cancelModalHandler}
+              select = {this.rehabFocusCheckboxHandler}
+            />
+          </Modal>
+
+      )
+
+      }
       </div>
-      </WingBlank>
     )
   }
 }

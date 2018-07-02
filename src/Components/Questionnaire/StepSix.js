@@ -24,7 +24,7 @@ const StepSix = (props) => {
             key={key}
             checked={props.fields.daily_activity === i.value}
             >
-            {i.label} <List.Item.Brief>{i.description}</List.Item.Brief>
+            {i.label}
           </RadioItem>
         </div>
       ))}
@@ -36,7 +36,7 @@ const StepSix = (props) => {
           key={key}
           checked={props.fields.current_activity === i.value}
           >
-            {i.label} <List.Item.Brief>{i.description}</List.Item.Brief>
+            {i.label}
         </RadioItem>
       </div>
     ))}

@@ -15,16 +15,16 @@ const StepFive = (props) => {
       <NoticeBar icon={null}>
         The following information is anonymous
         </NoticeBar>
-      <h2 style={{textAlign: 'center'}}>Health and Wellbeing</h2>
+      <h3 style={{textAlign: 'center'}}>Health and Wellbeing</h3>
 
-      <List renderHeader={() => <h3>Do you experience injury or posture related pain at work? </h3>}>
+      <List renderHeader={() => <strong>Do you experience injury or posture related pain at work? </strong>}>
       {props.injuryArray.map((i,key) => (
         <div onClick= {() => showAlert(i, props.selectInjury)}>
           <RadioItem
             key={key}
             checked={props.fields.work_injury === i.value}
           >
-              {i.label} <List.Item.Brief>{i.description}</List.Item.Brief>
+              {i.label}
           </RadioItem>
         </div>
       ))}
@@ -32,15 +32,14 @@ const StepFive = (props) => {
 
     <List renderHeader={() => <h3>How do you feel your health and wellbeing right now? </h3>}>
       {props.healthArray.map((i,key) => (
-        <RadioItem
-          key={key}
-          checked={props.fields.health_feeling === i.value}
-          onChange={() => props.selectHealth(i.value)}
-        >
         <div onClick= {() => showAlert(i, props.selectHealth)}>
-          {i.label} <List.Item.Brief>{i.description}</List.Item.Brief>
+          <RadioItem
+            key={key}
+            checked={props.fields.health_feeling === i.value}
+          >
+            {i.label}
+          </RadioItem>
         </div>
-        </RadioItem>
         ))}
       </List>
     </div>

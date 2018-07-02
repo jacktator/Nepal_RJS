@@ -16,7 +16,7 @@ const StepFour = (props) => {
       <NoticeBar icon={null}>
         The following information is anonymous
         </NoticeBar>
-        <h2 style={{textAlign: 'center'}}>Stress and Productivity</h2>
+        <h3 style={{textAlign: 'center'}}>Stress and Productivity</h3>
 
         <List renderHeader={() => <h3>How often do you feel stressed at work? </h3>}>
         {props.stressArray.map((i,key) => (
@@ -25,7 +25,7 @@ const StepFour = (props) => {
               key={key}
               checked={props.fields.stress === i.value}
             >
-              {i.label} <List.Item.Brief>{i.description}</List.Item.Brief>
+              {i.label}
             </RadioItem>
           </div>
         ))}
@@ -38,7 +38,7 @@ const StepFour = (props) => {
               key={i.value}
               checked={props.fields.productivity === i.value}
             >
-              {i.label} <List.Item.Brief>{i.description}</List.Item.Brief>
+              {i.label}
           </RadioItem>
           </div>
         ))}
