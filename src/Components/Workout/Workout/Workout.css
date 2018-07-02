@@ -1,0 +1,14 @@
+.image-container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.image-source {
+  height: 250px;
+  width: 100%;
+}
+.bottom-left {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+}

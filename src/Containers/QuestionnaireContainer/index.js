@@ -350,7 +350,6 @@ class Questionnaire extends Component {
     }
     return(
       <div className="container">
-
       <div className= "content-without-pagination">
       <div className="progress-bar">
       <div className="progress"><Progress percent={percent} position="normal" /></div>
@@ -379,9 +378,7 @@ class Questionnaire extends Component {
               select = {this.rehabFocusCheckboxHandler}
             />
           </Modal>
-
       )
-
       }
       </div>
     )
