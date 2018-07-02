@@ -17,9 +17,9 @@
   padding-bottom: 70px;
 }
 .pagination-container {
-  padding-top: 10px;
-  position: fixed;
-  height: 50px;
+    padding-top: 10px;
+    position: fixed;
+    height: 50px;
    left: 0;
    bottom: 0;
    width: 100%;

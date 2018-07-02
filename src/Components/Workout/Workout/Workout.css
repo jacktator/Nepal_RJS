@@ -1,3 +1,6 @@
+.container {
+  font-family: sans-serif;
+}
 .image-container {
   position: relative;
   text-align: center;
@@ -7,8 +10,47 @@
   height: 250px;
   width: 100%;
 }
-.bottom-left {
+.workout-info {
     position: absolute;
     bottom: 8px;
     left: 16px;
+    text-align: left;
+    font-size: 30px;
+}
+.span-button {
+   border: none;
+   color: black;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 12px;
+   font-weight: bold;
+   cursor: pointer;
+}
+.keep {
+  padding: 2px 27px;
+  background-color: #1E90FF;
+}
+.change {
+  padding: 2px 20px;
+  background-color: #FF6347;
+}
+.saved {
+  padding: 2px 22px;
+  background-color: #00FF7F;
+}
+.list-workout {
+  clear: both;
+}
+.footer-botton {
+  padding-top: 10px;
+  position: fixed;
+  height: 50px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  color: white;
+  text-align: center;
+  z-index: 90;
 }

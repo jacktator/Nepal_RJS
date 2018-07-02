@@ -21,6 +21,7 @@ const RehabModal = (props) => (
       Select
     </Button>
   </Hoc>
+
 );
 
 export default RehabModal;

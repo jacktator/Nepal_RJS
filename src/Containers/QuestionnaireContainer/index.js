@@ -358,11 +358,13 @@ class Questionnaire extends Component {
       <CurrentStep currentPage={this.state.currentPage}/>
       {RenderPage}
       </div>
-      <div className="pagination-container" style ={{textAlign: 'center'}}>
+
+      <div className="pagination-container">
       <Button type="primary" disabled={this.state.currentPage === 1 ? true: false}  onClick={() => this.buttonHandler('previous')}
       inline size="medium" style={{ float: 'left', marginLeft: '12px'}}>
       previous
       </Button>
+
       <span id="footer_page" style ={{}}>{this.state.currentPage}/6</span>
       <Button type="primary" onClick={() => this.buttonHandler('next')}
       inline size="medium" style={{ float: 'right', marginRight: '12px'}}>
