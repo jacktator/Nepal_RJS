@@ -1,0 +1,21 @@
+#tab-bar.demo {
+  display: flex;
+  flex-direction: column;
+}
+#tab-bar .demoName {
+  height: 40px;
+}
+#tab-bar .demo-preview-item .am-tab-bar {
+  background-color: white;
+}
+
+.container {
+  font-family: sans-serif;
+  height: 100%;
+}
+.footer-container {
+    margin-top: 500px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

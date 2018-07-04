@@ -5,7 +5,7 @@ import { Button, WhiteSpace } from 'antd-mobile';
 
 const RehabModal = (props) => (
   <Hoc>
-    <img style={{ height:'100px', width:'220px'}} src={props.data.imgurl}  alt={props.data.description}/>
+    <img style={{ height:'200px', width:'250px', marginLeft: '20px'}} src={props.data.imgurl}  alt={props.data.description}/>
     <WhiteSpace/>
     <div style={{ textAlign: "center"}}> <strong> {props.data.description}</strong> </div>
     <WhiteSpace/><WhiteSpace/>

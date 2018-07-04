@@ -226,7 +226,6 @@ class Questionnaire extends Component {
   }
 
   render() {
-    console.log("Component state",this.props.QuestionnaireReducers)
     const {nick_name, fields} = this.props.QuestionnaireReducers;
     const percent  = (this.state.currentPage-1)*15;
     const genderArray = [
@@ -380,8 +379,7 @@ class Questionnaire extends Component {
               select = {this.rehabFocusCheckboxHandler}
             />
           </Modal>
-      )
-      }
+      )}
       </div>
     )
   }
