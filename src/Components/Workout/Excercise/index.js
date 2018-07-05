@@ -28,7 +28,7 @@ export default class Excercise extends Component{
           </NavBar>
         </div>
         <div className="excercise-iframe">
-          <VideoDetail/>
+          <VideoDetail videos={this.props.videos}/>
         </div>
         <div>
           <WeightAndRep/>
