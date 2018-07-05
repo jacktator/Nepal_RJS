@@ -11,6 +11,7 @@ import ForgetPassWord from '../../Containers/ForgetPasswordContainer/';
 import WorkoutContainer from '../../Containers/Workout/WorkoutContainer';
 import Footer from '../../Components/Workout/Footer';
 //import {connect} from 'react-redux';
+import Excercise from '../../Components/Workout/Excercise/';
 
 type Props = {
   path: string,
@@ -32,7 +33,7 @@ class Root extends Component<Props>{
               <Route path="/questionnaire" exact render={()=>(<Redirect to='/login/logindetails'/>)}/>
               <Route path="/login/logindetails" exact component={LoginDetails} />
               <Route path="/forgetpassword" exact component={ForgetPassWord} />
-
+              <Route path="/excercise" exact component={Excercise}/>
               <Route path="/workout" exact component={WorkoutContainer} />
               <Route path="/footer" exact component={Footer} />
             </Switch>

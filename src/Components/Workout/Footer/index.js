@@ -1,6 +1,7 @@
 import React from 'react';
 import { TabBar } from 'antd-mobile';
 import './Footer.css';
+import Yellow from '../../../Assets/yellow.png';
 
 class Footer extends React.Component {
   constructor(props) {
@@ -114,7 +115,7 @@ class Footer extends React.Component {
                 <div style={{
                   width: '22px',
                   height: '22px',
-                  background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat' }}
+                  background: 'src(../../../Assets/yellow.png) center center /  21px 21px no-repeat' }}
                 />
               }
               title="Friend"
@@ -129,8 +130,8 @@ class Footer extends React.Component {
             >
             </TabBar.Item>
             <TabBar.Item
-              icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg' }}
-              selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg' }}
+              icon={{ uri: Yellow }}
+              selectedIcon={{ uri: Yellow} }
               title="My"
               key="my"
               selected={this.state.selectedTab === 'yellowTab'}
