@@ -1,9 +1,12 @@
-.image-container{
-  position:relative;
-  text-align: center;
+.back-ground{
+  background: white;
+  width: 100%;
+  height: 100%;
+  position: fixed;
 }
 
 .sample-image{
+  position:relative;
   width:100%;
   height:200px;
   opacity: 0.7;
@@ -11,27 +14,27 @@
 }
 
 .title {
-    position: absolute;
-    bottom: 110px;
-    left: 16px;
+    position:absolute;
+    top: 10%;
+    left: 5%;
     font-size: 24px;
     color: white;
     font-family: "Verdana";
 }
 
 .program-duration {
-  position: absolute;
-  bottom: 80px;
-  left: 16px;
+  position:absolute;
+  top: 15%;
+  left: 5%;
   font-size: 12px;
   color: grey;
   font-family: "Verdana";
 }
 
 .progress-text {
-  position: absolute;
-  bottom: 30px;
-  left: 16px;
+  position:absolute;
+  top: 19%;
+  left: 5%;
   font-size: 12px;
   color: white;
   font-family: "Verdana";
@@ -39,6 +42,18 @@
 
 .progress-container{
   position:relative;
-  bottom: 20px;
+  bottom: 30px;
   opacity: 0.7;
+}
+
+
+.tabs{
+  color: grey;
+  font-family: "Verdana";
+}
+
+.tabs .content{
+  color:black;
+  font-family: "Verdana";
+  height:100%;
 }

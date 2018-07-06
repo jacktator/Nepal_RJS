@@ -1,6 +1,5 @@
 import React from 'react'
 import {Tabs} from 'antd-mobile'
-import './StickyTab.css'
 import Content from './Content'
 
 export default class StickyTab extends React.Component {
@@ -12,9 +11,6 @@ export default class StickyTab extends React.Component {
      { title: 'WEEK 3' },
      { title: 'WEEK 4' },
      { title: 'WEEK 5' },
-     { title: 'WEEK 6' },
-     { title: 'WEEK 7' },
-     { title: 'WEEK 8' },
    ];
 
    return (
