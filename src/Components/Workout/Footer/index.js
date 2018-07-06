@@ -1,7 +1,6 @@
 import React from 'react';
 import { TabBar } from 'antd-mobile';
 import './Footer.css';
-import Yellow from '../../../Assets/yellow.png';
 
 import {Link} from 'react-router-dom';
 /*
@@ -28,12 +27,12 @@ import workoutSel from '../../../Assets/Footer/workoutSel.svg'
             hidden={props.hidden}
           >
               <TabBar.Item
-                title="Home"
-                key="Home"
+                title="History"
+                key="History"
                 icon={{ uri: home }}
                 selectedIcon={{ uri:homeSel}}
-                selected={props.selectedTab === 'homeTab'}
-                onPress={() => props.selectFooter('homeTab') }
+                selected={props.selectedTab === 'historyTab'}
+                onPress={() => props.selectFooter('historyTab') }
                 data-seed="logId"
               >
               </TabBar.Item>

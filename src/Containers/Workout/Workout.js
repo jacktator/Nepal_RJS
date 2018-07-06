@@ -1,17 +1,19 @@
 import React, {Component} from 'react';
+import {Redirect} from 'react-router';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import FooterContainer from './FooterContainer';
 import WorkoutContainer from './WorkoutContainer';
 import Plan from '../../Components/Workout/Plan';
+import HistoryComponent from '../../Components/History';
 import Hoc from '../../HOC/Hoc';
 class Workout extends Component {
   render (){
     return (
       <Hoc>
 
-      { this.props.currentFooterTab === 'homeTab' &&
-        <div>Its home tab</div>
+      { this.props.currentFooterTab === 'historyTab' &&
+        <HistoryComponent />
       }
       { this.props.currentFooterTab === 'planTab' &&
         <Plan />
@@ -20,7 +22,7 @@ class Workout extends Component {
         <WorkoutContainer />
       }
       { this.props.currentFooterTab === 'meTab' &&
-        <div>Its me tab</div>
+        <div> this is me tab </div>
       }
         <FooterContainer />
       </Hoc>
