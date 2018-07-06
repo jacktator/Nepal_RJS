@@ -19,9 +19,8 @@ const StepSix = (props) => {
 
       <List renderHeader={() => <h3>How active are you on a daily basis? </h3>}>
       {props.activityArray.map((i,key) => (
-        <div onClick= {() => showAlert(i, props.selectActivity)}>
+        <div key={key} onClick= {() => showAlert(i, props.selectActivity)}>
           <RadioItem
-            key={key}
             checked={props.fields.daily_activity === i.value}
             >
             {i.label}
@@ -31,9 +30,8 @@ const StepSix = (props) => {
     </List>
     <List renderHeader={() => <h3>What is your current exercise activity level? </h3>}>
     {props.exerciseArray.map((i,key) => (
-      <div onClick= {() => showAlert(i, props.selectExercise)}>
+      <div key={key} onClick= {() => showAlert(i, props.selectExercise)}>
         <RadioItem
-          key={key}
           checked={props.fields.current_activity === i.value}
           >
             {i.label}

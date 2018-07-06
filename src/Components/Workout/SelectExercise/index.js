@@ -5,42 +5,35 @@ import './SelectExercise.css';
 
   class SelectExercise extends React.Component {
     state = {
-    data: ['1', '2', '3'],
     imgHeight: 500,
-    currentItem: 0
+    currentItem: 0,
+    description: ""
   }
-  componentDidMount() {
-    // simulate img loading
-    setTimeout(() => {
-      this.setState({
-        data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
-      });
-    }, 100);
-  }
+
   render() {
     return (
         <div className="container">
-          <div className="excercise-header" style={{ textAlign: "center"}}>
-            Deadlift
-          </div>
           <Carousel
             autoplay={false}
             infinite
             afterChange={index => this.setState({currentItem: index})}
           >
-            {this.state.data.map(val => (
-                <img
-                  key = { val }
-                  src={`https://zos.alipayobjects.com/rmsportal/${val}.png`}
-                  alt=""
-                  style={{ height:'400px', width:'300px', verticalAlign: 'top'}}
-                  onLoad={() => {
-                    // fire window resize event to change height
-                    window.dispatchEvent(new Event('resize'));
-                    this.setState({ imgHeight: 'auto' });
-                  }}
-                />
-            ))}
+          { this.props.excerciseArray.map( data => (
+            <div>
+              <div className="excercise-header" style={{ height:'25px',background:'black', color:'white', textAlign: "center"}}>{data.description}</div>
+              <img
+                key = { data.value }
+                src={data.imgurl}
+                alt={data.description}
+                style={{ height:'220px', width:'100%', verticalAlign: 'top'}}
+                onLoad={() => {
+                  // fire window resize event to change height
+                  window.dispatchEvent(new Event('resize'));
+                  this.setState({ imgHeight: 'auto', description: data.description });
+                }}
+              />
+            </div>
+          ))}
           </Carousel>
           <div className="select-button">
             <Button type="primary" onClick={() => (this.props.onSelect(this.state.currentItem))}> select</Button>
