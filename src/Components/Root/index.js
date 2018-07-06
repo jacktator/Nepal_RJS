@@ -10,8 +10,9 @@ import Questionnaire from '../../Containers/QuestionnaireContainer/';
 import ForgetPassWord from '../../Containers/ForgetPasswordContainer/';
 import WorkoutContainer from '../../Containers/Workout/WorkoutContainer';
 import FooterContainer from '../../Containers/Workout/FooterContainer';
-import Plan from '../../Components/Workout/Plan';
-import HistoryComponent from '../../Components/History';
+import PlanContainer from '../../Containers/Workout/PlanContainer';
+import HistoryContainer from '../../Containers/Workout/HistoryContainer';
+
 
 //import {connect} from 'react-redux';
 import ExcerciseContainer from '../../Containers/ExcerciseContainer/';
@@ -38,9 +39,9 @@ class Root extends Component<Props>{
               <Route path="/forgetpassword" exact component={ForgetPassWord} />
               <Route path="/excercise" exact component={ExcerciseContainer}/>
               <Route path="/workout" exact component={WorkoutContainer} />
-              <Route path="/plan" exact component={Plan}/>
+              <Route path="/plan" exact component={PlanContainer}/>
               <Route path="/footer" exact component={FooterContainer} />
-              <Route path="/history" exact component={HistoryComponent}/>
+              <Route path="/history" exact component={HistoryContainer}/>
             </Switch>
           </BrowserRouter>
         </div>
@@ -57,9 +58,9 @@ class Root extends Component<Props>{
             <Route path="/questionnaire" exact component={Questionnaire} />
             <Route path="/forgetpassword" exact component={ForgetPassWord} />
             <Route path="/workout" exact component={WorkoutContainer} />
-            <Route path="/plan" exact component={Plan}/>
+            <Route path="/plan" exact component={PlanContainer}/>
             <Route path="/footer" exact component={FooterContainer} />
-            <Route path="/history" exact component={HistoryComponent}/>
+            <Route path="/history" exact component={HistoryContainer}/>
           </Switch>
         </BrowserRouter>
       </div>

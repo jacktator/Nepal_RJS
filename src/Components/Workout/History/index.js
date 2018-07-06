@@ -9,7 +9,7 @@ export default class HistoryComponent extends Component {
     return(
       <div>
           <div className="image-container">
-            <img src={require("../../Assets/Workout/sampleImage.jpeg")} alt="sampleImage" className="sample-image"/>
+            <img src={require("../../../Assets/Workout/sampleImage.jpeg")} alt="sampleImage" className="sample-image"/>
             <div className="title"> Training History</div>
           </div>
 

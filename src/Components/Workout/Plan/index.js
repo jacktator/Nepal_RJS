@@ -7,9 +7,9 @@ import StickyTab from './StickyTab'
 export default class Plan extends Component{
 
   render() {
+    
     return (
-        <div>
-            <div className="image-container">
+        <div className ="back-ground">
               <img src={require("../../../Assets/Workout/sampleImage.jpeg")} alt="sampleImage" className="sample-image"/>
               <div className="title"> Insert Title Here</div>
               <div className="program-duration"> Insert Program Duration Here</div>
@@ -19,9 +19,8 @@ export default class Plan extends Component{
                       <Progress position="normal" percent={40} showInfo={false}/>
                   </WingBlank>
               </div>
-            </div>
             <div className="sticky-tab">
-                <StickyTab/>
+              <StickyTab/>
             </div>
       </div>
     )
