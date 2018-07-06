@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {selectFooter} from '../FooterContainer/actions';
 import Workout from '../../../Components/Workout/Workout';
 import SelectExercise from '../../../Components/Workout/SelectExercise';
 import Modal from '../../../Components/UI/Modal';
@@ -11,6 +13,11 @@ class WorkoutContainer extends Component{
     super(props);
     this.state = {
       isChangeExcercise: false
+    }
+  }
+  componentWillMount(){
+    if(this.props.currentFooterTab!== 'workoutTab' ){
+      this.props.selectFooter('workoutTab');
     }
   }
   onChangeHandler = () => {
@@ -47,4 +54,15 @@ class WorkoutContainer extends Component{
     )
   }
 }
-export default WorkoutContainer;
+function mapStateToProps(state){
+  return {
+    currentFooterTab: state.FooterReducers.currentFooterTab
+  }
+}
+function matchDispatchToProps(dispatch){
+  return bindActionCreators({
+    selectFooter
+  }, dispatch
+);
+}
+export default connect(mapStateToProps, matchDispatchToProps) (WorkoutContainer);

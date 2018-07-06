@@ -1,6 +1,6 @@
 
 let DefaultState = {
-  currentFooterTab: 'workoutTab',
+  currentFooterTab: 'historyTab',
   hidden: false,
   fullScreen: false,
 }
