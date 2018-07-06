@@ -17,40 +17,23 @@ import planSel from '../../../Assets/Footer/planSel.svg'
 import workout from '../../../Assets/Footer/workout.svg'
 import workoutSel from '../../../Assets/Footer/workoutSel.svg'
 
-class Footer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedTab: 'homeTab',
-      hidden: false,
-      fullScreen: false,
-    };
-  }
-
-  render() {
+  const Footer = (props) => {
     return (
       <div  className="container">
-       <span>{this.state.selectedTab}</span>
         <div className="footer-container">
           <TabBar
             unselectedTintColor="#949494"
             tintColor="#33A3F4"
             barTintColor="white"
-            hidden={this.state.hidden}
+            hidden={props.hidden}
           >
               <TabBar.Item
                 title="Home"
                 key="Home"
                 icon={{ uri: home }}
                 selectedIcon={{ uri:homeSel}}
-
-                selected={this.state.selectedTab === 'homeTab'}
-
-                onPress={() => {
-                  this.setState({
-                    selectedTab: 'homeTab',
-                  });
-                }}
+                selected={props.selectedTab === 'homeTab'}
+                onPress={() => props.selectFooter('homeTab') }
                 data-seed="logId"
               >
               </TabBar.Item>
@@ -60,28 +43,19 @@ class Footer extends React.Component {
               selectedIcon={{ uri:planSel}}
               title="Plan"
               key="Plan"
-              selected={this.state.selectedTab === 'planTab'}
-              onPress={() => {
-                this.setState({
-                  selectedTab: 'planTab',
-                });
-              }}
+              selected={props.selectedTab === 'planTab'}
+              onPress={() => props.selectFooter('planTab') }
               data-seed="logId1"
             >
             </TabBar.Item>
             <TabBar.Item
               icon={{ uri: workout }}
               selectedIcon={{ uri:workoutSel}}
-
               title="Workout"
               key="Workout"
               dot
-              selected={this.state.selectedTab === 'workoutTab'}
-              onPress={() => {
-                this.setState({
-                  selectedTab: 'workoutTab',
-                });
-              }}
+              selected={props.selectedTab === 'workoutTab'}
+              onPress={() => props.selectFooter('workoutTab') }
             >
             </TabBar.Item>
             <TabBar.Item
@@ -89,12 +63,8 @@ class Footer extends React.Component {
               selectedIcon={{ uri: meSel }}
               title="Me"
               key="me"
-              selected={this.state.selectedTab === 'meTab'}
-              onPress={() => {
-                this.setState({
-                  selectedTab: 'meTab',
-                });
-              }}
+              selected={props.selectedTab === 'meTab'}
+              onPress={() => props.selectFooter('meTab') }
             >
             </TabBar.Item>
           </TabBar>
@@ -102,6 +72,4 @@ class Footer extends React.Component {
       </div>
     );
   }
-}
-
 export default Footer;

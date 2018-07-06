@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { Progress, Button} from 'antd-mobile';
 import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 import Modal from '../../Components/UI/Modal';
 import RehabModal from '../../Components/Questionnaire/Popup/RehabModal';
@@ -14,7 +15,7 @@ import { addName, addAge, addGender, addWeight, addExercisePlace,
   addDailyActivity, addCurrentActivity,
   stepOne, stepTwo, stepThree, stepFour, stepFive, stepSix
 }from './actions';
-import {bindActionCreators} from 'redux';
+
 import CurrentStep  from '../../Components/Questionnaire/Progress';
 import Detail from '../../Components/Questionnaire/Detail';
 import Program from '../../Components/Questionnaire/Program';
