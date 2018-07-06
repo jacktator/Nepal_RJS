@@ -1,6 +1,6 @@
 import React from 'react'
 import {Tabs} from 'antd-mobile'
-import './StickyTab.css'
+//import './StickyTab.css'
 import Content from './Content'
 
 export default class StickyTab extends React.Component {
