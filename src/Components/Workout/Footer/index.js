@@ -41,9 +41,7 @@ class Footer extends React.Component {
               key="Home"
               icon={{ uri: home }}
               selectedIcon={{ uri:homeSel}}
-
               selected={this.state.selectedTab === 'homeTab'}
-
               onPress={() => {
                 this.setState({
                   selectedTab: 'homeTab',
@@ -67,31 +65,10 @@ class Footer extends React.Component {
             >
             </TabBar.Item>
             <TabBar.Item
-<<<<<<< HEAD
               icon={{ uri: workout }}
               selectedIcon={{ uri:workoutSel}}
-
               title="Workout"
               key="Workout"
-=======
-              icon={
-                <div style={{
-                  width: '22px',
-                  height: '22px',
-                  background: 'url(https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg) center center /  21px 21px no-repeat' }}
-                />
-              }
-              selectedIcon={
-                <div style={{
-                  width: '22px',
-                  height: '22px',
-                  background: 'src(../../../Assets/yellow.png) center center /  21px 21px no-repeat' }}
-                />
-              }
-              title="Friend"
-              key="Friend"
->>>>>>> db4344731de35eb5ea6e3fc7630ada8918ad1b70
-              dot
               selected={this.state.selectedTab === 'workoutTab'}
               onPress={() => {
                 this.setState({
@@ -101,19 +78,12 @@ class Footer extends React.Component {
             >
             </TabBar.Item>
             <TabBar.Item
-<<<<<<< HEAD
+
               icon={{ uri: me }}
               selectedIcon={{ uri: meSel }}
               title="Me"
               key="me"
               selected={this.state.selectedTab === 'meTab'}
-=======
-              icon={{ uri: Yellow }}
-              selectedIcon={{ uri: Yellow} }
-              title="My"
-              key="my"
-              selected={this.state.selectedTab === 'yellowTab'}
->>>>>>> db4344731de35eb5ea6e3fc7630ada8918ad1b70
               onPress={() => {
                 this.setState({
                   selectedTab: 'meTab',
