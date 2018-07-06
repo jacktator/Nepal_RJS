@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {selectFooter} from '../FooterContainer/actions';
 import FooterContainer from'../FooterContainer';
 import HistoryComponent from '../../../Components/Workout/History';
 
-export default class PlanContainer extends Component{
-
+class PlanContainer extends Component{
+  componentWillMount(){
+    if(this.props.currentFooterTab!== 'historyTab' ){
+      this.props.selectFooter('historyTab');
+    }
+  }
   render() {
     return (
       <div>
@@ -13,3 +20,16 @@ export default class PlanContainer extends Component{
     )
   }
 }
+
+function mapStateToProps(state){
+  return {
+    currentFooterTab: state.FooterReducers.currentFooterTab
+  }
+}
+function matchDispatchToProps(dispatch){
+  return bindActionCreators({
+    selectFooter
+  }, dispatch
+);
+}
+export default connect(mapStateToProps, matchDispatchToProps)(PlanContainer)
