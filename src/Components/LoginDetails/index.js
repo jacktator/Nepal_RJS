@@ -21,9 +21,7 @@ var humeniconstyle={
 }
 
 type State={
-
   loading: boolean,
-
 }
 
 type Props = {
@@ -44,29 +42,16 @@ class LoginDetails extends Component<Props, State> {
   constructor(props){
     super(props);
     this.state={
-      loading: false,
+      loading: true,
     }
   }
 
-  successfulLogin = (token) =>{
-    if(!token){
-      const loading = !this.state.loading
-      this.setState({loading})
-    }
+  loadingButton = (loading)=>{
+    const {email, password} = this.props;
+    this.props.onClickButton(email, password);
+    loading = !this.state.loading
+    this.setState({loading});
   }
-
-  // callFunction=(email, password)=>{
-  //     ()=>this.props.onClickButton(email, password)
-  //     if(!this.props.token){
-  //       return(
-  //
-  //       )
-  //     }
-  //     return (
-  //
-  //     )
-  // }
-
 
   render() {
     const {email, password, token} = this.props;
@@ -103,8 +88,8 @@ class LoginDetails extends Component<Props, State> {
               <Button
                 type="primary"
                 className="login-button-style"
-                onClick={()=>this.props.onClickButton(email, password)}
-                loading={this.state.loading}
+                onClick={()=>this.loadingButton()}
+                loading={!this.state.loading}
               >
                 Submit
               </Button>
@@ -135,9 +120,6 @@ class LoginDetails extends Component<Props, State> {
 const LoginDetailsWrapper = createForm()(LoginDetails);
 
 export default LoginDetailsWrapper;
-
-
-
 
 // {!token? <div>Submit</div>: <Link to="/questionnaire"><div>Submit</div></Link>}
 
@@ -208,4 +190,11 @@ export default LoginDetailsWrapper;
     //   //console.log('now i get the password value is : '+ password);
     //   this.props.LoginAction(email,password);
     //
+    // }
+
+    // successfulLogin = (token) =>{
+    //   if(!token){
+    //     const loading = !this.state.loading
+    //     this.setState({loading})
+    //   }
     // }

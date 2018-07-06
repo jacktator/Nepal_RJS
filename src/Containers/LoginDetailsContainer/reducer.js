@@ -6,7 +6,7 @@ let DefaultState=
     email:'boy@test.com',
     password:12345678,
     token: '',
-    status: false,
+    status: true,
   }
 
 const LoginDetailsReducers = (state: Object=DefaultState, action: Function)=>{
