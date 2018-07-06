@@ -3,42 +3,27 @@ import { TabBar } from 'antd-mobile';
 import './Footer.css';
 import Yellow from '../../../Assets/yellow.png';
 
+/*
+icons taken from http://iconfont.cn/home/index?spm=a313x.7781069.1998910419.2
+*/
+
+import home from '../../../Assets/Footer/home.svg'
+import homeSel from '../../../Assets/Footer/homeSel.svg'
+import me from '../../../Assets/Footer/me.svg'
+import meSel from '../../../Assets/Footer/meSel.svg'
+import plan from '../../../Assets/Footer/plan.svg'
+import planSel from '../../../Assets/Footer/planSel.svg'
+import workout from '../../../Assets/Footer/workout.svg'
+import workoutSel from '../../../Assets/Footer/workoutSel.svg'
+
 class Footer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'redTab',
+      selectedTab: 'homeTab',
       hidden: false,
       fullScreen: false,
     };
-  }
-
-  renderContent(pageText) {
-    return (
-      <div style={{ backgroundColor: 'white', height: '100%', textAlign: 'center' }}>
-        <div style={{ paddingTop: 60 }}>Clicked “{pageText}” tab， show “{pageText}” information</div>
-        <a style={{ display: 'block', marginTop: 40, marginBottom: 20, color: '#108ee9' }}
-          onClick={(e) => {
-            e.preventDefault();
-            this.setState({
-              hidden: !this.state.hidden,
-            });
-          }}
-        >
-          Click to show/hide tab-bar
-        </a>
-        <a style={{ display: 'block', marginBottom: 600, color: '#108ee9' }}
-          onClick={(e) => {
-            e.preventDefault();
-            this.setState({
-              fullScreen: !this.state.fullScreen,
-            });
-          }}
-        >
-          Click to switch fullscreen
-        </a>
-      </div>
-    );
   }
 
   render() {
@@ -52,58 +37,43 @@ class Footer extends React.Component {
             hidden={this.state.hidden}
           >
             <TabBar.Item
-              title="Life"
-              key="Life"
-              icon={<div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat' }}
-              />
-              }
-              selectedIcon={<div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat' }}
-              />
-              }
-              selected={this.state.selectedTab === 'blueTab'}
-              badge={1}
+              title="Home"
+              key="Home"
+              icon={{ uri: home }}
+              selectedIcon={{ uri:homeSel}}
+
+              selected={this.state.selectedTab === 'homeTab'}
+
               onPress={() => {
                 this.setState({
-                  selectedTab: 'blueTab',
+                  selectedTab: 'homeTab',
                 });
               }}
               data-seed="logId"
             >
             </TabBar.Item>
             <TabBar.Item
-              icon={
-                <div style={{
-                  width: '22px',
-                  height: '22px',
-                  background: 'url(https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat' }}
-                />
-              }
-              selectedIcon={
-                <div style={{
-                  width: '22px',
-                  height: '22px',
-                  background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat' }}
-                />
-              }
-              title="Koubei"
-              key="Koubei"
-              badge={'new'}
-              selected={this.state.selectedTab === 'redTab'}
+              icon={{ uri: plan }}
+              selectedIcon={{ uri:planSel}}
+              title="Plan"
+              key="Plan"
+              selected={this.state.selectedTab === 'planTab'}
               onPress={() => {
                 this.setState({
-                  selectedTab: 'redTab',
+                  selectedTab: 'planTab',
                 });
               }}
               data-seed="logId1"
             >
             </TabBar.Item>
             <TabBar.Item
+<<<<<<< HEAD
+              icon={{ uri: workout }}
+              selectedIcon={{ uri:workoutSel}}
+
+              title="Workout"
+              key="Workout"
+=======
               icon={
                 <div style={{
                   width: '22px',
@@ -120,24 +90,33 @@ class Footer extends React.Component {
               }
               title="Friend"
               key="Friend"
+>>>>>>> db4344731de35eb5ea6e3fc7630ada8918ad1b70
               dot
-              selected={this.state.selectedTab === 'greenTab'}
+              selected={this.state.selectedTab === 'workoutTab'}
               onPress={() => {
                 this.setState({
-                  selectedTab: 'greenTab',
+                  selectedTab: 'workoutTab',
                 });
               }}
             >
             </TabBar.Item>
             <TabBar.Item
+<<<<<<< HEAD
+              icon={{ uri: me }}
+              selectedIcon={{ uri: meSel }}
+              title="Me"
+              key="me"
+              selected={this.state.selectedTab === 'meTab'}
+=======
               icon={{ uri: Yellow }}
               selectedIcon={{ uri: Yellow} }
               title="My"
               key="my"
               selected={this.state.selectedTab === 'yellowTab'}
+>>>>>>> db4344731de35eb5ea6e3fc7630ada8918ad1b70
               onPress={() => {
                 this.setState({
-                  selectedTab: 'yellowTab',
+                  selectedTab: 'meTab',
                 });
               }}
             >
