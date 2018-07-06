@@ -8,7 +8,7 @@ import SignUp from '../../Containers/SignUpContainer/';
 import LoginDetails from '../../Containers/LoginDetailsContainer/';
 import Questionnaire from '../../Containers/QuestionnaireContainer/';
 import ForgetPassWord from '../../Containers/ForgetPasswordContainer/';
-import WorkoutContainer from '../../Containers/Workout/WorkoutContainer';
+import Workout from '../../Containers/Workout/Workout';
 import FooterContainer from '../../Containers/Workout/FooterContainer';
 import Plan from '../../Components/Workout/Plan';
 
@@ -36,7 +36,7 @@ class Root extends Component<Props>{
               <Route path="/login/logindetails" exact component={LoginDetails} />
               <Route path="/forgetpassword" exact component={ForgetPassWord} />
               <Route path="/excercise" exact component={ExcerciseContainer}/>
-              <Route path="/workout" exact component={WorkoutContainer} />
+              <Route path="/workout" exact component={Workout} />
               <Route path="/plan" exact component={Plan}/>
               <Route path="/footer" exact component={FooterContainer} />
             </Switch>
@@ -55,7 +55,7 @@ class Root extends Component<Props>{
             <Route path="/questionnaire" exact component={Questionnaire} />
             <Route path="/forgetpassword" exact component={ForgetPassWord} />
             <Route path="/plan" exact component={Plan}/>
-            <Route path="/workout" exact component={WorkoutContainer} />
+            <Route path="/workout" exact component={Workout} />
             <Route path="/footer" exact component={FooterContainer} />
 
           </Switch>

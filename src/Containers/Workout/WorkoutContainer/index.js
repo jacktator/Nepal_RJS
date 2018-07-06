@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Workout from '../../../Components/Workout/Workout';
 import SelectExercise from '../../../Components/Workout/SelectExercise';
 import Modal from '../../../Components/UI/Modal';
+import FooterContainer from '../FooterContainer';
 import Hoc from '../../../HOC/Hoc';
 
 class WorkoutContainer extends Component{
@@ -41,6 +42,7 @@ class WorkoutContainer extends Component{
             />
           </Modal>
         )}
+        <FooterContainer />
       </Hoc>
     )
   }
