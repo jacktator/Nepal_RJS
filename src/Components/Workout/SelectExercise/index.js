@@ -13,13 +13,16 @@ import './SelectExercise.css';
   render() {
     return (
         <div className="container">
-          <Carousel
+          <Carousel className="space-carousel"
+            frameOverflow="visible"
+            cellSpacing={10}
+            slideWidth={1}
             autoplay={false}
             infinite
             afterChange={index => this.setState({currentItem: index})}
           >
           { this.props.excerciseArray.map( data => (
-            <div>
+            <div className="image-with-description">
               <div className="excercise-header" style={{ height:'25px',background:'black', color:'white', textAlign: "center"}}>{data.description}</div>
               <img
                 key = { data.value }

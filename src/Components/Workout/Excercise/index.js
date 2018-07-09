@@ -9,7 +9,7 @@ export default class Excercise extends Component{
 
   onLeftClick(e){
     e.preventDefault();
-    console.log('onLeftClick')
+    alert(e)
   }
 
   render(){
@@ -19,7 +19,7 @@ export default class Excercise extends Component{
           <NavBar
             mode="light"
             icon={<Icon type="left" />}
-            onLeftClick={(e) => this.onLeftClick(e)}
+            onLeftClick={(e) => this.props.onBackButtonClicked(e)}
             rightContent={[
               <Icon key="1" type="ellipsis" />,
             ]}

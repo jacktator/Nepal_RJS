@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Redirect} from 'react-router';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {selectFooter} from '../FooterContainer/actions';
@@ -13,6 +14,7 @@ class WorkoutContainer extends Component{
     super(props);
     this.state = {
       isChangeExcercise: false,
+      startExcercies: false,
       excerciseArray: [
         { value: 0, description: 'Push ups', imgurl: 'https://files.brightside.me/files/news/part_34/340810/14565160-1-0-1496126804-1496126811-650-0c369e17e2-1496430586.jpg'},
         { value: 1, description: 'Barbell Bench Press', imgurl: 'https://www.bodybuilding.com/images/2016/july/10-best-chest-exercises-for-building-muscle-v2-1-700xh.jpg'},
@@ -29,15 +31,15 @@ class WorkoutContainer extends Component{
   onChangeHandler = () => {
     this.setState({ isChangeExcercise: true })
   }
+  onSelectExerciseHandler = (index) => {
+    alert(index);
+    this.setState({ isChangeExcercise: false })
+  }
   onKeepHandler = () => {
     alert("onKeep");
   }
   onStartHandler = () => {
-    alert("Starting you work out new ");
-  }
-  onSelectExerciseHandler = (index) => {
-    alert(index);
-    this.setState({ isChangeExcercise: false })
+    this.setState({ startExcercies: true})
   }
 
   render() {
@@ -55,6 +57,9 @@ class WorkoutContainer extends Component{
               excerciseArray = {this.state.excerciseArray}
             />
           </Modal>
+        )}
+        {( this.state.startExcercies) && (
+          <Redirect to="/exercise" />
         )}
         <FooterContainer />
       </Hoc>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { List, Stepper } from 'antd-mobile';
+import { List, Stepper, Button, WhiteSpace } from 'antd-mobile';
 
 export default class WeightAndRep extends Component{
   constructor(props) {
@@ -22,38 +22,43 @@ export default class WeightAndRep extends Component{
 
   render(){
     return(
-      <List>
-        <List.Item
-          wrap
-          extra={
-            <Stepper
-              style={{ width: '100%', minWidth: '100px' }}
-              showNumber
-              max={10}
-              min={1}
-              value={this.state.weightValue}
-              onChange={this.onChangeWeight}
-            />
-          }
-        >
-        WEIGHT(KG)
-        </List.Item>
-        <List.Item
-          wrap
-          extra={
-            <Stepper
-              style={{ width: '100%', minWidth: '100px' }}
-              showNumber
-              max={10}
-              min={1}
-              value={this.state.repValue}
-              onChange={this.onChangeRep}
-            />
-          }
-        >
-        REPS
-        </List.Item>
-      </List>
+      <div calssname="container">
+        <span style={{marginLeft: '13%'}}>
+          WEIGHT (kgs)
+        </span>
+        <span style={{float:'right', marginRight: '20%'}}>
+          REPS
+        </span>
+        <WhiteSpace size='xs'/>
+        <span style={{ marginLeft:'10%'}}>
+        <Stepper
+            style={{ width: '30%', minWidth: '110px' }}
+            showNumber
+            max={10}
+            min={1}
+            value={this.state.weightValue}
+            onChange={this.onChangeWeight}
+          />
+        </span>
+        <span style={{float:"right", marginRight:'10%'}}>
+        <Stepper
+            style={{ width: '35%', minWidth: '110px' }}
+            showNumber
+            max={10}
+            min={1}
+            value={this.state.repValue}
+            onChange={this.onChangeRep}
+          />
+        </span>
+        <WhiteSpace size='xl'/>
+        <span style={{marginLeft:"35%"}}>
+          <Button type="primary" inline="true" size="large">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              save
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </Button>
+        </span>
+      </div>
     );
   }
 }
