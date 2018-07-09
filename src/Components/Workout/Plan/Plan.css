@@ -1,11 +1,11 @@
-.back-ground{
+.plan-back-ground{
   background: white;
   width: 100%;
   height: 100%;
   position: fixed;
 }
 
-.sample-image{
+.plan-sample-image{
   position:relative;
   width:100%;
   height:200px;
@@ -13,7 +13,7 @@
   filter: alpha(opacity=80);
 }
 
-.title {
+.plan-title {
     position:absolute;
     top: 10%;
     left: 5%;
@@ -22,7 +22,7 @@
     font-family: "Verdana";
 }
 
-.program-duration {
+.plan-program-duration {
   position:absolute;
   top: 15%;
   left: 5%;
@@ -31,7 +31,7 @@
   font-family: "Verdana";
 }
 
-.progress-text {
+.plan-progress-text {
   position:absolute;
   top: 19%;
   left: 5%;
@@ -40,24 +40,24 @@
   font-family: "Verdana";
 }
 
-.progress-container{
+.plan-progress-container{
   position:relative;
   bottom: 30px;
   opacity: 0.7;
 }
 
 
-.tabs{
+.plan-tabs{
   color: grey;
   font-family: "Verdana";
 }
 
-.tabs .content{
+.plan-tabs .content{
   color:black;
   font-family: "Verdana";
   height:100%;
 }
 
-.radio-text{
+.plan-radio-text{
   font-size: 20px;
 }
