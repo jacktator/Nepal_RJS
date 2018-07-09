@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Progress, Button} from 'antd-mobile';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-
+import {Redirect} from 'react-router';
 import Modal from '../../Components/UI/Modal';
 import RehabModal from '../../Components/Questionnaire/Popup/RehabModal';
 
@@ -61,17 +61,17 @@ class Questionnaire extends Component {
       rehabTypeForModal: '',
       dataForModal: { },
       modal: false,
-
+      isFinish: false,
       currentPage: 1,
       hasError: false,
     }//state ends
     // this.makeNextToFinish=this.makeNextToFinish.bind(this);
   }//constructor ends
 
-  componentWillMount(nextProps) {
+  componentWillMount() {
     const {goals, rehab_focus} = this.props.QuestionnaireReducers.fields;
-    const trainingGoals = [ ...this.state.trainingGoals ];
-    const injuryManagement = [ ...this.state.injuryManagement];
+    let trainingGoals = [ ...this.state.trainingGoals ];
+    let injuryManagement = [ ...this.state.injuryManagement];
     goals.map(i => {
       trainingGoals[i].isChecked = true;
       return null;
@@ -80,7 +80,7 @@ class Questionnaire extends Component {
       injuryManagement[j].isChecked = true;
       return null;
     })
-    this.setState({ trainingGoals, injuryManagement })
+    this.setState({ trainingGoals, injuryManagement, isFinish:false })
   }
   //handle the checkbox for injury management in questionnaire (third page)
   rehabFocusCheckboxHandler = (value, type) => {
@@ -213,7 +213,8 @@ class Questionnaire extends Component {
           return;
         }
         this.props.stepSix(current_activity, daily_activity);
-        alert("Finish questionnaire");
+        this.setState({isFinish:true})
+
       }
     }
   }
@@ -380,6 +381,9 @@ class Questionnaire extends Component {
               select = {this.rehabFocusCheckboxHandler}
             />
           </Modal>
+      )}
+      {(this.state.isFinish) && (
+        <Redirect to="/plan" />
       )}
       </div>
     )

@@ -51,8 +51,8 @@ const CurrentStep = (props) => {
     RenderSteps =(
       <div>
         <Steps direction="horizontal">
-          <Step status="completed" title="Step 3" icon={customIcon()} />
-          <Step status="error" title="Step 4" icon={customIcon()} />
+          <Step status="completed" title="Step 2" icon={customIcon()} />
+          <Step status="error" title="Step 3" icon={customIcon()} />
           <Step  title="Step 6" icon={customIcon()} />
         </Steps>
       </div>
@@ -61,8 +61,8 @@ const CurrentStep = (props) => {
     RenderSteps =(
       <div>
         <Steps direction="horizontal">
-          <Step status="completed" title="Step 4" icon={customIcon()} />
-          <Step status="error" title="Step 5" icon={customIcon()} />
+          <Step status="completed" title="Step 3" icon={customIcon()} />
+          <Step status="error" title="Step 4" icon={customIcon()} />
           <Step  title="Step 6" icon={customIcon()} />
         </Steps>
       </div>
@@ -72,8 +72,18 @@ const CurrentStep = (props) => {
       <div>
         <Steps direction="horizontal">
           <Step status="completed" title="Step 4" icon={customIcon()} />
+          <Step status="error" title="Step 5" icon={customIcon()} />
+          <Step title="Step 6" icon={customIcon()} />
+        </Steps>
+      </div>
+    )
+  }if( props.currentPage === 7){
+    RenderSteps =(
+      <div>
+        <Steps direction="horizontal">
+          <Step status="completed" title="Step 4" icon={customIcon()} />
           <Step status="completed" title="Step 5" icon={customIcon()} />
-          <Step status="error" title="Step 6" icon={customIcon()} />
+          <Step title="Step 6" icon={customIcon()} />
         </Steps>
       </div>
     )
