@@ -1,10 +1,30 @@
 import React, {Component} from 'react';
 import './History.css'
-import {List} from 'antd-mobile'
+import {List, Menu, ActivityIndicator, NavBar } from 'antd-mobile'
 
 const Item = List.Item;
 
 export default class HistoryComponent extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      WorkoutHistory:[
+        {program:'Body Weight Training',startDate:'12/02/18', value:1, isSelected:true},
+        {program:'Batman Workout',startDate:'04/04/18', value:2, isSelected:false},
+        {program:'Circuit Training',startDate:'09/06/18', value:3,isSelected:false}
+      ]
+    }
+  }
+
+  handleClick(data) {
+    this.setState(
+      {
+        
+      }
+    )
+  }
+
   render(){
     return(
       <div>
@@ -13,9 +33,13 @@ export default class HistoryComponent extends Component {
           <div className="history-component-title"> Training History</div>
 
           <List className="my-list">
-          <Item extra={'Date dd/mm/yyyy'}>Workout Program:</Item>
-          <Item extra={'Date dd/mm/yyyy'}>Workout Program:</Item>
-          <Item extra={'Date dd/mm/yyyy'}>Workout Program:</Item>
+          {this.state.WorkoutHistory.map(data => (
+          <Item
+            extra={data.startDate}
+            onClick={()=> this.handleClick(data.program)}>
+              {data.program}
+          </Item>
+          ))}
           </List>
     </div>
     )

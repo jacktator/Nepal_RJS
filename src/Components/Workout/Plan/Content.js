@@ -37,14 +37,12 @@ export default class Content extends Component {
            <List> {this.state.WorkoutPlans.map(data => (
            <Flex>
               <Flex.Item>
-                  <div>
                   <Item
                     arrow="horizontal"
                     disabled={!data.isSelected}
                     onClick={() => this.onChange(data.value)}>
                     <div style={{fontSize:'16px'}}> {data.day} {data.workout} </div>
                   </Item>
-                  </div>
               </Flex.Item>
            </Flex>
          ))}
