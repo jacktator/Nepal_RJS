@@ -21,8 +21,8 @@ import './SelectExercise.css';
             infinite
             afterChange={index => this.setState({currentItem: index})}
           >
-          { this.props.excerciseArray.map( data => (
-            <div className="image-with-description">
+          { this.props.excerciseArray.map( (data, key) => (
+            <div className="image-with-description" key={key}>
               <div className="excercise-header" style={{ height:'25px',background:'black', color:'white', textAlign: "center"}}>{data.description}</div>
               <img
                 key = { data.value }

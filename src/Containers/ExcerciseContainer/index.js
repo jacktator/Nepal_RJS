@@ -16,9 +16,13 @@ class ExcerciseContainer extends Component{
     }
     this.videoSearch('Destiny 2')
   }
-  onBackButtonClickedHandler = (e) => {
+  backButtonHandler = (e) => {
     e.preventDefault();
     this.setState({ goBack: true})
+  }
+  saveButtonHandler = (e) => {
+    e.preventDefault();
+    alert('saved');
   }
 
   render(){
@@ -26,7 +30,8 @@ class ExcerciseContainer extends Component{
     return(
       <div className="all">
         <Excercise
-          onBackButtonClicked ={this.onBackButtonClickedHandler}
+          onBackButtonClicked ={this.backButtonHandler}
+          onSaveButtonClicked ={this.saveButtonHandler}
           videos={this.state.selectedVideo}
         />
       {this.state.goBack && (

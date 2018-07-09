@@ -31,7 +31,7 @@ export default class Excercise extends Component{
           <VideoDetail videos={this.props.videos}/>
         </div>
         <div>
-          <WeightAndRep/>
+          <WeightAndRep onSaveButtonClicked={this.props.onSaveButtonClicked}/>
         </div>
         <div className="excercise-recordlist">
           <RecordList/>

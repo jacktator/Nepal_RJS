@@ -52,7 +52,7 @@ export default class WeightAndRep extends Component{
         </span>
         <WhiteSpace size='xl'/>
         <span style={{marginLeft:"35%"}}>
-          <Button type="primary" inline="true" size="large">
+          <Button type="primary" inline="true" size="large" onClick={(e) => this.props.onSaveButtonClicked(e)}>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               save
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
