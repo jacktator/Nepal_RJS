@@ -19,9 +19,8 @@ const StepFive = (props) => {
 
       <List renderHeader={() => <strong>Do you experience injury or posture related pain at work? </strong>}>
       {props.injuryArray.map((i,key) => (
-        <div onClick= {() => showAlert(i, props.selectInjury)}>
+        <div key={key} onClick= {() => showAlert(i, props.selectInjury)}>
           <RadioItem
-            key={key}
             checked={props.fields.work_injury === i.value}
           >
               {i.label}
@@ -32,9 +31,8 @@ const StepFive = (props) => {
 
     <List renderHeader={() => <h3>How do you feel your health and wellbeing right now? </h3>}>
       {props.healthArray.map((i,key) => (
-        <div onClick= {() => showAlert(i, props.selectHealth)}>
+        <div key={key} onClick= {() => showAlert(i, props.selectHealth)}>
           <RadioItem
-            key={key}
             checked={props.fields.health_feeling === i.value}
           >
             {i.label}

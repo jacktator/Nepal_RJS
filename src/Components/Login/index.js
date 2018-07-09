@@ -35,7 +35,7 @@ class Login extends Component {
             <div className="logo-login-position">
               <LogoLocation/>
             </div>
-            <div class>
+            <div>
               <WingBlank>
                 <Link to='signup' ><Button>Register</Button></Link><WhiteSpace /><WhiteSpace />
                 <Link to='/login/logindetails'><Button type="primary">Login</Button></Link><WhiteSpace /><WhiteSpace /><WhiteSpace />

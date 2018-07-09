@@ -20,9 +20,8 @@ const StepFour = (props) => {
 
         <List renderHeader={() => <h3>How often do you feel stressed at work? </h3>}>
         {props.stressArray.map((i,key) => (
-          <div onClick= {() => showAlert(i, props.selectStress)}>
+          <div key={key} onClick= {() => showAlert(i, props.selectStress)}>
             <RadioItem
-              key={key}
               checked={props.fields.stress === i.value}
             >
               {i.label}
@@ -33,9 +32,8 @@ const StepFour = (props) => {
 
         <List renderHeader={() => <h3>How productive do you feel each day?</h3>}>
         {props.productivityArray.map((i,key) => (
-          <div onClick= {() => showAlert(i, props.selectProductivity)}>
+          <div key={key} onClick= {() => showAlert(i, props.selectProductivity)}>
           <RadioItem
-              key={i.value}
               checked={props.fields.productivity === i.value}
             >
               {i.label}
