@@ -17,6 +17,15 @@
     text-align: left;
     font-size: 30px;
 }
+.container-without-button {
+  display: inline-block;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  position: relative;
+  width: inherit;
+  padding-bottom: 120px;
+}
 .span-button {
    border: none;
    color: black;
@@ -47,7 +56,7 @@
   position: fixed;
   height: 50px;
   left: 0;
-  bottom: 60px;
+  bottom: 50px;
   width: 100%;
   background-color: white;
   color: white;

@@ -37,7 +37,7 @@ export default class WeightAndRep extends Component{
             max={10}
             min={1}
             value={this.state.weightValue}
-            onChange={this.onChangeWeight}
+            onChange={(e) => this.onChangeWeight(e)}
           />
         </span>
         <span style={{float:"right", marginRight:'10%'}}>
