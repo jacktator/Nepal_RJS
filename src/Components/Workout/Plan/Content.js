@@ -26,8 +26,6 @@ export default class Content extends Component {
         temp[index+1].isSelected = true;
         this.setState({WorkoutPlans:temp})
     }
-
-
   }
 
   render(){
