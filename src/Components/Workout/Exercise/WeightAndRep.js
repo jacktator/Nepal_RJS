@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import { List, Stepper, Button, WhiteSpace } from 'antd-mobile';
+import { List, Stepper, Button,Flex} from 'antd-mobile';
+import MediaQuery from 'react-responsive';
 
 export default class WeightAndRep extends Component{
   constructor(props) {
@@ -22,42 +23,50 @@ export default class WeightAndRep extends Component{
 
   render(){
     return(
-      <div calssname="container">
-        <span style={{marginLeft: '13%'}}>
-          WEIGHT (kgs)
-        </span>
-        <span style={{float:'right', marginRight: '20%'}}>
-          REPS
-        </span>
-        <WhiteSpace size='xs'/>
-        <span style={{ marginLeft:'10%'}}>
-        <Stepper
+      <div className="weight-and-rep">
+        {/* Text for stepper*/}
+        <Flex justify="center" className="stepper-text">
+        <Flex.Item> WEIGHT(Kgs)</Flex.Item>
+        <Flex.Item> REPS</Flex.Item>
+        </Flex>
+        {/* Code for stepper*/}
+        <Flex justify="center" className="stepper">
+        <Flex.Item><Stepper
             style={{ width: '30%', minWidth: '110px' }}
             showNumber
             max={10}
             min={1}
             value={this.state.weightValue}
             onChange={(e) => this.onChangeWeight(e)}
-          />
-        </span>
-        <span style={{float:"right", marginRight:'10%'}}>
-        <Stepper
+          /></Flex.Item>
+        <Flex.Item><Stepper
             style={{ width: '35%', minWidth: '110px' }}
             showNumber
             max={10}
             min={1}
             value={this.state.repValue}
             onChange={this.onChangeRep}
-          />
-        </span>
-        <WhiteSpace size='xl'/>
-        <span style={{marginLeft:"35%"}}>
+          /></Flex.Item>
+        </Flex>
+        {/* code for save button*/}
+        <Flex justify="center" className="save-button">
+          <Flex.Item>
+          <MediaQuery query="(min-height:668px)">
           <Button type="primary" inline="true" size="large" onClick={(e) => this.props.onSaveButtonClicked(e)}>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              save
+              SAVE
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </Button>
-        </span>
+          </MediaQuery>
+          <MediaQuery query="(max-height:667px)">
+          <Button type="primary" inline="true" size="small" onClick={(e) => this.props.onSaveButtonClicked(e)}>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              SAVE
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </Button>
+          </MediaQuery>
+          </Flex.Item>
+        </Flex>
       </div>
     );
   }

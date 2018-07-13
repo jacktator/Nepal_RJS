@@ -13,6 +13,7 @@
     "react-dom": "^16.3.2",
     "react-hover-image": "^1.0.0",
     "react-redux": "^5.0.7",
+    "react-responsive": "^4.1.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
     "redux": "^4.0.0",
@@ -34,7 +35,7 @@
   "devDependencies": {
     "babel-plugin-import": "^1.7.0",
     "flow-bin": "^0.73.0",
-    "gh-pages": "^1.1.0",
+    "gh-pages": "^1.2.0",
     "react-app-rewired": "^1.5.2"
   }
 }
