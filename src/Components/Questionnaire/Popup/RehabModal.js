@@ -8,7 +8,7 @@ import { Button, WhiteSpace } from 'antd-mobile';
       let selectButton = this.props.data.isChecked === true ? 'Unselect' : 'Select';
       return(
         <Hoc>
-          <img style={{ height:'200px', width:'265px', marginLeft: '20px'}} src={this.props.data.imgurl}  alt={this.props.data.description}/>
+          <img style={{ height:'200px', width:'265px', marginLeft: '7%'}} src={this.props.data.imgurl}  alt={this.props.data.description}/>
           <WhiteSpace/>
           <div style={{ textAlign: "center"}}> <strong> {this.props.data.description}</strong> </div>
           <WhiteSpace/><WhiteSpace/>
