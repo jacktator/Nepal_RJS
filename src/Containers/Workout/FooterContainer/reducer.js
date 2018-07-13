@@ -1,4 +1,4 @@
-
+// @flow
 let DefaultState = {
   currentFooterTab: 'historyTab',
   hidden: false,

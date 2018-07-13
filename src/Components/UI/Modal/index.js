@@ -4,17 +4,9 @@ import Hoc from '../../../HOC/Hoc';
 import Backdrop from '../Backdrop/index';
 const Modal = (props) => (
   <Hoc>
-    {props.modalFor === 'selectExercise' &&
-      <div className="modal-for-select-exercise">
-        {props.children}
-      </div>
-    }
-    {props.modalFor === 'selectRehab' &&
-    <div className="modal">
+    <div className={props.modalFor === 'selectExercise' ? "modal-for-select-exercise" : "modal"}>
       {props.children}
     </div>
-    }
-
     <Backdrop />
   </Hoc>
 );
