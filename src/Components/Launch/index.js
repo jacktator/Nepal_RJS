@@ -3,33 +3,17 @@ import { Button, WingBlank, Flex, WhiteSpace } from 'antd-mobile';
 import {Link} from 'react-router-dom';
 import './Launch.css';
 import Logo from '../../Assets/Logo.png';
-//=========================================================================
 
-// var colorstyle={
-//   color: this.props.testState.color,
-// }
-
-var logoStyle = {
-  height: 170,
-  width: 160,
-  justifyContent: 'center',
-  alignItems: 'center',
-};
 
 
 class Launch extends Component {
 
   render() {
     return (
+      <div className="launch">
       <div className="screen-launch-style">
         <div className="logo-launch-position">
-          <WingBlank>
-            <Flex align="baseline">
-              <Flex.Item ></Flex.Item>
-              <img src={Logo}  style={logoStyle} alt="this is a logo"/>
-              <Flex.Item ></Flex.Item>
-            </Flex>
-          </WingBlank>
+              <img src={Logo} className="logo" alt="this is a logo"/>
         </div>
         <div className="launch-getstart-position">
           <WingBlank>
@@ -39,6 +23,7 @@ class Launch extends Component {
             <WhiteSpace/>
           </WingBlank>
         </div>
+      </div>
       </div>
     );
   }

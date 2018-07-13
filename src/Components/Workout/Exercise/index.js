@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {NavBar, Icon ,WhiteSpace,Flex} from 'antd-mobile';
+import {NavBar, Icon ,WhiteSpace,Flex,NoticeBar,WingBlank,Progress} from 'antd-mobile';
 import './Exercise.css';
 import RecordList from './RecordList.js';
 //import VideoDetail from './VideoDetail.js';
@@ -22,20 +22,13 @@ export default class Exercise extends Component{
     return(
       <div className="exercise">
         <div>
-          <WhiteSpace size="lg"/>
           {/* prescription is the black circle on top of image*/}
           <div className="prescription-circle">
-            <div className="prescription">
-            <div className="prescription-set">
-              #sets
-            </div>
-            <div className="prescription-rep">
-              #reps
-            </div>
-            <div className="prescription-weight">
-              #kg
-            </div>
-            </div>
+                <div className="prescription">
+                  <div>#sets</div>
+                  <div>#reps</div>
+                  <div>#kg</div>
+                </div>
           </div>
           {/* history button */}
           <img
@@ -47,28 +40,41 @@ export default class Exercise extends Component{
             src={exerciseInfo}
             className="info-icon"
             onClick={() => {alert("exercise information page. click this goes to video of exercise and description")}}/>
-
+           {/* navigation bar on top of screen*/}
           <NavBar
             style={{backgroundColor:" #F5F5F9"}}
             mode='light'
             icon={<Icon type="left" size="lg"/>}
-            onLeftClick={(e) => this.props.onBackButtonClicked(e)}>
+            onLeftClick={(e) => this.props.onBackButtonClicked(e)}
+            className="nav-bar">
             <div className="nav-bar-text">
               Exercise #/#
             </div>
           </NavBar>
-          <WhiteSpace size="lg"/>
-          <img src={require("../../../Assets/Workout/exerciseImage.jpg")} alt="exerciseImage" className="exercise-image"/>
+          {/* the main gif/image area */}
+          <img src={require("../../../Assets/Exercise/exerciseGif.gif")} className="exercise-image"/>
         </div>
-        <div className="exercise-iframe">
-          {/*<VideoDetail videos={this.props.videos}/>*/}
-        </div>
-        <div>
-          <WeightAndRep onSaveButtonClicked={this.props.onSaveButtonClicked}/>
-        </div>
-        <div className="exercise-recordlist">
-          <RecordList/>
-        </div>
+            {/* video part, commenting out as we may need it.
+            <div className="exercise-iframe">
+                <VideoDetail videos={this.props.videos}/>
+            </div>
+            */}
+        {/* displays the text and steppers, as well as the save button. refer to WeightandRep.js*/}
+        <WeightAndRep onSaveButtonClicked={this.props.onSaveButtonClicked}/>
+        {/* displays the record list, refer to RecordList.js*/}
+        <RecordList/>
+        {/* Message for showing current goals*/}
+        <NoticeBar
+          marqueeProps={{ loop: true, fps:40, leading:1000, trailing:1000,style:{padding:'0 100px'}}}
+          mode="closable"
+          icon={null}
+          className="display-message"
+          >Good Job! you have done more reps this week!</NoticeBar>
+          {/* progress bar of exercises completed for the day*/}
+          <WingBlank><Progress
+            position="normal"
+            percent={0}
+            /></WingBlank>
       </div>
     );
   }
