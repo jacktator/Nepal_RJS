@@ -2,32 +2,52 @@
     position: fixed;
     z-index: 500;
     background-color: rgba(255, 255, 255, 1);
-    width: 90%;
     border: 1px solid #ccc;
     box-shadow: 1px 1px 1px black;
     padding: 20px;
-    left: 5%;
-    top: 20%;
     box-sizing: border-box;
     transition: all 0.3s ease-out;
+    left: 30%;
+    top: 5%;
+    width: 40%;
+    height: auto;
 }
 .modal-for-select-exercise {
   position: fixed;
   z-index: 500;
   background-color: rgba(254, 253, 255, 0);
-  width: 100%;
   border: 1px solid #ccc;
   box-shadow: 1px 1px 1px black;
-  left: auto;
   padding: 5px;
-  top: 20%;
   box-sizing: border-box;
   transition: all 0.3s ease-out;
+  width: 60%;
+  height: auto;
+  left: 20%;
+  transform: translateY(-25%);
 }
 
-@media (min-width: 600px) {
-    .Modal {
-        width: 500px;
-        left: calc(50% - 250px);
-    }
+@media only screen and (max-width: 768px) {
+  .modal {
+    top: 30%;
+    width: 40%;
+    height: auto;
+    left: calc(30%);
+  }
+  .modal-for-select-exercise {
+    top: 30%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .modal {
+      top: 30%;
+      width: 90%;
+      left: calc(5%);
+  }
+  .modal-for-select-exercise {
+    width: 100%;
+    top: 30%;
+    left: auto;
+    transform: translateY(0%);
+  }
 }

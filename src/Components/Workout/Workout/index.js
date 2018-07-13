@@ -41,7 +41,7 @@ const Workout = (props) => {
               <WhiteSpace size="xs"/>
               <span className="span-button change" onClick={() => props.onChange()}> change </span>
             </span>
-            <span>
+            <span >
               Knee Warm up
               <WhiteSpace />
               40
