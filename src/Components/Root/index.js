@@ -15,7 +15,7 @@ import HistoryContainer from '../../Containers/Workout/HistoryContainer';
 
 
 //import {connect} from 'react-redux';
-import ExcerciseContainer from '../../Containers/ExcerciseContainer/';
+import ExerciseContainer from '../../Containers/ExerciseContainer/';
 
 type Props = {
   path: string,
@@ -37,7 +37,7 @@ class Root extends Component<Props>{
               <Route path="/questionnaire" exact render={()=>(<Redirect to='/login/logindetails'/>)}/>
               <Route path="/login/logindetails" exact component={LoginDetails} />
               <Route path="/forgetpassword" exact component={ForgetPassWord} />
-              <Route path="/exercise" exact component={ExcerciseContainer}/>
+              <Route path="/exercise" exact component={ExerciseContainer}/>
               <Route path="/workout" exact component={WorkoutContainer} />
               <Route path="/plan" exact component={PlanContainer}/>
               <Route path="/footer" exact component={FooterContainer} />
@@ -61,7 +61,7 @@ class Root extends Component<Props>{
             <Route path="/plan" exact component={PlanContainer}/>
             <Route path="/footer" exact component={FooterContainer} />
             <Route path="/history" exact component={HistoryContainer}/>
-            <Route path="/exercise" exact component={ExcerciseContainer}/>
+            <Route path="/exercise" exact component={ExerciseContainer}/>
           </Switch>
         </BrowserRouter>
       </div>

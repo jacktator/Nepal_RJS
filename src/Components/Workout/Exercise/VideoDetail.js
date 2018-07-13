@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 
 const VideoDetail = ({videos})=>{
 
@@ -18,3 +18,4 @@ const VideoDetail = ({videos})=>{
   );
 }
 export default VideoDetail;
+*/
