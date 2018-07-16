@@ -55,9 +55,9 @@ class SignUp extends Component<Props, State> {
 
   render() {
     const {username, email, password}= this.props;
+    document.body.style = 'background: white';
     return (
       <div className="sign-up">
-      <div className="screen-signup-style">
         {/* logo block*/}
         <div className="logo-signup-position">
           <img src={Logo} className="logo"/>
@@ -105,7 +105,6 @@ class SignUp extends Component<Props, State> {
         <div className="checkbox">
           <input type="checkbox" onChange={()=>this.onAbleChange()}/><a target="_blank" href="https://www.google.com">   Terms & Condition</a>
         </div>
-      </div>
       </div>
     );
   }

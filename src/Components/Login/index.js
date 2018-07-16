@@ -6,11 +6,6 @@ import {connect} from 'react-redux';
 import './Login.css';
 import Logo from '../../Assets/LogoLighter.png';
 
-var normalstyle={
-  backgroundColor: 'white',
-  height: '200px',
-}
-
 class Login extends Component {
   state = {
     Nepal: []
@@ -26,9 +21,9 @@ class Login extends Component {
   }
 
   render(){
+    document.body.style = 'background: white;';
     return(
           <div className="login">
-          <div className="screen-login-style">
             {/*Logo block*/}
             <div className="logo-login-position">
               <img src={Logo} className="logo"/>
@@ -41,7 +36,6 @@ class Login extends Component {
                 <p style={{color: '#bbb', textAlign: 'center'}}>Copyright @ 2018 Nepal</p>
               </WingBlank>
             </div>
-          </div>
           </div>
     );
   }

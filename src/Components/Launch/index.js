@@ -4,14 +4,12 @@ import {Link} from 'react-router-dom';
 import './Launch.css';
 import Logo from '../../Assets/Logo.png';
 
-
-
 class Launch extends Component {
 
   render() {
+    document.body.style = 'background: #2E344C;';
     return (
       <div className="launch">
-      <div className="screen-launch-style">
          {/* logo block*/}
         <div className="logo-launch-position">
               <img src={Logo} className="logo"/>
@@ -23,7 +21,6 @@ class Launch extends Component {
               </Link>
             </WingBlank>
           <div className='copyright'>Copyright @ 2018 Nepal</div>
-      </div>
       </div>
     );
   }

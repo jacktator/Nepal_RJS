@@ -58,10 +58,9 @@ class LoginDetails extends Component<Props, State> {
     console.log(email)
     console.log(password)
     console.log(token)
-
+    document.body.style = 'background: white';
     return (
       <div className="login-details">
-      <div className="screen-logindetails-style">
         {/* logo block*/}
         <div className="logo-logindetails-position">
           <img src={Logo} className="logo"/>
@@ -107,7 +106,6 @@ class LoginDetails extends Component<Props, State> {
               <Button>Register</Button>
             </Link>
           </WingBlank>
-      </div>
     </div>
     );
   }

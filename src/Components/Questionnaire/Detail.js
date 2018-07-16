@@ -10,7 +10,6 @@ const Detail = (props) => {
   const exercisePlace = props.fields.exercisePlace;
   const weight = [];
   weight.push(parseInt(props.fields.weight,10));
-
   return(
     <div>
       <h2 style={{textAlign: 'center'}}>Your Detail</h2>
