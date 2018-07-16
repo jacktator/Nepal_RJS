@@ -4,6 +4,7 @@ import {Redirect} from 'react-router';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {selectFooter} from '../FooterContainer/actions';
+import {keepWarmUp, keepWorkOut} from './actions';
 import Workout from '../../../Components/Workout/Workout';
 import SelectExercise from '../../../Components/Workout/SelectExercise';
 import Modal from '../../../Components/UI/Modal';
@@ -36,20 +37,33 @@ class WorkoutContainer extends Component{
     alert(index);
     this.setState({ isChangeExcercise: false })
   }
-  onKeepHandler = () => {
-    alert("onKeep");
+  onWarmUpKeepHandler = (value) => {
+    let warmUpExerciseArray = { ...this.state.warmUpExerciseArray}
+    let index = this.state.warmUpExerciseArray.findIndex(i =>{ return i.value === value; });
+    warmUpExerciseArray[index].isSaved = true;
+    this.setState({ warmUpExerciseArray: warmUpExerciseArray })
+  }
+  onWorkOutKeepHandler = (value) => {
+    let workoutExerciseArray = { ...this.state.workoutExerciseArray}
+    let index = this.state.workoutExerciseArray.findIndex(i =>{ return i.value === value; });
+    workoutExerciseArray[index].isSaved = true;
+    // this.setState({ workoutExerciseArray })
   }
   onStartHandler = () => {
     this.setState({ startExcercies: true})
   }
-
   render() {
+    let {warmUpExerciseArray, workOutExerciseArray} = this.props.WorkOutReducers;
     return (
       <Hoc>
         <Workout
         onChange = {this.onChangeHandler}
-        onKeep = {this.onKeepHandler}
+        onWarmUpKeep = {this.props.keepWarmUp}
+        onWorkOutKeep = {this.props.keepWorkOut}
         onStart = {this.onStartHandler}
+        warmUpArray = {warmUpExerciseArray}
+        workOutArray ={workOutExerciseArray}
+
         />
         {(this.state.isChangeExcercise) && (
           <Modal modalFor = "selectExercise">
@@ -69,12 +83,13 @@ class WorkoutContainer extends Component{
 }
 function mapStateToProps(state){
   return {
-    currentFooterTab: state.FooterReducers.currentFooterTab
+    currentFooterTab: state.FooterReducers.currentFooterTab,
+    WorkOutReducers: state.WorkOutReducers
   }
 }
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
-    selectFooter
+    selectFooter, keepWarmUp, keepWorkOut
   }, dispatch
 );
 }
