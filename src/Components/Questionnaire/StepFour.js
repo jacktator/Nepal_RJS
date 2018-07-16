@@ -16,9 +16,8 @@ const StepFour = (props) => {
       <NoticeBar icon={null}>
         The following information is anonymous
         </NoticeBar>
-        <h3 style={{textAlign: 'center'}}>Stress and Productivity</h3>
-
-        <List renderHeader={() => <h3>How often do you feel stressed at work? </h3>}>
+        <h3 style={{textAlign: 'center', margin:"2% 0 0 0"}}>Stress and Productivity</h3>
+        <List renderHeader={() => <h3 style={{margin:"2% 0 2% 0"}}>How often do you feel stressed at work? </h3>}>
         {props.stressArray.map((i,key) => (
           <div key={key} onClick= {() => showAlert(i, props.selectStress)}>
             <RadioItem
@@ -30,7 +29,7 @@ const StepFour = (props) => {
         ))}
       </List>
 
-        <List renderHeader={() => <h3>How productive do you feel each day?</h3>}>
+        <List renderHeader={() => <h3 style={{margin:"2% 0 2% 0"}}>How productive do you feel each day?</h3>}>
         {props.productivityArray.map((i,key) => (
           <div key={key} onClick= {() => showAlert(i, props.selectProductivity)}>
           <RadioItem

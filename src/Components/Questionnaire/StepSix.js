@@ -17,7 +17,7 @@ const StepSix = (props) => {
         </NoticeBar>
       <h2 style={{textAlign: 'center'}}>General Activity and Exercise Level</h2>
 
-      <List renderHeader={() => <h3>How active are you on a daily basis? </h3>}>
+      <List renderHeader={() => <h3 style={{margin:"2% 0 2% 0"}}>How active are you on a daily basis? </h3>}>
       {props.activityArray.map((i,key) => (
         <div key={key} onClick= {() => showAlert(i, props.selectActivity)}>
           <RadioItem
@@ -28,7 +28,7 @@ const StepSix = (props) => {
         </div>
       ))}
     </List>
-    <List renderHeader={() => <h3>What is your current exercise activity level? </h3>}>
+    <List renderHeader={() => <h3 style={{margin:"2% 0 2% 0"}}>What is your current exercise activity level? </h3>}>
     {props.exerciseArray.map((i,key) => (
       <div key={key} onClick= {() => showAlert(i, props.selectExercise)}>
         <RadioItem
