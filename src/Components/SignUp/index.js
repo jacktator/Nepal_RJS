@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import { List, InputItem, WingBlank, Button,} from 'antd-mobile';
 import { createForm } from 'rc-form';
 import './SignUp.css';
-import LogoLocation from '../LogoLocation';
+import Logo from '../../Assets/LogoLighter.png';
 
 var lockerstyle={
   backgroundImage: 'url(https://png.icons8.com/ios/50/000000/lock.png)',
@@ -56,10 +56,13 @@ class SignUp extends Component<Props, State> {
   render() {
     const {username, email, password}= this.props;
     return (
+      <div className="sign-up">
       <div className="screen-signup-style">
+        {/* logo block*/}
         <div className="logo-signup-position">
-          <LogoLocation/>
+          <img src={Logo} className="logo"/>
         </div>
+        {/* sign up input block*/}
         <div className="signup-info-style">
           <List renderHeader={() => ''}>
             <InputItem
@@ -100,8 +103,9 @@ class SignUp extends Component<Props, State> {
           </WingBlank>
         </div>
         <div className="checkbox">
-          <input type="checkbox" onChange={()=>this.onAbleChange()}/><a target="_blank" href="https://www.google.com">Term & Condition</a>
+          <input type="checkbox" onChange={()=>this.onAbleChange()}/><a target="_blank" href="https://www.google.com">   Terms & Condition</a>
         </div>
+      </div>
       </div>
     );
   }

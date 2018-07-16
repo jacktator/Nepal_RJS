@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import {InputItem, WingBlank,Button, NoticeBar } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import './LoginDetails.css';
-import LogoLocation from '../LogoLocation';
+import Logo from '../../Assets/LogoLighter.png';
 
 var lockerstyle={
   backgroundImage: 'url(https://png.icons8.com/ios/50/000000/lock.png)',
@@ -60,11 +60,13 @@ class LoginDetails extends Component<Props, State> {
     console.log(token)
 
     return (
+      <div className="login-details">
       <div className="screen-logindetails-style">
+        {/* logo block*/}
         <div className="logo-logindetails-position">
-          <LogoLocation/>
+          <img src={Logo} className="logo"/>
         </div>
-        <div className="input-info-style">
+        {/* input details block*/}
           <InputItem
             value={email}
             type="text"
@@ -83,36 +85,30 @@ class LoginDetails extends Component<Props, State> {
           >
             <div style={lockerstyle} />
           </InputItem>
-          <div >
-            <WingBlank>
-              <Button
+      {/* submit button block*/}
+            <WingBlank><Button
                 type="primary"
                 className="login-button-style"
                 onClick={()=>this.loadingButton()}
                 loading={!this.state.loading}
               >
                 Submit
-              </Button>
-            </WingBlank>
-          </div>
-        </div>
-
+              </Button></WingBlank>
+      {/* forgot password block*/}
         <div className="forgetpassword-style">
-          <Link to='/forgetpassword' style={{color: '#bbb'}}>
-            Forget Password?
-          </Link>
-        </div>
+          <Link to='/forgetpassword'>
+            Forgot Password?</Link> </div>
+    {/* no account block*/}
         <div className="doyouhaveaccount-style" >
-          Do not have account?
-        </div>
-        <div>
+          Do not have an Account? </div>
+    {/* register button block*/}
           <WingBlank>
             <Link to='/signup' >
               <Button>Register</Button>
             </Link>
           </WingBlank>
-        </div>
       </div>
+    </div>
     );
   }
 }

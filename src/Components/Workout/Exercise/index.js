@@ -31,14 +31,11 @@ export default class Exercise extends Component{
                 </div>
           </div>
           {/* history button */}
-          <img
-            src={history}
-            className="history-icon"
-            onClick={() => {alert("can see previous training longs of weights and reps they achieved. this goes to a seperate page.")}}/>
+          <div className="history-icon"
+          onClick={() => {alert("can see previous training longs of weights and reps they achieved. this goes to a seperate page.")}}>
+          </div>
           {/* exercise information*/}
-          <img
-            src={exerciseInfo}
-            className="info-icon"
+          <div className="info-icon"
             onClick={() => {alert("exercise information page. click this goes to video of exercise and description")}}/>
            {/* navigation bar on top of screen*/}
           <NavBar

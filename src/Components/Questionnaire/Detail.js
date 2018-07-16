@@ -28,7 +28,7 @@ const Detail = (props) => {
           value={props.fields.age}
         >Age</InputItem>
 
-        <List renderHeader={() => 'Please select your gender Gender'}>
+        <List renderHeader={() => 'Please select your Gender'}>
           {props.genderArray.map((i,key) => (
             <RadioItem key={key} checked={gender === i.value} onChange={() => props.genderHandler(i.value)}>
               {i.label}
