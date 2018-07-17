@@ -1,48 +1,29 @@
-//@flow
+
 import React, { Component } from 'react';
-import { Button, WingBlank, Flex, WhiteSpace } from 'antd-mobile';
+import { Button, WingBlank} from 'antd-mobile';
 import {Link} from 'react-router-dom';
 import './Launch.css';
 import Logo from '../../Assets/Logo.png';
-//=========================================================================
 
-// var colorstyle={
-//   color: this.props.testState.color,
-// }
 
-var logoStyle = {
-  height: 170,
-  width: 160,
-  justifyContent: 'center',
-  alignItems: 'center',
-};
 
-type Props={
-
-}
-
-class Launch extends Component<Props> {
+class Launch extends Component {
 
   render() {
+    document.body.style = 'background: #2E344C;';
     return (
-      <div className="screen-launch-style">
+      <div className="launch">
+         {/* logo block*/}
         <div className="logo-launch-position">
-          <WingBlank>
-            <Flex align="baseline">
-              <Flex.Item ></Flex.Item>
-              <img src={Logo}  style={logoStyle} alt="this is a logo"/>
-              <Flex.Item ></Flex.Item>
-            </Flex>
-          </WingBlank>
+              <img src={Logo} className="logo"/>
         </div>
-        <div className="launch-getstart-position">
-          <WingBlank>
-            <Link to='login'>
-              <Button type="primary" style={{backgroundColor: '#4CA0CC'}}>Get Started</Button>
-            </Link>
-            <WhiteSpace/>
-          </WingBlank>
-        </div>
+           {/* button block. */}
+           <WingBlank>
+              <Link to='login'>
+                <Button type="primary" style={{backgroundColor: '#4CA0CC'}}>Get Started</Button>
+              </Link>
+            </WingBlank>
+          <div className='copyright'>Copyright @ 2018 Nepal</div>
       </div>
     );
   }

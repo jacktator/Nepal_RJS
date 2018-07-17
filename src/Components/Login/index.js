@@ -1,19 +1,10 @@
 import React, { Component } from 'react';
-import { WhiteSpace, Button, WingBlank, Flex } from 'antd-mobile';
-import LogoLocation from '../LogoLocation/';
+import {Button, WingBlank} from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import './Login.css';
-
-var pastyle={
-  color: '#bbb',
-  textAlign: 'center',
-}
-var normalstyle={
-  backgroundColor: 'white',
-  height: '200px',
-}
+import Logo from '../../Assets/LogoLighter.png';
 
 class Login extends Component {
   state = {
@@ -30,16 +21,19 @@ class Login extends Component {
   }
 
   render(){
+    document.body.style = 'background: white;';
     return(
-          <div className="screen-login-style">
+          <div className="login">
+            {/*Logo block*/}
             <div className="logo-login-position">
-              <LogoLocation/>
+              <img src={Logo} className="logo"/>
             </div>
             <div>
               <WingBlank>
-                <Link to='signup' ><Button>Register</Button></Link><WhiteSpace /><WhiteSpace />
-                <Link to='/login/logindetails'><Button type="primary">Login</Button></Link><WhiteSpace /><WhiteSpace /><WhiteSpace />
-                <p style={pastyle}>Copyright @ 2018 Nepal</p>
+                {/*button blocks*/}
+                <div className="register-button"><Link to='signup' ><Button>Register</Button></Link></div>
+                <div className="login-button"><Link to='/login/logindetails'><Button type="primary">Login</Button></Link></div>
+                <p style={{color: '#bbb', textAlign: 'center'}}>Copyright @ 2018 Nepal</p>
               </WingBlank>
             </div>
           </div>

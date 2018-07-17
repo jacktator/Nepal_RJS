@@ -6,3 +6,8 @@
   background: #DEF1E5;
   overflow: hidden;
 }
+
+.image-with-description img{
+  height:100%;
+  width: 100%;
+}

@@ -1,17 +1,22 @@
-.exercise-iframe{
-  margin: 20px;
-  margin-left: 10%;
-}
-
+/*
+width measurements:
+  360x640 GalaxyS5
+  411x731  Pixel 2
+  411x823  Pixel 2 XL
+  320x568 Iphone 5/SE
+  375x667 Iphone 6/7/8
+  414x736 Iphone 6/7/8 plus
+  375x812  Iphone X
+  768x1024  Ipad
+  1024x1366 Ipad 2
+*/
 .exercise{
   touch-action: none;
   background-color: #F5F5F9;
 }
 
-.exercise-recordlist{
-  margin-top:20px;
-  text-align: center;
-  font-size: 20px;
+.exercise .nav-bar{
+  margin: 4%;
 }
 
 .exercise .nav-bar-text{
@@ -31,12 +36,12 @@
 }
 
 .exercise .prescription-circle{
-  height: 65px;
-  width: 65px;
+  height: 75px;
+  width: 75px;
   border-radius: 50%;
   background-color: #000000;
   position: absolute;
-  margin: 10% 0 0 80%;
+  margin: 11% 0 0 79%;
   z-index: 1;
   text-align: center;
 }
@@ -56,7 +61,16 @@
   margin: 18% 0 0 8%;
   z-index: 1;
   opacity: 0.8;
+  background: url('../../../Assets/Exercise/history.svg');
+  background-size:cover;
 }
+
+.exercise .history-icon:active{
+  background: url('../../../Assets/Exercise/historySel.svg');
+  background-size:cover;
+  opacity: 0.7;
+}
+
 
 .exercise .info-icon {
   height:40px;
@@ -65,4 +79,321 @@
   margin: 68% 0 0 8%;
   z-index: 1;
   opacity: 0.8;
+  background: url('../../../Assets/Exercise/exerciseInfo.svg');
+  background-size:cover;
+}
+
+.weight-and-rep .stepper-text{
+  text-align:center;
+  font-weight: bold;
+  margin: 5%;
+}
+
+.weight-and-rep .stepper{
+  margin: 5%;
+  text-align:center;
+}
+
+.weight-and-rep .save-button{
+  text-align:center;
+  margin: 5%;
+}
+
+.record-list .list{
+  text-align:center;
+}
+
+.exercise .display-message{
+  background-color: white;
+  margin: 25% 0 5%;
+  color: blue;
+  font-size: 16px;
+}
+
+/* for 414x736 Iphone 6/7/8 plus*/
+@media screen and (width: 414px) {
+  .exercise .history-icon {
+    height:42px;
+    width: 42px;
+    margin: 17% 0 0 8%;
+  }
+  .exercise .info-icon {
+    height:42px;
+    width: 42px;
+    margin: 61% 0 0 8%;
+  }
+
+  .exercise .prescription-circle{
+    height: 85px;
+    width: 85px;
+    margin: 12% 0 0 77%;
+  }
+
+  .exercise .display-message{
+    margin: 5% 0 2%;
+  }
+}
+/* for 375*667 Iphone 6/7/8 */
+@media screen and (height: 667px) {
+  .exercise .nav-bar{
+    margin: 2%;
+  }
+
+  .exercise .exercise-image{
+    border:3px solid #000000;
+    height:200px;
+  }
+
+  .exercise .history-icon {
+    margin: 16% 0 0 8%;
+  }
+
+  .exercise .info-icon {
+    margin: 57% 0 0 8%;
+  }
+
+  .weight-and-rep .stepper-text{
+    margin: 2%;
+  }
+
+  .weight-and-rep .stepper{
+    margin: 2%;
+  }
+
+  .weight-and-rep .save-button{
+    margin: 2%;
+  }
+
+  .exercise .display-message{
+    margin: 18% 0 5%;
+  }
+
+}
+/* for 320x568 Iphone 5/SE */
+@media screen and (width: 320px) {
+
+  .exercise .nav-bar{
+    margin: 0%;
+  }
+
+  .exercise .history-icon {
+    height:36px;
+    width:36px;
+    margin: 15% 0 0 8%;
+  }
+
+  .exercise .info-icon {
+    height:36px;
+    width: 36px;
+    margin:54% 0 0 8%;
+  }
+
+  .exercise .exercise-image{
+    border:3px solid #000000;
+    height:160px;
+  }
+
+  .exercise .prescription-circle{
+    height: 70px;
+    width: 70px;
+    margin: 10% 0 0 75%;
+  }
+
+  .weight-and-rep .stepper-text{
+    margin: 1%;
+  }
+
+  .weight-and-rep .stepper{
+    margin: 1%;
+  }
+
+  .weight-and-rep .save-button{
+    margin: 1%;
+  }
+
+  .exercise .display-message{
+    margin: 10% 0 5%;
+  }
+
+  .record-list .list-text{
+    font-size: 14px;
+  }
+}
+/* for 411x823 Pixel 2 XL*/
+@media screen and (height: 823px) {
+  .exercise .history-icon {
+    margin: 17% 0 0 8%;
+  }
+
+  .exercise .info-icon {
+    margin: 62% 0 0 8%;
+  }
+  .exercise .prescription-circle{
+    height: 85px;
+    width: 85px;
+    margin: 12% 0 0 77%;
+  }
+}
+
+/* for 411x731 Pixel 2*/
+@media screen and (height: 731px) {
+
+  .exercise .nav-bar{
+    margin: 2%;
+  }
+
+  .exercise .history-icon {
+    margin: 14% 0 0 8%;
+  }
+
+  .exercise .info-icon {
+    margin: 60% 0 0 8%;
+  }
+  .exercise .prescription-circle{
+    height: 85px;
+    width: 85px;
+    margin: 10% 0 0 77%;
+  }
+
+  .weight-and-rep .stepper-text{
+    margin: 2%;
+  }
+
+  .weight-and-rep .stepper{
+    margin: 3%;
+  }
+
+  .weight-and-rep .save-button{
+    margin: 3%;
+  }
+
+  .exercise .display-message{
+    margin: 12% 0 5%;
+  }
+}
+
+/* for 360 x 640 GalaxyS5*/
+@media screen and (width:360px) {
+  .exercise .nav-bar{
+    margin: 2%;
+  }
+
+  .exercise .exercise-image{
+    border:3px solid #000000;
+    height:200px;
+  }
+
+  .exercise .history-icon {
+    height:38px;
+    width: 38px;
+    margin: 16% 0 0 8%;
+  }
+
+  .exercise .info-icon {
+    height:38px;
+    width: 38px;
+    margin: 59% 0 0 8%;
+  }
+
+  .exercise .prescription-circle{
+    margin: 10% 0 0 77%;
+  }
+
+  .weight-and-rep .stepper-text{
+    margin: 2%;
+  }
+
+  .weight-and-rep .stepper{
+    margin: 2%;
+  }
+
+  .weight-and-rep .save-button{
+    margin: 2%;
+  }
+
+  .exercise .display-message{
+    margin: 10% 0 5%;
+  }
+}
+
+/* for 768 x 1024 iPad*/
+@media screen and (width: 768px) {
+
+  .exercise .history-icon {
+    height:70px;
+    width: 70px;
+    margin: 11% 0 0 8%;
+  }
+
+  .exercise .info-icon {
+    height:70px;
+    width: 70px;
+    margin: 47% 0 0 8%;
+  }
+
+  .exercise .exercise-image{
+    height:350px;
+  }
+
+  .exercise .prescription-circle{
+    height: 125px;
+    width: 125px;
+    margin: 7% 0 0 80%;
+  }
+
+  .weight-and-rep .stepper-text{
+    margin: 2%;
+  }
+
+  .weight-and-rep .stepper{
+    margin: 2%;
+  }
+
+  .weight-and-rep .save-button{
+    margin: 2%;
+  }
+  .exercise .display-message{
+    margin: 15% 0 5%;
+  }
+}
+
+/* for 1024*1366 ipad Pro */
+@media screen and (width: 1024px) {
+
+  .exercise .history-icon {
+    height:80px;
+    width: 80px;
+    margin: 9% 0 0 8%;
+  }
+
+  .exercise .info-icon {
+    height:80px;
+    width: 80px;
+    margin: 49% 0 0 8%;
+  }
+
+  .exercise .exercise-image{
+    height:500px;
+  }
+
+  .exercise .prescription-circle{
+    height: 150px;
+    width: 150px;
+    margin: 5% 0 0 83%;
+  }
+
+  .weight-and-rep .stepper-text{
+    margin: 2x%;
+  }
+
+  .weight-and-rep .stepper{
+    margin: 2%;
+  }
+
+  .weight-and-rep .save-button{
+    margin: 2%;
+  }
+  .exercise .display-message{
+    margin: 15% 0 5%;
+  }
 }

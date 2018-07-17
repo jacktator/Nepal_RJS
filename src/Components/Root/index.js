@@ -1,6 +1,6 @@
 //@flow
 import React, {Component} from 'react';
-import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, Redirect,HashRouter} from 'react-router-dom';
 import 'antd-mobile/dist/antd-mobile.css';
 import Launch from '../Launch/';
 import Login from '../Login/';
@@ -29,7 +29,8 @@ class Root extends Component<Props>{
     if(!check){
       return(
         <div>
-          <BrowserRouter>
+          <HashRouter>
+          {/*<BrowserRouter>*/}
             <Switch>
               <Route path="/" exact component={Launch}/>
               <Route path="/login" exact component={Login}/>
@@ -43,13 +44,15 @@ class Root extends Component<Props>{
               <Route path="/footer" exact component={FooterContainer} />
               <Route path="/history" exact component={HistoryContainer}/>
             </Switch>
-          </BrowserRouter>
+          {/*</BrowserRouter>*/}
+          </HashRouter>
         </div>
       )
     }
     return(
       <div>
-        <BrowserRouter>
+        <HashRouter>
+      {/*</BrowserRouter>*/}
           <Switch>
             <Route path="/" exact component={Launch}/>
             <Route path="/login" exact component={Login}/>
@@ -63,7 +66,8 @@ class Root extends Component<Props>{
             <Route path="/history" exact component={HistoryContainer}/>
             <Route path="/exercise" exact component={ExerciseContainer}/>
           </Switch>
-        </BrowserRouter>
+        {/*</BrowserRouter>*/}
+        </HashRouter>
       </div>
     );
   }

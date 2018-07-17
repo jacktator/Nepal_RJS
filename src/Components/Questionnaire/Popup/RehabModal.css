@@ -1,0 +1,13 @@
+.rehab-modal-image img {
+  height: 50%;
+  width: 90%;
+  margin-left: 5%;
+}
+.button-left {
+  float: left;
+  margin-left: 1%;
+}
+.button-right{
+  float: right;
+  margin-right: 1%;
+}

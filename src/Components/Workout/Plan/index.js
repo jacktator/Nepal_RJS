@@ -9,7 +9,7 @@ export default class Plan extends Component{
   render() {
 
     return (
-        <div className ="plan-back-ground">
+      <div>
               <img src={require("../../../Assets/Workout/sampleImage.jpeg")} alt="sampleImage" className="plan-sample-image"/>
               <div className="plan-title"> Insert Title Here</div>
               <div className="plan-program-duration"> Insert Program Duration Here</div>

@@ -18,7 +18,7 @@ const Program = (props) => {
   return(
     <div >
       <h2 style={{textAlign: 'center'}}>Create Your Program</h2>
-      <div style={{ margin: "0 0 0 4%"}}>
+      <div style={{ margin: "0 4 0 4%"}}>
         How many days per week do you want to go to the gym?
         <div>
           <Picker

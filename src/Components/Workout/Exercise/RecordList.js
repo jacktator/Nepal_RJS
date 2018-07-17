@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import {WhiteSpace, Icon} from 'antd-mobile';
+import {WhiteSpace, Icon,Flex,List} from 'antd-mobile';
 
+// icons taken from http://iconfont.cn/
 
+const Item = List.Item
 export default class RecordList extends Component{
   constructor(props){
     super(props);
@@ -18,35 +20,31 @@ export default class RecordList extends Component{
   render(){
     const list = this.state.data.map((data, key)=>{
       return(
-        <div key={key}>
+        <div key={key} className="list-text">
         { key ===0 && (
-          <div >
-          <span style={{float:'left', marginLeft:'20px'}}>
-            <Icon type="check-circle"/>
-          </span>
-          <span style={{float:'left', marginLeft: '45px'}}>
-            <strong> {data.kgs} kgs * {data.reps} reps </strong>
-          </span>
-          <span style={{float: 'right', marginRight: '5px'}}>
-            <img src={require('../../../Assets/Workout/cup-icon.png')} height="35px" width="40px" alt="cup"/>
-          </span>
-          <WhiteSpace type='xl'/><WhiteSpace type='xl'/>
-          <br />
+          <div>
+          <List>
+          <Item>
+          <Flex justify="center" className="list" style={{margin:"5px 0 5px 0"}}>
+          <Flex.Item><img src={require('../../../Assets/Exercise/checkCircle.svg')}/></Flex.Item>
+          <Flex.Item><div className="list-text"><strong>{data.kgs} kgs * {data.reps} reps</strong></div></Flex.Item>
+          <Flex.Item><img src={require('../../../Assets/Workout/cup-icon.png')}/></Flex.Item>
+          </Flex>
+          </Item>
+          </List>
           </div>
         )}
         { key !==0 && (
           <div>
-          <span style={{float:'left', marginLeft:'20px'}}>
-            {key+1}
-          </span>
-          <span style={{float:'left', marginLeft: '55px'}}>
-            {data.kgs} kgs * {data.reps} reps
-          </span>
-          <span style={{float: 'right', marginRight: '5px'}}>
-            previous
-          </span>
-          <WhiteSpace />
-          <br />
+          <List>
+          <Item>
+          <Flex justify="center" className="list">
+          <Flex.Item style={{margin:"5px 0 5px 0"}}>{key+1}</Flex.Item>
+          <Flex.Item style={{color:"grey"}}><div className="list-text">{data.kgs} kgs * {data.reps} reps</div></Flex.Item>
+          <Flex.Item style={{color:"grey"}}><div className="list-text">previous</div></Flex.Item>
+          </Flex>
+          </Item>
+          </List>
           </div>
         )}
 
@@ -54,7 +52,7 @@ export default class RecordList extends Component{
       )
     });
     return(
-      <div>
+      <div className="record-list">
         {list}
       </div>
     );

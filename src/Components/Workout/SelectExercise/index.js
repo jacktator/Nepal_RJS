@@ -28,7 +28,6 @@ import './SelectExercise.css';
                 key = { data.value }
                 src={data.imgurl}
                 alt={data.description}
-                style={{ height:'220px', width:'100%', verticalAlign: 'top'}}
                 onLoad={() => {
                   // fire window resize event to change height
                   window.dispatchEvent(new Event('resize'));
