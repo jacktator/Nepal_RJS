@@ -34,7 +34,7 @@
   "devDependencies": {
     "babel-plugin-import": "^1.7.0",
     "flow-bin": "^0.73.0",
-    "gh-pages": "^1.1.0",
+    "gh-pages": "^1.2.0",
     "react-app-rewired": "^1.5.2"
   }
 }

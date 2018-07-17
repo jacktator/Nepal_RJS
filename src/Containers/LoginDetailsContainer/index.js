@@ -56,3 +56,5 @@ function matchDispatchToProps(dispatch){
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(LoginDetailsContainer);
+
+//无论是function或者是props，在传递（从上到下往component里面传递）中，都感觉像是传递变量，无所谓区别

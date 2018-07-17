@@ -1,3 +1,4 @@
+//@flow
 import React, { Component } from 'react';
 import { Button, WingBlank, Flex, WhiteSpace } from 'antd-mobile';
 import {Link} from 'react-router-dom';
@@ -16,8 +17,11 @@ var logoStyle = {
   alignItems: 'center',
 };
 
+type Props={
 
-class Launch extends Component {
+}
+
+class Launch extends Component<Props> {
 
   render() {
     return (

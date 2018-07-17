@@ -1,10 +1,9 @@
 
 .screen-launch-style{
-  background: #2E344C;
-  width: 100%;
-  height: 100%;
+  background-color: #2E344C;
   position: fixed;
 }
+
 .logo-launch-position  {
   margin-top:100px;
   margin-bottom:100px;
