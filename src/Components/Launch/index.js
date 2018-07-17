@@ -5,8 +5,6 @@ import {Link} from 'react-router-dom';
 import './Launch.css';
 import Logo from '../../Assets/Logo.png';
 
-
-
 class Launch extends Component {
 
   render() {
@@ -15,15 +13,19 @@ class Launch extends Component {
       <div className="launch">
          {/* logo block*/}
         <div className="logo-launch-position">
-              <img src={Logo} className="logo"/>
+          <img src={Logo} className="logo"/>
         </div>
            {/* button block. */}
-           <WingBlank>
-              <Link to='login'>
-                <Button type="primary" style={{backgroundColor: '#4CA0CC'}}>Get Started</Button>
-              </Link>
-            </WingBlank>
-          <div className='copyright'>Copyright @ 2018 Nepal</div>
+        <div>
+          <WingBlank>
+            <Link to='login'>
+              <Button type="primary" style={{backgroundColor: '#4CA0CC'}}>Get Started</Button>
+            </Link>
+          </WingBlank>
+        </div>
+        <div className='copyright'>
+          Copyright @ 2018 Nepal
+        </div>
       </div>
     );
   }

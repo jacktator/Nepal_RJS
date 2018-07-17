@@ -11,6 +11,7 @@ export function SignUpActions(username, email, password){
     .then((response)=>{
       console.log('register successfully!!')
       console.log(response.data);
+      dispatch(fetchResponse(response.data.code))
 
     }).catch((error)=>{
       dispatch(catchError(error.response.data.message))
@@ -46,5 +47,12 @@ export function catchError(error){
   return{
     type: "CATCH_ERROR",
     payload: error
+  }
+}
+
+export function fetchResponse(fetch){
+  return{
+    type: "FETCH_RESPONSE",
+    payload: fetch
   }
 }

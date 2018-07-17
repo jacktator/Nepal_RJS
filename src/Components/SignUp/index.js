@@ -1,10 +1,11 @@
-//@flow
+
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import { List, InputItem, WingBlank, Button,} from 'antd-mobile';
 import { createForm } from 'rc-form';
 import './SignUp.css';
 import Logo from '../../Assets/LogoLighter.png';
+import {Redirect} from 'react-router-dom';
 
 var lockerstyle={
   backgroundImage: 'url(https://png.icons8.com/ios/50/000000/lock.png)',
@@ -33,28 +34,31 @@ type Props={
   onChangePassword: Function,
   onChangeUsername: Function,
   onClickButton: Function,
-
+  state: Object,
 }
 
 type State={
-  able: boolean
+  able: boolean,
 }
 
 class SignUp extends Component<Props, State> {
   constructor(props){
     super(props)
     this.state={
-      able: true,
+      able: false,
     }
   }
 
   onAbleChange(){
+    const{username, email, password} = this.props.state
     const able = !this.state.able;
+    this.props.onClickButton(username, email, password)
     this.setState({able})
   }
 
   render() {
-    const {username, email, password}= this.props;
+    const {username, email, password}= this.props.state;
+    const {able} = this.state
     document.body.style = 'background: white';
     return (
       <div className="sign-up">
@@ -95,15 +99,17 @@ class SignUp extends Component<Props, State> {
           <WingBlank>
             <Button
               type="primary"
-              onClick={()=>this.props.onClickButton(username, email, password)}
-              disabled={this.state.able}
+              onClick={()=>this.onAbleChange()}
+              loading={this.state.able}
             >
               Create Account
             </Button>
+            {this.props.state.error && this.props.history.go(0)}
+            {this.props.state.fetch===200 && <Redirect to="/questionnaire" />}
           </WingBlank>
         </div>
         <div className="checkbox">
-          <input type="checkbox" onChange={()=>this.onAbleChange()}/><a target="_blank" href="https://www.google.com">   Terms & Condition</a>
+          <a target="_blank" href="https://www.google.com"> By registering, you agree to our terms and conditions </a>
         </div>
       </div>
     );

@@ -14,13 +14,12 @@ class SignUpContainer extends Component{
     return(
       <div>
         <SignUpWrapper
-          username={username}
-          email={email}
-          password={password}
+          state={this.props.SignUpStates}
           onClickButton={this.props.SignUpActions}
           onChangeEmail={this.props.addEmail}
           onChangePassword={this.props.addPassword}
           onChangeUsername={this.props.addUsername}
+          history={this.props.history}
         />
       </div>
     );

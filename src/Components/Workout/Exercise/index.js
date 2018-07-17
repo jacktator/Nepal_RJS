@@ -3,7 +3,7 @@ import {NavBar, Icon ,WhiteSpace,Flex,NoticeBar,WingBlank,Progress} from 'antd-m
 import './Exercise.css';
 import RecordList from './RecordList.js';
 //import VideoDetail from './VideoDetail.js';
-import WeightAndRep from './WeightAndRep.js';
+
 
 
 // icons taken from http://iconfont.cn/
@@ -57,21 +57,24 @@ export default class Exercise extends Component{
             </div>
             */}
         {/* displays the text and steppers, as well as the save button. refer to WeightandRep.js*/}
-        <WeightAndRep onSaveButtonClicked={this.props.onSaveButtonClicked}/>
+
         {/* displays the record list, refer to RecordList.js*/}
-        <RecordList/>
-        {/* Message for showing current goals*/}
-        <NoticeBar
-          marqueeProps={{ loop: true, fps:40, leading:1000, trailing:1000,style:{padding:'0 100px'}}}
-          mode="closable"
-          icon={null}
-          className="display-message"
-          >Good Job! you have done more reps this week!</NoticeBar>
-          {/* progress bar of exercises completed for the day*/}
-          <WingBlank><Progress
-            position="normal"
-            percent={0}
-            /></WingBlank>
+        <div>
+          <RecordList/>
+          {/* Message for showing current goals*/}
+          <NoticeBar
+            marqueeProps={{ loop: true, fps:40, leading:1000, trailing:1000,style:{padding:'0 100px'}}}
+            mode="closable"
+            icon={null}
+            className="display-message"
+          >
+            Good Job! you have done more reps this week!
+          </NoticeBar>
+            {/* progress bar of exercises completed for the day*/}
+          <WingBlank>
+            <Progress position="normal" percent={0}/>
+          </WingBlank>
+        </div>
       </div>
     );
   }

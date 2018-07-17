@@ -1,4 +1,4 @@
-// @flow
+
 import React, { Component } from 'react';
 import { Progress, Button} from 'antd-mobile';
 import { connect } from 'react-redux';
@@ -383,7 +383,7 @@ class Questionnaire extends Component {
           </Modal>
       )}
       {(this.state.isFinish) && (
-        <Redirect to="/login" />
+        <Redirect to="/plan" />
       )}
       </div>
     )

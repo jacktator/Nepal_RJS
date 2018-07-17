@@ -9,12 +9,12 @@
   margin-bottom: 10%;
 }
 
-.screen-launch-style{
-  background-color: #2E344C;
-  position: fixed;
+.launch .copyright{
+  text-align: center;
+  color: gray;
+  margin: 15% 0 0 0;
 }
-
-.logo-launch-position  {
-  margin-top:100px;
-  margin-bottom:100px;
-}
+ .launch {
+   background-color: #2E344C;
+   background-size: cover;
+ }

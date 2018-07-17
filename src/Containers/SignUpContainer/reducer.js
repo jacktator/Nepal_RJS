@@ -5,7 +5,8 @@ let DefaultState=
     username:'Username@com',
     email:'E-mail',
     password:'1235678',
-    error:'',
+    error:null,
+    fetch:'',
 
   }
 
@@ -33,6 +34,12 @@ const SignUpReducers = (state=DefaultState, action)=>{
     //console.log("add token: "+ action.payload)
     return {
       ...state, error: action.payload
+    }
+  }
+  else if (action.type==="FETCH_RESPONSE"){
+    //console.log("add token: "+ action.payload)
+    return {
+      ...state, fetch: action.payload
     }
   }
   return state;

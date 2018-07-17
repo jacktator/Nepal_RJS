@@ -66,6 +66,7 @@ class LoginDetails extends Component<Props, State> {
           <img src={Logo} className="logo"/>
         </div>
         {/* input details block*/}
+        <div>
           <InputItem
             value={email}
             type="text"
@@ -74,7 +75,7 @@ class LoginDetails extends Component<Props, State> {
             onExtraClick = {()=> console.log('onExtraClick')}
             onErrorClick = {()=> console.log('onErrorClick')}
           >
-            <div style={humeniconstyle} />
+          <div style={humeniconstyle} />
           </InputItem>
           <InputItem
             value={password}
@@ -82,30 +83,40 @@ class LoginDetails extends Component<Props, State> {
             name="password"
             onChange={(value)=>this.props.onChangePassword(value)}
           >
-            <div style={lockerstyle} />
+          <div style={lockerstyle} />
           </InputItem>
+        </div>
       {/* submit button block*/}
-            <WingBlank><Button
-                type="primary"
-                className="login-button-style"
-                onClick={()=>this.loadingButton()}
-                loading={!this.state.loading}
-              >
-                Submit
-              </Button></WingBlank>
+        <div>
+          <WingBlank>
+            <Button
+              type="primary"
+              className="login-button-style"
+              onClick={()=>this.loadingButton()}
+              loading={!this.state.loading}
+            >
+              Login
+            </Button>
+          </WingBlank>
       {/* forgot password block*/}
+        </div>
         <div className="forgetpassword-style">
           <Link to='/forgetpassword'>
-            Forgot Password?</Link> </div>
+            Forgot Password?
+          </Link>
+        </div>
     {/* no account block*/}
         <div className="doyouhaveaccount-style" >
-          Do not have an Account? </div>
+          Do not have an Account?
+        </div>
     {/* register button block*/}
+        <div>
           <WingBlank>
             <Link to='/signup' >
               <Button>Register</Button>
             </Link>
           </WingBlank>
+        </div>
     </div>
     );
   }

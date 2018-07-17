@@ -1,4 +1,4 @@
-// @flow
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -7,6 +7,8 @@ import FooterContainer from'../FooterContainer';
 import Plan from '../../../Components/Workout/Plan';
 
 class PlanContainer extends Component{
+
+
   componentWillMount(){
     if(this.props.currentFooterTab!== 'planTab' ){
       this.props.selectFooter('planTab');
@@ -14,9 +16,10 @@ class PlanContainer extends Component{
   }
   render() {
     return (
-      <div>
-      <Plan/>
-      <FooterContainer/>
+      <div style={{textAlign: 'center', margin: '30%'}}>
+
+      THE REPRESENTATION HAS COMPLETED!!!
+
       </div>
     )
   }
@@ -34,3 +37,6 @@ function matchDispatchToProps(dispatch){
 );
 }
 export default connect(mapStateToProps, matchDispatchToProps) (PlanContainer);
+
+// <Plan/>
+// <FooterContainer/>
