@@ -68,7 +68,7 @@ class SignUp extends Component<Props, State> {
         </div>
         {/* sign up input block*/}
         <div className="signup-info-style">
-          <List renderHeader={() => ''}>
+          <List>
             <InputItem
               value={username}
               type="text"

@@ -1,25 +1,37 @@
-.login .logo {
+.login{
+  background-color: white;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.logo {
   height: 170px;
   width: 160px;
 }
 
-.login .logo-login-position{
+.login-logo-position{
   text-align: center;
-  margin: 30% 0 30%;
+  position:fixed;
+  top: 150px;
+  width: 100%;
 }
 
-.login .register-button{
-  margin-bottom: 5%;
+.login-register-button{
+  position: fixed;
+  bottom: 130px;
+  width: 100%;
 }
 
-.login .login-button{
-  margin-bottom: 10%;
+.login-login-button{
+  position: fixed;
+  bottom: 70px;
+  width: 100%;
 }
 
-/* for 768 x 1024 iPad*/
-@media screen and (width: 768px) {
-}
-
-/* for 1024*1366 ipad Pro */
-@media screen and (width: 1024px) {
+.login-copyright{
+  text-align: center;
+  color: #bbb;
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
 }
