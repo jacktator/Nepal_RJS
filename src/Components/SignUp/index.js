@@ -62,7 +62,6 @@ class SignUp extends Component<Props, State> {
     return (
       <div className="signup">
 
-
         {/* logo block*/}
         <div className="signup-logo-position">
           <img src={Logo} className="logo"/>
@@ -78,7 +77,9 @@ class SignUp extends Component<Props, State> {
                 type="text"
                 name="username"
                 onChange={(value)=>this.props.onChangeUsername(value)}
+                style={{color: 'grey'}}
               >
+              <div style={humeniconstyle} />
               </InputItem>
               <InputItem
                 value={email}
@@ -86,6 +87,7 @@ class SignUp extends Component<Props, State> {
                 name="email"
                 onChange={(value)=>this.props.onChangeEmail(value)}
               >
+              <div style={emailiconstyle} />
               </InputItem>
               <InputItem
                 value={password}
@@ -93,6 +95,7 @@ class SignUp extends Component<Props, State> {
                 name="password"
                 onChange={(value)=>this.props.onChangePassword(value)}
               >
+              <div style={lockerstyle} />
               </InputItem>
             </List>
           </div>
