@@ -1,21 +1,33 @@
-
-
-.sign-up .logo-signup-position  {
-  text-align: center;
-  margin: 30% 0 25%;
+.signup{
+  background-color: white;
+  overflow: hidden;
+  height: 100vh;
 }
 
-.sign-up .logo {
+.signup-logo-position  {
+  text-align: center;
+  position: fixed;
+  width:100%;
+  top: 10vh;
+}
+
+.logo {
   height: 170px;
   width: 160px;
 }
 
-.sign-up .signup-info-style{
-  margin-bottom: 10%;
+.signup-input{
+  text-align: center;
+  position: fixed;
+  width:100%;
+  bottom: 15vh;
+}
+.signup-button{
+  padding-top: 15px;
 }
 
-.sign-up .checkbox{
-  text-align:center ;
-  margin: 20px;
-  margin-left: 10%;
+.signup-checkbox{
+  text-align: center;
+  padding-top: 15px;
+
 }

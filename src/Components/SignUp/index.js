@@ -59,59 +59,67 @@ class SignUp extends Component<Props, State> {
   render() {
     const {username, email, password}= this.props.state;
     const {able} = this.state
-    document.body.style = 'background: white';
     return (
-      <div className="sign-up">
+      <div className="signup">
+
+
         {/* logo block*/}
-        <div className="logo-signup-position">
+        <div className="signup-logo-position">
           <img src={Logo} className="logo"/>
+          {/* sign up input block*/}
         </div>
-        {/* sign up input block*/}
-        <div className="signup-info-style">
-          <List>
-            <InputItem
-              value={username}
-              type="text"
-              name="username"
-              onChange={(value)=>this.props.onChangeUsername(value)}
-            >
-              <div style={humeniconstyle} />
-            </InputItem>
-            <InputItem
-              value={email}
-              type="text"
-              name="email"
-              onChange={(value)=>this.props.onChangeEmail(value)}
-            >
-              <div style={emailiconstyle} />
-            </InputItem>
-            <InputItem
-              value={password}
-              type="password"
-              name="password"
-              onChange={(value)=>this.props.onChangePassword(value)}
-            >
-              <div style={lockerstyle} />
-            </InputItem>
-          </List>
+
+
+        <div className="signup-input">
+          <div>
+            <List>
+              <InputItem
+                value={username}
+                type="text"
+                name="username"
+                onChange={(value)=>this.props.onChangeUsername(value)}
+              >
+              </InputItem>
+              <InputItem
+                value={email}
+                type="text"
+                name="email"
+                onChange={(value)=>this.props.onChangeEmail(value)}
+              >
+              </InputItem>
+              <InputItem
+                value={password}
+                type="password"
+                name="password"
+                onChange={(value)=>this.props.onChangePassword(value)}
+              >
+              </InputItem>
+            </List>
+          </div>
+
+          <div className="signup-button">
+            <WingBlank>
+              <Button
+                type="primary"
+                onClick={()=>this.onAbleChange()}
+                loading={this.state.able}
+              >
+                Create Account
+              </Button>
+              {this.props.state.error && this.props.history.go(0)}
+              {this.props.state.fetch===200 && <Redirect to="/questionnaire" />}
+            </WingBlank>
+          </div>
+          <div className='signup-checkbox'>
+            <a target="_blank" href="https://www.google.com" style={{color: 'grey'}} >
+              By registering, you agree to our terms and conditions
+            </a>
+          </div>
         </div>
-        <div>
-          <WingBlank>
-            <Button
-              type="primary"
-              onClick={()=>this.onAbleChange()}
-              loading={this.state.able}
-            >
-              Create Account
-            </Button>
-            {this.props.state.error && this.props.history.go(0)}
-            {this.props.state.fetch===200 && <Redirect to="/questionnaire" />}
-          </WingBlank>
-        </div>
-        <div className="checkbox">
-          <a target="_blank" href="https://www.google.com"> By registering, you agree to our terms and conditions </a>
-        </div>
+
+
       </div>
+
     );
   }
 }

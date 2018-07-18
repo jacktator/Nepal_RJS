@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Button, WingBlank} from 'antd-mobile';
+import { Button, WingBlank, WhiteSpace} from 'antd-mobile';
 import {Link} from 'react-router-dom';
 import './Launch.css';
 import Logo from '../../Assets/Logo.png';
@@ -23,10 +23,12 @@ class Launch extends Component {
               <Button type="primary" style={{backgroundColor: '#4CA0CC'}}>Get Started</Button>
             </Link>
           </WingBlank>
+          <WhiteSpace size='lg'/>
+          <div className='copyright'>
+            Copyright @ 2018 Nepal
+          </div>
         </div>
-        <div className='copyright'>
-          Copyright @ 2018 Nepal
-        </div>
+
       </div>
 
     );
