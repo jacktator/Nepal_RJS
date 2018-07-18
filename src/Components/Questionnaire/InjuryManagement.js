@@ -14,11 +14,11 @@ const InjuryManagement = (props) => {
         {props.data.map((i,key) => (
           <Flex key={key}>
             <Flex.Item>
-              <div onClick = {() => props.showModal(i, 'forInjury')}>
-                <CheckboxItem key={i.value} checked={i.isChecked} >
+                <CheckboxItem key={i.value} checked={i.isChecked} onChange={()=>props.change(i.value)}>
+                  <div onClick = {() => props.showModal(i, 'forInjury')}>
                     <strong> {i.description} </strong>
+                  </div>
                 </CheckboxItem>
-              </div>
             </Flex.Item>
           </Flex>
           ))}

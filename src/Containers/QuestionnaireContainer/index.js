@@ -87,9 +87,10 @@ class Questionnaire extends Component {
     })
     this.setState({ trainingGoals, injuryManagement, isFinish:false })
   }
+
   //handle the checkbox for injury management in questionnaire (third page)
-  rehabFocusCheckboxHandler = (value, type) => {
-    let injury_posture = type === 'forInjury' ? [ ...this.state.injuryManagement] : [ ... this.state.postureManagement]
+  rehabFocusCheckboxHandler = (value) => {
+    let injury_posture = [ ...this.state.injuryManagement]
     let { rehab_focus } = this.props.QuestionnaireReducers.fields;
     //let injuryManagement = [ ...this.state.injuryManagement];
     let count = rehab_focus.length;
@@ -104,12 +105,7 @@ class Questionnaire extends Component {
         rehab_focus.push(value);
       }
       this.props.addRehabFocus(rehab_focus);
-      if( type === 'forInjury'){
-          this.setState({ injuryManagement : injury_posture });
-      }
-      else {
-        this.setState({ postureManagement : injury_posture });
-      }
+      this.setState({ injuryManagement : injury_posture });
     }
     else{
       alert('Exceeded maximun number of selection');
@@ -117,6 +113,7 @@ class Questionnaire extends Component {
   }
   //handle the checkbox for program in questionnaire (second page)
   programCheckboxHandler = (value) => {
+    console.log("programCheckboxHandler");
     const {exercisePlace} = this.props.QuestionnaireReducers.fields;
     let tempGoals = [];
     let trainingGoals = exercisePlace === 'home'? [ ...this.state.trainingGoalsForHome ] : [ ...this.state.trainingGoals ];
@@ -136,9 +133,13 @@ class Questionnaire extends Component {
         tempGoals.push(value);
       }
       this.props.addGoals(tempGoals);
-      this.setState({ trainingGoals });
+      if(exercisePlace === "home"){
+        this.setState({ trainingGoalsForHome: trainingGoals })
+      }else{
+        this.setState({ trainingGoals })
+      }
     } else {
-      alert('You can select only two at most');
+      // alert('here we go');
     }
   }
   //Icrease the currentPage of state by 1
@@ -146,6 +147,7 @@ class Questionnaire extends Component {
     currentPage += 1;
     this.setState({ currentPage })
   }
+
   //Handle when next or previous button is clicked
   buttonHandler = (button) =>{
     let currentPage = this.state.currentPage;
@@ -289,13 +291,27 @@ class Questionnaire extends Component {
         />
       );
     } else if(this.state.currentPage === 2){
+      console.log('fields:',fields.exercisePlace);
+      let data;
+      if(fields.exercisePlace ==='home'){
+        console.log("copying home");
+        data = this.state.trainingGoalsForHome;
+        console.log(data);
+      }else if(fields.exercisePlace ==='gym'){
+        console.log("copying gym");
+        data= this.state.trainingGoals;
+        console.log("state", this.state)
+        console.log("Data:",data);
+      }
+      let tempData =fields.exercisePlace ==='home' ? this.state.trainingGoalsForHome : this.state.trainingGoals ;
+      console.log("Data:",data);
       RenderPage = (
         <Program
         daysArray = {daysArray}
         days= {fields.days_per_week}
         selectDays = {this.props.addDays}
         change={this.programCheckboxHandler}
-        data = { fields.exercisePlace ==='home' ? this.state.trainingGoalsForHome : this.state.trainingGoals }
+        data = { data }
         />
       );
     } else if(this.state.currentPage === 3){

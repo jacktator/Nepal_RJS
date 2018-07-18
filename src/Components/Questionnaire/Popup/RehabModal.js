@@ -21,7 +21,7 @@ import './RehabModal.css';
             Go Back
           </Button>
           <Button type="ghost" className="button-right"
-            onClick={() => this.props.select(this.props.data.value, this.props.type)}
+            onClick={() => this.props.select(this.props.data.value)}
             inline size="small">
             {selectButton}
                 </Button>
