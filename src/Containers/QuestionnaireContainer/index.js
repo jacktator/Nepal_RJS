@@ -13,7 +13,8 @@ import { addName, addAge, addGender, addWeight, addExercisePlace,
   addProductivity, addProductiveAfterExercise,
   addWorkInjury, addHealthFeeling,
   addDailyActivity, addCurrentActivity,
-  stepOne, stepTwo, stepThree, stepFour, stepFive, stepSix
+  stepOne, stepTwo, stepThree, stepFour, stepFive, stepSix,
+  addQuestionnaire
 }from './actions';
 
 import CurrentStep  from '../../Components/Questionnaire/Progress';
@@ -161,7 +162,7 @@ class Questionnaire extends Component {
           alert("please insert all the data to proceed to next step");
           return;
         }
-        this.props.stepOne(nick_name, age, gender, weight, exercisePlace);
+        // this.props.stepOne(nick_name, age, gender, weight, exercisePlace);
         this.increaseCurrentPage(currentPage);
 
       }else if(currentPage === 2) {
@@ -170,7 +171,7 @@ class Questionnaire extends Component {
           alert("please insert all the data to proceed to next step");
           return;
         }
-        this.props.stepTwo(days_per_week, goals);
+        // this.props.stepTwo(days_per_week, goals);
         this.increaseCurrentPage(currentPage);
 
       }else if(currentPage === 3) {
@@ -179,7 +180,7 @@ class Questionnaire extends Component {
           alert("Please insert all the data to proceed to next step");
           return;
         }
-        this.props.stepThree(rehab_focus);
+        // this.props.stepThree(rehab_focus);
         this.increaseCurrentPage(currentPage);
 
       }else if(currentPage ===  4) {
@@ -189,7 +190,7 @@ class Questionnaire extends Component {
           return;
         }
 
-        this.props.stepFour(stress, productivity);
+        // this.props.stepFour(stress, productivity);
         this.increaseCurrentPage(currentPage);
 
       }else if(currentPage === 5) {
@@ -198,7 +199,7 @@ class Questionnaire extends Component {
           alert("Please insert all the data to proceed to next step");
           return;
         }
-        this.props.stepFive(work_injury, health_feeling);
+        // this.props.stepFive(work_injury, health_feeling);
         this.increaseCurrentPage(currentPage);
 
       }else if(currentPage === 6) {
@@ -207,7 +208,8 @@ class Questionnaire extends Component {
           alert("Please insert all the data to proceed to next step");
           return;
         }
-        this.props.stepSix(current_activity, daily_activity);
+        // this.props.stepSix(current_activity, daily_activity);
+          this.props.addQuestionnaire(this.props.QuestionnaireReducers)
         this.setState({isFinish:true})
 
       }
@@ -390,7 +392,8 @@ function matchDispatchToProps(dispatch){
     addProductivity, addProductiveAfterExercise,
     addWorkInjury, addHealthFeeling,
     addDailyActivity, addCurrentActivity,
-    stepOne, stepTwo, stepThree, stepFour, stepFive, stepSix
+    stepOne, stepTwo, stepThree, stepFour, stepFive, stepSix,
+    addQuestionnaire
   }, dispatch
 );
 }
