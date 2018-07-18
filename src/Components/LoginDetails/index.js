@@ -61,40 +61,47 @@ class LoginDetails extends Component<Props, State> {
     return (
       <div className="logindetails">
         {/* logo block*/}
-        <div className="logo-logindetails-position">
+        <div className="logindetails-logo-position">
           <img src={Logo} className="logo" alt="logo"/>
         </div>
         {/* input details block*/}
         <div className="logindetails-input-list">
           <div>
-          <List>
-            <InputItem
-              value={email}
-              type="text"
-              name="email"
-              onChange={(value)=>this.props.onChangeEmail(value)}
-              onExtraClick = {()=> console.log('onExtraClick')}
-              onErrorClick = {()=> console.log('onErrorClick')}
-            >
-            </InputItem>
-            <InputItem
-              value={password}
-              type="password"
-              name="password"
-              onChange={(value)=>this.props.onChangePassword(value)}
-            >
-            </InputItem>
-          </List>
-          <WingBlank>
-            <Button
-              type="primary"
-              onClick={()=>this.loadingButton()}
-              loading={!this.state.loading}
-            >
-              Login
-            </Button>
-          </WingBlank>
-      {/* forgot password block*/}
+            <div>
+              <List>
+                <InputItem
+                  value={email}
+                  type="text"
+                  name="email"
+                  onChange={(value)=>this.props.onChangeEmail(value)}
+                  onExtraClick = {()=> console.log('onExtraClick')}
+                  onErrorClick = {()=> console.log('onErrorClick')}
+                  style={{color: 'grey'}}
+                >
+                <div style={humeniconstyle} />
+                </InputItem>
+                <InputItem
+                  value={password}
+                  type="password"
+                  name="password"
+                  onChange={(value)=>this.props.onChangePassword(value)}
+                  style={{color: 'grey'}}
+                >
+                <div style={lockerstyle} />
+                </InputItem>
+              </List>
+            </div>
+            <div className="logindetails-login-button">
+              <WingBlank>
+                <Button
+                  type="primary"
+                  onClick={()=>this.loadingButton()}
+                  loading={!this.state.loading}
+                >
+                  Login
+                </Button>
+              </WingBlank>
+            </div>
         </div>
         <div className="logindetails-forgetpassword">
           <Link to='/forgetpassword' style={{color: 'grey'}}>
@@ -106,7 +113,7 @@ class LoginDetails extends Component<Props, State> {
           Do not have an Account?
         </div>
     {/* register button block*/}
-        <div className="logindetails-signup" >
+        <div>
           <WingBlank>
             <Link to='/signup' >
               <Button>Register</Button>

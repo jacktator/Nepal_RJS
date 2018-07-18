@@ -25,7 +25,7 @@ class Login extends Component {
     return(
           <div className="login">
             {/*Logo block*/}
-            <div className="logo-login-position">
+            <div className="login-logo-position">
               <img src={Logo} className="logo" alt="logo"/>
             </div>
             <div className="login-register-button">
