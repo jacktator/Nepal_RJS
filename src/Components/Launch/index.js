@@ -8,7 +8,7 @@ import Logo from '../../Assets/Logo.png';
 class Launch extends Component {
 
   render() {
-    document.body.style = 'background: #2E344C;';
+    // document.body.style = 'background: #2E344C;';
     return (
       <div className="launch">
          {/* logo block*/}

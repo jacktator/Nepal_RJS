@@ -383,7 +383,7 @@ class Questionnaire extends Component {
           </Modal>
       )}
       {(this.state.isFinish) && (
-        <Redirect to="/plan" />
+        <Redirect to='/login' />
       )}
       </div>
     )
