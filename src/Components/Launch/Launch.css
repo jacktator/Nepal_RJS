@@ -8,7 +8,7 @@
   text-align: center;
   position: fixed;
   left: 0;
-  top: 150px;
+  top: 18vh;
   width: 100%;
 }
 
@@ -20,14 +20,11 @@
 .copyright{
   text-align: center;
   color: gray;
-  position: fixed;
-  bottom: 40px;
-  width: 100%;
 }
 
 .launch-button {
   position: fixed;
-  bottom: 70px;
+  bottom: 10vh;
   width: 100%;
 }
  /* position: absolute;

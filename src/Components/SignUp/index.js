@@ -61,7 +61,9 @@ class SignUp extends Component<Props, State> {
     // const {able} = this.state
     document.body.style = 'background: white';
     return (
-      <div className="sign-up">
+      <div className="signup">
+
+
         {/* logo block*/}
         <div className="logo-signup-position">
           <img src={Logo} className="logo" alt="logo"/>
@@ -111,7 +113,10 @@ class SignUp extends Component<Props, State> {
         <div className="checkbox">
           <a target="_blank" rel="noopener noreferrer" href="https://www.google.com"> By registering, you agree to our terms and conditions </a>
         </div>
+
+
       </div>
+
     );
   }
 }

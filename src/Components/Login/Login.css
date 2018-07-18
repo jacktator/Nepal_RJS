@@ -12,26 +12,17 @@
 .login-logo-position{
   text-align: center;
   position:fixed;
-  top: 150px;
+  top: 18vh;
   width: 100%;
 }
 
 .login-register-button{
   position: fixed;
-  bottom: 130px;
-  width: 100%;
-}
-
-.login-login-button{
-  position: fixed;
-  bottom: 70px;
+  bottom: 8vh;
   width: 100%;
 }
 
 .login-copyright{
   text-align: center;
-  color: #bbb;
-  position: fixed;
-  bottom: 20px;
-  width: 100%;
+  color: grey;
 }

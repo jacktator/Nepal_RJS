@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Button, WingBlank} from 'antd-mobile';
+import {Button, WingBlank, WhiteSpace} from 'antd-mobile';
 import { Link } from 'react-router-dom';
 // import axios from 'axios';
 // import {connect} from 'react-redux';
@@ -32,14 +32,14 @@ class Login extends Component {
               <WingBlank>
                 <Link to='signup' ><Button>Register</Button></Link>
               </WingBlank>
-            </div>
-            <div className="login-login-button">
+              <WhiteSpace size='xl'/>
               <WingBlank>
                 <Link to='/login/logindetails'><Button type="primary">Login</Button></Link>
               </WingBlank>
-            </div>
-            <div className="login-copyright">
-              <p>Copyright @ 2018 Nepal</p>
+              <WhiteSpace size='xl'/>
+              <div className="login-copyright">
+                <p>Copyright @ 2018 Nepal</p>
+              </div>
             </div>
           </div>
     );

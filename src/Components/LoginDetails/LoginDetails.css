@@ -8,7 +8,7 @@
   text-align: center;
   position:fixed;
   width: 100%;
-  top: 80px;
+  top: 10vh;
 }
 
 .login-details .logo {
@@ -22,7 +22,7 @@
   text-align: center;
   position:fixed;
   width: 100%;
-  bottom: 50px;
+  bottom: 8vh;
 }
 .logindetails-forgetpassword{
   padding-top: 10px;
