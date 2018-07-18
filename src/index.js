@@ -4,11 +4,11 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
 import {applyMiddleware, createStore} from 'redux';
-import logger from 'redux-logger';//logger must be the last element in the applyMiddleware as below
 import thunk from 'redux-thunk';
-import promise from 'redux-promise-middleware';
+// import logger from 'redux-logger';//logger must be the last element in the applyMiddleware as below
+// import promise from 'redux-promise-middleware';
+// import registerServiceWorker from './registerServiceWorker';
 import reducer from './Reducers/';
 
 const store = createStore (reducer, applyMiddleware(thunk))

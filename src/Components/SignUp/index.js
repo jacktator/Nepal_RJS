@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 import { List, InputItem, WingBlank, Button,} from 'antd-mobile';
 import { createForm } from 'rc-form';
 import './SignUp.css';
@@ -58,17 +58,15 @@ class SignUp extends Component<Props, State> {
 
   render() {
     const {username, email, password}= this.props.state;
-    const {able} = this.state
+    // const {able} = this.state
+    document.body.style = 'background: white';
     return (
       <div className="signup">
 
         {/* logo block*/}
         <div className="signup-logo-position">
-          <img src={Logo} className="logo"/>
-          {/* sign up input block*/}
+          <img src={Logo} className="logo" alt="logo"/>
         </div>
-
-
         <div className="signup-input">
           <div>
             <List>
@@ -86,6 +84,7 @@ class SignUp extends Component<Props, State> {
                 type="text"
                 name="email"
                 onChange={(value)=>this.props.onChangeEmail(value)}
+                style={{color: 'grey'}}
               >
               <div style={emailiconstyle} />
               </InputItem>
@@ -94,6 +93,7 @@ class SignUp extends Component<Props, State> {
                 type="password"
                 name="password"
                 onChange={(value)=>this.props.onChangePassword(value)}
+                style={{color: 'grey'}}
               >
               <div style={lockerstyle} />
               </InputItem>
@@ -114,7 +114,7 @@ class SignUp extends Component<Props, State> {
             </WingBlank>
           </div>
           <div className='signup-checkbox'>
-            <a target="_blank" href="https://www.google.com" style={{color: 'grey'}} >
+            <a target="_blank" rel="noopener noreferrer" href="https://www.google.com" style={{color: 'grey'}} >
               By registering, you agree to our terms and conditions
             </a>
           </div>

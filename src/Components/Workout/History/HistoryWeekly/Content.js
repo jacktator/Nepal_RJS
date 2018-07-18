@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
-import {List,Flex,Radio} from 'antd-mobile'
+import {List, Flex} from 'antd-mobile'
 
-const RadioItem = Radio.RadioItem
 const Item = List.Item
 
 export default class Content extends Component {

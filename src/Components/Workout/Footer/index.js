@@ -1,8 +1,6 @@
 import React from 'react';
 import { TabBar } from 'antd-mobile';
 import './Footer.css';
-
-import {Link} from 'react-router-dom';
 /*
 icons taken from http://iconfont.cn/home/index?spm=a313x.7781069.1998910419.2
 */

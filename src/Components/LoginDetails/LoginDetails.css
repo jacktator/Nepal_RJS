@@ -24,6 +24,10 @@
   width: 100%;
   bottom: 8vh;
 }
+
+.logindetails-login-button{
+  padding-top: 10px;
+}
 .logindetails-forgetpassword{
   padding-top: 10px;
 }

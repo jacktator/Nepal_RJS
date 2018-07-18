@@ -20,7 +20,6 @@ const WorkOutReducers = (state: Object= DefaultState, action: Function) => {
       return {
         ...state, warmUpExerciseArray
       }
-      break;
 
     case "KEEP_WORKOUT":
       let workOutExerciseArray = [...state.workOutExerciseArray]
@@ -29,7 +28,6 @@ const WorkOutReducers = (state: Object= DefaultState, action: Function) => {
       return {
         ...state, workOutExerciseArray
       }
-      break;
 
     default:
     return state;

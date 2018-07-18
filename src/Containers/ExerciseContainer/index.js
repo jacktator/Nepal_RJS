@@ -1,10 +1,10 @@
-import _ from 'lodash';
+
 import React, {Component} from 'react';
 import {Redirect} from 'react-router';
-import YTSearch from 'youtube-api-search';
-import Exercise from '../../Components/Workout/Exercise/'
-const API_KEY = 'AIzaSyBv5Htzijr5-3WBHMU-N3V21Ez9yBb-6vY';
-
+import Exercise from '../../Components/Workout/Exercise/';
+// import _ from 'lodash';
+// import YTSearch from 'youtube-api-search';
+// const API_KEY = 'AIzaSyBv5Htzijr5-3WBHMU-N3V21Ez9yBb-6vY';
 class ExerciseContainer extends Component{
 
   constructor(props){

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {WhiteSpace, Icon,Flex,List} from 'antd-mobile';
+import {Flex, List} from 'antd-mobile';
 
 // icons taken from http://iconfont.cn/
 
@@ -26,9 +26,9 @@ export default class RecordList extends Component{
           <List>
           <Item>
           <Flex justify="center" className="list" style={{margin:"5px 0 5px 0"}}>
-          <Flex.Item><img src={require('../../../Assets/Exercise/checkCircle.svg')}/></Flex.Item>
+          <Flex.Item><img src={require('../../../Assets/Exercise/checkCircle.svg')} alt="check-circle"/></Flex.Item>
           <Flex.Item><div className="list-text"><strong>{data.kgs} kgs * {data.reps} reps</strong></div></Flex.Item>
-          <Flex.Item><img src={require('../../../Assets/Workout/cup-icon.png')}/></Flex.Item>
+          <Flex.Item><img src={require('../../../Assets/Workout/cup-icon.png')} alt="cup-icon"/></Flex.Item>
           </Flex>
           </Item>
           </List>

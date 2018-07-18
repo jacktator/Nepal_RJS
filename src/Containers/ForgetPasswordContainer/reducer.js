@@ -1,9 +1,6 @@
 //@flow
 //this file is for getting the email and password
 
-type Props={
-  DefaultState: Object,
-}
 
 const DefaultState=
   {

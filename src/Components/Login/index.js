@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {Button, WingBlank, WhiteSpace} from 'antd-mobile';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-import {connect} from 'react-redux';
+// import axios from 'axios';
+// import {connect} from 'react-redux';
 import './Login.css';
 import Logo from '../../Assets/LogoLighter.png';
 
@@ -26,7 +26,7 @@ class Login extends Component {
           <div className="login">
             {/*Logo block*/}
             <div className="login-logo-position">
-              <img src={Logo} className="logo"/>
+              <img src={Logo} className="logo" alt="logo"/>
             </div>
             <div className="login-register-button">
               <WingBlank>

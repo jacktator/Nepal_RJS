@@ -14,7 +14,7 @@ class Launch extends Component {
       <div className="launch-container">
          {/* logo block*/}
         <div className="logo-launch-position">
-          <img src={Logo} className="logo"/>
+          <img src={Logo} className="logo" alt="logo"/>
         </div>
            {/* button block. */}
         <div className='launch-button'>

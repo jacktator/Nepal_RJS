@@ -1,4 +1,4 @@
-//@Flow
+// @flow
 import React, {Component} from 'react';
 import ForgetPasswordWrapper from '../../Components/ForgetPassWord/';
 import {connect} from 'react-redux';

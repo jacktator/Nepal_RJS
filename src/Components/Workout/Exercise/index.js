@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {NavBar, Icon ,WhiteSpace,Flex,NoticeBar,WingBlank,Progress} from 'antd-mobile';
+import {NavBar, Icon, NoticeBar,WingBlank,Progress} from 'antd-mobile';
 import './Exercise.css';
 import RecordList from './RecordList.js';
 //import VideoDetail from './VideoDetail.js';
@@ -7,9 +7,9 @@ import RecordList from './RecordList.js';
 
 
 // icons taken from http://iconfont.cn/
-import history from '../../../Assets/Exercise/history.svg';
+// import history from '../../../Assets/Exercise/history.svg';
 //import historySel from '../../../Assets/Exercise/historySel.svg';
-import exerciseInfo from '../../../Assets/Exercise/exerciseInfo.svg'
+// import exerciseInfo from '../../../Assets/Exercise/exerciseInfo.svg'
 
 export default class Exercise extends Component{
 
@@ -49,7 +49,7 @@ export default class Exercise extends Component{
             </div>
           </NavBar>
           {/* the main gif/image area */}
-          <img src={require("../../../Assets/Exercise/exerciseGif.gif")} className="exercise-image"/>
+          <img src={require("../../../Assets/Exercise/exerciseGif.gif")} alt="exercise" className="exercise-image"/>
         </div>
             {/* video part, commenting out as we may need it.
             <div className="exercise-iframe">

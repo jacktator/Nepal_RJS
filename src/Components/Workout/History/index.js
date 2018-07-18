@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './History.css'
 import {List} from 'antd-mobile';
 import Header from './Header';
-import Hoc from '../../../HOC/Hoc';
 
 const Item = List.Item;
 
