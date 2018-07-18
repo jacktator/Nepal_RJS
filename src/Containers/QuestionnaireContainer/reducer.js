@@ -9,15 +9,15 @@ let DefaultState = {
     weight: "75",
     exercisePlace: "home",
     days_per_week: 3,
-    goals: [],
+    goals: ["1"],
     rehab_focus: [],
-    stress: "",
-    productivity: "",
-    productive_after_exercise: "",
-    work_injury: "",
-    health_feeling: "",
-    daily_activity: "",
-    current_activity: ""
+    stress: "1",
+    productivity: "1",
+    productive_after_exercise: "1",
+    work_injury: "1",
+    health_feeling: "1",
+    daily_activity: "1",
+    current_activity: "1"
   },
   error: {
     hasError: false,

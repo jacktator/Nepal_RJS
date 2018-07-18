@@ -36,22 +36,20 @@ class Questionnaire extends Component {
     super(props);
     this.state = {
       trainingGoals: [
-        { value: 0, isChecked: false, label: 'Muscle size and strength', description:"Weight training principles designed to build muscle and strength" },
-        { value: 1, isChecked: false, label: 'Fat Loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition "},
-        { value: 2, isChecked: false, label: 'Decrease stress', description:"Using exercise strategies to reduce stress levels and restore balance back in your body"},
-        { value: 3, isChecked: false, label: 'Improve posture', description:"Utilising specific exercises and weight training to correct postural imbalances "}
+        { value: '0', isChecked: false, label: 'Muscle size and strength', description:"Weight training principles designed to build muscle and strength" },
+        { value: '1', isChecked: false, label: 'Fat Loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition "},
+        { value: '2', isChecked: false, label: 'Decrease stress', description:"Using exercise strategies to reduce stress levels and restore balance back in your body"},
+        { value: '3', isChecked: false, label: 'Improve posture', description:"Utilising specific exercises and weight training to correct postural imbalances "}
       ],
       trainingGoalsForHome: [
-        { value: 0, isChecked: false, label: 'Fat Loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition "},
-        { value: 1, isChecked: false, label: 'Decrease stress', description:"Using exercise strategies to reduce stress levels and restore balance back in your body"},
-        { value: 2, isChecked: false, label: 'Fitness', description:"xxxxxxxxxx xxxxxxxx xxxxxx xxxxx "}
+        { value: '0', isChecked: false, label: 'Fat Loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition "},
+        { value: '1', isChecked: false, label: 'Decrease stress', description:"Using exercise strategies to reduce stress levels and restore balance back in your body"},
+        { value: '2', isChecked: false, label: 'Fitness', description:"xxxxxxxxxx xxxxxxxx xxxxxx xxxxx "}
       ],
-      postureManagement: [
+      injuryManagement: [
         { value: '1a', isChecked: false, description: 'Rounded shoulder and forward head', imgurl: 'https://muscularstrength.com/uploads/froala/18fc5d8c9a007cb8238d910aa106b91ad7e0066f.png'},
         { value: '1b', isChecked: false, description: 'Anterior pelvic tilt', imgurl: 'http://fitness4backpain.com/wp-content/uploads/Kyphosis-Normal-vs-Hyper.jpg'},
         { value: '1c', isChecked: false, description: 'Sway posture', imgurl: 'http://www.joannasoh.com/uploads/authors/1/fitness/posts/bad-posture/swayback-new.jpg'},
-      ],
-      injuryManagement: [
         { value: '2', isChecked: false, description: 'Lower Back Pain', imgurl: 'http://totalphysiocare.com.au/wp-content/uploads/2017/05/lower-back-pain-relief.png'},
         { value: '3', isChecked: false, description: 'Neck Pain', imgurl: 'https://static.wixstatic.com/media/b1546b_f6a11249f1a346e08fc817d7cece04c3~mv2.jpg/v1/fill/w_630,h_382,al_c,lg_1,q_80/b1546b_f6a11249f1a346e08fc817d7cece04c3~mv2.webp'},
         { value: '4', isChecked: false, description: 'Shoulder Pain', imgurl: 'https://feelpainrelief.com/wp-content/uploads/2015/09/shoulder-pain-300x200.jpg'},
@@ -71,13 +69,20 @@ class Questionnaire extends Component {
   componentWillMount() {
     const {goals, rehab_focus} = this.props.QuestionnaireReducers.fields;
     let trainingGoals = [ ...this.state.trainingGoals ];
-    let injuryManagement = [ ...this.state.injuryManagement];
-    goals.map(i => {
-      trainingGoals[i].isChecked = true;
+    let injuryManagement = [ ...this.state.injuryManagement ];
+    let index = null;
+    goals.map(currentValue => {
+      index = this.state.trainingGoals.findIndex(i => { return i.value === currentValue; })
+      if(index && index!== -1){
+          trainingGoals[index].isChecked = true;
+      }
       return null;
     })
-    rehab_focus.map(j => {
-      injuryManagement[j].isChecked = true;
+    rehab_focus.map(currentValue => {
+      index = this.state.injuryManagement.findIndex(i => { return i.value === currentValue; })
+      if(index && index!== -1){
+          injuryManagement[index].isChecked = true;
+      }
       return null;
     })
     this.setState({ trainingGoals, injuryManagement, isFinish:false })
@@ -171,23 +176,15 @@ class Questionnaire extends Component {
         this.increaseCurrentPage(currentPage);
 
       }else if(currentPage === 3) {
-        // let {rehab_focus} = this.props.QuestionnaireReducers.fields;
-        // if( rehab_focus.length === 0){
-        //   alert("Please insert all the data to proceed to next step");
-        //   return;
-        // }
-        this.increaseCurrentPage(currentPage);
-
-      }else if(currentPage === 4) {
         let {rehab_focus} = this.props.QuestionnaireReducers.fields;
         if( rehab_focus.length === 0){
-          alert("Please select at least one option for injury management or posture correction");
+          alert("Please insert all the data to proceed to next step");
           return;
         }
         this.props.stepThree(rehab_focus);
         this.increaseCurrentPage(currentPage);
 
-      }else if(currentPage ===  5) {
+      }else if(currentPage ===  4) {
         let {stress, productivity} = this.props.QuestionnaireReducers.fields;
         if( stress === "" || productivity === ""){
           alert("Please insert all the data to proceed to next step");
@@ -197,7 +194,7 @@ class Questionnaire extends Component {
         this.props.stepFour(stress, productivity);
         this.increaseCurrentPage(currentPage);
 
-      }else if(currentPage === 6) {
+      }else if(currentPage === 5) {
         let {work_injury, health_feeling} = this.props.QuestionnaireReducers.fields;
         if( work_injury === "" || health_feeling === ""){
           alert("Please insert all the data to proceed to next step");
@@ -206,7 +203,7 @@ class Questionnaire extends Component {
         this.props.stepFive(work_injury, health_feeling);
         this.increaseCurrentPage(currentPage);
 
-      }else if(currentPage === 7) {
+      }else if(currentPage === 6) {
         let {current_activity, daily_activity} = this.props.QuestionnaireReducers.fields;
         if( current_activity === "" || daily_activity === "" ){
           alert("Please insert all the data to proceed to next step");
@@ -312,14 +309,6 @@ class Questionnaire extends Component {
       );
     }else if(this.state.currentPage === 4){
       RenderPage = (
-        <PostureCorrection
-          change={this.rehabFocusCheckboxHandler}
-          data = {this.state.postureManagement}
-          showModal = {this.showModal}
-        />
-      );
-    }else if(this.state.currentPage === 5){
-      RenderPage = (
         <StepFour
         stressArray={stressArray}
         selectStress={this.props.addStress}
@@ -328,7 +317,7 @@ class Questionnaire extends Component {
         selectProductivity={this.props.addProductivity}
         />
       );
-    } else if(this.state.currentPage === 6){
+    } else if(this.state.currentPage === 5){
       RenderPage = (
         <StepFive
         injuryArray={injuryArray}
@@ -338,7 +327,7 @@ class Questionnaire extends Component {
         selectHealth={this.props.addHealthFeeling}
         />
       );
-    }else if(this.state.currentPage === 7){
+    }else if(this.state.currentPage === 6){
       RenderPage = (
         <StepSix
         activityArray={activityArray}
