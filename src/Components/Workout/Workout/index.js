@@ -16,7 +16,7 @@ const Workout = (props) => {
           <WhiteSpace size="lg"/>
 
           {props.warmUpArray.map((data,key) => (
-            <div className="list-workout">
+            <div key={key} className="list-workout">
               <span style = {{float: 'left', margin: "0 20px 0 0"}}>
                 <img src="https://st3.depositphotos.com/5934840/14582/v/450/depositphotos_145822263-stock-illustration-man-running-icon.jpg" height="60px" width="100px" alt="work" />
               </span>
@@ -44,7 +44,7 @@ const Workout = (props) => {
           <WhiteSpace size="lg"/>
 
           { props.workOutArray.map((data, key) => (
-            <div className="list-workout">
+            <div key={key} className="list-workout">
               <span style = {{float: 'left', margin: "0 20px 0 0"}}>
                 <img src="https://st3.depositphotos.com/5934840/14582/v/450/depositphotos_145822263-stock-illustration-man-running-icon.jpg" height="60px" width="100px" alt="work" />
               </span>

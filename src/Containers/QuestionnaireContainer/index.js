@@ -63,6 +63,7 @@ class Questionnaire extends Component {
   }//constructor ends
 
   componentWillMount() {
+    alert("component did mount");
     const {goals, rehab_focus} = this.props.QuestionnaireReducers.fields;
     let trainingGoals = [ ...this.state.trainingGoals ];
     let injuryManagement = [ ...this.state.injuryManagement ];
@@ -88,7 +89,12 @@ class Questionnaire extends Component {
   rehabFocusCheckboxHandler = (value) => {
     let injury_posture = [ ...this.state.injuryManagement]
     let { rehab_focus } = this.props.QuestionnaireReducers.fields;
+    console.log(rehab_focus)
+    if(!rehab_focus){
+      rehab_focus = [];
+    }
     //let injuryManagement = [ ...this.state.injuryManagement];
+
     let count = rehab_focus.length;
     let index = injury_posture.findIndex(i => {return i.value === value});
     //close the modal
@@ -351,7 +357,7 @@ class Questionnaire extends Component {
       <span id="footer_page" style ={{}}>{this.state.currentPage}/6</span>
       <Button type="primary" onClick={() => this.buttonHandler('next')}
       inline size="medium" style={{ float: 'right', marginRight: '12px'}}>
-      {this.state.currentPage === 7 ? "Finish": "Next"}
+      {this.state.currentPage === 6 ? "Finish": "Next"}
       </Button>
       </div>
       {(this.state.modal) && (

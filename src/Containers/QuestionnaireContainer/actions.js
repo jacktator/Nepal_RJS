@@ -4,7 +4,7 @@ import axios from 'axios';
 export function stepOne(nick_name: string, age: number, gender: string, weight: number, exercisePlace: string) {
   let token = localStorage.getItem('token');
   return(dispatch: Function) => {
-    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/"+1531,
+    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/",
     {
       fields: { age, gender, weight, exercisePlace }
     }, {
@@ -13,13 +13,13 @@ export function stepOne(nick_name: string, age: number, gender: string, weight: 
       }
     }
   ).then((response) => {
-    console.log("Response +1531",response.data)
+    console.log("Response +6764",response.data)
     console.log("Response: ", response)
     let id = response.data.id;
     let fields = response.data.acf;
     window.localStorage.setItem('questionnaire_id',id)
       dispatch(setError(''));
-    // dispatch(getDataFromServer(fields));
+    dispatch(getDataFromServer(fields));
   }).catch((error) => {
     dispatch(setError('unable to uplaod to server'));
     console.log("Error",error)
@@ -43,7 +43,7 @@ export function stepTwo(days_per_week: number, goals: Object) {
       console.log("Response",response)
       let fields = response.data.acf;
       dispatch(setError(''));
-      // dispatch(getDataFromServer(fields));
+      dispatch(getDataFromServer(fields));
     }).catch((error) => {
       dispatch(setError('unable to uplaod to server'));
       console.log("Error",error)
@@ -66,7 +66,7 @@ export function stepThree(rehab_focus: Object) {
     console.log("Response",response)
     let fields = response.data.acf;
     dispatch(setError(''));
-    // dispatch(getDataFromServer(fields));
+    dispatch(getDataFromServer(fields));
   }).catch((error) => {
     dispatch(setError('unable to uplaod to server'));
     console.log("Error",error)
@@ -89,7 +89,7 @@ export function stepFour(stress, productivity) {
     console.log("Response",response)
     let fields = response.data.acf;
     dispatch(setError(''));
-    // dispatch(getDataFromServer(fields));
+    dispatch(getDataFromServer(fields));
   }).catch((error) => {
     dispatch(setError('unable to uplaod to server'));
     console.log("Error",error)
@@ -112,7 +112,7 @@ export function stepFive(work_injury, health_feeling) {
     console.log("Response",response)
     let fields = response.data.acf;
     dispatch(setError(''));
-    // dispatch(getDataFromServer(fields));
+    dispatch(getDataFromServer(fields));
   }).catch((error) => {
     dispatch(setError('unable to uplaod to server'));
     console.log("Error",error)
@@ -134,7 +134,7 @@ export function stepSix(current_activity, daily_activity) {
   ).then((response) => {
     console.log("Response",response)
     let fields = response.data.acf;
-    // dispatch(getDataFromServer(fields));
+    dispatch(getDataFromServer(fields));
   }).catch((error) => {
     console.log("Error",error)
   })
