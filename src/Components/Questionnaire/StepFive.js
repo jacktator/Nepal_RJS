@@ -3,7 +3,7 @@ import { List, Radio, NoticeBar, Modal} from 'antd-mobile';
 const RadioItem = Radio.RadioItem;const alert = Modal.alert;
 
 const showAlert = (i, props) => {
-  const alertInstance = alert(i.label, i.description, [
+  alert(i.label, i.description, [
     { text: 'Go back', style: 'default' },
     { text: 'Select', onPress: () => props(i.value) },
   ]);

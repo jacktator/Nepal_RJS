@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 import { List, InputItem, WingBlank, Button,} from 'antd-mobile';
 import { createForm } from 'rc-form';
 import './SignUp.css';
@@ -58,13 +58,13 @@ class SignUp extends Component<Props, State> {
 
   render() {
     const {username, email, password}= this.props.state;
-    const {able} = this.state
+    // const {able} = this.state
     document.body.style = 'background: white';
     return (
       <div className="sign-up">
         {/* logo block*/}
         <div className="logo-signup-position">
-          <img src={Logo} className="logo"/>
+          <img src={Logo} className="logo" alt="logo"/>
         </div>
         {/* sign up input block*/}
         <div className="signup-info-style">
@@ -109,7 +109,7 @@ class SignUp extends Component<Props, State> {
           </WingBlank>
         </div>
         <div className="checkbox">
-          <a target="_blank" href="https://www.google.com"> By registering, you agree to our terms and conditions </a>
+          <a target="_blank" rel="noopener noreferrer" href="https://www.google.com"> By registering, you agree to our terms and conditions </a>
         </div>
       </div>
     );

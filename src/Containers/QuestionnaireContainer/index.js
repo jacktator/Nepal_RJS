@@ -20,7 +20,7 @@ import CurrentStep  from '../../Components/Questionnaire/Progress';
 import Detail from '../../Components/Questionnaire/Detail';
 import Program from '../../Components/Questionnaire/Program';
 import InjuryManagement from '../../Components/Questionnaire/InjuryManagement';
-import PostureCorrection from '../../Components/Questionnaire/PostureCorrection';
+// import PostureCorrection from '../../Components/Questionnaire/PostureCorrection';
 import StepFour from '../../Components/Questionnaire/StepFour';
 import StepFive from '../../Components/Questionnaire/StepFive';
 import StepSix from '../../Components/Questionnaire/StepSix';
@@ -37,14 +37,10 @@ class Questionnaire extends Component {
     this.state = {
       trainingGoals: [
         { value: '0', usedFor:'gym', isChecked: false, label: 'Muscle size and strength', description:"Weight training principles designed to build muscle and strength" },
-        { value: '1', usedFor:'gym', isChecked: false, label: 'Fat Loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition "},
-        { value: '2', usedFor:'gym', isChecked: false, label: 'Decrease stress', description:"Using exercise strategies to reduce stress levels and restore balance back in your body"},
-        { value: '3', usedFor:'home', isChecked: false, label: 'Improve posture', description:"Utilising specific exercises and weight training to correct postural imbalances "},
-      ],
-      trainingGoalsForHome: [
-        { value: '0', isChecked: false, label: 'Fat Loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition "},
-        { value: '1', isChecked: false, label: 'Decrease stress', description:"Using exercise strategies to reduce stress levels and restore balance back in your body"},
-        { value: '2', isChecked: false, label: 'Fitness', description:"xxxxxxxxxx xxxxxxxx xxxxxx xxxxx "},
+        { value: '1', usedFor:'both', isChecked: false, label: 'Fat Loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition "},
+        { value: '2', usedFor:'both', isChecked: false, label: 'Decrease stress', description:"Using exercise strategies to reduce stress levels and restore balance back in your body"},
+        { value: '3', usedFor:'gym', isChecked: false, label: 'Improve posture', description:"Utilising specific exercises and weight training to correct postural imbalances "},
+        { value: '4', usedFor:'home', isChecked: false, label: 'Fitness', description:"xxxxxxxxxx xxxxxxxx xxxxxx xxxxx "},
       ],
       injuryManagement: [
         { value: '1a', isChecked: false, description: 'Rounded shoulder and forward head', imgurl: 'https://muscularstrength.com/uploads/froala/18fc5d8c9a007cb8238d910aa106b91ad7e0066f.png'},
@@ -113,10 +109,8 @@ class Questionnaire extends Component {
   }
   //handle the checkbox for program in questionnaire (second page)
   programCheckboxHandler = (value) => {
-    console.log("programCheckboxHandler");
-    const {exercisePlace} = this.props.QuestionnaireReducers.fields;
     let tempGoals = [];
-    let trainingGoals = exercisePlace === 'home'? [ ...this.state.trainingGoalsForHome ] : [ ...this.state.trainingGoals ];
+    let trainingGoals = [ ...this.state.trainingGoals ];
     let count = 0;
     trainingGoals.map(i => {
       if(i.isChecked === true) {
@@ -133,11 +127,7 @@ class Questionnaire extends Component {
         tempGoals.push(value);
       }
       this.props.addGoals(tempGoals);
-      if(exercisePlace === "home"){
-        this.setState({ trainingGoalsForHome: trainingGoals })
-      }else{
         this.setState({ trainingGoals })
-      }
     } else {
       alert('you can select maximum number of 2 program at a time');
     }
@@ -291,13 +281,6 @@ class Questionnaire extends Component {
         />
       );
     } else if(this.state.currentPage === 2){
-      let data;
-      if(fields.exercisePlace ==='home'){
-        data = this.state.trainingGoalsForHome;
-      }else if(fields.exercisePlace ==='gym'){
-        data= this.state.trainingGoals;
-      }
-      let tempData =fields.exercisePlace ==='home' ? this.state.trainingGoalsForHome : this.state.trainingGoals ;
       RenderPage = (
         <Program
         daysArray = {daysArray}
@@ -305,7 +288,7 @@ class Questionnaire extends Component {
         selectDays = {this.props.addDays}
         change = {this.programCheckboxHandler}
         excercisePlace = {fields.exercisePlace}
-        data = { data }
+        data = { this.state.trainingGoals }
         />
       );
     } else if(this.state.currentPage === 3){

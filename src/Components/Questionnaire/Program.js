@@ -5,11 +5,23 @@ import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
 const CheckboxItem = Checkbox.CheckboxItem;
 const alert = Modal.alert;
 
-const showAlert = (i, props) => {
-  const alertInstance = alert(i.label, i.description, [
+const showAlert = (data, props) => {
+  alert(data.label, data.description, [
     { text: 'Go Back', style: 'default' },
-    { text: 'Select', onPress: () => props.change(i.value) },
+    { text: 'Select', onPress: () => props.change(data.value) },
   ]);
+}
+
+const display = (data, props) => {
+  if(data.usedFor === props.excercisePlace || data.usedFor === 'both' ){
+    return (
+      <CheckboxItem checked={data.isChecked} onChange={() => props.change(data.value)}>
+        <div onClick= {() => showAlert(data, props)}>
+          <strong>{data.label}</strong>
+        </div>
+      </CheckboxItem>
+    )
+  }
 }
 
 const Program = (props) => {
@@ -40,11 +52,7 @@ const Program = (props) => {
       Traning Goals:
     </span>
     {props.data.map((i,key) => (
-        <CheckboxItem checked={i.isChecked} onChange={() => props.change(i.value)}>
-          <div onClick= {() => showAlert(i, props)}>
-            <strong>{i.label}</strong>
-          </div>
-        </CheckboxItem>
+        display(i, props)
     ))}
     </div>
     </div>

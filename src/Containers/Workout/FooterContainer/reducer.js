@@ -12,7 +12,6 @@ const FooterReducers =(state: Object= DefaultState, action: Function) => {
       return {
         ...state, currentFooterTab: action.payload
       }
-      break;
 
     default:
       return state;

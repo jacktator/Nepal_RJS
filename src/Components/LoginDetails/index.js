@@ -1,7 +1,7 @@
 //@flow
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import {InputItem, WingBlank,Button, NoticeBar } from 'antd-mobile';
+import {InputItem, WingBlank,Button } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import './LoginDetails.css';
 import Logo from '../../Assets/LogoLighter.png';
@@ -63,7 +63,7 @@ class LoginDetails extends Component<Props, State> {
       <div className="login-details">
         {/* logo block*/}
         <div className="logo-logindetails-position">
-          <img src={Logo} className="logo"/>
+          <img src={Logo} className="logo" alt="logo"/>
         </div>
         {/* input details block*/}
         <div>

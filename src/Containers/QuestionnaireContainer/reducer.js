@@ -2,22 +2,22 @@
 import { QUESTIONNAIRE } from '../../constants';
 
 let DefaultState = {
-  nick_name: "laxman",
+  nick_name: "",
   fields: {
-    age: "30",
-    gender: "male",
-    weight: "75",
-    exercisePlace: "home",
+    age: "",
+    gender: "",
+    weight: "",
+    exercisePlace: "",
     days_per_week: 3,
-    goals: ["1"],
+    goals: [],
     rehab_focus: [],
-    stress: "1",
-    productivity: "1",
-    productive_after_exercise: "1",
-    work_injury: "1",
-    health_feeling: "1",
-    daily_activity: "1",
-    current_activity: "1"
+    stress: "",
+    productivity: "",
+    productive_after_exercise: "",
+    work_injury: "",
+    health_feeling: "",
+    daily_activity: "",
+    current_activity: ""
   },
   error: {
     hasError: false,
@@ -150,7 +150,6 @@ const QuestionnaireReducers =(state: Object= DefaultState, action: Function) => 
       return {
         ...state, error
       }
-      break;
 
     case QUESTIONNAIRE:
     const data = action.state;

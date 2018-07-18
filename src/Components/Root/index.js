@@ -1,6 +1,7 @@
 //@flow
 import React, {Component} from 'react';
-import {BrowserRouter, Route, Switch, Redirect,HashRouter} from 'react-router-dom';
+import {Route, Switch, Redirect,HashRouter} from 'react-router-dom';
+//BrowserRouter
 import 'antd-mobile/dist/antd-mobile.css';
 import Launch from '../Launch/';
 import Login from '../Login/';

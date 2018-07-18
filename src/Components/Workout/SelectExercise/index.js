@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Carousel, WingBlank, Button } from 'antd-mobile';
+import { Carousel, Button } from 'antd-mobile';
 import './SelectExercise.css';
 
   class SelectExercise extends React.Component {

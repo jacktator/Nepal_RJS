@@ -29,8 +29,7 @@ class PlanContainer extends Component{
   }
   onListProgramClickHandler = (e, program) => {
     e.preventDefault();
-    let currentHistoryIndex = this.state.history.findIndex( data =>
-        { return data.program === program});
+    // let currentHistoryIndex = this.state.history.findIndex( data =>{ return data.program === program});
     this.setState({ currentPage: this.state.currentPage+1})
   }
 onParticularDayClickedHandler =(e, program ) => {
