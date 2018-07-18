@@ -23,7 +23,11 @@ type Props = {
 class LoginDetailsContainer extends Component<Props>{
 
   render(){
-    const {email, password, token} = this.props.LoginDetailsStates
+    const {email, password, token, error} = this.props.LoginDetailsStates
+    if(error){
+      alert(error)
+    }
+    console.log(error);
     return(
       <div>
         <LoginDetailsWrapper

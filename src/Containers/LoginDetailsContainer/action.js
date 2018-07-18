@@ -22,6 +22,7 @@ export function LoginDetailsActions(email:string, password:string){
       // dispatch(validToken(token));
 
     }).catch((error)=>{
+      console.log(error);
       dispatch(catchError(error))
     })
   };
@@ -46,7 +47,7 @@ export function validToken(token:string){
       dispatch(isAuthenticated(response.data.data.status));
     })
     .catch((error)=>{
-      dispatch(catchError(error));
+        dispatch(catchError(error))
     })
   };
 }
@@ -92,6 +93,7 @@ export function addPassword(password: string){
 }
 
 export function catchError(error: string){
+  console.log(error);
   return{
     type: "CATCH_ERROR",
     payload: error
