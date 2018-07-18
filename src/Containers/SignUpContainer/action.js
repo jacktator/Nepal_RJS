@@ -14,8 +14,11 @@ export function SignUpActions(username, email, password){
       dispatch(fetchResponse(response.data.code))
 
     }).catch((error)=>{
-      dispatch(catchError(error.response.data.message))
-      console.log(error.response.data)
+      if(error.response){
+        dispatch(catchError(error.response.data.message))
+      }else{
+        dispatch(catchError("Unable to connect with server"))
+      }
     })
   };
 }

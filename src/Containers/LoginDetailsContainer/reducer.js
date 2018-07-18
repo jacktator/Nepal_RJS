@@ -7,6 +7,7 @@ let DefaultState=
     password:12345678,
     token: '',
     status: true,
+    error:null,
   }
 
 const LoginDetailsReducers = (state: Object=DefaultState, action: Function)=>{
@@ -39,6 +40,12 @@ const LoginDetailsReducers = (state: Object=DefaultState, action: Function)=>{
     //console.log(action.payload)
     return {
       ...state, status: action.payload
+    }
+  }
+  else if (action.type==="CATCH_ERROR"){
+    //console.log("add token: "+ action.payload)
+    return {
+      ...state, error: action.payload
     }
   }
 

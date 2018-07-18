@@ -36,15 +36,15 @@ class Questionnaire extends Component {
     super(props);
     this.state = {
       trainingGoals: [
-        { value: '0', isChecked: false, label: 'Muscle size and strength', description:"Weight training principles designed to build muscle and strength" },
-        { value: '1', isChecked: false, label: 'Fat Loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition "},
-        { value: '2', isChecked: false, label: 'Decrease stress', description:"Using exercise strategies to reduce stress levels and restore balance back in your body"},
-        { value: '3', isChecked: false, label: 'Improve posture', description:"Utilising specific exercises and weight training to correct postural imbalances "}
+        { value: '0', usedFor:'gym', isChecked: false, label: 'Muscle size and strength', description:"Weight training principles designed to build muscle and strength" },
+        { value: '1', usedFor:'gym', isChecked: false, label: 'Fat Loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition "},
+        { value: '2', usedFor:'gym', isChecked: false, label: 'Decrease stress', description:"Using exercise strategies to reduce stress levels and restore balance back in your body"},
+        { value: '3', usedFor:'home', isChecked: false, label: 'Improve posture', description:"Utilising specific exercises and weight training to correct postural imbalances "},
       ],
       trainingGoalsForHome: [
         { value: '0', isChecked: false, label: 'Fat Loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition "},
         { value: '1', isChecked: false, label: 'Decrease stress', description:"Using exercise strategies to reduce stress levels and restore balance back in your body"},
-        { value: '2', isChecked: false, label: 'Fitness', description:"xxxxxxxxxx xxxxxxxx xxxxxx xxxxx "}
+        { value: '2', isChecked: false, label: 'Fitness', description:"xxxxxxxxxx xxxxxxxx xxxxxx xxxxx "},
       ],
       injuryManagement: [
         { value: '1a', isChecked: false, description: 'Rounded shoulder and forward head', imgurl: 'https://muscularstrength.com/uploads/froala/18fc5d8c9a007cb8238d910aa106b91ad7e0066f.png'},
@@ -139,7 +139,7 @@ class Questionnaire extends Component {
         this.setState({ trainingGoals })
       }
     } else {
-      // alert('here we go');
+      alert('you can select maximum number of 2 program at a time');
     }
   }
   //Icrease the currentPage of state by 1
@@ -291,26 +291,20 @@ class Questionnaire extends Component {
         />
       );
     } else if(this.state.currentPage === 2){
-      console.log('fields:',fields.exercisePlace);
       let data;
       if(fields.exercisePlace ==='home'){
-        console.log("copying home");
         data = this.state.trainingGoalsForHome;
-        console.log(data);
       }else if(fields.exercisePlace ==='gym'){
-        console.log("copying gym");
         data= this.state.trainingGoals;
-        console.log("state", this.state)
-        console.log("Data:",data);
       }
       let tempData =fields.exercisePlace ==='home' ? this.state.trainingGoalsForHome : this.state.trainingGoals ;
-      console.log("Data:",data);
       RenderPage = (
         <Program
         daysArray = {daysArray}
         days= {fields.days_per_week}
         selectDays = {this.props.addDays}
-        change={this.programCheckboxHandler}
+        change = {this.programCheckboxHandler}
+        excercisePlace = {fields.exercisePlace}
         data = { data }
         />
       );
