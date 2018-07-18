@@ -8,15 +8,16 @@ import Logo from '../../Assets/Logo.png';
 class Launch extends Component {
 
   render() {
-    // document.body.style = 'background: #2E344C;';
+
     return (
-      <div className="launch">
+
+      <div className="launch-container">
          {/* logo block*/}
         <div className="logo-launch-position">
           <img src={Logo} className="logo"/>
         </div>
            {/* button block. */}
-        <div>
+        <div className='launch-button'>
           <WingBlank>
             <Link to='login'>
               <Button type="primary" style={{backgroundColor: '#4CA0CC'}}>Get Started</Button>
@@ -27,6 +28,7 @@ class Launch extends Component {
           Copyright @ 2018 Nepal
         </div>
       </div>
+
     );
   }
 }

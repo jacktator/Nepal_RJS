@@ -1,7 +1,7 @@
 //@flow
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import {InputItem, WingBlank,Button, NoticeBar } from 'antd-mobile';
+import {InputItem, WingBlank,Button, NoticeBar, List } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import './LoginDetails.css';
 import Logo from '../../Assets/LogoLighter.png';
@@ -58,40 +58,36 @@ class LoginDetails extends Component<Props, State> {
     console.log(email)
     console.log(password)
     console.log(token)
-    document.body.style = 'background: white';
     return (
-      <div className="login-details">
+      <div className="logindetails">
         {/* logo block*/}
-        <div className="logo-logindetails-position">
+        <div className="logindetails-logo-position">
           <img src={Logo} className="logo"/>
         </div>
         {/* input details block*/}
-        <div>
-          <InputItem
-            value={email}
-            type="text"
-            name="email"
-            onChange={(value)=>this.props.onChangeEmail(value)}
-            onExtraClick = {()=> console.log('onExtraClick')}
-            onErrorClick = {()=> console.log('onErrorClick')}
-          >
-          <div style={humeniconstyle} />
-          </InputItem>
-          <InputItem
-            value={password}
-            type="password"
-            name="password"
-            onChange={(value)=>this.props.onChangePassword(value)}
-          >
-          <div style={lockerstyle} />
-          </InputItem>
-        </div>
-      {/* submit button block*/}
-        <div>
+        <div className="logindetails-input-list">
+          <div>
+          <List>
+            <InputItem
+              value={email}
+              type="text"
+              name="email"
+              onChange={(value)=>this.props.onChangeEmail(value)}
+              onExtraClick = {()=> console.log('onExtraClick')}
+              onErrorClick = {()=> console.log('onErrorClick')}
+            >
+            </InputItem>
+            <InputItem
+              value={password}
+              type="password"
+              name="password"
+              onChange={(value)=>this.props.onChangePassword(value)}
+            >
+            </InputItem>
+          </List>
           <WingBlank>
             <Button
               type="primary"
-              className="login-button-style"
               onClick={()=>this.loadingButton()}
               loading={!this.state.loading}
             >
@@ -100,22 +96,23 @@ class LoginDetails extends Component<Props, State> {
           </WingBlank>
       {/* forgot password block*/}
         </div>
-        <div className="forgetpassword-style">
-          <Link to='/forgetpassword'>
+        <div className="logindetails-forgetpassword">
+          <Link to='/forgetpassword' style={{color: 'grey'}}>
             Forgot Password?
           </Link>
         </div>
     {/* no account block*/}
-        <div className="doyouhaveaccount-style" >
+        <div className="logindetails-doyouhaveaccount" style={{color: 'grey'}}>
           Do not have an Account?
         </div>
     {/* register button block*/}
-        <div>
+        <div className="logindetails-signup" >
           <WingBlank>
             <Link to='/signup' >
               <Button>Register</Button>
             </Link>
           </WingBlank>
+        </div>
         </div>
     </div>
     );

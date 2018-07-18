@@ -25,16 +25,21 @@ class Login extends Component {
     return(
           <div className="login">
             {/*Logo block*/}
-            <div className="logo-login-position">
+            <div className="login-logo-position">
               <img src={Logo} className="logo"/>
             </div>
-            <div>
+            <div className="login-register-button">
               <WingBlank>
-                {/*button blocks*/}
-                <div className="register-button"><Link to='signup' ><Button>Register</Button></Link></div>
-                <div className="login-button"><Link to='/login/logindetails'><Button type="primary">Login</Button></Link></div>
-                <p style={{color: '#bbb', textAlign: 'center'}}>Copyright @ 2018 Nepal</p>
+                <Link to='signup' ><Button>Register</Button></Link>
               </WingBlank>
+            </div>
+            <div className="login-login-button">
+              <WingBlank>
+                <Link to='/login/logindetails'><Button type="primary">Login</Button></Link>
+              </WingBlank>
+            </div>
+            <div className="login-copyright">
+              <p>Copyright @ 2018 Nepal</p>
             </div>
           </div>
     );
