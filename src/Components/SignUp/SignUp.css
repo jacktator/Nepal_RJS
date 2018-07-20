@@ -6,21 +6,16 @@
 
 .signup-logo-position  {
   text-align: center;
-  position: fixed;
+  position: absolute;
   width:100%;
   top: 10vh;
 }
 
-.logo {
-  height: 170px;
-  width: 160px;
-}
-
 .signup-input{
   text-align: center;
-  position: fixed;
+  position: absolute;
   width:100%;
-  bottom: 15vh;
+  bottom: 8vh;
 }
 .signup-button{
   padding-top: 15px;

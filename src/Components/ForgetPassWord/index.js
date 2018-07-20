@@ -8,12 +8,6 @@ import './ForgetPassWord.css';
 //import LogoLocation from '../LogoLocation';
 import Locker from '../../Assets/Locker.png';
 
-var logoStyle = {
-  height: 170,
-  width: 160,
-  justifyContent: 'center',
-  alignItems: 'center',
-};
 
 var humeniconstyle={
   backgroundImage: 'url(https://png.icons8.com/ios/50/000000/gender-neutral-user.png)',
@@ -33,21 +27,16 @@ class ForgetPassWord extends Component<Props> {
   render() {
     const {email}=this.props
     return (
-      <div className="screen-forgetpassword-style">
+      <div className="screen-forgetpassword-container">
         <div className="logo-forgetpassword-position">
-          <WingBlank>
-            <Flex align="baseline">
-              <Flex.Item ></Flex.Item>
-              <img src={Locker}  style={logoStyle} alt="this is a logo"/>
-              <Flex.Item ></Flex.Item>
-            </Flex>
-          </WingBlank>
+              <img src={Locker} className="logo-lock-forgetpassword" alt="this is a logo"/>
         </div>
-        <div style={{textAlign: 'center', color: '#61ABE1'}}>
-          <p>Do not worry,</p>
-          <p>We just need your register email</p>
-          <p>address to send you password reset.</p>
+        <div className="text-forgetpassword-position">
+          <p>{"Don't worry, please enter"}</p>
+          <p>your email address and we will</p>
+          <p>send you a link to reset it.</p>
         </div>
+      <div className="email-block">
         <div>
           <List renderHeader={() => ''}>
             <InputItem
@@ -58,21 +47,24 @@ class ForgetPassWord extends Component<Props> {
             </InputItem>
           </List>
         </div>
-        <WhiteSpace /><WhiteSpace /><WhiteSpace />
-        <div className="forgetpassword-reset-password-style">
+        <WhiteSpace size="xl"/>
+        <div>
           <WingBlank>
             <Button type="primary" onClick={()=>this.props.onClickButton(email)}>Reset Password</Button>
           </WingBlank>
         </div>
+        <WhiteSpace size="xl"/>
         <div className="forgetpassword-doyouhaveaccount-style">
           Do not have account?
         </div>
+        <WhiteSpace size="xl"/>
         <div>
           <WingBlank>
             <Link to='/signup' >
               <Button>Register</Button>
             </Link>
           </WingBlank>
+        </div>
         </div>
       </div>
     );

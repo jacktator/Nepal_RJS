@@ -62,7 +62,7 @@ class LoginDetails extends Component<Props, State> {
       <div className="logindetails">
         {/* logo block*/}
         <div className="logindetails-logo-position">
-          <img src={Logo} className="logo" alt="logo"/>
+          <img src={Logo} className="logo"/>
         </div>
         {/* input details block*/}
         <div className="logindetails-input-list">
