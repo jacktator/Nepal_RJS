@@ -11,13 +11,13 @@
 
 .login-logo-position{
   text-align: center;
-  position:fixed;
+  position:absolute;
   top: 18vh;
   width: 100%;
 }
 
 .login-register-button{
-  position: fixed;
+  position: absolute;
   bottom: 8vh;
   width: 100%;
 }

@@ -6,8 +6,7 @@
 
 .logo-launch-position  {
   text-align: center;
-  position: fixed;
-  left: 0;
+  position: absolute;
   top: 18vh;
   width: 100%;
 }
@@ -23,7 +22,7 @@
 }
 
 .launch-button {
-  position: fixed;
+  position:absolute;
   bottom: 10vh;
   width: 100%;
 }
