@@ -16,6 +16,7 @@ const Detail = (props) => {
         <InputItem
           type="text"
           placeholder="Please enter your name"
+          required
           onChange={(v) => props.nameHandler(v)}
           value={props.name}
         >Name</InputItem>
