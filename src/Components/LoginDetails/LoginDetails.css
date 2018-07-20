@@ -6,7 +6,7 @@
 
 .logindetails-logo-position  {
   text-align: center;
-  position:fixed;
+  position:absolute;
   width: 100%;
   top: 10vh;
 }
@@ -20,7 +20,7 @@
 
 .logindetails-input-list{
   text-align: center;
-  position:fixed;
+  position:absolute;
   width: 100%;
   bottom: 8vh;
 }
