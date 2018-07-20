@@ -22,7 +22,8 @@ let DefaultState = {
   error: {
     hasError: false,
     message: ''
-  }
+  },
+  success: false,
 }
 
 const QuestionnaireReducers =(state: Object= DefaultState, action: Function) => {
@@ -151,13 +152,35 @@ const QuestionnaireReducers =(state: Object= DefaultState, action: Function) => 
         ...state, error
       }
 
-    case QUESTIONNAIRE:
+    case "QUESTIONNAIRE":
     const data = action.state;
     return {
       data
     }
+
+    case "ADD_ERROR":
+      error = {...state.error};
+      error['hasError']= true;
+      error['message'] = action.payload;
+      return {
+        ...state, error
+      }
+
+    case "REMOVE_ERROR":
+      error = {...state.error};
+      error['hasError']= false;
+      error['message'] = action.payload;
+      return {
+        ...state, error
+      }
+
+      case "SUCESSFULLY_UPLOAD":
+      let success = action.payload;
+      return {
+        ...state, success
+      }
     default:
-    return state;
+      return state;
   }
 }
 export default QuestionnaireReducers;

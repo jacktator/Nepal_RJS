@@ -4,17 +4,13 @@ import { Progress, Button} from 'antd-mobile';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Redirect} from 'react-router';
-import Modal from '../../Components/UI/Modal';
-import RehabModal from '../../Components/Questionnaire/Popup/RehabModal';
-
 import { addName, addAge, addGender, addWeight, addExercisePlace,
   addDays, addGoals,
   addRehabFocus, addStress,
   addProductivity, addProductiveAfterExercise,
   addWorkInjury, addHealthFeeling,
   addDailyActivity, addCurrentActivity,
-  stepOne, stepTwo, stepThree, stepFour, stepFive, stepSix,
-  addQuestionnaire
+  addQuestionnaire, addError, removeError, success
 }from './actions';
 
 import CurrentStep  from '../../Components/Questionnaire/Progress';
@@ -25,6 +21,10 @@ import InjuryManagement from '../../Components/Questionnaire/InjuryManagement';
 import StepFour from '../../Components/Questionnaire/StepFour';
 import StepFive from '../../Components/Questionnaire/StepFive';
 import StepSix from '../../Components/Questionnaire/StepSix';
+import Modal from '../../Components/UI/Modal';
+import RehabModal from '../../Components/Questionnaire/Popup/RehabModal';
+import ShowError from '../../Components/Error/ShowError';
+
 
 import './Questionnaire.css';
 
@@ -158,16 +158,16 @@ class Questionnaire extends Component {
         let {nick_name} = this.props.QuestionnaireReducers
         let {age, gender, weight, exercisePlace} = this.props.QuestionnaireReducers.fields;
         if(age === "" || gender === "" || weight === "" || nick_name === "" || exercisePlace === ""){
-          alert("please insert all the data to proceed to next step");
+          this.props.addError("please insert all the data to proceed to next step");
           return;
         }
         // this.props.stepOne(nick_name, age, gender, weight, exercisePlace);
         this.increaseCurrentPage(currentPage);
 
       }else if(currentPage === 2) {
-        let {days_per_week, goals} = this.props.QuestionnaireReducers.fields;
+        let {goals} = this.props.QuestionnaireReducers.fields;
         if(goals.length===0){
-          alert("please insert all the data to proceed to next step");
+          this.props.addError("please insert all the data to proceed to next step");
           return;
         }
         // this.props.stepTwo(days_per_week, goals);
@@ -176,7 +176,7 @@ class Questionnaire extends Component {
       }else if(currentPage === 3) {
         let {rehab_focus} = this.props.QuestionnaireReducers.fields;
         if( rehab_focus.length === 0){
-          alert("Please insert all the data to proceed to next step");
+          this.props.addError("Please insert all the data to proceed to next step");
           return;
         }
         // this.props.stepThree(rehab_focus);
@@ -185,7 +185,7 @@ class Questionnaire extends Component {
       }else if(currentPage ===  4) {
         let {stress, productivity} = this.props.QuestionnaireReducers.fields;
         if( stress === "" || productivity === ""){
-          alert("Please insert all the data to proceed to next step");
+          this.props.addError("Please select answer all the question to proceed to next step");
           return;
         }
 
@@ -195,7 +195,7 @@ class Questionnaire extends Component {
       }else if(currentPage === 5) {
         let {work_injury, health_feeling} = this.props.QuestionnaireReducers.fields;
         if( work_injury === "" || health_feeling === ""){
-          alert("Please insert all the data to proceed to next step");
+          this.props.addError("Please select answer all the question to proceed to next step");
           return;
         }
         // this.props.stepFive(work_injury, health_feeling);
@@ -204,7 +204,7 @@ class Questionnaire extends Component {
       }else if(currentPage === 6) {
         let {current_activity, daily_activity} = this.props.QuestionnaireReducers.fields;
         if( current_activity === "" || daily_activity === "" ){
-          alert("Please insert all the data to proceed to next step");
+          this.props.addError("Please select answer all the question to proceed to next step");
           return;
         }
         // this.props.stepSix(current_activity, daily_activity);
@@ -222,7 +222,9 @@ class Questionnaire extends Component {
   cancelModalHandler = () => {
     this.setState({ modal: false })
   }
-
+  cancelErrorMessageHandler = () => {
+    this.props.removeError();
+  }
   render() {
     const {nick_name, fields} = this.props.QuestionnaireReducers;
     const percent  = (this.state.currentPage-1)*15;
@@ -371,16 +373,26 @@ class Questionnaire extends Component {
             />
           </Modal>
       )}
-      {(this.state.isFinish) && (
-        <Redirect to='/login' />
+      {(this.props.QuestionnaireReducers.success) && (
+        <Redirect to='/login/' />
+      )}
+      {(this.props.QuestionnaireReducers.error.hasError === true) && (
+        <Modal modalFor = "showError">
+          <ShowError
+            error= {this.props.QuestionnaireReducers.error.message}
+            cancel = {this.cancelErrorMessageHandler}
+          />
+        </Modal>
       )}
       </div>
     )
   }
 }
 function mapStateToProps(state){
+  console.log(state.ErrorHandler);
+  console.log(state.QuestionnaireReducers)
   return {
-    QuestionnaireReducers: state.QuestionnaireReducers
+    QuestionnaireReducers: state.QuestionnaireReducers,
   }
 }
 function matchDispatchToProps(dispatch){
@@ -391,8 +403,8 @@ function matchDispatchToProps(dispatch){
     addProductivity, addProductiveAfterExercise,
     addWorkInjury, addHealthFeeling,
     addDailyActivity, addCurrentActivity,
-    stepOne, stepTwo, stepThree, stepFour, stepFive, stepSix,
-    addQuestionnaire
+    addQuestionnaire,
+    addError, removeError, success
   }, dispatch
 );
 }

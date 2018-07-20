@@ -12,10 +12,10 @@ const showAlert = (data, props) => {
   ]);
 }
 
-const display = (data, props) => {
+const display = (data, key, props) => {
   if(data.usedFor === props.excercisePlace || data.usedFor === 'both' ){
     return (
-      <CheckboxItem checked={data.isChecked} onChange={() => props.change(data.value)}>
+      <CheckboxItem key={key} checked={data.isChecked} onChange={() => props.change(data.value)}>
         <div onClick= {() => showAlert(data, props)}>
           <strong>{data.label}</strong>
         </div>
@@ -52,7 +52,7 @@ const Program = (props) => {
       Traning Goals:
     </span>
     {props.data.map((i,key) => (
-        display(i, props)
+        display(i, key, props)
     ))}
     </div>
     </div>

@@ -18,10 +18,10 @@ export function stepOne(nick_name: string, age: number, gender: string, weight: 
     let id = response.data.id;
     let fields = response.data.acf;
     window.localStorage.setItem('questionnaire_id',id)
-      dispatch(setError(''));
+      dispatch(addError(''));
     dispatch(getDataFromServer(fields));
   }).catch((error) => {
-    dispatch(setError('unable to uplaod to server'));
+    dispatch(addError('unable to uplaod to server'));
     console.log("Error",error)
   })
 }
@@ -42,10 +42,10 @@ export function stepTwo(days_per_week: number, goals: Object) {
   ).then((response) => {
       console.log("Response",response)
       let fields = response.data.acf;
-      dispatch(setError(''));
+      dispatch(removeError());
       dispatch(getDataFromServer(fields));
     }).catch((error) => {
-      dispatch(setError('unable to uplaod to server'));
+      dispatch(addError('unable to uplaod to server'));
       console.log("Error",error)
     })
   }
@@ -65,10 +65,10 @@ export function stepThree(rehab_focus: Object) {
   ).then((response) => {
     console.log("Response",response)
     let fields = response.data.acf;
-    dispatch(setError(''));
+    dispatch(removeError(''));
     dispatch(getDataFromServer(fields));
   }).catch((error) => {
-    dispatch(setError('unable to uplaod to server'));
+    dispatch(addError('unable to uplaod to server'));
     console.log("Error",error)
   })
 }
@@ -88,10 +88,10 @@ export function stepFour(stress, productivity) {
   ).then((response) => {
     console.log("Response",response)
     let fields = response.data.acf;
-    dispatch(setError(''));
+    dispatch(removeError());
     dispatch(getDataFromServer(fields));
   }).catch((error) => {
-    dispatch(setError('unable to uplaod to server'));
+    dispatch(addError('unable to uplaod to server'));
     console.log("Error",error)
   })
 }
@@ -111,10 +111,10 @@ export function stepFive(work_injury, health_feeling) {
   ).then((response) => {
     console.log("Response",response)
     let fields = response.data.acf;
-    dispatch(setError(''));
+    dispatch(removeError());
     dispatch(getDataFromServer(fields));
   }).catch((error) => {
-    dispatch(setError('unable to uplaod to server'));
+    dispatch(addError('unable to uplaod to server'));
     console.log("Error",error)
   })
 }
@@ -155,9 +155,20 @@ export function addQuestionnaire(state) {
     }
   ).then((response) => {
     console.log("Response",response)
-    // dispatch(questionnaire(state));
+    dispatch(success(true));
+    setTimeout(function(){
+          console.log("set to false")
+          dispatch(success(false));
+      }.bind(this),700);
+    //dispatch(questionnaire(state));
   }).catch((error) => {
-    console.log("Error",error)
+    if(error.response){
+      dispatch(addError(error.response.data.message));
+      console.log(error.response.data.message)
+    }else{
+      dispatch(addError("Network Connection Error. Please check your network connection"))
+      console.log("Unable to connect with server")
+    }
   })
 }
 }
@@ -270,10 +281,23 @@ export function getDataFromServer(data) {
   }
   return action;
 }
-export function setError(errorMessage) {
-  const action = {
-    type: "SET_ERROR",
+
+export function addError (errorMessage: string) {
+  return {
+    type: "ADD_ERROR",
     payload: errorMessage
   }
-  return action;
+}
+export function removeError () {
+  return {
+    type: "REMOVE_ERROR",
+    payload: null
+  }
+}
+
+export function success (success: boolean) {
+  return {
+    type: "SUCESSFULLY_UPLOAD",
+    payload: success
+  }
 }

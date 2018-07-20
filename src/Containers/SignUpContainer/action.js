@@ -22,7 +22,6 @@ export function SignUpActions(username, email, password){
     })
   };
 }
-
 export function addUsername(username){
   return {
     type:"ADD_USERNAME",
