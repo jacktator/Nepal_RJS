@@ -26,7 +26,7 @@ class Login extends Component {
           <div className="login">
             {/*Logo block*/}
             <div className="login-logo-position">
-              <img src={Logo} className="logo" alt="logo"/>
+              <img src={Logo} className="logo"/>
             </div>
             <div className="login-register-button">
               <WingBlank>

@@ -21,7 +21,7 @@ buttonClickHandler = () => {
       <div className="launch-container">
          {/* logo block*/}
         <div className="logo-launch-position">
-          <img src={Logo} className="logo" alt="logo"/>
+          <img src={Logo} className="logo"/>
         </div>
            {/* button block. */}
         <div className='launch-button'>
