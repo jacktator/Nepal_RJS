@@ -36,14 +36,14 @@ const QuestionnaireReducers =(state: Object= DefaultState, action: Function) => 
 
     case "ADD_AGE":
     fields = {...state.fields};
-    fields['age']= action.payload
+    fields['age']= action.payload;
     return {
       ...state, fields: fields
     }
 
     case "ADD_GENDER":
     fields = {...state.fields};
-    fields['gender']= action.payload
+    fields['gender']= action.payload;
     return {
       ...state, fields
     }

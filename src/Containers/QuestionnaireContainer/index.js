@@ -64,7 +64,6 @@ class Questionnaire extends Component {
   }//constructor ends
 
   componentWillMount() {
-    alert("component did mount");
     const {goals, rehab_focus} = this.props.QuestionnaireReducers.fields;
     let trainingGoals = [ ...this.state.trainingGoals ];
     let injuryManagement = [ ...this.state.injuryManagement ];
@@ -83,23 +82,23 @@ class Questionnaire extends Component {
       }
       return null;
     })
-    this.setState({ trainingGoals, injuryManagement, isFinish:false })
+    this.setState({ trainingGoals, injuryManagement})
   }
 
   //handle the checkbox for injury management in questionnaire (third page)
   rehabFocusCheckboxHandler = (value) => {
+    this.cancelModalHandler();
     let injury_posture = [ ...this.state.injuryManagement]
     let { rehab_focus } = this.props.QuestionnaireReducers.fields;
-    console.log(rehab_focus)
+
     if(!rehab_focus){
       rehab_focus = [];
     }
     //let injuryManagement = [ ...this.state.injuryManagement];
-
     let count = rehab_focus.length;
     let index = injury_posture.findIndex(i => {return i.value === value});
     //close the modal
-    this.cancelModalHandler();
+
     if(count < 2 || injury_posture[index].isChecked){
       injury_posture[index].isChecked = !injury_posture[index].isChecked;
       if(rehab_focus.includes(value)){

@@ -144,7 +144,7 @@ export function stepSix(current_activity, daily_activity) {
 export function addQuestionnaire(state) {
   let token = localStorage.getItem('token');
   return(dispatch: Function) => {
-    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/",
+    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/6764",
     {
       title: "Questionnaire",
       fields: state.fields
