@@ -48,7 +48,7 @@ const CurrentStep = (props) => {
         <Steps direction="horizontal">
           <Step status="error" title="Step 1" icon={processIcon()} />
           <Step title="Step 2" icon={waitingIcon()} />
-          <Step title="Step 6" icon={waitingIcon()} />
+          <Step title="Step 7" icon={waitingIcon()} />
         </Steps>
       </div>
     )
@@ -59,7 +59,7 @@ const CurrentStep = (props) => {
         <Steps direction="horizontal">
           <Step status="finish" title="Step 1" icon={completeIcon()} />
           <Step status="error" title="Step 2" icon={processIcon()} />
-          <Step  title="Step 6" icon={waitingIcon()} />
+          <Step  title="Step 7" icon={waitingIcon()} />
         </Steps>
       </div>
     )
@@ -70,7 +70,7 @@ const CurrentStep = (props) => {
         <Steps direction="horizontal">
           <Step status="completed" title="Step 2" icon={completeIcon()} />
           <Step status="error" title="Step 3" icon={processIcon()} />
-          <Step  title="Step 6" icon={waitingIcon()} />
+          <Step  title="Step 7" icon={waitingIcon()} />
         </Steps>
       </div>
     )
@@ -80,7 +80,7 @@ const CurrentStep = (props) => {
         <Steps direction="horizontal">
           <Step status="completed" title="Step 3" icon={completeIcon()} />
           <Step status="error" title="Step 4" icon={processIcon()} />
-          <Step  title="Step 6" icon={waitingIcon()} />
+          <Step  title="Step 7" icon={waitingIcon()} />
         </Steps>
       </div>
     )
@@ -90,7 +90,7 @@ const CurrentStep = (props) => {
         <Steps direction="horizontal">
           <Step status="completed" title="Step 4" icon={completeIcon()} />
           <Step status="error" title="Step 5" icon={processIcon()} />
-          <Step title="Step 6" icon={waitingIcon()} />
+          <Step title="Step 7" icon={waitingIcon()} />
         </Steps>
       </div>
     )
@@ -98,9 +98,19 @@ const CurrentStep = (props) => {
     RenderSteps =(
       <div>
         <Steps direction="horizontal">
-          <Step status="completed" title="Step 4" icon={completeIcon()} />
           <Step status="completed" title="Step 5" icon={completeIcon()} />
           <Step status="error" title="Step 6" icon={processIcon()} />
+          <Step title="Step 7" icon={waitingIcon()} />
+        </Steps>
+      </div>
+    )
+  }if( props.currentPage === 7){
+    RenderSteps =(
+      <div>
+        <Steps direction="horizontal">
+          <Step status="completed" title="Step 4" icon={completeIcon()} />
+          <Step status="completed" title="Step 5" icon={completeIcon()} />
+          <Step status="error" title="Step 7" icon={processIcon()} />
         </Steps>
       </div>
     )

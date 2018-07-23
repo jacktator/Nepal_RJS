@@ -1,13 +1,14 @@
 import React from 'react';
-import {NoticeBar} from 'antd-mobile'
-import Hoc from '../../HOC/Hoc.js';
+import {NoticeBar} from 'antd-mobile';
+import './Questionnaire.css';
 const ShowNoticeBar = (props) => {
   return(
-    <div style={{textAlign: "center", fontWeight:"bold"}}>
-      <NoticeBar icon={null} >
+    <NoticeBar icon={null} >
+      <div className="noticebar">
         The following information is anonymous
-      </NoticeBar>
-    </div>
+      </div>
+    </NoticeBar>
+
   )
 }
 export default ShowNoticeBar;

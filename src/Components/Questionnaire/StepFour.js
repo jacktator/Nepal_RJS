@@ -1,15 +1,14 @@
 import React from 'react';
-import { List, Radio, NoticeBar, Modal, Checkbox} from 'antd-mobile';
+import {Modal, Checkbox} from 'antd-mobile';
 import ShowNoticeBar from './NoticeBar';
 import './Questionnaire.css';
-const RadioItem = Radio.RadioItem;
 const CheckboxItem = Checkbox.CheckboxItem;
 const alert = Modal.alert;
 
-const showAlert = (i, handler) => {
+const showAlert = (i, props) => {
   alert(i.label, i.description, [
     { text: 'Go back', style: 'default' },
-    { text: 'Select', onPress: () => handler(i.value) },
+    { text: 'Select', onPress: () => props(i.value) },
   ]);
 }
 
@@ -21,27 +20,21 @@ const StepFour = (props) => {
         <div className="listHeader">
             How often do you feel stressed at work?
         </div>
-        <List>
         {props.stressArray.map((i,key) => (
-            <CheckboxItem key={key} checked={props.fields.stress === i.value} onChange={() => props.selectStress(i.value)}>
+            <CheckboxItem key={key} checked={props.fields.stress === i.value} onChange= {() => props.selectStress(i.value)}>
               <div onClick= {() => showAlert(i, props.selectStress)}>
                 {i.label}
               </div>
             </CheckboxItem>
         ))}
-      </List>
         <div className="listHeader"> In the last 4 weeks, I have felt productive...</div>
-        <List>
         {props.productivityArray.map((i,key) => (
           <CheckboxItem key={key} checked={props.fields.productivity === i.value} onChange= {() => props.selectProductivity(i.value)}>
             <div onClick= {() => showAlert(i, props.selectProductivity)}>
               {i.label}
             </div>
           </CheckboxItem>
-
         ))}
-      </List>
-
       </div>
 
   )

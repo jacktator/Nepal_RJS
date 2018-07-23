@@ -1,6 +1,4 @@
 // @flow
-import { QUESTIONNAIRE } from '../../constants';
-
 let DefaultState = {
   nick_name: "Laxman",
   fields: {

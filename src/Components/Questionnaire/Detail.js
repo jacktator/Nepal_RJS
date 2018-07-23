@@ -8,6 +8,8 @@ const RadioItem = Radio.RadioItem;
 const Detail = (props) => {
   const gender = props.fields.gender;
   const weight = [];
+  const age = [];
+  age.push(parseInt(props.fields.age,10));
   weight.push(parseInt(props.fields.weight,10));
   return(
     <div>
@@ -19,13 +21,17 @@ const Detail = (props) => {
           onChange={(v) => props.nameHandler(v)}
           value={props.name}
         >Name</InputItem>
-
-        <InputItem
-          type="number"
-          placeholder="Please enter your age"
-          onChange={(v) => props.ageHandler(v)}
-          value={props.fields.age}
-        >Age</InputItem>
+        <div className="age-picker-pull-right">
+          <Picker
+            data={props.ageArray}
+            locale={enUs}
+            cols={1}
+            value={[age[0]]}
+            onOk={v => props.selectAge(v)}
+            >
+            <List.Item arrow="horizontal">Age:</List.Item>
+          </Picker>
+        </div>
 
         <div className="listHeader">Gender:</div>
         <List>
@@ -45,9 +51,6 @@ const Detail = (props) => {
           >
           <List.Item arrow="horizontal">Current Body Weight:</List.Item>
         </Picker>
-
-
-
 
     </div>
   )

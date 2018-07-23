@@ -1,8 +1,7 @@
 import React from 'react';
-import { List, Radio, NoticeBar, Modal, Checkbox} from 'antd-mobile';
+import { Modal, Checkbox} from 'antd-mobile';
 import ShowNoticeBar from './NoticeBar';
 import './Questionnaire.css';
-const RadioItem = Radio.RadioItem;
 const CheckboxItem = Checkbox.CheckboxItem;
 const alert = Modal.alert;
 const showAlert = (i, props) => {
@@ -17,32 +16,25 @@ const StepSix = (props) => {
       <ShowNoticeBar />
       <h2 style={{textAlign: 'center'}}>General Activity and Exercise Level</h2>
       <div className="listHeader"> How active are you on a daily basis?</div>
-      <List>
-      {props.activityArray.map((i,key) => (
-        <div key={key} onClick= {() => showAlert(i, props.selectActivity)}>
-          <CheckboxItem
-            checked={props.fields.daily_activity === i.value}
-            >
-            {i.label}
-          </CheckboxItem>
-        </div>
-      ))}
-    </List>
-    <div className="listHeader">How many days per week do you currently exercise?</div>
-    <List>
-    {props.exerciseArray.map((i,key) => (
-      <div key={key} onClick= {() => showAlert(i, props.selectExercise)}>
-        <CheckboxItem
-          checked={props.fields.current_activity === i.value}
-          >
-            {i.label}
-        </CheckboxItem>
-      </div>
-    ))}
-  </List>
-    </div>
-  )
 
+      {props.activityArray.map((i,key) => (
+        <CheckboxItem key={key} checked={props.fields.daily_activity === i.value} onChange={() => props.selectActivity(i.value)}>
+          <span onClick= {() => showAlert(i, props.selectActivity)}>
+          {i.label}
+          </span>
+        </CheckboxItem>
+      ))}
+    <div className="listHeader">How many days per week do you currently exercise?</div>
+
+    {props.exerciseArray.map((i,key) => (
+      <CheckboxItem key={key} checked={props.fields.current_activity === i.value} onChange={() => props.selectExercise(i.value)}>
+        <div onClick= {() => showAlert(i, props.selectExercise)}>
+          {i.label}
+        </div>
+      </CheckboxItem>
+    ))}
+  </div>
+  )
 }
 
 export default StepSix;

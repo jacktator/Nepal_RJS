@@ -1,14 +1,14 @@
 import React from 'react';
-import { List, Radio, NoticeBar, Modal, Checkbox} from 'antd-mobile';
+import { Modal, Checkbox} from 'antd-mobile';
 import ShowNoticeBar from './NoticeBar';
 import './Questionnaire.css';
-const RadioItem = Radio.RadioItem;const alert = Modal.alert;
 const CheckboxItem = Checkbox.CheckboxItem;
+const alert = Modal.alert;
 
-const showAlert = (i, props) => {
+const showAlert = (i, handler) => {
   alert(i.label, i.description, [
     { text: 'Go back', style: 'default' },
-    { text: 'Select', onPress: () => props(i.value) },
+    { text: 'Select', onPress: () => handler(i.value) },
   ]);
 }
 const StepFive = (props) => {
@@ -18,31 +18,22 @@ const StepFive = (props) => {
       <ShowNoticeBar />
       <h3 style={{textAlign: 'center'}}>Health and Wellbeing</h3>
       <div className="listHeader"> Do you experience injury or posture related pain at work? </div>
-      <List>
       {props.injuryArray.map((i,key) => (
-        <div key={key} onClick= {() => showAlert(i, props.selectInjury)}>
-          <CheckboxItem
-            checked={props.fields.work_injury === i.value}
-          >
+        <CheckboxItem key={key} checked={props.fields.work_injury === i.value} onChange={() => props.selectInjury(i.value)}>
+          <div onClick= {() => showAlert(i, props.selectInjury)}>
               {i.label}
-          </CheckboxItem>
-        </div>
+          </div>
+        </CheckboxItem>
       ))}
-    </List>
     <div className="listHeader"> How do you feel your health and wellbeing is right now? </div>
-    <List>
       {props.healthArray.map((i,key) => (
-        <div key={key} onClick= {() => showAlert(i, props.selectHealth)}>
-          <CheckboxItem
-            checked={props.fields.health_feeling === i.value}
-          >
+        <CheckboxItem  key={key} checked={props.fields.health_feeling === i.value} onChange={() => props.selectHealth(i.value)}>
+          <div onClick= {() => showAlert(i, props.selectHealth)}>
             {i.label}
-          </CheckboxItem>
-        </div>
+          </div>
+        </CheckboxItem>
         ))}
-      </List>
     </div>
-
   )
 
 }

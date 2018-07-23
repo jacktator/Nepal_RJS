@@ -40,7 +40,7 @@ export function addName (nick_name: string) {
 export function addAge (age: number) {
   return {
     type: "ADD_AGE",
-    payload: age
+    payload: age.toString()
   }
 }
 export function addGender (gender: string) {

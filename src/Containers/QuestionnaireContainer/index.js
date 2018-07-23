@@ -282,64 +282,48 @@ class Questionnaire extends Component {
     const daysArray= [
       {value: 3, label: '3'},{value: 4, label: '4'},{value: 5, label: '5'},
     ];
+    const ageArray = [
+      {value: 20, label: '20 KG'},{value: 21, label: '21 KG'},{value: 22, label: '22 KG'},{value: 23, label: '23 KG'},{value: 24, label: '24 KG'},{value: 25, label: '25 KG'},{value: 26, label: '26 KG'},{value: 27, label: '27 KG'},{value: 28, label: '28 KG'},{value: 29, label: '29 KG'},
+      {value: 30, label: '30 KG'},{value: 31, label: '31 KG'},{value: 32, label: '32 KG'},{value: 33, label: '33 KG'},{value: 34, label: '34 KG'},{value: 35, label: '35 KG'},{value: 36, label: '36 KG'},{value: 37, label: '37 KG'},{value: 38, label: '38 KG'},{value: 39, label: '39 KG'},
+      {value: 40, label: '40 KG'},{value: 41, label: '41 KG'},{value: 42, label: '42 KG'},{value: 43, label: '43 KG'},{value: 44, label: '44 KG'},{value: 45, label: '45 KG'},{value: 46, label: '46 KG'},{value: 47, label: '47 KG'},{value: 48, label: '48 KG'},{value: 49, label: '49 KG'},
+      {value: 50, label: '50 KG'},{value: 51, label: '51 KG'},{value: 52, label: '52 KG'},{value: 53, label: '53 KG'},{value: 54, label: '54 KG'},{value: 55, label: '55 KG'},{value: 56, label: '56 KG'},{value: 57, label: '57 KG'},{value: 58, label: '58 KG'},{value: 59, label: '59 KG'},
+      {value: 60, label: '60 KG'},{value: 61, label: '61 KG'},{value: 62, label: '62 KG'},{value: 63, label: '63 KG'},{value: 64, label: '64 KG'},{value: 65, label: '65 KG'},{value: 66, label: '66 KG'},{value: 67, label: '67 KG'},{value: 68, label: '68 KG'},{value: 69, label: '69 KG'},
+      {value: 70, label: '70 KG'},{value: 71, label: '71 KG'},{value: 72, label: '72 KG'},{value: 73, label: '73 KG'},{value: 74, label: '74 KG'},{value: 75, label: '75 KG'},{value: 76, label: '76 KG'},{value: 77, label: '77 KG'},{value: 78, label: '78 KG'},{value: 79, label: '79 KG'},
+      {value: 80, label: '80 KG'},{value: 81, label: '81 KG'},{value: 82, label: '82 KG'},{value: 83, label: '83 KG'},{value: 84, label: '84 KG'},{value: 85, label: '85 KG'},{value: 86, label: '86 KG'},{value: 87, label: '87 KG'},{value: 88, label: '88 KG'},{value: 89, label: '89 KG'},
+      {value: 90, label: '90 KG'},{value: 91, label: '91 KG'},{value: 92, label: '92 KG'},{value: 93, label: '93 KG'},{value: 94, label: '94 KG'},{value: 95, label: '95 KG'},{value: 96, label: '96 KG'},{value: 97, label: '97 KG'},{value: 98, label: '98 KG'},{value: 99, label: '99 KG'},
+      {value: 100, label: '100 KG'},{value: 101, label: '101 KG'},{value: 102, label: '102 KG'},{value: 103, label: '103 KG'},{value: 104, label: '104 KG'},{value: 105, label: '105 KG'},{value: 106, label: '106 KG'},{value: 107, label: '107 KG'},{value: 108, label: '108 KG'},{value: 109, label: '109 KG'},
+      {value: 110, label: '110 KG'},{value: 111, label: '111 KG'},{value: 112, label: '112 KG'},{value: 113, label: '113 KG'},{value: 114, label: '114 KG'},{value: 115, label: '115 KG'},{value: 116, label: '116 KG'},{value: 117, label: '117 KG'},{value: 118, label: '118 KG'},{value: 119, label: '119 KG'},
+      {value: 120, label: '120 KG'}
+    ]
     const weightArray= [
-        {value: 20, label: '20 KG'},{value: 21, label: '21 KG'},{value: 22, label: '22 KG'},{value: 23, label: '23 KG'},{value: 24, label: '24 KG'},
-        {value: 25, label: '25 KG'},{value: 26, label: '26 KG'},{value: 27, label: '27 KG'},{value: 28, label: '28 KG'},{value: 29, label: '29 KG'},
-        {value: 30, label: '30 KG'},{value: 31, label: '31 KG'},{value: 32, label: '32 KG'},{value: 33, label: '33 KG'},{value: 34, label: '34 KG'},
-        {value: 35, label: '35 KG'},{value: 36, label: '36 KG'},{value: 37, label: '37 KG'},{value: 38, label: '38 KG'},{value: 39, label: '39 KG'},
-        {value: 40, label: '40 KG'},{value: 41, label: '41 KG'},{value: 42, label: '42 KG'},{value: 43, label: '43 KG'},{value: 44, label: '44 KG'},
-        {value: 45, label: '45 KG'},{value: 46, label: '46 KG'},{value: 47, label: '47 KG'},{value: 48, label: '48 KG'},{value: 49, label: '49 KG'},
-        {value: 50, label: '50 KG'},{value: 51, label: '51 KG'},{value: 52, label: '52 KG'},{value: 53, label: '53 KG'},{value: 54, label: '54 KG'},
-        {value: 55, label: '55 KG'},{value: 56, label: '56 KG'},{value: 57, label: '57 KG'},{value: 58, label: '58 KG'},{value: 59, label: '59 KG'},
-        {value: 60, label: '60 KG'},{value: 61, label: '61 KG'},{value: 62, label: '62 KG'},{value: 63, label: '63 KG'},{value: 64, label: '64 KG'},
-        {value: 65, label: '65 KG'},{value: 66, label: '66 KG'},{value: 67, label: '67 KG'},{value: 68, label: '68 KG'},{value: 69, label: '69 KG'},
-        {value: 70, label: '70 KG'},{value: 71, label: '71 KG'},{value: 72, label: '72 KG'},{value: 73, label: '73 KG'},{value: 74, label: '74 KG'},
-        {value: 75, label: '75 KG'},{value: 76, label: '76 KG'},{value: 77, label: '77 KG'},{value: 78, label: '78 KG'},{value: 79, label: '79 KG'},
-        {value: 80, label: '80 KG'},{value: 81, label: '81 KG'},{value: 82, label: '82 KG'},{value: 83, label: '83 KG'},{value: 84, label: '84 KG'},
-        {value: 85, label: '85 KG'},{value: 86, label: '86 KG'},{value: 87, label: '87 KG'},{value: 88, label: '88 KG'},{value: 89, label: '89 KG'},
-        {value: 90, label: '90 KG'},{value: 91, label: '91 KG'},{value: 92, label: '92 KG'},{value: 93, label: '93 KG'},{value: 94, label: '94 KG'},
-        {value: 95, label: '95 KG'},{value: 96, label: '96 KG'},{value: 97, label: '97 KG'},{value: 98, label: '98 KG'},{value: 99, label: '99 KG'},
-        {value: 100, label: '100 KG'},{value: 101, label: '101 KG'},{value: 102, label: '102 KG'},{value: 103, label: '103 KG'},{value: 104, label: '104 KG'},
-        {value: 105, label: '105 KG'},{value: 106, label: '106 KG'},{value: 107, label: '107 KG'},{value: 108, label: '108 KG'},{value: 109, label: '109 KG'},
-        {value: 110, label: '110 KG'},{value: 111, label: '111 KG'},{value: 112, label: '112 KG'},{value: 113, label: '113 KG'},{value: 114, label: '114 KG'},
-        {value: 115, label: '115 KG'},{value: 116, label: '116 KG'},{value: 117, label: '117 KG'},{value: 118, label: '118 KG'},{value: 119, label: '119 KG'},
-        {value: 120, label: '120 KG'},{value: 121, label: '121 KG'},{value: 122, label: '122 KG'},{value: 123, label: '123 KG'},{value: 124, label: '124 KG'},
-        {value: 125, label: '125 KG'},{value: 126, label: '126 KG'},{value: 127, label: '127 KG'},{value: 128, label: '128 KG'},{value: 129, label: '129 KG'},
-        {value: 130, label: '130 KG'},{value: 131, label: '131 KG'},{value: 132, label: '132 KG'},{value: 133, label: '133 KG'},{value: 134, label: '134 KG'},
-        {value: 135, label: '135 KG'},{value: 136, label: '136 KG'},{value: 137, label: '137 KG'},{value: 138, label: '138 KG'},{value: 139, label: '139 KG'},
-        {value: 140, label: '140 KG'},{value: 141, label: '141 KG'},{value: 142, label: '142 KG'},{value: 143, label: '143 KG'},{value: 144, label: '144 KG'},
-        {value: 145, label: '145 KG'},{value: 146, label: '146 KG'},{value: 147, label: '147 KG'},{value: 148, label: '148 KG'},{value: 149, label: '149 KG'},
-        {value: 150, label: '150 KG'},{value: 151, label: '151 KG'},{value: 152, label: '152 KG'},{value: 153, label: '153 KG'},{value: 154, label: '154 KG'},
-        {value: 155, label: '155 KG'},{value: 156, label: '156 KG'},{value: 157, label: '157 KG'},{value: 158, label: '158 KG'},{value: 159, label: '159 KG'},
-        {value: 160, label: '160 KG'},{value: 161, label: '161 KG'},{value: 162, label: '162 KG'},{value: 163, label: '163 KG'},{value: 164, label: '164 KG'},
-        {value: 165, label: '165 KG'},{value: 166, label: '166 KG'},{value: 167, label: '167 KG'},{value: 168, label: '168 KG'},{value: 169, label: '169 KG'},
-        {value: 170, label: '170 KG'},{value: 171, label: '171 KG'},{value: 172, label: '172 KG'},{value: 173, label: '173 KG'},{value: 174, label: '174 KG'},
-        {value: 175, label: '175 KG'},{value: 176, label: '176 KG'},{value: 177, label: '177 KG'},{value: 178, label: '178 KG'},{value: 179, label: '179 KG'},
-        {value: 180, label: '180 KG'},{value: 181, label: '181 KG'},{value: 182, label: '182 KG'},{value: 183, label: '183 KG'},{value: 184, label: '184 KG'},
-        {value: 185, label: '185 KG'},{value: 186, label: '186 KG'},{value: 187, label: '187 KG'},{value: 188, label: '188 KG'},{value: 189, label: '189 KG'},
-        {value: 190, label: '190 KG'},{value: 191, label: '191 KG'},{value: 192, label: '192 KG'},{value: 193, label: '193 KG'},{value: 194, label: '194 KG'},
-        {value: 195, label: '195 KG'},{value: 196, label: '196 KG'},{value: 197, label: '197 KG'},{value: 198, label: '198 KG'},{value: 199, label: '199 KG'},
-
-        {value: 200, label: '200 KG'},{value: 201, label: '201 KG'},{value: 202, label: '202 KG'},{value: 203, label: '203 KG'},{value: 204, label: '204 KG'},
-        {value: 205, label: '205 KG'},{value: 206, label: '206 KG'},{value: 207, label: '207 KG'},{value: 208, label: '208 KG'},{value: 209, label: '209 KG'},
-        {value: 210, label: '210 KG'},{value: 211, label: '211 KG'},{value: 212, label: '212 KG'},{value: 213, label: '213 KG'},{value: 214, label: '214 KG'},
-        {value: 215, label: '215 KG'},{value: 216, label: '216 KG'},{value: 217, label: '217 KG'},{value: 218, label: '218 KG'},{value: 219, label: '219 KG'},
-        {value: 220, label: '220 KG'},{value: 221, label: '221 KG'},{value: 222, label: '222 KG'},{value: 223, label: '223 KG'},{value: 224, label: '224 KG'},
-        {value: 225, label: '225 KG'},{value: 226, label: '226 KG'},{value: 227, label: '227 KG'},{value: 228, label: '228 KG'},{value: 229, label: '229 KG'},
-        {value: 230, label: '230 KG'},{value: 231, label: '231 KG'},{value: 232, label: '232 KG'},{value: 233, label: '233 KG'},{value: 234, label: '234 KG'},
-        {value: 235, label: '235 KG'},{value: 236, label: '236 KG'},{value: 237, label: '237 KG'},{value: 238, label: '238 KG'},{value: 239, label: '239 KG'},
-        {value: 240, label: '240 KG'},{value: 241, label: '241 KG'},{value: 242, label: '242 KG'},{value: 243, label: '243 KG'},{value: 244, label: '244 KG'},
-        {value: 245, label: '245 KG'},{value: 246, label: '246 KG'},{value: 247, label: '247 KG'},{value: 248, label: '248 KG'},{value: 249, label: '249 KG'},
-        {value: 250, label: '250 KG'},{value: 251, label: '251 KG'},{value: 252, label: '252 KG'},{value: 253, label: '253 KG'},{value: 254, label: '254 KG'},
-        {value: 255, label: '255 KG'},{value: 256, label: '256 KG'},{value: 257, label: '257 KG'},{value: 258, label: '258 KG'},{value: 259, label: '259 KG'},
-        {value: 260, label: '260 KG'},{value: 261, label: '261 KG'},{value: 262, label: '262 KG'},{value: 263, label: '263 KG'},{value: 264, label: '264 KG'},
-        {value: 265, label: '265 KG'},{value: 266, label: '266 KG'},{value: 267, label: '267 KG'},{value: 268, label: '268 KG'},{value: 269, label: '269 KG'},
-        {value: 270, label: '270 KG'},{value: 271, label: '271 KG'},{value: 272, label: '272 KG'},{value: 273, label: '273 KG'},{value: 274, label: '274 KG'},
-        {value: 275, label: '275 KG'},{value: 276, label: '276 KG'},{value: 277, label: '277 KG'},{value: 278, label: '278 KG'},{value: 279, label: '279 KG'},
-        {value: 280, label: '280 KG'},{value: 281, label: '281 KG'},{value: 282, label: '282 KG'},{value: 283, label: '283 KG'},{value: 284, label: '284 KG'},
-        {value: 285, label: '285 KG'},{value: 286, label: '286 KG'},{value: 287, label: '287 KG'},{value: 288, label: '288 KG'},{value: 289, label: '289 KG'},
-        {value: 290, label: '290 KG'},{value: 291, label: '291 KG'},{value: 292, label: '292 KG'},{value: 293, label: '293 KG'},{value: 294, label: '294 KG'},
-        {value: 295, label: '295 KG'},{value: 296, label: '296 KG'},{value: 297, label: '297 KG'},{value: 298, label: '298 KG'},{value: 299, label: '299 KG'},
+        {value: 20, label: '20 KG'},{value: 21, label: '21 KG'},{value: 22, label: '22 KG'},{value: 23, label: '23 KG'},{value: 24, label: '24 KG'},{value: 25, label: '25 KG'},{value: 26, label: '26 KG'},{value: 27, label: '27 KG'},{value: 28, label: '28 KG'},{value: 29, label: '29 KG'},
+        {value: 30, label: '30 KG'},{value: 31, label: '31 KG'},{value: 32, label: '32 KG'},{value: 33, label: '33 KG'},{value: 34, label: '34 KG'},{value: 35, label: '35 KG'},{value: 36, label: '36 KG'},{value: 37, label: '37 KG'},{value: 38, label: '38 KG'},{value: 39, label: '39 KG'},
+        {value: 40, label: '40 KG'},{value: 41, label: '41 KG'},{value: 42, label: '42 KG'},{value: 43, label: '43 KG'},{value: 44, label: '44 KG'},{value: 45, label: '45 KG'},{value: 46, label: '46 KG'},{value: 47, label: '47 KG'},{value: 48, label: '48 KG'},{value: 49, label: '49 KG'},
+        {value: 50, label: '50 KG'},{value: 51, label: '51 KG'},{value: 52, label: '52 KG'},{value: 53, label: '53 KG'},{value: 54, label: '54 KG'},{value: 55, label: '55 KG'},{value: 56, label: '56 KG'},{value: 57, label: '57 KG'},{value: 58, label: '58 KG'},{value: 59, label: '59 KG'},
+        {value: 60, label: '60 KG'},{value: 61, label: '61 KG'},{value: 62, label: '62 KG'},{value: 63, label: '63 KG'},{value: 64, label: '64 KG'},{value: 65, label: '65 KG'},{value: 66, label: '66 KG'},{value: 67, label: '67 KG'},{value: 68, label: '68 KG'},{value: 69, label: '69 KG'},
+        {value: 70, label: '70 KG'},{value: 71, label: '71 KG'},{value: 72, label: '72 KG'},{value: 73, label: '73 KG'},{value: 74, label: '74 KG'},{value: 75, label: '75 KG'},{value: 76, label: '76 KG'},{value: 77, label: '77 KG'},{value: 78, label: '78 KG'},{value: 79, label: '79 KG'},
+        {value: 80, label: '80 KG'},{value: 81, label: '81 KG'},{value: 82, label: '82 KG'},{value: 83, label: '83 KG'},{value: 84, label: '84 KG'},{value: 85, label: '85 KG'},{value: 86, label: '86 KG'},{value: 87, label: '87 KG'},{value: 88, label: '88 KG'},{value: 89, label: '89 KG'},
+        {value: 90, label: '90 KG'},{value: 91, label: '91 KG'},{value: 92, label: '92 KG'},{value: 93, label: '93 KG'},{value: 94, label: '94 KG'},{value: 95, label: '95 KG'},{value: 96, label: '96 KG'},{value: 97, label: '97 KG'},{value: 98, label: '98 KG'},{value: 99, label: '99 KG'},
+        {value: 100, label: '100 KG'},{value: 101, label: '101 KG'},{value: 102, label: '102 KG'},{value: 103, label: '103 KG'},{value: 104, label: '104 KG'},{value: 105, label: '105 KG'},{value: 106, label: '106 KG'},{value: 107, label: '107 KG'},{value: 108, label: '108 KG'},{value: 109, label: '109 KG'},
+        {value: 110, label: '110 KG'},{value: 111, label: '111 KG'},{value: 112, label: '112 KG'},{value: 113, label: '113 KG'},{value: 114, label: '114 KG'},{value: 115, label: '115 KG'},{value: 116, label: '116 KG'},{value: 117, label: '117 KG'},{value: 118, label: '118 KG'},{value: 119, label: '119 KG'},
+        {value: 120, label: '120 KG'},{value: 121, label: '121 KG'},{value: 122, label: '122 KG'},{value: 123, label: '123 KG'},{value: 124, label: '124 KG'},{value: 125, label: '125 KG'},{value: 126, label: '126 KG'},{value: 127, label: '127 KG'},{value: 128, label: '128 KG'},{value: 129, label: '129 KG'},
+        {value: 130, label: '130 KG'},{value: 131, label: '131 KG'},{value: 132, label: '132 KG'},{value: 133, label: '133 KG'},{value: 134, label: '134 KG'},{value: 135, label: '135 KG'},{value: 136, label: '136 KG'},{value: 137, label: '137 KG'},{value: 138, label: '138 KG'},{value: 139, label: '139 KG'},
+        {value: 140, label: '140 KG'},{value: 141, label: '141 KG'},{value: 142, label: '142 KG'},{value: 143, label: '143 KG'},{value: 144, label: '144 KG'},{value: 145, label: '145 KG'},{value: 146, label: '146 KG'},{value: 147, label: '147 KG'},{value: 148, label: '148 KG'},{value: 149, label: '149 KG'},
+        {value: 150, label: '150 KG'},{value: 151, label: '151 KG'},{value: 152, label: '152 KG'},{value: 153, label: '153 KG'},{value: 154, label: '154 KG'},{value: 155, label: '155 KG'},{value: 156, label: '156 KG'},{value: 157, label: '157 KG'},{value: 158, label: '158 KG'},{value: 159, label: '159 KG'},
+        {value: 160, label: '160 KG'},{value: 161, label: '161 KG'},{value: 162, label: '162 KG'},{value: 163, label: '163 KG'},{value: 164, label: '164 KG'},{value: 165, label: '165 KG'},{value: 166, label: '166 KG'},{value: 167, label: '167 KG'},{value: 168, label: '168 KG'},{value: 169, label: '169 KG'},
+        {value: 170, label: '170 KG'},{value: 171, label: '171 KG'},{value: 172, label: '172 KG'},{value: 173, label: '173 KG'},{value: 174, label: '174 KG'},{value: 175, label: '175 KG'},{value: 176, label: '176 KG'},{value: 177, label: '177 KG'},{value: 178, label: '178 KG'},{value: 179, label: '179 KG'},
+        {value: 180, label: '180 KG'},{value: 181, label: '181 KG'},{value: 182, label: '182 KG'},{value: 183, label: '183 KG'},{value: 184, label: '184 KG'},{value: 185, label: '185 KG'},{value: 186, label: '186 KG'},{value: 187, label: '187 KG'},{value: 188, label: '188 KG'},{value: 189, label: '189 KG'},
+        {value: 190, label: '190 KG'},{value: 191, label: '191 KG'},{value: 192, label: '192 KG'},{value: 193, label: '193 KG'},{value: 194, label: '194 KG'},{value: 195, label: '195 KG'},{value: 196, label: '196 KG'},{value: 197, label: '197 KG'},{value: 198, label: '198 KG'},{value: 199, label: '199 KG'},
+        {value: 200, label: '200 KG'},{value: 201, label: '201 KG'},{value: 202, label: '202 KG'},{value: 203, label: '203 KG'},{value: 204, label: '204 KG'},{value: 205, label: '205 KG'},{value: 206, label: '206 KG'},{value: 207, label: '207 KG'},{value: 208, label: '208 KG'},{value: 209, label: '209 KG'},
+        {value: 210, label: '210 KG'},{value: 211, label: '211 KG'},{value: 212, label: '212 KG'},{value: 213, label: '213 KG'},{value: 214, label: '214 KG'},{value: 215, label: '215 KG'},{value: 216, label: '216 KG'},{value: 217, label: '217 KG'},{value: 218, label: '218 KG'},{value: 219, label: '219 KG'},
+        {value: 220, label: '220 KG'},{value: 221, label: '221 KG'},{value: 222, label: '222 KG'},{value: 223, label: '223 KG'},{value: 224, label: '224 KG'},{value: 225, label: '225 KG'},{value: 226, label: '226 KG'},{value: 227, label: '227 KG'},{value: 228, label: '228 KG'},{value: 229, label: '229 KG'},
+        {value: 230, label: '230 KG'},{value: 231, label: '231 KG'},{value: 232, label: '232 KG'},{value: 233, label: '233 KG'},{value: 234, label: '234 KG'},{value: 235, label: '235 KG'},{value: 236, label: '236 KG'},{value: 237, label: '237 KG'},{value: 238, label: '238 KG'},{value: 239, label: '239 KG'},
+        {value: 240, label: '240 KG'},{value: 241, label: '241 KG'},{value: 242, label: '242 KG'},{value: 243, label: '243 KG'},{value: 244, label: '244 KG'},{value: 245, label: '245 KG'},{value: 246, label: '246 KG'},{value: 247, label: '247 KG'},{value: 248, label: '248 KG'},{value: 249, label: '249 KG'},
+        {value: 250, label: '250 KG'},{value: 251, label: '251 KG'},{value: 252, label: '252 KG'},{value: 253, label: '253 KG'},{value: 254, label: '254 KG'},{value: 255, label: '255 KG'},{value: 256, label: '256 KG'},{value: 257, label: '257 KG'},{value: 258, label: '258 KG'},{value: 259, label: '259 KG'},
+        {value: 260, label: '260 KG'},{value: 261, label: '261 KG'},{value: 262, label: '262 KG'},{value: 263, label: '263 KG'},{value: 264, label: '264 KG'},{value: 265, label: '265 KG'},{value: 266, label: '266 KG'},{value: 267, label: '267 KG'},{value: 268, label: '268 KG'},{value: 269, label: '269 KG'},
+        {value: 270, label: '270 KG'},{value: 271, label: '271 KG'},{value: 272, label: '272 KG'},{value: 273, label: '273 KG'},{value: 274, label: '274 KG'},{value: 275, label: '275 KG'},{value: 276, label: '276 KG'},{value: 277, label: '277 KG'},{value: 278, label: '278 KG'},{value: 279, label: '279 KG'},
+        {value: 280, label: '280 KG'},{value: 281, label: '281 KG'},{value: 282, label: '282 KG'},{value: 283, label: '283 KG'},{value: 284, label: '284 KG'},{value: 285, label: '285 KG'},{value: 286, label: '286 KG'},{value: 287, label: '287 KG'},{value: 288, label: '288 KG'},{value: 289, label: '289 KG'},
+        {value: 290, label: '290 KG'},{value: 291, label: '291 KG'},{value: 292, label: '292 KG'},{value: 293, label: '293 KG'},{value: 294, label: '294 KG'},{value: 295, label: '295 KG'},{value: 296, label: '296 KG'},{value: 297, label: '297 KG'},{value: 298, label: '298 KG'},{value: 299, label: '299 KG'},
         {value: 300, label: '300 KG'}
 
     ];
@@ -380,27 +364,28 @@ class Questionnaire extends Component {
     if(this.state.currentPage === 1){
       RenderPage = (
         <Detail
-        fields={fields}
-        name={nick_name}
-        nameHandler={this.props.addName}
-        ageHandler={this.props.addAge}
-        genderArray={genderArray}
-        genderHandler = {this.props.addGender}
-        weightArray={weightArray}
-        selectWeight={this.props.addWeight}
+          fields={fields}
+          name={nick_name}
+          nameHandler={this.props.addName}
+          ageArray={ageArray}
+          selectAge={this.props.addAge}
+          genderArray={genderArray}
+          genderHandler = {this.props.addGender}
+          weightArray={weightArray}
+          selectWeight={this.props.addWeight}
         />
       );
     } else if(this.state.currentPage === 2){
       RenderPage = (
         <Program
-        daysArray = {daysArray}
-        days= {fields.days_per_week}
-        selectDays = {this.props.addDays}
-        exercisePlaceArray={exercisePlaceArray}
-        selectExercisePlace={this.props.addExercisePlace}
-        change = {this.programCheckboxHandler}
-        exercisePlace = {fields.exercisePlace}
-        data = { this.state.trainingGoals }
+          daysArray = {daysArray}
+          days= {fields.days_per_week}
+          selectDays = {this.props.addDays}
+          exercisePlaceArray={exercisePlaceArray}
+          selectExercisePlace={this.props.addExercisePlace}
+          change = {this.programCheckboxHandler}
+          exercisePlace = {fields.exercisePlace}
+          data = { this.state.trainingGoals }
         />
       );
     } else if(this.state.currentPage === 3){
@@ -500,8 +485,6 @@ class Questionnaire extends Component {
   }
 }
 function mapStateToProps(state){
-  console.log(state.ErrorHandler);
-  console.log(state.QuestionnaireReducers)
   return {
     QuestionnaireReducers: state.QuestionnaireReducers,
   }

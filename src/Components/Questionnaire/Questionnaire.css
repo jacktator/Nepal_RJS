@@ -7,17 +7,53 @@
   margin-top: 15px;
   margin-bottom: 2px;
 }
-.picker-pull-right {
-  margin-right: 55%;
+.age-picker-pull-right {
+  margin-right: 40%;
 }
-
+.days-picker-pull-right {
+  margin-right: 50%;
+}
+.noticebar {
+  text-align: center;
+  font-weight: bold;
+  font-size: 17px;
+}
+@media only screen and (min-width: 340px) {
+  .days-picker-pull-right {
+    margin-right: 55%;
+  }
+  .age-picker-pull-right {
+    margin-right: 50%;
+  }
+}@media only screen and (min-width: 480px) {
+  .days-picker-pull-right {
+    margin-right: 65%;
+  }
+  .age-picker-pull-right {
+    margin-right: 60%;
+  }
+}
 @media only screen and (min-width: 600px) {
-  .picker-pull-right {
-    margin-right: 75%;
+  .days-picker-pull-right {
+    margin-right: 70%;
+  }
+  .age-picker-pull-right {
+    margin-right: 70%;
   }
 }
 @media only screen and (min-width: 968px) {
-  .picker-pull-right {
+  .days.picker-pull-right {
     margin-right: 80%;
+  }
+  .age-picker-pull-right {
+    margin-right: 80%;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .days.picker-pull-right {
+    margin-right: 85%;
+  }
+  .age-picker-pull-right {
+    margin-right: 85%;
   }
 }

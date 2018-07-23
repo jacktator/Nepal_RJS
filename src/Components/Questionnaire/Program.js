@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Checkbox, Modal, WhiteSpace, Picker, Radio} from 'antd-mobile';
+import { List, Checkbox, Modal, Picker, Radio} from 'antd-mobile';
 import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
 
 import './Questionnaire.css';
@@ -34,7 +34,7 @@ const Program = (props) => {
       <h2 style={{textAlign: 'center'}}>Create Your Program</h2>
       <div>
       <div className="listHeader">How many days per week would you like to exercise?</div>
-        <div className="picker-pull-right">
+        <div className="days-picker-pull-right">
           <Picker
             data={props.daysArray}
             locale={enUs}
