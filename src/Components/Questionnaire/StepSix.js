@@ -1,9 +1,10 @@
 import React from 'react';
-import { List, Radio, NoticeBar, Modal} from 'antd-mobile';
+import { List, Radio, NoticeBar, Modal, Checkbox} from 'antd-mobile';
 import ShowNoticeBar from './NoticeBar';
+import './Questionnaire.css';
 const RadioItem = Radio.RadioItem;
+const CheckboxItem = Checkbox.CheckboxItem;
 const alert = Modal.alert;
-
 const showAlert = (i, props) => {
   alert(i.label, i.description, [
     { text: 'Go back', style: 'default' },
@@ -19,11 +20,11 @@ const StepSix = (props) => {
       <List>
       {props.activityArray.map((i,key) => (
         <div key={key} onClick= {() => showAlert(i, props.selectActivity)}>
-          <RadioItem
+          <CheckboxItem
             checked={props.fields.daily_activity === i.value}
             >
             {i.label}
-          </RadioItem>
+          </CheckboxItem>
         </div>
       ))}
     </List>
@@ -31,11 +32,11 @@ const StepSix = (props) => {
     <List>
     {props.exerciseArray.map((i,key) => (
       <div key={key} onClick= {() => showAlert(i, props.selectExercise)}>
-        <RadioItem
+        <CheckboxItem
           checked={props.fields.current_activity === i.value}
           >
             {i.label}
-        </RadioItem>
+        </CheckboxItem>
       </div>
     ))}
   </List>

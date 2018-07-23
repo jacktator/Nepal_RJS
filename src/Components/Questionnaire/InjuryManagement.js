@@ -15,7 +15,7 @@ const InjuryManagement = (props) => {
           <Flex key={key}>
             <Flex.Item>
                 <CheckboxItem key={i.value} checked={i.isChecked} onChange={()=>props.change(i.value)}>
-                  <div onClick = {() => props.showModal(i, 'forInjury')}>
+                  <div onClick = {() => i.value !== "0" ? props.showModal(i, 'forInjury'): props.change(i.value)}>
                     {i.description}
                   </div>
                 </CheckboxItem>

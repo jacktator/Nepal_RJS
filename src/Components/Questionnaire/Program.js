@@ -34,7 +34,7 @@ const Program = (props) => {
       <h2 style={{textAlign: 'center'}}>Create Your Program</h2>
       <div>
       <div className="listHeader">How many days per week would you like to exercise?</div>
-        <div style={{marginRight:"55%"}}>
+        <div className="picker-pull-right">
           <Picker
             data={props.daysArray}
             locale={enUs}

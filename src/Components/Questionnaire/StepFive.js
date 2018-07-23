@@ -1,7 +1,9 @@
 import React from 'react';
-import { List, Radio, NoticeBar, Modal} from 'antd-mobile';
+import { List, Radio, NoticeBar, Modal, Checkbox} from 'antd-mobile';
 import ShowNoticeBar from './NoticeBar';
+import './Questionnaire.css';
 const RadioItem = Radio.RadioItem;const alert = Modal.alert;
+const CheckboxItem = Checkbox.CheckboxItem;
 
 const showAlert = (i, props) => {
   alert(i.label, i.description, [
@@ -19,11 +21,11 @@ const StepFive = (props) => {
       <List>
       {props.injuryArray.map((i,key) => (
         <div key={key} onClick= {() => showAlert(i, props.selectInjury)}>
-          <RadioItem
+          <CheckboxItem
             checked={props.fields.work_injury === i.value}
           >
               {i.label}
-          </RadioItem>
+          </CheckboxItem>
         </div>
       ))}
     </List>
@@ -31,11 +33,11 @@ const StepFive = (props) => {
     <List>
       {props.healthArray.map((i,key) => (
         <div key={key} onClick= {() => showAlert(i, props.selectHealth)}>
-          <RadioItem
+          <CheckboxItem
             checked={props.fields.health_feeling === i.value}
           >
             {i.label}
-          </RadioItem>
+          </CheckboxItem>
         </div>
         ))}
       </List>
