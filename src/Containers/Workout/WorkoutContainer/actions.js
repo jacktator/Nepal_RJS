@@ -1,3 +1,4 @@
+// @flow
 export function keepWarmUp (value: number) {
   return {
     type: "KEEP_WARMUP",
@@ -6,7 +7,7 @@ export function keepWarmUp (value: number) {
 }
 
 export function keepWorkOut (value: number) {
-  
+
   return {
     type: "KEEP_WORKOUT",
     payload: value

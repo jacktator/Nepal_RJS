@@ -1,5 +1,6 @@
 import React from 'react';
 import { List, Radio, NoticeBar, Modal} from 'antd-mobile';
+import ShowNoticeBar from './NoticeBar';
 const RadioItem = Radio.RadioItem;const alert = Modal.alert;
 
 const showAlert = (i, props) => {
@@ -12,12 +13,10 @@ const StepFive = (props) => {
 
   return(
     <div>
-      <NoticeBar icon={null}>
-        The following information is anonymous
-        </NoticeBar>
+      <ShowNoticeBar />
       <h3 style={{textAlign: 'center'}}>Health and Wellbeing</h3>
-
-      <List renderHeader={() => <strong>Do you experience injury or posture related pain at work? </strong>}>
+      <div className="listHeader"> Do you experience injury or posture related pain at work? </div>
+      <List>
       {props.injuryArray.map((i,key) => (
         <div key={key} onClick= {() => showAlert(i, props.selectInjury)}>
           <RadioItem
@@ -28,8 +27,8 @@ const StepFive = (props) => {
         </div>
       ))}
     </List>
-
-    <List renderHeader={() => <h3>How do you feel your health and wellbeing right now? </h3>}>
+    <div className="listHeader"> How do you feel your health and wellbeing is right now? </div>
+    <List>
       {props.healthArray.map((i,key) => (
         <div key={key} onClick= {() => showAlert(i, props.selectHealth)}>
           <RadioItem

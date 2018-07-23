@@ -2,9 +2,10 @@
 import React, {Component} from 'react';
 import LoginDetailsWrapper from '../../Components/LoginDetails/';
 import {connect} from 'react-redux';
-import {LoginDetailsActions, addEmail, addPassword} from './action';
+import {LoginDetailsActions, addEmail, addPassword, removeError} from './action';
 import {bindActionCreators} from 'redux';
-
+import ShowError from '../../Components/Error/ShowError';
+import Modal from '../../Components/UI/Modal';
 
 type Props = {
   onChange: Function,
@@ -22,12 +23,11 @@ type Props = {
 
 class LoginDetailsContainer extends Component<Props>{
 
+  cancelErrorMessageHandler = () => {
+    this.props.removeError();
+  }
   render(){
     const {email, password, token, error} = this.props.LoginDetailsStates
-    if(error){
-      alert(error)
-    }
-    console.log(error);
     return(
       <div>
         <LoginDetailsWrapper
@@ -38,6 +38,14 @@ class LoginDetailsContainer extends Component<Props>{
           onChangePassword={this.props.addPassword}
           onClickButton={this.props.LoginDetailsActions}
         />
+        {(error.hasError) && (
+          <Modal modalFor="showError">
+            <ShowError
+            error={error.message}
+            cancel = {this.cancelErrorMessageHandler}
+            />
+          </Modal>
+        )}
       </div>
     );
   }
@@ -55,6 +63,7 @@ function matchDispatchToProps(dispatch){
       LoginDetailsActions: LoginDetailsActions,
       addEmail: addEmail,
       addPassword: addPassword,
+      removeError,
     }, dispatch
   );
 }

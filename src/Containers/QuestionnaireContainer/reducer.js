@@ -2,11 +2,11 @@
 import { QUESTIONNAIRE } from '../../constants';
 
 let DefaultState = {
-  nick_name: "",
+  nick_name: "Laxman",
   fields: {
-    age: "",
-    gender: "",
-    weight: "",
+    age: "25",
+    gender: "male",
+    weight: "50",
     exercisePlace: "",
     days_per_week: 3,
     goals: [],

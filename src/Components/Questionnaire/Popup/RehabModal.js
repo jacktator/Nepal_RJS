@@ -24,7 +24,7 @@ import './RehabModal.css';
             onClick={() => this.props.select(this.props.data.value)}
             inline size="small">
             {selectButton}
-                </Button>
+          </Button>
         </Hoc>
       )
     }

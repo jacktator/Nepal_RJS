@@ -22,8 +22,11 @@ export function LoginDetailsActions(email:string, password:string){
       // dispatch(validToken(token));
 
     }).catch((error)=>{
-      console.log(error);
-      dispatch(catchError(error))
+      if(error.response){
+        dispatch(catchError(error.response.data.message));
+      }else{
+        dispatch(catchError("Network Connection Error. Please check your network connection"))
+      }
     })
   };
 }
@@ -47,7 +50,11 @@ export function validToken(token:string){
       dispatch(isAuthenticated(response.data.data.status));
     })
     .catch((error)=>{
-        dispatch(catchError(error))
+      if(error.response){
+        dispatch(catchError(error.response.data.message));
+      }else{
+        dispatch(catchError("Network Connection Error. Please check your network connection"))
+      }
     })
   };
 }
@@ -97,5 +104,11 @@ export function catchError(error: string){
   return{
     type: "CATCH_ERROR",
     payload: error
+  }
+}
+export function removeError(){
+  return{
+    type: "REMOVE_ERROR",
+    payload: null
   }
 }

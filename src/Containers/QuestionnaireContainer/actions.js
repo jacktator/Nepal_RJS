@@ -1,146 +1,6 @@
 // @flow
 import axios from 'axios';
 
-export function stepOne(nick_name: string, age: number, gender: string, weight: number, exercisePlace: string) {
-  let token = localStorage.getItem('token');
-  return(dispatch: Function) => {
-    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/",
-    {
-      fields: { age, gender, weight, exercisePlace }
-    }, {
-      headers:{
-        Authorization: "Bearer" + token
-      }
-    }
-  ).then((response) => {
-    console.log("Response +6764",response.data)
-    console.log("Response: ", response)
-    let id = response.data.id;
-    let fields = response.data.acf;
-    window.localStorage.setItem('questionnaire_id',id)
-      dispatch(addError(''));
-    dispatch(getDataFromServer(fields));
-  }).catch((error) => {
-    dispatch(addError('unable to uplaod to server'));
-    console.log("Error",error)
-  })
-}
-}
-
-export function stepTwo(days_per_week: number, goals: Object) {
-  return(dispatch: Function) => {
-    let token = localStorage.getItem('token');
-    let id = localStorage.getItem('questionnaire_id')
-    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/"+id,
-    {
-      fields: { days_per_week:days_per_week, goals }
-    }, {
-      headers:{
-        Authorization: "Bearer" + token
-      }
-    }
-  ).then((response) => {
-      console.log("Response",response)
-      let fields = response.data.acf;
-      dispatch(removeError());
-      dispatch(getDataFromServer(fields));
-    }).catch((error) => {
-      dispatch(addError('unable to uplaod to server'));
-      console.log("Error",error)
-    })
-  }
-}
-export function stepThree(rehab_focus: Object) {
-  return(dispatch: Function) => {
-    let token = localStorage.getItem('token');
-    let id = localStorage.getItem('questionnaire_id')
-    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/"+id,
-    {
-      fields: { rehab_focus }
-    }, {
-      headers:{
-        Authorization: "Bearer" + token
-      }
-    }
-  ).then((response) => {
-    console.log("Response",response)
-    let fields = response.data.acf;
-    dispatch(removeError(''));
-    dispatch(getDataFromServer(fields));
-  }).catch((error) => {
-    dispatch(addError('unable to uplaod to server'));
-    console.log("Error",error)
-  })
-}
-}
-export function stepFour(stress, productivity) {
-  return(dispatch: Function) => {
-    let token = localStorage.getItem('token');
-    let id = localStorage.getItem('questionnaire_id')
-    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/"+id,
-    {
-      fields: { stress, productivity }
-    }, {
-      headers:{
-        Authorization: "Bearer" + token
-      }
-    }
-  ).then((response) => {
-    console.log("Response",response)
-    let fields = response.data.acf;
-    dispatch(removeError());
-    dispatch(getDataFromServer(fields));
-  }).catch((error) => {
-    dispatch(addError('unable to uplaod to server'));
-    console.log("Error",error)
-  })
-}
-}
-export function stepFive(work_injury, health_feeling) {
-  return(dispatch: Function) => {
-    let token = localStorage.getItem('token');
-    let id = localStorage.getItem('questionnaire_id')
-    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/"+id,
-    {
-      fields: { work_injury, health_feeling }
-    }, {
-      headers:{
-        Authorization: "Bearer" + token
-      }
-    }
-  ).then((response) => {
-    console.log("Response",response)
-    let fields = response.data.acf;
-    dispatch(removeError());
-    dispatch(getDataFromServer(fields));
-  }).catch((error) => {
-    dispatch(addError('unable to uplaod to server'));
-    console.log("Error",error)
-  })
-}
-}
-export function stepSix(current_activity, daily_activity) {
-  return(dispatch: Function) => {
-    let token = localStorage.getItem('token');
-    let id = localStorage.getItem('questionnaire_id')
-    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/"+id,
-    {
-      fields: { current_activity, daily_activity }
-    }, {
-      headers:{
-        Authorization: "Bearer" + token
-      }
-    }
-  ).then((response) => {
-    console.log("Response",response)
-    let fields = response.data.acf;
-    dispatch(getDataFromServer(fields));
-  }).catch((error) => {
-    console.log("Error",error)
-  })
-}
-}
-
 export function addQuestionnaire(state) {
   let token = localStorage.getItem('token');
   return(dispatch: Function) => {
@@ -157,17 +17,14 @@ export function addQuestionnaire(state) {
     console.log("Response",response)
     dispatch(success(true));
     setTimeout(function(){
-          console.log("set to false")
           dispatch(success(false));
       }.bind(this),700);
     //dispatch(questionnaire(state));
   }).catch((error) => {
     if(error.response){
       dispatch(addError(error.response.data.message));
-      console.log(error.response.data.message)
     }else{
       dispatch(addError("Network Connection Error. Please check your network connection"))
-      console.log("Unable to connect with server")
     }
   })
 }

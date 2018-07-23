@@ -1,5 +1,6 @@
 import React from 'react';
 import { List, Radio, NoticeBar, Modal} from 'antd-mobile';
+import ShowNoticeBar from './NoticeBar';
 const RadioItem = Radio.RadioItem;
 const alert = Modal.alert;
 
@@ -12,12 +13,10 @@ const showAlert = (i, props) => {
 const StepSix = (props) => {
   return(
     <div>
-      <NoticeBar icon={null}>
-        The following information is anonymous
-        </NoticeBar>
+      <ShowNoticeBar />
       <h2 style={{textAlign: 'center'}}>General Activity and Exercise Level</h2>
-
-      <List renderHeader={() => <h3 style={{margin:"2% 0 2% 0"}}>How active are you on a daily basis? </h3>}>
+      <div className="listHeader"> How active are you on a daily basis?</div>
+      <List>
       {props.activityArray.map((i,key) => (
         <div key={key} onClick= {() => showAlert(i, props.selectActivity)}>
           <RadioItem
@@ -28,7 +27,8 @@ const StepSix = (props) => {
         </div>
       ))}
     </List>
-    <List renderHeader={() => <h3 style={{margin:"2% 0 2% 0"}}>What is your current exercise activity level? </h3>}>
+    <div className="listHeader">How many days per week do you currently exercise?</div>
+    <List>
     {props.exerciseArray.map((i,key) => (
       <div key={key} onClick= {() => showAlert(i, props.selectExercise)}>
         <RadioItem

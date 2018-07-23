@@ -36,7 +36,8 @@ export default class Exercise extends Component{
           </div>
           {/* exercise information*/}
           <div className="info-icon"
-            onClick={() => {alert("exercise information page. click this goes to video of exercise and description")}}/>
+            onClick={(e) => this.props.onInfoClicked(e)}
+          />
            {/* navigation bar on top of screen*/}
           <NavBar
             style={{backgroundColor:" #F5F5F9"}}

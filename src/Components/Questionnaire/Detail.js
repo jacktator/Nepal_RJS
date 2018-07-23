@@ -1,18 +1,17 @@
 import React from 'react';
 import { List, InputItem, Radio, Picker, WhiteSpace} from 'antd-mobile';
 import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
-
+import './Questionnaire.css';
 const RadioItem = Radio.RadioItem;
 // const CheckboxItem = Checkbox.CheckboxItem;
 
 const Detail = (props) => {
   const gender = props.fields.gender;
-  const exercisePlace = props.fields.exercisePlace;
   const weight = [];
   weight.push(parseInt(props.fields.weight,10));
   return(
     <div>
-      <h2 style={{textAlign: 'center'}}>Your Detail</h2>
+      <h2 style={{textAlign: 'center'}}>Your Details</h2>
         <InputItem
           type="text"
           placeholder="Please enter your name"
@@ -28,7 +27,8 @@ const Detail = (props) => {
           value={props.fields.age}
         >Age</InputItem>
 
-        <List renderHeader={() => 'Please select your Gender'}>
+        <div className="listHeader">Gender:</div>
+        <List>
           {props.genderArray.map((i,key) => (
             <RadioItem key={key} checked={gender === i.value} onChange={() => props.genderHandler(i.value)}>
               {i.label}
@@ -46,13 +46,7 @@ const Detail = (props) => {
           <List.Item arrow="horizontal">Current Body Weight:</List.Item>
         </Picker>
 
-        <List renderHeader={() => 'Where do you want to exercise?'}>
-          {props.exercisePlaceArray.map((i,key) => (
-            <RadioItem key={key} checked={exercisePlace === i.value} onChange={() => props.selectExercisePlace(i.value)}>
-              {i.label}
-            </RadioItem>
-          ))}
-        </List>
+
 
 
     </div>

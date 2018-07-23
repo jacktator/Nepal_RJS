@@ -7,10 +7,14 @@ let DefaultState=
     password:12345678,
     token: '',
     status: true,
-    error:null,
+    error: {
+      hasError: false,
+      message: ''
+    },
   }
 
 const LoginDetailsReducers = (state: Object=DefaultState, action: Function)=>{
+  let error;
   if(action.type==="ADD_EMAIL"){
     //console.log("add email: "+ action.payload)
     return {
@@ -44,11 +48,22 @@ const LoginDetailsReducers = (state: Object=DefaultState, action: Function)=>{
   }
   else if (action.type==="CATCH_ERROR"){
     //console.log("add token: "+ action.payload)
+    error = {...state.error};
+    error['hasError']= true;
+    error['message'] = action.payload;
     return {
-      ...state, error: action.payload
+      ...state, error
+    }
+  }
+  else if (action.type==="REMOVE_ERROR"){
+    error = {...state.error};
+    error['hasError']= false;
+    error['message'] = action.payload;
+    return {
+      ...state, error
     }
   }
 
-  return state;
+    return state;
 }
 export default LoginDetailsReducers;

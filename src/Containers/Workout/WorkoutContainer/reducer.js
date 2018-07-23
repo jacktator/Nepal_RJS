@@ -1,4 +1,4 @@
-
+// @flow
 let DefaultState = {
   warmUpExerciseArray: [
     {value: 0, isSaved: false, name: "knee Warmup"},
