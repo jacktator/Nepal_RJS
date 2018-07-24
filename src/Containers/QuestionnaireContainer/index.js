@@ -282,6 +282,8 @@ class Questionnaire extends Component {
     const daysArray= [
       {value: 3, label: '3'},{value: 4, label: '4'},{value: 5, label: '5'},
     ];
+    // const ageArray = ArrtoObj(20, 120, 'value', 'label');
+
     const ageArray = [
       {value: 20, label: '20 KG'},{value: 21, label: '21 KG'},{value: 22, label: '22 KG'},{value: 23, label: '23 KG'},{value: 24, label: '24 KG'},{value: 25, label: '25 KG'},{value: 26, label: '26 KG'},{value: 27, label: '27 KG'},{value: 28, label: '28 KG'},{value: 29, label: '29 KG'},
       {value: 30, label: '30 KG'},{value: 31, label: '31 KG'},{value: 32, label: '32 KG'},{value: 33, label: '33 KG'},{value: 34, label: '34 KG'},{value: 35, label: '35 KG'},{value: 36, label: '36 KG'},{value: 37, label: '37 KG'},{value: 38, label: '38 KG'},{value: 39, label: '39 KG'},
@@ -337,9 +339,9 @@ class Questionnaire extends Component {
       {value: '5', label: 'Extremely stressed', description:'I feel highly stressed every day'},
     ];
     const productivityArray = [
-      {value: '1', label: 'Not productive at all', description:'I never feel productive'},{value: '2', label: 'Minimally productive', description:'I don’t feel productive very often'},
-      {value: '3', label: 'Moderately productive', description:'I feel fairly productive most days'},{value: '4', label: 'Highly productive', description:'I feel highly productive most days'},
-      {value: '5', label: 'Extremely productive', description:'I feel highly productive every day'},
+      {value: '1', label: 'All the time', description:'I felt productive every day in the last 4 weeks'},{value: '2', label: 'Most of the time', description:'I felt productive most days in the past 4 weeks'},
+      {value: '3', label: 'Half the time', description:'I felt productive for half of the days in the past 4 weeks'},{value: '4', label: 'Rarely', description:'I felt productive rarely in the last 4 weeks '},
+      {value: '5', label: 'None of the time', description:'I have not felt productive at all in the last 4 weeks'},
     ];
     const injuryArray = [
       {value: '1', label: 'No pain', description:'I never feel injury or posture related pain'},{value: '2', label: 'Rarely in pain', description:'I feel injury or posture related pain every few weeks or months'},
@@ -502,4 +504,13 @@ function matchDispatchToProps(dispatch){
   }, dispatch
 );
 }
+// function ArrtoObj(RangeFrom: int, RangeTo: int, PropsItem1: string, PropsItem2: string) {
+//   var returnArray = [];
+//   for (var i = RangeFrom; i <= RangeTo; i++) {
+//     returnArray.push({
+//       PropsItem1: i, PropsItem2: i + "kg"
+//     })
+//   };
+//   return returnArray;
+// }
 export default connect (mapStateToProps, matchDispatchToProps)(Questionnaire);
