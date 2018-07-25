@@ -29,7 +29,7 @@ const Detail = (props) => {
             value={[age[0]]}
             onOk={v => props.selectAge(v)}
             >
-            <List.Item arrow="down">Age:</List.Item>
+            <List.Item arrow="horizontal">Age:</List.Item>
           </Picker>
         </div>
 
