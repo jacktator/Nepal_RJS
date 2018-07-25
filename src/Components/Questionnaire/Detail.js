@@ -29,7 +29,7 @@ const Detail = (props) => {
             value={[age[0]]}
             onOk={v => props.selectAge(v)}
             >
-            <List.Item arrow="horizontal">Age:</List.Item>
+            <List.Item arrow="down">Age:</List.Item>
           </Picker>
         </div>
 
@@ -49,7 +49,7 @@ const Detail = (props) => {
           value={[weight[0]]}
           onOk={v => props.selectWeight(v)}
           >
-          <List.Item arrow="horizontal">Current Body Weight:</List.Item>
+          <List.Item arrow="down">Current Body Weight:</List.Item>
         </Picker>
 
     </div>

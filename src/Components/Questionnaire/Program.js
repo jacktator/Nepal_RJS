@@ -42,7 +42,7 @@ const Program = (props) => {
             value={[days[0]]}
             onOk={v => props.selectDays(v)}
           >
-            <List.Item arrow="horizontal">Days:</List.Item>
+            <List.Item arrow="down">Days:</List.Item>
           </Picker>
         </div>
     </div>

@@ -1,13 +1,13 @@
 // @flow
 let DefaultState = {
-  nick_name: "Laxman",
+  nick_name: "",
   fields: {
-    age: "25",
-    gender: "male",
-    weight: "50",
+    age: "",
+    gender: "",
+    weight: "",
     exercise_place: "",
     days_per_week: 3,
-    goals: "1",
+    goals: "",
     rehab_focus: "",
     injury_management: "",
     posture_correction:"",
