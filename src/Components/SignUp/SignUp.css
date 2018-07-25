@@ -2,18 +2,22 @@
   background-color: white;
   overflow: hidden;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .signup-logo-position  {
-  text-align: center;
-  position: absolute;
+  /* text-align: center; */
+  /* position: absolute; */
   width:100%;
-  top: 10vh;
+  /* top: 10vh; */
 }
 
 .signup-input{
   text-align: center;
-  position: absolute;
+  /* position: absolute; */
   width:100%;
   bottom: 8vh;
 }
