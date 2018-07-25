@@ -14,8 +14,8 @@ const InjuryManagement = (props) => {
         {props.data.map((i,key) => (
           <Flex key={key}>
             <Flex.Item>
-                <CheckboxItem key={i.value} checked={i.isChecked} onChange={()=>props.change(i.value)}>
-                  <div onClick = {() => i.value !== "0" ? props.showModal(i, 'forInjury'): props.change(i.value)}>
+                <CheckboxItem key={i.value} checked={props.fields === i.value} onChange={()=>props.selectInjuryManagement(i.value)}>
+                  <div onClick = {() => i.value !== "0" ? props.showModal(i, 'forInjury'): props.selectInjuryManagement(i.value)}>
                     {i.description}
                   </div>
                 </CheckboxItem>

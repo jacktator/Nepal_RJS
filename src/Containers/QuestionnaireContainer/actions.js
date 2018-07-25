@@ -70,20 +70,25 @@ export function addDays (days_per_week: number) {
   }
 }
 
-export function addGoals (goals: Object) {
+export function addGoals (training_goals: string) {
   return {
     type: "ADD_GOALS",
-    payload: goals
+    payload: training_goals
   }
 }
 
-export function addRehabFocus (rehab_focus: Object) {
+export function addInjuryManagement (injury_management: string) {
   return {
-    type: "ADD_REHAB_FOCUS",
-    payload: rehab_focus
+    type: "ADD_INJURY_MANAGEMENT",
+    payload: injury_management
   }
 }
-
+export function addPostureCorrection (posture_correction: string) {
+  return {
+    type: "ADD_POSTURE_CORRECTION",
+    payload: posture_correction
+  }
+}
 export function addStress (stress: string) {
   return {
     type: "ADD_STRESS",

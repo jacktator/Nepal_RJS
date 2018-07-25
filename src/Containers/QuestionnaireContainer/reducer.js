@@ -5,10 +5,12 @@ let DefaultState = {
     age: "25",
     gender: "male",
     weight: "50",
-    exercisePlace: "",
+    exercise_place: "",
     days_per_week: 3,
-    goals: [],
-    rehab_focus: [],
+    goals: "1",
+    rehab_focus: "",
+    injury_management: "",
+    posture_correction:"",
     stress: "",
     productivity: "",
     productive_after_exercise: "",
@@ -55,7 +57,7 @@ const QuestionnaireReducers =(state: Object= DefaultState, action: Function) => 
     }
     case "ADD_EXERCISE_PLACE" :
     fields = {...state.fields};
-    fields['exercisePlace']= action.payload
+    fields['exercise_place']= action.payload
     return {
       ...state, fields
     }
@@ -74,13 +76,18 @@ const QuestionnaireReducers =(state: Object= DefaultState, action: Function) => 
       ...state, fields
     }
 
-    case "ADD_REHAB_FOCUS" :
+    case "ADD_INJURY_MANAGEMENT" :
     fields = {...state.fields};
-    fields['rehab_focus']= action.payload
+    fields['injury_management']= action.payload
     return {
       ...state, fields
     }
-
+    case "ADD_POSTURE_CORRECTION" :
+    fields = {...state.fields};
+    fields['posture_correction']= action.payload
+    return {
+      ...state, fields
+    }
     case "ADD_STRESS" :
     fields = {...state.fields};
     fields['stress']= action.payload

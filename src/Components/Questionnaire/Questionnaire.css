@@ -8,7 +8,7 @@
   margin-bottom: 2px;
 }
 .age-picker-pull-right {
-  margin-right: 40%;
+  margin-right: 45%;
 }
 .days-picker-pull-right {
   margin-right: 50%;
@@ -18,14 +18,31 @@
   font-weight: bold;
   font-size: 17px;
 }
-@media only screen and (min-width: 340px) {
+
+@media only screen and (min-width: 360px) {
   .days-picker-pull-right {
     margin-right: 55%;
   }
   .age-picker-pull-right {
-    margin-right: 50%;
+    margin-right: 55%;
   }
-}@media only screen and (min-width: 480px) {
+}@media only screen and (min-width: 375px) {
+  .days-picker-pull-right {
+    margin-right: 55%;
+  }
+  .age-picker-pull-right {
+    margin-right: 56%;
+  }
+}
+@media only screen and (min-width: 414px) {
+  .days-picker-pull-right {
+    margin-right: 60%;
+  }
+  .age-picker-pull-right {
+    margin-right: 60%;
+  }
+}
+@media only screen and (min-width: 480px) {
   .days-picker-pull-right {
     margin-right: 65%;
   }
@@ -41,19 +58,27 @@
     margin-right: 70%;
   }
 }
-@media only screen and (min-width: 968px) {
-  .days.picker-pull-right {
-    margin-right: 80%;
+@media only screen and (min-width: 768px) {
+  .days-picker-pull-right {
+    margin-right: 78%;
   }
   .age-picker-pull-right {
-    margin-right: 80%;
+    margin-right: 78%;
   }
 }
 @media only screen and (min-width: 1024px) {
-  .days.picker-pull-right {
-    margin-right: 85%;
+  .days-picker-pull-right {
+    margin-right: 84%;
   }
   .age-picker-pull-right {
-    margin-right: 85%;
+    margin-right: 84%;
+  }
+}
+@media only screen and (min-width: 1280px) {
+  .days-picker-pull-right {
+    margin-right: 87%;
+  }
+  .age-picker-pull-right {
+    margin-right: 87%;
   }
 }

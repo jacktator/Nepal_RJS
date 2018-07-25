@@ -6,7 +6,8 @@ import {bindActionCreators} from 'redux';
 import {Redirect} from 'react-router';
 import { addName, addAge, addGender, addWeight, addExercisePlace,
   addDays, addGoals,
-  addRehabFocus, addStress,
+  addInjuryManagement, addPostureCorrection,
+  addStress,
   addProductivity, addProductiveAfterExercise,
   addWorkInjury, addHealthFeeling,
   addDailyActivity, addCurrentActivity,
@@ -65,121 +66,13 @@ class Questionnaire extends Component {
     // this.makeNextToFinish=this.makeNextToFinish.bind(this);
   }//constructor ends
 
-  componentWillMount() {
-    const {goals, rehab_focus} = this.props.QuestionnaireReducers.fields;
-    let trainingGoals = [ ...this.state.trainingGoals ];
-    let injuryManagement = [ ...this.state.injuryManagement ];
-    let index = null;
-    goals.map(currentValue => {
-      index = this.state.trainingGoals.findIndex(i => { return i.value === currentValue; })
-      if(index && index!== -1){
-          trainingGoals[index].isChecked = true;
-      }
-      return null;
-    })
-    rehab_focus.map(currentValue => {
-      index = this.state.injuryManagement.findIndex(i => { return i.value === currentValue; })
-      if(index && index!== -1){
-          injuryManagement[index].isChecked = true;
-      }
-      return null;
-    })
-    this.setState({ trainingGoals, injuryManagement})
-  }
-  //handle the checkbox for injury management in questionnaire (third page)
-  postureCorrectionHandler = (value) => {
+  addInjuryManagement = (value) => {
     this.cancelModalHandler();
-    let postureCorrection = [...this.state.postureCorrection];
-    let index = this.state.postureCorrection.findIndex(i => { return i.value === value})
-    if(postureCorrection[index].isChecked){
-      postureCorrection[index].isChecked = false;
-    }else{
-      this.state.postureCorrection.map(data => {
-        index = this.state.postureCorrection.findIndex(i => { return i.value === data.value})
-        if(value === data.value){
-          postureCorrection[index].isChecked = true;
-        }
-        else{
-            postureCorrection[index].isChecked = false;
-        }
-        return null;
-      })
-    }
-    this.setState({postureCorrection});
+    this.props.addInjuryManagement(value);
   }
-  injuryManagementHandler = (value) => {
+  addPostureCorrection = (value) => {
     this.cancelModalHandler();
-    let injuryManagement = [...this.state.injuryManagement];
-    let index = this.state.injuryManagement.findIndex(i => { return i.value === value})
-    if(injuryManagement[index].isChecked){
-      injuryManagement[index].isChecked = false;
-    }else{
-      this.state.injuryManagement.map(data => {
-        index = this.state.injuryManagement.findIndex(i => { return i.value === data.value})
-        if(value === data.value){
-          injuryManagement[index].isChecked = true;
-        }
-        else{
-            injuryManagement[index].isChecked = false;
-        }
-        return null;
-      })
-    }
-
-    this.setState({injuryManagement});
-  }
-
-  rehabFocusCheckboxHandler = (value) => {
-    this.cancelModalHandler();
-    let injury_posture = [ ...this.state.injuryManagement]
-    let { rehab_focus } = this.props.QuestionnaireReducers.fields;
-
-    if(!rehab_focus){
-      rehab_focus = [];
-    }
-    //let injuryManagement = [ ...this.state.injuryManagement];
-    let count = rehab_focus.length;
-    let index = injury_posture.findIndex(i => {return i.value === value});
-    //close the modal
-
-    if(count < 2 || injury_posture[index].isChecked){
-      injury_posture[index].isChecked = !injury_posture[index].isChecked;
-      if(rehab_focus.includes(value)){
-        rehab_focus = removeArrayItem(rehab_focus, value)
-      }else{
-        rehab_focus.push(value);
-      }
-      this.props.addRehabFocus(rehab_focus);
-      this.setState({ injuryManagement : injury_posture });
-    }
-    else{
-      this.props.addError("Exceeded maximun number of selection");
-    }
-  }
-  //handle the checkbox for program in questionnaire (second page)
-  programCheckboxHandler = (value) => {
-    let tempGoals = [];
-    let trainingGoals = [ ...this.state.trainingGoals ];
-    let count = 0;
-    trainingGoals.map(i => {
-      if(i.isChecked === true) {
-        tempGoals.push(i.value);
-        count ++;
-      }
-      return null;
-    })
-    if(count < 1 || trainingGoals[value].isChecked) {
-      trainingGoals[value].isChecked = !trainingGoals[value].isChecked;
-      if(tempGoals.includes(value)){
-        tempGoals = removeArrayItem(tempGoals, value)
-      }else{
-        tempGoals.push(value);
-      }
-      this.props.addGoals(tempGoals);
-        this.setState({ trainingGoals })
-    } else {
-      this.props.addError("Only a maximum of one training goal can be selected");
-    }
+    this.props.addPostureCorrection(value);
   }
   //Icrease the currentPage of state by 1
   increaseCurrentPage = (currentPage) => {
@@ -286,6 +179,27 @@ class Questionnaire extends Component {
       { value: "gym", label: 'Gym' },
       { value: "home", label: 'Home' },
     ];
+    const trainingGoalsArray= [
+      { value: '0', usedFor:'gym', label: 'Muscle size and strength', description:"Weight training principles designed to build muscle and strength" },
+      { value: '1', usedFor:'both', label: 'Fat Loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition "},
+      { value: '2', usedFor:'both', label: 'Decrease stress', description:"Using exercise strategies to reduce stress levels and restore balance back in your body"},
+      { value: '3', usedFor:'gym', label: 'Improve posture', description:"Utilising specific exercises and weight training to correct postural imbalances "},
+      { value: '4', usedFor:'home', label: 'Fitness', description:"xxxxxxxxxx xxxxxxxx xxxxxx xxxxx "},
+    ];
+    const postureCorrectionArray= [
+      { value: '1a', description: 'Rounded shoulder and forward head', imgurl: 'https://muscularstrength.com/uploads/froala/18fc5d8c9a007cb8238d910aa106b91ad7e0066f.png'},
+      { value: '1b', description: 'Anterior pelvic tilt', imgurl: 'http://fitness4backpain.com/wp-content/uploads/Kyphosis-Normal-vs-Hyper.jpg'},
+      { value: '1c', description: 'Sway posture', imgurl: 'http://www.joannasoh.com/uploads/authors/1/fitness/posts/bad-posture/swayback-new.jpg'},
+      { value: '0', description: 'None' },
+    ];
+    const injuryManagementArray= [
+      { value: '2', description: 'Lower Back Pain', imgurl: 'http://totalphysiocare.com.au/wp-content/uploads/2017/05/lower-back-pain-relief.png'},
+      { value: '3', description: 'Neck Pain', imgurl: 'https://static.wixstatic.com/media/b1546b_f6a11249f1a346e08fc817d7cece04c3~mv2.jpg/v1/fill/w_630,h_382,al_c,lg_1,q_80/b1546b_f6a11249f1a346e08fc817d7cece04c3~mv2.webp'},
+      { value: '4', description: 'Shoulder Pain', imgurl: 'https://feelpainrelief.com/wp-content/uploads/2015/09/shoulder-pain-300x200.jpg'},
+      { value: '5', description: 'Hip Pain', imgurl: 'https://qph.fs.quoracdn.net/main-qimg-4d054f876feaa4b3d4944914a6f7cb66-c'},
+      { value: '0', description: 'None' },
+    ];
+
     const stressArray= [
       {value: '1', label: 'Stress free', description:'I never feel stressed'},{value: '2', label: 'Minimally stressed', description:'I rarely feel stressed'},
       {value: '3', label: 'Moderately stressed', description:'I feel stressed occasionally'},{value:'4', label: 'Highly stressed', description:'I feel quite stressed most days'},
@@ -333,21 +247,26 @@ class Questionnaire extends Component {
     } else if(this.state.currentPage === 2){
       RenderPage = (
         <Program
-          daysArray = {daysArray}
+          fields={fields}
           days= {fields.days_per_week}
+          exercisePlace = {fields.exercise_place}
+
+          daysArray = {daysArray}
           selectDays = {this.props.addDays}
+
           exercisePlaceArray={exercisePlaceArray}
           selectExercisePlace={this.props.addExercisePlace}
-          change = {this.programCheckboxHandler}
-          exercisePlace = {fields.exercisePlace}
-          data = { this.state.trainingGoals }
+
+          selectTrainingGoals = {this.props.addGoals}
+          trainingGoalsArray = {trainingGoalsArray}
         />
       );
     } else if(this.state.currentPage === 3){
       RenderPage = (
         <InjuryManagement
-          change={this.injuryManagementHandler}
-          data = {this.state.injuryManagement}
+          selectInjuryManagement={this.props.addInjuryManagement}
+          data= {injuryManagementArray}
+          fields = {fields.injury_management}
           showModal = {this.showModal}
 
         />
@@ -355,8 +274,9 @@ class Questionnaire extends Component {
     }else if(this.state.currentPage === 4){
       RenderPage = (
         <PostureCorrection
-          change={this.postureCorrectionHandler}
-          data = {this.state.postureCorrection}
+          data = {postureCorrectionArray}
+          fields = {fields.posture_correction}
+          selectPostureCorrection={this.props.addPostureCorrection}
           showModal = {this.showModal}
         />
       );
@@ -420,7 +340,7 @@ class Questionnaire extends Component {
               data = {this.state.dataForModal}
               type = {this.state.rehabTypeForModal}
               cancel = {this.cancelModalHandler}
-              select = {this.state.rehabTypeForModal === 'forPosture'? this.postureCorrectionHandler : this.injuryManagementHandler }
+              select = {this.state.rehabTypeForModal === 'forPosture'? this.addPostureCorrection: this.addInjuryManagement }
             />
           </Modal>
       )}
@@ -448,7 +368,7 @@ function matchDispatchToProps(dispatch){
   return bindActionCreators({
     addName, addAge, addGender, addWeight, addExercisePlace,
     addDays, addGoals,
-    addRehabFocus, addStress,
+    addInjuryManagement, addPostureCorrection, addStress,
     addProductivity, addProductiveAfterExercise,
     addWorkInjury, addHealthFeeling,
     addDailyActivity, addCurrentActivity,
@@ -462,11 +382,11 @@ function ArrtoObj(RangeFrom: int, RangeTo: int, unit: boolean) {
   if (unit) {
     for (let i = RangeFrom; i <= RangeTo; i++) {
       returnArray.push({value: i, label: i + " KG"})
-    };  
+    };
   } else {
     for (let i = RangeFrom; i <= RangeTo; i++) {
       returnArray.push({value: i, label: i})
-    };  
+    };
   }
   return returnArray;
 }

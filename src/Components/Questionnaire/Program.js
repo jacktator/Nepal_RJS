@@ -10,14 +10,14 @@ const alert = Modal.alert;
 const showAlert = (data, props) => {
   alert(data.label, data.description, [
     { text: 'Go Back', style: 'default' },
-    { text: 'Select', onPress: () => props.change(data.value) },
+    { text: 'Select', onPress: () => props.selectTrainingGoals(data.value) },
   ]);
 }
 
 const display = (data, key, props) => {
   if(data.usedFor === props.exercisePlace || data.usedFor === 'both' ){
     return (
-      <CheckboxItem key={key} checked={data.isChecked} onChange={() => props.change(data.value)}>
+      <CheckboxItem key={key} checked={props.fields.goals === data.value} onChange={() => props.selectTrainingGoals(data.value)}>
         <div onClick= {() => showAlert(data, props)}>
           {data.label}
         </div>
@@ -62,7 +62,7 @@ const Program = (props) => {
       </div>
     )}
     { props.exercisePlace!== "" && (
-      props.data.map((i,key) => (
+      props.trainingGoalsArray.map((i,key) => (
           display(i, key, props)
       ))
     )}
