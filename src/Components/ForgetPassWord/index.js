@@ -40,7 +40,7 @@ class ForgetPassWord extends Component<Props> {
         <div>
           <List renderHeader={() => ''}>
             <InputItem
-              value={email}
+              placeholder={email}
               onChange={(value)=>this.props.onChangeInput(value)}
             >
               <div style={humeniconstyle} />

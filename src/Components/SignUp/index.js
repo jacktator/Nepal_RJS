@@ -59,7 +59,6 @@ class SignUp extends Component<Props, State> {
   render() {
     const {username, email, password}= this.props.state;
     // const {able} = this.state
-    document.body.style = 'background: white';
     return (
       <div className="signup">
 

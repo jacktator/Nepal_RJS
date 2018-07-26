@@ -4,7 +4,7 @@
 
 const DefaultState=
   {
-    email:'E-Mail',
+    email:'Email',
   }
 
 

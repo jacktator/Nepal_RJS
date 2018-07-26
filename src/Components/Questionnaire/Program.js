@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Checkbox, Modal, Picker, Radio} from 'antd-mobile';
+import { List, Checkbox, Modal, Picker, Radio,Flex} from 'antd-mobile';
 import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
 
 import './Questionnaire.css';
@@ -17,11 +17,15 @@ const showAlert = (data, props) => {
 const display = (data, key, props) => {
   if(data.usedFor === props.exercisePlace || data.usedFor === 'both' ){
     return (
+      <Flex key={key}>
+        <Flex.Item>
       <CheckboxItem key={key} checked={props.fields.goals === data.value} onChange={() => props.selectTrainingGoals(data.value)}>
         <div onClick= {() => showAlert(data, props)}>
           {data.label}
         </div>
       </CheckboxItem>
+      </Flex.Item>
+      </Flex>
     )
   }
 }
@@ -39,6 +43,7 @@ const Program = (props) => {
             data={props.daysArray}
             locale={enUs}
             cols={1}
+            title={<div>Days&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>}
             value={[days[0]]}
             onOk={v => props.selectDays(v)}
           >
@@ -47,13 +52,16 @@ const Program = (props) => {
         </div>
     </div>
     <div className="listHeader">Where would you like to exercise? </div>
-    <List>
+
       {props.exercisePlaceArray.map((i,key) => (
-        <RadioItem key={key} checked={props.exercisePlace === i.value} onChange={() => props.selectExercisePlace(i.value)}>
+        <Flex key={key}>
+          <Flex.Item>
+        <RadioItem key={key} checked={props.exercisePlace === i.value} onClick={() => props.selectExercisePlace(i.value)}>
           {i.label}
         </RadioItem>
+        </Flex.Item>
+        </Flex>
       ))}
-    </List>
     <div>
 
     { props.exercisePlace!== "" && (

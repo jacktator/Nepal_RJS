@@ -9,6 +9,7 @@
 }
 .age-picker-pull-right {
   width: 160px;
+  flex-basis: initial;
 }
 .days-picker-pull-right {
   width: 170px;
