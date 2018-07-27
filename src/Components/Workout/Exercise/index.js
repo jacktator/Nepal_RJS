@@ -43,12 +43,12 @@ export default class Exercise extends Component{
          </div>
          <div className="image-container">
            {/* the main gif/image area */}
-           <img src={require("../../../Assets/Exercise/exerciseGif.gif")} className="exercise-image"/>
+           <img src={require("../../../Assets/Exercise/exerciseGif.gif")} className="exercise-image" alt="exercise"/>
            {/* history button */}
-           <img src={require("../../../Assets/Exercise/history.svg")} className="history-icon"
+           <img src={require("../../../Assets/Exercise/history.svg")} className="history-icon" alt="history"
            onClick={() => {alert("can see previous training longs of weights and reps they achieved. this goes to a seperate page.")}}/>
            {/* exercise information*/}
-           <img src={require("../../../Assets/Exercise/exerciseInfo.svg")} className="info-icon"
+           <img src={require("../../../Assets/Exercise/exerciseInfo.svg")} className="info-icon" alt="info"
              onClick={() => {alert("exercise information page. click this goes to video of exercise and description")}}/>
          </div>
 

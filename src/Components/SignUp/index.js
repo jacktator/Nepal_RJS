@@ -64,7 +64,7 @@ class SignUp extends Component<Props, State> {
 
         {/* logo block*/}
         <div className="signup-logo-position">
-          <img src={Logo} className="logo"/>
+          <img src={Logo} className="logo" alt="logo"/>
         </div>
         <div className="signup-input">
           <div>

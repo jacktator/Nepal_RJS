@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { List, Stepper, Button,Flex} from 'antd-mobile';
+import {Stepper, Button,Flex} from 'antd-mobile';
 import MediaQuery from 'react-responsive';
 
 export default class WeightAndRep extends Component{

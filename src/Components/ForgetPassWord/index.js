@@ -1,7 +1,7 @@
 //@flow
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import { List, InputItem, WhiteSpace, WingBlank,Button, Flex } from 'antd-mobile';
+import { List, InputItem, WhiteSpace, WingBlank,Button} from 'antd-mobile';
 import { createForm } from 'rc-form';
 import './ForgetPassWord.css';
 // import Locker from '../../assets/locker.png';
