@@ -11,7 +11,8 @@ import { addName, addAge, addGender, addWeight, addExercisePlace,
   addProductivity, addProductiveAfterExercise,
   addWorkInjury, addHealthFeeling,
   addDailyActivity, addCurrentActivity,
-  addQuestionnaire, addError, removeError, success
+  addQuestionnaire, addError, removeError, success,
+  fetchFromServer
 }from './actions';
 
 import CurrentStep  from '../../Components/Questionnaire/Progress';
@@ -44,6 +45,10 @@ class Questionnaire extends Component {
       hasError: false,
     }//state ends
   }//constructor ends
+
+  componentDidMount(){
+    this.props.fetchFromServer();
+  }
 
   addInjuryManagement = (value) => {
     this.cancelModalHandler();
@@ -149,7 +154,7 @@ class Questionnaire extends Component {
     this.props.removeError();
   }
   render() {
-    const {nick_name, fields} = this.props.QuestionnaireReducers;
+    const {nick_name, fields, goal} = this.props.QuestionnaireReducers;
     const percent  = (this.state.currentPage-1)*15;
     const genderArray = [
       { value: "male", label: 'Male' },
@@ -163,11 +168,11 @@ class Questionnaire extends Component {
       { value: "home", label: 'Home' },
     ];
     const trainingGoalsArray= [
-      { value: '0', usedFor:'gym', label: 'Muscle size and strength', description:"Weight training principles designed to build muscle and strength" },
-      { value: '1', usedFor:'both', label: 'Fat Loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition "},
-      { value: '2', usedFor:'both', label: 'Decrease stress', description:"Using exercise strategies to reduce stress levels and restore balance back in your body"},
-      { value: '3', usedFor:'gym', label: 'Improve posture', description:"Utilising specific exercises and weight training to correct postural imbalances "},
-      { value: '4', usedFor:'home', label: 'Fitness', description:"xxxxxxxxxx xxxxxxxx xxxxxx xxxxx "},
+      { value: '0', used_for:'gym', label: 'Muscle size and strength', description:"Weight training principles designed to build muscle and strength" },
+      { value: '1', used_for:'both', label: 'Fat Loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition "},
+      { value: '2', used_for:'both', label: 'Decrease stress', description:"Using exercise strategies to reduce stress levels and restore balance back in your body"},
+      { value: '3', used_for:'gym', label: 'Improve posture', description:"Utilising specific exercises and weight training to correct postural imbalances "},
+      { value: '4', used_for:'home', label: 'Fitness', description:"xxxxxxxxxx xxxxxxxx xxxxxx xxxxx "},
     ];
     const postureCorrectionArray= [
       { value: '1a', description: 'Rounded shoulder and forward head', imgurl: 'https://muscularstrength.com/uploads/froala/18fc5d8c9a007cb8238d910aa106b91ad7e0066f.png'},
@@ -232,7 +237,7 @@ class Questionnaire extends Component {
         <Program
           fields={fields}
           days= {fields.days_per_week}
-          exercisePlace = {fields.exercise_place}
+          exercise_place = {fields.exercise_place}
 
           daysArray = {daysArray}
           selectDays = {this.props.addDays}
@@ -294,6 +299,7 @@ class Questionnaire extends Component {
         />
       );
     }
+
     return(
       <div className="container">
       <div className= "content-without-pagination">
@@ -323,7 +329,7 @@ class Questionnaire extends Component {
       </Button>
       </div>
       {(this.state.modal) && (
-          <Modal modalFor = "selectRehab">
+          <Modal modalFor = "modal">
             <RehabModal
               data = {this.state.dataForModal}
               type = {this.state.rehabTypeForModal}
@@ -336,7 +342,7 @@ class Questionnaire extends Component {
         <Redirect to='/login/' />
       )}
       {(this.props.QuestionnaireReducers.error.hasError === true) && (
-        <Modal modalFor = "showError">
+        <Modal modalFor = "modal">
           <ShowError
             error= {this.props.QuestionnaireReducers.error.message}
             cancel = {this.cancelErrorMessageHandler}
@@ -361,7 +367,8 @@ function matchDispatchToProps(dispatch){
     addWorkInjury, addHealthFeeling,
     addDailyActivity, addCurrentActivity,
     addQuestionnaire,
-    addError, removeError, success
+    addError, removeError, success,
+    fetchFromServer
   }, dispatch
 );
 }

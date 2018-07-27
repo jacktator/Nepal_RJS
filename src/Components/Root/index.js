@@ -25,6 +25,7 @@ type Props = {
 
 class Root extends Component<Props>{
   render(){
+
     const {check} = this.props
 
     if(!check){
@@ -39,11 +40,12 @@ class Root extends Component<Props>{
               <Route path="/questionnaire" exact render={()=>(<Redirect to='/login/logindetails'/>)}/>
               <Route path="/login/logindetails" exact component={LoginDetails} />
               <Route path="/forgetpassword" exact component={ForgetPassWord} />
-              // <Route path="/exercise" exact component={ExerciseContainer}/>
-              // <Route path="/workout" exact component={WorkoutContainer} />
-              // <Route path="/plan" exact component={PlanContainer}/>
-              // <Route path="/footer" exact component={FooterContainer} />
-              // <Route path="/history" exact component={HistoryContainer}/>
+
+              <Route path="/exercise" exact component={ExerciseContainer}/>
+              <Route path="/workout" exact component={WorkoutContainer} />
+              <Route path="/plan" exact component={PlanContainer}/>
+              <Route path="/footer" exact component={FooterContainer} />
+              <Route path="/history" exact component={HistoryContainer}/>
             </Switch>
           {/*</BrowserRouter>*/}
           </HashRouter>
@@ -61,11 +63,13 @@ class Root extends Component<Props>{
             <Route path="/login/logindetails" exact render={()=>(<Redirect to='/questionnaire'/>)}/>
             <Route path="/questionnaire" exact component={Questionnaire} />
             <Route path="/forgetpassword" exact component={ForgetPassWord} />
-            // <Route path="/workout" exact component={WorkoutContainer} />
-            // <Route path="/plan" exact component={PlanContainer}/>
-            // <Route path="/footer" exact component={FooterContainer} />
-            // <Route path="/history" exact component={HistoryContainer}/>
-            // <Route path="/exercise" exact component={ExerciseContainer}/>
+            
+            <Route path="/exercise" exact component={ExerciseContainer}/>
+            <Route path="/workout" exact component={WorkoutContainer} />
+            <Route path="/plan" exact component={PlanContainer}/>
+            <Route path="/footer" exact component={FooterContainer} />
+            <Route path="/history" exact component={HistoryContainer}/>
+
           </Switch>
         {/*</BrowserRouter>*/}
         </HashRouter>

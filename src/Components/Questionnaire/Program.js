@@ -15,7 +15,7 @@ const showAlert = (data, props) => {
 }
 
 const display = (data, key, props) => {
-  if(data.usedFor === props.exercisePlace || data.usedFor === 'both' ){
+  if(data.used_for === props.exercise_place || data.used_for === 'both' ){
     return (
       <Flex key={key}>
         <Flex.Item>
@@ -56,7 +56,7 @@ const Program = (props) => {
       {props.exercisePlaceArray.map((i,key) => (
         <Flex key={key}>
           <Flex.Item>
-        <RadioItem key={key} checked={props.exercisePlace === i.value} onClick={() => props.selectExercisePlace(i.value)}>
+        <RadioItem key={key} checked={props.exercise_place === i.value} onClick={() => props.selectExercisePlace(i.value)}>
           {i.label}
         </RadioItem>
         </Flex.Item>
@@ -64,12 +64,12 @@ const Program = (props) => {
       ))}
     <div>
 
-    { props.exercisePlace!== "" && (
+    { props.exercise_place!== "" && (
       <div className="listHeader">
         What is your current training goal?
       </div>
     )}
-    { props.exercisePlace!== "" && (
+    { props.exercise_place!== "" && (
       props.trainingGoalsArray.map((i,key) => (
           display(i, key, props)
       ))

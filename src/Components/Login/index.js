@@ -29,7 +29,7 @@ class Login extends Component {
             </div>
             <div className="login-register-button">
               <WingBlank>
-                <Link to='signup' ><Button>Register</Button></Link>
+                <Link to='/signup' ><Button>Register</Button></Link>
               </WingBlank>
               <WhiteSpace size='xl'/>
               <WingBlank>

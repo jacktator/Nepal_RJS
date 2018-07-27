@@ -19,6 +19,7 @@ let DefaultState = {
     daily_activity: "",
     current_activity: ""
   },
+  goal: [],
   error: {
     hasError: false,
     message: ''
@@ -139,10 +140,17 @@ const QuestionnaireReducers =(state: Object= DefaultState, action: Function) => 
 
     case "DATA_FROM_SERVER" :
     fields = { ...state.fields};
-    fields = action.payload
+    fields = action.payload;
     return {
       ...state, fields
     }
+
+    case "GET_GOAL_FROM_SERVER" :
+      let goal = [ ...state.goal];
+      goal = action.payload;
+      return {
+        ...state, goal
+      }
 
     case "SET_ERROR" :
       let error = { ...state.error };

@@ -18,7 +18,7 @@ const StepFour = (props) => {
       <div className="noticebar">
         <ShowNoticeBar />
       </div>
-        <h3 style={{textAlign: 'center', margin:"2% 0 0 0"}}>Stress and Productivity</h3>
+        <h2 style={{textAlign: 'center'}}>Stress and Productivity</h2>
         <div className="listHeader">
             How often do you feel stressed at work?
         </div>

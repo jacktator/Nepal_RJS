@@ -49,7 +49,7 @@ export default class Exercise extends Component{
            onClick={() => {alert("can see previous training longs of weights and reps they achieved. this goes to a seperate page.")}}/>
            {/* exercise information*/}
            <img src={require("../../../Assets/Exercise/exerciseInfo.svg")} className="info-icon" alt="info"
-             onClick={() => {alert("exercise information page. click this goes to video of exercise and description")}}/>
+             onClick={(e) => this.props.onInfoClicked(e) }/>
          </div>
 
          {/* displays the text and steppers, as well as the save button. refer to WeightandRep.js*/}

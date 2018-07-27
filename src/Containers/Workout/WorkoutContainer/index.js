@@ -66,7 +66,7 @@ class WorkoutContainer extends Component{
 
         />
         {(this.state.isChangeExcercise) && (
-          <Modal modalFor = "selectExercise">
+          <Modal modalFor = "modal-for-select-exercise">
             <SelectExercise
               onSelect = {this.onSelectExerciseHandler}
               excerciseArray = {this.state.excerciseArray}

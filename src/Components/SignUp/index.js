@@ -53,7 +53,7 @@ class SignUp extends Component<Props, State> {
     const{username, email, password} = this.props.state
     const able = !this.state.able;
     this.props.onClickButton(username, email, password)
-    this.setState({able})
+    this.setState({able});
   }
 
   render() {

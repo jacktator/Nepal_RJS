@@ -48,7 +48,7 @@ class ExerciseContainer extends Component{
         <Redirect to='/plan' />
       )}
       {this.state.showInfo && (
-        <Modal modalFor = "showInfo">
+        <Modal modalFor = "modal-for-info">
           <Info
             onBackButtonClicked = {this.infoHandler}
           />
