@@ -15,7 +15,9 @@ const StepFive = (props) => {
 
   return(
     <div>
-      <ShowNoticeBar />
+      <div className="noticebar">
+        <ShowNoticeBar />
+      </div>
       <h3 style={{textAlign: 'center'}}>Health and Wellbeing</h3>
       <div className="listHeader"> Do you experience injury or posture related pain at work? </div>
       {props.injuryArray.map((i,key) => (

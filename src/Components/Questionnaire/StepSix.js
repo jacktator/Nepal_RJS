@@ -13,7 +13,9 @@ const showAlert = (i, props) => {
 const StepSix = (props) => {
   return(
     <div>
-      <ShowNoticeBar />
+      <div className="noticebar">
+        <ShowNoticeBar />
+      </div>
       <h2 style={{textAlign: 'center'}}>General Activity and Exercise Level</h2>
       <div className="listHeader"> How active are you on a daily basis?</div>
 

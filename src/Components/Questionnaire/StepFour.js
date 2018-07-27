@@ -15,7 +15,9 @@ const showAlert = (i, props) => {
 const StepFour = (props) => {
   return(
     <div>
-      <ShowNoticeBar />
+      <div className="noticebar">
+        <ShowNoticeBar />
+      </div>
         <h3 style={{textAlign: 'center', margin:"2% 0 0 0"}}>Stress and Productivity</h3>
         <div className="listHeader">
             How often do you feel stressed at work?

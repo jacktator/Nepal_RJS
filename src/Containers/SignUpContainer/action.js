@@ -12,7 +12,6 @@ export function SignUpActions(username, email, password){
       console.log('register successfully!!')
       console.log(response.data);
       dispatch(fetchResponse(response.data.code))
-
     }).catch((error)=>{
       if(error.response){
         dispatch(catchError(error.response.data.message))
