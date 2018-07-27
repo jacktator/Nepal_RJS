@@ -19,12 +19,12 @@ const display = (data, key, props) => {
     return (
       <Flex key={key}>
         <Flex.Item>
-      <CheckboxItem key={key} checked={props.fields.goals === data.value} onChange={() => props.selectTrainingGoals(data.value)}>
-        <div onClick= {() => showAlert(data, props)}>
-          {data.label}
-        </div>
-      </CheckboxItem>
-      </Flex.Item>
+          <div onClick= {() => showAlert(data, props)}>
+            <CheckboxItem key={key} checked={props.fields.goals === data.value}>
+              {data.label}
+            </CheckboxItem>
+          </div>
+        </Flex.Item>
       </Flex>
     )
   }

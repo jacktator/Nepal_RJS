@@ -23,24 +23,24 @@ const StepFive = (props) => {
       {props.injuryArray.map((i,key) => (
         <Flex key={key}>
           <Flex.Item>
-        <CheckboxItem key={key} checked={props.fields.work_injury === i.value} onChange={() => props.selectInjury(i.value)}>
-          <div onClick= {() => showAlert(i, props.selectInjury)}>
-              {i.label}
-          </div>
-        </CheckboxItem>
-        </Flex.Item>
+            <div onClick= {() => showAlert(i, props.selectInjury)}>
+              <CheckboxItem key={key} checked={props.fields.work_injury === i.value} >
+                {i.label}
+              </CheckboxItem>
+            </div>
+          </Flex.Item>
         </Flex>
       ))}
     <div className="listHeader"> How do you feel your health and wellbeing is right now? </div>
       {props.healthArray.map((i,key) => (
         <Flex key={key}>
           <Flex.Item>
-        <CheckboxItem  key={key} checked={props.fields.health_feeling === i.value} onChange={() => props.selectHealth(i.value)}>
-          <div onClick= {() => showAlert(i, props.selectHealth)}>
-            {i.label}
-          </div>
-        </CheckboxItem>
-        </Flex.Item>
+            <div onClick= {() => showAlert(i, props.selectHealth)}>
+              <CheckboxItem  key={key} checked={props.fields.health_feeling === i.value} >
+                {i.label}
+              </CheckboxItem>
+            </div>
+          </Flex.Item>
         </Flex>
         ))}
     </div>
