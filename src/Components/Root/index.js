@@ -13,7 +13,7 @@ import WorkoutContainer from '../../Containers/Workout/WorkoutContainer';
 import FooterContainer from '../../Containers/Workout/FooterContainer';
 import PlanContainer from '../../Containers/Workout/PlanContainer';
 import HistoryContainer from '../../Containers/Workout/HistoryContainer';
-
+import MainMenuComponent from '../../Components/MainMenu';
 
 //import {connect} from 'react-redux';
 import ExerciseContainer from '../../Containers/ExerciseContainer/';
@@ -25,7 +25,6 @@ type Props = {
 
 class Root extends Component<Props>{
   render(){
-
     const {check} = this.props
 
     if(!check){
@@ -40,7 +39,7 @@ class Root extends Component<Props>{
               <Route path="/questionnaire" exact render={()=>(<Redirect to='/login/logindetails'/>)}/>
               <Route path="/login/logindetails" exact component={LoginDetails} />
               <Route path="/forgetpassword" exact component={ForgetPassWord} />
-
+              <Route path="/mainmenu" exact component={MainMenuComponent}/>
               <Route path="/exercise" exact component={ExerciseContainer}/>
               <Route path="/workout" exact component={WorkoutContainer} />
               <Route path="/plan" exact component={PlanContainer}/>
@@ -63,13 +62,12 @@ class Root extends Component<Props>{
             <Route path="/login/logindetails" exact render={()=>(<Redirect to='/questionnaire'/>)}/>
             <Route path="/questionnaire" exact component={Questionnaire} />
             <Route path="/forgetpassword" exact component={ForgetPassWord} />
-            
-            <Route path="/exercise" exact component={ExerciseContainer}/>
+            <Route path="/mainmenu" exact component={MainMenuComponent}/>
             <Route path="/workout" exact component={WorkoutContainer} />
             <Route path="/plan" exact component={PlanContainer}/>
             <Route path="/footer" exact component={FooterContainer} />
             <Route path="/history" exact component={HistoryContainer}/>
-
+            <Route path="/exercise" exact component={ExerciseContainer}/>
           </Switch>
         {/*</BrowserRouter>*/}
         </HashRouter>

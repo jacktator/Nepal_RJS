@@ -318,15 +318,14 @@ class Questionnaire extends Component {
 
       <div className="pagination-container">
       <Button type="primary" disabled={this.state.currentPage === 1 ? true: false}  onClick={() => this.buttonHandler('previous')}
-        inline size="medium" style={{ float: 'left', marginLeft: '12px'}}>
+        inline size="medium" style={{position:'absolute',left:'0',marginLeft:'10px',zIndex:'1000'}}>
           Previous
       </Button>
-
-      <span style ={{color:"black", marginTop: "40%", padding: "30px 30px"}}>{this.state.currentPage}/7</span>
       <Button type="primary" onClick={() => this.buttonHandler('next')}
-      inline size="medium" style={{ float: 'right', marginRight: '12px'}}>
+      inline size="medium" style={{position:'absolute',right:'0',marginRight:'10px',zIndex:'1000'}}>
       {this.state.currentPage === 7 ? "Finish": "Next"}
       </Button>
+      <div className="pagination-page-number">{this.state.currentPage}/7</div>
       </div>
       {(this.state.modal) && (
           <Modal modalFor = "modal">

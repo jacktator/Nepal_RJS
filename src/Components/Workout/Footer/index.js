@@ -16,7 +16,7 @@ import workoutSel from '../../../Assets/Footer/workoutSel.svg'
 
   const Footer = (props) => {
     return (
-      <div  className="container">
+      <div className="container">
         <div className="footer-container">
           <TabBar
             unselectedTintColor="#949494"

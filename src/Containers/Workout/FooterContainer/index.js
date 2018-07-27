@@ -15,6 +15,7 @@ class FooterContainer extends Component{
           hidden = {this.props.FooterReducers.hidden}
           selectFooter = {this.props.selectFooter}
         />
+        {/*
         { this.props.FooterReducers.currentFooterTab === 'historyTab' &&
           <Redirect to="/history" />
         }{ this.props.FooterReducers.currentFooterTab === 'planTab' &&
@@ -23,7 +24,7 @@ class FooterContainer extends Component{
           <Redirect to="/workout" />
         }{ this.props.FooterReducers.currentFooterTab === 'meTab' &&
           <span> this is me tab </span>
-        }
+        }*/}
       </Hoc>
 
     )
