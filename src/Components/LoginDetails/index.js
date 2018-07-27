@@ -110,7 +110,7 @@ class LoginDetails extends Component<Props, State> {
         </div>
     {/* no account block*/}
         <div className="logindetails-doyouhaveaccount" style={{color: 'grey'}}>
-          Do not have an Account?
+          Do not have an account?
         </div>
     {/* register button block*/}
         <div>

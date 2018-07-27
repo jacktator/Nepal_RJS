@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Checkbox} from 'antd-mobile';
+import { Modal, Checkbox,Flex} from 'antd-mobile';
 import ShowNoticeBar from './NoticeBar';
 import './Questionnaire.css';
 const CheckboxItem = Checkbox.CheckboxItem;
@@ -20,20 +20,28 @@ const StepSix = (props) => {
       <div className="listHeader"> How active are you on a daily basis?</div>
 
       {props.activityArray.map((i,key) => (
+        <Flex key={key}>
+          <Flex.Item>
         <CheckboxItem key={key} checked={props.fields.daily_activity === i.value} onChange={() => props.selectActivity(i.value)}>
           <span onClick= {() => showAlert(i, props.selectActivity)}>
           {i.label}
           </span>
         </CheckboxItem>
+        </Flex.Item>
+        </Flex>
       ))}
     <div className="listHeader">How many days per week do you currently exercise?</div>
 
     {props.exerciseArray.map((i,key) => (
+      <Flex key={key}>
+        <Flex.Item>
       <CheckboxItem key={key} checked={props.fields.current_activity === i.value} onChange={() => props.selectExercise(i.value)}>
         <div onClick= {() => showAlert(i, props.selectExercise)}>
           {i.label}
         </div>
       </CheckboxItem>
+      </Flex.Item>
+      </Flex>
     ))}
   </div>
   )

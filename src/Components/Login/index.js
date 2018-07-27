@@ -21,7 +21,6 @@ class Login extends Component {
   }
 
   render(){
-    document.body.style = 'background: white;';
     return(
           <div className="login">
             {/*Logo block*/}

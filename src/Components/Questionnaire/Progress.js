@@ -108,8 +108,8 @@ const CurrentStep = (props) => {
     RenderSteps =(
       <div>
         <Steps direction="horizontal">
-          <Step status="completed" title="Step 4" icon={completeIcon()} />
           <Step status="completed" title="Step 5" icon={completeIcon()} />
+          <Step status="completed" title="Step 6" icon={completeIcon()} />
           <Step status="error" title="Step 7" icon={processIcon()} />
         </Steps>
       </div>

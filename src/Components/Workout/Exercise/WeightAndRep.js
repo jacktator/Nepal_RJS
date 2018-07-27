@@ -26,7 +26,7 @@ export default class WeightAndRep extends Component{
       <div className="weight-and-rep">
         {/* Text for stepper*/}
         <Flex justify="center" className="stepper-text">
-        <Flex.Item> WEIGHT(Kgs)</Flex.Item>
+        <Flex.Item> WEIGHT(kg)</Flex.Item>
         <Flex.Item> REPS</Flex.Item>
         </Flex>
         {/* Code for stepper*/}
@@ -40,7 +40,7 @@ export default class WeightAndRep extends Component{
             onChange={(e) => this.onChangeWeight(e)}
           /></Flex.Item>
         <Flex.Item><Stepper
-            style={{ width: '35%', minWidth: '110px' }}
+            style={{ width: '30%', minWidth: '110px' }}
             showNumber
             max={10}
             min={1}

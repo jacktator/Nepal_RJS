@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, InputItem, Radio, Picker, WhiteSpace} from 'antd-mobile';
+import { List, InputItem, Radio, Picker, WhiteSpace,Flex} from 'antd-mobile';
 import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
 import './Questionnaire.css';
 const RadioItem = Radio.RadioItem;
@@ -11,9 +11,12 @@ const Detail = (props) => {
   const age = [];
   age.push(parseInt(props.fields.age,10));
   weight.push(parseInt(props.fields.weight,10));
+  document.body.style = 'background: white;';
   return(
     <div>
       <h2 style={{textAlign: 'center'}}>Your Details</h2>
+      <Flex>
+      <Flex.Item>
         <InputItem
           type="text"
           placeholder="Please enter your name"
@@ -21,31 +24,43 @@ const Detail = (props) => {
           onChange={(v) => props.nameHandler(v)}
           value={props.name}
         >Name</InputItem>
+        </Flex.Item>
+        </Flex>
+        <Flex>
+        <Flex.Item>
         <div className="age-picker-pull-right">
           <Picker
             data={props.ageArray}
             locale={enUs}
             cols={1}
+            extra=" "
+            title={<div>Age&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>}
             value={[age[0]]}
             onOk={v => props.selectAge(v)}
             >
-            <List.Item arrow="horizontal">Age:</List.Item>
+            <List.Item arrow="down">Age:</List.Item>
           </Picker>
         </div>
-
+        </Flex.Item>
+        </Flex>
         <div className="listHeader">Gender:</div>
-        <List>
           {props.genderArray.map((i,key) => (
-            <RadioItem key={key} checked={gender === i.value} onChange={() => props.genderHandler(i.value)}>
+            <Flex key={key}>
+              <Flex.Item>
+            <RadioItem key={key} checked={gender === i.value} onClick={() => props.genderHandler(i.value)}>
               {i.label}
             </RadioItem>
+            </Flex.Item>
+            </Flex>
           ))}
-        </List>
+
         <WhiteSpace size="lg" />
         <Picker
           data={props.weightArray}
           locale={enUs}
           cols={1}
+          extra=" "
+          title={<div>Weight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>}
           value={[weight[0]]}
           onOk={v => props.selectWeight(v)}
           >

@@ -25,10 +25,10 @@ export default class RecordList extends Component{
           <div>
           <List>
           <Item>
-          <Flex justify="center" className="list" style={{margin:"5px 0 5px 0"}}>
+          <Flex justify="between" className="list">
           <Flex.Item><img src={require('../../../Assets/Exercise/checkCircle.svg')} alt="check-circle"/></Flex.Item>
-          <Flex.Item><div className="list-text"><strong>{data.kgs} kgs * {data.reps} reps</strong></div></Flex.Item>
-          <Flex.Item><img src={require('../../../Assets/Workout/cup-icon.png')} alt="cup-icon"/></Flex.Item>
+          <Flex.Item><div className="list-text"><strong>{data.kgs}kg * {data.reps} reps</strong></div></Flex.Item>
+          <Flex.Item><img src={require('../../../Assets/Workout/cup-icon.png')}/></Flex.Item>
           </Flex>
           </Item>
           </List>
@@ -38,9 +38,9 @@ export default class RecordList extends Component{
           <div>
           <List>
           <Item>
-          <Flex justify="center" className="list">
-          <Flex.Item style={{margin:"5px 0 5px 0"}}>{key+1}</Flex.Item>
-          <Flex.Item style={{color:"grey"}}><div className="list-text">{data.kgs} kgs * {data.reps} reps</div></Flex.Item>
+          <Flex justify="between" className="list">
+          <Flex.Item>{key+1}</Flex.Item>
+          <Flex.Item style={{color:"grey"}}><div className="list-text">{data.kgs}kg * {data.reps} reps</div></Flex.Item>
           <Flex.Item style={{color:"grey"}}><div className="list-text">previous</div></Flex.Item>
           </Flex>
           </Item>

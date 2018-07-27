@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Progress, Button} from 'antd-mobile';
+import { Progress, Button,WingBlank,WhiteSpace} from 'antd-mobile';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Redirect} from 'react-router';
@@ -102,7 +102,7 @@ class Questionnaire extends Component {
       }else if(currentPage === 2) {
         let {goals, exercisePlace} = this.props.QuestionnaireReducers.fields;
         if(exercisePlace === ""){
-          this.props.addError("Please select the excercicse place");
+          this.props.addError("Please select the exercise place");
           return;
         }
         if(goals.length===0){
@@ -173,7 +173,7 @@ class Questionnaire extends Component {
       { value: "female", label: 'Female' },
     ];
     const daysArray = ArrtoObj(3, 5, false);
-    const ageArray = ArrtoObj(20, 120, false);
+    const ageArray = ArrtoObj(12, 75, false);
     const weightArray = ArrtoObj(20, 300, true);
     const exercisePlaceArray = [
       { value: "gym", label: 'Gym' },
@@ -314,10 +314,15 @@ class Questionnaire extends Component {
     return(
       <div className="container">
       <div className= "content-without-pagination">
+      <WhiteSpace size="sm"/>
+      <WingBlank size="sm">
       <div className="progress-bar">
-      <div className="progress"><Progress percent={percent} position="normal" /></div>
+      <div className="progress">
+          <Progress percent={percent} position="normal" />
+      </div>
       <div aria-hidden="true">{percent}%</div>
       </div>
+      </WingBlank>
       <CurrentStep currentPage={this.state.currentPage}/>
       {RenderPage}
       </div>
@@ -381,7 +386,7 @@ function ArrtoObj(RangeFrom: int, RangeTo: int, unit: boolean) {
   var returnArray = [];
   if (unit) {
     for (let i = RangeFrom; i <= RangeTo; i++) {
-      returnArray.push({value: i, label: i + " KG"})
+      returnArray.push({value: i, label: i + " kg"})
     };
   } else {
     for (let i = RangeFrom; i <= RangeTo; i++) {

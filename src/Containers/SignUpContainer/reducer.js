@@ -3,7 +3,7 @@
 let DefaultState=
   {
     username:'Username@com',
-    email:'E-mail',
+    email:'Email',
     password:'1235678',
     error:null,
     fetch:'',
