@@ -4,6 +4,7 @@
   width:100%;
   background-color: white;
   position: absolute;
+  user-select: none;
 }
 
 .main-menu-container .image-containers{
@@ -12,9 +13,9 @@
 }
 
 .main-menu-container .image-sources{
+  pointer-events: none;
   width:100%;
   height:100%;
-  opacity:0.6;
 }
 
 
@@ -38,17 +39,28 @@
   background-color: #3C8FCF;
   border-color:#3278A9;
   user-select: none;
-  color:white;
 }
 
 .square-button-icon{
-  height:40%;
+  pointer-events: none;
+  height:30%;
   width:40%;
   text-align: center;
   opacity:1;
 }
 
+@media screen and (min-width: 1000px) {
+  .square-button-icon{
+    height:100px;
+    width:100px;
+  }
+}
+
 .square-button:active{
   background-color: #48acf9;
   opacity:1;
+}
+
+.smallicon{
+  pointer-events: none;
 }

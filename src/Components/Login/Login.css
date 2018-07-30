@@ -17,6 +17,7 @@
 
 .login-register-button{
   /* position: absolute; */
+  user-select: none;
   bottom: 8vh;
   width: 100%;
 }

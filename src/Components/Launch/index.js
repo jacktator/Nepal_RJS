@@ -26,7 +26,7 @@ buttonClickHandler = () => {
            {/* button block. */}
         <div className='launch-button'>
           <WingBlank>
-              <Button type="primary" onClick={()=> this.buttonClickHandler()}style={{backgroundColor: '#4CA0CC'}}>
+              <Button type="primary" className="button-no-copy" onClick={()=> this.buttonClickHandler()}style={{backgroundColor: '#4CA0CC'}}>
                 Get Started
               </Button>
 

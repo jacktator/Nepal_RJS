@@ -7,9 +7,9 @@ const Item = List.Item;
 
   const HistoryComponent = (props) => {
     return(
-      <div>
+      <div className="history-container">
         <Header />
-        <List className="my-list">
+        <List className="history-list">
           {props.data.map((val, key) =>
             <Item key={key} onClick={(e) => props.onListProgramClick(e, val.program)} extra={val.date}>{val.program}</Item>
           )}

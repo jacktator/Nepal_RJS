@@ -19,3 +19,7 @@
     -webkit-user-select: none;
     -ms-user-select: none;
 }
+
+.footer-icons{
+  pointer-events: none;
+}

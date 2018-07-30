@@ -98,7 +98,7 @@ class Questionnaire extends Component {
       }else if(currentPage === 3) {
         let {injury_management} = this.props.QuestionnaireReducers.fields;
         if(injury_management === ""){
-          this.props.addError("Please select injury management for rehab focus to proceed to the next step.");
+          this.props.addError("Please select one of the options to proceed to the next step.");
           return;
         }
         this.increaseCurrentPage(currentPage);
@@ -106,7 +106,7 @@ class Questionnaire extends Component {
       }else if(currentPage === 4) {
         let {posture_correction} = this.props.QuestionnaireReducers.fields;
         if(posture_correction === ""){
-          this.props.addError("Please select posture correction for rehab focus to proceed to the next step.");
+          this.props.addError("Please select one of the options to proceed to the next step.");
           return;
         }
         this.increaseCurrentPage(currentPage);

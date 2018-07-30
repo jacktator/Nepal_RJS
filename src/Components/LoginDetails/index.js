@@ -113,10 +113,10 @@ class LoginDetails extends Component<Props, State> {
           Do not have an account?
         </div>
     {/* register button block*/}
-        <div>
+        <div className="logindetails-register">
           <WingBlank>
             <Link to='/signup' >
-              <Button>Register</Button>
+              <Button >Register</Button>
             </Link>
           </WingBlank>
         </div>
