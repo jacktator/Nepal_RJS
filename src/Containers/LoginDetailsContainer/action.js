@@ -13,6 +13,7 @@ export function LoginDetailsActions(email:string, password:string){
       password: password,
     })
     .then((response)=>{
+      console.log(response);
       let token = response.data.token
       window.localStorage.setItem('token', token);
       dispatch(upDateToken(token));

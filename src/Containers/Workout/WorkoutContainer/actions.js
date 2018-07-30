@@ -13,3 +13,16 @@ export function keepWorkOut (value: number) {
     payload: value
   }
 }
+export function updateExercise (previousValue, value) {
+
+  return {
+    type: "UPDATE_EXERCISE",
+    payload: [previousValue, value]
+  }
+}
+export function updateWarmup (previousValue, value) {
+  return {
+    type: "UPDATE_WARMUP",
+    payload: [previousValue, value]
+  }
+}

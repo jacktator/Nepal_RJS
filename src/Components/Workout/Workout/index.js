@@ -18,13 +18,13 @@ const Workout = (props) => {
           {props.warmUpArray.map((data,key) => (
             <div key={key} className="list-workout">
               <span style = {{float: 'left', margin: "0 20px 0 0"}}>
-                <img src="https://st3.depositphotos.com/5934840/14582/v/450/depositphotos_145822263-stock-illustration-man-running-icon.jpg" height="60px" width="100px" alt="work" />
+                <img src={require(`../../../Assets/WorkoutIcons/${data.value}.jpg`)} height="60px" width="100px" alt="work" />
               </span>
               {!data.isSaved && (
                 <span style = {{ float :'right'}}>
                   <span className="span-button keep" onClick={() => props.onWarmUpKeep(data.value)}> keep </span>
                   <WhiteSpace size="xs"/>
-                  <span className="span-button change" onClick={() => props.onChange()}> change </span>
+                  <span className="span-button change" onClick={() => props.onWarmupChange(data.value)}> change </span>
                 </span>
               )}
               {data.isSaved && (
@@ -46,13 +46,13 @@ const Workout = (props) => {
           { props.workOutArray.map((data, key) => (
             <div key={key} className="list-workout">
               <span style = {{float: 'left', margin: "0 20px 0 0"}}>
-                <img src="https://st3.depositphotos.com/5934840/14582/v/450/depositphotos_145822263-stock-illustration-man-running-icon.jpg" height="60px" width="100px" alt="work" />
+                <img src={require(`../../../Assets/WorkoutIcons/${data.value}.jpg`)} height="60px" width="100px" alt="work" />
               </span>
               {!data.isSaved && (
                 <span style = {{ float :'right'}}>
                   <span className="span-button keep" onClick={() => props.onWorkOutKeep(data.value)}> keep </span>
                   <WhiteSpace size="xs"/>
-                  <span className="span-button change" onClick={() => props.onChange()}> change </span>
+                  <span className="span-button change" onClick={() => props.onExerciseChange(data.value)}> change </span>
                 </span>
               )}
               {data.isSaved && (

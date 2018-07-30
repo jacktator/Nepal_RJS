@@ -4,7 +4,7 @@ import {Redirect} from 'react-router';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {selectFooter} from '../FooterContainer/actions';
-import {keepWarmUp, keepWorkOut} from './actions';
+import {keepWarmUp, keepWorkOut, updateExercise, updateWarmup} from './actions';
 import Workout from '../../../Components/Workout/Workout';
 import SelectExercise from '../../../Components/Workout/SelectExercise';
 import Modal from '../../../Components/UI/Modal';
@@ -16,6 +16,7 @@ class WorkoutContainer extends Component{
     super(props);
     this.state = {
       isChangeExcercise: false,
+      isChangeWarmup: false,
       startExcercies: false,
       excerciseArray: [
         { value: 0, description: 'Push ups', imgurl: 'https://files.brightside.me/files/news/part_34/340810/14565160-1-0-1496126804-1496126811-650-0c369e17e2-1496430586.jpg'},
@@ -23,6 +24,7 @@ class WorkoutContainer extends Component{
         { value: 2, description: 'Seated Macine Chest Press', imgurl: 'https://www.bodybuilding.com/images/2016/july/10-best-chest-exercises-for-building-muscle-v2-4-700xh.jpg'},
         { value: 3, description: 'Dips for chest', imgurl: 'https://www.bodybuilding.com/images/2016/july/10-best-chest-exercises-for-building-muscle-v2-6-700xh.jpg'},
       ],
+      indexValue: null
     }
   }
   componentWillMount(){
@@ -30,12 +32,21 @@ class WorkoutContainer extends Component{
       this.props.selectFooter('workoutTab');
     }
   }
-  onChangeHandler = () => {
+  onChangeExerciseHandler = (value) => {
+    this.setState({indexValue: value})
     this.setState({ isChangeExcercise: true })
   }
+  onChangeWarmupHandler = (value) => {
+    this.setState({indexValue: value})
+    this.setState({ isChangeWarmup: true })
+  }
   onSelectExerciseHandler = (index) => {
-    alert(index);
+    this.props.updateExercise(this.state.indexValue, index);
     this.setState({ isChangeExcercise: false })
+  }
+  onSelectWarmupHandler = (index) => {
+    this.props.updateWarmup(this.state.indexValue, index);
+    this.setState({ isChangeWarmup: false })
   }
   onWarmUpKeepHandler = (value) => {
     let warmUpExerciseArray = { ...this.state.warmUpExerciseArray}
@@ -57,7 +68,8 @@ class WorkoutContainer extends Component{
     return (
       <Hoc>
         <Workout
-        onChange = {this.onChangeHandler}
+        onExerciseChange = {this.onChangeExerciseHandler}
+        onWarmupChange = {this.onChangeWarmupHandler}
         onWarmUpKeep = {this.props.keepWarmUp}
         onWorkOutKeep = {this.props.keepWorkOut}
         onStart = {this.onStartHandler}
@@ -69,6 +81,14 @@ class WorkoutContainer extends Component{
           <Modal modalFor = "modal-for-select-exercise">
             <SelectExercise
               onSelect = {this.onSelectExerciseHandler}
+              excerciseArray = {this.state.excerciseArray}
+            />
+          </Modal>
+        )}
+        {(this.state.isChangeWarmup) && (
+          <Modal modalFor = "modal-for-select-exercise">
+            <SelectExercise
+              onSelect = {this.onSelectWarmupHandler}
               excerciseArray = {this.state.excerciseArray}
             />
           </Modal>
@@ -89,7 +109,7 @@ function mapStateToProps(state){
 }
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
-    selectFooter, keepWarmUp, keepWorkOut
+    selectFooter, keepWarmUp, keepWorkOut, updateExercise, updateWarmup
   }, dispatch
 );
 }
