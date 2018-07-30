@@ -13,6 +13,7 @@ export function LoginDetailsActions(email:string, password:string){
       password: password,
     })
     .then((response)=>{
+      console.log(response);
       let token = response.data.token
       window.localStorage.setItem('token', token);
       dispatch(upDateToken(token));
@@ -68,7 +69,7 @@ export function setGlobalAxiosDefault(token: string){
 }
 
 export function isAuthenticated(status: string){
-  console.log(status)
+  console.log("is Authenticated",status)
   return{
     type:"IS_AUTHENTICATED",
     payload:true

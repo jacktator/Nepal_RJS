@@ -47,9 +47,10 @@ export function addQuestionnaire(state) {
 }
 
 export function addName (nick_name: string) {
+  let name = nick_name.slice(0,1).toUpperCase() + nick_name.slice(1, nick_name.length)
   return {
     type: "ADD_NAME",
-    payload: nick_name
+    payload: name
   }
 }
 

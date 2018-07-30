@@ -117,7 +117,6 @@ const CurrentStep = (props) => {
   }
 
   return(
-
       <div style = {{margin: '2%'}}>
         <WingBlank mode={20} className="stepsExample">
           <WhiteSpace />
