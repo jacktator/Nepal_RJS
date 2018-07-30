@@ -2,13 +2,15 @@ import React, {Component} from 'react';
 import {Button,Flex} from 'antd-mobile';
 import './MainMenu.css';
 import FooterContainer from '../../Containers/Workout/FooterContainer/';
+import PopoverMenu from './PopoverMenu';
 
 export default class MainMenu extends Component{
   render(){
     return(
       <div className="main-menu-container">
+          <PopoverMenu/>
           <div className= "image-containers">
-            <img className="image-sources" src={require('../../Assets/Workout/immediate-fat-loss.jpg')} alt="immediate fat loss"/>
+            <img className="image-sources" src={require('../../Assets/Workout/sampleImage.jpeg')} alt="immediate fat loss"/>
           </div>
           <div className="square-button-flex-container">
             <button onClick={()=> alert("clicked")} className="square-button">

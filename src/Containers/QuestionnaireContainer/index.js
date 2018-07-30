@@ -78,7 +78,7 @@ class Questionnaire extends Component {
         let {nick_name} = this.props.QuestionnaireReducers
         let {age, gender, weight} = this.props.QuestionnaireReducers.fields;
         if(age === "" || gender === "" || weight === "" || nick_name === ""){
-          this.props.addError("Please insert all the data to proceed to the next step");
+          this.props.addError("Please insert all the data to proceed to the next step.");
           return;
         }
         this.increaseCurrentPage(currentPage);
@@ -86,11 +86,11 @@ class Questionnaire extends Component {
       }else if(currentPage === 2) {
         let {goals, exercise_place} = this.props.QuestionnaireReducers.fields;
         if(exercise_place === ""){
-          this.props.addError("Please select the exercise place to proceed to the next step");
+          this.props.addError("Please select the exercise place to proceed to the next step.");
           return;
         }
         if(goals.length===0){
-          this.props.addError("Please select training goals to proceed to the next step");
+          this.props.addError("Please select a training goal to proceed to the next step.");
           return;
         }
         this.increaseCurrentPage(currentPage);
@@ -98,7 +98,7 @@ class Questionnaire extends Component {
       }else if(currentPage === 3) {
         let {injury_management} = this.props.QuestionnaireReducers.fields;
         if(injury_management === ""){
-          this.props.addError("Please select injury management for rehab focus to proceed to the next step");
+          this.props.addError("Please select injury management for rehab focus to proceed to the next step.");
           return;
         }
         this.increaseCurrentPage(currentPage);
@@ -106,7 +106,7 @@ class Questionnaire extends Component {
       }else if(currentPage === 4) {
         let {posture_correction} = this.props.QuestionnaireReducers.fields;
         if(posture_correction === ""){
-          this.props.addError("Please select posture correction for rehab focus to proceed to the next step");
+          this.props.addError("Please select posture correction for rehab focus to proceed to the next step.");
           return;
         }
         this.increaseCurrentPage(currentPage);
@@ -114,7 +114,7 @@ class Questionnaire extends Component {
       }else if(currentPage ===  5) {
         let {stress, productivity} = this.props.QuestionnaireReducers.fields;
         if( stress === "" || productivity === ""){
-          this.props.addError("Please answer all the questions to proceed to the next step");
+          this.props.addError("Please answer all the questions to proceed to the next step.");
           return;
         }
 
@@ -124,7 +124,7 @@ class Questionnaire extends Component {
       }else if(currentPage === 6) {
         let {work_injury, health_feeling} = this.props.QuestionnaireReducers.fields;
         if( work_injury === "" || health_feeling === ""){
-          this.props.addError("Please answer all the questions to proceed to the next step");
+          this.props.addError("Please answer all the questions to proceed to the next step.");
           return;
         }
         // this.props.stepFive(work_injury, health_feeling);
@@ -133,7 +133,7 @@ class Questionnaire extends Component {
       }else if(currentPage === 7) {
         let {current_activity, daily_activity} = this.props.QuestionnaireReducers.fields;
         if( current_activity === "" || daily_activity === "" ){
-          this.props.addError("Please answer all the questions to proceed to the next step");
+          this.props.addError("Please answer all the questions to proceed to the next step.");
           return;
         }
         // this.props.stepSix(current_activity, daily_activity);
@@ -168,11 +168,11 @@ class Questionnaire extends Component {
       { value: "home", label: 'Home' },
     ];
     const trainingGoalsArray= [
-      { value: '0', used_for:'gym', label: 'Muscle size and strength', description:"Weight training principles designed to build muscle and strength" },
-      { value: '1', used_for:'both', label: 'Fat Loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition "},
-      { value: '2', used_for:'both', label: 'Decrease stress', description:"Using exercise strategies to reduce stress levels and restore balance back in your body"},
-      { value: '3', used_for:'gym', label: 'Improve posture', description:"Utilising specific exercises and weight training to correct postural imbalances "},
-      { value: '4', used_for:'home', label: 'Fitness', description:"xxxxxxxxxx xxxxxxxx xxxxxx xxxxx "},
+      { value: '0', used_for:'gym', label: 'Muscle size and strength', description:"Weight training principles designed to build muscle and strength." },
+      { value: '1', used_for:'both', label: 'Fat Loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition."},
+      { value: '2', used_for:'both', label: 'Decrease stress', description:"Using exercise strategies to reduce stress levels and restore balance back in your body."},
+      { value: '3', used_for:'gym', label: 'Improve posture', description:"Utilising specific exercises and weight training to correct postural imbalances."},
+      { value: '4', used_for:'home', label: 'Increase fitness', description:"High intensity exercise to develop and increase your overall fitness."},
     ];
     const postureCorrectionArray= [
       { value: '1a', description: 'Rounded shoulder and forward head', imgurl: 'https://muscularstrength.com/uploads/froala/18fc5d8c9a007cb8238d910aa106b91ad7e0066f.png'},
@@ -194,9 +194,11 @@ class Questionnaire extends Component {
       {value: '5', label: 'Extremely stressed', description:'I feel highly stressed every day'},
     ];
     const productivityArray = [
-      {value: '1', label: 'All the time', description:'I felt productive every day in the last 4 weeks'},{value: '2', label: 'Most of the time', description:'I felt productive most days in the past 4 weeks'},
-      {value: '3', label: 'Half the time', description:'I felt productive for half of the days in the past 4 weeks'},{value: '4', label: 'Rarely', description:'I felt productive rarely in the last 4 weeks '},
-      {value: '5', label: 'None of the time', description:'I have not felt productive at all in the last 4 weeks'},
+      {value: '1', label: 'None of the time', description:'I have not felt productive at all in the last 4 weeks'},
+      {value: '2', label: 'Rarely', description:'I felt productive rarely in the last 4 weeks '},
+      {value: '3', label: 'Half the time', description:'I felt productive for half of the days in the past 4 weeks'},
+      {value: '4', label: 'Most of the time', description:'I felt productive most days in the past 4 weeks'},
+      {value: '5', label: 'All the time', description:'I felt productive every day in the last 4 weeks'},
     ];
     const injuryArray = [
       {value: '1', label: 'No pain', description:'I never feel injury or posture related pain'},{value: '2', label: 'Rarely in pain', description:'I feel injury or posture related pain every few weeks or months'},
