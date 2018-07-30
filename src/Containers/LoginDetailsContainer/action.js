@@ -68,7 +68,7 @@ export function setGlobalAxiosDefault(token: string){
 }
 
 export function isAuthenticated(status: string){
-  console.log(status)
+  console.log("is Authenticated",status)
   return{
     type:"IS_AUTHENTICATED",
     payload:true
