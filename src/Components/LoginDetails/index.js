@@ -62,7 +62,7 @@ class LoginDetails extends Component<Props, State> {
       <div className="logindetails">
         {/* logo block*/}
         <div className="logindetails-logo-position">
-          <img src={Logo} className="logo"/>
+          <img src={Logo} className="logo" alt="logo"/>
         </div>
         {/* input details block*/}
         <div className="logindetails-input-list">
@@ -113,10 +113,10 @@ class LoginDetails extends Component<Props, State> {
           Do not have an account?
         </div>
     {/* register button block*/}
-        <div>
+        <div className="logindetails-register">
           <WingBlank>
             <Link to='/signup' >
-              <Button>Register</Button>
+              <Button >Register</Button>
             </Link>
           </WingBlank>
         </div>

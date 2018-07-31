@@ -15,11 +15,11 @@ const PostureCorrection = (props) => {
         {props.data.map((i,key) => (
           <Flex key={key}>
             <Flex.Item>
-            <CheckboxItem key={i.value} checked={props.fields === i.value} onChange={() => props.selectPostureCorrection(i.value)}>
-                <div onClick = {() => i.value !== "0" ? props.showModal(i,'forPosture' ) : props.selectPostureCorrection(i.value)}>
-                    { i.description }
-                </div>
-            </CheckboxItem>
+              <div onClick = {() => i.value !== "0" ? props.showModal(i,'forPosture' ) : props.selectPostureCorrection(i.value)}>
+                <CheckboxItem key={i.value} checked={props.fields === i.value}>
+                  { i.description }
+                </CheckboxItem>
+              </div>
             </Flex.Item>
           </Flex>
           ))}

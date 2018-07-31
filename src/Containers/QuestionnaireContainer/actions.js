@@ -1,6 +1,22 @@
 // @flow
 import axios from 'axios';
 
+export function fetchFromServer() {
+  let goal = [];
+  return (dispatch:Functon) =>{
+    axios.get("https://nepal.sk8tech.io/wp-json/wp/v2/goal/")
+      .then((response) => {
+        response.data.map( data => {
+          goal.push(data.acf);
+          return null;
+        })
+        dispatch(getGoalFromServer(goal));
+      }).catch((error)=> {
+
+      })
+    }
+  }
+
 export function addQuestionnaire(state) {
   let token = localStorage.getItem('token');
   return(dispatch: Function) => {
@@ -18,7 +34,7 @@ export function addQuestionnaire(state) {
     dispatch(success(true));
     setTimeout(function(){
           dispatch(success(false));
-      }.bind(this),700);
+      },700);
     //dispatch(questionnaire(state));
   }).catch((error) => {
     if(error.response){
@@ -31,9 +47,10 @@ export function addQuestionnaire(state) {
 }
 
 export function addName (nick_name: string) {
+  let name = nick_name.slice(0,1).toUpperCase() + nick_name.slice(1, nick_name.length)
   return {
     type: "ADD_NAME",
-    payload: nick_name
+    payload: name
   }
 }
 
@@ -139,6 +156,14 @@ export function addCurrentActivity (current_activity: string) {
 export function getDataFromServer(data) {
   const action = {
     type: "DATA_FROM_SERVER",
+    payload: data
+  }
+  return action;
+}
+
+export function getGoalFromServer(data) {
+  const action = {
+    type: "GET_GOAL_FROM_SERVER",
     payload: data
   }
   return action;

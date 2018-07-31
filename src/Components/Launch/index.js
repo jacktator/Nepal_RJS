@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import { Button, WingBlank, WhiteSpace} from 'antd-mobile';
-import {Link, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import './Launch.css';
 import Logo from '../../Assets/Logo.png';
 
@@ -21,12 +21,12 @@ buttonClickHandler = () => {
       <div className="launch-container">
          {/* logo block*/}
         <div className="logo-launch-position">
-          <img src={Logo} className="logo"/>
+          <img src={Logo} className="logo" alt="logo"/>
         </div>
            {/* button block. */}
         <div className='launch-button'>
           <WingBlank>
-              <Button type="primary" onClick={()=> this.buttonClickHandler()}style={{backgroundColor: '#4CA0CC'}}>
+              <Button type="primary" className="button-no-copy" onClick={()=> this.buttonClickHandler()}style={{backgroundColor: '#4CA0CC'}}>
                 Get Started
               </Button>
 

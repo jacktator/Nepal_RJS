@@ -7,6 +7,7 @@ import {bindActionCreators} from 'redux';
 class SignUpContainer extends Component{
 
   render(){
+    console.log("signupConatiner");
     const {error}= this.props.SignUpStates;
     if(error){
       alert(error)

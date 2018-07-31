@@ -15,32 +15,34 @@ const showAlert = (i, props) => {
 const StepFour = (props) => {
   return(
     <div>
-      <ShowNoticeBar />
-        <h3 style={{textAlign: 'center', margin:"2% 0 0 0"}}>Stress and Productivity</h3>
+      <div className="noticebar">
+        <ShowNoticeBar />
+      </div>
+        <h2 style={{textAlign: 'center'}}>Stress and Productivity</h2>
         <div className="listHeader">
             How often do you feel stressed at work?
         </div>
         {props.stressArray.map((i,key) => (
           <Flex key={key}>
             <Flex.Item>
-            <CheckboxItem key={key} checked={props.fields.stress === i.value} onChange= {() => props.selectStress(i.value)}>
               <div onClick= {() => showAlert(i, props.selectStress)}>
-                {i.label}
+                <CheckboxItem key={key} checked={props.fields.stress === i.value}>
+                  {i.label}
+                </CheckboxItem>
               </div>
-            </CheckboxItem>
             </Flex.Item>
-            </Flex>
+          </Flex>
         ))}
         <div className="listHeader"> In the last 4 weeks, I have felt productive...</div>
         {props.productivityArray.map((i,key) => (
           <Flex key={key}>
             <Flex.Item>
-          <CheckboxItem key={key} checked={props.fields.productivity === i.value} onChange= {() => props.selectProductivity(i.value)}>
-            <div onClick= {() => showAlert(i, props.selectProductivity)}>
-              {i.label}
-            </div>
-          </CheckboxItem>
-          </Flex.Item>
+              <div onClick= {() => showAlert(i, props.selectProductivity)}>
+                <CheckboxItem key={key} checked={props.fields.productivity === i.value}>
+                  {i.label}
+                </CheckboxItem>
+              </div>
+            </Flex.Item>
           </Flex>
         ))}
       </div>

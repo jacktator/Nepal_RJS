@@ -34,8 +34,14 @@
 }
 
 .logindetails-login-button{
+  user-select: none;
   padding-top: 10px;
 }
+
+.logindetails-register{
+  user-select: none;
+}
+
 .logindetails-forgetpassword{
   padding-top: 10px;
 }

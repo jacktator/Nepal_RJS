@@ -30,6 +30,7 @@ const Detail = (props) => {
         <Flex.Item>
         <div className="age-picker-pull-right">
           <Picker
+
             data={props.ageArray}
             locale={enUs}
             cols={1}
@@ -61,6 +62,7 @@ const Detail = (props) => {
           cols={1}
           extra=" "
           title={<div>Weight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>}
+
           value={[weight[0]]}
           onOk={v => props.selectWeight(v)}
           >

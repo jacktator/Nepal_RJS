@@ -1,0 +1,66 @@
+
+.main-menu-container{
+  height:100%;
+  width:100%;
+  background-color: white;
+  position: absolute;
+  user-select: none;
+}
+
+.main-menu-container .image-containers{
+  width:100%;
+  height:30%;
+}
+
+.main-menu-container .image-sources{
+  pointer-events: none;
+  width:100%;
+  height:100%;
+}
+
+
+.main-menu-container .square-button-flex-container{
+  display:flex;
+  height:20%;
+  width:100%;
+}
+
+.main-menu-popovermenu{
+ height:6vh;
+ width:6vh;
+ z-index:2;
+ margin: 3.5% 3.5%;
+ position: absolute;
+}
+
+.square-button-flex-container > button{
+  width:100%;
+  height:100%;
+  background-color: #3C8FCF;
+  border-color:#3278A9;
+  user-select: none;
+}
+
+.square-button-icon{
+  pointer-events: none;
+  height:30%;
+  width:40%;
+  text-align: center;
+  opacity:1;
+}
+
+@media screen and (min-width: 1000px) {
+  .square-button-icon{
+    height:100px;
+    width:100px;
+  }
+}
+
+.square-button:active{
+  background-color: #48acf9;
+  opacity:1;
+}
+
+.smallicon{
+  pointer-events: none;
+}

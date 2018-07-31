@@ -1,4 +1,4 @@
-
+// @flow
 import React, { Component } from 'react';
 import { Progress, Button,WingBlank,WhiteSpace} from 'antd-mobile';
 import { connect } from 'react-redux';
@@ -11,7 +11,8 @@ import { addName, addAge, addGender, addWeight, addExercisePlace,
   addProductivity, addProductiveAfterExercise,
   addWorkInjury, addHealthFeeling,
   addDailyActivity, addCurrentActivity,
-  addQuestionnaire, addError, removeError, success
+  addQuestionnaire, addError, removeError, success,
+  fetchFromServer
 }from './actions';
 
 import CurrentStep  from '../../Components/Questionnaire/Progress';
@@ -36,26 +37,6 @@ class Questionnaire extends Component {
   constructor(props){
     super(props);
     this.state = {
-      trainingGoals: [
-        { value: '0', usedFor:'gym', isChecked: false, label: 'Muscle size and strength', description:"Weight training principles designed to build muscle and strength" },
-        { value: '1', usedFor:'both', isChecked: false, label: 'Fat Loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition "},
-        { value: '2', usedFor:'both', isChecked: false, label: 'Decrease stress', description:"Using exercise strategies to reduce stress levels and restore balance back in your body"},
-        { value: '3', usedFor:'gym', isChecked: false, label: 'Improve posture', description:"Utilising specific exercises and weight training to correct postural imbalances "},
-        { value: '4', usedFor:'home', isChecked: false, label: 'Fitness', description:"xxxxxxxxxx xxxxxxxx xxxxxx xxxxx "},
-      ],
-      postureCorrection: [
-        { value: '1a', isChecked: false, description: 'Rounded shoulder and forward head', imgurl: 'https://muscularstrength.com/uploads/froala/18fc5d8c9a007cb8238d910aa106b91ad7e0066f.png'},
-        { value: '1b', isChecked: false, description: 'Anterior pelvic tilt', imgurl: 'http://fitness4backpain.com/wp-content/uploads/Kyphosis-Normal-vs-Hyper.jpg'},
-        { value: '1c', isChecked: false, description: 'Sway posture', imgurl: 'http://www.joannasoh.com/uploads/authors/1/fitness/posts/bad-posture/swayback-new.jpg'},
-        { value: '0', isChecked: false, description: 'None' }
-      ],
-      injuryManagement: [
-        { value: '2', isChecked: false, description: 'Lower Back Pain', imgurl: 'http://totalphysiocare.com.au/wp-content/uploads/2017/05/lower-back-pain-relief.png'},
-        { value: '3', isChecked: false, description: 'Neck Pain', imgurl: 'https://static.wixstatic.com/media/b1546b_f6a11249f1a346e08fc817d7cece04c3~mv2.jpg/v1/fill/w_630,h_382,al_c,lg_1,q_80/b1546b_f6a11249f1a346e08fc817d7cece04c3~mv2.webp'},
-        { value: '4', isChecked: false, description: 'Shoulder Pain', imgurl: 'https://feelpainrelief.com/wp-content/uploads/2015/09/shoulder-pain-300x200.jpg'},
-        { value: '5', isChecked: false, description: 'Hip Pain', imgurl: 'https://qph.fs.quoracdn.net/main-qimg-4d054f876feaa4b3d4944914a6f7cb66-c'},
-        { value: '0', isChecked: false, description: 'None' }
-      ],
       rehabTypeForModal: '',
       dataForModal: { },
       modal: false,
@@ -63,8 +44,11 @@ class Questionnaire extends Component {
       currentPage: 1,
       hasError: false,
     }//state ends
-    // this.makeNextToFinish=this.makeNextToFinish.bind(this);
   }//constructor ends
+
+  componentDidMount(){
+    this.props.fetchFromServer();
+  }
 
   addInjuryManagement = (value) => {
     this.cancelModalHandler();
@@ -94,39 +78,43 @@ class Questionnaire extends Component {
         let {nick_name} = this.props.QuestionnaireReducers
         let {age, gender, weight} = this.props.QuestionnaireReducers.fields;
         if(age === "" || gender === "" || weight === "" || nick_name === ""){
-          this.props.addError("Please insert all the data to proceed to the next step");
+          this.props.addError("Please insert all the data to proceed to the next step.");
           return;
         }
         this.increaseCurrentPage(currentPage);
 
       }else if(currentPage === 2) {
-        let {goals, exercisePlace} = this.props.QuestionnaireReducers.fields;
-        if(exercisePlace === ""){
-          this.props.addError("Please select the exercise place");
+        let {goals, exercise_place} = this.props.QuestionnaireReducers.fields;
+        if(exercise_place === ""){
+          this.props.addError("Please select the exercise place to proceed to the next step.");
           return;
         }
         if(goals.length===0){
-          this.props.addError("Please insert all the data to proceed to the next step");
+          this.props.addError("Please select a training goal to proceed to the next step.");
           return;
         }
         this.increaseCurrentPage(currentPage);
 
       }else if(currentPage === 3) {
-        let {rehab_focus} = this.props.QuestionnaireReducers.fields;
-        // if( rehab_focus.length === 0){
-        //   this.props.addError("Please insert all the data to proceed to the next step");
-        //   return;
-        // }
-        // this.props.stepThree(rehab_focus);
+        let {injury_management} = this.props.QuestionnaireReducers.fields;
+        if(injury_management === ""){
+          this.props.addError("Please select one of the options to proceed to the next step.");
+          return;
+        }
         this.increaseCurrentPage(currentPage);
 
       }else if(currentPage === 4) {
+        let {posture_correction} = this.props.QuestionnaireReducers.fields;
+        if(posture_correction === ""){
+          this.props.addError("Please select one of the options to proceed to the next step.");
+          return;
+        }
         this.increaseCurrentPage(currentPage);
 
       }else if(currentPage ===  5) {
         let {stress, productivity} = this.props.QuestionnaireReducers.fields;
         if( stress === "" || productivity === ""){
-          this.props.addError("Please answer all the questions to proceed to the next step");
+          this.props.addError("Please answer all the questions to proceed to the next step.");
           return;
         }
 
@@ -136,7 +124,7 @@ class Questionnaire extends Component {
       }else if(currentPage === 6) {
         let {work_injury, health_feeling} = this.props.QuestionnaireReducers.fields;
         if( work_injury === "" || health_feeling === ""){
-          this.props.addError("Please answer all the questions to proceed to the next step");
+          this.props.addError("Please answer all the questions to proceed to the next step.");
           return;
         }
         // this.props.stepFive(work_injury, health_feeling);
@@ -145,7 +133,7 @@ class Questionnaire extends Component {
       }else if(currentPage === 7) {
         let {current_activity, daily_activity} = this.props.QuestionnaireReducers.fields;
         if( current_activity === "" || daily_activity === "" ){
-          this.props.addError("Please answer all the questions to proceed to the next step");
+          this.props.addError("Please answer all the questions to proceed to the next step.");
           return;
         }
         // this.props.stepSix(current_activity, daily_activity);
@@ -166,7 +154,7 @@ class Questionnaire extends Component {
     this.props.removeError();
   }
   render() {
-    const {nick_name, fields} = this.props.QuestionnaireReducers;
+    const {nick_name, fields, goal} = this.props.QuestionnaireReducers;
     const percent  = (this.state.currentPage-1)*15;
     const genderArray = [
       { value: "male", label: 'Male' },
@@ -180,16 +168,16 @@ class Questionnaire extends Component {
       { value: "home", label: 'Home' },
     ];
     const trainingGoalsArray= [
-      { value: '0', usedFor:'gym', label: 'Muscle size and strength', description:"Weight training principles designed to build muscle and strength" },
-      { value: '1', usedFor:'both', label: 'Fat Loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition "},
-      { value: '2', usedFor:'both', label: 'Decrease stress', description:"Using exercise strategies to reduce stress levels and restore balance back in your body"},
-      { value: '3', usedFor:'gym', label: 'Improve posture', description:"Utilising specific exercises and weight training to correct postural imbalances "},
-      { value: '4', usedFor:'home', label: 'Fitness', description:"xxxxxxxxxx xxxxxxxx xxxxxx xxxxx "},
+      { value: '0', used_for:'gym', label: 'Muscle size and strength', description:"Weight training principles designed to build muscle and strength." },
+      { value: '1', used_for:'both', label: 'Fat Loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition."},
+      { value: '2', used_for:'both', label: 'Decrease stress', description:"Using exercise strategies to reduce stress levels and restore balance back in your body."},
+      { value: '3', used_for:'gym', label: 'Improve posture', description:"Utilising specific exercises and weight training to correct postural imbalances."},
+      { value: '4', used_for:'home', label: 'Increase fitness', description:"High intensity exercise to develop and increase your overall fitness."},
     ];
     const postureCorrectionArray= [
       { value: '1a', description: 'Rounded shoulder and forward head', imgurl: 'https://muscularstrength.com/uploads/froala/18fc5d8c9a007cb8238d910aa106b91ad7e0066f.png'},
       { value: '1b', description: 'Anterior pelvic tilt', imgurl: 'http://fitness4backpain.com/wp-content/uploads/Kyphosis-Normal-vs-Hyper.jpg'},
-      { value: '1c', description: 'Sway posture', imgurl: 'http://www.joannasoh.com/uploads/authors/1/fitness/posts/bad-posture/swayback-new.jpg'},
+      { value: '1c', description: 'Sway posture', imgurl: 'https://www.hunterphysio.com.au/wp-content/uploads/2017/05/lower-back-02.jpg'},
       { value: '0', description: 'None' },
     ];
     const injuryManagementArray= [
@@ -206,9 +194,11 @@ class Questionnaire extends Component {
       {value: '5', label: 'Extremely stressed', description:'I feel highly stressed every day'},
     ];
     const productivityArray = [
-      {value: '1', label: 'All the time', description:'I felt productive every day in the last 4 weeks'},{value: '2', label: 'Most of the time', description:'I felt productive most days in the past 4 weeks'},
-      {value: '3', label: 'Half the time', description:'I felt productive for half of the days in the past 4 weeks'},{value: '4', label: 'Rarely', description:'I felt productive rarely in the last 4 weeks '},
-      {value: '5', label: 'None of the time', description:'I have not felt productive at all in the last 4 weeks'},
+      {value: '1', label: 'None of the time', description:'I have not felt productive at all in the last 4 weeks'},
+      {value: '2', label: 'Rarely', description:'I felt productive rarely in the last 4 weeks '},
+      {value: '3', label: 'Half the time', description:'I felt productive for half of the days in the past 4 weeks'},
+      {value: '4', label: 'Most of the time', description:'I felt productive most days in the past 4 weeks'},
+      {value: '5', label: 'All the time', description:'I felt productive every day in the last 4 weeks'},
     ];
     const injuryArray = [
       {value: '1', label: 'No pain', description:'I never feel injury or posture related pain'},{value: '2', label: 'Rarely in pain', description:'I feel injury or posture related pain every few weeks or months'},
@@ -249,7 +239,7 @@ class Questionnaire extends Component {
         <Program
           fields={fields}
           days= {fields.days_per_week}
-          exercisePlace = {fields.exercise_place}
+          exercise_place = {fields.exercise_place}
 
           daysArray = {daysArray}
           selectDays = {this.props.addDays}
@@ -311,6 +301,7 @@ class Questionnaire extends Component {
         />
       );
     }
+
     return(
       <div className="container">
       <div className= "content-without-pagination">
@@ -329,18 +320,17 @@ class Questionnaire extends Component {
 
       <div className="pagination-container">
       <Button type="primary" disabled={this.state.currentPage === 1 ? true: false}  onClick={() => this.buttonHandler('previous')}
-        inline size="medium" style={{ float: 'left', marginLeft: '12px'}}>
+        inline size="medium" style={{position:'absolute',left:'0',marginLeft:'10px',zIndex:'1000'}}>
           Previous
       </Button>
-
-      <span id="footer_page" style ={{}}>{this.state.currentPage}/6</span>
       <Button type="primary" onClick={() => this.buttonHandler('next')}
-      inline size="medium" style={{ float: 'right', marginRight: '12px'}}>
+      inline size="medium" style={{position:'absolute',right:'0',marginRight:'10px',zIndex:'1000'}}>
       {this.state.currentPage === 7 ? "Finish": "Next"}
       </Button>
+      <div className="pagination-page-number">{this.state.currentPage}/7</div>
       </div>
       {(this.state.modal) && (
-          <Modal modalFor = "selectRehab">
+          <Modal modalFor = "modal">
             <RehabModal
               data = {this.state.dataForModal}
               type = {this.state.rehabTypeForModal}
@@ -353,7 +343,7 @@ class Questionnaire extends Component {
         <Redirect to='/login/' />
       )}
       {(this.props.QuestionnaireReducers.error.hasError === true) && (
-        <Modal modalFor = "showError">
+        <Modal modalFor = "modal">
           <ShowError
             error= {this.props.QuestionnaireReducers.error.message}
             cancel = {this.cancelErrorMessageHandler}
@@ -378,7 +368,8 @@ function matchDispatchToProps(dispatch){
     addWorkInjury, addHealthFeeling,
     addDailyActivity, addCurrentActivity,
     addQuestionnaire,
-    addError, removeError, success
+    addError, removeError, success,
+    fetchFromServer
   }, dispatch
 );
 }

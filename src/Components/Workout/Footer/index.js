@@ -16,7 +16,7 @@ import workoutSel from '../../../Assets/Footer/workoutSel.svg'
 
   const Footer = (props) => {
     return (
-      <div  className="container">
+      <div className="container">
         <div className="footer-container">
           <TabBar
             unselectedTintColor="#949494"
@@ -27,7 +27,13 @@ import workoutSel from '../../../Assets/Footer/workoutSel.svg'
               <TabBar.Item
                 title="History"
                 key="History"
-                icon={{ uri: home }}
+                icon={
+                  <div style={{
+                  width: '20px',
+                  height: '20px',
+                  background: "url('https://image.freepik.com/free-photo/cute-cat-picture_1122-449.jpg')  center center /  21px 21px no-repeat",
+                  pointerEvents:'none'}}
+                  />}
                 selectedIcon={{ uri:homeSel}}
                 selected={props.selectedTab === 'historyTab'}
                 onPress={() => props.selectFooter('historyTab') }

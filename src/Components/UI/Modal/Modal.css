@@ -10,6 +10,19 @@
     left: 5%;
     top: 20vh;
 }
+.modal-for-info {
+  position: fixed;
+  z-index: 200;
+  background-color: white;
+  border: 2px solid #ccc;
+  box-shadow: 2px 2px 2px grey;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  left: 0%;
+  top: 0vh;
+  overflow-x: scroll;
+}
 .modal-for-select-exercise {
   background-color: white;
   position:absolute;

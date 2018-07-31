@@ -25,11 +25,11 @@ class Login extends Component {
           <div className="login">
             {/*Logo block*/}
             <div className="login-logo-position">
-              <img src={Logo} className="logo"/>
+              <img src={Logo} className="logo" alt="logo"/>
             </div>
             <div className="login-register-button">
               <WingBlank>
-                <Link to='signup' ><Button>Register</Button></Link>
+                <Link to='/signup' ><Button>Register</Button></Link>
               </WingBlank>
               <WhiteSpace size='xl'/>
               <WingBlank>

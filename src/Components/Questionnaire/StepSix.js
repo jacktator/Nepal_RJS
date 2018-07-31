@@ -13,19 +13,21 @@ const showAlert = (i, props) => {
 const StepSix = (props) => {
   return(
     <div>
-      <ShowNoticeBar />
+      <div className="noticebar">
+        <ShowNoticeBar />
+      </div>
       <h2 style={{textAlign: 'center'}}>General Activity and Exercise Level</h2>
       <div className="listHeader"> How active are you on a daily basis?</div>
 
       {props.activityArray.map((i,key) => (
         <Flex key={key}>
           <Flex.Item>
-        <CheckboxItem key={key} checked={props.fields.daily_activity === i.value} onChange={() => props.selectActivity(i.value)}>
-          <span onClick= {() => showAlert(i, props.selectActivity)}>
-          {i.label}
-          </span>
-        </CheckboxItem>
-        </Flex.Item>
+            <div onClick= {() => showAlert(i, props.selectActivity)}>
+              <CheckboxItem key={key} checked={props.fields.daily_activity === i.value}>
+                {i.label}
+              </CheckboxItem>
+            </div>
+          </Flex.Item>
         </Flex>
       ))}
     <div className="listHeader">How many days per week do you currently exercise?</div>
@@ -33,12 +35,12 @@ const StepSix = (props) => {
     {props.exerciseArray.map((i,key) => (
       <Flex key={key}>
         <Flex.Item>
-      <CheckboxItem key={key} checked={props.fields.current_activity === i.value} onChange={() => props.selectExercise(i.value)}>
-        <div onClick= {() => showAlert(i, props.selectExercise)}>
-          {i.label}
-        </div>
-      </CheckboxItem>
-      </Flex.Item>
+          <div onClick= {() => showAlert(i, props.selectExercise)}>
+            <CheckboxItem key={key} checked={props.fields.current_activity === i.value}>
+              {i.label}
+            </CheckboxItem>
+          </div>
+        </Flex.Item>
       </Flex>
     ))}
   </div>
