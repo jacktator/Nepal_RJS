@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import { Button, WingBlank, WhiteSpace } from 'antd-mobile';
+import { WingBlank, WhiteSpace } from 'antd-mobile';
 import './Launch.css';
 import Logo from '../../Assets/Logo.png';
 import { Link } from 'react-router-dom';

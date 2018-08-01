@@ -1,8 +1,6 @@
-import React, {Component} from 'react';
-import {Button,Flex} from 'antd-mobile';
+import React from 'react';
 import FooterContainer from '../../Containers/Workout/FooterContainer/';
 import PopoverMenu from './PopoverMenu';
-import { Link } from 'react-router-dom';
 
 import './MainMenu.css';
 

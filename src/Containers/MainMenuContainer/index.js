@@ -1,7 +1,6 @@
 // @flow
 import React, {Component} from 'react';
 import {Redirect} from 'react-router';
-import {bindActionCreators} from 'redux';
 import Hoc from '../../HOC/Hoc';
 import MainMenu from '../../Components/MainMenu'
 

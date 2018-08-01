@@ -5,7 +5,6 @@ import './Footer.css';
 icons taken from http://iconfont.cn/home/index?spm=a313x.7781069.1998910419.2
 */
 
-import home from '../../../Assets/Footer/home.svg'
 import homeSel from '../../../Assets/Footer/homeSel.svg'
 import me from '../../../Assets/Footer/me.svg'
 import meSel from '../../../Assets/Footer/meSel.svg'
