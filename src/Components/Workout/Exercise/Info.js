@@ -1,12 +1,11 @@
  import React  from 'react';
 import {Button} from 'antd-mobile';
+import VideoDetail from './VideoDetail.js';
 
  const Info = (props) => {
    return (
      <div>
-      This is the info page
-      Please insert all the info in the info page of the exercise Component
-      thanks NEPAL_RJS Team....
+     <VideoDetail videos="w1932GYM92w"/>
      <Button onClick={(e) => props.onBackButtonClicked(e) }>
           Go back
         </Button>

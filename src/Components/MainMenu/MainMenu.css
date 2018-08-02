@@ -29,7 +29,8 @@
  height:6vh;
  width:6vh;
  z-index:2;
- margin: 3.5% 3.5%;
+ right: 1vh;
+ top: 1vh;
  position: absolute;
 }
 
@@ -63,4 +64,8 @@
 
 .smallicon{
   pointer-events: none;
+  user-select: none;
+}
+.pop-over-text{
+  user-select: none;
 }

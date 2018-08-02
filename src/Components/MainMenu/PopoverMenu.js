@@ -10,8 +10,11 @@ export default class PopoverMenu extends React.Component {
     selected: '',
   };
   onSelect = (opt) => {
-    this.props.popup.workout(opt.props.value);
-    console.log(opt.props.value);
+    if(opt.key === "1") {
+      this.props.popup.workout(opt.props.value)
+    } else {
+      alert("nothing at the moment!");
+    }
     this.setState({
       visible: false,
       selected: opt.props.value,
@@ -28,15 +31,15 @@ export default class PopoverMenu extends React.Component {
             overlayClassName="fortest"
             overlayStyle={{ color: 'currentColor' }}
             visible={this.state.visible}
-            placement='bottomLeft'
+            placement='bottomRight'
             overlay={[
-              (<Item key="1" value="Workout" icon={<img src={require('../../Assets/MainMenuIcons/PopupMenuIcons/_workout.svg')} className={cx("am-icon am-icon-xs","smallicon")} alt="no"/>}>Workout</Item>),
-              (<Item key="2" value="Rehab and Posture" icon={<img src={require('../../Assets/MainMenuIcons/PopupMenuIcons/_rehab.svg')} className={cx("am-icon am-icon-xs")} alt="no"/>}>Rehab and Posture</Item>),
-              (<Item key="3" value="My Profile" icon={<img src={require('../../Assets/MainMenuIcons/PopupMenuIcons/_profile.svg')} className={cx("am-icon am-icon-xs")} alt="no"/>}>My Profile</Item>),
-              (<Item key="4" value="Content" icon={<img src={require('../../Assets/MainMenuIcons/PopupMenuIcons/_content.svg')} className={cx("am-icon am-icon-xs")} alt="no"/>}>Content</Item>),
-              (<Item key="5" value="Ask a Question" icon={<img src={require('../../Assets/MainMenuIcons/PopupMenuIcons/_ask.svg')} className={cx("am-icon am-icon-xs")} alt="no"/>}>Ask a Question</Item>),
-              (<Item key="6" value="FAQ" icon={<img src={require('../../Assets/MainMenuIcons/PopupMenuIcons/_faq.svg')} className={cx("am-icon am-icon-xs")} alt="no"/>}>FAQ</Item>),
-              (<Item key="7" value="Logout" icon={<img src={require('../../Assets/MainMenuIcons/PopupMenuIcons/_logout.svg')} className={cx("am-icon am-icon-xs")} alt="no"/>}>Logout</Item>),
+              (<Item className="pop-over-text" key="1" value="Workout" icon={<img src={require('../../Assets/MainMenuIcons/PopupMenuIcons/_workout.svg')} className={cx("am-icon am-icon-xs","smallicon")} alt="no"/>}>Workout</Item>),
+              (<Item className="pop-over-text" key="2" value="Rehab and Posture" icon={<img src={require('../../Assets/MainMenuIcons/PopupMenuIcons/_rehab.svg')} className={cx("am-icon am-icon-xs","smallicon")} alt="no"/>}>Rehab and Posture</Item>),
+              (<Item className="pop-over-text" key="3" value="My Profile" icon={<img src={require('../../Assets/MainMenuIcons/PopupMenuIcons/_profile.svg')} className={cx("am-icon am-icon-xs","smallicon")} alt="no"/>}>My Profile</Item>),
+              (<Item className="pop-over-text" key="4" value="Content" icon={<img src={require('../../Assets/MainMenuIcons/PopupMenuIcons/_content.svg')} className={cx("am-icon am-icon-xs","smallicon")} alt="no"/>}>Content</Item>),
+              (<Item className="pop-over-text" key="5" value="Ask a Question" icon={<img src={require('../../Assets/MainMenuIcons/PopupMenuIcons/_ask.svg')} className={cx("am-icon am-icon-xs","smallicon")} alt="no"/>}>Ask a Question</Item>),
+              (<Item className="pop-over-text" key="6" value="FAQ" icon={<img src={require('../../Assets/MainMenuIcons/PopupMenuIcons/_faq.svg')} className={cx("am-icon am-icon-xs","smallicon")} alt="no"/>}>FAQ</Item>),
+              (<Item className="pop-over-text" key="7" value="Logout" icon={<img src={require('../../Assets/MainMenuIcons/PopupMenuIcons/_logout.svg')} className={cx("am-icon am-icon-xs","smallicon")} alt="no"/>}>Logout</Item>),
             ]}
             align={{
               overflow: { adjustY: 0, adjustX: 0 },

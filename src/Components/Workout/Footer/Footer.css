@@ -20,6 +20,27 @@
     -ms-user-select: none;
 }
 
-.footer-icons{
-  pointer-events: none;
+.home-icon{
+  background: url('../../../Assets/Footer/home.svg')  center center /  21px 21px no-repeat;
+}
+.home-sel-icon{
+  background: url('../../../Assets/Footer/homeSel.svg')  center center /  21px 21px no-repeat;
+}
+.me-icon{
+  background:url('../../../Assets/Footer/me.svg') center center / 21px 21px no-repeat;
+}
+.me-sel-icon{
+  background:url('../../../Assets/Footer/meSel.svg') center center / 21px 21px no-repeat;
+}
+.plan-icon{
+  background:url('../../../Assets/Footer/plan.svg') center center / 21px 21px no-repeat;
+}
+.plan-sel-icon{
+  background:url('../../../Assets/Footer/planSel.svg') center center / 21px 21px no-repeat;
+}
+.workout-icon{
+  background:url('../../../Assets/Footer/workout.svg') center center / 21px 21px no-repeat;
+}
+.workout-sel-icon{
+  background:url('../../../Assets/Footer/workoutSel.svg') center center / 21px 21px no-repeat;
 }

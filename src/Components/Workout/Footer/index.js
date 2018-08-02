@@ -5,14 +5,7 @@ import './Footer.css';
 icons taken from http://iconfont.cn/home/index?spm=a313x.7781069.1998910419.2
 */
 
-import home from '../../../Assets/Footer/home.svg'
-import homeSel from '../../../Assets/Footer/homeSel.svg'
-import me from '../../../Assets/Footer/me.svg'
-import meSel from '../../../Assets/Footer/meSel.svg'
-import plan from '../../../Assets/Footer/plan.svg'
-import planSel from '../../../Assets/Footer/planSel.svg'
-import workout from '../../../Assets/Footer/workout.svg'
-import workoutSel from '../../../Assets/Footer/workoutSel.svg'
+
 
   const Footer = (props) => {
     return (
@@ -28,13 +21,21 @@ import workoutSel from '../../../Assets/Footer/workoutSel.svg'
                 title="History"
                 key="History"
                 icon={
-                  <div style={{
+                  <div
+                  className="home-icon"
+                  style={{
                   width: '20px',
                   height: '20px',
-                  background: "url('https://image.freepik.com/free-photo/cute-cat-picture_1122-449.jpg')  center center /  21px 21px no-repeat",
                   pointerEvents:'none'}}
                   />}
-                selectedIcon={{ uri:homeSel}}
+                selectedIcon={
+                  <div
+                  className="home-sel-icon"
+                  style={{
+                  width: '20px',
+                  height: '20px',
+                  pointerEvents:'none'}}
+                  />}
                 selected={props.selectedTab === 'historyTab'}
                 onPress={() => props.selectFooter('historyTab') }
                 data-seed="logId"
@@ -42,8 +43,22 @@ import workoutSel from '../../../Assets/Footer/workoutSel.svg'
               </TabBar.Item>
 
             <TabBar.Item
-              icon={{ uri: plan }}
-              selectedIcon={{ uri:planSel}}
+              icon={
+                <div
+                className="plan-icon"
+                style={{
+                width: '20px',
+                height: '20px',
+                pointerEvents:'none'}}
+                />}
+              selectedIcon={
+                <div
+                className="plan-sel-icon"
+                style={{
+                width: '20px',
+                height: '20px',
+                pointerEvents:'none'}}
+                />}
               title="Plan"
               key="Plan"
               selected={props.selectedTab === 'planTab'}
@@ -52,8 +67,22 @@ import workoutSel from '../../../Assets/Footer/workoutSel.svg'
             >
             </TabBar.Item>
             <TabBar.Item
-              icon={{ uri: workout }}
-              selectedIcon={{ uri:workoutSel}}
+              icon={
+                <div
+                className="workout-icon"
+                style={{
+                width: '20px',
+                height: '20px',
+                pointerEvents:'none'}}
+                />}
+              selectedIcon={
+                <div
+                className="workout-sel-icon"
+                style={{
+                width: '20px',
+                height: '20px',
+                pointerEvents:'none'}}
+                />}
               title="Workout"
               key="Workout"
               dot
@@ -62,8 +91,22 @@ import workoutSel from '../../../Assets/Footer/workoutSel.svg'
             >
             </TabBar.Item>
             <TabBar.Item
-              icon={{ uri: me }}
-              selectedIcon={{ uri: meSel }}
+              icon={
+                <div
+                className="me-icon"
+                style={{
+                width: '20px',
+                height: '20px',
+                pointerEvents:'none'}}
+                />}
+              selectedIcon={
+                <div
+                className="me-sel-icon"
+                style={{
+                width: '20px',
+                height: '20px',
+                pointerEvents:'none'}}
+                />}
               title="Me"
               key="me"
               selected={props.selectedTab === 'meTab'}

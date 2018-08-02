@@ -3,7 +3,6 @@ import {NavBar, Icon, NoticeBar,WingBlank,Progress} from 'antd-mobile';
 import './Exercise.css';
 import RecordList from './RecordList.js';
 import WeightandRep from './WeightAndRep';
-//import VideoDetail from './VideoDetail.js';
 
 
 
