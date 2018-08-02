@@ -5,8 +5,6 @@ import './Footer.css';
 icons taken from http://iconfont.cn/home/index?spm=a313x.7781069.1998910419.2
 */
 
-
-
   const Footer = (props) => {
     return (
       <div className="container">

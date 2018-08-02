@@ -1,5 +1,5 @@
 import React from 'react';
-import { Popover, NavBar, Icon } from 'antd-mobile';
+import { Popover } from 'antd-mobile';
 import cx from 'classnames';
 
 const Item = Popover.Item;

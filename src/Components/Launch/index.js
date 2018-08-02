@@ -1,19 +1,11 @@
 // @flow
 import React, { Component } from 'react';
-import { Button, WingBlank, WhiteSpace} from 'antd-mobile';
-import {Redirect} from 'react-router-dom';
+import { WingBlank, WhiteSpace } from 'antd-mobile';
 import './Launch.css';
 import Logo from '../../Assets/Logo.png';
+import { Link } from 'react-router-dom';
 
 class Launch extends Component {
-  state = {
-    getStarted: false
-  }
-
-buttonClickHandler = () => {
-  this.setState({getStarted: true});
-    // <Link to='login'></Link>
-}
   render() {
 
     return (
@@ -26,9 +18,11 @@ buttonClickHandler = () => {
            {/* button block. */}
         <div className='launch-button'>
           <WingBlank>
-              <Button type="primary" className="button-no-copy" onClick={()=> this.buttonClickHandler()}style={{backgroundColor: '#4CA0CC'}}>
+            <Link to="/login">
+              <button className="customizedButton-Blue" >
                 Get Started
-              </Button>
+              </button>
+            </Link>
 
           </WingBlank>
           <WhiteSpace size='lg'/>
@@ -36,9 +30,6 @@ buttonClickHandler = () => {
             Copyright @ 2018 Nepal
           </div>
         </div>
-        {this.state.getStarted &&
-          <Redirect to='login' />
-        }
       </div>
     );
   }

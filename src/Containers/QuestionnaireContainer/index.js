@@ -29,10 +29,6 @@ import ShowError from '../../Components/Error/ShowError';
 
 import './Questionnaire.css';
 
-const removeArrayItem = (arr, itemToRemove) => {
-  return arr.filter(item => item !== itemToRemove)
-}
-
 class Questionnaire extends Component {
   constructor(props){
     super(props);
@@ -154,7 +150,7 @@ class Questionnaire extends Component {
     this.props.removeError();
   }
   render() {
-    const {nick_name, fields, goal} = this.props.QuestionnaireReducers;
+    const {nick_name, fields} = this.props.QuestionnaireReducers;
     const percent  = (this.state.currentPage-1)*15;
     const genderArray = [
       { value: "male", label: 'Male' },

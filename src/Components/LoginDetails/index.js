@@ -116,7 +116,7 @@ class LoginDetails extends Component<Props, State> {
         <div className="logindetails-register">
           <WingBlank>
             <Link to='/signup' >
-              <Button >Register</Button>
+              <button className="customizedButton-White" >Register</button>
             </Link>
           </WingBlank>
         </div>
