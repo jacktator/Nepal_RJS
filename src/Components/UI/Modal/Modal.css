@@ -11,17 +11,14 @@
     top: 20vh;
 }
 .modal-for-info {
-  position: fixed;
+  position: absolute;
   z-index: 200;
   background-color: white;
   border: 2px solid #ccc;
   box-shadow: 2px 2px 2px grey;
-  padding: 20px;
-  box-sizing: border-box;
   width: 100%;
-  left: 0%;
-  top: 0vh;
-  overflow-x: scroll;
+  top:0%;
+  left:0%;
 }
 .modal-for-select-exercise {
   background-color: white;

@@ -24,7 +24,7 @@ const MainMenu = (props) => {
               </button>
           </div>
           <div className="square-button-flex-container">
-              <button onClick={()=> alert("not available yet")} className="square-button">
+              <button onClick={(v) => props.profile(v)} className="square-button">
               <div><img src={require("../../Assets/MainMenuIcons/profile.svg")} className="square-button-icon" alt="icon"/></div>
               <div>Profile</div>
               </button>

@@ -6,9 +6,9 @@ import VideoDetail from './VideoDetail.js';
    return (
      <div>
      <VideoDetail videos="w1932GYM92w"/>
-     <Button onClick={(e) => props.onBackButtonClicked(e) }>
-          Go back
-        </Button>
+     <Button style={{margin: '0px 5vw 5vw'}}onClick={(e) => props.onBackButtonClicked(e) }>
+          Return
+    </Button>
      </div>
    )
  }

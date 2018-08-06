@@ -28,7 +28,7 @@ export default class RecordList extends Component{
           <Flex justify="between" className="list">
           <Flex.Item><img src={require('../../../Assets/Exercise/checkCircle.svg')} alt="check-circle"/></Flex.Item>
           <Flex.Item><div className="list-text"><strong>{data.kgs}kg * {data.reps} reps</strong></div></Flex.Item>
-          <Flex.Item><img src={require('../../../Assets/Workout/cup-icon.png')} alt="trophy"/></Flex.Item>
+          <Flex.Item><img className="record-list-trophy" src={require('../../../Assets/Workout/cup-icon.png')} alt="trophy"/></Flex.Item>
           </Flex>
           </Item>
           </List>

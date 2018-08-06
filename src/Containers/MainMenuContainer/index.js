@@ -8,7 +8,8 @@ class MainMenuContainer extends Component{
   constructor(props){
     super(props);
     this.state = {
-      workout:false
+      workout:false,
+      profile:false,
       /*rehab and posture:false*/
       /*profile:false*/
       /*content:false*/
@@ -20,15 +21,23 @@ class MainMenuContainer extends Component{
   workoutHandler = (e) => {
     //e.preventDefault();
     this.setState({workout: true})
-
   }
+
+  profileHandler = (e) => {
+    //e.preventDefault();
+    this.setState({profile:true})
+  }
+
   render () {
     return (
       <Hoc>
-        <MainMenu workout={this.workoutHandler}/>
+        <MainMenu workout={this.workoutHandler} profile={this.profileHandler}/>
 
         { this.state.workout &&
           <Redirect to="/workout" />
+        }
+        { this.state.profile &&
+          <Redirect to="/profile" />
         }
       </Hoc>
 

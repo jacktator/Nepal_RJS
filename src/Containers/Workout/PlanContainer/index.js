@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {selectFooter} from '../FooterContainer/actions';
-// import FooterContainer from'../FooterContainer';
-// import Plan from '../../../Components/Workout/Plan';
+import FooterContainer from'../FooterContainer';
+import Plan from '../../../Components/Workout/Plan';
 
 class PlanContainer extends Component{
 
@@ -16,9 +16,10 @@ class PlanContainer extends Component{
   }
   render() {
     return (
-      <div style={{textAlign: 'center', margin: '30%'}}>
+      <div>
 
-      THE REPRESENTATION HAS COMPLETED!!!
+      <Plan/>
+      <FooterContainer/>
 
       </div>
     )

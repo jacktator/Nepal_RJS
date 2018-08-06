@@ -6,14 +6,15 @@ const VideoDetail = ({videos})=>{
   if(!videos){
     return <div>Loading...</div>;
   }
-
+  /* Note: some videos are not playing in localhost on mobile phone, but if they are deployed it works properly, the following
+  sample video works for both localhost and when deployed but if you want to throw in a value use the other line*/
   const videoID= videos;
-  const url =`https://www.youtube.com/embed/${videoID}`;
-  //上面的语句，等同于 const url ='https://www.youtube.com/embed/'+ videoID; 此处注意符号的变化
+  //const url =`https://www.youtube.com/embed/${videoID}`;
+  const url =`http://www.youtube.com/embed/n_dZNLr2cME?autoplay=1`;
 
   return(
-    <div className="video-detail col-md-8">
-    <iframe src={url} frameborder="0" allowfullscreen/>
+    <div>
+    <iframe className="embed-responsive-item" src={url} allow="autoplay" allowfullscreen/>
     </div>
   );
 }

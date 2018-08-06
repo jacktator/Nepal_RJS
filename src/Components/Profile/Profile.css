@@ -1,0 +1,104 @@
+.profile-container{
+  height:100%;
+  width:100%;
+  position: absolute;
+  user-select: none;
+}
+.profile-image-sources{
+  pointer-events: none;
+  user-select: none;
+  width:100%;
+  height:100%;
+  filter: blur(1px);
+  border-style: solid;
+  border-width: 3px;
+  box-sizing: border-box;
+  opacity:0.8;
+  position:absolute;
+}
+
+.profile-image-containers{
+  width:100%;
+  height:30%;
+  position:relative;
+}
+
+.profile-picture{
+  position:absolute;
+  min-height:125px;
+  min-width:125px;
+  max-height:200px;
+  max-width:200px;
+  height: 35vw;
+  width: 35vw;
+  border-radius: 50%;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  user-select: none;
+  z-index:-1;
+  border: 0.2px solid black;
+}
+
+.profile-image-change {
+  position:absolute;
+  top:45%;
+  left:25%;
+  transform: translate(-50%, -50%);
+}
+
+#add-picture{
+  opacity:0;
+  position:absolute;
+  font-size:0px;
+}
+
+.image-picker label{
+  cursor: pointer;
+  background-color: blue;
+  display:block;
+  width:35vw;
+  height:35vw;
+  border-radius:50%;
+  z-index: 1;
+  opacity: 0;
+}
+
+.profile-name{
+  position:absolute;
+  top: 40%;
+  left: 50%;
+  font-size: 20px;
+  color: white;
+  font-family: "Verdana";
+}
+
+.profile-name-icon{
+  background-image:url(../../Assets/Profile/nickname.svg);
+  background-size: cover;
+  height: 22px;
+  width: 22px;
+}
+
+.profile-height-icon{
+  background-image:url(../../Assets/Profile/height.svg);
+  background-size: cover;
+  height: 22px;
+  width: 22px;
+}
+
+.profile-weight-icon{
+  background-image:url(../../Assets/Profile/weight.svg);
+  background-size: cover;
+  height: 22px;
+  width: 22px;
+}
+
+
+.profile-birthday-icon{
+  background-image:url(../../Assets/Profile/cake.svg);
+  background-size: cover;
+  height: 22px;
+  width: 22px;
+}

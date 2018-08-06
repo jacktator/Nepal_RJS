@@ -40,15 +40,17 @@ export default class Exercise extends Component{
                   <div>#kg</div>
                 </div>
          </div>
-         <div className="image-container">
+         <div className="image-block">
            {/* the main gif/image area */}
            <img src={require("../../../Assets/Exercise/exerciseGif.gif")} className="exercise-image" alt="exercise"/>
+           <div className="image-container">
            {/* history button */}
            <img src={require("../../../Assets/Exercise/history.svg")} className="history-icon" alt="history"
            onClick={() => {alert("can see previous training longs of weights and reps they achieved. this goes to a seperate page.")}}/>
            {/* exercise information*/}
            <img src={require("../../../Assets/Exercise/exerciseInfo.svg")} className="info-icon" alt="info"
              onClick={(e) => this.props.onInfoClicked(e) }/>
+           </div>
          </div>
 
          {/* displays the text and steppers, as well as the save button. refer to WeightandRep.js*/}

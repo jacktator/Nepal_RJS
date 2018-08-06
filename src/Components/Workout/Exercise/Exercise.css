@@ -28,12 +28,21 @@ width measurements:
   font-weight: bold;
 }
 
-.exercise .image-container{
+
+.exercise .image-block{
   top: 9vh;
   position: absolute;
   text-align: center;
   width:100%;
   height:40%;
+}
+.exercise .image-container{
+  position:absolute;
+  width:85%;
+  height:70%;
+  top:0;
+  left:7.5%;
+  z-index: 5;
 }
 
 .exercise .exercise-image{
@@ -41,25 +50,26 @@ width measurements:
   height:70%;
   border:1px solid #000000;
   opacity: 0.8;
-
+  pointer-events:'none';
+  user-select:'none';
 }
 
 .exercise .history-icon {
   position: absolute;
-  height:16%;
-  width: 16%;
-  left: 6%;
-  top: 1%;
+  height:18%;
+  width:18%;
+  left: -1%;
+  top: 2.5%;
   z-index: 1;
   opacity: 0.8;
 }
 
 .exercise .info-icon {
   position: absolute;
-  height:16%;
-  width: 16%;
-  left: 6%;
-  bottom: 30%;
+  height:18%;
+  width: 18%;
+  left: -1%;
+  bottom: 2%;
   z-index: 1;
   opacity: 0.8;
 }
@@ -77,6 +87,13 @@ width measurements:
   text-align: center;
 }
 
+@media only screen and (min-width: 900px) {
+  .exercise .prescription-circle{
+    height: 120px;
+    width: 120px;
+  }
+}
+
 .prescription{
   padding-top: 15%;
   padding-bottom: 15%;
@@ -89,7 +106,7 @@ width measurements:
   top: 37vh;
   position: absolute;
   width:100%;
-  height:100%;
+  height:50%;
 }
 
 .weight-and-rep .stepper-text{
@@ -101,25 +118,36 @@ width measurements:
 .weight-and-rep .stepper{
   margin: 3% 0 0 0;
   text-align:center;
+  user-select: none;
 }
 
 .weight-and-rep .save-button{
   text-align:center;
   margin: 3% 0 3% 0;
+  user-select: none;
 }
 
 .record-list .list{
   text-align:center;
 }
 
+.record-list-trophy{
+  user-select: none;
+  pointer-events: none;
+}
+
 .exercise .display-message{
+  user-select: none;
   background-color: white;
-  margin: 25% 0 5%;
+  margin: 10% 0 5%;
   color: blue;
   font-size: 16px;
 }
 
 .embed-responsive-item {
-  width:100%;
+  width:85%;
   height:45vh;
+	border: 10px inset #999;
+  display: block;
+  margin: 5% auto;
 }

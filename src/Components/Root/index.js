@@ -14,6 +14,7 @@ import FooterContainer from '../../Containers/Workout/FooterContainer';
 import PlanContainer from '../../Containers/Workout/PlanContainer';
 import HistoryContainer from '../../Containers/Workout/HistoryContainer';
 import MainMenuContainer from '../../Containers/MainMenuContainer';
+import ProfileComponent from '../../Components/Profile'
 
 //import {connect} from 'react-redux';
 import ExerciseContainer from '../../Containers/ExerciseContainer/';
@@ -45,6 +46,7 @@ class Root extends Component<Props>{
               <Route path="/plan" exact component={PlanContainer}/>
               <Route path="/footer" exact component={FooterContainer} />
               <Route path="/history" exact component={HistoryContainer}/>
+              <Route path="/profile" exact component={ProfileComponent}/>
             </Switch>
           {/*</BrowserRouter>*/}
           </HashRouter>
@@ -68,6 +70,7 @@ class Root extends Component<Props>{
             <Route path="/footer" exact component={FooterContainer} />
             <Route path="/history" exact component={HistoryContainer}/>
             <Route path="/exercise" exact component={ExerciseContainer}/>
+            <Route path="/profile" exact component={ProfileComponent}/>
           </Switch>
         {/*</BrowserRouter>*/}
         </HashRouter>
