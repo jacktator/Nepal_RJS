@@ -1,12 +1,9 @@
 import React , {Component} from 'react';
-import initialPic from '../../Assets/Profile/anon.png';
-import {Accordion,List,TextareaItem,InputItem,Toast,Button,DatePicker} from 'antd-mobile';
-import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
+import {Accordion,List,InputItem,Toast,Button} from 'antd-mobile';
 
 const Item = List.Item;
-const Brief = Item.Brief;
 
-class ProfileDetails extends React.Component {
+class ProfileDetails extends Component {
 
   onChange = (key) => {
    console.log(key);
@@ -14,36 +11,10 @@ class ProfileDetails extends React.Component {
 
  state = {
    hasError: false,
-   name:'Laxman Gautam',
-   gender:'Male',
-   weight:'70kg',
    email: 'laxman@gmail.com',
    password:'',
    confirmPass:''
  }
-
-
-// Checks if confirm password matches with new password
- // onPasswordErrorClick = ()=>{
- //   if (this.state.hasError) {
- //     Toast.info('New Password does not match with Confirmation Password');
- //   }
- // }
- // onPasswordChange = (confirmPass) => {
- //   if(this.password !== confirmPass){
- //     this.setState({
- //       hasError: true,
- //     });
- //   } else {
- //     this.setState({
- //       hasError: false,
- //     });
- //   }
- //   this.setState({
- //     confirmPass,
- //   });
- // }
-
 
 // Checks if email matches format.
  onEmailErrorClick = () => {
@@ -67,52 +38,11 @@ class ProfileDetails extends React.Component {
    });
  }
 
- //Change Name
-onNameChange =(name)=>{
-  this.setState({
-    name,
-  })
-}
-
-//Change Gender
-onGenderChange =(gender)=>{
- this.setState({
-   gender,
- })
-}
-
-//Change Weight
-onWeightChange =(weight)=>{
- this.setState({
-   weight,
- })
-}
-
-
   render() {
      return (
 
             <div style={{marginTop:"40px"}}>
-               <InputItem placeholder="Name"
-                value={this.state.name}
-                onChange={this.onNameChange}>
-               <div className="profile-name-icon"/>
-               </InputItem>
-               <InputItem placeholder="Birth Date"
-                value={this.state.Height}
-                onChange={this.onHeightChange}>
-               <div className="profile-birthday-icon"/>
-               </InputItem>
-               <InputItem placeholder="Height"
-                value={this.state.Height}
-                onChange={this.onHeightChange}>
-               <div className="profile-height-icon"/>
-               </InputItem>
-               <InputItem placeholder="Weight"
-               value={this.state.weight}
-               onChange={this.onWeightChange}>
-               <div className="profile-weight-icon"/>
-               </InputItem>
+
               <div style={{marginTop:"40px"}}/>
               <Accordion className="my-accordion" onChange={this.onChange}>
                <Accordion.Panel header={<Item thumb={require("../../Assets/Profile/lock.svg")}> Change Password</Item>}>
@@ -150,9 +80,6 @@ onWeightChange =(weight)=>{
                  </List>
                </Accordion.Panel>
              </Accordion>
-             <div style={{marginTop:"40px"}}/>
-             <List><Item onClick={()=>{alert("BLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAHBLAH")}}>View Terms and Conditions</Item></List>
-             <List><Item onClick={()=>{alert("BYE")}}>Logout</Item></List>
 
       </div>
      );

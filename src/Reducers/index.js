@@ -6,6 +6,7 @@ import SignUpReducers from '../Containers/SignUpContainer/reducer';
 import ForgetPasswordReducers from '../Containers/ForgetPasswordContainer/reducer';
 import RootReducers from '../Containers/RootContainer/reducer';
 import FooterReducers from '../Containers/Workout/FooterContainer/reducer';
+import ProfileReducers from '../Containers/ProfileContainer/reducer';
 
 
 //here is for put all seperate data together into a .js file Reducer
@@ -15,6 +16,7 @@ const Reducer = combineReducers({
   WorkOutReducers,
   QuestionnaireReducers,
   FooterReducers,
+  ProfileReducers,
   LoginDetailsStates: LoginDetailsReducers,
   SignUpReducersStates: SignUpReducers,
   ForgetPasswordStates: ForgetPasswordReducers,

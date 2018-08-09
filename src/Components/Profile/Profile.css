@@ -102,3 +102,12 @@
   height: 22px;
   width: 22px;
 }
+
+.date-of-birth div .am-list-extra{
+  position:absolute;
+  left:85px;
+}
+
+.height-picker {
+  
+}

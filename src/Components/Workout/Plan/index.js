@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {WingBlank,Progress,Tabs} from 'antd-mobile'
+import {WingBlank,Progress} from 'antd-mobile'
 import './Plan.css'
 import StickyTab from './StickyTab'
 
