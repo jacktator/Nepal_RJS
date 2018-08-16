@@ -11,6 +11,7 @@ class Header extends Component {
       this.handleChange = this.handleChange.bind(this)
     }
 
+    // change photo
     handleChange(event) {
       this.setState({
         file: URL.createObjectURL(event.target.files[0])
@@ -28,7 +29,7 @@ class Header extends Component {
               <img className="profile-picture" src={this.state.file} alt="profile_pic"/>
             </div>
           </div>
-          <div className="profile-name"> Laxman Gautam</div>
+          <div className="profile-name">{this.props.name}</div>
         </div>
 
       )

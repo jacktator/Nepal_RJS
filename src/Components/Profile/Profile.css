@@ -108,6 +108,21 @@
   left:85px;
 }
 
-.height-picker {
-  
+.weight-picker div .am-list-extra{
+  position:absolute;
+  left:85px;
+}
+
+.height-picker div .am-list-extra{
+  position:absolute;
+  left:85px;
+}
+
+.no-select {
+  user-select: none;
+  pointer-events: none;
+}
+
+.center-save-button{
+  top:3px;
 }
