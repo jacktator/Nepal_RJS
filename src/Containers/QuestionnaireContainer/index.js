@@ -336,7 +336,7 @@ class Questionnaire extends Component {
           </Modal>
       )}
       {(this.props.QuestionnaireReducers.success) && (
-        <Redirect to='/login/' />
+        <Redirect to='/mainmenu/' />
       )}
       {(this.props.QuestionnaireReducers.error.hasError === true) && (
         <Modal modalFor = "modal">

@@ -5,22 +5,22 @@ export function fetchFromServer() {
   let goal = [];
   return (dispatch:Functon) =>{
     axios.get("https://nepal.sk8tech.io/wp-json/wp/v2/goal/")
-      .then((response) => {
-        response.data.map( data => {
-          goal.push(data.acf);
-          return null;
-        })
-        dispatch(getGoalFromServer(goal));
-      }).catch((error)=> {
-
+    .then((response) => {
+      response.data.map( data => {
+        goal.push(data.acf);
+        return null;
       })
-    }
+      dispatch(getGoalFromServer(goal));
+    }).catch((error)=> {
+
+    })
   }
+}
 
 export function addQuestionnaire(state) {
   let token = localStorage.getItem('token');
   return(dispatch: Function) => {
-    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/6764",
+    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/10621",
     {
       title: "Questionnaire",
       fields: state.fields
@@ -29,21 +29,44 @@ export function addQuestionnaire(state) {
         Authorization: "Bearer" + token
       }
     }
-  ).then((response) => {
-    console.log("Response",response)
-    dispatch(success(true));
-    setTimeout(function(){
-          dispatch(success(false));
+    ).then((response) => {
+      console.log("Response",response)
+      dispatch(addProgram());
+      dispatch(success(true));
+      setTimeout(function(){
+        dispatch(success(false));
       },700);
     //dispatch(questionnaire(state));
-  }).catch((error) => {
-    if(error.response){
-      dispatch(addError(error.response.data.message));
-    }else{
-      dispatch(addError("Network Connection Error. Please check your network connection"))
-    }
-  })
+    }).catch((error) => {
+      if(error.response){
+        dispatch(addError(error.response.data.message));
+      }else{
+        dispatch(addError("Network Connection Error. Please check your network connection"))
+      }
+    })
+  }
 }
+
+export function addProgram () {
+  let user_exercise = [];
+  let token = localStorage.getItem('token');
+  return(dispatch: Function) => {
+    return axios.get("https://nepal.sk8tech.io/wp-json/wp/v2/exercise",{
+      headers: {
+        Authorization: "Bearer" + token
+      }
+    }).then((response) => {
+        let exercises = response.data.slice(0,5);
+        exercises.map(exercise => {
+          user_exercise.push({"id":exercise.id, "name":exercise.acf.name});
+          return null;
+        })
+      console.log(user_exercise);
+
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
 }
 
 export function addName (nick_name: string) {

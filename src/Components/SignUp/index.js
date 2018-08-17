@@ -109,7 +109,7 @@ class SignUp extends Component<Props, State> {
                 Create Account
               </Button>
               {this.props.state.error && this.props.history.go(0)}
-              {this.props.state.fetch===200 && <Redirect to="/questionnaire" />}
+              {this.props.state.fetch===200 && <Redirect to="/questionnaire/" />}
             </WingBlank>
           </div>
           <div className='signup-checkbox'>

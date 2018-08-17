@@ -25,6 +25,9 @@ class FooterContainer extends Component{
         }{ this.props.FooterReducers.currentFooterTab === 'meTab' &&
           <Redirect to="/mainmenu" />
         }
+        { this.props.FooterReducers.currentFooterTab === 'mainMenuTab' &&
+          <Redirect to="/mainmenu" />
+        }
       </Hoc>
 
     )

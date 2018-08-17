@@ -31,11 +31,9 @@ export function LoginDetailsActions(email:string, password:string){
     })
   };
 }
-
 //dispatch is for fire the functions
 //functions are for store the values that are used to change the state
 //in functions the values are binded with type which will be used in the Reducer
-
 
 export function validToken(token:string){
   return(dispatch: Function)=>{
