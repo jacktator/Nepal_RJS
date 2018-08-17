@@ -1,22 +1,6 @@
 // @flow
 import axios from 'axios';
 
-export function fetchFromServer() {
-  let goal = [];
-  return (dispatch:Functon) =>{
-    axios.get("https://nepal.sk8tech.io/wp-json/wp/v2/goal/")
-    .then((response) => {
-      response.data.map( data => {
-        goal.push(data.acf);
-        return null;
-      })
-      dispatch(getGoalFromServer(goal));
-    }).catch((error)=> {
-
-    })
-  }
-}
-
 export function addQuestionnaire(state) {
   let token = localStorage.getItem('token');
   return(dispatch: Function) => {
