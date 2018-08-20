@@ -6,7 +6,7 @@ export default class WeightAndRep extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      weightValue: 3,
+      weightValue: 10,
       repValue:5,
     };
     this.onChangeWeight=this.onChangeWeight.bind(this);
@@ -34,8 +34,9 @@ export default class WeightAndRep extends Component{
         <Flex.Item><Stepper
             style={{ width: '30%', minWidth: '110px' }}
             showNumber
-            max={10}
+            max={200}
             min={1}
+            step={2.5}
             value={this.state.weightValue}
             onChange={(e) => this.onChangeWeight(e)}
           /></Flex.Item>
@@ -44,7 +45,7 @@ export default class WeightAndRep extends Component{
             showNumber
             max={10}
             min={1}
-            value={this.state.repValue}
+            value={this.state.repValue}xw
             onChange={this.onChangeRep}
           /></Flex.Item>
         </Flex>
@@ -52,7 +53,7 @@ export default class WeightAndRep extends Component{
         <Flex justify="center" className="save-button">
           <Flex.Item>
           <MediaQuery query="(min-height:668px)">
-          <Button type="primary" inline="true" size="large" onClick={(e) => this.props.onSaveButtonClicked(e)}>
+          <Button type="primary" inline="true" size="large" onClick={() => this.props.onSaveButtonClicked(this.state.repValue,this.state.weightValue)}>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               SAVE
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
