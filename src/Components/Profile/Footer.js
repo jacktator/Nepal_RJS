@@ -14,6 +14,8 @@ class Footer extends Component {
     this.setState({
       goBack:true,
     });
+
+
   }
 
     render() {

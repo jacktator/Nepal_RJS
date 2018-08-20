@@ -27,17 +27,18 @@ export default class Exercise extends Component{
            mode='light'
            icon={<Icon type="left" size="lg"/>}
            onLeftClick={(e) => this.props.onBackButtonClicked(e)}
-           className="nav-bar">
+           className="nav-bar"
+           style={{marginTop:"20px"}}>
            <div className="nav-bar-text">
-             Exercise #/#
+             {this.props.exerciseName} {this.props.exerciseNumber}/{this.props.exerciseTotal}
            </div>
          </NavBar>
          {/* prescription is the black circle on top of image*/}
           <div className="prescription-circle">
                 <div className="prescription">
-                  <div>#sets</div>
-                  <div>#reps</div>
-                  <div>#kg</div>
+                  <div>{this.props.sets}x</div>
+                  <div>{this.props.reps} reps</div>
+                  <div>{this.props.weight} kg</div>
                 </div>
          </div>
          <div className="image-block">
@@ -56,11 +57,13 @@ export default class Exercise extends Component{
          {/* displays the text and steppers, as well as the save button. refer to WeightandRep.js*/}
          <div className="stepper-list-container">
             <div>
-              <WeightandRep/>
+              <WeightandRep
+              onSaveButtonClicked = {this.props.onSaveButtonClicked}/>
             </div>
             {/* displays the record list, refer to RecordList.js*/}
            <div>
-             <RecordList/>
+             <RecordList
+             exerciseLog = {this.props.exerciseLog}/>
              {/* Message for showing current goals*/}
              <NoticeBar
                marqueeProps={{ loop: true, fps:40, leading:1000, trailing:1000,style:{padding:'0 100px'}}}
