@@ -39,7 +39,7 @@ class LoginDetailsContainer extends Component<Props>{
           onClickButton={this.props.LoginDetailsActions}
         />
         {(error.hasError) && (
-          <Modal modalFor="showError">
+          <Modal modalFor="modal">
             <ShowError
             error={error.message}
             cancel = {this.cancelErrorMessageHandler}
