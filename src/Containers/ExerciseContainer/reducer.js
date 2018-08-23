@@ -22,7 +22,7 @@ let DefaultState={
     weight: "10",
     reps: "10",
     current: true,
-    },
+  },
 
 }
 

@@ -24,7 +24,7 @@ export function LoginDetailsActions(email:string, password:string){
 
     }).catch((error)=>{
       if(error.response){
-        dispatch(catchError(error.response.data.message));
+        dispatch(catchError("The username or password you entered is incorrect."));
       }else{
         dispatch(catchError("Network Connection Error. Please check your network connection"))
       }
