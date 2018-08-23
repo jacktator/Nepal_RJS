@@ -27,7 +27,7 @@ class LoginDetailsContainer extends Component<Props>{
     this.props.removeError();
   }
   render(){
-    const {email, password, token, error} = this.props.LoginDetailsStates
+    const {email, password, token, error} = this.props.LoginDetailsStates;
     return(
       <div>
         <LoginDetailsWrapper
