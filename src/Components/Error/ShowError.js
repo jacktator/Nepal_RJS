@@ -7,12 +7,12 @@ const ShowError = (props) => {
     <Hoc>
       <div className="show-error">
         <strong>{props.error}</strong>
-      <WhiteSpace/>
-      <Button type="warning"
-        onClick={() => props.cancel()}
-      >
-        Got it
-      </Button>
+        <WhiteSpace/>
+        <Button type="warning"
+          onClick={() => props.cancel()}
+        >
+          Got it
+        </Button>
       </div>
     </Hoc>
   )
