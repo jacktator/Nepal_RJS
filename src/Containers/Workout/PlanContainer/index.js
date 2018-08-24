@@ -20,7 +20,6 @@ class PlanContainer extends Component{
 
       <Plan/>
       <FooterContainer/>
-
       </div>
     )
   }
@@ -28,7 +27,8 @@ class PlanContainer extends Component{
 
 function mapStateToProps(state){
   return {
-    currentFooterTab: state.FooterReducers.currentFooterTab
+    currentFooterTab: state.FooterReducers.currentFooterTab,
+    ProfileReducers: state.PlanReducers,
   }
 }
 function matchDispatchToProps(dispatch){
@@ -37,7 +37,5 @@ function matchDispatchToProps(dispatch){
   }, dispatch
 );
 }
-export default connect(mapStateToProps, matchDispatchToProps) (PlanContainer);
 
-// <Plan/>
-// <FooterContainer/>
+export default connect(mapStateToProps, matchDispatchToProps) (PlanContainer);
