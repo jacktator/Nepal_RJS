@@ -15,8 +15,7 @@ export function addQuestionnaire(state) {
       }
     }
   ).then((response) => {
-    console.log("Response",response)
-    dispatch(addProgram());
+    dispatch(addProgram(response.data.acf.days_per_week, response.data.acf.goals));
     dispatch(success(true));
     setTimeout(function(){
       dispatch(success(false));
@@ -26,78 +25,65 @@ export function addQuestionnaire(state) {
     if(error.response){
       dispatch(addError(error.response.data.message));
     }else{
-      dispatch(addError("Network Connection Error. Please check your network connection"))
+      console.log(error);
+      dispatch(addError("OOPs! Could not connect to the server."))
     }
   })
 }
 }
 
 //Function to initialize the program after completion of the questionnaire
-export function addProgram () {
-  let token = localStorage.getItem('token');
+export function addProgram (days, goals) {
+  let user_id = localStorage.getItem('user_id');
+  let goal;
+  switch (goals) {
+    case "1":
+      goal = "Muscle size and strength";
+      break;
+    case "2":
+      goal = "Fat loss/ Definition";
+      break;
+    case "3":
+      goal = "Decrease stress";
+      break;
+    case "4":
+      goal = "Improve posture";
+      break;
+    case "5":
+      goal = "Increase fitness";
+      break;
+    default:
+      goal = "Please select the goal"
+  }
+  console.log(goal);
+  console.log(goals);
+  console.log(days);
   return(dispatch: Function) => {
     //fetch the list of exercise
     return axios.get("./DataSources/fatlossday3.json")
-      .then((response)=> {
-        alert("success");
-        console.log("Response from json",response.data);
-      }).catch((error)=> {
-        console.log("error");
-        alert("failure");
+    .then((response)=> {
+      alert("success");
+      console.log("Response from json",response.data);
+
+      return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/program",
+      {
+        status: "publish",
+        fields: {
+            userid: user_id,
+            programname: goal,
+            programdaynumber: days,
+            progress: "1",
+            difficultlevel: "1"
+        }
+      }).then((response) => {
+        alert("Successfully created the program");
+      }).catch((error) => {
+        alert("Got error while creating the program");
       })
-
-
-    // return axios.get("https://nepal.sk8tech.io/wp-json/wp/v2/exercise",{
-    //   headers: {
-    //     Authorization: "Bearer" + token
-    //   }
-    // }).then((response) => {
-    //   let exercises = response.data.slice(0,5);
-    //   return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/program",
-    //   {
-    //     status: "publish",
-    //     fields: {
-    //         userid: "4",
-    //         programname: "Program from react",
-    //         finishdate: "",
-    //         programdaynumber: "4",
-    //         exercises: {
-    //             exercise1: {
-    //                 exerciseid: exercises[0].id,
-    //                 exercisename: exercises[0].acf.name
-    //             },
-    //             exercise2: {
-    //                 exerciseid: exercises[1].id,
-    //                 exercisename: exercises[1].acf.name,
-    //             },
-    //             exercise3: {
-    //                 exerciseid: exercises[2].id,
-    //                 exercisename: exercises[2].acf.name,
-    //             },
-    //             exercise4: {
-    //                 exerciseid: exercises[3].id,
-    //                 exercisename: exercises[3].acf.name
-    //             },
-    //             exercise5: {
-    //                 exerciseid: exercises[4].id,
-    //                 exercisename: exercises[4].acf.name,
-    //             }
-    //         },
-    //         progress: "1",
-    //         difficultlevel: "1"
-    //     }
-    //   }, {
-    //     headers:{
-    //       Authorization: "Bearer" + token
-    //     }
-    //   }).then((response) => {
-    //     alert("Successfully created the program");
-    //   }).catch((error) => {
-    //     alert("Got error while creating the program");
-    //   })
-    // }).catch((error) => {
-    //   alert("Got error while fetching exercise");
-    // })
+    }).catch((error)=> {
+      console.log(error);
+      alert("failure");
+    })
   }
 }
 

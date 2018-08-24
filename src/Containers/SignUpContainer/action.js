@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {checkLogin} from '../RootContainer/action';
+import {LoginDetailsActions} from '../LoginDetailsContainer/action';
 
 export function SignUpActions(username, email, password){
 
@@ -12,8 +13,10 @@ export function SignUpActions(username, email, password){
     .then((response)=>{
       console.log('register successfully!!')
       console.log(response.data);
+      console.log(response);
+      let login = JSON.parse(response.config.data);
+      dispatch(LoginDetailsActions(login.email, login.password));
       dispatch(fetchResponse(response.data.code));
-      dispatch(checkLogin());
     }).catch((error)=>{
       if(error.response){
         dispatch(catchError(error.response.data.message))

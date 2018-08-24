@@ -19,9 +19,8 @@ export function LoginDetailsActions(email:string, password:string){
       dispatch(upDateToken(token));
       dispatch(setGlobalAxiosDefault(token));
       dispatch(checkLogin());
-
+      dispatch(getUserId());
       // dispatch(validToken(token));
-
     }).catch((error)=>{
       if(error.response){
         dispatch(catchError("The username or password you entered is incorrect."));
@@ -34,6 +33,19 @@ export function LoginDetailsActions(email:string, password:string){
 //dispatch is for fire the functions
 //functions are for store the values that are used to change the state
 //in functions the values are binded with type which will be used in the Reducer
+
+export function getUserId(token:string){
+  return(dispatch: Function) => {
+    return axios.get("https://nepal.sk8tech.io/wp-json/wp/v2/users/me?context=edit")
+    .then((response)=> {
+      let user_id = response.data.id;
+      window.localStorage.setItem('user_id', user_id);
+    }).catch((error)=> {
+      console.log(error);
+    })
+
+  }
+}
 
 export function validToken(token:string){
   return(dispatch: Function)=>{

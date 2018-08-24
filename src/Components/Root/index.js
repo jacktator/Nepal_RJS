@@ -48,6 +48,7 @@ class Root extends Component<Props>{
               <Route path="/history" exact component={HistoryContainer}/>
               <Route path="/profile" exact component={ProfileContainer}/>
               <Route path="/termsandconditions" exact component={TermsAndCondComponent}/>
+              <Route path="/questionnaire" exact component={Questionnaire} />
             </Switch>
           {/*</BrowserRouter>*/}
           </HashRouter>
