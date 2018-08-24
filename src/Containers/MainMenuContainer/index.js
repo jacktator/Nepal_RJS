@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Redirect} from 'react-router';
-import Hoc from '../../HOC/Hoc';
+import HOC from '../../HOC/Hoc';
 import MainMenu from '../../Components/MainMenu';
 import {selectFooter} from '../Workout/FooterContainer/actions';
 
@@ -38,7 +38,7 @@ class MainMenuContainer extends Component{
 
   render () {
     return (
-      <Hoc>
+      <HOC>
         <MainMenu workout={this.workoutHandler} profile={this.profileHandler}/>
 
         { this.state.workout &&
@@ -47,8 +47,7 @@ class MainMenuContainer extends Component{
         { this.state.profile &&
           <Redirect to="/profile" />
         }
-      </Hoc>
-
+      </HOC>
     )
   }
 }

@@ -1,6 +1,7 @@
 {
   "exerciseList":[
-          {"code":"1",
+          {
+           "code":"1",
            "name":"1 Tricep Heavy Exercises",
            "exercises":[
              {
@@ -12,7 +13,8 @@
                 ]
              }]
           },
-          {"code":"2",
+          {
+           "code":"2",
            "name":"2 Tricep Light Exercises",
            "exercises":[
              {
@@ -28,7 +30,8 @@
                 ]
              }]
           },
-          {"code":"3",
+          {
+           "code":"3",
            "name":"3 Bicep Heavy Exercises",
            "exercises":[
              {
@@ -39,7 +42,8 @@
                 ]
              }]
           },
-          {"code":"4",
+          {
+           "code":"4",
            "name":"4 Bicep Light Exercises",
            "exercises":[
              {
@@ -49,7 +53,8 @@
                 ]
              }]
           },
-          {"code":"5",
+          {
+           "code":"5",
            "name":"5 Chest Heavy",
            "exercises":[
              {
@@ -59,7 +64,8 @@
                 ]
              }]
           },
-          {"code":"6",
+          {
+           "code":"6",
            "name":"6 Chest Accesory Press",
            "exercises":[
              {
@@ -69,7 +75,8 @@
                 ]
              }]
           },
-          {"code":"7",
+          {
+           "code":"7",
            "name":"7 Chest Light",
            "exercises":[
              {
@@ -79,7 +86,8 @@
                 ]
              }]
           },
-          {"code":"8",
+          {
+           "code":"8",
            "name":"8 Shoulder Isolation Exercises",
            "exercises":[
              {
@@ -89,7 +97,8 @@
                 ]
              }]
           },
-          {"code":"9",
+          {
+           "code":"9",
            "name":"9 Shoulder Rear Delt Isolation Exercises",
            "exercises":[
              {
@@ -99,7 +108,8 @@
                 ]
              }]
           },
-          {"code":"10",
+          {
+           "code":"10",
            "name":"10 Shoulder Compund Exercises",
            "exercises":[
              {
@@ -109,7 +119,8 @@
                 ]
              }]
           },
-          {"code":"11",
+          {
+           "code":"11",
            "name":"11 Back Heavy Exercises",
            "exercises":[
              {
@@ -119,7 +130,8 @@
                 ]
              }]
           },
-          {"code":"12",
+          {
+           "code":"12",
            "name":"12 Back Light Exercises",
            "exercises":[
              {
@@ -129,7 +141,8 @@
                 ]
              }]
           },
-          {"code":"13",
+          {
+           "code":"13",
            "name":"13 Quadricep Heavy Exercises",
            "exercises":[
              {
@@ -139,7 +152,8 @@
                 ]
              }]
           },
-          {"code":"14",
+          {
+           "code":"14",
            "name":"14 Quadricep Heavy Compund Accesory Exercises",
            "exercises":[
              {
@@ -149,7 +163,8 @@
                 ]
              }]
           },
-          {"code":"15",
+          {
+           "code":"15",
            "name":"15 Quadricep Isolation Exercises",
            "exercises":[
              {
@@ -159,7 +174,8 @@
                 ]
              }]
           },
-          {"code":"16",
+          {
+           "code":"16",
            "name":"16 Quadricep Uni-lateral Exercises",
            "exercises":[
              {
@@ -169,7 +185,8 @@
                 ]
              }]
           },
-          {"code":"17",
+          {
+           "code":"17",
            "name":"17 Hamstring Heavy Exercises",
            "exercises":[
              {
@@ -179,7 +196,8 @@
                 ]
              }]
           },
-          {"code":"18",
+          {
+           "code":"18",
            "name":"18 Hamstring Light Exercises",
            "exercises":[
              {
@@ -189,7 +207,8 @@
                 ]
              }]
           },
-          {"code":"19",
+          {
+           "code":"19",
            "name":"19 Glute Compund Exercises",
            "exercises":[
              {
@@ -199,7 +218,8 @@
                 ]
              }]
           },
-          {"code":"20",
+          {
+           "code":"20",
            "name":"20 Glutes Accessory Exercises",
            "exercises":[
              {
@@ -209,7 +229,8 @@
                 ]
              }]
           },
-          {"code":"21",
+          {
+           "code":"21",
            "name":"21 Calves Exercises",
            "exercises":[
              {
@@ -219,7 +240,8 @@
                 ]
              }]
           },
-          {"code":"22",
+          {
+           "code":"22",
            "name":"22 Hamstring & Glute Exercises",
            "exercises":[
              {
@@ -229,7 +251,8 @@
                 ]
              }]
           },
-          {"code":"23",
+          {
+           "code":"23",
            "name":"23 Abdominal Exercises",
            "exercises":[
              {
@@ -239,7 +262,8 @@
                 ]
              }]
           },
-          {"code":"24",
+          {
+           "code":"24",
            "name":"24 Abdominal Failure Exercises",
            "exercises":[
              {
