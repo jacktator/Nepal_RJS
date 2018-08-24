@@ -95,53 +95,53 @@ export function addName (nick_name: string) {
   }
 }
 
-export function addAge (age: number) {
+export function addAge (age: Number) {
   return {
     type: "ADD_AGE",
     payload: age.toString()
   }
 }
-export function addGender (gender: string) {
+export function addGender (gender: String) {
   return {
     type: "ADD_GENDER",
     payload: gender
   }
 }
-export function addWeight (weight: number) {
+export function addWeight (weight: Number) {
   return {
     type: "ADD_WEIGHT",
     payload: weight.toString()
   }
 }
 
-export function addExercisePlace (exercisePlace: string) {
+export function addExercisePlace (exercisePlace: String) {
   return {
     type: "ADD_EXERCISE_PLACE",
     payload: exercisePlace
   }
 }
 
-export function addDays (days_per_week: number) {
+export function addDays (days_per_week: Number) {
   return {
     type: "ADD_DAYS",
     payload: days_per_week.toString()
   }
 }
 
-export function addGoals (training_goals: string) {
+export function addGoals (training_goals: String) {
   return {
     type: "ADD_GOALS",
     payload: training_goals
   }
 }
 
-export function addInjuryManagement (injury_management: string) {
+export function addInjuryManagement (injury_management: String) {
   return {
     type: "ADD_INJURY_MANAGEMENT",
     payload: injury_management
   }
 }
-export function addPostureCorrection (posture_correction: string) {
+export function addPostureCorrection (posture_correction: String) {
   return {
     type: "ADD_POSTURE_CORRECTION",
     payload: posture_correction

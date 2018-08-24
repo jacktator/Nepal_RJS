@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {List,Flex} from 'antd-mobile'
-
 const Item = List.Item
 
 export default class Content extends Component {
@@ -17,7 +16,6 @@ export default class Content extends Component {
     }
   }
 
-
   onChange = (value) => {
     let temp = [ ...this.state.WorkoutPlans]
     const index = this.state.WorkoutPlans.findIndex(i => { return i.value === value })
@@ -27,25 +25,24 @@ export default class Content extends Component {
     }
   }
 
-  render(){
-
+  render() {
     return(
-        <div>
-           <List> {this.state.WorkoutPlans.map(data => (
-           <Flex>
-              <Flex.Item>
-                  <Item
-                    arrow="horizontal"
-                    disabled={!data.isSelected}
-                    onClick={() => this.onChange(data.value)}>
-                    <div style={{fontSize:'16px'}}> {data.day} {data.workout} </div>
-                  </Item>
-              </Flex.Item>
-           </Flex>
-         ))}
-           </List>
+      <div>
+      <List> {this.state.WorkoutPlans.map((data, key) => (
+        <Flex key={key}>
+        <Flex.Item>
+        <Item
+        arrow="horizontal"
+        disabled={!data.isSelected}
+        onClick={() => this.onChange(data.value)}>
+        <div style={{fontSize:'16px'}}> {data.day} {data.workout} </div>
+        </Item>
+        </Flex.Item>
+        </Flex>
+      ))}
+      </List>
 
-        </div>
+      </div>
     )
   }
 }

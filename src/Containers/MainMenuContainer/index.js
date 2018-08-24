@@ -42,7 +42,7 @@ class MainMenuContainer extends Component{
         <MainMenu workout={this.workoutHandler} profile={this.profileHandler}/>
 
         { this.state.workout &&
-          <Redirect to="/workout" />
+          <Redirect to="/plan" />
         }
         { this.state.profile &&
           <Redirect to="/profile" />

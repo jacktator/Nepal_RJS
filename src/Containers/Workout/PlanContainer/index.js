@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {selectFooter} from '../FooterContainer/actions';
+import {getProgram} from './actions';
 import FooterContainer from'../FooterContainer';
 import Plan from '../../../Components/Workout/Plan';
 
@@ -13,13 +14,13 @@ class PlanContainer extends Component{
     if(this.props.currentFooterTab!== 'planTab' ){
       this.props.selectFooter('planTab');
     }
+    this.props.getProgram();
   }
   render() {
     return (
       <div>
-
-      <Plan/>
-      <FooterContainer/>
+        <Plan planReducers={this.props.planReducers}/>
+        <FooterContainer/>
       </div>
     )
   }
@@ -28,12 +29,13 @@ class PlanContainer extends Component{
 function mapStateToProps(state){
   return {
     currentFooterTab: state.FooterReducers.currentFooterTab,
-    ProfileReducers: state.PlanReducers,
+    profileReducers: state.ProfileReducers,
+    planReducers: state.PlanReducers,
   }
 }
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
-    selectFooter
+    selectFooter, getProgram
   }, dispatch
 );
 }
