@@ -38,32 +38,31 @@ export function addProgram (days, goals) {
   let goal;
   switch (goals) {
     case "1":
-      goal = "Muscle size and strength";
+      goal = "musclegain";
       break;
     case "2":
-      goal = "Fat loss/ Definition";
+      goal = "fatloss";
       break;
     case "3":
-      goal = "Decrease stress";
+      goal = "decreasestress";
       break;
     case "4":
-      goal = "Improve posture";
+      goal = "improveposture";
       break;
     case "5":
-      goal = "Increase fitness";
+      goal = "increasefitness";
       break;
     default:
       goal = "Please select the goal"
   }
-  console.log(goal);
-  console.log(goals);
-  console.log(days);
+  let jsonurl = `./DataSources/${goal}day${days}.json`;
+  console.log(jsonurl);
   return(dispatch: Function) => {
     //fetch the list of exercise
-    return axios.get("./DataSources/fatlossday3.json")
-    .then((response)=> {
+    return axios.get(jsonurl)
+    .then((res)=> {
       alert("success");
-      console.log("Response from json",response.data);
+      console.log("Response from json",res.data);
 
       return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/program",
       {
@@ -72,6 +71,7 @@ export function addProgram (days, goals) {
             userid: user_id,
             programname: goal,
             programdaynumber: days,
+            exercises: res.data.exercises,
             progress: "1",
             difficultlevel: "1"
         }

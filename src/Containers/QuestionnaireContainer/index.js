@@ -159,11 +159,11 @@ class Questionnaire extends Component {
       { value: "home", label: 'Home' },
     ];
     const trainingGoalsArray= [
-      { value: '0', used_for:'gym', label: 'Muscle size and strength', description:"Weight training principles designed to build muscle and strength." },
-      { value: '1', used_for:'both', label: 'Fat Loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition."},
-      { value: '2', used_for:'both', label: 'Decrease stress', description:"Using exercise strategies to reduce stress levels and restore balance back in your body."},
-      { value: '3', used_for:'gym', label: 'Improve posture', description:"Utilising specific exercises and weight training to correct postural imbalances."},
-      { value: '4', used_for:'home', label: 'Increase fitness', description:"High intensity exercise to develop and increase your overall fitness."},
+      { value: '1', used_for:'gym', label: 'Muscle size and strength', description:"Weight training principles designed to build muscle and strength." },
+      { value: '2', used_for:'both', label: 'Fat Loss/Definition', description: "A combination of cardio and weight training to target fat loss and increase muscle definition."},
+      { value: '3', used_for:'both', label: 'Decrease stress', description:"Using exercise strategies to reduce stress levels and restore balance back in your body."},
+      { value: '4', used_for:'gym', label: 'Improve posture', description:"Utilising specific exercises and weight training to correct postural imbalances."},
+      { value: '5', used_for:'home', label: 'Increase fitness', description:"High intensity exercise to develop and increase your overall fitness."},
     ];
     const postureCorrectionArray= [
       { value: '1a', description: 'Rounded shoulder and forward head', imgurl: 'https://muscularstrength.com/uploads/froala/18fc5d8c9a007cb8238d910aa106b91ad7e0066f.png'},
