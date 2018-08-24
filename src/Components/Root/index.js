@@ -48,6 +48,7 @@ class Root extends Component<Props>{
               <Route path="/history" exact component={HistoryContainer}/>
               <Route path="/profile" exact component={ProfileContainer}/>
               <Route path="/termsandconditions" exact component={TermsAndCondComponent}/>
+              <Route path="/questionnaire" exact component={Questionnaire} />
             </Switch>
           {/*</BrowserRouter>*/}
           </HashRouter>
@@ -62,7 +63,7 @@ class Root extends Component<Props>{
             <Route path="/" exact render={()=>(<Redirect to='/mainmenu'/>)} />
             <Route path="/login" exact render={()=>(<Redirect to='/mainmenu'/>)} />
             <Route path="/signup" exact render={()=>(<Redirect to='/mainmenu'/>)} />
-            <Route path="/login/logindetails" exact render={()=>(<Redirect to='/mainmenu'/>)} />
+            <Route path="/login/logindetails" exact render={()=>(<Redirect to='/questionnaire'/>)} />
             <Route path="/questionnaire" exact component={Questionnaire} />
             <Route path="/forgetpassword" exact component={ForgetPassWord} />
             <Route path="/mainmenu" exact component={MainMenuContainer}/>

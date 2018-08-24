@@ -1,7 +1,8 @@
 {
-      "day1":
+  "exercises":[
       {
-          "exercise":[
+          "day":"1",
+          "exerciselist":[
             {"name":"13 Quadricep Heavy Exercises","code":"13","Sets":"3","Reps":"7-9"},
             {"name":"16 Quadricep Uni-lateral Exercises","code":"16","Sets":"3","Reps":"10-12"},
             {"name":"18 Hamstring Light Exercises","code":"18","Sets":"3","Reps":"10-12"},
@@ -13,9 +14,9 @@
               [13,18],[10,1],[16,30]
           ]
       },
-      "day2":
       {
-          "exercise":[
+          "day":"2",
+          "exerciselist":[
             {"name":"5 Chest Heavy","code":"5","Sets":"3","Reps":"7-9"},
             {"name":"11 Back Heavy Exercises","code":"11","Sets":"3","Reps":"7-9"},
             {"name":"7 Chest Light","code":"7","Sets":"3","Reps":"10-12"},
@@ -27,9 +28,9 @@
               [15,11],[7,31],[12,24]
           ]
       },
-      "day3":
       {
-          "exercise":[
+          "day":"3",
+          "exerciselist":[
             {"name":"13 Quadricep Heavy Exercises","code":"13","Sets":"3","Reps":"8-10"},
             {"name":"22 Hamstring & Glute Exercises","code":"22","Sets":"3","Reps":"10-12"},
             {"name":"15 Quadricep Isolation Exercises","code":"15","Sets":"3","Reps":"12-15"},
@@ -41,9 +42,9 @@
               [9,20],[15,32],[13,22]
           ]
       },
-      "day4":
       {
-          "exercise":[
+          "day":"4",
+          "exerciselist":[
             {"name":"5 Chest Heavy","code":"5","Sets":"3","Reps":"8-10"},
             {"name":"12 Back Light Exercises","code":"12","Sets":"3","Reps":"10-12"},
             {"name":"6 Chest Accesory Press","code":"6","Sets":"3","Reps":"10-12"},
@@ -57,4 +58,5 @@
               [3,2],[12,23],[5,12]
           ]
       }
+  ]
 }

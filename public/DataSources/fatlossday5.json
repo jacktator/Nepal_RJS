@@ -1,7 +1,8 @@
 {
-      "day1":
+  "exercises":[
       {
-          "exercise":[
+        "day": "1",
+          "exerciselist":[
             {"name":"13 Quadricep Heavy Exercises","code":"13","Sets":"3","Reps":"8-10"},
             {"name":"10 Shoulder Compund Exercises","code":"10","Sets":"3","Reps":"8-10"},
             {"name":"3 Bicep Heavy Exercises","code":"3","Sets":"3","Reps":"8-10"},
@@ -13,9 +14,9 @@
               [13,10],[3,32],[43,24]
           ]
       },
-      "day2":
       {
-        "exercise":[
+        "day": "2",
+        "exerciselist":[
         {"name":"22 Hamstring & Glute Exercises","code":"22","Sets":"3","Reps":"10-12"},
         {"name":"5 Chest Heavy","code":"5","Sets":"3","Reps":"10-12"},
         {"name":"11 Back Heavy Exercises","code":"11","Sets":"3","Reps":"10-12"},
@@ -27,9 +28,9 @@
               [22,5],[39,20],[11,12]
           ]
       },
-      "day3":
       {
-          "exercise":[
+        "day": "3",
+          "exerciselist":[
             {"name":"14 Quadricep Heavy Compund Accesory Exercises","code":"14","Sets":"3","Reps":"10-12"},
             {"name":"44 Shoulder compound Or glute compund","code":"44","Sets":"3","Reps":"10-12"},
             {"name":"45 Chest dumbbell or quad unilateral","code":"45","Sets":"3","Reps":"10-12"},
@@ -41,9 +42,9 @@
               [12,2],[14,8],[44,45]
           ]
       },
-      "day4":
       {
-        "exercise":[
+        "day": "4",
+        "exerciselist":[
           {"name":"22 Hamstring & Glute Exercises","code":"22","Sets":"3","Reps":"9-11"},
           {"name":"5 Chest Heavy","code":"5","Sets":"3","Reps":"9-11"},
           {"name":"12 Back Light Exercises","code":"12","Sets":"3","Reps":"9-11"},
@@ -55,9 +56,9 @@
               [12,23],[5,12],[22,39]
           ]
       },
-      "day5":
       {
-        "exercise":[
+        "day": "5",
+        "exerciselist":[
           {"name":"13 Quadricep Heavy Exercises","code":"13","Sets":"3","Reps":"12-15"},
           {"name":"19 Glute Compund Exercises","code":"19","Sets":"3","Reps":"12-15"},
           {"name":"46 Shoulder rear delt + leg extensions","code":"46","Sets":"3","Reps":"12-15"},
@@ -69,4 +70,5 @@
               [19,9],[46,1],[13,4]
           ]
       }
+  ]
 }
