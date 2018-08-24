@@ -1,0 +1,344 @@
+{
+  "exerciseList":[
+          {"code":"1",
+           "name":"1 Tricep Heavy Exercises",
+           "exercises":[
+             {
+                "name":"1 Tricep Heavy Exercises",
+                "exercise":[
+                  {"name":"Close Grip Bench Press(Barbell)","progression_model":"linear"},
+                  {"name":"Skull Crushers (Curl Bar/Barbell)","progression_model":"double progression"},
+                  {"name":"Dips","progression_model":"double progression"},
+                ]
+             }]
+          },
+          {"code":"2",
+           "name":"2 Tricep Light Exercises",
+           "exercises":[
+             {
+                "name":"2 Tricep Light Exercises",
+                "exercise":[
+                  {"name":"Straight Bar Pushdown","progression_model":"double progression"},
+                  {"name":"Reverse Grip Straight Bar Pushdown","progression_model":"double progression"},
+                  {"name":"Rope Pushdown","progression_model":"double progression"},
+                  {"name":"Overhead Rope Pull","progression_model":"double progression"},
+                  {"name":"Skull Crushers (Dumbbell)","progression_model":"double progression"},
+                  {"name":"Kick Back (Dumbbell)","progression_model":"double progression"},
+                  {"name":"Close Grip Push Up","progression_model":"double progression"},
+                ]
+             }]
+          },
+          {"code":"3",
+           "name":"3 Bicep Heavy Exercises",
+           "exercises":[
+             {
+                "name":"3 Bicep Heavy Exercises",
+                "exercise":[
+                  {"name":"Standing Bicep Curl (Barbell)","progression_model":"double progression"},
+                  {"name":"Preacher Curl (Barbell)","progression_model":"double progression"},
+                ]
+             }]
+          },
+          {"code":"4",
+           "name":"4 Bicep Light Exercises",
+           "exercises":[
+             {
+                "name":"4 Bicep Light Exercises",
+                "exercise":[
+                  {"name":"","progression_model":""},
+                ]
+             }]
+          },
+          {"code":"5",
+           "name":"5 Chest Heavy",
+           "exercises":[
+             {
+                "name":"5 Chest Heavy",
+                "exercise":[
+                  {"name":"","progression_model":""},
+                ]
+             }]
+          },
+          {"code":"6",
+           "name":"6 Chest Accesory Press",
+           "exercises":[
+             {
+                "name":"6 Chest Accesory Press",
+                "exercise":[
+                  {"name":"","progression_model":""},
+                ]
+             }]
+          },
+          {"code":"7",
+           "name":"7 Chest Light",
+           "exercises":[
+             {
+                "name":"7 Chest Light",
+                "exercise":[
+                  {"name":"","progression_model":""},
+                ]
+             }]
+          },
+          {"code":"8",
+           "name":"8 Shoulder Isolation Exercises",
+           "exercises":[
+             {
+                "name":"8 Shoulder Isolation Exercises",
+                "exercise":[
+                  {"name":"","progression_model":""},
+                ]
+             }]
+          },
+          {"code":"9",
+           "name":"9 Shoulder Rear Delt Isolation Exercises",
+           "exercises":[
+             {
+                "name":"9 Shoulder Rear Delt Isolation Exercises",
+                "exercise":[
+                  {"name":"","progression_model":""},
+                ]
+             }]
+          },
+          {"code":"10",
+           "name":"10 Shoulder Compund Exercises",
+           "exercises":[
+             {
+                "name":"10 Shoulder Compund Exercises",
+                "exercise":[
+                  {"name":"","progression_model":""},
+                ]
+             }]
+          },
+          {"code":"11",
+           "name":"11 Back Heavy Exercises",
+           "exercises":[
+             {
+                "name":"11 Back Heavy Exercises",
+                "exercise":[
+                  {"name":"","progression_model":""},
+                ]
+             }]
+          },
+          {"code":"12",
+           "name":"12 Back Light Exercises",
+           "exercises":[
+             {
+                "name":"12 Back Light Exercises",
+                "exercise":[
+                  {"name":"","progression_model":""},
+                ]
+             }]
+          },
+          {"code":"13",
+           "name":"13 Quadricep Heavy Exercises",
+           "exercises":[
+             {
+                "name":"13 Quadricep Heavy Exercises",
+                "exercise":[
+                  {"name":"","progression_model":""},
+                ]
+             }]
+          },
+          {"code":"14",
+           "name":"14 Quadricep Heavy Compund Accesory Exercises",
+           "exercises":[
+             {
+                "name":"14 Quadricep Heavy Compund Accesory Exercises",
+                "exercise":[
+                  {"name":"","progression_model":""},
+                ]
+             }]
+          },
+          {"code":"15",
+           "name":"15 Quadricep Isolation Exercises",
+           "exercises":[
+             {
+                "name":"15 Quadricep Isolation Exercises",
+                "exercise":[
+                  {"name":"","progression_model":""},
+                ]
+             }]
+          },
+          {"code":"16",
+           "name":"16 Quadricep Uni-lateral Exercises",
+           "exercises":[
+             {
+                "name":"16 Quadricep Uni-lateral Exercises",
+                "exercise":[
+                  {"name":"","progression_model":""},
+                ]
+             }]
+          },
+          {"code":"17",
+           "name":"17 Hamstring Heavy Exercises",
+           "exercises":[
+             {
+                "name":"17 Hamstring Heavy Exercises",
+                "exercise":[
+                  {"name":"","progression_model":""},
+                ]
+             }]
+          },
+          {"code":"18",
+           "name":"18 Hamstring Light Exercises",
+           "exercises":[
+             {
+                "name":"18 Hamstring Light Exercises",
+                "exercise":[
+                  {"name":"","progression_model":""},
+                ]
+             }]
+          },
+          {"code":"19",
+           "name":"19 Glute Compund Exercises",
+           "exercises":[
+             {
+                "name":"19 Glute Compund Exercises",
+                "exercise":[
+                  {"name":"","progression_model":""},
+                ]
+             }]
+          },
+          {"code":"20",
+           "name":"20 Glutes Accessory Exercises",
+           "exercises":[
+             {
+                "name":"",
+                "exercise":[
+                  {"name":"","progression_model":""},
+                ]
+             }]
+          },
+          {"code":"21",
+           "name":"21 Calves Exercises",
+           "exercises":[
+             {
+                "name":"21 Calves Exercises",
+                "exercise":[
+                  {"name":"","progression_model":""},
+                ]
+             }]
+          },
+          {"code":"22",
+           "name":"22 Hamstring & Glute Exercises",
+           "exercises":[
+             {
+                "name":"",
+                "exercise":[
+                  {"name":"","progression_model":""},
+                ]
+             }]
+          },
+          {"code":"23",
+           "name":"23 Abdominal Exercises",
+           "exercises":[
+             {
+                "name":"",
+                "exercise":[
+                  {"name":"","progression_model":""},
+                ]
+             }]
+          },
+          {"code":"24",
+           "name":"24 Abdominal Failure Exercises",
+           "exercises":[
+             {
+                "name":"",
+                "exercise":[
+                  {"name":"","progression_model":""},
+                ]
+             }]
+          },
+          {
+            "code": "25",
+            "name": "25 Back Light + Chest Light Exercise ",
+            "exercises": [
+                {
+                    "name": "Chest Light ",
+                    "exercise": [
+                        {
+                            "name": "Flat Chest Fly (Dumbbell)",
+                            "progression_model": "double progression"
+                        },
+                        {
+                            "name": "Decline Chest Fly (Dumbbell)",
+                            "progression_model": "double progression"
+                        },
+                        {
+                            "name": "Incline Chest Fly (Dumbbell)",
+                            "progression_model": "double progression"
+                        },
+                        {
+                            "name": "Cable Chest Fly",
+                            "progression_model": "double progression"
+                        },
+                        {
+                            "name": "Chest Fly Machine",
+                            "progression_model": "double progression"
+                        },
+                        {
+                            "name": "Pec Dec",
+                            "progression_model": "double progression"
+                        },
+                        {
+                            "name": "Dips",
+                            "progression_model": "double progression"
+                        },
+                        {
+                            "name": "Pushups",
+                            "progression_model": "double progression"
+                        }
+                    ]
+                },
+                {
+                    "name": "Back Light Exercises",
+                    "exercise": [
+                        {
+                            "name": "Single Arm Row (Dumbbell)",
+                            "progression_model": "double progression"
+                        },
+                        {
+                            "name": "Chest Supported Row (Dumbbell)",
+                            "progression_model": "double progression"
+                        },
+                        {
+                            "name": "Lat Pulldown (Underhand + Narrow Grip)",
+                            "progression_model": "double progression"
+                        },
+                        {
+                            "name": "Lat Pulldown (Regular Overhand Grip)",
+                            "progression_model": "double progression"
+                        },
+                        {
+                            "name": "Lat Pulldown (Close Grip)",
+                            "progression_model": "double progression"
+                        },
+                        {
+                            "name": "Seated Cable Row (Neutral Grip)",
+                            "progression_model": "double progression"
+                        },
+                        {
+                            "name": "Seated Cable Row - (Underhand Grip)",
+                            "progression_model": "double progression"
+                        },
+                        {
+                            "name": "Seated Cable Row - (Wide Grip)",
+                            "progression_model": "double progression"
+                        },
+                        {
+                            "name": "Machine Back Row",
+                            "progression_model": "double progression"
+                        },
+                        {
+                            "name": "Machine Pull Down",
+                            "progression_model": "double progression"
+                        }
+                        ]
+                  }
+              ]
+           },{
+
+
+           }
+    ]
+}

@@ -2,8 +2,14 @@
 import React, {Component} from 'react';
 import {Redirect} from 'react-router';
 import Exercise from '../../Components/Workout/Exercise/';
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
 import Info from '../../Components/Workout/Exercise/Info';
 import Modal from '../../Components/UI/Modal';
+
+import {displayExerciseName,displayExerciseTotal,displayExerciseNumber,
+        displaySets, displayReps, displayWeight,displayVideo,displayVideoDesc,
+        addLogNum,addLogTick,addLogReps,addLogWeight,addLogTrophy,addLogCurrent} from './actions';
 
 // import _ from 'lodash';
 // import YTSearch from 'youtube-api-search';
@@ -24,9 +30,8 @@ class ExerciseContainer extends Component{
     e.preventDefault();
     this.setState({ goBack: true})
   }
-  saveButtonHandler = (e) => {
-    e.preventDefault();
-    alert('saved');
+  saveButtonHandler = (rep) => {
+    console.log(rep);
   }
   infoHandler = (e) => {
     e.preventDefault();
@@ -36,6 +41,7 @@ class ExerciseContainer extends Component{
 
   render(){
     //const videoSearch = _.debounce((term)=>{this.videoSearch(term)}, 300);
+    const {exerciseName,exerciseNumber,exerciseTotal,sets,reps,weight,video,videoDescription,exerciseLog} =  this.props.ExerciseReducers;
     return(
       <div className="all">
         <Exercise
@@ -43,6 +49,15 @@ class ExerciseContainer extends Component{
           onSaveButtonClicked ={this.saveButtonHandler}
           onInfoClicked = {this.infoHandler}
           /*videos={this.state.selectedVideo}*/
+          exerciseName = {exerciseName}
+          exerciseNumber = {exerciseNumber}
+          exerciseTotal = {exerciseTotal}
+
+          sets = {sets}
+          reps = {reps}
+          weight = {weight}
+
+          exerciseLog = {exerciseLog}
         />
       {this.state.goBack && (
         <Redirect to='/plan' />
@@ -51,6 +66,8 @@ class ExerciseContainer extends Component{
         <Modal modalFor = "modal-for-info">
           <Info
             onBackButtonClicked = {this.infoHandler}
+            video = {video}
+            videoDescription = {videoDescription}
           />
         </Modal>
       )}
@@ -68,4 +85,19 @@ class ExerciseContainer extends Component{
   }*/
 }
 
-export default ExerciseContainer
+function mapStateToProps(state){
+  return {
+    ExerciseReducers: state.ExerciseReducers,
+  }
+}
+
+function matchDispatchToProps(dispatch){
+  return bindActionCreators({
+    displayExerciseName,displayExerciseNumber,displayExerciseTotal,
+    displaySets,displayReps,displayWeight,displayVideo,displayVideoDesc,
+    addLogNum,addLogTick,addLogReps,addLogWeight,addLogTrophy,addLogCurrent,
+  }, dispatch
+);
+}
+
+export default connect (mapStateToProps, matchDispatchToProps)(ExerciseContainer);

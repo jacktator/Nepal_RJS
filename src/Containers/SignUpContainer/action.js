@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {checkLogin} from '../RootContainer/action';
 
 export function SignUpActions(username, email, password){
 
@@ -11,7 +12,8 @@ export function SignUpActions(username, email, password){
     .then((response)=>{
       console.log('register successfully!!')
       console.log(response.data);
-      dispatch(fetchResponse(response.data.code))
+      dispatch(fetchResponse(response.data.code));
+      dispatch(checkLogin());
     }).catch((error)=>{
       if(error.response){
         dispatch(catchError(error.response.data.message))
@@ -52,6 +54,7 @@ export function catchError(error){
 }
 
 export function fetchResponse(fetch){
+  console.log("fetch", fetch);
   return{
     type: "FETCH_RESPONSE",
     payload: fetch

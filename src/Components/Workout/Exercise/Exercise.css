@@ -151,3 +151,8 @@ width measurements:
   display: block;
   margin: 5% auto;
 }
+
+.no-copy{
+  user-select: none;
+  pointer-events: none;
+}

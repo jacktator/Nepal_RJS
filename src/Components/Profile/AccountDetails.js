@@ -43,10 +43,10 @@ class AccountDetails extends Component{
       Toast.info('Current password is incorrect');
     }
     if (this.state.NewError) {
-      Toast.info('Current password does not match with New password');
+      Toast.info('Current password is the same as New password');
     }
     if (this.state.ConfirmError) {
-      Toast.info('Current password is the same as New password');
+      Toast.info('Confirm password does not match with New password');
     }
   }
 

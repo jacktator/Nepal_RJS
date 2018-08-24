@@ -27,7 +27,7 @@ class LoginDetailsContainer extends Component<Props>{
     this.props.removeError();
   }
   render(){
-    const {email, password, token, error} = this.props.LoginDetailsStates
+    const {email, password, token, error} = this.props.LoginDetailsStates;
     return(
       <div>
         <LoginDetailsWrapper
@@ -39,7 +39,7 @@ class LoginDetailsContainer extends Component<Props>{
           onClickButton={this.props.LoginDetailsActions}
         />
         {(error.hasError) && (
-          <Modal modalFor="showError">
+          <Modal modalFor="modal">
             <ShowError
             error={error.message}
             cancel = {this.cancelErrorMessageHandler}

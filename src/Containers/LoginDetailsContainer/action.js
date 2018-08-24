@@ -24,18 +24,16 @@ export function LoginDetailsActions(email:string, password:string){
 
     }).catch((error)=>{
       if(error.response){
-        dispatch(catchError(error.response.data.message));
+        dispatch(catchError("The username or password you entered is incorrect."));
       }else{
         dispatch(catchError("Network Connection Error. Please check your network connection"))
       }
     })
   };
 }
-
 //dispatch is for fire the functions
 //functions are for store the values that are used to change the state
 //in functions the values are binded with type which will be used in the Reducer
-
 
 export function validToken(token:string){
   return(dispatch: Function)=>{

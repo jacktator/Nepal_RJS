@@ -11,8 +11,7 @@ import { addName, addAge, addGender, addWeight, addExercisePlace,
   addProductivity, addProductiveAfterExercise,
   addWorkInjury, addHealthFeeling,
   addDailyActivity, addCurrentActivity,
-  addQuestionnaire, addError, removeError, success,
-  fetchFromServer
+  addQuestionnaire, addError, removeError, success
 }from './actions';
 
 import CurrentStep  from '../../Components/Questionnaire/Progress';
@@ -41,10 +40,6 @@ class Questionnaire extends Component {
       hasError: false,
     }//state ends
   }//constructor ends
-
-  componentDidMount(){
-    this.props.fetchFromServer();
-  }
 
   addInjuryManagement = (value) => {
     this.cancelModalHandler();
@@ -336,7 +331,7 @@ class Questionnaire extends Component {
           </Modal>
       )}
       {(this.props.QuestionnaireReducers.success) && (
-        <Redirect to='/login/' />
+        <Redirect to='/mainmenu/' />
       )}
       {(this.props.QuestionnaireReducers.error.hasError === true) && (
         <Modal modalFor = "modal">
@@ -364,8 +359,7 @@ function matchDispatchToProps(dispatch){
     addWorkInjury, addHealthFeeling,
     addDailyActivity, addCurrentActivity,
     addQuestionnaire,
-    addError, removeError, success,
-    fetchFromServer
+    addError, removeError, success
   }, dispatch
 );
 }

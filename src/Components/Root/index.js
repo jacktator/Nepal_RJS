@@ -1,6 +1,6 @@
 //@flow
 import React, {Component} from 'react';
-import {Route, Switch, Redirect,HashRouter} from 'react-router-dom';
+import {Route, Switch, Redirect, HashRouter} from 'react-router-dom';
 //BrowserRouter
 import 'antd-mobile/dist/antd-mobile.css';
 import Launch from '../Launch/';
@@ -38,7 +38,6 @@ class Root extends Component<Props>{
               <Route path="/" exact component={Launch}/>
               <Route path="/login" exact component={Login}/>
               <Route path="/signup" exact component={SignUp} />
-              <Route path="/questionnaire" exact render={()=>(<Redirect to='/login/logindetails'/>)}/>
               <Route path="/login/logindetails" exact component={LoginDetails} />
               <Route path="/forgetpassword" exact component={ForgetPassWord} />
               <Route path="/mainmenu" exact component={MainMenuContainer}/>
@@ -60,10 +59,10 @@ class Root extends Component<Props>{
         <HashRouter>
       {/*</BrowserRouter>*/}
           <Switch>
-            <Route path="/" exact component={Launch}/>
-            <Route path="/login" exact component={Login}/>
-            <Route path="/signup" exact component={SignUp} />
-            <Route path="/login/logindetails" exact render={()=>(<Redirect to='/questionnaire'/>)}/>
+            <Route path="/" exact render={()=>(<Redirect to='/mainmenu'/>)} />
+            <Route path="/login" exact render={()=>(<Redirect to='/mainmenu'/>)} />
+            <Route path="/signup" exact render={()=>(<Redirect to='/mainmenu'/>)} />
+            <Route path="/login/logindetails" exact render={()=>(<Redirect to='/mainmenu'/>)} />
             <Route path="/questionnaire" exact component={Questionnaire} />
             <Route path="/forgetpassword" exact component={ForgetPassWord} />
             <Route path="/mainmenu" exact component={MainMenuContainer}/>
