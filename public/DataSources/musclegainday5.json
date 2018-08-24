@@ -1,7 +1,7 @@
 {
-      "day1":
-      {
-          "exercise":[
+"exercises":[  {
+        "day": "1",
+          "exerciselist":[
             {"name":"13 Quadricep Heavy Exercises","code":"13","Sets":"3","Reps":"7-9"},
             {"name":"16 Quadricep Uni-lateral Exercises","code":"16","Sets":"3","Reps":"10-12"},
             {"name":"22 Hamstring & Glute Exercises","code":"22","Sets":"3","Reps":"7-9"},
@@ -12,9 +12,9 @@
               [13,22],[16,10],[1]
           ]
       },
-      "day2":
       {
-        "exercise":[
+        "day": "2",
+        "exerciselist":[
         {"name":"5 Chest Heavy","code":"5","Sets":"3","Reps":"7-9"},
         {"name":"11 Back Heavy Exercises","code":"11","Sets":"3","Reps":"7-9"},
         {"name":"7 Chest Light","code":"7","Sets":"3","Reps":"8-10"},
@@ -26,9 +26,9 @@
               [5,11],[7,12],[8,23]
           ]
       },
-      "day3":
       {
-          "exercise":[
+        "day": "3",
+          "exerciselist":[
             {"name":"12 Back Light Exercises","code":"12","Sets":"3","Reps":"8-10"},
             {"name":"9 Shoulder Rear Delt Isolation Exercises","code":"9","Sets":"3","Reps":"10-12"},
             {"name":"2 Tricep Light Exercises","code":"2","Sets":"3","Reps":"10-12"},
@@ -40,9 +40,9 @@
               [9,35],[2,4],[12,26]
           ]
       },
-      "day4":
       {
-        "exercise":[
+        "day": "4",
+        "exerciselist":[
           {"name":"13 Quadricep Heavy Exercises","code":"13","Sets":"3","Reps":"8-10"},
           {"name":"22 Hamstring & Glute Exercises","code":"22","Sets":"3","Reps":"10-12"},
           {"name":"15 Quadricep Isolation Exercises","code":"15","Sets":"3","Reps":"12-15"},
@@ -53,9 +53,9 @@
               [9,33],[22,15],[13]
           ]
       },
-      "day5":
       {
-        "exercise":[
+        "day": "5",
+        "exerciselist":[
           {"name":"5 Chest Heavy","code":"5","Sets":"3","Reps":"8-10"},
           {"name":"12 Back Light Exercises","code":"12","Sets":"3","Reps":"10-12"},
           {"name":"7 Chest Light","code":"7","Sets":"3","Reps":"12-15"},
@@ -67,4 +67,5 @@
               [7,24],[5,12],[12,36]
           ]
       }
+  ]
 }
