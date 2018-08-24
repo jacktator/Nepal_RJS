@@ -1,61 +1,63 @@
 {
-      "day1":
+  "exercises":[
       {
-          "exercise":[
-              {"name":"13 Quadricep Heavy Exercises","code":"13","Sets":"3","Reps":"8-10"},
-              {"name":"11 Back Heavy Exercises","code":"11","Sets":"3","Reps":"8-10"},
-              {"name":"32 Light lateral shoulder + hamstring ioslation","code":"32","Sets":"3","Reps":"8-10"},
-              {"name":"37 Rear delt + glute isolation","code":"37","Sets":"3","Reps":"Till Failure"},
-              {"name":"3 Bicep Heavy Exercises","code":"3","Sets":"3","Reps":"10-12"},
-              {"name":"1 Tricep Heavy Exercises","code":"1","Sets":"3","Reps":"10-12"},
-              {"name":"24 Abdominal Failure Exercises","code":"24","Sets":"3","Reps":"Till Failure"},
+        "day": "1",
+        "exerciselist":[
+              {"name":"13 Quadricep Heavy Exercises","code":"13","sets":"3","reps":"8-10"},
+              {"name":"11 Back Heavy Exercises","code":"11","sets":"3","reps":"8-10"},
+              {"name":"32 Light lateral shoulder + hamstring ioslation","code":"32","sets":"3","reps":"8-10"},
+              {"name":"37 Rear delt + glute isolation","code":"37","sets":"3","reps":"Till Failure"},
+              {"name":"3 Bicep Heavy Exercises","code":"3","sets":"3","reps":"10-12"},
+              {"name":"1 Tricep Heavy Exercises","code":"1","sets":"3","reps":"10-12"},
+              {"name":"24 Abdominal Failure Exercises","code":"24","sets":"3","reps":"Till Failure"},
           ],
           "justify":[
               [13,11],[37,1],[32,24]
           ]
       },
-      "day2":
       {
-          "exercise":[
-            {"name":"22 Hamstring & Glute Exercises","code":"22","Sets":"3","Reps":"10-12"},
-            {"name":"5 Chest Heavy","code":"5","Sets":"3","Reps":"8-10"},
-            {"name":"12 Back Light Exercises","code":"12","Sets":"3","Reps":"10-12"},
-            {"name":"37 Rear delt + glute isolation ","code":"37","Sets":"3","Reps":"20-25"},
-            {"name":"12 Back Light Exercises","code":"12","Sets":"3","Reps":"10-12"},
-            {"name":"35 Bicep light +glute isolation","code":"35","Sets":"3","Reps":"Till Failure"},
+        "day": "2",
+        "exerciselist":[
+            {"name":"22 Hamstring & Glute Exercises","code":"22","sets":"3","reps":"10-12"},
+            {"name":"5 Chest Heavy","code":"5","sets":"3","reps":"8-10"},
+            {"name":"12 Back Light Exercises","code":"12","sets":"3","reps":"10-12"},
+            {"name":"37 Rear delt + glute isolation ","code":"37","sets":"3","reps":"20-25"},
+            {"name":"12 Back Light Exercises","code":"12","sets":"3","reps":"10-12"},
+            {"name":"35 Bicep light +glute isolation","code":"35","sets":"3","reps":"Till Failure"},
           ],
           "justify":[
               [5,35],[22,12],[12,37]
           ]
       },
-      "day3":
       {
-          "exercise":[
+        "day": "3",
+        "exerciselist":[
 
-            {"name":"13 Quadricep Heavy Exercises","code":"13","Sets":"3","Reps":"10-12"},
-            {"name":"10 Shoulder Compund Exercises","code":"10","Sets":"3","Reps":"10-12"},
-            {"name":"14 Quadricep Heavy Compund Accesory Exercises","code":"14","Sets":"3","Reps":"12-15"},
-            {"name":"39 Chest fly + glute accesory ","code":"39","Sets":"3","Reps":"20-25"},
-            {"name":"4 Bicep Light Exercises","code":"4","Sets":"3","Reps":"10-12"},
-            {"name":"2 Tricep Light Exercises","code":"2","Sets":"3","Reps":"15-20"},
-            {"name":"23 Abdominal Exercises","code":"23","Sets":"3","Reps":"20-25"},
+            {"name":"13 Quadricep Heavy Exercises","code":"13","sets":"3","reps":"10-12"},
+            {"name":"10 Shoulder Compund Exercises","code":"10","sets":"3","reps":"10-12"},
+            {"name":"14 Quadricep Heavy Compund Accesory Exercises","code":"14","sets":"3","reps":"12-15"},
+            {"name":"39 Chest fly + glute accesory ","code":"39","sets":"3","reps":"20-25"},
+            {"name":"4 Bicep Light Exercises","code":"4","sets":"3","reps":"10-12"},
+            {"name":"2 Tricep Light Exercises","code":"2","sets":"3","reps":"15-20"},
+            {"name":"23 Abdominal Exercises","code":"23","sets":"3","reps":"20-25"},
           ],
           "justify":[
               [10,2],[4,23],[13,39]
           ]
       },
-      "day4":
       {
-          "exercise":[
-            {"name":"22 Hamstring & Glute Exercises","code":"22","Sets":"3","Reps":"12-15"},
-            {"name":"5 Chest Heavy","code":"5","Sets":"3","Reps":"10-12"},
-            {"name":"11 Back Heavy Exercises","code":"11","Sets":"3","Reps":"12-15"},
-            {"name":"40 Chest dumbbell OR hamstring isolation ","code":"40","Sets":"3","Reps":"12-15"},
-            {"name":"41 Light back + quad unilateral","code":"41","Sets":"3","Reps":"12-15"},
-            {"name":"42 Lateral shoulder or glute iolsation ","code":"42","Sets":"3","Reps":"20-25"},
+        "day": "4",
+        "exerciselist":[
+            {"name":"22 Hamstring & Glute Exercises","code":"22","sets":"3","reps":"12-15"},
+            {"name":"5 Chest Heavy","code":"5","sets":"3","reps":"10-12"},
+            {"name":"11 Back Heavy Exercises","code":"11","sets":"3","reps":"12-15"},
+            {"name":"40 Chest dumbbell OR hamstring isolation ","code":"40","sets":"3","reps":"12-15"},
+            {"name":"41 Light back + quad unilateral","code":"41","sets":"3","reps":"12-15"},
+            {"name":"42 Lateral shoulder or glute iolsation ","code":"42","sets":"3","reps":"20-25"},
           ],
           "justify":[
               [22,11],[5,41],[40,42]
           ]
       }
+  ]
 }
