@@ -3,13 +3,13 @@
     {
       "day": "1",
       "exerciselist":[
-            {"name":"13 Quadricep Heavy Exercises","code":"13","Sets":"3","Reps":"7-9"},
-            {"name":"5 Chest Heavy","code":"5","Sets":"3","Reps":"7-9"},
-            {"name":"11 Back Heavy Exercises","code":"11","Sets":"3","Reps":"7-9"},
-            {"name":"10 Shoulder Compound Exercises","code":"10","Sets":"3","Reps":"8-10"},
-            {"name":"25 Back light + chest light exercise","code":"25","Sets":"3","Reps":"10-12"},
-            {"name":"26 Shoulder lateral + tricep light","code":"26","Sets":"3","Reps":"10-12"},
-            {"name":"23 Abdominal Exercises","code":"23","Sets":"3","Reps":"15-20"},
+            {"name":"13 Quadricep Heavy Exercises","code":"13","sets":"3","reps":"7-9"},
+            {"name":"5 Chest Heavy","code":"5","sets":"3","reps":"7-9"},
+            {"name":"11 Back Heavy Exercises","code":"11","sets":"3","reps":"7-9"},
+            {"name":"10 Shoulder Compound Exercises","code":"10","sets":"3","reps":"8-10"},
+            {"name":"25 Back light + chest light exercise","code":"25","sets":"3","reps":"10-12"},
+            {"name":"26 Shoulder lateral + tricep light","code":"26","sets":"3","reps":"10-12"},
+            {"name":"23 Abdominal Exercises","code":"23","sets":"3","reps":"15-20"},
           ],
           "justify":[
               [13,5],[11,23],[10,25]
@@ -18,12 +18,12 @@
       {
       "day": "2",
       "exerciselist":[
-            {"name":"13 Quadricep Heavy Exercises","code":"13","Sets":"3","Reps":"8-10"},
-            {"name":"12 Back Light Exercises","code":"12","Sets":"3","Reps":"10-12"},
-            {"name":"27 Chest Dumbbellpress  + Quad isolation extension","code":"27","Sets":"3","Reps":"12-15"},
-            {"name":"18 Hamstring Light Exercises","code":"18","Sets":"3","Reps":"10-12"},
-            {"name":"9 Shoulder Rear Delt Isolation Exercises","code":"9","Sets":"3","Reps":"12-15"},
-            {"name":"12 Back Light Exercises","code":"12","Sets":"3","Reps":"10-12"},
+            {"name":"13 Quadricep Heavy Exercises","code":"13","sets":"3","reps":"8-10"},
+            {"name":"12 Back Light Exercises","code":"12","sets":"3","reps":"10-12"},
+            {"name":"27 Chest Dumbbellpress  + Quad isolation extension","code":"27","sets":"3","reps":"12-15"},
+            {"name":"18 Hamstring Light Exercises","code":"18","sets":"3","reps":"10-12"},
+            {"name":"9 Shoulder Rear Delt Isolation Exercises","code":"9","sets":"3","reps":"12-15"},
+            {"name":"12 Back Light Exercises","code":"12","sets":"3","reps":"10-12"},
           ],
           "justify":[
               [12,18],[13,12],[27,9]
@@ -32,13 +32,13 @@
       {
       "day": "3",
       "exerciselist":[
-            {"name":"13 Quadricep Heavy Exercises","code":"13","Sets":"3","Reps":"7-9"},
-            {"name":"5 Chest Heavy","code":"5","Sets":"3","Reps":"8-10"},
-            {"name":"11 Back Heavy Exercises","code":"11","Sets":"3","Reps":"8-10"},
-            {"name":"28 Back light + hamstring light","code":"28","Sets":"3","Reps":"10-12"},
-            {"name":"29 Lateral shoulder + light biceps","code":"29","Sets":"3","Reps":"12-15"},
-            {"name":"2 Tricep Light Exercises","code":"2","Sets":"3","Reps":"12-15"},
-            {"name":"24 Abdominal Failure Exercises","code":"24","Sets":"3","Reps":"Till Failure"},
+            {"name":"13 Quadricep Heavy Exercises","code":"13","sets":"3","reps":"7-9"},
+            {"name":"5 Chest Heavy","code":"5","sets":"3","reps":"8-10"},
+            {"name":"11 Back Heavy Exercises","code":"11","sets":"3","reps":"8-10"},
+            {"name":"28 Back light + hamstring light","code":"28","sets":"3","reps":"10-12"},
+            {"name":"29 Lateral shoulder + light biceps","code":"29","sets":"3","reps":"12-15"},
+            {"name":"2 Tricep Light Exercises","code":"2","sets":"3","reps":"12-15"},
+            {"name":"24 Abdominal Failure Exercises","code":"24","sets":"3","reps":"Till Failure"},
           ],
           "justify":[
               [29,2],[5,28],[13,24]
