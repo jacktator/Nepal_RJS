@@ -18,10 +18,19 @@ export default class Content extends Component {
 
   onChange = (value) => {
     let temp = [ ...this.state.WorkoutPlans]
+    let allSel = true;
     const index = this.state.WorkoutPlans.findIndex(i => { return i.value === value })
     if(temp[index].isSelected === true && temp.length !== value){
         temp[index+1].isSelected = true;
         this.setState({WorkoutPlans:temp})
+    }
+    for(var i=0; temp.length > i; i++) {
+      if(temp[i].isSelected === false) {
+        allSel = false;
+      }
+    }
+    if(allSel === true) {
+      // unlock next WEEK
     }
   }
 

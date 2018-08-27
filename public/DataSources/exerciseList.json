@@ -1,7 +1,7 @@
 {
   "exerciseList":[
           {
-            "code":"1",
+           "code":"1",
            "name":"1 Tricep Heavy Exercises",
            "exercises":[
              {
@@ -9,7 +9,7 @@
                 "exercise":[
                   {"name":"Close Grip Bench Press(Barbell)","progression_model":"linear"},
                   {"name":"Skull Crushers (Curl Bar/Barbell)","progression_model":"double progression"},
-                  {"name":"Dips","progression_model":"double progression"},
+                  {"name":"Dips","progression_model":"double progression"}
                 ]
              }]
           },
@@ -26,7 +26,7 @@
                   {"name":"Overhead Rope Pull","progression_model":"double progression"},
                   {"name":"Skull Crushers (Dumbbell)","progression_model":"double progression"},
                   {"name":"Kick Back (Dumbbell)","progression_model":"double progression"},
-                  {"name":"Close Grip Push Up","progression_model":"double progression"},
+                  {"name":"Close Grip Push Up","progression_model":"double progression"}
                 ]
              }]
           },
@@ -38,7 +38,7 @@
                 "name":"3 Bicep Heavy Exercises",
                 "exercise":[
                   {"name":"Standing Bicep Curl (Barbell)","progression_model":"double progression"},
-                  {"name":"Preacher Curl (Barbell)","progression_model":"double progression"},
+                  {"name":"Preacher Curl (Barbell)","progression_model":"double progression"}
                 ]
              }]
           },
@@ -56,7 +56,7 @@
                   {"name":"Seated Bicep Curl (Dumbbell)","progression_model":"double progression"},
                   {"name":"Concentration Curl (Dumbbell)","progression_model":"double progression"},
                   {"name":"(30 deg) Incline Bench Bicep Curl (Dumbbell)","progression_model":"double progression"},
-                  {"name":"Preacher Curl (Dumbbell)","progression_model":"double progression"},
+                  {"name":"Preacher Curl (Dumbbell)","progression_model":"double progression"}
                 ]
              }]
           },
@@ -73,7 +73,7 @@
                   {"name":"Machine Chest Press","progression_model":"double progression"},
                   {"name":"Flat Chest Press (Dumbbell)","progression_model":"double progression"},
                   {"name":"Decline Chest Press (Dumbbell)","progression_model":"double progression"},
-                  {"name":"Incline Chest Press (Dumbbell)","progression_model":"double progression"},
+                  {"name":"Incline Chest Press (Dumbbell)","progression_model":"double progression"}
                 ]
              }]
           },
@@ -87,7 +87,7 @@
                   {"name":"Flat Chest Press (Dumbbell)","progression_model":"double progression"},
                   {"name":"Decline Chest Press (Dumbbell)","progression_model":"double progression"},
                   {"name":"Incline Chest Press (Dumbbell)","progression_model":"double progression"},
-                  {"name":"Machine Chest Press","progression_model":"double progression"},
+                  {"name":"Machine Chest Press","progression_model":"double progression"}
                 ]
              }]
           },
@@ -105,7 +105,7 @@
                   {"name":"Chest Fly Machine","progression_model":"double progression"},
                   {"name":"Pec Dec","progression_model":"double progression"},
                   {"name":"Dips","progression_model":"double progression"},
-                  {"name":"Pushups","progression_model":"double progression"},
+                  {"name":"Pushups","progression_model":"double progression"}
                 ]
              }]
           },
@@ -121,7 +121,7 @@
                   {"name":"Lateral Raise (Dumbbell)","progression_model":"double progression"},
                   {"name":"Lateral Raise (Machine)","progression_model":"double progression"},
                   {"name":"Single Arm Lateral Raise (Dumbbell)","progression_model":"double progression"},
-                  {"name":"Single Arm Lateral Raise (Cable Machine)","progression_model":"double progression"},
+                  {"name":"Single Arm Lateral Raise (Cable Machine)","progression_model":"double progression"}
                 ]
              }]
           },
@@ -138,7 +138,7 @@
                   {"name":"Standing Rear Deltoids Fly (Cable Machine)","progression_model":"double progression"},
                   {"name":"Seated Rear Deltoid Fly (Machine)","progression_model":"double progression"},
                   {"name":"Face pull (Thumbs Pointing Away)","progression_model":"double progression"},
-                  {"name":"Face pull (Thumbs Pointing Towards Head)","progression_model":"double progression"},
+                  {"name":"Face pull (Thumbs Pointing Towards Head)","progression_model":"double progression"}
                 ]
              }]
           },
@@ -153,7 +153,7 @@
                   {"name":"Standing Shoulder Press (Dumbbell)","progression_model":"double progression"},
                   {"name":"Seated Shoulder Press (Barbell)","progression_model":"linear"},
                   {"name":"Seated Shoulder Press (Dumbbell)","progression_model":"double progression"},
-                  {"name":"Shoulder Press (Machine)","progression_model":"double progression"},
+                  {"name":"Shoulder Press (Machine)","progression_model":"double progression"}
                 ]
              }]
           },
@@ -169,7 +169,7 @@
                   {"name":"Chin Up (Overhand Grip)","progression_model":"double progression"},
                   {"name":"Chin Up (Neutral Grip)","progression_model":"double progression"},
                   {"name":"Assisted Chinup (Machine)","progression_model":"double progression"},
-                  {"name":"Resistance Band Assisted Chinup","progression_model":"double progression"},
+                  {"name":"Resistance Band Assisted Chinup","progression_model":"double progression"}
                 ]
              }]
           },
@@ -189,7 +189,7 @@
                   {"name":"Seated Cable Row - (Underhand Grip) ","progression_model":"double progression"},
                   {"name":"Seated Cable Row - (Wide Grip)","progression_model":"double progression"},
                   {"name":"Machine Back Row ","progression_model":"double progression"},
-                  {"name":"Machine Pull Down","progression_model":"double progression"},
+                  {"name":"Machine Pull Down","progression_model":"double progression"}
                 ]
              }]
           },
@@ -207,7 +207,7 @@
                   {"name":"Leg Press","progression_model":"linear"},
                   {"name":"Conventional Deadlift (Barbell)","progression_model":"linear"},
                   {"name":"Sumo Deadlift (Barbell)","progression_model":"linear"},
-                  {"name":"Trap Bar Deadlift (Trap Bar)","progression_model":"linear"},
+                  {"name":"Trap Bar Deadlift (Trap Bar)","progression_model":"linear"}
                 ]
              }]
           },
@@ -222,7 +222,7 @@
                   {"name":"Leg Press","progression_model":"linear"},
                   {"name":"Single Leg Leg Press","progression_model":"linear"},
                   {"name":"Smith Machine Squat","progression_model":"linear"},
-                  {"name":"Narrow Stance Smith Machine Squat","progression_model":"linear"},
+                  {"name":"Narrow Stance Smith Machine Squat","progression_model":"linear"}
                 ]
              }]
           },
@@ -234,7 +234,7 @@
                 "name":"15 Quadricep Isolation Exercises",
                 "exercise":[
                   {"name":"Leg Extensions","progression_model":"double progression"},
-                  {"name":"Single Legged Leg Extensions ","progression_model":"double progression"},
+                  {"name":"Single Legged Leg Extensions ","progression_model":"double progression"}
                 ]
              }]
           },
@@ -250,7 +250,7 @@
                   {"name":"Front Foot Elevated Lunge ","progression_model":"double progression"},
                   {"name":"Walking Lunges","progression_model":"double progression"},
                   {"name":"Static Lunge (Barbell)","progression_model":"double progression"},
-                  {"name":"Static Lunge (Dumbbell)","progression_model":"double progression"},
+                  {"name":"Static Lunge (Dumbbell)","progression_model":"double progression"}
                 ]
              }]
           },
@@ -263,7 +263,7 @@
                 "exercise":[
                   {"name":"Romanian Deadlift  (Barbell)","progression_model":"linear"},
                   {"name":"Romanian Deadlift  (Dumbbell)","progression_model":"double progression"},
-                  {"name":"Nordic Curl","progression_model":"double progression"},
+                  {"name":"Nordic Curl","progression_model":"double progression"}
                 ]
              }]
           },
@@ -277,7 +277,7 @@
                   {"name":"Hamstring Curl ","progression_model":"double progression"},
                   {"name":"Single Hamstring Curl ","progression_model":"double progression"},
                   {"name":"Seated Hamstring Curl ","progression_model":"double progression"},
-                  {"name":"Seated Single Leg Hamstring Curl ","progression_model":"double progression"},
+                  {"name":"Seated Single Leg Hamstring Curl ","progression_model":"double progression"}
                 ]
              }]
           },
@@ -289,7 +289,7 @@
                 "name":"19 Glute Compund Exercises",
                 "exercise":[
                   {"name":"Glute Bridge (Barbell)","progression_model":"linear"},
-                  {"name":"Hip Thrust (Barbell)","progression_model":"linear"},
+                  {"name":"Hip Thrust (Barbell)","progression_model":"linear"}
                 ]
              }]
           },
@@ -307,7 +307,7 @@
                   {"name":"Frog Bridge","progression_model":"till failure"},
                   {"name":"Glute Kickbacks (Hands And Knees)","progression_model":"till failure"},
                   {"name":"Side Lying Hip Abductions (Resistance Band)","progression_model":"till failure"},
-                  {"name":"Banded Crab Walks","progression_model":"till failure"},
+                  {"name":"Banded Crab Walks","progression_model":"till failure"}
                 ]
              }]
           },
@@ -321,7 +321,7 @@
                   {"name":"Standing Calf Raise","progression_model":"double progression"},
                   {"name":"Seated Calf Raise","progression_model":"double progression"},
                   {"name":"Leg Press Calf Press","progression_model":"double progression"},
-                  {"name":"Smith Machine Calf Raise","progression_model":"double progression"},
+                  {"name":"Smith Machine Calf Raise","progression_model":"double progression"}
                 ]
              }]
           },
@@ -335,7 +335,7 @@
                   {"name":"Romanian Deadlift  (Barbell)","progression_model":"linear"},
                   {"name":"Romanian Deadlift  (Dumbbell)","progression_model":"double progression"},
                   {"name":"Glute Bridge (Barbell)","progression_model":"linear"},
-                  {"name":"Hip Thurst (Barbell)","progression_model":"linear"},
+                  {"name":"Hip Thurst (Barbell)","progression_model":"linear"}
                 ]
              }]
           },
@@ -351,7 +351,7 @@
                   {"name":"Oblique Side Bends (Dumbbell)","progression_model":"double progression"},
                   {"name":"Standing Cable Russian Twist","progression_model":"double progression"},
                   {"name":"Palof Press","progression_model":"double progression"},
-                  {"name":"Ab Roller","progression_model":"till failure"},
+                  {"name":"Ab Roller","progression_model":"till failure"}
                 ]
              }]
           },
@@ -367,7 +367,7 @@
                   {"name":"Swiss Ball Plank ","progression_model":"till failure"},
                   {"name":"Swiss Ball Crunch ","progression_model":"till failure"},
                   {"name":"Swiss Ball Knee Tuck ","progression_model":"till failure"},
-                  {"name":"Hanging Leg Raises","progression_model":"till failure"},
+                  {"name":"Hanging Leg Raises","progression_model":"till failure"}
                 ]
              }]
           },
@@ -471,7 +471,7 @@
                        {"name":"Lateral Raise (Dumbbell)","progression_model":"double progression"},
                        {"name":"Lateral Raise (Machine)","progression_model":"double progression"},
                        {"name":"Single Arm Lateral Raise (Dumbbell)","progression_model":"double progression"},
-                       {"name":"Single Arm Lateral Raise (Cable Machine)","progression_model":"double progression"},
+                       {"name":"Single Arm Lateral Raise (Cable Machine)","progression_model":"double progression"}
                      ]
                  },
                  {
@@ -483,7 +483,7 @@
                        {"name":"Overhead Rope Pull","progression_model":"double progression"},
                        {"name":"Skull Crushers (Dumbbell)","progression_model":"double progression"},
                        {"name":" Kick Back (Dumbbell)","progression_model":"double progression"},
-                       {"name":"Close Grip Push Up","progression_model":"double progression"},
+                       {"name":"Close Grip Push Up","progression_model":"double progression"}
                      ]
                  }
              ]
@@ -498,14 +498,14 @@
                        {"name":"Flat Chest Press (Dumbbell)","progression_model":"double progression"},
                        {"name":"Decline Chest Press (Dumbbell)","progression_model":"double progression"},
                        {"name":"Incline Chest Press (Dumbbell)","progression_model":"double progression"},
-                       {"name":"Machine Chest Press","progression_model":"double progression"},
+                       {"name":"Machine Chest Press","progression_model":"double progression"}
                      ]
                  },
                  {
                      "name": "Quadricep Isolation Exercises",
                      "exercise": [
                        {"name":"Leg Extensions","progression_model":"double progression"},
-                       {"name":"Single Legged Leg Extensions ","progression_model":"double progression"},
+                       {"name":"Single Legged Leg Extensions ","progression_model":"double progression"}
                      ]
                  }
              ]
@@ -526,7 +526,7 @@
                        {"name":"Seated Cable Row - (Underhand Grip) ","progression_model":"double progression"},
                        {"name":"Seated Cable Row - (Wide Grip)","progression_model":"double progression"},
                        {"name":"Machine Back Row ","progression_model":"double progression"},
-                       {"name":"Machine Pull Down","progression_model":"double progression"},
+                       {"name":"Machine Pull Down","progression_model":"double progression"}
                      ]
                  },
                  {
@@ -535,7 +535,7 @@
                        {"name":"Hamstring Curl ","progression_model":"double progression"},
                        {"name":"Single Hamstring Curl ","progression_model":"double progression"},
                        {"name":"Seated Hamstring Curl ","progression_model":"double progression"},
-                       {"name":"Seated Single Leg Hamstring Curl ","progression_model":"double progression"},
+                       {"name":"Seated Single Leg Hamstring Curl ","progression_model":"double progression"}
                      ]
                  }
              ]
@@ -552,7 +552,7 @@
                        {"name":"Lateral Raise (Dumbbell)","progression_model":"double progression"},
                        {"name":"Lateral Raise (Machine)","progression_model":"double progression"},
                        {"name":"Single Arm Lateral Raise (Dumbbell)","progression_model":"double progression"},
-                       {"name":"Single Arm Lateral Raise (Cable Machine)","progression_model":"double progression"},
+                       {"name":"Single Arm Lateral Raise (Cable Machine)","progression_model":"double progression"}
                      ]
                  },
                  {
@@ -565,7 +565,7 @@
                        {"name":"Seated Bicep Curl (Dumbbell)","progression_model":"double progression"},
                        {"name":"Concentration Curl (dumbbell)","progression_model":"double progression"},
                        {"name":"(30 deg) Incline Bench Bicep Curl (dumbbell)","progression_model":"double progression"},
-                       {"name":"Preacher Curl (Dumbbell)","progression_model":"double progression"},
+                       {"name":"Preacher Curl (Dumbbell)","progression_model":"double progression"}
                      ]
                  }
              ]
@@ -582,7 +582,7 @@
                        {"name":"Lateral Raise (Dumbbell)","progression_model":"double progression"},
                        {"name":"Lateral Raise (Machine)","progression_model":"double progression"},
                        {"name":"Single Arm Lateral Raise (Dumbbell)","progression_model":"double progression"},
-                       {"name":"Single Arm Lateral Raise (Cable Machine)","progression_model":"double progression"},
+                       {"name":"Single Arm Lateral Raise (Cable Machine)","progression_model":"double progression"}
                      ]
                  },
                  {
@@ -595,7 +595,7 @@
                        {"name":"Frog Bridge","progression_model":"till failure"},
                        {"name":"Glute Kickbacks (Hands And Knees)","progression_model":"till failure"},
                        {"name":"Side Lying Hip Abductions (Resistance Band)","progression_model":"till failure"},
-                       {"name":"Banded Crab Walks ","progression_model":"till failure"},
+                       {"name":"Banded Crab Walks ","progression_model":"till failure"}
                      ]
                  }
              ]
@@ -613,7 +613,7 @@
                        {"name":"Overhead Rope Pull","progression_model":"double progression"},
                        {"name":"Skull Crushers (Dumbbell)","progression_model":"double progression"},
                        {"name":" Kick Back (Dumbbell)","progression_model":"double progression"},
-                       {"name":"Close Grip Push Up","progression_model":"double progression"},
+                       {"name":"Close Grip Push Up","progression_model":"double progression"}
                      ]
                  },
                  {
@@ -626,7 +626,7 @@
                        {"name":"Seated Bicep Curl (Dumbbell)","progression_model":"double progression"},
                        {"name":"Concentration Curl (Dumbbell)","progression_model":"double progression"},
                        {"name":"(30 deg) Incline Bench Bicep Curl (Dumbbell)","progression_model":"double progression"},
-                       {"name":"Preacher Curl (Dumbbell)","progression_model":"double progression"},
+                       {"name":"Preacher Curl (Dumbbell)","progression_model":"double progression"}
                      ]
                  }
              ]
@@ -643,7 +643,7 @@
                        {"name":"Lateral Raise (Dumbbell)","progression_model":"double progression"},
                        {"name":"Lateral Raise (Machine)","progression_model":"double progression"},
                        {"name":"Single Arm Lateral Raise (Dumbbell)","progression_model":"double progression"},
-                       {"name":"Single Arm Lateral Raise (Cable Machine)","progression_model":"double progression"},
+                       {"name":"Single Arm Lateral Raise (Cable Machine)","progression_model":"double progression"}
                      ]
                  },
                  {
@@ -652,7 +652,7 @@
                        {"name":"Hamstring Curl ","progression_model":"double progression"},
                        {"name":"Single Hamstring Curl ","progression_model":"double progression"},
                        {"name":"Seated Hamstring Curl ","progression_model":"double progression"},
-                       {"name":"Seated Single Leg Hamstring Curl ","progression_model":"double progression"},
+                       {"name":"Seated Single Leg Hamstring Curl ","progression_model":"double progression"}
                      ]
                  }
              ]
@@ -667,7 +667,7 @@
                        {"name":"Standing Calf Raise","progression_model":"double progression"},
                        {"name":"Seated Calf Raise","progression_model":"double progression"},
                        {"name":"Leg Press Calf Press","progression_model":"double progression"},
-                       {"name":"Smith Machine Calf Raise","progression_model":"double progression"},
+                       {"name":"Smith Machine Calf Raise","progression_model":"double progression"}
                      ]
                  },
                  {
@@ -680,7 +680,7 @@
                        {"name":"Frog Bridge","progression_model":"till failure"},
                        {"name":"Glute Kickbacks (Hands And Knees)","progression_model":"till failure"},
                        {"name":"Side Lying Hip Abductions (Resistance Band)","progression_model":"till failure"},
-                       {"name":"Banded Crab Walks ","progression_model":"till failure"},
+                       {"name":"Banded Crab Walks ","progression_model":"till failure"}
                      ]
                  }
              ]
@@ -697,7 +697,7 @@
                        {"name":"Lateral Raise (Dumbbell)","progression_model":"double progression"},
                        {"name":"Lateral Raise (Machine)","progression_model":"double progression"},
                        {"name":"Single Arm Lateral Raise (Dumbbell)","progression_model":"double progression"},
-                       {"name":"Single Arm Lateral Raise (Cable Machine)","progression_model":"double progression"},
+                       {"name":"Single Arm Lateral Raise (Cable Machine)","progression_model":"double progression"}
                      ]
                  },
                  {
@@ -709,7 +709,7 @@
                        {"name":"Overhead Rope Pull","progression_model":"double progression"},
                        {"name":"Skull Crushers (Dumbbell)","progression_model":"double progression"},
                        {"name":" Kick Back (Dumbbell)","progression_model":"double progression"},
-                       {"name":"Close Grip Push Up","progression_model":"double progression"},
+                       {"name":"Close Grip Push Up","progression_model":"double progression"}
                      ]
                  }
              ]
@@ -728,7 +728,7 @@
                        {"name":"Seated Bicep Curl (Dumbbell)","progression_model":"double progression"},
                        {"name":"Concentration Curl (Dumbbell)","progression_model":"double progression"},
                        {"name":"(30 deg) Incline Bench Bicep Curl (Dumbbell)","progression_model":"double progression"},
-                       {"name":"Preacher Curl (Dumbbell)","progression_model":"double progression"},
+                       {"name":"Preacher Curl (Dumbbell)","progression_model":"double progression"}
                      ]
                  },
                  {
@@ -741,7 +741,7 @@
                        {"name":"Frog Bridge","progression_model":"till failure"},
                        {"name":"Glute Kickbacks (Hands And Knees)","progression_model":"till failure"},
                        {"name":"Side Lying Hip Abductions (Resistance Band)","progression_model":"till failure"},
-                       {"name":"Banded Crab Walks ","progression_model":"till failure"},
+                       {"name":"Banded Crab Walks ","progression_model":"till failure"}
                      ]
                  }
              ]
@@ -756,7 +756,7 @@
                        {"name":"Standing Calf Raise","progression_model":"double progression"},
                        {"name":"Seated Calf Raise","progression_model":"double progression"},
                        {"name":"Leg Press Calf Press","progression_model":"double progression"},
-                       {"name":"Smith Machine Calf Raise","progression_model":"double progression"},
+                       {"name":"Smith Machine Calf Raise","progression_model":"double progression"}
                      ]
                  },
                  {
@@ -769,7 +769,7 @@
                        {"name":"Seated Bicep Curl (Dumbbell)","progression_model":"double progression"},
                        {"name":"Concentration Curl (Dumbbell)","progression_model":"double progression"},
                        {"name":"(30 deg) Incline Bench Bicep Curl (Dumbbell)","progression_model":"double progression"},
-                       {"name":"Preacher Curl (Dumbbell)","progression_model":"double progression"},
+                       {"name":"Preacher Curl (Dumbbell)","progression_model":"double progression"}
                      ]
                  }
              ]
@@ -787,7 +787,7 @@
                        {"name":"Standing Rear Deltoids Fly (Cable Machine)","progression_model":"double progression"},
                        {"name":"Seated Rear Deltoid Fly (Machine)","progression_model":"double progression"},
                        {"name":"Face pull (Thumbs Pointing Away)","progression_model":"double progression"},
-                       {"name":"Face pull (Thumbs Pointing Towards Head)","progression_model":"double progression"},
+                       {"name":"Face pull (Thumbs Pointing Towards Head)","progression_model":"double progression"}
                      ]
                  },
                  {
@@ -800,7 +800,7 @@
                        {"name":"Frog Bridge","progression_model":"till failure"},
                        {"name":"Glute Kickbacks (Hands And Knees)","progression_model":"till failure"},
                        {"name":"Side Lying Hip Abductions (Resistance Band)","progression_model":"till failure"},
-                       {"name":"Banded Crab Walks ","progression_model":"till failure"},
+                       {"name":"Banded Crab Walks ","progression_model":"till failure"}
                      ]
                  }
              ]
@@ -858,7 +858,7 @@
                        {"name":"Frog Bridge","progression_model":"till failure"},
                        {"name":"Glute Kickbacks (Hands And Knees)","progression_model":"till failure"},
                        {"name":"Side Lying Hip Abductions (Resistance Band)","progression_model":"till failure"},
-                       {"name":"Banded Crab Walks ","progression_model":"till failure"},
+                       {"name":"Banded Crab Walks ","progression_model":"till failure"}
                      ]
                  }
              ]
@@ -873,7 +873,7 @@
                        {"name":"Flat Chest Press (Dumbbell)","progression_model":"double progression"},
                        {"name":"Decline Chest Press (Dumbbell)","progression_model":"double progression"},
                        {"name":"Incline Chest Press (Dumbbell)","progression_model":"double progression"},
-                       {"name":"Machine Chest Press","progression_model":"double progression"},
+                       {"name":"Machine Chest Press","progression_model":"double progression"}
                      ]
                  },
                  {
@@ -882,7 +882,7 @@
                        {"name":"Hamstring Curl ","progression_model":"double progression"},
                        {"name":"Single Hamstring Curl ","progression_model":"double progression"},
                        {"name":"Seated Hamstring Curl ","progression_model":"double progression"},
-                       {"name":"Seated Single Leg Hamstring Curl ","progression_model":"double progression"},
+                       {"name":"Seated Single Leg Hamstring Curl ","progression_model":"double progression"}
                      ]
                  }
              ]
@@ -903,7 +903,7 @@
                        {"name":"Seated Cable Row - (Underhand Grip) ","progression_model":"double progression"},
                        {"name":"Seated Cable Row - (Wide Grip)","progression_model":"double progression"},
                        {"name":"Machine Back Row ","progression_model":"double progression"},
-                       {"name":"Machine Pull Down","progression_model":"double progression"},
+                       {"name":"Machine Pull Down","progression_model":"double progression"}
                      ]
                  },
                  {
@@ -914,7 +914,7 @@
                        {"name":"Front Foot Elevated Lunge ","progression_model":"double progression"},
                        {"name":"Walking Lunges","progression_model":"double progression"},
                        {"name":" Static Lunge (Barbell)","progression_model":"double progression"},
-                       {"name":"Static Lunge (Dumbbell)","progression_model":"double progression"},
+                       {"name":"Static Lunge (Dumbbell)","progression_model":"double progression"}
                      ]
                  }
              ]
@@ -931,7 +931,7 @@
                        {"name":"Lateral Raise (Dumbbell)","progression_model":"double progression"},
                        {"name":"Lateral Raise (Machine)","progression_model":"double progression"},
                        {"name":"Single Arm Lateral Raise (Dumbbell)","progression_model":"double progression"},
-                       {"name":"Single Arm Lateral Raise (Cable Machine)","progression_model":"double progression"},
+                       {"name":"Single Arm Lateral Raise (Cable Machine)","progression_model":"double progression"}
                      ]
                  },
                  {
@@ -944,7 +944,7 @@
                        {"name":"Frog Bridge","progression_model":"till failure"},
                        {"name":"Glute Kickbacks (Hands And Knees)","progression_model":"till failure"},
                        {"name":"Side Lying Hip Abductions (Resistance Band)","progression_model":"till failure"},
-                       {"name":"Banded Crab Walks ","progression_model":"till failure"},
+                       {"name":"Banded Crab Walks ","progression_model":"till failure"}
                      ]
                  }
              ]
@@ -962,7 +962,7 @@
                        {"name":"Overhead Rope Pull","progression_model":"double progression"},
                        {"name":"Skull Crushers (Dumbbell)","progression_model":"double progression"},
                        {"name":" Kick Back (Dumbbell)","progression_model":"double progression"},
-                       {"name":"Close Grip Push Up","progression_model":"double progression"},
+                       {"name":"Close Grip Push Up","progression_model":"double progression"}
                      ]
                  },
                  {
@@ -975,7 +975,7 @@
                        {"name":"Frog Bridge","progression_model":"till failure"},
                        {"name":"Glute Kickbacks (Hands And Knees)","progression_model":"till failure"},
                        {"name":"Side Lying Hip Abductions (Resistance Band)","progression_model":"till failure"},
-                       {"name":"Banded Crab Walks ","progression_model":"till failure"},
+                       {"name":"Banded Crab Walks ","progression_model":"till failure"}
                      ]
                  }
              ]
@@ -991,14 +991,14 @@
                        {"name":"Standing Shoulder Press (Dumbbell)","progression_model":"double progression"},
                        {"name":"Seated Shoulder Press (Barbell)","progression_model":"linear"},
                        {"name":"Seated Shoulder Press (Dumbbell)","progression_model":"double progression"},
-                       {"name":"Shoulder Press (Machine)","progression_model":"double progression"},
+                       {"name":"Shoulder Press (Machine)","progression_model":"double progression"}
                      ]
                  },
                  {
                      "name": "Glute Compund",
                      "exercise": [
                        {"name":"Glute Bridge (Barbell)","progression_model":"linear"},
-                       {"name":"Hip Thurst (Barbell)","progression_model":"linear"},
+                       {"name":"Hip Thurst (Barbell)","progression_model":"linear"}
                      ]
                  }
              ]
@@ -1013,7 +1013,7 @@
                        {"name":"Flat Chest Press (Dumbbell)","progression_model":"double progression"},
                        {"name":"Decline Chest Press (Dumbbell)","progression_model":"double progression"},
                        {"name":"Incline Chest Press (dumbbell)","progression_model":"double progression"},
-                       {"name":"Machine Chest Press","progression_model":"double progression"},
+                       {"name":"Machine Chest Press","progression_model":"double progression"}
                      ]
                  },
                  {
@@ -1024,7 +1024,7 @@
                        {"name":"Front Foot Elevated Lunge ","progression_model":"double progression"},
                        {"name":"Walking Lunges","progression_model":"double progression"},
                        {"name":" Static Lunge (Barbell)","progression_model":"double progression"},
-                       {"name":"Static Lunge (Dumbbell)","progression_model":"double progression"},
+                       {"name":"Static Lunge (Dumbbell)","progression_model":"double progression"}
                      ]
                  }
              ]
@@ -1042,17 +1042,17 @@
                        {"name":"Standing Rear Deltoids Fly (Cable Machine)","progression_model":"double progression"},
                        {"name":"Seated Rear Deltoid Fly (Machine)","progression_model":"double progression"},
                        {"name":"Face pull (Thumbs Pointing Away)","progression_model":"double progression"},
-                       {"name":"Face pull (Thumbs Pointing Towards Head)","progression_model":"double progression"},
+                       {"name":"Face pull (Thumbs Pointing Towards Head)","progression_model":"double progression"}
                      ]
                  },
                  {
                      "name": "Quadricep Isolation Exercises",
                      "exercise": [
                        {"name":"Leg Extensions","progression_model":"double progression"},
-                       {"name":"Single Legged Leg Extensions ","progression_model":"double progression"},
+                       {"name":"Single Legged Leg Extensions ","progression_model":"double progression"}
                      ]
                  }
              ]
-           },
+           }
   ]
 }
