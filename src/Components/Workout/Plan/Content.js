@@ -3,18 +3,26 @@ import {List,Flex} from 'antd-mobile'
 const Item = List.Item
 
 export default class Content extends Component {
-
   constructor(props){
     super(props);
     this.state = {
       WorkoutPlans:[
-        {day:'Day 1',workout:'Upperbody', value:1, isSelected:true},
-        {day:'Day 2',workout:'Abs', value:2, isSelected:false},
-        {day:'Day 3',workout:'Legs', value:32,isSelected:false},
-        {day:'Day 4',workout:'Cardio', value:4,isSelected:false},
       ]
     }
   }
+
+  // componentWillMount(){
+  //   let temp = [];
+  //   for(var i=0; this.props.planReducers.days>i;i++) {
+  //     let dayNum = i+1;
+  //     let disabled = 0;
+  //     if(i != 0){
+  //      s = 1
+  //     }
+  //     temp.push({day:'Day '+dayNum,workout:'Upperbody', value: s, isSelected:true})
+  //   }
+  //   this.setState(WorkoutPlans:temp);
+  // }
 
   onChange = (value) => {
     let temp = [ ...this.state.WorkoutPlans]
@@ -35,6 +43,8 @@ export default class Content extends Component {
   }
 
   render() {
+    console.log("goal is "+ this.props.planReducers.goal);
+    console.log("number of days is "+ this.props.planReducers.days);
     console.log("from content of plan page",this.props.planReducers);
     return(
       <div>

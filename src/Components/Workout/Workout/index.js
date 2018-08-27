@@ -12,38 +12,10 @@ const Workout = (props) => {
         </div>
         <WingBlank>
 
-          <div> <strong> Warm up</strong> </div>
+          <div> <strong> Workout</strong> </div>
           <WhiteSpace size="lg"/>
 
-          {props.warmUpArray.map((data,key) => (
-            <div key={key} className="list-workout">
-              <span style = {{float: 'left', margin: "0 20px 0 0"}}>
-                <img src={require(`../../../Assets/WorkoutIcons/${data.value}.jpg`)} height="60px" width="100px" alt="work" />
-              </span>
-              {!data.isSaved && (
-                <span style = {{ float :'right'}}>
-                  <span className="span-button keep" onClick={() => props.onWarmUpKeep(data.value)}> keep </span>
-                  <WhiteSpace size="xs"/>
-                  <span className="span-button change" onClick={() => props.onWarmupChange(data.value)}> change </span>
-                </span>
-              )}
-              {data.isSaved && (
-                <span style = {{ float :'right'}}>
-                  <span className="span-button saved"> saved! </span>
-                </span>
-              )}
-              <span>
-                {data.name}
-                <WhiteSpace />
-                40
-              </span>
-            </div>
-          ))}
-
-          <div style={{clear: 'both'}}> <strong> Workout </strong> </div>
-          <WhiteSpace size="lg"/>
-
-          { props.workOutArray.map((data, key) => (
+          {props.workOutArray.map((data,key) => (
             <div key={key} className="list-workout">
               <span style = {{float: 'left', margin: "0 20px 0 0"}}>
                 <img src={require(`../../../Assets/WorkoutIcons/${data.value}.jpg`)} height="60px" width="100px" alt="work" />
@@ -61,12 +33,14 @@ const Workout = (props) => {
                 </span>
               )}
               <span>
-                Knee Warm up
+                {data.name}
                 <WhiteSpace />
                 40
               </span>
             </div>
           ))}
+
+          <WhiteSpace size="lg"/>
 
           </WingBlank>
           </div>

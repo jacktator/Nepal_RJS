@@ -8,8 +8,8 @@ const Plan = (props) => {
     return (
       <div>
         <img src={require("../../../Assets/Workout/sampleImage.jpeg")} alt="sampleImage" className="plan-sample-image"/>
-        <div className="plan-title"> Insert Title Here</div>
-        <div className="plan-program-duration"> Insert Program Duration Here</div>
+        <div className="plan-title">{props.planReducers.goal}</div>
+        <div className="plan-program-duration">You are currently at Week 1 </div>
         <div className="plan-progress-text"> % Completed </div>
         <div className="plan-progress-container">
           <WingBlank>

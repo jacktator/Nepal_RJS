@@ -1,0 +1,35 @@
+{
+"exercises":[  {
+        "day": "1",
+          "exerciselist":[
+            {"name":"13 Quadricep Heavy Exercises","code":"13","sets":"3","reps":"7-9"},
+            {"name":"16 Quadricep Uni-lateral Exercises","code":"16","sets":"3","reps":"10-12"},
+            {"name":"22 Hamstring & Glute Exercises","code":"22","sets":"3","reps":"7-9"},
+            {"name":"10 Shoulder Compund Exercises","code":"10","sets":"3","reps":"8-10"},
+            {"name":"1 Tricep Heavy Exercises","code":"1","sets":"3","reps":"8-10"}
+          ],
+          "justify":[
+              [13,22],[16,10],[1]
+          ]
+      },
+  ]
+}
+
+{
+  "exerciselist":[
+    {"name":"13 Quadricep Heavy Exercises","code":"13","sets":"3","reps":"9"},
+  ],
+
+}
+
+
+// data to store for users who train every Day
+
+// what exercise they do
+// what exercise code
+
+// how many sets
+// how many reps
+// how many kg
+// how many they did
+// how many total

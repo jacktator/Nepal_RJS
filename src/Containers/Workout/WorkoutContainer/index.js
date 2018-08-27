@@ -4,19 +4,19 @@ import {Redirect} from 'react-router';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {selectFooter} from '../FooterContainer/actions';
-import {keepWarmUp, keepWorkOut, updateExercise, updateWarmup} from './actions';
+import {keepWorkOut, updateExercise} from './actions';
 import Workout from '../../../Components/Workout/Workout';
 import SelectExercise from '../../../Components/Workout/SelectExercise';
 import Modal from '../../../Components/UI/Modal';
 import FooterContainer from '../FooterContainer';
 import Hoc from '../../../HOC/Hoc';
+import {WingBlank} from 'antd-mobile'
 
 class WorkoutContainer extends Component{
   constructor(props){
     super(props);
     this.state = {
       isChangeExcercise: false,
-      isChangeWarmup: false,
       startExcercies: false,
       excerciseArray: [
         { value: 0, description: 'Push ups', imgurl: 'https://files.brightside.me/files/news/part_34/340810/14565160-1-0-1496126804-1496126811-650-0c369e17e2-1496430586.jpg'},
@@ -36,24 +36,12 @@ class WorkoutContainer extends Component{
     this.setState({indexValue: value})
     this.setState({ isChangeExcercise: true })
   }
-  onChangeWarmupHandler = (value) => {
-    this.setState({indexValue: value})
-    this.setState({ isChangeWarmup: true })
-  }
+
   onSelectExerciseHandler = (index) => {
     this.props.updateExercise(this.state.indexValue, index);
     this.setState({ isChangeExcercise: false })
   }
-  onSelectWarmupHandler = (index) => {
-    this.props.updateWarmup(this.state.indexValue, index);
-    this.setState({ isChangeWarmup: false })
-  }
-  onWarmUpKeepHandler = (value) => {
-    let warmUpExerciseArray = { ...this.state.warmUpExerciseArray}
-    let index = this.state.warmUpExerciseArray.findIndex(i =>{ return i.value === value; });
-    warmUpExerciseArray[index].isSaved = true;
-    this.setState({ warmUpExerciseArray: warmUpExerciseArray })
-  }
+
   onWorkOutKeepHandler = (value) => {
     let workoutExerciseArray = { ...this.state.workoutExerciseArray}
     let index = this.state.workoutExerciseArray.findIndex(i =>{ return i.value === value; });
@@ -64,16 +52,13 @@ class WorkoutContainer extends Component{
     this.setState({ startExcercies: true})
   }
   render() {
-    let {warmUpExerciseArray, workOutExerciseArray} = this.props.WorkOutReducers;
+    let {workOutExerciseArray} = this.props.WorkOutReducers;
     return (
       <Hoc>
         <Workout
         onExerciseChange = {this.onChangeExerciseHandler}
-        onWarmupChange = {this.onChangeWarmupHandler}
-        onWarmUpKeep = {this.props.keepWarmUp}
         onWorkOutKeep = {this.props.keepWorkOut}
         onStart = {this.onStartHandler}
-        warmUpArray = {warmUpExerciseArray}
         workOutArray ={workOutExerciseArray}
 
         />
@@ -81,14 +66,6 @@ class WorkoutContainer extends Component{
           <Modal modalFor = "modal-for-select-exercise">
             <SelectExercise
               onSelect = {this.onSelectExerciseHandler}
-              excerciseArray = {this.state.excerciseArray}
-            />
-          </Modal>
-        )}
-        {(this.state.isChangeWarmup) && (
-          <Modal modalFor = "modal-for-select-exercise">
-            <SelectExercise
-              onSelect = {this.onSelectWarmupHandler}
               excerciseArray = {this.state.excerciseArray}
             />
           </Modal>
@@ -109,7 +86,7 @@ function mapStateToProps(state){
 }
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
-    selectFooter, keepWarmUp, keepWorkOut, updateExercise, updateWarmup
+    selectFooter, keepWorkOut, updateExercise,
   }, dispatch
 );
 }

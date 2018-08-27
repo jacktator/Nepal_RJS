@@ -38,7 +38,7 @@ import './SelectExercise.css';
           ))}
           </Carousel>
           <div className="select-button">
-            <Button type="primary" onClick={() => (this.props.onSelect(this.state.currentItem))}> select</Button>
+            <Button type="primary" onClick={() => (this.props.onSelect(this.state.currentItem))}>Select</Button>
           </div>
         </div>
     );
