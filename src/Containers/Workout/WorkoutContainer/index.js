@@ -52,10 +52,18 @@ class WorkoutContainer extends Component{
     this.setState({ startExcercies: true})
   }
   render() {
+<<<<<<< HEAD
     let {workOutExerciseArray} = this.props.WorkOutReducers;
+=======
+    console.log(this.props.planReducers);
+    console.log(this.props.planReducers.exercises);
+    let {warmUpExerciseArray, workOutExerciseArray} = this.props.WorkOutReducers;
+>>>>>>> 12a5db70cdbb8f81f0a39293dd11dbc4f800b791
     return (
       <Hoc>
         <Workout
+        exercise = {this.props.planReducers.exercises}
+
         onExerciseChange = {this.onChangeExerciseHandler}
         onWorkOutKeep = {this.props.keepWorkOut}
         onStart = {this.onStartHandler}
@@ -81,7 +89,8 @@ class WorkoutContainer extends Component{
 function mapStateToProps(state){
   return {
     currentFooterTab: state.FooterReducers.currentFooterTab,
-    WorkOutReducers: state.WorkOutReducers
+    WorkOutReducers: state.WorkOutReducers,
+    planReducers: state.PlanReducers,
   }
 }
 function matchDispatchToProps(dispatch){

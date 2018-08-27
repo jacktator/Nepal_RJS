@@ -11,6 +11,10 @@ const PlanReducers =(state: Object= DefaultState, action: Function) => {
     return {
       ...state, days: action.payload
     }
+    case "SET_EXERCISES":
+    return {
+      ...state, exercises: action.payload
+    }
     default:
       return state;
   }
