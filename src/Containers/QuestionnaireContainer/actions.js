@@ -39,50 +39,53 @@ export function addProgram (days, goals) {
   let goal;
   switch (goals) {
     case "1":
-      goal = "musclegain";
+      goal = "Muscle Gain";
       break;
     case "2":
-      goal = "fatloss";
+      goal = "Fat Loss";
       break;
     case "3":
-      goal = "decreasestress";
+      goal = "Decrease Stress";
       break;
     case "4":
-      goal = "improveposture";
+      goal = "Improve Posture";
       break;
     case "5":
-      goal = "increasefitness";
+      goal = "Increase Fitness";
       break;
     default:
       goal = "Please select the goal"
   }
-  let jsonurl = `./DataSources/${goal}day${days}.json`;
+  let jsonurl = `./DataSources/${goal.split(" ").join("").toLowerCase()}day${days}.json`;
   console.log(jsonurl);
   return(dispatch: Function) => {
     //fetch the list of exercise
     return axios.get(jsonurl)
-    .then((res)=> {
+    .then((res) => {
       alert("success");
       console.log("Response from json:",res.data);
-
-      return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/program",
-      {
-        status: "publish",
-        fields: {
-            userid: user_id,
-            programname: goal,
-            days: days,
-            exercises: res.data.exercises,
-            progress: "1",
-            difficultlevel: "1"
-        }
-      }).then((response) => {
-        console.log(response);
-        alert("Successfully created the program");
-      }).catch((error) => {
-        console.log(error);
-        alert("Got error while creating the program");
-      })
+      res.data.exercises.map((num) => {
+        console.log(num);
+        return null;
+      });
+      // return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/program",
+      // {
+      //   status: "publish",
+      //   fields: {
+      //       user_id: user_id,
+      //       program_name: goal,
+      //       days: days,
+      //       exercises: res.data.exercises,
+      //       progress: "1",
+      //       difficult_level: "1"
+      //   }
+      // }).then((response) => {
+      //   console.log(response);
+      //   alert("Successfully created the program");
+      // }).catch((error) => {
+      //   console.log(error);
+      //   alert("Got error while creating the program");
+      // })
     }).catch((error)=> {
       console.log(error);
       alert("failure");

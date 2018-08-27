@@ -10,9 +10,6 @@
         {"name":"12 Back Light Exercises","code":"12","sets":"3","reps":"9-11"},
         {"name":"37 Rear delt + glute isolation","code":"37","sets":"3","reps":"Till Failure"},
         {"name":"23 Abdominal Exercises","code":"23","sets":"3","reps":"15-20"}
-      ],
-      "justify":[
-          [13,5],[32,12],[37,23]
       ]
     },
     {
@@ -25,9 +22,6 @@
         {"name":"12 Back Light Exercises","code":"12","sets":"3","reps":"12-15"},
         {"name":"42 Lateral shoulder or glute isolation ","code":"42","sets":"3","reps":"Till Failure"},
         {"name":"24 Abdominal Failure Exercises","code":"24","sets":"3","reps":"Till Failure"}
-      ],
-      "justify":[
-          [22,38],[14,1],[12,24]
       ]
     }, {
       "day": "3",
@@ -39,9 +33,6 @@
         {"name":"12 Back Light Exercises","code":"12","sets":"3","reps":"12-15"},
         {"name":"42 Lateral shoulder or glute isolation ","code":"42","sets":"3","reps":"Till Failure"},
         {"name":"24 Abdominal Failure Exercises","code":"24","sets":"3","reps":"Till Failure"}
-      ],
-      "justify":[
-          [42,24],[39,12],[13,5]
       ]
     }
   ]
