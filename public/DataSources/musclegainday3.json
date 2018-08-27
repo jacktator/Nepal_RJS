@@ -9,7 +9,7 @@
             {"name":"10 Shoulder Compound Exercises","code":"10","sets":"3","reps":"8-10"},
             {"name":"25 Back light + chest light exercise","code":"25","sets":"3","reps":"10-12"},
             {"name":"26 Shoulder lateral + tricep light","code":"26","sets":"3","reps":"10-12"},
-            {"name":"23 Abdominal Exercises","code":"23","sets":"3","reps":"15-20"},
+            {"name":"23 Abdominal Exercises","code":"23","sets":"3","reps":"15-20"}
           ],
           "justify":[
               [13,5],[11,23],[10,25]
@@ -23,7 +23,7 @@
             {"name":"27 Chest Dumbbellpress  + Quad isolation extension","code":"27","sets":"3","reps":"12-15"},
             {"name":"18 Hamstring Light Exercises","code":"18","sets":"3","reps":"10-12"},
             {"name":"9 Shoulder Rear Delt Isolation Exercises","code":"9","sets":"3","reps":"12-15"},
-            {"name":"12 Back Light Exercises","code":"12","sets":"3","reps":"10-12"},
+            {"name":"12 Back Light Exercises","code":"12","sets":"3","reps":"10-12"}
           ],
           "justify":[
               [12,18],[13,12],[27,9]
@@ -38,7 +38,7 @@
             {"name":"28 Back light + hamstring light","code":"28","sets":"3","reps":"10-12"},
             {"name":"29 Lateral shoulder + light biceps","code":"29","sets":"3","reps":"12-15"},
             {"name":"2 Tricep Light Exercises","code":"2","sets":"3","reps":"12-15"},
-            {"name":"24 Abdominal Failure Exercises","code":"24","sets":"3","reps":"Till Failure"},
+            {"name":"24 Abdominal Failure Exercises","code":"24","sets":"3","reps":"Till Failure"}
           ],
           "justify":[
               [29,2],[5,28],[13,24]

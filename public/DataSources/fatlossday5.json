@@ -8,7 +8,7 @@
             {"name":"3 Bicep Heavy Exercises","code":"3","sets":"3","reps":"8-10"},
             {"name":"32 Light lateral shoulder + hamstring ioslation ","code":"32","sets":"3","reps":"10-12"},
             {"name":"43 Tricep light or glute isolation ","code":"43","sets":"3","reps":"20-25"},
-            {"name":"24 Abdominal Failure Exercises","code":"24","sets":"3","reps":"Till Failure"},
+            {"name":"24 Abdominal Failure Exercises","code":"24","sets":"3","reps":"Till Failure"}
           ],
           "justify":[
               [13,10],[3,32],[43,24]
@@ -22,7 +22,7 @@
         {"name":"11 Back Heavy Exercises","code":"11","sets":"3","reps":"10-12"},
         {"name":"39 Chest fly + glute accesory ","code":"39","sets":"3","reps":"15-20"},
         {"name":"12 Back Light Exercises","code":"12","sets":"3","reps":"12-15"},
-        {"name":"20 Glutes Accessory Exercises","code":"20","sets":"3","reps":"Till Failure"},
+        {"name":"20 Glutes Accessory Exercises","code":"20","sets":"3","reps":"Till Failure"}
           ],
           "justify":[
               [22,5],[39,20],[11,12]
@@ -36,7 +36,7 @@
             {"name":"45 Chest dumbbell or quad unilateral","code":"45","sets":"3","reps":"10-12"},
             {"name":"12 Back Light Exercises","code":"12","sets":"3","reps":"12-15"},
             {"name":"8 Shoulder Isolation Exercises","code":"8","sets":"3","reps":"12-15"},
-            {"name":"2 Tricep Light Exercises","code":"2","sets":"3","reps":"12-15"},
+            {"name":"2 Tricep Light Exercises","code":"2","sets":"3","reps":"12-15"}
           ],
           "justify":[
               [12,2],[14,8],[44,45]
@@ -50,7 +50,7 @@
           {"name":"12 Back Light Exercises","code":"12","sets":"3","reps":"9-11"},
           {"name":"39 Chest fly + glute accesory ","code":"39","sets":"3","reps":"15-20"},
           {"name":"12 Back Light Exercises","code":"12","sets":"3","reps":"12-15"},
-          {"name":"23 Abdominal Exercises","code":"23","sets":"3","reps":"20-25"},
+          {"name":"23 Abdominal Exercises","code":"23","sets":"3","reps":"20-25"}
         ],
           "justify":[
               [12,23],[5,12],[22,39]
@@ -64,7 +64,7 @@
           {"name":"46 Shoulder rear delt + leg extensions","code":"46","sets":"3","reps":"12-15"},
           {"name":"4 Bicep Light Exercises","code":"4","sets":"3","reps":"12-15"},
           {"name":"9 Shoulder Rear Delt Isolation Exercises","code":"9","sets":"3","reps":"15-20"},
-          {"name":"1 Tricep Heavy Exercises","code":"1","sets":"3","reps":"12-15"},
+          {"name":"1 Tricep Heavy Exercises","code":"1","sets":"3","reps":"12-15"}
         ],
           "justify":[
               [19,9],[46,1],[13,4]
