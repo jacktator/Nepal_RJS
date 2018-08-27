@@ -17,7 +17,7 @@ export default class StickyTab extends React.Component {
      <div className='plan-tabs'>
         <Tabs tabs={tabs} renderTabBar={props => <Tabs.DefaultTabBar {...props} page={4}/>}>
           <div className='content'>
-             <Content/>
+             <Content planReducers={this.props.planReducers}/>
           </div>
         </Tabs>
      </div>

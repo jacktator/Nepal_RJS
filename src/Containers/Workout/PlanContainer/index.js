@@ -6,9 +6,7 @@ import {selectFooter} from '../FooterContainer/actions';
 import {getProgram} from './actions';
 import FooterContainer from'../FooterContainer';
 import Plan from '../../../Components/Workout/Plan';
-
 class PlanContainer extends Component{
-
 
   componentWillMount(){
     if(this.props.currentFooterTab!== 'planTab' ){
@@ -17,6 +15,7 @@ class PlanContainer extends Component{
     this.props.getProgram();
   }
   render() {
+    console.log("plan reducer from container",this.props.planReducers)
     return (
       <div>
         <Plan planReducers={this.props.planReducers}/>

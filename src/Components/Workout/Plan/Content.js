@@ -26,6 +26,7 @@ export default class Content extends Component {
   }
 
   render() {
+    console.log("from content of plan page",this.props.planReducers);
     return(
       <div>
       <List> {this.state.WorkoutPlans.map((data, key) => (

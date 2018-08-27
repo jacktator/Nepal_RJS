@@ -34,6 +34,7 @@ export function addQuestionnaire(state) {
 
 //Function to initialize the program after completion of the questionnaire
 export function addProgram (days, goals) {
+  console.log("addprogram",days, goals);
   let user_id = localStorage.getItem('user_id');
   let goal;
   switch (goals) {
@@ -62,7 +63,7 @@ export function addProgram (days, goals) {
     return axios.get(jsonurl)
     .then((res)=> {
       alert("success");
-      console.log("Response from json",res.data);
+      console.log("Response from json:",res.data);
 
       return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/program",
       {
@@ -70,14 +71,16 @@ export function addProgram (days, goals) {
         fields: {
             userid: user_id,
             programname: goal,
-            programdaynumber: days,
+            days: days,
             exercises: res.data.exercises,
             progress: "1",
             difficultlevel: "1"
         }
       }).then((response) => {
+        console.log(response);
         alert("Successfully created the program");
       }).catch((error) => {
+        console.log(error);
         alert("Got error while creating the program");
       })
     }).catch((error)=> {

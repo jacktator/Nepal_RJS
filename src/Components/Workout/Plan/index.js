@@ -3,10 +3,7 @@ import {WingBlank,Progress} from 'antd-mobile'
 import './Plan.css'
 import StickyTab from './StickyTab'
 
-
-export default class Plan extends Component{
-
-  render() {
+const Plan = (props) => {
 
     return (
       <div>
@@ -20,9 +17,10 @@ export default class Plan extends Component{
           </WingBlank>
         </div>
         <div className="sticky-tab">
-          <StickyTab/>
+          <StickyTab planReducers={props.planReducers}/>
         </div>
       </div>
     )
-  }
 }
+
+export default Plan;
