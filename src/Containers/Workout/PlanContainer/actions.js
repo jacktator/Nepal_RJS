@@ -5,8 +5,9 @@ export function getProgram(){
     return axios.get("https://nepal.sk8tech.io/wp-json/wp/v2/program?filter[posts_per_page]=1")
     .then((response)=> {
       console.log("getProgram",response);
-      dispatch(setProgramName(response.data[0].acf.programname));
-      dispatch(setDays(response.data[0].acf.days))
+      dispatch(setProgramName(response.data[0].acf.program_name));
+      dispatch(setDays(response.data[0].acf.days));
+      dispatch(setExercises(response.data[0].acf.exercises));
     }).catch((error)=> {
       console.log(error);
     })
@@ -25,5 +26,11 @@ export function setDays(days: Number){
   return {
     type: "SET_DAYS",
     payload: days
+  }
+}
+export function setExercises(exercises: Object) {
+  return {
+    type: "SET_EXERCISES",
+    payload: exercises
   }
 }

@@ -64,10 +64,14 @@ class WorkoutContainer extends Component{
     this.setState({ startExcercies: true})
   }
   render() {
+    console.log(this.props.planReducers);
+    console.log(this.props.planReducers.exercises);
     let {warmUpExerciseArray, workOutExerciseArray} = this.props.WorkOutReducers;
     return (
       <Hoc>
         <Workout
+        exercise = {this.props.planReducers.exercises}
+
         onExerciseChange = {this.onChangeExerciseHandler}
         onWarmupChange = {this.onChangeWarmupHandler}
         onWarmUpKeep = {this.props.keepWarmUp}
@@ -104,7 +108,8 @@ class WorkoutContainer extends Component{
 function mapStateToProps(state){
   return {
     currentFooterTab: state.FooterReducers.currentFooterTab,
-    WorkOutReducers: state.WorkOutReducers
+    WorkOutReducers: state.WorkOutReducers,
+    planReducers: state.PlanReducers,
   }
 }
 function matchDispatchToProps(dispatch){

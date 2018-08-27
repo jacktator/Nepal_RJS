@@ -62,30 +62,28 @@ export function addProgram (days, goals) {
     //fetch the list of exercise
     return axios.get(jsonurl)
     .then((res) => {
+      console.log("this is from json ")
+      console.log(res);
       alert("success");
-      console.log("Response from json:",res.data);
-      res.data.exercises.map((num) => {
-        console.log(num);
-        return null;
-      });
-      // return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/program",
-      // {
-      //   status: "publish",
-      //   fields: {
-      //       user_id: user_id,
-      //       program_name: goal,
-      //       days: days,
-      //       exercises: res.data.exercises,
-      //       progress: "1",
-      //       difficult_level: "1"
-      //   }
-      // }).then((response) => {
-      //   console.log(response);
-      //   alert("Successfully created the program");
-      // }).catch((error) => {
-      //   console.log(error);
-      //   alert("Got error while creating the program");
-      // })
+
+      return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/program",
+      {
+        status: "publish",
+        fields: {
+            user_id: user_id,
+            program_name: goal,
+            days: days,
+            exercises: res.data.exercises,
+            progress: "1",
+            difficult_level: "1"
+        }
+      }).then((response) => {
+        console.log(response);
+        alert("Successfully created the program");
+      }).catch((error) => {
+        console.log(error);
+        alert("Got error while creating the program");
+      })
     }).catch((error)=> {
       console.log(error);
       alert("failure");

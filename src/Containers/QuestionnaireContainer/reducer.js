@@ -7,7 +7,7 @@ let DefaultState = {
     weight: "30",
     exercise_place: "gym",
     days_per_week: 3,
-    goals: "1",
+    goals: "2",
     rehab_focus: "1",
     injury_management: "1",
     posture_correction:"1",

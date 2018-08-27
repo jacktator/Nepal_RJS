@@ -11,7 +11,6 @@ const Workout = (props) => {
           <div className="workout-info">Immediate Fat Loss Workout</div>
         </div>
         <WingBlank>
-
           <div> <strong> Warm up</strong> </div>
           <WhiteSpace size="lg"/>
 
