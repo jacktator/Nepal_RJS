@@ -1,4 +1,5 @@
 // @flow
+
 export function keepWarmUp (value: number) {
   return {
     type: "KEEP_WARMUP",

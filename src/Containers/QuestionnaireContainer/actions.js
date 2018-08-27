@@ -1,4 +1,4 @@
-// @flow
+
 import axios from 'axios';
 
 export function addQuestionnaire(state) {
@@ -34,36 +34,36 @@ export function addQuestionnaire(state) {
 
 //Function to initialize the program after completion of the questionnaire
 export function addProgram (days, goals) {
+  console.log("addprogram",days, goals);
   let user_id = localStorage.getItem('user_id');
   let goal;
   switch (goals) {
     case "1":
-      goal = "Muscle size and strength";
+      goal = "musclegain";
       break;
     case "2":
-      goal = "Fat loss/ Definition";
+      goal = "fatloss";
       break;
     case "3":
-      goal = "Decrease stress";
+      goal = "decreasestress";
       break;
     case "4":
-      goal = "Improve posture";
+      goal = "improveposture";
       break;
     case "5":
-      goal = "Increase fitness";
+      goal = "increasefitness";
       break;
     default:
       goal = "Please select the goal"
   }
-  console.log(goal);
-  console.log(goals);
-  console.log(days);
+  let jsonurl = `./DataSources/${goal}day${days}.json`;
+  console.log(jsonurl);
   return(dispatch: Function) => {
     //fetch the list of exercise
-    return axios.get("./DataSources/fatlossday3.json")
-    .then((response)=> {
+    return axios.get(jsonurl)
+    .then((res)=> {
       alert("success");
-      console.log("Response from json",response.data);
+      console.log("Response from json:",res.data);
 
       return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/program",
       {
@@ -71,13 +71,16 @@ export function addProgram (days, goals) {
         fields: {
             userid: user_id,
             programname: goal,
-            programdaynumber: days,
+            days: days,
+            exercises: res.data.exercises,
             progress: "1",
             difficultlevel: "1"
         }
       }).then((response) => {
+        console.log(response);
         alert("Successfully created the program");
       }).catch((error) => {
+        console.log(error);
         alert("Got error while creating the program");
       })
     }).catch((error)=> {
@@ -95,53 +98,53 @@ export function addName (nick_name: string) {
   }
 }
 
-export function addAge (age: number) {
+export function addAge (age: Number) {
   return {
     type: "ADD_AGE",
     payload: age.toString()
   }
 }
-export function addGender (gender: string) {
+export function addGender (gender: String) {
   return {
     type: "ADD_GENDER",
     payload: gender
   }
 }
-export function addWeight (weight: number) {
+export function addWeight (weight: Number) {
   return {
     type: "ADD_WEIGHT",
     payload: weight.toString()
   }
 }
 
-export function addExercisePlace (exercisePlace: string) {
+export function addExercisePlace (exercisePlace: String) {
   return {
     type: "ADD_EXERCISE_PLACE",
     payload: exercisePlace
   }
 }
 
-export function addDays (days_per_week: number) {
+export function addDays (days_per_week: Number) {
   return {
     type: "ADD_DAYS",
     payload: days_per_week.toString()
   }
 }
 
-export function addGoals (training_goals: string) {
+export function addGoals (training_goals: String) {
   return {
     type: "ADD_GOALS",
     payload: training_goals
   }
 }
 
-export function addInjuryManagement (injury_management: string) {
+export function addInjuryManagement (injury_management: String) {
   return {
     type: "ADD_INJURY_MANAGEMENT",
     payload: injury_management
   }
 }
-export function addPostureCorrection (posture_correction: string) {
+export function addPostureCorrection (posture_correction: String) {
   return {
     type: "ADD_POSTURE_CORRECTION",
     payload: posture_correction
