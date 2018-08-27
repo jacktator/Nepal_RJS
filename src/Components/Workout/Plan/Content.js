@@ -36,7 +36,7 @@ export default class Content extends Component {
         arrow="horizontal"
         disabled={!data.isSelected}
         onClick={() => this.onChange(data.value)}>
-        <div style={{fontSize:'16px'}}> {data.day} {data.workout} </div>
+        <div style={{fontSize:'16px'}}> {data.day} {this.props.planReducers.goal} </div>
         </Item>
         </Flex.Item>
         </Flex>

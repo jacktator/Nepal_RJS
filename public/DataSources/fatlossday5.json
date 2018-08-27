@@ -8,7 +8,7 @@
             {"name":"3 Bicep Heavy Exercises","code":"3","Sets":"3","Reps":"8-10"},
             {"name":"32 Light lateral shoulder + hamstring ioslation ","code":"32","Sets":"3","Reps":"10-12"},
             {"name":"43 Tricep light or glute isolation ","code":"43","Sets":"3","Reps":"20-25"},
-            {"name":"24 Abdominal Failure Exercises","code":"24","Sets":"3","Reps":"Till Failure"},
+            {"name":"24 Abdominal Failure Exercises","code":"24","Sets":"3","Reps":"Till Failure"}
           ],
           "justify":[
               [13,10],[3,32],[43,24]
@@ -22,7 +22,7 @@
         {"name":"11 Back Heavy Exercises","code":"11","Sets":"3","Reps":"10-12"},
         {"name":"39 Chest fly + glute accesory ","code":"39","Sets":"3","Reps":"15-20"},
         {"name":"12 Back Light Exercises","code":"12","Sets":"3","Reps":"12-15"},
-        {"name":"20 Glutes Accessory Exercises","code":"20","Sets":"3","Reps":"Till Failure"},
+        {"name":"20 Glutes Accessory Exercises","code":"20","Sets":"3","Reps":"Till Failure"}
           ],
           "justify":[
               [22,5],[39,20],[11,12]
@@ -36,7 +36,7 @@
             {"name":"45 Chest dumbbell or quad unilateral","code":"45","Sets":"3","Reps":"10-12"},
             {"name":"12 Back Light Exercises","code":"12","Sets":"3","Reps":"12-15"},
             {"name":"8 Shoulder Isolation Exercises","code":"8","Sets":"3","Reps":"12-15"},
-            {"name":"2 Tricep Light Exercises","code":"2","Sets":"3","Reps":"12-15"},
+            {"name":"2 Tricep Light Exercises","code":"2","Sets":"3","Reps":"12-15"}
           ],
           "justify":[
               [12,2],[14,8],[44,45]
@@ -50,7 +50,7 @@
           {"name":"12 Back Light Exercises","code":"12","Sets":"3","Reps":"9-11"},
           {"name":"39 Chest fly + glute accesory ","code":"39","Sets":"3","Reps":"15-20"},
           {"name":"12 Back Light Exercises","code":"12","Sets":"3","Reps":"12-15"},
-          {"name":"23 Abdominal Exercises","code":"23","Sets":"3","Reps":"20-25"},
+          {"name":"23 Abdominal Exercises","code":"23","Sets":"3","Reps":"20-25"}
         ],
           "justify":[
               [12,23],[5,12],[22,39]
