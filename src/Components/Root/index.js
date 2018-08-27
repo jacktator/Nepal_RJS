@@ -16,6 +16,7 @@ import HistoryContainer from '../../Containers/Workout/HistoryContainer';
 import MainMenuContainer from '../../Containers/MainMenuContainer';
 import ProfileContainer from '../../Containers/ProfileContainer';
 import TermsAndCondComponent from '../TermsAndCond';
+import GetJson from '../../Containers/ZShawn';
 
 //import {connect} from 'react-redux';
 import ExerciseContainer from '../../Containers/ExerciseContainer/';
@@ -49,6 +50,7 @@ class Root extends Component<Props>{
               <Route path="/profile" exact component={ProfileContainer}/>
               <Route path="/termsandconditions" exact component={TermsAndCondComponent}/>
               <Route path="/questionnaire" exact component={Questionnaire} />
+              <Route path='/shawn' exact component={GetJson} />
             </Switch>
           {/*</BrowserRouter>*/}
           </HashRouter>
