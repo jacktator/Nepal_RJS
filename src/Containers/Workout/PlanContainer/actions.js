@@ -8,6 +8,7 @@ export function getProgram(){
       dispatch(setProgramName(response.data[0].acf.program_name));
       dispatch(setDays(response.data[0].acf.days));
       dispatch(setExercises(response.data[0].acf.exercises));
+      dispatch(setProgress(response.data[0].acf.progress));
     }).catch((error)=> {
       console.log(error);
     })
@@ -32,5 +33,11 @@ export function setExercises(exercises: Object) {
   return {
     type: "SET_EXERCISES",
     payload: exercises
+  }
+}
+export function setProgress(progress: Number) {
+  return {
+    type: "SET_Progress",
+    payload: progress
   }
 }

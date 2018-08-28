@@ -3,24 +3,28 @@ import {Tabs} from 'antd-mobile'
 import Content from './Content'
 
 export default class StickyTab extends React.Component {
-
+  constructor(props) {
+    super(props);
+    this.state={currentPage: this.props.currentpage}
+  }
+  componentDidUpdate(prevProps, prevState) {
+    prevProps.currentpage !== this.props.currentpage ? this.setState({ currentPage: this.props.currentpage }) : null;
+  }
   render() {
-    const tabs = [
-     { title: 'WEEK 1',unlocked: true },
-     { title: 'WEEK 2',unlocked: false },
-     { title: 'WEEK 3',unlocked: false },
-     { title: 'WEEK 4',unlocked: false },
-     { title: 'WEEK 5',unlocked: false },
-   ];
 
    return (
      <div className='plan-tabs'>
-        <Tabs tabs={tabs} renderTabBar={
-              props => <Tabs.DefaultTabBar {...props} page={4}/>
-          }>
+       <Tabs
+         page={this.state.currentPage}
+         tabs={[...Array(5)].map((v, k) => { return ({ title: <span style={(k) > this.props.currentpage ? ({textDecoration: 'line-through'}) : null}>{'WEEK' + (k + 1)}</span> })})}
+         renderTabBar={
+           props => <Tabs.DefaultTabBar {...props} page={3} />
+         }
+         onTabClick={(tab,index) => {console.log(index), index <= this.props.currentpage ? this.setState({currentPage: index}) : null}}
+       >
           <div className='content'>
-             <Content planReducers={this.props.planReducers}/>
-          </div>
+             <Content selectedWeek={this.state.currentPage+1} planReducers={this.props.planReducers}/>
+         </div>
         </Tabs>
      </div>
    );

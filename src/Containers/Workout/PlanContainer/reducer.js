@@ -1,4 +1,6 @@
 let DefaultState = {
+  days: 3,
+  progress: 1,
 }
 
 const PlanReducers =(state: Object= DefaultState, action: Function) => {
@@ -14,7 +16,11 @@ const PlanReducers =(state: Object= DefaultState, action: Function) => {
     case "SET_EXERCISES":
     return {
       ...state, exercises: action.payload
-    }
+      }
+    case "SET_Progress":
+      return {
+        ...state, progress: action.payload
+      }
     default:
       return state;
   }

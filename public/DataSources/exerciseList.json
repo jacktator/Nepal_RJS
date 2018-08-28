@@ -2,10 +2,10 @@
   "exerciseList":[
           {
            "code":"1",
-           "name":"1 Tricep Heavy Exercises",
+           "name":"Tricep Heavy Exercises",
            "exercises":[
              {
-                "name":"1 Tricep Heavy Exercises",
+                "name":"Tricep Heavy Exercises",
                 "exercise":[
                   {"name":"Close Grip Bench Press(Barbell)","progression_model":"linear"},
                   {"name":"Skull Crushers (Curl Bar/Barbell)","progression_model":"double progression"},
@@ -15,10 +15,10 @@
           },
           {
            "code":"2",
-           "name":"2 Tricep Light Exercises",
+           "name":"Tricep Light Exercises",
            "exercises":[
              {
-                "name":"2 Tricep Light Exercises",
+                "name":"Tricep Light Exercises",
                 "exercise":[
                   {"name":"Straight Bar Pushdown","progression_model":"double progression"},
                   {"name":"Reverse Grip Straight Bar Pushdown","progression_model":"double progression"},
@@ -32,10 +32,10 @@
           },
           {
            "code":"3",
-           "name":"3 Bicep Heavy Exercises",
+           "name":"Bicep Heavy Exercises",
            "exercises":[
              {
-                "name":"3 Bicep Heavy Exercises",
+                "name":"Bicep Heavy Exercises",
                 "exercise":[
                   {"name":"Standing Bicep Curl (Barbell)","progression_model":"double progression"},
                   {"name":"Preacher Curl (Barbell)","progression_model":"double progression"}
@@ -44,10 +44,10 @@
           },
           {
            "code":"4",
-           "name":"4 Bicep Light Exercises",
+           "name":"Bicep Light Exercises",
            "exercises":[
              {
-                "name":"4 Bicep Light Exercises",
+                "name":"Bicep Light Exercises",
                 "exercise":[
                   {"name":"Standing Bicep Curl (Dumbbell)","progression_model":"double progression"},
                   {"name":"Standing Cable Bicep Curl","progression_model":"double progression"},
@@ -62,10 +62,10 @@
           },
           {
            "code":"5",
-           "name":"5 Chest Heavy",
+           "name":"Chest Heavy",
            "exercises":[
              {
-                "name":"5 Chest Heavy",
+                "name":"Chest Heavy",
                 "exercise":[
                   {"name":"Bench Press (Barbell)","progression_model":"linear"},
                   {"name":"Decline Bench Press (Barbell)","progression_model":"linear"},
@@ -79,10 +79,10 @@
           },
           {
            "code":"6",
-           "name":"6 Chest Accesory Press",
+           "name":"Chest Accesory Press",
            "exercises":[
              {
-                "name":"6 Chest Accesory Press",
+                "name":"Chest Accesory Press",
                 "exercise":[
                   {"name":"Flat Chest Press (Dumbbell)","progression_model":"double progression"},
                   {"name":"Decline Chest Press (Dumbbell)","progression_model":"double progression"},
@@ -93,10 +93,10 @@
           },
           {
            "code":"7",
-           "name":"7 Chest Light",
+           "name":"Chest Light",
            "exercises":[
              {
-                "name":"7 Chest Light",
+                "name":"Chest Light",
                 "exercise":[
                   {"name":"Flat Chest Fly (Dumbbell)","progression_model":"double progression"},
                   {"name":"Decline Chest Fly (Dumbbell)","progression_model":"double progression"},
@@ -111,10 +111,10 @@
           },
           {
            "code":"8",
-           "name":"8 Shoulder Isolation Exercises",
+           "name":"Shoulder Isolation Exercises",
            "exercises":[
              {
-                "name":"8 Shoulder Isolation Exercises",
+                "name":"Shoulder Isolation Exercises",
                 "exercise":[
                   {"name":"Shoulder Front Raise (Dumbbell)","progression_model":"double progression"},
                   {"name":"Shoulder Front Raise (Cable Machine)","progression_model":"double progression"},
@@ -127,10 +127,10 @@
           },
           {
            "code":"9",
-           "name":"9 Shoulder Rear Delt Isolation Exercises",
+           "name":"Shoulder Rear Delt Isolation Exercises",
            "exercises":[
              {
-                "name":"9 Shoulder Rear Delt Isolation Exercises",
+                "name":"Shoulder Rear Delt Isolation Exercises",
                 "exercise":[
                   {"name":"(30 deg) Bench Supported Reverse Fly (Dumbbell)","progression_model":"double progression"},
                   {"name":"Standing Single Arm Rear Deltoids (Cable Machine)","progression_model":"double progression"},
@@ -144,10 +144,10 @@
           },
           {
            "code":"10",
-           "name":"10 Shoulder Compund Exercises",
+           "name":"Shoulder Compund Exercises",
            "exercises":[
              {
-                "name":"10 Shoulder Compund Exercises",
+                "name":"Shoulder Compund Exercises",
                 "exercise":[
                   {"name":"Standing Shoulder Press (Barbell)","progression_model":"linear"},
                   {"name":"Standing Shoulder Press (Dumbbell)","progression_model":"double progression"},
@@ -159,10 +159,10 @@
           },
           {
            "code":"11",
-           "name":"11 Back Heavy Exercises",
+           "name":"Back Heavy Exercises",
            "exercises":[
              {
-                "name":"11 Back Heavy Exercises",
+                "name":"Back Heavy Exercises",
                 "exercise":[
                   {"name":"Bent Over Row (Barbell)","progression_model":"linear"},
                   {"name":"Chin Up (Underhand Grip) ","progression_model":"double progression"},
@@ -175,10 +175,10 @@
           },
           {
            "code":"12",
-           "name":"12 Back Light Exercises",
+           "name":"Back Light Exercises",
            "exercises":[
              {
-                "name":"12 Back Light Exercises",
+                "name":"Back Light Exercises",
                 "exercise":[
                   {"name":"Single Arm Row (Dumbbell)","progression_model":"double progression"},
                   {"name":"Chest Supported Row (Dumbbell)","progression_model":"double progression"},
@@ -195,10 +195,10 @@
           },
           {
            "code":"13",
-           "name":"13 Quadricep Heavy Exercises",
+           "name":"Quadricep Heavy Exercises",
            "exercises":[
              {
-                "name":"13 Quadricep Heavy Exercises",
+                "name":"Quadricep Heavy Exercises",
                 "exercise":[
                   {"name":"Front Squat (Barbell)","progression_model":"linear"},
                   {"name":"Back Squat (Barbell)","progression_model":"linear"},
@@ -213,10 +213,10 @@
           },
           {
            "code":"14",
-           "name":"14 Quadricep Heavy Compund Accesory Exercises",
+           "name":"Quadricep Heavy Compund Accesory Exercises",
            "exercises":[
              {
-                "name":"14 Quadricep Heavy Compund Accesory Exercises",
+                "name":"Quadricep Heavy Compund Accesory Exercises",
                 "exercise":[
                   {"name":"Hack Squat ","progression_model":"linear"},
                   {"name":"Leg Press","progression_model":"linear"},
@@ -228,10 +228,10 @@
           },
           {
            "code":"15",
-           "name":"15 Quadricep Isolation Exercises",
+           "name":"Quadricep Isolation Exercises",
            "exercises":[
              {
-                "name":"15 Quadricep Isolation Exercises",
+                "name":"Quadricep Isolation Exercises",
                 "exercise":[
                   {"name":"Leg Extensions","progression_model":"double progression"},
                   {"name":"Single Legged Leg Extensions ","progression_model":"double progression"}
@@ -240,10 +240,10 @@
           },
           {
            "code":"16",
-           "name":"16 Quadricep Uni-lateral Exercises",
+           "name":"Quadricep Uni-lateral Exercises",
            "exercises":[
              {
-                "name":"16 Quadricep Uni-lateral Exercises",
+                "name":"Quadricep Uni-lateral Exercises",
                 "exercise":[
                   {"name":"Leg Extensions (Single Leg)","progression_model":"double progression"},
                   {"name":"Rear Foot Elevated Lunge","progression_model":"double progression"},
@@ -256,10 +256,10 @@
           },
           {
            "code":"17",
-           "name":"17 Hamstring Heavy Exercises",
+           "name":"Hamstring Heavy Exercises",
            "exercises":[
              {
-                "name":"17 Hamstring Heavy Exercises",
+                "name":"Hamstring Heavy Exercises",
                 "exercise":[
                   {"name":"Romanian Deadlift  (Barbell)","progression_model":"linear"},
                   {"name":"Romanian Deadlift  (Dumbbell)","progression_model":"double progression"},
@@ -269,10 +269,10 @@
           },
           {
            "code":"18",
-           "name":"18 Hamstring Light Exercises",
+           "name":"Hamstring Light Exercises",
            "exercises":[
              {
-                "name":"18 Hamstring Light Exercises",
+                "name":"Hamstring Light Exercises",
                 "exercise":[
                   {"name":"Hamstring Curl ","progression_model":"double progression"},
                   {"name":"Single Hamstring Curl ","progression_model":"double progression"},
@@ -283,10 +283,10 @@
           },
           {
            "code":"19",
-           "name":"19 Glute Compund Exercises",
+           "name":"Glute Compund Exercises",
            "exercises":[
              {
-                "name":"19 Glute Compund Exercises",
+                "name":"Glute Compund Exercises",
                 "exercise":[
                   {"name":"Glute Bridge (Barbell)","progression_model":"linear"},
                   {"name":"Hip Thrust (Barbell)","progression_model":"linear"}
@@ -295,10 +295,10 @@
           },
           {
            "code":"20",
-           "name":"20 Glutes Accessory Exercises",
+           "name":"Glutes Accessory Exercises",
            "exercises":[
              {
-                "name":"",
+                "name":"Glutes Accessory Exercises",
                 "exercise":[
                   {"name":"Glute Bridge (Single Leg) ","progression_model":"double progression"},
                   {"name":"Hip Thurst (Single leg)","progression_model":"double progression"},
@@ -313,10 +313,10 @@
           },
           {
            "code":"21",
-           "name":"21 Calves Exercises",
+           "name":"Calves Exercises",
            "exercises":[
              {
-                "name":"21 Calves Exercises",
+                "name":"Calves Exercises",
                 "exercise":[
                   {"name":"Standing Calf Raise","progression_model":"double progression"},
                   {"name":"Seated Calf Raise","progression_model":"double progression"},
@@ -327,10 +327,10 @@
           },
           {
            "code":"22",
-           "name":"22 Hamstring & Glute Exercises",
+           "name":"Hamstring & Glute Exercises",
            "exercises":[
              {
-                "name":"22 Hamstring & Glute Exercises",
+                "name":"Hamstring & Glute Exercises",
                 "exercise":[
                   {"name":"Romanian Deadlift  (Barbell)","progression_model":"linear"},
                   {"name":"Romanian Deadlift  (Dumbbell)","progression_model":"double progression"},
@@ -341,10 +341,10 @@
           },
           {
            "code":"23",
-           "name":"23 Abdominal Exercises",
+           "name":"Abdominal Exercises",
            "exercises":[
              {
-                "name":"23 Abdominal Exercises",
+                "name":"Abdominal Exercises",
                 "exercise":[
                   {"name":"Crunch With Arms Extended","progression_model":"double progression"},
                   {"name":"Lying Leg Raises","progression_model":"double progression"},
@@ -357,10 +357,10 @@
           },
           {
            "code":"24",
-           "name":"24 Abdominal Failure Exercises",
+           "name":"Abdominal Failure Exercises",
            "exercises":[
              {
-                "name":"24 Abdominal Failure Exercises",
+                "name":"Abdominal Failure Exercises",
                 "exercise":[
                   {"name":"Side Plank","progression_model":"till failure"},
                   {"name":"Plank","progression_model":"till failure"},
@@ -373,7 +373,7 @@
           },
           {
             "code": "25",
-            "name": "25 Back Light + Chest Light Exercise ",
+            "name": "Back Light + Chest Light Exercise ",
             "exercises": [
                 {
                     "name": "Chest Light ",
@@ -461,7 +461,7 @@
            },
            {
              "code": "26",
-             "name": "26 Shoulder lateral + tricep light",
+             "name": "Shoulder lateral + tricep light",
              "exercises": [
                  {
                      "name": "Shoulder Isolation Exercises",
@@ -490,7 +490,7 @@
            },
            {
              "code": "27",
-             "name": "27 Chest Dumbbellpress  + Quad isolation extension",
+             "name": "Chest Dumbbellpress  + Quad isolation extension",
              "exercises": [
                  {
                      "name": "Chest Accesory Press",
@@ -512,7 +512,7 @@
            },
            {
              "code": "28",
-             "name": "28 Back light + hamstring light",
+             "name": "Back light + hamstring light",
              "exercises": [
                  {
                      "name": "Back Light Exercises",
@@ -542,7 +542,7 @@
            },
            {
              "code": "29",
-             "name": "29 Lateral shoulder + light biceps",
+             "name": "Lateral shoulder + light biceps",
              "exercises": [
                  {
                      "name": "Shoulder Isolation Exercises",
@@ -572,7 +572,7 @@
            },
            {
              "code": "30",
-             "name": "30 shoulder isolation + Glute isolation",
+             "name": "shoulder isolation + Glute isolation",
              "exercises": [
                  {
                      "name": "Shoulder Isolation Exercises",
@@ -602,7 +602,7 @@
            },
            {
              "code": "31",
-             "name": "31 Bicep light + Tricep light",
+             "name": "Bicep light + Tricep light",
              "exercises": [
                  {
                      "name": "Tricep Light Exercises",
@@ -633,7 +633,7 @@
            },
            {
              "code": "32",
-             "name": "32 Light lateral shoulder + hamstring ioslation ",
+             "name": "Light lateral shoulder + hamstring ioslation ",
              "exercises": [
                  {
                      "name": "Shoulder Isolation Exercises",
@@ -659,7 +659,7 @@
            },
            {
              "code": "33",
-             "name": "33 Calves Or Glutes Exercises",
+             "name": "Calves Or Glutes Exercises",
              "exercises": [
                  {
                      "name": "Calves Exercises",
@@ -687,7 +687,7 @@
            },
            {
              "code": "34",
-             "name": "34 Shoudler light + Tricep light",
+             "name": "Shoudler light + Tricep light",
              "exercises": [
                  {
                      "name": "Shoulder Isolation Exercises",
@@ -716,7 +716,7 @@
            },
            {
              "code": "35",
-             "name": "35 Bicep light +glute isolation",
+             "name": "Bicep light +glute isolation",
              "exercises": [
                  {
                      "name": "Bicep Light Exercises",
@@ -748,7 +748,7 @@
            },
            {
              "code": "36",
-             "name": "36 Calves + bicep light",
+             "name": "Calves + bicep light",
              "exercises": [
                  {
                      "name": "Calves Exercises",
@@ -776,7 +776,7 @@
            },
            {
              "code": "37",
-             "name": "37 Rear delt + glute isolation ",
+             "name": "Rear delt + glute isolation",
              "exercises": [
                  {
                      "name": "Shoulder Rear Delt Isolation Exercises",
@@ -807,7 +807,7 @@
            },
            {
              "code": "38",
-             "name": "38 Quad unilateral + hamstring isolation",
+             "name": "Quad unilateral + hamstring isolation",
              "exercises": [
                  {
                      "name": "Quadricep Uni-lateral Exercises",
@@ -833,7 +833,7 @@
            },
            {
              "code": "39",
-             "name": "39 Chest fly + glute accesory ",
+             "name": "Chest fly + glute accesory",
              "exercises": [
                  {
                      "name": "Chest Light",
@@ -865,7 +865,7 @@
            },
            {
              "code": "40",
-             "name": "40 Chest dumbbell OR hamstring isolation ",
+             "name": "Chest dumbbell OR hamstring isolation ",
              "exercises": [
                  {
                      "name": "Chest Accesory Press",
@@ -889,7 +889,7 @@
            },
            {
              "code": "41",
-             "name": "41 Light back + quad unilateral",
+             "name": "Light back + quad unilateral",
              "exercises": [
                  {
                      "name": "Back Light Exercises",
@@ -921,7 +921,7 @@
            },
            {
              "code": "42",
-             "name": "42 Lateral shoulder or glute iolsation ",
+             "name": "Lateral shoulder or glute iolsation ",
              "exercises": [
                  {
                      "name": "Shoulder Isolation Exercises",
@@ -951,7 +951,7 @@
            },
            {
              "code": "43",
-             "name": "43 Tricep light or glute isolation ",
+             "name": "Tricep light or glute isolation ",
              "exercises": [
                  {
                      "name": "Tricep Light Exercises",
@@ -982,7 +982,7 @@
            },
            {
              "code": "44",
-             "name": "44 Shoulder compound Or glute compund",
+             "name": "Shoulder compound Or glute compund",
              "exercises": [
                  {
                      "name": "Shoulder Compund Exercises",
@@ -1005,7 +1005,7 @@
            },
            {
              "code": "45",
-             "name": "45 Chest dumbbell or quad unilateral",
+             "name": "Chest dumbbell or quad unilateral",
              "exercises": [
                  {
                      "name": "Chest Accesory Press",
@@ -1031,7 +1031,7 @@
            },
            {
              "code": "46",
-             "name": "46 Shoulder rear delt + leg extensions",
+             "name": "Shoulder rear delt + leg extensions",
              "exercises": [
                  {
                      "name": "Shoulder Rear Delt Isolation Exercises",
