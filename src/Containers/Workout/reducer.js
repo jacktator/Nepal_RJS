@@ -1,10 +1,20 @@
 let DefaultState = {
+  id: null,
   days: 3,
   progress: 1,
 }
 
-const PlanReducers =(state: Object= DefaultState, action: Function) => {
+const WorkoutReducers =(state: Object= DefaultState, action: Function) => {
   switch (action.type) {
+    case "SET_PROGRAM":
+    return {
+      ...state, program: action.payload
+    }
+    case "SET_PROGRAM_ID":
+    return {
+      ...state, id: action.payload
+    }
+
     case "SET_PROGRAM_NAME":
     return {
       ...state, goal: action.payload
@@ -26,4 +36,4 @@ const PlanReducers =(state: Object= DefaultState, action: Function) => {
   }
 }
 
-export default PlanReducers;
+export default WorkoutReducers;

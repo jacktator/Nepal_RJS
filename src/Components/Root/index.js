@@ -65,7 +65,7 @@ class Root extends Component<Props>{
             <Route path="/" exact render={()=>(<Redirect to='/mainmenu'/>)} />
             <Route path="/login" exact render={()=>(<Redirect to='/mainmenu'/>)} />
             <Route path="/signup" exact render={()=>(<Redirect to='/mainmenu'/>)} />
-            <Route path="/login/logindetails" exact render={()=>(<Redirect to='/questionnaire'/>)} />
+            <Route path="/login/logindetails" exact render={()=>(<Redirect to='/mainmenu'/>)} />
             <Route path="/questionnaire" exact component={Questionnaire} />
             <Route path="/forgetpassword" exact component={ForgetPassWord} />
             <Route path="/mainmenu" exact component={MainMenuContainer}/>

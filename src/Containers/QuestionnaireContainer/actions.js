@@ -34,60 +34,64 @@ export function addQuestionnaire(state) {
 
 //Function to initialize the program after completion of the questionnaire
 export function addProgram (days, goals) {
-  console.log("addprogram",days, goals);
-  let user_id = localStorage.getItem('user_id');
-  let goal;
-  switch (goals) {
-    case "1":
-      goal = "Muscle Gain";
-      break;
-    case "2":
-      goal = "Fat Loss";
-      break;
-    case "3":
-      goal = "Decrease Stress";
-      break;
-    case "4":
-      goal = "Improve Posture";
-      break;
-    case "5":
-      goal = "Increase Fitness";
-      break;
-    default:
-      goal = "Please select the goal"
-  }
-  let jsonurl = `./DataSources/${goal.split(" ").join("").toLowerCase()}day${days}.json`;
-  console.log(jsonurl);
   return(dispatch: Function) => {
-    //fetch the list of exercise
-    return axios.get(jsonurl)
-    .then((res) => {
-      console.log("this is from json ")
-      console.log(res);
-      alert("success");
+    let user_id = localStorage.getItem('user_id');
+    let goal;
+    switch (goals) {
+      case "1":
+        goal = "Muscle Gain";
+        break;
+      case "2":
+        goal = "Fat Loss";
+        break;
+      case "3":
+        goal = "Decrease Stress";
+        break;
+      case "4":
+        goal = "Improve Posture";
+        break;
+      case "5":
+        goal = "Increase Fitness";
+        break;
+      default:
+        goal = "Please select the goal"
+    }
+    let jsonurl = `./DataSources/${goal.split(" ").join("").toLowerCase()}day${days}.json`;
+    return(dispatch: Function) => {
+      //fetch the list of exercise
+      return axios.get(jsonurl)
+      .then((res) => {
 
-      return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/program",
-      {
-        status: "publish",
-        fields: {
-            user_id: user_id,
-            program_name: goal,
-            days: days,
-            exercises: res.data.exercises,
-            progress: "1",
-            difficult_level: "1"
+        return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/program",
+        {
+          status: "publish",
+          fields: {
+              user_id: user_id,
+              program_name: goal,
+              days: days,
+              exercises: res.data.exercises,
+              progress: "1",
+              difficult_level: "1"
+          }
+        }).then((response) => {
+          console.log(response);
+        }).catch((error) => {
+          if(error.response){
+            dispatch(addError(error.response.data.message));
+          }else{
+            console.log(error);
+            dispatch(addError("OOPs! something went wrong."))
+          }
+        })
+      }).catch((error)=> {
+        if(error.response){
+          dispatch(addError(error.response.data.message));
+        }else{
+          console.log(error);
+          dispatch(addError("OOPs! something went wrong."))
         }
-      }).then((response) => {
-        console.log(response);
-        alert("Successfully created the program");
-      }).catch((error) => {
-        console.log(error);
-        alert("Got error while creating the program");
       })
-    }).catch((error)=> {
-      console.log(error);
-      alert("failure");
-    })
+    }
   }
 }
 
