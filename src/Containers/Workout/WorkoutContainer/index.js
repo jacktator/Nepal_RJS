@@ -4,7 +4,8 @@ import {Redirect} from 'react-router';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {selectFooter} from '../FooterContainer/actions';
-import {keepWorkOut, updateExercise} from './actions';
+import {updateExercise} from './actions';
+import {getProgram, keepWorkout, fetchWorkoutList} from '../actions';
 import Workout from '../../../Components/Workout/Workout';
 import SelectExercise from '../../../Components/Workout/SelectExercise';
 import Modal from '../../../Components/UI/Modal';
@@ -16,7 +17,8 @@ class WorkoutContainer extends Component{
   constructor(props){
     super(props);
     this.state = {
-      isChangeExcercise: false,
+      isChangeWorkout: false,
+      backToPlan: false,
       startExcercies: false,
       excerciseArray: [
         { value: 0, description: 'Push ups', imgurl: 'https://files.brightside.me/files/news/part_34/340810/14565160-1-0-1496126804-1496126811-650-0c369e17e2-1496430586.jpg'},
@@ -32,9 +34,14 @@ class WorkoutContainer extends Component{
       this.props.selectFooter('workoutTab');
     }
   }
-  onChangeExerciseHandler = (value) => {
-    this.setState({indexValue: value})
-    this.setState({ isChangeExcercise: true })
+  //invokes when user click keep button
+  onWorkOutKeepHandler = (index) => {
+    this.props.keepWorkout(index, this.props.planReducers);
+  }
+  //invokes when user click change button
+  onChangeExerciseHandler = (index) => {
+    this.setState({ isChangeWorkout: true, indexValue: index })
+     this.props.fetchWorkoutList(this.props.planReducers.program.exercises[0].exercise_list[index].code)
   }
 
   onSelectExerciseHandler = (index) => {
@@ -42,45 +49,48 @@ class WorkoutContainer extends Component{
     this.setState({ isChangeExcercise: false })
   }
 
-  onWorkOutKeepHandler = (value) => {
-    let workoutExerciseArray = { ...this.state.workoutExerciseArray}
-    let index = this.state.workoutExerciseArray.findIndex(i =>{ return i.value === value; });
-    workoutExerciseArray[index].isSaved = true;
-    // this.setState({ workoutExerciseArray })
-  }
   onStartHandler = () => {
     this.setState({ startExcercies: true})
   }
   render() {
-    let {workOutExerciseArray} = this.props.WorkOutReducers;
-    console.log(this.props.planReducers);
-    console.log(this.props.planReducers.exercises);
-    return (
-      <Hoc>
+    console.log("from workout", this.props.planReducers);
+    if(this.props.planReducers.program){
+      console.log("get the program");
+      console.log(this.props.planReducers.program);
+      console.log(this.props.planReducers.id);
+      console.log(this.props.planReducers.exercises[0]);
+      let {workOutExerciseArray} = this.props.WorkOutReducers;
+      return (
+        <Hoc>
         <Workout
-        exercise = {this.props.planReducers.exercises}
-
+        program = {this.props.planReducers.program}
         onExerciseChange = {this.onChangeExerciseHandler}
-        onWorkOutKeep = {this.props.keepWorkOut}
+        onWorkOutKeep = {this.onWorkOutKeepHandler}
         onStart = {this.onStartHandler}
         workOutArray ={workOutExerciseArray}
-
         />
-        {(this.state.isChangeExcercise) && (
+        {(this.state.isChangeWorkout) && (
           <Modal modalFor = "modal-for-select-exercise">
-            <SelectExercise
-              onSelect = {this.onSelectExerciseHandler}
-              excerciseArray = {this.state.excerciseArray}
-            />
+          <SelectExercise
+            onSelect = {this.onSelectExerciseHandler}
+            excerciseArray = {this.state.excerciseArray}
+            listExercise = {this.props.planReducers}
+          />
           </Modal>
         )}
         {( this.state.startExcercies) && (
           <Redirect to="/exercise" />
         )}
-        <FooterContainer />
+        <FooterContainer currentPath='workout' />
       </Hoc>
     )
   }
+  else{
+    return(
+      <Redirect to= "/plan" />
+    )
+  }
+}
 }
 function mapStateToProps(state){
   return {
@@ -91,7 +101,7 @@ function mapStateToProps(state){
 }
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
-    selectFooter, keepWorkOut, updateExercise,
+    selectFooter, keepWorkout, fetchWorkoutList, updateExercise, getProgram
   }, dispatch
 );
 }

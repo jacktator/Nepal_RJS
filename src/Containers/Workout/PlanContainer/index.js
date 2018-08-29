@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {selectFooter} from '../FooterContainer/actions';
-import {getProgram} from './actions';
+import {getProgram} from '../actions';
 import FooterContainer from'../FooterContainer';
 import Plan from '../../../Components/Workout/Plan';
-class PlanContainer extends Component{
 
+class PlanContainer extends Component{
   componentWillMount(){
     if(this.props.currentFooterTab!== 'planTab' ){
       this.props.selectFooter('planTab');
@@ -19,7 +19,7 @@ class PlanContainer extends Component{
     return (
       <div>
         <Plan planReducers={this.props.planReducers}/>
-        <FooterContainer/>
+        <FooterContainer currentPath='plan'/>
       </div>
     )
   }

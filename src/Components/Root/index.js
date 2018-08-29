@@ -43,7 +43,7 @@ class Root extends Component<Props>{
               <Route path="/forgetpassword" exact component={ForgetPassWord} />
               <Route path="/mainmenu" exact component={MainMenuContainer}/>
               <Route path="/exercise" exact component={ExerciseContainer}/>
-              <Route path="/workout" exact component={WorkoutContainer} />
+              <Route path="/workout/:day?" exact component={WorkoutContainer} />
               <Route path="/plan" exact component={PlanContainer}/>
               <Route path="/footer" exact component={FooterContainer} />
               <Route path="/history" exact component={HistoryContainer}/>
@@ -65,11 +65,11 @@ class Root extends Component<Props>{
             <Route path="/" exact render={()=>(<Redirect to='/mainmenu'/>)} />
             <Route path="/login" exact render={()=>(<Redirect to='/mainmenu'/>)} />
             <Route path="/signup" exact render={()=>(<Redirect to='/mainmenu'/>)} />
-            <Route path="/login/logindetails" exact render={()=>(<Redirect to='/questionnaire'/>)} />
+            <Route path="/login/logindetails" exact render={()=>(<Redirect to='/mainmenu'/>)} />
             <Route path="/questionnaire" exact component={Questionnaire} />
             <Route path="/forgetpassword" exact component={ForgetPassWord} />
             <Route path="/mainmenu" exact component={MainMenuContainer}/>
-            <Route path="/workout" exact component={WorkoutContainer} />
+            <Route path="/workout/:day?" exact component={WorkoutContainer} />
             <Route path="/plan" exact component={PlanContainer}/>
             <Route path="/footer" exact component={FooterContainer} />
             <Route path="/history" exact component={HistoryContainer}/>

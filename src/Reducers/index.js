@@ -9,7 +9,7 @@ import FooterReducers from '../Containers/Workout/FooterContainer/reducer';
 import ProfileReducers from '../Containers/ProfileContainer/reducer';
 import ExerciseReducers from '../Containers/ExerciseContainer/reducer';
 
-import PlanReducers from '../Containers/Workout/PlanContainer/reducer';
+import WorkoutReducers from '../Containers/Workout/reducer';
 
 
 //here is for put all seperate data together into a .js file Reducer
@@ -26,7 +26,7 @@ const Reducer = combineReducers({
   ForgetPasswordStates: ForgetPasswordReducers,
   RootStates: RootReducers,
 
-  PlanReducers,
+  PlanReducers: WorkoutReducers,
 })
 
 export default Reducer;

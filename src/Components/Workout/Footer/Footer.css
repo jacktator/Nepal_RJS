@@ -13,6 +13,7 @@
     position: fixed;
     bottom: 0;
     width: 100%;
+    height: auto;
     user-select: none;
     -moz-user-select: none;
     -webkit-user-drag: none;
@@ -20,10 +21,14 @@
     -ms-user-select: none;
 }
 
-.home-icon{
+.container .footer-container .am-tabs-default-bar-tab{
+  height: 60px;
+}
+
+.history-icon{
   background: url('../../../Assets/Footer/home.svg')  center center /  21px 21px no-repeat;
 }
-.home-sel-icon{
+.history-sel-icon{
   background: url('../../../Assets/Footer/homeSel.svg')  center center /  21px 21px no-repeat;
 }
 .me-icon{

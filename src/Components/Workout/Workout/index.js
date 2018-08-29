@@ -14,27 +14,27 @@ const Workout = (props) => {
           <div> <strong> Warm up</strong> </div>
           <WhiteSpace size="lg"/>
 
-          {props.workOutArray.map((data,key) => (
+          {props.program.exercises[0].exercise_list.map((data,key) => (
             <div key={key} className="list-workout">
               <span style = {{float: 'left', margin: "0 20px 0 0"}}>
-                <img src={require(`../../../Assets/WorkoutIcons/${data.value}.jpg`)} height="60px" width="100px" alt="work" />
+                <img src={require(`../../../Assets/WorkoutIcons/${key}.jpg`)} height="60px" width="100px" alt="work" />
               </span>
-              {!data.isSaved && (
+              {!data.is_saved && (
                 <span style = {{ float :'right'}}>
-                  <span className="span-button keep" onClick={() => props.onWorkOutKeep(data.value)}> keep </span>
+                  <span className="span-button keep" onClick={() => props.onWorkOutKeep(key)}> keep </span>
                   <WhiteSpace size="xs"/>
-                  <span className="span-button change" onClick={() => props.onExerciseChange(data.value)}> change </span>
+                  <span className="span-button change" onClick={() => props.onExerciseChange(key)}> change </span>
                 </span>
               )}
-              {data.isSaved && (
+              {data.is_saved && (
                 <span style = {{ float :'right'}}>
                   <span className="span-button saved"> saved! </span>
                 </span>
               )}
               <span>
-                {data.name}
+                {data.workout}
                 <WhiteSpace />
-                40
+                {data.code}
               </span>
             </div>
           ))}
@@ -49,9 +49,7 @@ const Workout = (props) => {
           </Button>
         </div>
     </div>//container
-
   )
 }
-
 
 export default Workout;
