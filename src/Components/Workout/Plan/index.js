@@ -4,20 +4,21 @@ import './Plan.css'
 import StickyTab from './StickyTab'
 
 const Plan = (props) => {
-
+  const currentlyPercentage = progressPercentage(props.planReducers.progress, props.planReducers.days);
+  const currentlyWeek = currentWeek(props.planReducers.progress, props.planReducers.days);
     return (
       <div>
         <img src={require("../../../Assets/Workout/sampleImage.jpeg")} alt="sampleImage" className="plan-sample-image"/>
         <div className="plan-title">{props.planReducers.goal}</div>
-        <div className="plan-program-duration">You are currently at Week {currentWeek(props.planReducers.progress, props.planReducers.days)} </div>
-        <div className="plan-progress-text"> {progressPercentage(props.planReducers.progress, props.planReducers.days)}% Completed </div>
+        <div className="plan-program-duration">You are currently at Week {currentlyWeek} </div>
+        <div className="plan-progress-text"> {currentlyPercentage}% Completed </div>
         <div className="plan-progress-container">
           <WingBlank>
-              <Progress position="normal" percent={40} showInfo={false}/>
+              <Progress position="normal" percent={currentlyPercentage} showInfo={false}/>
           </WingBlank>
         </div>
         <div className="sticky-tab">
-          <StickyTab currentpage={currentWeek(props.planReducers.progress, props.planReducers.days)-1} planReducers={props.planReducers}/>
+          <StickyTab currentpage={currentlyWeek-1} planReducers={props.planReducers}/>
         </div>
       </div>
     )

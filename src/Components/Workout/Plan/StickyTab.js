@@ -20,6 +20,7 @@ export default class StickyTab extends React.Component {
          renderTabBar={
            props => <Tabs.DefaultTabBar {...props} page={3} />
          }
+         swipeable = {false}
          onTabClick={(tab,index) => {console.log(index), index <= this.props.currentpage ? this.setState({currentPage: index}) : null}}
        >
           <div className='content'>

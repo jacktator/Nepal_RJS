@@ -40,7 +40,7 @@ class WorkoutContainer extends Component{
   }
   //invokes when user click change button
   onChangeExerciseHandler = (index) => {
-    this.setState({ isChangeWorkout: false, indexValue: index })
+    this.setState({ isChangeWorkout: true, indexValue: index })
      this.props.fetchWorkoutList(this.props.planReducers.program.exercises[0].exercise_list[index].code)
   }
 
@@ -74,21 +74,23 @@ class WorkoutContainer extends Component{
           <SelectExercise
             onSelect = {this.onSelectExerciseHandler}
             excerciseArray = {this.state.excerciseArray}
+            listExercise = {this.props.planReducers}
           />
           </Modal>
         )}
         {( this.state.startExcercies) && (
           <Redirect to="/exercise" />
         )}
-        <FooterContainer />
-        </Hoc>
-      )
-    } else{
-      return(
-        <Redirect to="/plan" />
-      )
-    }
+        <FooterContainer currentPath='workout' />
+      </Hoc>
+    )
   }
+  else{
+    return(
+      <Redirect to= "/plan" />
+    )
+  }
+}
 }
 function mapStateToProps(state){
   return {

@@ -11,6 +11,8 @@ import './SelectExercise.css';
   }
 
   render() {
+    console.log("From Select Exercise page");
+    console.log(this.props.listExercise)
     return (
         <div className="container">
           <Carousel className="space-carousel"

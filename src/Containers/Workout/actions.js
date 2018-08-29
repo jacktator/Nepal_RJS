@@ -24,6 +24,7 @@ export function fetchWorkoutList(code) {
   return(dispatch: Function) => {
     return axios.get(`https://nepal.sk8tech.io/wp-json/wp/v2/exercise?filter[meta_key]=code&filter[meta_value]=${code}`)
     .then((response) => {
+      dispatch(setWorkoutList(response.data[0].acf));
       console.log(response.data[0].acf)
     }).catch((error) => {
       console.log(error);
@@ -55,6 +56,12 @@ export function keepWorkout(index, workoutReducers){
   }
 }
 
+export function setWorkoutList ( list_exercise: Object ) {
+  return {
+    type: "SET_WORKOUT_LIST",
+    payload: list_exercise
+  }
+}
 export function  setProgram( program: Object){
   return {
     type: "SET_PROGRAM",
