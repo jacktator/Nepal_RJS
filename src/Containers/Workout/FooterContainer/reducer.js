@@ -1,12 +1,12 @@
 // @flow
 let DefaultState = {
-  currentFooterTab: 'historyTab',
+  currentFooterTab: 'history',
   hidden: false,
   fullScreen: false,
 }
 
-const FooterReducers =(state: Object= DefaultState, action: Function) => {
-
+const FooterReducers = (state: Object = DefaultState, action: Function) => {
+  console.log('redux',state.currentFooterTab)
   switch (action.type) {
     case "SELECT_FOOTER":
       return {

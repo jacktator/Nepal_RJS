@@ -13,6 +13,7 @@ import Hoc from '../../../HOC/Hoc';
 class PlanContainer extends Component{
   constructor(props){
     super(props);
+    // console.log(this.props.match.path.substring(1))
     this.state = {
       history: [
         {program:'push up', date:'2018/05/15', day:{one:{task: 'task' }, two: { task: 'task'} } },
@@ -63,7 +64,7 @@ onParticularDayClickedHandler =(e, program ) => {
     return (
       <Hoc>
         {RenderPage}
-        <FooterContainer/>
+        <FooterContainer currentPath='history'/>
       </Hoc>
     )
   }

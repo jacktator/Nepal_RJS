@@ -77,7 +77,7 @@ class WorkoutContainer extends Component{
         {( this.state.startExcercies) && (
           <Redirect to="/exercise" />
         )}
-        <FooterContainer />
+        <FooterContainer currentPath='workout' />
       </Hoc>
     )
   }

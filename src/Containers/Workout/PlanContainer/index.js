@@ -19,7 +19,7 @@ class PlanContainer extends Component{
     return (
       <div>
         <Plan planReducers={this.props.planReducers}/>
-        <FooterContainer/>
+        <FooterContainer currentPath='plan'/>
       </div>
     )
   }
