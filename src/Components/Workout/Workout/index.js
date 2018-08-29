@@ -11,12 +11,7 @@ const Workout = (props) => {
           <div className="workout-info">Immediate Fat Loss Workout</div>
         </div>
         <WingBlank>
-<<<<<<< HEAD
-
-          <div> <strong> Workout</strong> </div>
-=======
           <div> <strong> Warm up</strong> </div>
->>>>>>> 12a5db70cdbb8f81f0a39293dd11dbc4f800b791
           <WhiteSpace size="lg"/>
 
           {props.workOutArray.map((data,key) => (
