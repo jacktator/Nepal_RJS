@@ -16,7 +16,7 @@ export default class StickyTab extends React.Component {
      <div className='plan-tabs'>
        <Tabs
          page={this.state.currentPage}
-         tabs={[...Array(5)].map((v, k) => { return ({ title: <span style={(k) > this.props.currentpage ? ({textDecoration: 'line-through'}) : null}>{'WEEK' + (k + 1)}</span> })})}
+         tabs={[...Array(5)].map((v, k) => { return ({ title: <span style={(k) > this.props.currentpage ? ({textDecoration: 'line-through'}) : null}>{'WEEK ' + (k + 1)}</span> })})}
          renderTabBar={
            props => <Tabs.DefaultTabBar {...props} page={3} />
          }
