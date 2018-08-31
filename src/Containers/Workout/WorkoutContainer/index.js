@@ -5,13 +5,13 @@ import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {selectFooter} from '../FooterContainer/actions';
 import {updateExercise} from './actions';
-import {getProgram, keepWorkout, fetchWorkoutList} from '../actions';
+import {getProgram, keepWorkout, fetchWorkoutList, selectWorkout} from '../actions';
 import Workout from '../../../Components/Workout/Workout';
 import SelectExercise from '../../../Components/Workout/SelectExercise';
 import Modal from '../../../Components/UI/Modal';
 import FooterContainer from '../FooterContainer';
 import Hoc from '../../../HOC/Hoc';
-import {WingBlank} from 'antd-mobile'
+import {WingBlank} from 'antd-mobile';
 
 class WorkoutContainer extends Component{
   constructor(props){
@@ -26,7 +26,7 @@ class WorkoutContainer extends Component{
         { value: 2, description: 'Seated Macine Chest Press', imgurl: 'https://www.bodybuilding.com/images/2016/july/10-best-chest-exercises-for-building-muscle-v2-4-700xh.jpg'},
         { value: 3, description: 'Dips for chest', imgurl: 'https://www.bodybuilding.com/images/2016/july/10-best-chest-exercises-for-building-muscle-v2-6-700xh.jpg'},
       ],
-      indexValue: null
+      program_index: null,
     }
   }
   componentWillMount(){
@@ -40,13 +40,16 @@ class WorkoutContainer extends Component{
   }
   //invokes when user click change button
   onChangeExerciseHandler = (index) => {
-    this.setState({ isChangeWorkout: true, indexValue: index })
+    this.setState({ isChangeWorkout: true, program_index: index })
      this.props.fetchWorkoutList(this.props.planReducers.program.exercises[0].exercise_list[index].code)
   }
 
-  onSelectExerciseHandler = (index) => {
-    this.props.updateExercise(this.state.indexValue, index);
-    this.setState({ isChangeExcercise: false })
+  onSelectExerciseHandler = (exercise) => {
+    console.log("exercise", exercise)
+    alert(exercise.name);
+    alert(exercise.progression_model);
+    this.props.selectWorkout(this.state.program_index, this.props.planReducers, exercise);
+    this.setState({ isChangeWorkout: false })
   }
 
   onStartHandler = () => {
@@ -74,7 +77,7 @@ class WorkoutContainer extends Component{
           <SelectExercise
             onSelect = {this.onSelectExerciseHandler}
             excerciseArray = {this.state.excerciseArray}
-            listExercise = {this.props.planReducers}
+            listExercise = {this.props.planReducers.list_exercise}
           />
           </Modal>
         )}
@@ -101,7 +104,7 @@ function mapStateToProps(state){
 }
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
-    selectFooter, keepWorkout, fetchWorkoutList, updateExercise, getProgram
+    selectFooter, keepWorkout, fetchWorkoutList, updateExercise, getProgram, selectWorkout
   }, dispatch
 );
 }

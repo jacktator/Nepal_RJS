@@ -18,6 +18,32 @@ export function getProgram(){
   }
 }
 
+export function selectWorkout(index, workoutReducers, selectedExercise) {
+    alert("select workout");
+    return(dispatch: Function) => {
+      let token = localStorage.getItem('token');
+      let id = workoutReducers.id;
+      let { program } = workoutReducers;
+      program.exercises[0].exercise_list[index].workout = selectedExercise.name;
+      program.exercises[0].exercise_list[index].progression_model = selectedExercise.progression_model;
+      dispatch(setProgram(program));
+      return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${id}`,
+        {
+            status: "publish",
+            fields: program
+        }, {
+          headers:{
+            Authorization: "Bearer" + token
+          }
+        })
+      .then((response)=> {
+        dispatch(setProgram(response.data.acf));
+      }).catch((error)=> {
+        alert("error");
+      })
+    }
+}
+
 export function fetchWorkoutList(code) {
   let token = localStorage.getItem('token');
   alert(code);
