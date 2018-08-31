@@ -23,8 +23,9 @@
   top:0%;
   left:0%;
 }
+
 .modal-for-select-exercise {
-  background-color: rgba(100,100,100,.5);
+  background-color: white;
   position:fixed;
   z-index:200;
   width:90%;
@@ -43,4 +44,13 @@
     height:auto;
     left:20%;
   }
+}
+
+.cancel-icon{
+  height:26px;
+  width:26px;
+  z-index: 1000;
+  position:absolute;
+  right:1%;
+  top:1%
 }
