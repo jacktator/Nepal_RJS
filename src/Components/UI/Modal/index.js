@@ -7,7 +7,7 @@ const Modal = (props) => {
   console.log(loadClass);
   return(
     <Hoc>
-      <Backdrop />
+      <Backdrop/>
       <div className={loadClass}>
         {props.children}
       </div>

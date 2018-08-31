@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import {WingBlank,Progress} from 'antd-mobile'
+import {WingBlank,Progress,Button} from 'antd-mobile'
 import './Plan.css'
 import StickyTab from './StickyTab'
+
 
 const Plan = (props) => {
   const currentlyPercentage = progressPercentage(props.WorkoutReducers.progress, props.WorkoutReducers.days);
   const currentlyWeek = currentWeek(props.WorkoutReducers.progress, props.WorkoutReducers.days);
-  if(props.WorkoutReducers.program){
     return (
       <div>
         <img src={require("../../../Assets/Workout/sampleImage.jpeg")} alt="sampleImage" className="plan-sample-image"/>
@@ -23,12 +23,6 @@ const Plan = (props) => {
         </div>
       </div>
     )
-  }
-  else{
-    return(
-      <div>this is loading...</div>
-    )
-  }
 }
 
 const progressPercentage = (progress, days) => Math.round((progress - 1) / (days * 5) * 100);

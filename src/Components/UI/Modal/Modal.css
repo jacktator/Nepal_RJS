@@ -25,12 +25,11 @@
 }
 .modal-for-select-exercise {
   background-color: rgba(100,100,100,.5);
-  position:absolute;
+  position:fixed;
   z-index:200;
   width:90%;
   left:5%;
-  height:auto;
-  top:20vh;
+  top: 10vh;
 }
 
 @media screen and (min-width: 768px) {
