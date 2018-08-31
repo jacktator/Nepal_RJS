@@ -4,16 +4,10 @@ import {Link} from 'react-router-dom'
 const Item = List.Item
 
 export default class Content extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      WorkoutPlans:[
-      ]
-    }
-  }
+
 
   render() {
-    const { days, progress, goal } = this.props.WorkoutReducers;
+    const { days, progress, program_name } = this.props.WorkoutReducers.program;
 
     return(
       <div>
@@ -29,7 +23,7 @@ export default class Content extends Component {
                   style={{width:'100%'}}
                   // onClick={() => this.onChange(data.value)}
                   >
-                  <div style={{ fontSize: '16px'  }}> {'Day '+ dayNumber} {goal} </div>
+                  <div style={{ fontSize: '16px'  }}> {'Day '+ dayNumber} {program_name} </div>
                   </Item>
                 </Link>
                   )

@@ -12,7 +12,6 @@ class FooterContainer extends Component{
     super(props);
   }
   render() {
-    console.log(this.props)
     return (
       // <Hoc>
         <Footer

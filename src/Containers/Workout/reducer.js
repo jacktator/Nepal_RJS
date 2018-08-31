@@ -17,7 +17,7 @@ const WorkoutReducers =(state: Object= DefaultState, action: Function) => {
 
     case "SET_WORKOUT_LIST" :
     return {
-      ...state, list_exercise: action.payload
+      ...state, listExercise: action.payload
     }
 
     case "SET_PROGRAM_NAME":
