@@ -20,35 +20,31 @@ class WorkoutContainer extends Component{
       isChangeWorkout: false,
       backToPlan: false,
       startExcercies: false,
-      excerciseArray: [
-        { value: 0, description: 'Push ups', imgurl: 'https://files.brightside.me/files/news/part_34/340810/14565160-1-0-1496126804-1496126811-650-0c369e17e2-1496430586.jpg'},
-        { value: 1, description: 'Barbell Bench Press', imgurl: 'https://www.bodybuilding.com/images/2016/july/10-best-chest-exercises-for-building-muscle-v2-1-700xh.jpg'},
-        { value: 2, description: 'Seated Macine Chest Press', imgurl: 'https://www.bodybuilding.com/images/2016/july/10-best-chest-exercises-for-building-muscle-v2-4-700xh.jpg'},
-        { value: 3, description: 'Dips for chest', imgurl: 'https://www.bodybuilding.com/images/2016/july/10-best-chest-exercises-for-building-muscle-v2-6-700xh.jpg'},
-      ],
-      program_index: null,
+      exercisesIndex: null,
+      dayIndex : null,
     }
   }
   componentWillMount(){
     if(this.props.currentFooterTab!== 'workoutTab' ){
       this.props.selectFooter('workoutTab');
     }
+    if(this.props.WorkoutReducers.program){
+      const dayIndex = this.props.WorkoutReducers.program.exercises.findIndex(i => { return i.day === this.props.match.params.day })
+      this.setState({dayIndex})
+    }
   }
   //invokes when user click keep button
-  onWorkOutKeepHandler = (index) => {
-    this.props.keepWorkout(index, this.props.planReducers);
+  onWorkOutKeepHandler = (index ) => {
+    this.props.keepWorkout(index, this.props.WorkoutReducers);
   }
   //invokes when user click change button
   onChangeExerciseHandler = (index) => {
-    this.setState({ isChangeWorkout: true, program_index: index })
-     this.props.fetchWorkoutList(this.props.planReducers.program.exercises[0].exercise_list[index].code)
+    this.setState({ isChangeWorkout: true, exercisesIndex: index })
+     this.props.fetchWorkoutList(this.props.WorkoutReducers.program.exercises[0].exercise_list[index].code)
   }
 
   onSelectExerciseHandler = (exercise) => {
-    console.log("exercise", exercise)
-    alert(exercise.name);
-    alert(exercise.progression_model);
-    this.props.selectWorkout(this.state.program_index, this.props.planReducers, exercise);
+    this.props.selectWorkout(this.state.exercisesIndex, this.props.WorkoutReducers, exercise);
     this.setState({ isChangeWorkout: false })
   }
 
@@ -56,17 +52,12 @@ class WorkoutContainer extends Component{
     this.setState({ startExcercies: true})
   }
   render() {
-    console.log("from workout", this.props.planReducers);
-    if(this.props.planReducers.program){
-      console.log("get the program");
-      console.log(this.props.planReducers.program);
-      console.log(this.props.planReducers.id);
-      console.log(this.props.planReducers.exercises[0]);
-      let {workOutExerciseArray} = this.props.WorkOutReducers;
+    if(this.props.WorkoutReducers.program){
+      let {workOutExerciseArray} = this.props.WorkoutReducers;
       return (
         <Hoc>
         <Workout
-        program = {this.props.planReducers.program}
+        program = {this.props.WorkoutReducers.program}
         onExerciseChange = {this.onChangeExerciseHandler}
         onWorkOutKeep = {this.onWorkOutKeepHandler}
         onStart = {this.onStartHandler}
@@ -76,8 +67,7 @@ class WorkoutContainer extends Component{
           <Modal modalFor = "modal-for-select-exercise">
           <SelectExercise
             onSelect = {this.onSelectExerciseHandler}
-            excerciseArray = {this.state.excerciseArray}
-            listExercise = {this.props.planReducers.list_exercise}
+            listExercise = {this.props.WorkoutReducers.listExercise}
           />
           </Modal>
         )}
@@ -98,8 +88,8 @@ class WorkoutContainer extends Component{
 function mapStateToProps(state){
   return {
     currentFooterTab: state.FooterReducers.currentFooterTab,
-    WorkOutReducers: state.WorkOutReducers,
-    planReducers: state.PlanReducers,
+    WorkoutReducers: state.WorkoutReducers,
+    WorkoutReducers: state.WorkoutReducers,
   }
 }
 function matchDispatchToProps(dispatch){

@@ -15,10 +15,9 @@ class PlanContainer extends Component{
     this.props.getProgram();
   }
   render() {
-    console.log("plan reducer from container",this.props.planReducers)
     return (
       <div>
-        <Plan planReducers={this.props.planReducers}/>
+        <Plan WorkoutReducers={this.props.WorkoutReducers}/>
         <FooterContainer currentPath='plan'/>
       </div>
     )
@@ -29,7 +28,7 @@ function mapStateToProps(state){
   return {
     currentFooterTab: state.FooterReducers.currentFooterTab,
     profileReducers: state.ProfileReducers,
-    planReducers: state.PlanReducers,
+    WorkoutReducers: state.WorkoutReducers,
   }
 }
 function matchDispatchToProps(dispatch){

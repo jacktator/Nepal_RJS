@@ -16,20 +16,26 @@
 }
 
 {
-  "exerciselist":[
-    {"name":"13 Quadricep Heavy Exercises","code":"13","sets":"3","reps":"9"},
-  ],
 
+"day":[{
+  "day":"1",
+  "week":"1",
+  "donelist":[
+    {"name":"13 Quadricep Heavy Exercises","code":"13","sets":"3","reps":"9","kg":"10"}
+  ]
 }
+]
+}
+
 
 
 // data to store for users who train every Day
 
 // what exercise they do
 // what exercise code
+// how many sets they did
+// how many reps they did
 
-// how many sets
-// how many reps
 // how many kg
 // how many they did
 // how many total

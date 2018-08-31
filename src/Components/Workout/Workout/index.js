@@ -8,10 +8,10 @@ const Workout = (props) => {
       <div className="container-without-button">
         <div className= "image-container">
           <img className="image-source" src={require('../../../Assets/Workout/immediate-fat-loss.jpg')} alt="immediate fat loss"/>
-          <div className="workout-info">Immediate Fat Loss Workout</div>
+          <div className="workout-info">{props.program.program_name}</div>
         </div>
         <WingBlank>
-          <div> <strong> Warm up</strong> </div>
+          <div> <strong> Work Out </strong> </div>
           <WhiteSpace size="lg"/>
 
           {props.program.exercises[0].exercise_list.map((data,key) => (
@@ -44,9 +44,13 @@ const Workout = (props) => {
           </WingBlank>
           </div>
         <div className="footer-botton">
-          <Button type="primary" onClick={() => props.onStart()}>
-              Start your workout
-          </Button>
+        <WingBlank>
+          <WingBlank>
+            <Button type="primary" onClick={() => props.onStart()}>
+                Start your Workout
+            </Button>
+          </WingBlank>
+        </WingBlank>
         </div>
     </div>//container
   )

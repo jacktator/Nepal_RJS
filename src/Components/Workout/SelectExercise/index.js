@@ -6,15 +6,13 @@ import './SelectExercise.css';
   class SelectExercise extends React.Component {
     state = {
     imgHeight: 500,
-    current_exercise: 0,
+    currentExercise: 0,
     index: 0,
   }
 
-  componentWillMount() {
-    console.log()
-  }
+//This function
   selectExercise = () => {
-    this.props.onSelect(this.props.listExercise.exercises[this.state.index].exercise[this.state.current_exercise])
+    this.props.onSelect(this.props.listExercise.exercises[this.state.index].exercise[this.state.currentExercise])
   }
 
   render() {
@@ -23,6 +21,7 @@ import './SelectExercise.css';
     console.log(this.state.currentItem)
 
     if(this.props.listExercise){
+      console.log("list Exercise", this.props.listExercise)
       return (
         <div className="container">
           <Carousel className="space-carousel"
@@ -31,7 +30,7 @@ import './SelectExercise.css';
             slideWidth={1}
             autoplay={false}
             infinite
-            afterChange={index => this.setState({current_exercise: index}) }
+            afterChange={index => this.setState({currentExercise: index}) }
           >
 
           { this.props.listExercise.exercises[this.state.index].exercise.map( (data, key) => (

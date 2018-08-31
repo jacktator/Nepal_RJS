@@ -6,7 +6,6 @@ let DefaultState = {
 }
 
 const FooterReducers = (state: Object = DefaultState, action: Function) => {
-  console.log('redux',state.currentFooterTab)
   switch (action.type) {
     case "SELECT_FOOTER":
       return {
