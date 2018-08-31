@@ -24,7 +24,7 @@ export default class StickyTab extends React.Component {
          onTabClick={(tab,index) => {console.log(index), index <= this.props.currentpage ? this.setState({currentPage: index}) : null}}
        >
           <div className='content'>
-             <Content selectedWeek={this.state.currentPage+1} planReducers={this.props.planReducers}/>
+             <Content selectedWeek={this.state.currentPage+1} WorkoutReducers={this.props.WorkoutReducers}/>
          </div>
         </Tabs>
      </div>

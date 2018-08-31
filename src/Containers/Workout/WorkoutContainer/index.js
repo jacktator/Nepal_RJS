@@ -36,12 +36,12 @@ class WorkoutContainer extends Component{
   }
   //invokes when user click keep button
   onWorkOutKeepHandler = (index) => {
-    this.props.keepWorkout(index, this.props.planReducers);
+    this.props.keepWorkout(index, this.props.WorkoutReducers);
   }
   //invokes when user click change button
   onChangeExerciseHandler = (index) => {
     this.setState({ isChangeWorkout: true, indexValue: index })
-     this.props.fetchWorkoutList(this.props.planReducers.program.exercises[0].exercise_list[index].code)
+     this.props.fetchWorkoutList(this.props.WorkoutReducers.program.exercises[0].exercise_list[index].code)
   }
 
   onSelectExerciseHandler = (index) => {
@@ -53,17 +53,17 @@ class WorkoutContainer extends Component{
     this.setState({ startExcercies: true})
   }
   render() {
-    console.log("from workout", this.props.planReducers);
-    if(this.props.planReducers.program){
+    console.log("from workout", this.props.WorkoutReducers);
+    if(this.props.WorkoutReducers.program){
       console.log("get the program");
-      console.log(this.props.planReducers.program);
-      console.log(this.props.planReducers.id);
-      console.log(this.props.planReducers.exercises[0]);
-      let {workOutExerciseArray} = this.props.WorkOutReducers;
+      console.log(this.props.WorkoutReducers.program);
+      console.log(this.props.WorkoutReducers.id);
+      console.log(this.props.WorkoutReducers.exercises[0]);
+      let {workOutExerciseArray} = this.props.WorkoutReducers;
       return (
         <Hoc>
         <Workout
-        program = {this.props.planReducers.program}
+        program = {this.props.WorkoutReducers.program}
         onExerciseChange = {this.onChangeExerciseHandler}
         onWorkOutKeep = {this.onWorkOutKeepHandler}
         onStart = {this.onStartHandler}
@@ -74,7 +74,7 @@ class WorkoutContainer extends Component{
           <SelectExercise
             onSelect = {this.onSelectExerciseHandler}
             excerciseArray = {this.state.excerciseArray}
-            listExercise = {this.props.planReducers}
+            listExercise = {this.props.WorkoutReducers}
           />
           </Modal>
         )}
@@ -95,8 +95,8 @@ class WorkoutContainer extends Component{
 function mapStateToProps(state){
   return {
     currentFooterTab: state.FooterReducers.currentFooterTab,
-    WorkOutReducers: state.WorkOutReducers,
-    planReducers: state.PlanReducers,
+    WorkoutReducers: state.WorkoutReducers,
+    WorkoutReducers: state.WorkoutReducers,
   }
 }
 function matchDispatchToProps(dispatch){

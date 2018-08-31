@@ -6,7 +6,7 @@ let DefaultState = {
   ]
 }
 
-const WorkOutReducers = (state: Object= DefaultState, action: Function) => {
+const WorkoutReducers = (state: Object= DefaultState, action: Function) => {
   let index = null;
   let workOutExerciseArray;
   switch (action.type) {
@@ -32,4 +32,4 @@ const WorkOutReducers = (state: Object= DefaultState, action: Function) => {
   }
 }
 
-export default WorkOutReducers;
+export default WorkoutReducers;

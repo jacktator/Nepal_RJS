@@ -13,8 +13,8 @@ export default class Content extends Component {
   }
 
   render() {
-    const { days, progress, goal } = this.props.planReducers;
-    
+    const { days, progress, goal } = this.props.WorkoutReducers;
+
     return(
       <div>
         <List>
