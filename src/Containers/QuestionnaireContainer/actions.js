@@ -35,6 +35,8 @@ export function addQuestionnaire(state) {
 //Function to initialize the program after completion of the questionnaire
 export function addProgram (days, goals) {
   return(dispatch: Function) => {
+    alert("goals");
+    console.log("Added program");
     let user_id = localStorage.getItem('user_id');
     let goal;
     switch (goals) {
@@ -57,11 +59,10 @@ export function addProgram (days, goals) {
         goal = "Please select the goal"
     }
     let jsonurl = `./DataSources/${goal.split(" ").join("").toLowerCase()}day${days}.json`;
-    return(dispatch: Function) => {
       //fetch the list of exercise
       return axios.get(jsonurl)
       .then((res) => {
-
+        console.log("Reading from json", res)
         return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/program",
         {
           status: "publish",
@@ -74,8 +75,10 @@ export function addProgram (days, goals) {
               difficult_level: "1"
           }
         }).then((response) => {
-          console.log(response);
+          alert("success")
+          console.log("success",response);
         }).catch((error) => {
+          alert("error")
           if(error.response){
             dispatch(addError(error.response.data.message));
           }else{
@@ -91,7 +94,6 @@ export function addProgram (days, goals) {
           dispatch(addError("OOPs! something went wrong."))
         }
       })
-    }
   }
 }
 

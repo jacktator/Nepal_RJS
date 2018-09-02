@@ -13,8 +13,17 @@ class PlanContainer extends Component{
       this.props.selectFooter('planTab');
     }
     this.props.getProgram();
+
+    if(this.props.WorkoutReducers.program){
+      const {days, progress} = this.props.WorkoutReducers.program;
+      const currentWeek = Math.ceil(progress / days);
+      const currentDay = progress - ((currentWeek -1 ) * days)
+      alert (currentDay);
+      alert(currentWeek);
+    }
   }
   render() {
+    console.log(this.props.WorkoutReducers);
     return (
       <div>
         <Plan WorkoutReducers={this.props.WorkoutReducers}/>

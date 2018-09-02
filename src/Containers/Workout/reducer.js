@@ -2,6 +2,7 @@ let DefaultState = {
   id: null,
   days: 3,
   progress: 1,
+  dayIndex: null,
 }
 
 const WorkoutReducers =(state: Object= DefaultState, action: Function) => {
@@ -20,22 +21,21 @@ const WorkoutReducers =(state: Object= DefaultState, action: Function) => {
       ...state, listExercise: action.payload
     }
 
-    case "SET_PROGRAM_NAME":
+    case "SET_DAY_iNDEX" :
     return {
-      ...state, goal: action.payload
+      ...state, dayIndex: action.payload
     }
-    case "SET_DAYS":
+
+    case "SET_CURRENT_WEEK" :
     return {
-      ...state, days: action.payload
+      ...state, currentWeek: action.payload
     }
-    case "SET_EXERCISES":
+
+    case "SET_CURRENT_DAY" :
     return {
-      ...state, exercises: action.payload
-      }
-    case "SET_Progress":
-      return {
-        ...state, progress: action.payload
-      }
+      ...state, currentDay: action.payload
+    }
+
     default:
       return state;
   }

@@ -5,7 +5,6 @@ import RecordList from './RecordList.js';
 import WeightandRep from './WeightAndRep';
 
 
-
 // icons taken from http://iconfont.cn/
 // import history from '../../../Assets/Exercise/history.svg';
 //import historySel from '../../../Assets/Exercise/historySel.svg';
@@ -17,8 +16,8 @@ export default class Exercise extends Component{
     e.preventDefault();
     alert(e)
   }
-
   render(){
+    console.log("exercise", this.props)
     return(
       <div className="exercise">
           {/* navigation bar on top of screen*/}
@@ -30,7 +29,7 @@ export default class Exercise extends Component{
            className="nav-bar"
            style={{marginTop:"20px"}}>
            <div className="nav-bar-text">
-             {this.props.exerciseName} {this.props.exerciseNumber}/{this.props.exerciseTotal}
+            {this.props.exerciseName} {this.props.exerciseNumber}/{this.props.exerciseTotal}
            </div>
          </NavBar>
          {/* prescription is the black circle on top of image*/}
@@ -58,6 +57,9 @@ export default class Exercise extends Component{
          <div className="stepper-list-container">
             <div>
               <WeightandRep
+                weight = {this.props.weight}
+                sets = {this.props.sets}
+                reps = {this.props.reps}
               onSaveButtonClicked = {this.props.onSaveButtonClicked}/>
             </div>
             {/* displays the record list, refer to RecordList.js*/}

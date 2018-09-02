@@ -19,7 +19,7 @@ import TermsAndCondComponent from '../TermsAndCond';
 import GetJson from '../../Containers/ZShawn';
 
 //import {connect} from 'react-redux';
-import ExerciseContainer from '../../Containers/ExerciseContainer/';
+import ExerciseContainer from '../../Containers/Workout/ExerciseContainer/';
 
 type Props = {
   path: string,

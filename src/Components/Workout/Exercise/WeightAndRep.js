@@ -8,9 +8,14 @@ export default class WeightAndRep extends Component{
     this.state = {
       weightValue: 10,
       repValue:5,
+      sets: 1
     };
     this.onChangeWeight=this.onChangeWeight.bind(this);
     this.onChangeRep=this.onChangeRep.bind(this);
+  }
+
+  componentDidMount () {
+    this.setState({ weightValue: this.props.weight, repValue: this.props.reps})
   }
 
   onChangeWeight = (val) => {
@@ -22,6 +27,7 @@ export default class WeightAndRep extends Component{
   }
 
   render(){
+    console.log(this.state);
     return(
       <div className="weight-and-rep">
         {/* Text for stepper*/}

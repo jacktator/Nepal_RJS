@@ -4,9 +4,9 @@ import './Plan.css'
 import StickyTab from './StickyTab'
 
 const Plan = (props) => {
-  const currentlyPercentage = progressPercentage(props.WorkoutReducers.progress, props.WorkoutReducers.days);
-  const currentlyWeek = currentWeek(props.WorkoutReducers.progress, props.WorkoutReducers.days);
   if(props.WorkoutReducers.program){
+      const currentlyPercentage = progressPercentage(props.WorkoutReducers.progress, props.WorkoutReducers.days);
+      const currentlyWeek = currentWeek(props.WorkoutReducers.program.progress, props.WorkoutReducers.program.days);
     return (
       <div>
         <img src={require("../../../Assets/Workout/sampleImage.jpeg")} alt="sampleImage" className="plan-sample-image"/>
@@ -33,5 +33,6 @@ const Plan = (props) => {
 
 const progressPercentage = (progress, days) => Math.round((progress - 1) / (days * 5) * 100);
 const currentWeek = (progress, days) => (Math.ceil(progress / days));
+const currentday = (progress, week, days) => (progress - (week -1) * days);
 
 export default Plan;

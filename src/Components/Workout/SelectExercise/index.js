@@ -16,12 +16,8 @@ import './SelectExercise.css';
   }
 
   render() {
-    console.log("From Select Exercise page");
-    console.log(this.props.listExercise)
-    console.log(this.state.currentItem)
 
     if(this.props.listExercise){
-      console.log("list Exercise", this.props.listExercise)
       return (
         <div className="container">
           <Carousel className="space-carousel"
@@ -52,7 +48,10 @@ import './SelectExercise.css';
           <div className="select-button">
 
             <Button type="default" onClick={() => this.selectExercise()}>Select</Button>
-            <Button type="primary" onClick={() => (this.props.onSelect(this.state.currentItem))}>Select</Button>
+            <Button type="primary" onClick={() =>
+              (this.props.onSelect(this.props.listExercise.exercises[this.state.index].exercise[this.state.currentExercise]))
+            }>
+            Select</Button>
           </div>
           <select>
             <option value="volvo">Volvo</option>

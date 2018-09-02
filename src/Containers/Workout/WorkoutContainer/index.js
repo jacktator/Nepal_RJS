@@ -4,8 +4,7 @@ import {Redirect} from 'react-router';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {selectFooter} from '../FooterContainer/actions';
-import {updateExercise} from './actions';
-import {getProgram, keepWorkout, fetchWorkoutList, selectWorkout} from '../actions';
+import {getProgram, keepWorkout, fetchWorkoutList, selectWorkout, setDayIndex} from '../actions';
 import Workout from '../../../Components/Workout/Workout';
 import SelectExercise from '../../../Components/Workout/SelectExercise';
 import Modal from '../../../Components/UI/Modal';
@@ -21,16 +20,17 @@ class WorkoutContainer extends Component{
       backToPlan: false,
       startExcercies: false,
       exercisesIndex: null,
-      dayIndex : null,
     }
   }
   componentWillMount(){
     if(this.props.currentFooterTab!== 'workoutTab' ){
       this.props.selectFooter('workoutTab');
     }
+  }
+  componentDidMount(){
     if(this.props.WorkoutReducers.program){
       const dayIndex = this.props.WorkoutReducers.program.exercises.findIndex(i => { return i.day === this.props.match.params.day })
-      this.setState({dayIndex})
+      this.props.setDayIndex(dayIndex);
     }
   }
   //invokes when user click keep button
@@ -53,15 +53,13 @@ class WorkoutContainer extends Component{
   }
   render() {
     if(this.props.WorkoutReducers.program){
-      let {workOutExerciseArray} = this.props.WorkoutReducers;
       return (
         <Hoc>
         <Workout
-        program = {this.props.WorkoutReducers.program}
         onExerciseChange = {this.onChangeExerciseHandler}
         onWorkOutKeep = {this.onWorkOutKeepHandler}
         onStart = {this.onStartHandler}
-        workOutArray ={workOutExerciseArray}
+        WorkoutReducers ={this.props.WorkoutReducers}
         />
         {(this.state.isChangeWorkout) && (
           <Modal modalFor = "modal-for-select-exercise">
@@ -77,8 +75,7 @@ class WorkoutContainer extends Component{
         <FooterContainer currentPath='workout' />
       </Hoc>
     )
-  }
-  else{
+  }else{
     return(
       <Redirect to= "/plan" />
     )
@@ -89,12 +86,11 @@ function mapStateToProps(state){
   return {
     currentFooterTab: state.FooterReducers.currentFooterTab,
     WorkoutReducers: state.WorkoutReducers,
-    WorkoutReducers: state.WorkoutReducers,
   }
 }
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
-    selectFooter, keepWorkout, fetchWorkoutList, updateExercise, getProgram, selectWorkout
+    selectFooter, keepWorkout, fetchWorkoutList, getProgram, selectWorkout, setDayIndex
   }, dispatch
 );
 }
