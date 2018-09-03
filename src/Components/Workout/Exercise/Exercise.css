@@ -54,7 +54,7 @@ width measurements:
   user-select:'none';
 }
 
-.exercise .history-icon {
+.exercise ._history-icon {
   position: absolute;
   height:18%;
   width:18%;
@@ -80,9 +80,9 @@ width measurements:
   height: 23vw;
   width: 23vw;
   border-radius: 50%;
-  background-color: #000000;
+  /*background-color: #000000;*/
   right: 3%;
-  top: 7%;
+  top: 6%;
   z-index: 1;
   text-align: center;
 }
@@ -155,4 +155,22 @@ width measurements:
 .no-copy{
   user-select: none;
   pointer-events: none;
+}
+
+
+.btn-two {
+    color: white;
+    padding: 15px 20px;
+    display: inline-block;
+    border: 1px solid rgba(0,0,0,0.21);
+    border-bottom-color: rgba(0,0,0,0.34);
+    text-shadow:0 1px 0 rgba(0,0,0,0.15);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.34) inset,
+                      0 2px 0 -1px rgba(0,0,0,0.13),
+                      0 3px 0 -1px rgba(0,0,0,0.08),
+                      0 3px 13px -1px rgba(0,0,0,0.21);
+    border-radius: 20px;
+    background-color: #9abf7f;
+    font-size: 10px;
+    white-space: nowrap;
 }
