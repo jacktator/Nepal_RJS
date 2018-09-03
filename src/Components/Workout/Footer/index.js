@@ -16,6 +16,8 @@ const tabsObject = {
 };
 
 const contentOfTabs = (props) => [
+
+  
   { title: selectedDiv('history', props.currentPage), value: 'history' },
   { title: selectedDiv('plan', props.currentPage), value: 'plan' },
   { title: workoutDiv('workout', props.currentDay ,props.currentPage), value: 'workout' },
