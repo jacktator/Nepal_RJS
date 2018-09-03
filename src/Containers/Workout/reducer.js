@@ -1,7 +1,5 @@
 let DefaultState = {
   id: null,
-  days: 3,
-  progress: 1,
   dayIndex: null,
 }
 

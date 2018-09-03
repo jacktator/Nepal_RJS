@@ -6,6 +6,8 @@ import {selectFooter} from '../FooterContainer/actions';
 import {getProgram} from '../actions';
 import FooterContainer from'../FooterContainer';
 import Plan from '../../../Components/Workout/Plan';
+import Hoc from '../../../HOC/Hoc';
+import Loading from '../../../Components/Loading'
 
 class PlanContainer extends Component{
   componentWillMount(){
@@ -13,23 +15,23 @@ class PlanContainer extends Component{
       this.props.selectFooter('planTab');
     }
     this.props.getProgram();
-
-    if(this.props.WorkoutReducers.program){
-      const {days, progress} = this.props.WorkoutReducers.program;
-      const currentWeek = Math.ceil(progress / days);
-      const currentDay = progress - ((currentWeek -1 ) * days)
-      alert (currentDay);
-      alert(currentWeek);
-    }
   }
   render() {
-    console.log(this.props.WorkoutReducers);
-    return (
-      <div>
-        <Plan WorkoutReducers={this.props.WorkoutReducers}/>
-        <FooterContainer currentPath='plan'/>
-      </div>
-    )
+    console.log("plan reducer from container",this.props.WorkoutReducers)
+    if(this.props.WorkoutReducers.program) {
+      return (
+        <div>
+          <Plan WorkoutReducers={this.props.WorkoutReducers}/>
+          <FooterContainer currentPath='plan'/>
+        </div>
+      )
+    } else {
+      return(
+        <Hoc>
+        <Loading/>
+        </Hoc>
+      )
+    }
   }
 }
 

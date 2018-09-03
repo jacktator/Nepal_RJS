@@ -7,8 +7,10 @@ const Modal = (props) => {
   console.log(loadClass);
   return(
     <Hoc>
-      <Backdrop />
+      <Backdrop/>
       <div className={loadClass}>
+      <img src={require("../../../Assets/Modal/ic_cancel.png")} className="cancel-icon" alt="cancel"
+      onClick={()=> alert("insert logic to remove modal window")}/>
         {props.children}
       </div>
     </Hoc>

@@ -42,7 +42,7 @@ class Root extends Component<Props>{
               <Route path="/login/logindetails" exact component={LoginDetails} />
               <Route path="/forgetpassword" exact component={ForgetPassWord} />
               <Route path="/mainmenu" exact component={MainMenuContainer}/>
-              <Route path="/exercise" exact component={ExerciseContainer}/>
+              <Route path="/exercise:index?" exact component={ExerciseContainer}/>
               <Route path="/workout/:day" exact component={WorkoutContainer} />
               <Route path="/plan" exact component={PlanContainer}/>
               <Route path="/footer" exact component={FooterContainer} />

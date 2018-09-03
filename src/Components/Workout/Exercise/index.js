@@ -29,15 +29,15 @@ export default class Exercise extends Component{
            className="nav-bar"
            style={{marginTop:"20px"}}>
            <div className="nav-bar-text">
-            {this.props.exerciseName} {this.props.exerciseNumber}/{this.props.exerciseTotal}
+            {this.props.exerciseData.name} {this.props.exerciseNumber}/{this.props.exerciseTotal}
            </div>
          </NavBar>
          {/* prescription is the black circle on top of image*/}
           <div className="prescription-circle">
                 <div className="prescription">
-                  <div>{this.props.sets}x</div>
-                  <div>{this.props.reps} reps</div>
-                  <div>{this.props.weight} kg</div>
+                  <div>{this.props.exerciseData.sets}x</div>
+                  <div>{this.props.exerciseData.reps} reps</div>
+                  <div>{this.props.exerciseData.weight} kg</div>
                 </div>
          </div>
          <div className="image-block">
@@ -57,8 +57,8 @@ export default class Exercise extends Component{
          <div className="stepper-list-container">
             <div>
               <WeightandRep
-                weight = {this.props.weight}
-                sets = {this.props.sets}
+                weight = {this.props.exerciseData.weight}
+                sets = {this.props.exerciseData.sets}
                 reps = {this.props.reps}
               onSaveButtonClicked = {this.props.onSaveButtonClicked}/>
             </div>

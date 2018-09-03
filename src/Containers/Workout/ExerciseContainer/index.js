@@ -20,10 +20,15 @@ class ExerciseContainer extends Component{
       //selectedVideo:null,
       goBack: false,
       showInfo: false,
-
       sets : 1,
+      exerciseIndex: 0,
     }
     //this.videoSearch('Destiny 2')
+  }
+  componentWillMount() {
+    if(this.props.match.params.index){
+      this.setState({exerciseIndex: this.props.match.params.index})
+    }
   }
   backButtonHandler = (e) => {
     e.preventDefault();
@@ -42,19 +47,16 @@ class ExerciseContainer extends Component{
 
   render(){
     console.log(this.state.sets);
-    const WorkoutReducers = this.props.WorkoutReducers;
-    const exerciseName = WorkoutReducers.program.exercises[0].exercise_list[0].name;
-    const exerciseTotal = WorkoutReducers.program.exercises[0].exercise_list.length;
-    const sets = WorkoutReducers.program.exercises[0].exercise_list[0].sets;
-    const repss = WorkoutReducers.program.exercises[0].exercise_list[0].reps;
-
+    const {program, dayIndex}= this.props.WorkoutReducers;
     const exerciseNumber = 1;
     const video = "https://www.youtube.com/watch?v=vn_dFUUuHtI&feature=youtu.be";
     const videoDescription = "THIS is test video description";
-    const weight = 30;
-    const reps = 8;
     const exerciseLog = [];
-    console.log(WorkoutReducers);
+    const reps = 8;
+
+    const exerciseData = program.exercises[dayIndex].exercise_list[this.state.exerciseIndex];
+    const exerciseTotal = program.exercises[0].exercise_list.length.length;
+    console.log(program);
     //const videoSearch = _.debounce((term)=>{this.videoSearch(term)}, 300);
     // const {exerciseName,exerciseNumber,exerciseTotal,sets,reps,weight,video,videoDescription,exerciseLog} =  this.props.ExerciseReducers;
     return(
@@ -63,14 +65,12 @@ class ExerciseContainer extends Component{
           onBackButtonClicked ={this.backButtonHandler}
           onSaveButtonClicked ={this.saveButtonHandler}
           onInfoClicked = {this.infoHandler}
-          /*videos={this.state.selectedVideo}*/
-          exerciseName = {exerciseName}
-          exerciseNumber = {exerciseNumber}
+          exerciseData = {exerciseData}
           exerciseTotal = {exerciseTotal}
+          /*videos={this.state.selectedVideo}*/
+          exerciseNumber = {exerciseNumber}
 
-          sets = {sets}
           reps = {reps}
-          weight = {weight}
 
           exerciseLog = {exerciseLog}
         />

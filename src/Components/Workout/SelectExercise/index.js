@@ -1,7 +1,9 @@
 import React from 'react';
 
-import { Carousel, Button } from 'antd-mobile';
+import { Carousel, Button,SegmentedControl, WingBlank,WhiteSpace} from 'antd-mobile';
 import './SelectExercise.css';
+import Loading from '../../Loading';
+import Hoc from '../../../HOC/Hoc';
 
   class SelectExercise extends React.Component {
     state = {
@@ -31,7 +33,7 @@ import './SelectExercise.css';
 
           { this.props.listExercise.exercises[this.state.index].exercise.map( (data, key) => (
             <div className="image-with-description" key={key}>
-              <div className="excercise-header" style={{ height:'25px',background:'black', color:'white', textAlign: "center"}}>{data.name}</div>
+              <div className="excercise-header" style={{margin:"10px 0px 10px",backgroundColor:'white',color:'black', textAlign: "center"}}>{data.name}</div>
               <img
                 key = { data.value }
                 src={require(`../../../Assets/Workout/images/${key}.jpeg`)}
@@ -45,23 +47,32 @@ import './SelectExercise.css';
             </div>
           ))}
           </Carousel>
+          <WhiteSpace/>
           <div className="select-button">
-
-            <Button type="default" onClick={() => this.selectExercise()}>Select</Button>
-            <Button type="primary" onClick={() =>
-              (this.props.onSelect(this.props.listExercise.exercises[this.state.index].exercise[this.state.currentExercise]))
-            }>
-            Select</Button>
+            <WingBlank>
+              <Button type="default" onClick={() => this.selectExercise()}>Select</Button>
+            </WingBlank>
+            <WhiteSpace/>
+            <WingBlank>
+              <Button type="primary" onClick={() => (this.props.onSelect(this.state.currentItem))}>Select</Button>
+            </WingBlank>
           </div>
-          <select>
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-          </select>
+          <WhiteSpace/>
+          <WingBlank><SegmentedControl values={['Laxman', 'Gautem']} /></WingBlank>
+          <WhiteSpace/>
         </div>
       );
     }else{
       return(
-        <div> Just a moment ....</div>
+        <div>
+        <WhiteSpace size='xl'/>
+        <WhiteSpace size='xl'/>
+        <WhiteSpace size='xl'/>
+        <Loading mode="selectExercise"/>
+        <WhiteSpace size='xl'/>
+        <WhiteSpace size='xl'/>
+        <WhiteSpace size='xl'/>
+        </div>
       )
     }
   }

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import {WingBlank,Progress} from 'antd-mobile'
+import {WingBlank,Progress,Button} from 'antd-mobile'
 import './Plan.css'
 import StickyTab from './StickyTab'
 
+
 const Plan = (props) => {
   if(props.WorkoutReducers.program){
-      const currentlyPercentage = progressPercentage(props.WorkoutReducers.progress, props.WorkoutReducers.days);
+      const currentlyPercentage = progressPercentage(props.WorkoutReducers.program.progress, props.WorkoutReducers.program.days);
       const currentlyWeek = currentWeek(props.WorkoutReducers.program.progress, props.WorkoutReducers.program.days);
     return (
       <div>
@@ -22,11 +23,6 @@ const Plan = (props) => {
           <StickyTab currentpage={currentlyWeek-1} WorkoutReducers={props.WorkoutReducers}/>
         </div>
       </div>
-    )
-  }
-  else{
-    return(
-      <div>this is loading...</div>
     )
   }
 }
