@@ -6,8 +6,8 @@ export default class WeightAndRep extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      weightValue: 10,
-      repValue:5,
+      weight: 10,
+      reps:5,
       sets: 1
     };
     this.onChangeWeight=this.onChangeWeight.bind(this);
@@ -15,19 +15,18 @@ export default class WeightAndRep extends Component{
   }
 
   componentDidMount () {
-    this.setState({ weightValue: this.props.weight, repValue: this.props.reps})
+    this.setState({ weight: this.props.exerciseData.weight, reps: this.props.reps})
   }
 
   onChangeWeight = (val) => {
-    this.setState({ weightValue: val });
+    this.setState({ weight: val });
   }
 
   onChangeRep = (val) => {
-    this.setState({ repValue: val });
+    this.setState({ reps: val });
   }
 
   render(){
-    console.log(this.state);
     return(
       <div className="weight-and-rep">
         {/* Text for stepper*/}
@@ -43,7 +42,7 @@ export default class WeightAndRep extends Component{
             max={200}
             min={1}
             step={2.5}
-            value={this.state.weightValue}
+            value={this.state.weight}
             onChange={(e) => this.onChangeWeight(e)}
           /></Flex.Item>
         <Flex.Item><Stepper
@@ -51,7 +50,7 @@ export default class WeightAndRep extends Component{
             showNumber
             max={10}
             min={1}
-            value={this.state.repValue}xw
+            value={this.state.reps}xw
             onChange={this.onChangeRep}
           /></Flex.Item>
         </Flex>
@@ -59,7 +58,7 @@ export default class WeightAndRep extends Component{
         <Flex justify="center" className="save-button">
           <Flex.Item>
           <MediaQuery query="(min-height:668px)">
-          <Button type="primary" inline="true" size="large" onClick={() => this.props.onSaveButtonClicked(this.state.repValue,this.state.weightValue)}>
+          <Button type="primary" inline="true" size="large" onClick={() => this.props.onSaveButtonClicked(this.props.exerciseData.code, this.state.sets ,this.state.reps, this.state.weight)}>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               SAVE
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

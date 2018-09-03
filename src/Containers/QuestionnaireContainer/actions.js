@@ -75,8 +75,19 @@ export function addProgram (days, goals) {
               difficult_level: "1"
           }
         }).then((response) => {
-          alert("success")
+
           console.log("success",response);
+            return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/record",
+            {
+              status: "publish",
+              fields: {
+                program_id: response.data.id
+              }
+            }).then((recordResponse) => {
+              console.log("Successfully created user record", recordResponse);
+            }).catch((error) => {
+              console.log(error);
+            })
         }).catch((error) => {
           alert("error")
           if(error.response){

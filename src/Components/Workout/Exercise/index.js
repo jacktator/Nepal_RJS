@@ -17,7 +17,6 @@ export default class Exercise extends Component{
     alert(e)
   }
   render(){
-    console.log("exercise", this.props)
     return(
       <div className="exercise">
           {/* navigation bar on top of screen*/}
@@ -29,7 +28,7 @@ export default class Exercise extends Component{
            className="nav-bar"
            style={{marginTop:"20px"}}>
            <div className="nav-bar-text">
-            {this.props.exerciseData.name} {this.props.exerciseNumber}/{this.props.exerciseTotal}
+            {this.props.exerciseData.workout} {this.props.exerciseNumber}/{this.props.exerciseTotal}
            </div>
          </NavBar>
          {/* prescription is the black circle on top of image*/}
@@ -59,6 +58,7 @@ export default class Exercise extends Component{
          <div className="stepper-list-container">
             <div>
               <WeightandRep
+                exerciseData = {this.props.exerciseData}
                 weight = {this.props.exerciseData.weight}
                 sets = {this.props.exerciseData.sets}
                 reps = {this.props.reps}

@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Info from '../../../Components/Workout/Exercise/Info';
 import Modal from '../../../Components/UI/Modal';
+import {saveExerciseData, getExerciseRecord} from '../actions';
 
 
 // import _ from 'lodash';
@@ -21,7 +22,7 @@ class ExerciseContainer extends Component{
       goBack: false,
       showInfo: false,
       sets : 1,
-      exerciseIndex: 0,
+      exerciseIndex: 1,
     }
     //this.videoSearch('Destiny 2')
   }
@@ -29,14 +30,16 @@ class ExerciseContainer extends Component{
     if(this.props.match.params.index){
       this.setState({exerciseIndex: this.props.match.params.index})
     }
+    // this.props.getExerciseRecord(this.props.WorkoutReducers.programID);
   }
   backButtonHandler = (e) => {
     e.preventDefault();
     this.setState({ goBack: true})
   }
-  saveButtonHandler = (rep, weight) => {
-    console.log(rep);
-    console.log(weight);
+  saveButtonHandler = (code, sets, reps, weight) => {
+    let {recordID, currentWeek, currentDay, record} = this.props.WorkoutReducers;
+    console.log("this is record", record);
+    this.props.saveExerciseData(recordID, currentWeek, currentDay, code, weight, sets, reps, record);
     this.setState({ sets : this.state.sets+1})
   }
   infoHandler = (e) => {
@@ -44,9 +47,8 @@ class ExerciseContainer extends Component{
     this.setState({ showInfo: !this.state.showInfo})
   }
   render(){
+    console.log("this is record showing in render", this.props.WorkoutReducers.record);
     if(this.props.WorkoutReducers.program){
-
-      console.log(this.state.sets);
       const {program, dayIndex}= this.props.WorkoutReducers;
       const exerciseNumber = 1;
       const video = "https://www.youtube.com/watch?v=vn_dFUUuHtI&feature=youtu.be";
@@ -55,8 +57,7 @@ class ExerciseContainer extends Component{
       const reps = 8;
 
       const exerciseData = program.exercises[dayIndex].exercise_list[this.state.exerciseIndex];
-      const exerciseTotal = program.exercises[dayIndex].exercise_list.length.length;
-      console.log(program);
+      const exerciseTotal = program.exercises[dayIndex].exercise_list.length;
       //const videoSearch = _.debounce((term)=>{this.videoSearch(term)}, 300);
       // const {exerciseName,exerciseNumber,exerciseTotal,sets,reps,weight,video,videoDescription,exerciseLog} =  this.props.ExerciseReducers;
       return(
@@ -114,6 +115,7 @@ function mapStateToProps(state){
 
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
+    saveExerciseData, getExerciseRecord
   }, dispatch
 );
 }
