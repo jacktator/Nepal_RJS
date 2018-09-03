@@ -35,9 +35,11 @@ export default class Exercise extends Component{
          {/* prescription is the black circle on top of image*/}
           <div className="prescription-circle">
                 <div className="prescription">
+                <button className="btn-two">
                   <div>{this.props.exerciseData.sets}x</div>
                   <div>{this.props.exerciseData.reps} reps</div>
                   <div>{this.props.exerciseData.weight} kg</div>
+                </button>
                 </div>
          </div>
          <div className="image-block">
