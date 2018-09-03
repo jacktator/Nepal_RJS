@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {NavBar, Icon, NoticeBar,WingBlank,Progress} from 'antd-mobile';
+import {NavBar, Icon, NoticeBar,WingBlank,Progress,Tag,Grid,Badge} from 'antd-mobile';
 import './Exercise.css';
 import RecordList from './RecordList.js';
 import WeightandRep from './WeightAndRep';
@@ -45,7 +45,7 @@ export default class Exercise extends Component{
            <img src={require("../../../Assets/Exercise/exerciseGif.gif")} className="exercise-image" alt="exercise"/>
            <div className="image-container">
            {/* history button */}
-           <img src={require("../../../Assets/Exercise/history.svg")} className="history-icon" alt="history"
+           <img src={require("../../../Assets/Exercise/history.svg")} className="_history-icon" alt="history"
            onClick={() => {alert("can see previous training longs of weights and reps they achieved. this goes to a seperate page.")}}/>
            {/* exercise information*/}
            <img src={require("../../../Assets/Exercise/exerciseInfo.svg")} className="info-icon" alt="info"

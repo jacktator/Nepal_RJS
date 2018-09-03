@@ -17,6 +17,10 @@ import Hoc from '../../../HOC/Hoc';
     this.props.onSelect(this.props.listExercise.exercises[this.state.index].exercise[this.state.currentExercise])
   }
 
+  onChange = (value) => {
+    console.log(`selectedIndex:${value.nativeEvent.selectedSegmentIndex}`);
+  }
+
   render() {
 
     if(this.props.listExercise){
@@ -58,7 +62,7 @@ import Hoc from '../../../HOC/Hoc';
             </WingBlank>
           </div>
           <WhiteSpace/>
-          <WingBlank><SegmentedControl values={['Laxman', 'Gautem']} /></WingBlank>
+          <WingBlank><SegmentedControl values={['Laxman', 'Gautem']} onChange={this.onChange} on/></WingBlank>
           <WhiteSpace/>
         </div>
       );
