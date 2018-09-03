@@ -97,7 +97,8 @@ export function setCurrentDay ( currentDay: Number) {
 
 //This funciton is used to store the dayIndex which is used when user click select.
 export function setDayIndex ( dayIndex: Number) {
-  console.log("setDayIndex action")
+  alert("setDayIndex action");
+  alert(dayIndex);
   return {
     type: "SET_DAY_iNDEX",
     payload: dayIndex

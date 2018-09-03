@@ -43,51 +43,56 @@ class ExerciseContainer extends Component{
     e.preventDefault();
     this.setState({ showInfo: !this.state.showInfo})
   }
-
-
   render(){
-    console.log(this.state.sets);
-    const {program, dayIndex}= this.props.WorkoutReducers;
-    const exerciseNumber = 1;
-    const video = "https://www.youtube.com/watch?v=vn_dFUUuHtI&feature=youtu.be";
-    const videoDescription = "THIS is test video description";
-    const exerciseLog = [];
-    const reps = 8;
+    if(this.props.WorkoutReducers.program){
 
-    const exerciseData = program.exercises[dayIndex].exercise_list[this.state.exerciseIndex];
-    const exerciseTotal = program.exercises[0].exercise_list.length.length;
-    console.log(program);
-    //const videoSearch = _.debounce((term)=>{this.videoSearch(term)}, 300);
-    // const {exerciseName,exerciseNumber,exerciseTotal,sets,reps,weight,video,videoDescription,exerciseLog} =  this.props.ExerciseReducers;
-    return(
-      <div className="all">
-        <Exercise
-          onBackButtonClicked ={this.backButtonHandler}
-          onSaveButtonClicked ={this.saveButtonHandler}
-          onInfoClicked = {this.infoHandler}
-          exerciseData = {exerciseData}
-          exerciseTotal = {exerciseTotal}
-          /*videos={this.state.selectedVideo}*/
-          exerciseNumber = {exerciseNumber}
+      console.log(this.state.sets);
+      const {program, dayIndex}= this.props.WorkoutReducers;
+      const exerciseNumber = 1;
+      const video = "https://www.youtube.com/watch?v=vn_dFUUuHtI&feature=youtu.be";
+      const videoDescription = "THIS is test video description";
+      const exerciseLog = [];
+      const reps = 8;
 
-          reps = {reps}
+      const exerciseData = program.exercises[dayIndex].exercise_list[this.state.exerciseIndex];
+      const exerciseTotal = program.exercises[dayIndex].exercise_list.length.length;
+      console.log(program);
+      //const videoSearch = _.debounce((term)=>{this.videoSearch(term)}, 300);
+      // const {exerciseName,exerciseNumber,exerciseTotal,sets,reps,weight,video,videoDescription,exerciseLog} =  this.props.ExerciseReducers;
+      return(
+        <div className="all">
+          <Exercise
+            onBackButtonClicked ={this.backButtonHandler}
+            onSaveButtonClicked ={this.saveButtonHandler}
+            onInfoClicked = {this.infoHandler}
+            exerciseData = {exerciseData}
+            exerciseTotal = {exerciseTotal}
+            /*videos={this.state.selectedVideo}*/
+            exerciseNumber = {exerciseNumber}
 
-          exerciseLog = {exerciseLog}
-        />
-      {this.state.goBack && (
-        <Redirect to='/plan' />
-      )}
-      {this.state.showInfo && (
-        <Modal modalFor = "modal-for-info">
-          <Info
-            onBackButtonClicked = {this.infoHandler}
-            video = {video}
-            videoDescription = {videoDescription}
+            reps = {reps}
+
+            exerciseLog = {exerciseLog}
           />
-        </Modal>
-      )}
-      </div>
-    );
+        {this.state.goBack && (
+          <Redirect to='/plan' />
+        )}
+        {this.state.showInfo && (
+          <Modal modalFor = "modal-for-info">
+            <Info
+              onBackButtonClicked = {this.infoHandler}
+              video = {video}
+              videoDescription = {videoDescription}
+            />
+          </Modal>
+        )}
+        </div>
+      );
+    }else{
+      return (
+          <Redirect to="/plan" />
+      )
+    }
   }
 
   /*videoSearch(term){
