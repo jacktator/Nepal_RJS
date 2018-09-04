@@ -31,10 +31,10 @@
 .history-sel-icon{
   background: url('../../../Assets/Footer/homeSel.svg')  center center /  21px 21px no-repeat;
 }
-.me-icon{
+.profile-icon{
   background:url('../../../Assets/Footer/me.svg') center center / 21px 21px no-repeat;
 }
-.me-sel-icon{
+.profile-sel-icon{
   background:url('../../../Assets/Footer/meSel.svg') center center / 21px 21px no-repeat;
 }
 .plan-icon{

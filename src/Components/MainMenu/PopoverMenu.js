@@ -35,7 +35,7 @@ export default class PopoverMenu extends React.Component {
             visible={this.state.visible}
             placement='bottomRight'
             overlay={[
-              (<Item className="pop-over-text" key="1" value="Workout" icon={<img src={require('../../Assets/MainMenuIcons/PopupMenuIcons/_workout.svg')} className={cx("am-icon am-icon-xs","smallicon")} alt="no"/>}>Workout</Item>),
+              (<Item className="pop-over-text" key="1" value="Workout" icon={<img src={require('../../Assets/MainMenuIcons/PopupMenuIcons/workoutPop.svg')} className={cx("am-icon am-icon-xs","smallicon")} alt="no"/>}>Workout</Item>),
               (<Item className="pop-over-text" key="2" value="Rehab and Posture" icon={<img src={require('../../Assets/MainMenuIcons/PopupMenuIcons/_rehab.svg')} className={cx("am-icon am-icon-xs","smallicon")} alt="no"/>}>Rehab and Posture</Item>),
               (<Item className="pop-over-text" key="3" value="My Profile" icon={<img src={require('../../Assets/MainMenuIcons/PopupMenuIcons/_profile.svg')} className={cx("am-icon am-icon-xs","smallicon")} alt="no"/>}>My Profile</Item>),
               (<Item className="pop-over-text" key="4" value="Content" icon={<img src={require('../../Assets/MainMenuIcons/PopupMenuIcons/_content.svg')} className={cx("am-icon am-icon-xs","smallicon")} alt="no"/>}>Content</Item>),

@@ -5,7 +5,14 @@ const Item = List.Item
 
 export default class Content extends Component {
 
-
+  handleClick(e, k) {
+    if (!(this.props.selectedWeek < (this.props.WorkoutReducers.program.progress / this.props.WorkoutReducers.program.days))) {
+      if (!(k < (this.props.WorkoutReducers.program.progress % this.props.WorkoutReducers.program.days))) {
+        e.preventDefault();
+      }
+    }
+  }
+  
   render() {
     const { days, progress, program_name } = this.props.WorkoutReducers.program;
 
@@ -16,7 +23,7 @@ export default class Content extends Component {
             [...Array(parseInt(days))].map((v, k) => {
               const dayNumber = (this.props.selectedWeek - 1) * days + k + 1;
               return (
-                <Link key={k} to={'/workout/' + dayNumber}>
+                <Link key={k} to={'/workout/' + dayNumber} onClick={ event => this.handleClick(event, k) }>
                   <Item
                   arrow="horizontal"
                   disabled={(this.props.selectedWeek)<(progress/days) ? false : (!(k < (progress % days)))}
@@ -34,3 +41,5 @@ export default class Content extends Component {
     )
   }
 }
+
+// '/workout/' + dayNumber
