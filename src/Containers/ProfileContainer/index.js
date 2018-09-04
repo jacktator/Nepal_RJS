@@ -3,7 +3,8 @@ import Profile from '../../Components/Profile'
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { changeName, changeBirthDate, changeHeight, changeWeight, changeEmail, putPassword,changePassword,showPassError} from './actions';
-import {Toast} from 'antd-mobile'
+import { Toast } from 'antd-mobile'
+import FooterContainer from'../Workout/FooterContainer';
 
 class ProfileContainer extends Component{
   constructor(props){
@@ -63,7 +64,8 @@ class ProfileContainer extends Component{
           onSavePassword = {this.onSavePassword}
           putPassword = {this.props.putPassword}
           checkField = {this.checkField}
-          />
+        />
+        <FooterContainer currentPath='profile'/>
       </div>
     )
   }

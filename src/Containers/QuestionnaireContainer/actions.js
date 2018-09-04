@@ -58,7 +58,7 @@ export function addProgram (days, goals) {
       default:
         goal = "Please select the goal"
     }
-    let jsonurl = `./DataSources/${goal.split(" ").join("").toLowerCase()}day${days}.json`;
+    let jsonurl = `./DataSources/${goal.replace(' ', '').toLowerCase()}day${days}.json`;
       //fetch the list of exercise
       return axios.get(jsonurl)
       .then((res) => {

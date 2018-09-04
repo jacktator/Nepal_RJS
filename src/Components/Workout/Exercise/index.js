@@ -11,6 +11,39 @@ import WeightandRep from './WeightAndRep';
 // import exerciseInfo from '../../../Assets/Exercise/exerciseInfo.svg'
 
 export default class Exercise extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      weight: 10,
+      reps:5,
+      sets: 1,
+      exerciseLog:[],
+    };
+    this.onChangeWeight=this.onChangeWeight.bind(this);
+    this.onChangeRep = this.onChangeRep.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+  }
+
+  componentDidMount () {
+    this.setState({ weight: this.props.exerciseData.weight, sets: this.props.exerciseData.sets, reps: this.props.reps})
+  }
+
+  onChangeWeight = (val) => {
+    this.setState({ weight: val });
+  }
+
+  onChangeRep = (val) => {
+    this.setState({ reps: val });
+  }
+
+  onSaveButtonClick = () => {
+    if (this.state.exerciseLog.length < this.state.sets) {
+      let newExerciseLog = this.state.exerciseLog;
+      // newExerciseLog.push(this.state.exerciseLog);
+      newExerciseLog.push({weight:this.state.weight, reps:this.state.reps});
+      this.setState({ exerciseLog: newExerciseLog });  
+    }
+  }
 
   onLeftClick(e){
     e.preventDefault();
@@ -58,16 +91,24 @@ export default class Exercise extends Component{
          <div className="stepper-list-container">
             <div>
               <WeightandRep
-                exerciseData = {this.props.exerciseData}
-                weight = {this.props.exerciseData.weight}
-                sets = {this.props.exerciseData.sets}
-                reps = {this.props.reps}
-              onSaveButtonClicked = {this.props.onSaveButtonClicked}/>
+              exerciseData={this.props.exerciseData}
+              weight={this.state.weight}
+              sets={this.state.sets}
+              reps={this.state.reps}
+              onSaveButtonClicked={this.onSaveButtonClick}
+              onChangeWeight={this.onChangeWeight}
+              onChangeRep={this.onChangeRep}
+              steps={this.state.sets-this.state.exerciseLog.length}
+            />
             </div>
             {/* displays the record list, refer to RecordList.js*/}
            <div>
              <RecordList
-             exerciseLog = {this.props.exerciseLog}/>
+              exerciseLog={this.state.exerciseLog}
+              weight = {this.state.weight}
+              sets = {this.state.sets}
+              reps = {this.state.reps}
+            />
              {/* Message for showing current goals*/}
              <NoticeBar
                marqueeProps={{ loop: true, fps:40, leading:1000, trailing:1000,style:{padding:'0 100px'}}}
@@ -87,3 +128,11 @@ export default class Exercise extends Component{
     );
   }
 }
+
+{/* <WeightandRep
+                exerciseData = {this.props.exerciseData}
+                weight = {this.props.exerciseData.weight}
+                sets = {this.props.exerciseData.sets}
+                reps = {this.props.reps}
+                onSaveButtonClicked={this.props.onSaveButtonClicked}
+            /> */}
