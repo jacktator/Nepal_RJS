@@ -8,3 +8,17 @@
   height:100%;
   width: 100%;
 }
+
+.selectItem {
+  display:flex; 
+  flex-direction: column; 
+  height: 40px;
+}
+
+.selectItem div {
+  border-top-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-radius: 5px 5px 5px 5px !important;
+}
