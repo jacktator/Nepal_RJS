@@ -18,7 +18,7 @@ export default class RecordList extends Component{
             <List>
               {
                 this.props.exerciseLog.length < this.props.sets ? (
-                  <Item style={{backgroundColor:'#a2cf6e'}}>
+                  <Item style={{backgroundColor:'#4aedc4'}}>
                     <Flex justify="between" className="list">
                       <Flex.Item>{this.props.exerciseLog.length+1}</Flex.Item>
                       <Flex.Item><div className="list-text"> {this.props.weight} kg * {this.props.reps} reps</div></Flex.Item>

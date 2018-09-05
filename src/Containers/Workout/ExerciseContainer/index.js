@@ -1,4 +1,3 @@
-
 import React, {Component} from 'react';
 import {Redirect} from 'react-router';
 import Exercise from '../../../Components/Workout/Exercise/';
@@ -7,7 +6,6 @@ import {bindActionCreators} from 'redux';
 import Info from '../../../Components/Workout/Exercise/Info';
 import Modal from '../../../Components/UI/Modal';
 import {saveExerciseData, getExerciseRecord} from '../actions';
-
 
 // import _ from 'lodash';
 // import YTSearch from 'youtube-api-search';
@@ -30,6 +28,7 @@ class ExerciseContainer extends Component{
     if(this.props.match.params.index){
       this.setState({exerciseIndex: this.props.match.params.index})
     }
+
     // this.props.getExerciseRecord(this.props.WorkoutReducers.programID);
   }
   backButtonHandler = (e) => {
