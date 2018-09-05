@@ -4,7 +4,7 @@ import {Redirect} from 'react-router';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {selectFooter} from '../FooterContainer/actions';
-import {getProgram, keepWorkout, fetchWorkoutList, selectWorkout, setDayIndex} from '../actions';
+import {getProgram, keepWorkout, fetchWorkoutList, selectWorkout, setDayIndex, getExerciseRecord} from '../actions';
 import Workout from '../../../Components/Workout/Workout';
 import SelectExercise from '../../../Components/Workout/SelectExercise';
 import Modal from '../../../Components/UI/Modal';
@@ -31,6 +31,7 @@ class WorkoutContainer extends Component{
     if(this.props.WorkoutReducers.program){
       const dayIndex = this.props.WorkoutReducers.program.exercises.findIndex(i => { return i.day === this.props.match.params.day })
       this.props.setDayIndex(dayIndex);
+      this.props.getExerciseRecord(this.props.WorkoutReducers.programID);
     }
   }
   //invokes when user click keep button
@@ -47,6 +48,9 @@ class WorkoutContainer extends Component{
     this.props.selectWorkout(this.state.exercisesIndex, this.props.WorkoutReducers, exercise);
     this.setState({ isChangeWorkout: false })
   }
+  onCancelSelectExerciseHandler = () => {
+    this.setState({ isChangeWorkout: false })
+  }
 
   onStartHandler = () => {
     this.setState({ startExcercies: true})
@@ -57,6 +61,7 @@ class WorkoutContainer extends Component{
   }
 
   render() {
+    console.log("This is from workout", this.props.WorkoutReducers);
     if(this.props.WorkoutReducers.program){
       return (
         <Hoc>
@@ -96,7 +101,8 @@ function mapStateToProps(state){
 }
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
-    selectFooter, keepWorkout, fetchWorkoutList, getProgram, selectWorkout, setDayIndex
+    selectFooter, keepWorkout, fetchWorkoutList, getProgram,
+    selectWorkout, setDayIndex, getExerciseRecord
   }, dispatch
 );
 }

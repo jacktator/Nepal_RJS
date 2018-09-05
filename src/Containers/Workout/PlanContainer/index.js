@@ -17,7 +17,6 @@ class PlanContainer extends Component{
     this.props.getProgram();
   }
   render() {
-    console.log("plan reducer from container",this.props.WorkoutReducers)
     if(this.props.WorkoutReducers.program) {
       return (
         <div>

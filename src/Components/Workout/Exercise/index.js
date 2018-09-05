@@ -4,20 +4,7 @@ import './Exercise.css';
 import RecordList from './RecordList.js';
 import WeightandRep from './WeightAndRep';
 
-
-// icons taken from http://iconfont.cn/
-// import history from '../../../Assets/Exercise/history.svg';
-//import historySel from '../../../Assets/Exercise/historySel.svg';
-// import exerciseInfo from '../../../Assets/Exercise/exerciseInfo.svg'
-
-export default class Exercise extends Component{
-
-  onLeftClick(e){
-    e.preventDefault();
-    alert(e)
-  }
-  render(){
-    console.log("exercise", this.props)
+const Exercise = (props) => {
     return(
       <div className="exercise">
           {/* navigation bar on top of screen*/}
@@ -25,20 +12,20 @@ export default class Exercise extends Component{
            style={{backgroundColor:"white"}}
            mode='light'
            icon={<Icon type="left" size="lg"/>}
-           onLeftClick={(e) => this.props.onBackButtonClicked(e)}
+           onLeftClick={(e) => props.onBackButtonClicked(e)}
            className="nav-bar"
            style={{marginTop:"20px"}}>
            <div className="nav-bar-text">
-            {this.props.exerciseData.workout} {this.props.exerciseNumber}/{this.props.exerciseTotal}
+            {props.exerciseData.workout} {props.exerciseNumber}/{props.exerciseTotal}
            </div>
          </NavBar>
          {/* prescription is the black circle on top of image*/}
           <div className="prescription-circle">
                 <div className="prescription">
                 <button className="btn-two">
-                  <div>{this.props.exerciseData.sets}x</div>
-                  <div>{this.props.exerciseData.reps} reps</div>
-                  <div>{this.props.exerciseData.weight} kg</div>
+                  <div>{props.exerciseData.sets}x</div>
+                  <div>{props.exerciseData.reps} reps</div>
+                  <div>{props.exerciseData.weight} kg</div>
                 </button>
                 </div>
          </div>
@@ -51,7 +38,7 @@ export default class Exercise extends Component{
            onClick={() => {alert("can see previous training longs of weights and reps they achieved. this goes to a seperate page.")}}/>
            {/* exercise information*/}
            <img src={require("../../../Assets/Exercise/exerciseInfo.svg")} className="info-icon" alt="info"
-             onClick={(e) => this.props.onInfoClicked(e) }/>
+             onClick={(e) => props.onInfoClicked(e) }/>
            </div>
          </div>
 
@@ -59,15 +46,21 @@ export default class Exercise extends Component{
          <div className="stepper-list-container">
             <div>
               <WeightandRep
-                weight = {this.props.exerciseData.weight}
-                sets = {this.props.exerciseData.sets}
-                reps = {this.props.reps}
-              onSaveButtonClicked = {this.props.onSaveButtonClicked}/>
+              code={props.exerciseData.code}
+              state={props.state}
+              onSaveButtonClicked={props.onSaveButtonClicked}
+              onNextButtonHandler = {props.onNextButtonHandler}
+              onChangeWeight={props.onChangeWeight}
+              onChangeRep={props.onChangeRep}
+              steps={props.state.sets-props.state.exerciseLog.length}
+            />
             </div>
             {/* displays the record list, refer to RecordList.js*/}
            <div>
              <RecordList
-             exerciseLog = {this.props.exerciseLog}/>
+              exerciseLog={props.state.exerciseLog}
+              state = {props.state}
+            />
              {/* Message for showing current goals*/}
              <NoticeBar
                marqueeProps={{ loop: true, fps:40, leading:1000, trailing:1000,style:{padding:'0 100px'}}}
@@ -86,4 +79,13 @@ export default class Exercise extends Component{
       </div>
     );
   }
-}
+
+export default Exercise;
+
+{/* <WeightandRep
+                exerciseData = {props.exerciseData}
+                weight = {props.exerciseData.weight}
+                sets = {props.exerciseData.sets}
+                reps = {props.reps}
+                onSaveButtonClicked={props.onSaveButtonClicked}
+            /> */}

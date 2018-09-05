@@ -12,7 +12,7 @@ const tabsObject = {
   history: 0,
   plan: 1,
   workout: 2,
-  me: 3,
+  profile: 3,
 };
 
 const contentOfTabs = (props) => [
@@ -21,7 +21,7 @@ const contentOfTabs = (props) => [
   { title: selectedDiv('history', props.currentPage), value: 'history' },
   { title: selectedDiv('plan', props.currentPage), value: 'plan' },
   { title: workoutDiv('workout', props.currentDay ,props.currentPage), value: 'workout' },
-  { title: selectedDiv('me', props.currentPage), value: 'me' },
+  { title: selectedDiv('profile', props.currentPage), value: 'profile' },
 ]
 
 const Footer = (props) => {

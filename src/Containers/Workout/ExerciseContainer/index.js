@@ -1,12 +1,12 @@
-
 import React, {Component} from 'react';
 import {Redirect} from 'react-router';
+import { Toast } from 'antd-mobile';
 import Exercise from '../../../Components/Workout/Exercise/';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Info from '../../../Components/Workout/Exercise/Info';
 import Modal from '../../../Components/UI/Modal';
-
+import {saveExerciseData, getExerciseRecord} from '../actions';
 
 // import _ from 'lodash';
 // import YTSearch from 'youtube-api-search';
@@ -18,11 +18,22 @@ class ExerciseContainer extends Component{
     this.state={
       //videos:[],
       //selectedVideo:null,
+      isLoading: false,
       goBack: false,
       showInfo: false,
-      sets : 1,
       exerciseIndex: 0,
-    }
+      currentSets : 1,
+      weight: 1,
+      reps:1,
+      sets: 1,
+      exerciseLog:[],
+    };
+    this.onChangeWeight = this.onChangeWeight.bind(this);
+    this.onChangeRep = this.onChangeRep.bind(this);
+    this.onSaveButtonHandler = this.onSaveButtonHandler.bind(this);
+    this.onNextButtonHandler = this.onNextButtonHandler.bind(this);
+
+
     //this.videoSearch('Destiny 2')
   }
   componentWillMount() {
@@ -30,79 +41,157 @@ class ExerciseContainer extends Component{
       this.setState({exerciseIndex: this.props.match.params.index})
     }
   }
+
+  componentDidMount () {
+    const {program, dayIndex}= this.props.WorkoutReducers;
+    let exerciseData = program.exercises[dayIndex].exercise_list[this.state.exerciseIndex];
+    this.setState({ weight: exerciseData.weight, sets: exerciseData.sets, reps: exerciseData.reps})
+    this.loadingToast();
+    this.calculateExerciseLog();
+
+  }
+  componentWillReceiveProps(nextProps){
+    this.calculateExerciseLog();
+  }
+
+  loadingToast = () => {
+  Toast.loading('Loading...', 1, () => {
+    console.log('Load complete !!!');
+  });
+}
+
+  calculateExerciseLog = () => {
+    let {program, dayIndex}= this.props.WorkoutReducers;
+    let records = this.props.WorkoutReducers.record;
+    let week = this.props.WorkoutReducers.currentWeek;
+    let day = this.props.WorkoutReducers.currentDay;
+    let code = program.exercises[dayIndex].exercise_list[this.state.exerciseIndex].code;
+    if(records){
+      if(records.weekly_record){
+        let weekIndex = records.weekly_record.findIndex(i => { return i.week === week.toString() });
+        if(weekIndex >= 0){
+          let dayIndex = (records.weekly_record[weekIndex].daily_record.findIndex(i => { return i.day === day.toString()}));
+          if(dayIndex >= 0){
+            let dataIndex = (records.weekly_record[weekIndex].daily_record[dayIndex].data.findIndex( i => {return i.code === code}));
+            if(dataIndex >= 0){
+              console.log("got the data",records.weekly_record[weekIndex].daily_record[dayIndex].data[dataIndex].data);
+              let exerciseLog = records.weekly_record[weekIndex].daily_record[dayIndex].data[dataIndex].data;
+              console.log("This is exercise log",exerciseLog);
+              this.setState({exerciseLog: exerciseLog, currentSets: exerciseLog.length+1})
+            }
+          }
+        }
+      }
+    }
+    this.setState({isLoading: false})
+  }
+
+  onChangeWeight = (val) => {
+    this.setState({ weight: val });
+  }
+
+  onChangeRep = (val) => {
+    this.setState({ reps: val });
+  }
+  onLeftClick(e){
+    e.preventDefault();
+    alert(e)
+  }
+
   backButtonHandler = (e) => {
     e.preventDefault();
     this.setState({ goBack: true})
   }
-  saveButtonHandler = (rep, weight) => {
-    console.log(rep);
-    console.log(weight);
-    this.setState({ sets : this.state.sets+1})
+
+  onNextButtonHandler = () => {
+    const exerciseLog = [];
+    this.setState({ exerciseLog: exerciseLog, isLoading: true});
+    this.setState({ currentSets: 1, exerciseIndex : this.state.exerciseIndex + 1 })
+    setTimeout(() => {
+      this.calculateExerciseLog();
+  }, 500);
+  }
+  onSaveButtonHandler = (code) => {
+    let {recordID, currentWeek, currentDay, record} = this.props.WorkoutReducers;
+    console.log("this is record", record);
+    let exerciseLog = this.state.exerciseLog;
+    exerciseLog.push({weight:this.state.weight, reps:this.state.reps});
+    this.setState({exerciseLog, currentSets : this.state.currentSets+1})
+    this.props.saveExerciseData(recordID, currentWeek, currentDay, code, this.state.weight, this.state.Currentsets, this.state.reps, record);
+
   }
   infoHandler = (e) => {
     e.preventDefault();
     this.setState({ showInfo: !this.state.showInfo})
   }
   render(){
+    console.log("this is record showing in render", this.props.WorkoutReducers.record);
     if(this.props.WorkoutReducers.program){
+      const {program, dayIndex, record}= this.props.WorkoutReducers;
+      console.log(record);
+      const exerciseData = program.exercises[dayIndex].exercise_list[this.state.exerciseIndex];
+      const exerciseTotal = program.exercises[dayIndex].exercise_list.length;
 
-      console.log(this.state.sets);
-      const {program, dayIndex}= this.props.WorkoutReducers;
+
       const exerciseNumber = 1;
       const video = "https://www.youtube.com/watch?v=vn_dFUUuHtI&feature=youtu.be";
       const videoDescription = "THIS is test video description";
       const exerciseLog = [];
-      const reps = 8;
 
-      const exerciseData = program.exercises[dayIndex].exercise_list[this.state.exerciseIndex];
-      const exerciseTotal = program.exercises[dayIndex].exercise_list.length.length;
-      console.log(program);
+      console.log("this.state",this.state);
+      console.log("cdm state",this.state);
       //const videoSearch = _.debounce((term)=>{this.videoSearch(term)}, 300);
       // const {exerciseName,exerciseNumber,exerciseTotal,sets,reps,weight,video,videoDescription,exerciseLog} =  this.props.ExerciseReducers;
       return(
+
         <div className="all">
-          <Exercise
-            onBackButtonClicked ={this.backButtonHandler}
-            onSaveButtonClicked ={this.saveButtonHandler}
-            onInfoClicked = {this.infoHandler}
-            exerciseData = {exerciseData}
-            exerciseTotal = {exerciseTotal}
-            /*videos={this.state.selectedVideo}*/
-            exerciseNumber = {exerciseNumber}
 
-            reps = {reps}
-
-            exerciseLog = {exerciseLog}
-          />
+        <Exercise
+          onBackButtonClicked ={this.backButtonHandler}
+          onSaveButtonClicked ={this.onSaveButtonHandler}
+          onNextButtonHandler = { this.onNextButtonHandler }
+          // onSaveButtonClicked={this.onSaveButtonClick}
+          onChangeWeight={this.onChangeWeight}
+          onChangeRep={this.onChangeRep}
+          onInfoClicked = {this.infoHandler}
+          exerciseData = {exerciseData}
+          exerciseTotal = {exerciseTotal}
+          /*videos={this.state.selectedVideo}*/
+          exerciseNumber = {exerciseNumber}
+          state = {this.state}
+        />
         {this.state.goBack && (
           <Redirect to='/plan' />
         )}
         {this.state.showInfo && (
           <Modal modalFor = "modal-for-info">
-            <Info
-              onBackButtonClicked = {this.infoHandler}
-              video = {video}
-              videoDescription = {videoDescription}
-            />
+          <Info
+          onBackButtonClicked = {this.infoHandler}
+          video = {video}
+          videoDescription = {videoDescription}
+          />
           </Modal>
         )}
+        {this.state.isLoading === true &&
+          <Modal>{this.loadingToast()}</Modal>
+        }
         </div>
       );
     }else{
       return (
-          <Redirect to="/plan" />
+        <Redirect to="/plan" />
       )
     }
   }
 
   /*videoSearch(term){
-    YTSearch({key: API_KEY, term: term}, (videos)=>{
-      this.setState({
-        videos: videos,
-        selectedVideo: videos[0],
-      });
-    })
-  }*/
+  YTSearch({key: API_KEY, term: term}, (videos)=>{
+  this.setState({
+  videos: videos,
+  selectedVideo: videos[0],
+});
+})
+}*/
 }
 
 function mapStateToProps(state){
@@ -114,6 +203,7 @@ function mapStateToProps(state){
 
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
+    saveExerciseData, getExerciseRecord
   }, dispatch
 );
 }
