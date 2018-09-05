@@ -20,7 +20,7 @@ class ExerciseContainer extends Component{
       goBack: false,
       showInfo: false,
       sets : 1,
-      exerciseIndex: 1,
+      exerciseIndex: 0,
     }
     //this.videoSearch('Destiny 2')
   }

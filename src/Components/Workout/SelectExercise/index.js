@@ -19,11 +19,13 @@ import Hoc from '../../../HOC/Hoc';
 
   onChange = (value) => {
     console.log(`selectedIndex:${value.nativeEvent.selectedSegmentIndex}`);
+    this.setState({index: value.nativeEvent.selectedSegmentIndex})
   }
 
   render() {
 
-    if(this.props.listExercise){
+    if(this.props.listExercise && this.props.listExercise !== null){
+      const exercises = this.props.listExercise.exercises;
       return (
         <div className="container">
           <Carousel className="space-carousel"
@@ -35,7 +37,7 @@ import Hoc from '../../../HOC/Hoc';
             afterChange={index => this.setState({currentExercise: index}) }
           >
 
-          { this.props.listExercise.exercises[this.state.index].exercise.map( (data, key) => (
+          { exercises[this.state.index].exercise.map( (data, key) => (
             <div className="image-with-description" key={key}>
               <div className="excercise-header" style={{margin:"10px 0px 10px",backgroundColor:'white',color:'black', textAlign: "center"}}>{data.name}</div>
               <img
@@ -54,15 +56,16 @@ import Hoc from '../../../HOC/Hoc';
           <WhiteSpace/>
           <div className="select-button">
             <WingBlank>
-              <Button type="default" onClick={() => this.selectExercise()}>Select</Button>
+              <Button type="primary" onClick={() => this.selectExercise()}>Select</Button>
             </WingBlank>
             <WhiteSpace/>
-            <WingBlank>
-              <Button type="primary" onClick={() => (this.props.onSelect(this.state.currentItem))}>Select</Button>
-            </WingBlank>
           </div>
           <WhiteSpace/>
-          <WingBlank><SegmentedControl values={['Laxman', 'Gautem']} onChange={this.onChange} on/></WingBlank>
+          {exercises.length > 1 &&
+            <WingBlank>
+              <SegmentedControl values={[exercises[0].name, exercises[1].name]} onChange={this.onChange} on/>
+            </WingBlank>
+          }
           <WhiteSpace/>
         </div>
       );

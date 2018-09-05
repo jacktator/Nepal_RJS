@@ -24,6 +24,7 @@ export function getExerciseRecord(programID){
   return(dispatch: Function) => {
     return axios.get(`https://nepal.sk8tech.io/wp-json/wp/v2/record?filter[meta_key]=program_id&filter[meta_value]=${programID}`)
     .then((response) => {
+      console.log(response);
       dispatch(setExerciseRecord(response.data[0].acf));
       dispatch(setExerciseID(response.data[0].id))
     }).catch((error)=> {
@@ -36,11 +37,12 @@ export function getExerciseRecord(programID){
 export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
   return(dispatch: Function) => {
     let token = localStorage.getItem('token');
-    let id = workoutReducers.id;
+    let id = workoutReducers.programID;
     let { program, dayIndex } = workoutReducers;
     program.exercises[dayIndex].exercise_list[listIndex].workout = selectedExercise.name;
     program.exercises[dayIndex].exercise_list[listIndex].progression_model = selectedExercise.progression_model;
     dispatch(setProgram(program));
+    dispatch(setWorkoutList(null));
     return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${id}`,
       {
         status: "publish",
@@ -75,7 +77,7 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
   export function keepWorkout(listIndex, workoutReducers){
     let token = localStorage.getItem('token');
     return(dispatch: Function) => {
-      let id = workoutReducers.id;
+      let id = workoutReducers.programID;
       let {program, dayIndex} = workoutReducers;
       program.exercises[dayIndex].exercise_list[listIndex].is_saved = true;
       dispatch(setProgram(program));
@@ -115,10 +117,9 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
               }else{//dataIndex >= 0
                 temp = {code: code, data: [ { sets: sets, reps: reps, weight: weight }]}
                 weekly_record[weekIndex].daily_record[dayIndex].data.push(temp);
-                alert("else dataIndex");
+
               }
             }else{//dayIndex >= 0
-              alert("else dayIndex");
               temp = {day: day, data: [ {code: code, data: [
                 { sets: sets, reps: reps, weight: weight }]}]}
                 weekly_record[weekIndex].daily_record.push(temp);
@@ -129,10 +130,8 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
                 console.log("before push", weekly_record);
                 weekly_record.push(temp);
                 console.log("temp added", weekly_record);
-                alert("else WeekIndex");
               }
             }else{
-              alert("final else");
               let weekly_record = [{ week: week, daily_record:[ {day: day, data: [ {code: code, data: [
                 { sets: sets, reps: reps, weight: weight }]}]}]}
               ]
@@ -145,11 +144,9 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
                 }
               })
               .then((response)=> {
-                  alert("success");
                   console.log(response.data);
                   dispatch(setExerciseRecord(response.data.acf));
               }).catch((error)=> {
-                alert("error");
                 console.log(error);
               })
           }//ends return dispatch

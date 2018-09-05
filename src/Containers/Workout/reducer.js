@@ -1,5 +1,4 @@
 let DefaultState = {
-  id: null,
   dayIndex: null,
 }
 
