@@ -29,7 +29,7 @@ export default class Exercise extends Component{
            className="nav-bar"
            style={{marginTop:"20px"}}>
            <div className="nav-bar-text">
-            {this.props.exerciseData.name} {this.props.exerciseNumber}/{this.props.exerciseTotal}
+            {this.props.exerciseData.workout} {this.props.exerciseNumber}/{this.props.exerciseTotal}
            </div>
          </NavBar>
          {/* prescription is the black circle on top of image*/}

@@ -26,6 +26,8 @@ import Hoc from '../../../HOC/Hoc';
     if(this.props.listExercise){
       return (
         <div className="container">
+          <img src={require("../../../Assets/Modal/ic_cancel.png")} className="cancel-icon" alt="cancel"
+          onClick={() => this.props.cancel()}/>
           <Carousel className="space-carousel"
             frameOverflow="visible"
             cellSpacing={10}
@@ -54,12 +56,9 @@ import Hoc from '../../../HOC/Hoc';
           <WhiteSpace/>
           <div className="select-button">
             <WingBlank>
-              <Button type="default" onClick={() => this.selectExercise()}>Select</Button>
+              <Button type="primary" onClick={() => this.selectExercise()}>Select</Button>
             </WingBlank>
             <WhiteSpace/>
-            <WingBlank>
-              <Button type="primary" onClick={() => (this.props.onSelect(this.state.currentItem))}>Select</Button>
-            </WingBlank>
           </div>
           <WhiteSpace/>
           <WingBlank><SegmentedControl values={['Laxman', 'Gautem']} onChange={this.onChange} on/></WingBlank>

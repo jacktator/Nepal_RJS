@@ -51,6 +51,11 @@ class WorkoutContainer extends Component{
   onStartHandler = () => {
     this.setState({ startExcercies: true})
   }
+
+  cancelChangeWorkout = () => {
+    this.setState({ isChangeWorkout: false })
+  }
+
   render() {
     if(this.props.WorkoutReducers.program){
       return (
@@ -66,6 +71,7 @@ class WorkoutContainer extends Component{
           <SelectExercise
             onSelect = {this.onSelectExerciseHandler}
             listExercise = {this.props.WorkoutReducers.listExercise}
+            cancel = {this.cancelChangeWorkout}
           />
           </Modal>
         )}
