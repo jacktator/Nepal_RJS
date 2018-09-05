@@ -1,4 +1,3 @@
-
 import React, {Component} from 'react';
 import {Redirect} from 'react-router';
 import { Toast } from 'antd-mobile';
