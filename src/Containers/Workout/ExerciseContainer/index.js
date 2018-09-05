@@ -8,7 +8,6 @@ import Info from '../../../Components/Workout/Exercise/Info';
 import Modal from '../../../Components/UI/Modal';
 import {saveExerciseData, getExerciseRecord} from '../actions';
 
-
 // import _ from 'lodash';
 // import YTSearch from 'youtube-api-search';
 // const API_KEY = 'AIzaSyBv5Htzijr5-3WBHMU-N3V21Ez9yBb-6vY';
@@ -22,7 +21,7 @@ class ExerciseContainer extends Component{
       goBack: false,
       showInfo: false,
       sets : 1,
-      exerciseIndex: 1,
+      exerciseIndex: 0,
     }
     //this.videoSearch('Destiny 2')
   }

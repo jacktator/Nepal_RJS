@@ -48,11 +48,15 @@ class WorkoutContainer extends Component{
     this.props.selectWorkout(this.state.exercisesIndex, this.props.WorkoutReducers, exercise);
     this.setState({ isChangeWorkout: false })
   }
+  onCancelSelectExerciseHandler = () => {
+    this.setState({ isChangeWorkout: false })
+  }
 
   onStartHandler = () => {
     this.setState({ startExcercies: true})
   }
   render() {
+    console.log("This is from workout", this.props.WorkoutReducers);
     if(this.props.WorkoutReducers.program){
       return (
         <Hoc>

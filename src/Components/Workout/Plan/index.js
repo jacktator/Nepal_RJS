@@ -11,7 +11,7 @@ const Plan = (props) => {
     return (
       <div>
         <img src={require("../../../Assets/Workout/sampleImage.jpeg")} alt="sampleImage" className="plan-sample-image"/>
-        <div className="plan-title">{props.WorkoutReducers.goal}</div>
+        <div className="plan-title">{props.WorkoutReducers.program.program_name}</div>
         <div className="plan-program-duration">You are currently at Week {currentlyWeek} </div>
         <div className="plan-progress-text"> {currentlyPercentage}% Completed </div>
         <div className="plan-progress-container">
