@@ -9,8 +9,8 @@ const WeightAndRep = (props) =>{
       <div className="weight-and-rep">
         {/* Text for stepper*/}
         <Flex justify="center" className="stepper-text">
-        <Flex.Item> WEIGHT(kg)</Flex.Item>
-        <Flex.Item> REPS</Flex.Item>
+        <Flex.Item>Weight (kg)</Flex.Item>
+        <Flex.Item>Reps</Flex.Item>
         </Flex>
         {/* Code for stepper*/}
         <Flex justify="center" className="stepper">

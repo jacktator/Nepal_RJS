@@ -4,21 +4,21 @@
   height:200px;
   opacity: 0.7;
   filter: alpha(opacity=80);
+  user-select: none;
+  pointer-events: none;
 }
 
 .plan-title {
     position:absolute;
     top: 10%;
     left: 5%;
-    font-size: 24px;
+    font-size: 35px;
     color: white;
     font-family: "Verdana";
 }
 
-.plan-program-duration {
-  position:absolute;
-  top: 15%;
-  left: 5%;
+.plan-program-small-text {
+  margin-top:6px;
   font-size: 12px;
   color: white;
   font-family: "Verdana";

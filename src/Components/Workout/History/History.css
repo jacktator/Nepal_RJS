@@ -10,6 +10,8 @@
   top:0%;
   opacity: 0.7;
   filter: alpha(opacity=80);
+  user-select: none;
+  pointer-events: none;
 }
 
 .history-component-title{

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {WingBlank,Progress,Button} from 'antd-mobile'
+import {WingBlank,Progress,Button,WhiteSpace} from 'antd-mobile'
 import './Plan.css'
 import StickyTab from './StickyTab'
 
@@ -11,9 +11,14 @@ const Plan = (props) => {
     return (
       <div>
         <img src={require("../../../Assets/Workout/sampleImage.jpeg")} alt="sampleImage" className="plan-sample-image"/>
-        <div className="plan-title">{props.WorkoutReducers.program.program_name}</div>
-        <div className="plan-program-duration">You are currently at Week {currentlyWeek} </div>
-        <div className="plan-progress-text"> {currentlyPercentage}% Completed </div>
+        <div className="plan-title">
+          {props.WorkoutReducers.program.program_name}
+          <div className="plan-program-small-text">
+            <div>You are currently at Week {currentlyWeek} </div>
+            <WhiteSpace/>
+            <div>{currentlyPercentage}% Completed </div>
+          </div>
+        </div>
         <div className="plan-progress-container">
           <WingBlank>
               <Progress position="normal" percent={currentlyPercentage} showInfo={false}/>

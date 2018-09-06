@@ -22,7 +22,7 @@ import Hoc from '../../../HOC/Hoc';
     console.log(`selectedIndex:${e.nativeEvent.selectedSegmentIndex}`);
     this.setState({currentChild: e.nativeEvent.selectedSegmentIndex})
   }
-
+  
   render() {
 
     if(this.props.listExercise && this.props.listExercise !== null){
