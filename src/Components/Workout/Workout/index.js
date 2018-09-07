@@ -1,6 +1,7 @@
 import React from 'react';
 import {WingBlank, WhiteSpace, Button, Card} from 'antd-mobile';
 import './Workout.css';
+import { Link } from 'react-router-dom';
 
 const Workout = (props) => {
     if(props.WorkoutReducers.dayIndex != null){
@@ -50,27 +51,29 @@ const Workout = (props) => {
                     <div>
                     <WhiteSpace/>
                     <Card key={key}>
-                      <Card.Header
-                        title={<span style={{whiteSpace:"nowrap"}}>{data.workout}</span>}
-                        extra={<span>{data.code}</span>}
-                      />
-                      <Card.Body style={{textAlign:"center"}}>
-                        <img style={{borderStyle:"solid", borderColor:"#f5f5f9",borderWidth:"1px",borderRadius:"5px"}}src={require(`../../../Assets/WorkoutIcons/${key}.jpg`)} height="120px" width="200px" alt="work" />
-                      </Card.Body>
+                      <Link to={`/exercise/${key}`} activeClassName="active">
+                        <Card.Header
+                          title={<span style={{whiteSpace:"nowrap"}}>{data.workout}</span>}
+                          extra={<span>{data.code}</span>}
+                        />
+                      </Link>
+                        <Card.Body style={{textAlign:"center"}}>
+                          <img style={{borderStyle:"solid", borderColor:"#f5f5f9",borderWidth:"1px",borderRadius:"5px"}}src={require(`../../../Assets/WorkoutIcons/${key}.jpg`)} height="120px" width="200px" alt="work" />
+                        </Card.Body>
                       <Card.Footer
 
                         content={<div>
                                 {!data.is_saved && (
                                     <div style={{textAlign:"center"}}>
-                                      <Button type="primary" size="small" inline onClick={() =>props.onWorkOutKeep(key)}>&nbsp;&nbsp;Keep&nbsp;&nbsp;</Button>
+                                      <Button type="primary" size="omitted" inline onClick={() =>props.onWorkOutKeep(key)}>&nbsp;&nbsp;Keep&nbsp;&nbsp;</Button>
                                         &nbsp;&nbsp;&nbsp;&nbsp;
-                                      <Button type="warning" size="small" inline onClick={() =>props.onExerciseChange(key)}>Change</Button>
+                                      <Button type="warning" size="omitted" inline onClick={() =>props.onExerciseChange(key)}>Change</Button>
                                       <WhiteSpace/>
                                     </div>
                                 )}
                                 {data.is_saved && (
                                     <div style={{textAlign:"center"}}>
-                                      <Button type="primary" size="small" inline style={{ background: '#54D66A' }}>Saved!</Button>
+                                      <Button type="primary" size="omitted" inline style={{ background: '#54D66A' }}>Saved!</Button>
                                       <WhiteSpace/>
                                     </div>
                                 )}
