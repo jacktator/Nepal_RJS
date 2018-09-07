@@ -18,15 +18,18 @@ class ExerciseContainer extends Component{
     this.state={
       //videos:[],
       //selectedVideo:null,
+
       isLoading: false,
       goBack: false,
       showInfo: false,
       exerciseIndex: 0,
+      exerciseLength: null,
       currentSets : 1,
       weight: 1,
       reps:1,
       sets: 1,
       exerciseLog:[],
+      error: false,
     };
     this.onChangeWeight = this.onChangeWeight.bind(this);
     this.onChangeRep = this.onChangeRep.bind(this);
@@ -37,17 +40,26 @@ class ExerciseContainer extends Component{
     //this.videoSearch('Destiny 2')
   }
   componentWillMount() {
+    let index = 0;
     if(this.props.match.params.index){
+      index = this.props.match.params;
       this.setState({exerciseIndex: this.props.match.params.index})
+    }
+    const {program, dayIndex}= this.props.WorkoutReducers;
+    let exerciseLength = program.exercises[dayIndex].exercise_list.length;
+    if(program.exercises[dayIndex].exercise_list[index]){
+      alert("we got data")
+      let exerciseData = program.exercises[dayIndex].exercise_list[index];
+      alert(exerciseData);
+      this.setState({ exerciseLength: exerciseLength, weight: exerciseData.weight, sets: exerciseData.sets, reps: exerciseData.reps})
+      this.loadingToast();
+      this.calculateExerciseLog();
+    }else{
+      this.setState({ error: true})
     }
   }
 
   componentDidMount () {
-    const {program, dayIndex}= this.props.WorkoutReducers;
-    let exerciseData = program.exercises[dayIndex].exercise_list[this.state.exerciseIndex];
-    this.setState({ weight: exerciseData.weight, sets: exerciseData.sets, reps: exerciseData.reps})
-    this.loadingToast();
-    this.calculateExerciseLog();
 
   }
   componentWillReceiveProps(nextProps){
@@ -104,9 +116,17 @@ class ExerciseContainer extends Component{
   }
 
   onNextButtonHandler = () => {
+    let {program, dayIndex}= this.props.WorkoutReducers;
+    let exerciseIndex;
+    if(this.state.exerciseIndex === (this.state.exerciseLength - 1)){
+      exerciseIndex = 0;
+    }else{
+      exerciseIndex = this.state.exerciseIndex +1;
+    }
+    program.exercises[dayIndex].exercise_list[this.state.exerciseIndex];
     const exerciseLog = [];
     this.setState({ exerciseLog: exerciseLog, isLoading: true});
-    this.setState({ currentSets: 1, exerciseIndex : this.state.exerciseIndex + 1 })
+    this.setState({ currentSets: this.currentSets+1, exerciseIndex })
     setTimeout(() => {
       this.calculateExerciseLog();
   }, 500);
@@ -125,13 +145,10 @@ class ExerciseContainer extends Component{
     this.setState({ showInfo: !this.state.showInfo})
   }
   render(){
-    console.log("this is record showing in render", this.props.WorkoutReducers.record);
-    if(this.props.WorkoutReducers.program){
+    if(this.props.WorkoutReducers.program && this.state.error === false){
       const {program, dayIndex, record}= this.props.WorkoutReducers;
       console.log(record);
       const exerciseData = program.exercises[dayIndex].exercise_list[this.state.exerciseIndex];
-      const exerciseTotal = program.exercises[dayIndex].exercise_list.length;
-
 
       const exerciseNumber = 1;
       const video = "https://www.youtube.com/watch?v=vn_dFUUuHtI&feature=youtu.be";
@@ -155,9 +172,7 @@ class ExerciseContainer extends Component{
           onChangeRep={this.onChangeRep}
           onInfoClicked = {this.infoHandler}
           exerciseData = {exerciseData}
-          exerciseTotal = {exerciseTotal}
           /*videos={this.state.selectedVideo}*/
-          exerciseNumber = {exerciseNumber}
           state = {this.state}
         />
         {this.state.goBack && (
@@ -182,7 +197,8 @@ class ExerciseContainer extends Component{
         <Redirect to="/plan" />
       )
     }
-  }
+}
+
 
   /*videoSearch(term){
   YTSearch({key: API_KEY, term: term}, (videos)=>{

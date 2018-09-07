@@ -15,7 +15,7 @@ const Exercise = (props) => {
            onLeftClick={(e) => props.onBackButtonClicked(e)}
            className="nav-bar">
            <div className="nav-bar-text">
-            {props.exerciseData.workout} {props.exerciseNumber}/{props.exerciseTotal}
+            {props.exerciseData.workout} {props.state.exerciseIndex+ 1}/{props.state.exerciseLength}
            </div>
          </NavBar>
          {/* prescription is the black circle on top of image*/}
