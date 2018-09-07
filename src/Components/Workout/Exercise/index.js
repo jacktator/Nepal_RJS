@@ -3,6 +3,7 @@ import {NavBar, Icon, NoticeBar,WingBlank,Progress,Tag,Grid,Badge} from 'antd-mo
 import './Exercise.css';
 import RecordList from './RecordList.js';
 import WeightandRep from './WeightAndRep';
+import './RoundPopup.css';
 
 const Exercise = (props) => {
     return(
@@ -18,17 +19,37 @@ const Exercise = (props) => {
             {props.exerciseData.workout} {props.state.exerciseIndex+ 1}/{props.state.exerciseLength}
            </div>
          </NavBar>
+
          {/* prescription is the black circle on top of image*/}
           <div className="prescription-circle">
+
+                {/*
                 <div className="prescription">
                 <button className="btn-two">
                   <div>{props.exerciseData.sets}x</div>
                   <div>{props.exerciseData.reps} reps</div>
                   <div>{props.exerciseData.weight} kg</div>
                 </button>
-                </div>
+                </div> */}
          </div>
+
          <div className="image-block">
+
+           {/* prescription circle*/}
+           <div className="prescription-circle">
+             <nav className="menu">
+               <input type="checkbox" href="#" className="menu-open" name="menu-open" id="menu-open"/>
+               <label className="menu-open-button" for="menu-open">
+                 <span className="lines line-1"></span>
+                 <span className="lines line-2"></span>
+                 <span className="lines line-3"></span>
+               </label>
+               <a className="menu-item item-4">{props.exerciseData.sets}x</a>
+               <a className="menu-item item-5">{props.exerciseData.reps}</a>
+               <a className="menu-item item-6">{props.exerciseData.weight} kg</a>
+             </nav>
+           </div>
+
            {/* the main gif/image area */}
            <img src={require("../../../Assets/Exercise/exerciseGif.gif")} className="exercise-image" alt="exercise"/>
            {/* history button */}

@@ -69,3 +69,17 @@
   text-align: center;
   z-index: 90;
 }
+
+.link-highlight:active{
+  background-color: #DDDDDD;
+  /*curve highlight on top left and right*/
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+  /* makes highlight more smooth*/
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  /* ...and now for the proper property */
+  transition:.5s;
+}

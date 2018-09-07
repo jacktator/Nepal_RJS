@@ -7,6 +7,8 @@ import {bindActionCreators} from 'redux';
 import Info from '../../../Components/Workout/Exercise/Info';
 import Modal from '../../../Components/UI/Modal';
 import {saveExerciseData, getExerciseRecord} from '../actions';
+import Loading from '../../../Components/Loading/';
+import Hoc from '../../../HOC/Hoc'
 
 // import _ from 'lodash';
 // import YTSearch from 'youtube-api-search';
@@ -67,10 +69,10 @@ class ExerciseContainer extends Component{
   }
 
   loadingToast = () => {
-  Toast.loading('Loading...', 1, () => {
-    console.log('Load complete !!!');
-  });
-}
+    Toast.loading('Loading...', 1, () => {
+      console.log('Load complete !!!');
+    });
+  }
 
   calculateExerciseLog = () => {
     let {program, dayIndex}= this.props.WorkoutReducers;
@@ -160,9 +162,12 @@ class ExerciseContainer extends Component{
       //const videoSearch = _.debounce((term)=>{this.videoSearch(term)}, 300);
       // const {exerciseName,exerciseNumber,exerciseTotal,sets,reps,weight,video,videoDescription,exerciseLog} =  this.props.ExerciseReducers;
       return(
-
         <div className="all">
-
+        {this.state.isLoading === true &&
+          (
+            <Hoc><Modal modalFor = "modal-for-select-exercise"><Loading mode="selectExercise"/></Modal></Hoc>
+          )
+        }
         <Exercise
           onBackButtonClicked ={this.backButtonHandler}
           onSaveButtonClicked ={this.onSaveButtonHandler}
@@ -187,9 +192,6 @@ class ExerciseContainer extends Component{
           />
           </Modal>
         )}
-        {this.state.isLoading === true &&
-          <Modal>{this.loadingToast()}</Modal>
-        }
         </div>
       );
     }else{
