@@ -13,8 +13,7 @@ const Exercise = (props) => {
            mode='light'
            icon={<Icon type="left" size="lg"/>}
            onLeftClick={(e) => props.onBackButtonClicked(e)}
-           className="nav-bar"
-           style={{marginTop:"20px"}}>
+           className="nav-bar">
            <div className="nav-bar-text">
             {props.exerciseData.workout} {props.state.exerciseIndex+ 1}/{props.state.exerciseLength}
            </div>
@@ -32,14 +31,12 @@ const Exercise = (props) => {
          <div className="image-block">
            {/* the main gif/image area */}
            <img src={require("../../../Assets/Exercise/exerciseGif.gif")} className="exercise-image" alt="exercise"/>
-           <div className="image-container">
            {/* history button */}
            <img src={require("../../../Assets/Exercise/history.svg")} className="_history-icon" alt="history"
            onClick={() => {alert("can see previous training longs of weights and reps they achieved. this goes to a seperate page.")}}/>
            {/* exercise information*/}
            <img src={require("../../../Assets/Exercise/exerciseInfo.svg")} className="info-icon" alt="info"
              onClick={(e) => props.onInfoClicked(e) }/>
-           </div>
          </div>
 
          {/* displays the text and steppers, as well as the save button. refer to WeightandRep.js*/}

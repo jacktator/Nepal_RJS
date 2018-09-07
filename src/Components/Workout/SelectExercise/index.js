@@ -22,7 +22,7 @@ import Hoc from '../../../HOC/Hoc';
     console.log(`selectedIndex:${e.nativeEvent.selectedSegmentIndex}`);
     this.setState({currentChild: e.nativeEvent.selectedSegmentIndex})
   }
-
+  
   render() {
 
     if(this.props.listExercise && this.props.listExercise !== null){
@@ -30,6 +30,8 @@ import Hoc from '../../../HOC/Hoc';
       console.log(exercises)
       return (
         <div className="container">
+          <img src={require("../../../Assets/Modal/ic_cancel.png")} className="cancel-icon" alt="cancel"
+          onClick={() => this.props.cancel()}/>
           <Carousel className="space-carousel"
             frameOverflow="visible"
             cellSpacing={10}

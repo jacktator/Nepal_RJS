@@ -17,7 +17,7 @@ const tabsObject = {
 
 const contentOfTabs = (props) => [
 
-  
+
   { title: selectedDiv('history', props.currentPage), value: 'history' },
   { title: selectedDiv('plan', props.currentPage), value: 'plan' },
   { title: workoutDiv('workout', props.currentDay ,props.currentPage), value: 'workout' },
@@ -31,7 +31,7 @@ const Footer = (props) => {
     <div className="footer-container">
       <Tabs
         page={tabsObject[props.currentPage]}
-        style={{ height: '1000px' }}
+        style={{ height: '1000px'}}
         tabs={contentOfTabs(props)}
         swipeable={false}
         tabBarPosition="bottom"
@@ -45,22 +45,22 @@ const Footer = (props) => {
 
 const selectedDiv = (title, currentPage) => title === currentPage ? (
   <Link to={'/'+title} style={{height:'60px', display:'flex', flexDirection:'column', alignItems:'center'}}>
-    <div className={title + '-sel-icon'} style={{ color: 'white', width: '20px', height: '20px', marginBottom:'-8px', marginTop:'15px' }}></div>
-    <span style={{color:'#33A3F4', marginTop:'0', marginBottom:'-10px'}}>{title}</span>
+    <div className={title + '-sel-icon'} style={{ color: 'white', width: '26px', height: '26px', marginBottom:'-8px', marginTop:'15px' }}></div>
+    {/*<span style={{color:'#33A3F4', marginTop:'0', marginBottom:'-10px'}}>{title}</span>*/}
   </Link>) : (
     <Link to={'/' + title} style={{height:'60px', display:'flex', flexDirection:'column', alignItems:'center'}}>
-      <div className={title + '-icon'} style={{ width: '20px', height: '20px', marginBottom:'-8px', marginTop:'15px' }}></div>
-      <span style={{color:'#949494', marginTop:'0', marginBottom:'-10px'}}>{title}</span>
+      <div className={title + '-icon'} style={{ width: '26px', height: '26px', marginBottom:'-8px', marginTop:'15px' }}></div>
+      {/*}<span style={{color:'#949494', marginTop:'0', marginBottom:'-10px'}}>{title}</span>*/}
     </Link>
   )
   const workoutDiv = (title, currentDay, currentPage) => title === currentPage ? (
     <Link to={'/'+title+'/'+ currentDay} style={{height:'60px', display:'flex', flexDirection:'column', alignItems:'center'}}>
-      <div className={title + '-sel-icon'} style={{ color: 'white', width: '20px', height: '20px', marginBottom:'-8px', marginTop:'15px' }}></div>
-      <span style={{color:'#33A3F4', marginTop:'0', marginBottom:'-10px'}}>{title}</span>
+      <div className={title + '-sel-icon'} style={{ color: 'white', width: '26px', height: '26px', marginBottom:'-8px', marginTop:'15px' }}></div>
+      {/*<span style={{color:'#33A3F4', marginTop:'0', marginBottom:'-10px'}}>{title}</span>*/}
     </Link>) : (
       <Link to={'/' + title+'/'+ currentDay} style={{height:'60px', display:'flex', flexDirection:'column', alignItems:'center'}}>
-        <div className={title + '-icon'} style={{ width: '20px', height: '20px', marginBottom:'-8px', marginTop:'15px' }}></div>
-        <span style={{color:'#949494', marginTop:'0', marginBottom:'-10px'}}>{title}</span>
+        <div className={title + '-icon'} style={{ width: '26px', height: '26px', marginBottom:'-8px', marginTop:'15px' }}></div>
+       {/*<span style={{color:'#949494', marginTop:'0', marginBottom:'-10px'}}>{title}</span>*/}
       </Link>
     )
   // const Footer = (props) => {

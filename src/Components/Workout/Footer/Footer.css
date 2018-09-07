@@ -26,26 +26,26 @@
 }
 
 .history-icon{
-  background: url('../../../Assets/Footer/home.svg')  center center /  21px 21px no-repeat;
+  background: url('../../../Assets/Footer/history.svg')  center center /  22px 22px no-repeat;
 }
 .history-sel-icon{
-  background: url('../../../Assets/Footer/homeSel.svg')  center center /  21px 21px no-repeat;
+  background: url('../../../Assets/Footer/historySel.svg')  center center /  22px 22px no-repeat;
 }
 .profile-icon{
-  background:url('../../../Assets/Footer/me.svg') center center / 21px 21px no-repeat;
+  background:url('../../../Assets/Footer/me.svg') center center / 24px 24px no-repeat;
 }
 .profile-sel-icon{
-  background:url('../../../Assets/Footer/meSel.svg') center center / 21px 21px no-repeat;
+  background:url('../../../Assets/Footer/meSel.svg') center center / 24px 24px no-repeat;
 }
 .plan-icon{
-  background:url('../../../Assets/Footer/plan.svg') center center / 21px 21px no-repeat;
+  background:url('../../../Assets/Footer/plan.svg') center center / 28px 28px no-repeat;
 }
 .plan-sel-icon{
-  background:url('../../../Assets/Footer/planSel.svg') center center / 21px 21px no-repeat;
+  background:url('../../../Assets/Footer/planSel.svg') center center / 28px 28px no-repeat;
 }
 .workout-icon{
-  background:url('../../../Assets/Footer/workout.svg') center center / 21px 21px no-repeat;
+  background:url('../../../Assets/Footer/workout.svg') center center / 28px 28px no-repeat;
 }
 .workout-sel-icon{
-  background:url('../../../Assets/Footer/workoutSel.svg') center center / 21px 21px no-repeat;
+  background:url('../../../Assets/Footer/workoutSel.svg') center center / 28px 28px no-repeat;
 }
