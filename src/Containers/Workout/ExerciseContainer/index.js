@@ -40,28 +40,28 @@ class ExerciseContainer extends Component{
     //this.videoSearch('Destiny 2')
   }
   componentWillMount() {
+    alert("component will mount");
     let index = 0;
     if(this.props.match.params.index){
-      index = this.props.match.params;
+      index = this.props.match.params.index;
       this.setState({exerciseIndex: this.props.match.params.index})
     }
     const {program, dayIndex}= this.props.WorkoutReducers;
-    let exerciseLength = program.exercises[dayIndex].exercise_list.length;
-    if(program.exercises[dayIndex].exercise_list[index]){
-      alert("we got data")
-      let exerciseData = program.exercises[dayIndex].exercise_list[index];
-      alert(exerciseData);
-      this.setState({ exerciseLength: exerciseLength, weight: exerciseData.weight, sets: exerciseData.sets, reps: exerciseData.reps})
-      this.loadingToast();
-      this.calculateExerciseLog();
+    if(program && dayIndex!== null){
+      let exerciseLength = program.exercises[dayIndex].exercise_list.length;
+      if(program.exercises[dayIndex].exercise_list[index]){
+        let exerciseData = program.exercises[dayIndex].exercise_list[index];
+        this.setState({ exerciseLength: exerciseLength, weight: exerciseData.weight, sets: exerciseData.sets, reps: exerciseData.reps})
+        this.loadingToast();
+        this.calculateExerciseLog();
+      }else{
+      this.setState({ error: true})
+      }
     }else{
       this.setState({ error: true})
     }
   }
 
-  componentDidMount () {
-
-  }
   componentWillReceiveProps(nextProps){
     this.calculateExerciseLog();
   }
@@ -126,10 +126,10 @@ class ExerciseContainer extends Component{
     program.exercises[dayIndex].exercise_list[this.state.exerciseIndex];
     const exerciseLog = [];
     this.setState({ exerciseLog: exerciseLog, isLoading: true});
-    this.setState({ currentSets: this.currentSets+1, exerciseIndex })
+    this.setState({ currentSets: 1, exerciseIndex })
     setTimeout(() => {
       this.calculateExerciseLog();
-  }, 500);
+  }, 1000);
   }
   onSaveButtonHandler = (code) => {
     let {recordID, currentWeek, currentDay, record} = this.props.WorkoutReducers;
@@ -147,22 +147,13 @@ class ExerciseContainer extends Component{
   render(){
     if(this.props.WorkoutReducers.program && this.state.error === false){
       const {program, dayIndex, record}= this.props.WorkoutReducers;
-      console.log(record);
       const exerciseData = program.exercises[dayIndex].exercise_list[this.state.exerciseIndex];
-
-      const exerciseNumber = 1;
       const video = "https://www.youtube.com/watch?v=vn_dFUUuHtI&feature=youtu.be";
       const videoDescription = "THIS is test video description";
-      const exerciseLog = [];
-
-      console.log("this.state",this.state);
-      console.log("cdm state",this.state);
       //const videoSearch = _.debounce((term)=>{this.videoSearch(term)}, 300);
       // const {exerciseName,exerciseNumber,exerciseTotal,sets,reps,weight,video,videoDescription,exerciseLog} =  this.props.ExerciseReducers;
       return(
-
         <div className="all">
-
         <Exercise
           onBackButtonClicked ={this.backButtonHandler}
           onSaveButtonClicked ={this.onSaveButtonHandler}
@@ -187,9 +178,11 @@ class ExerciseContainer extends Component{
           />
           </Modal>
         )}
-        {this.state.isLoading === true &&
-          <Modal>{this.loadingToast()}</Modal>
-        }
+        {this.state.isLoading === true && (
+          <Modal>
+            {this.loadingToast()}
+          </Modal>
+        )}
         </div>
       );
     }else{

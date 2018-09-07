@@ -35,6 +35,7 @@ const WeightAndRep = (props) =>{
         {/* code for save button*/}
         <Flex justify="center" className="save-button">
           <Flex.Item>
+          <div>{props.state.currentSets}{props.state.sets}</div>
           <MediaQuery query="(min-height:668px)">
           { props.state.currentSets <= props.state.sets &&
             <Button type="primary" inline="true" size="large" onClick={()=>props.onSaveButtonClicked(props.code)}>
