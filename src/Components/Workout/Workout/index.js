@@ -51,7 +51,7 @@ const Workout = (props) => {
                     <div>
                     <WhiteSpace/>
                     <Card key={key}>
-                      <Link to={`/exercise/${key}`} activeClassName="active">
+                      <Link to={`/exercise/${key}`} className="link-highlight">
                         <Card.Header
                           title={<span style={{whiteSpace:"nowrap"}}>{data.workout}</span>}
                           extra={<span>{data.code}</span>}
@@ -73,7 +73,7 @@ const Workout = (props) => {
                                 )}
                                 {data.is_saved && (
                                     <div style={{textAlign:"center"}}>
-                                      <Button type="primary" size="omitted" inline style={{ background: '#54D66A' }}>Saved!</Button>
+                                      <Button type="primary" size="omitted" inline style={{ background: '#54D66A'}}>Saved!</Button>
                                       <WhiteSpace/>
                                     </div>
                                 )}
