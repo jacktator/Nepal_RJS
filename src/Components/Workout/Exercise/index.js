@@ -3,53 +3,9 @@ import {NavBar, Icon, NoticeBar,WingBlank,Progress,Tag,Grid,Badge} from 'antd-mo
 import './Exercise.css';
 import RecordList from './RecordList.js';
 import WeightandRep from './WeightAndRep';
+import './RoundPopup.css';
 
-
-// icons taken from http://iconfont.cn/
-// import history from '../../../Assets/Exercise/history.svg';
-//import historySel from '../../../Assets/Exercise/historySel.svg';
-// import exerciseInfo from '../../../Assets/Exercise/exerciseInfo.svg'
-
-export default class Exercise extends Component{
-  constructor(props) {
-    super(props);
-    this.state = {
-      weight: 10,
-      reps:5,
-      sets: 1,
-      exerciseLog:[],
-    };
-    this.onChangeWeight=this.onChangeWeight.bind(this);
-    this.onChangeRep = this.onChangeRep.bind(this);
-    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
-  }
-
-  componentDidMount () {
-    this.setState({ weight: this.props.exerciseData.weight, sets: this.props.exerciseData.sets, reps: this.props.reps})
-  }
-
-  onChangeWeight = (val) => {
-    this.setState({ weight: val });
-  }
-
-  onChangeRep = (val) => {
-    this.setState({ reps: val });
-  }
-
-  onSaveButtonClick = () => {
-    if (this.state.exerciseLog.length < this.state.sets) {
-      let newExerciseLog = this.state.exerciseLog;
-      // newExerciseLog.push(this.state.exerciseLog);
-      newExerciseLog.push({weight:this.state.weight, reps:this.state.reps});
-      this.setState({ exerciseLog: newExerciseLog });  
-    }
-  }
-
-  onLeftClick(e){
-    e.preventDefault();
-    alert(e)
-  }
-  render(){
+const Exercise = (props) => {
     return(
       <div className="exercise">
           {/* navigation bar on top of screen*/}
@@ -57,57 +13,72 @@ export default class Exercise extends Component{
            style={{backgroundColor:"white"}}
            mode='light'
            icon={<Icon type="left" size="lg"/>}
-           onLeftClick={(e) => this.props.onBackButtonClicked(e)}
-           className="nav-bar"
-           style={{marginTop:"20px"}}>
+           onLeftClick={(e) => props.onBackButtonClicked(e)}
+           className="nav-bar">
            <div className="nav-bar-text">
-            {this.props.exerciseData.workout} {this.props.exerciseNumber}/{this.props.exerciseTotal}
+            {props.exerciseData.workout} {props.state.exerciseIndex+ 1}/{props.state.exerciseLength}
            </div>
          </NavBar>
+
          {/* prescription is the black circle on top of image*/}
           <div className="prescription-circle">
+
+                {/*
                 <div className="prescription">
                 <button className="btn-two">
-                  <div>{this.props.exerciseData.sets}x</div>
-                  <div>{this.props.exerciseData.reps} reps</div>
-                  <div>{this.props.exerciseData.weight} kg</div>
+                  <div>{props.exerciseData.sets}x</div>
+                  <div>{props.exerciseData.reps} reps</div>
+                  <div>{props.exerciseData.weight} kg</div>
                 </button>
-                </div>
+                </div> */}
          </div>
+
          <div className="image-block">
+
+           {/* prescription circle*/}
+           <div className="prescription-circle">
+             <nav className="menu">
+               <input type="checkbox" href="#" className="menu-open" name="menu-open" id="menu-open"/>
+               <label className="menu-open-button" for="menu-open">
+                 <span className="lines line-1"></span>
+                 <span className="lines line-2"></span>
+                 <span className="lines line-3"></span>
+               </label>
+               <a className="menu-item item-4">{props.exerciseData.sets}x</a>
+               <a className="menu-item item-5">{props.exerciseData.reps}</a>
+               <a className="menu-item item-6">{props.exerciseData.weight} kg</a>
+             </nav>
+           </div>
+
            {/* the main gif/image area */}
            <img src={require("../../../Assets/Exercise/exerciseGif.gif")} className="exercise-image" alt="exercise"/>
-           <div className="image-container">
            {/* history button */}
            <img src={require("../../../Assets/Exercise/history.svg")} className="_history-icon" alt="history"
            onClick={() => {alert("can see previous training longs of weights and reps they achieved. this goes to a seperate page.")}}/>
            {/* exercise information*/}
            <img src={require("../../../Assets/Exercise/exerciseInfo.svg")} className="info-icon" alt="info"
-             onClick={(e) => this.props.onInfoClicked(e) }/>
-           </div>
+             onClick={(e) => props.onInfoClicked(e) }/>
          </div>
 
          {/* displays the text and steppers, as well as the save button. refer to WeightandRep.js*/}
          <div className="stepper-list-container">
             <div>
               <WeightandRep
-              exerciseData={this.props.exerciseData}
-              weight={this.state.weight}
-              sets={this.state.sets}
-              reps={this.state.reps}
-              onSaveButtonClicked={this.onSaveButtonClick}
-              onChangeWeight={this.onChangeWeight}
-              onChangeRep={this.onChangeRep}
-              steps={this.state.sets-this.state.exerciseLog.length}
+              code={props.exerciseData.code}
+              state={props.state}
+              onCompleteButtonHandler={props.onCompleteButtonHandler}
+              onSaveButtonClicked={props.onSaveButtonClicked}
+              onNextButtonHandler = {props.onNextButtonHandler}
+              onChangeWeight={props.onChangeWeight}
+              onChangeRep={props.onChangeRep}
+              steps={props.state.sets-props.state.exerciseLog.length}
             />
             </div>
             {/* displays the record list, refer to RecordList.js*/}
            <div>
              <RecordList
-              exerciseLog={this.state.exerciseLog}
-              weight = {this.state.weight}
-              sets = {this.state.sets}
-              reps = {this.state.reps}
+              exerciseLog={props.state.exerciseLog}
+              state = {props.state}
             />
              {/* Message for showing current goals*/}
              <NoticeBar
@@ -127,12 +98,13 @@ export default class Exercise extends Component{
       </div>
     );
   }
-}
+
+export default Exercise;
 
 {/* <WeightandRep
-                exerciseData = {this.props.exerciseData}
-                weight = {this.props.exerciseData.weight}
-                sets = {this.props.exerciseData.sets}
-                reps = {this.props.reps}
-                onSaveButtonClicked={this.props.onSaveButtonClicked}
+                exerciseData = {props.exerciseData}
+                weight = {props.exerciseData.weight}
+                sets = {props.exerciseData.sets}
+                reps = {props.reps}
+                onSaveButtonClicked={props.onSaveButtonClicked}
             /> */}

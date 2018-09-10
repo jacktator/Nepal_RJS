@@ -100,14 +100,11 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
 
     export function saveExerciseData(recordID, week, day, code, weight, sets, reps, record) {
       return(dispatch: Function) => {
-        console.log("Save exercise Data", record);
-        let weekly_record = [];
-        let temp;
+        let temp, weekly_record;
         if(record.weekly_record){
           weekly_record = record.weekly_record;
           let weekIndex = weekly_record.findIndex( i => { return i.week ===  week.toString() });
           if(weekIndex >= 0){
-            console.log("weekly_record",record.weekly_record);
             let dayIndex = record.weekly_record[weekIndex].daily_record.findIndex( i => { return i.day === day.toString() });
             if(dayIndex >= 0){
               let dataIndex = record.weekly_record[weekIndex].daily_record[dayIndex].data.findIndex( i => { return i.code === code.toString() });
@@ -127,12 +124,11 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
             }else{ //weekIndex >= 0
               temp = { week: week, daily_record:[ {day: day, data: [ {code: code, data: [
                 { sets: sets, reps: reps, weight: weight }]}]}]}
-                console.log("before push", weekly_record);
                 weekly_record.push(temp);
-                console.log("temp added", weekly_record);
               }
             }else{
-              let weekly_record = [{ week: week, daily_record:[ {day: day, data: [ {code: code, data: [
+              alert("else");
+              weekly_record = [{ week: week, daily_record:[ {day: day, data: [ {code: code, data: [
                 { sets: sets, reps: reps, weight: weight }]}]}]}
               ]
             }
@@ -144,7 +140,7 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
                 }
               })
               .then((response)=> {
-                  console.log(response.data);
+                  console.log("response:",response.data);
                   dispatch(setExerciseRecord(response.data.acf));
               }).catch((error)=> {
                 console.log(error);

@@ -5,6 +5,7 @@ import Loading from '../../Loading';
 import Hoc from '../../../HOC/Hoc';
 
   class SelectExercise extends React.Component {
+
     state = {
     imgHeight: 500,
     currentExercise: 0,
@@ -15,8 +16,8 @@ import Hoc from '../../../HOC/Hoc';
   getOptionIndex = () => {
     let index = document.getElementById("mySelect").selectedIndex;
     this.setState({currentChild:index})
-
   }
+
 
 //This function
   selectExercise = () => {
@@ -33,16 +34,15 @@ import Hoc from '../../../HOC/Hoc';
 
     if(this.props.listExercise && this.props.listExercise !== null){
       const exercises = this.props.listExercise.exercises;
-      {console.log(exercises);}
+
+      console.log(exercises)
       return (
         <div className="container">
-          <WingBlank>
-        <select id="mySelect"  onChange={this.getOptionIndex} >
-          <option  value={exercises[0].name} >{exercises[0].name}</option>
-          <option  value={exercises[1].name} >{exercises[1].name}</option>
-        </select>
-          </WingBlank>
 
+
+
+          <img src={require("../../../Assets/Modal/ic_cancel.png")} className="cancel-icon" alt="cancel"
+          onClick={() => this.props.cancel()}/>
           <Carousel className="space-carousel"
             frameOverflow="visible"
             cellSpacing={10}
@@ -79,8 +79,16 @@ import Hoc from '../../../HOC/Hoc';
           {exercises.length > 1 &&
             <WingBlank>
 
+            <SegmentedControl className='selectItem' selectedIndex={this.state.currentChild} values={[exercises[0].name, exercises[1].name]} onChange={this.onChange} on/>
 
+            <select id="mySelect"  onChange={this.getOptionIndex} >
+              <option  value={exercises[0].name} >{exercises[0].name}</option>
+              <option  value={exercises[1].name} >{exercises[1].name}</option>
+            </select>
             </WingBlank>
+
+
+
           }
           <WhiteSpace/>
         </div>

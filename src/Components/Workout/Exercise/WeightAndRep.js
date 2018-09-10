@@ -1,59 +1,76 @@
 import React, {Component} from 'react';
 import {Stepper, Button,Flex} from 'antd-mobile';
 import MediaQuery from 'react-responsive';
+import { Link } from 'react-router-dom';
 
-export default class WeightAndRep extends Component{
+const WeightAndRep = (props) =>{
 
-  render(){
-    return(
-      <div className="weight-and-rep">
-        {/* Text for stepper*/}
-        <Flex justify="center" className="stepper-text">
-        <Flex.Item> WEIGHT(kg)</Flex.Item>
-        <Flex.Item> REPS</Flex.Item>
-        </Flex>
-        {/* Code for stepper*/}
-        <Flex justify="center" className="stepper">
-        <Flex.Item><Stepper
-            style={{ width: '30%', minWidth: '110px' }}
-            showNumber
-            max={200}
-            min={1}
-            step={2.5}
-            value={this.props.weight}
-            onChange={(e) => this.props.onChangeWeight(e)}
-          /></Flex.Item>
-        <Flex.Item><Stepper
-            style={{ width: '30%', minWidth: '110px' }}
-            showNumber
-            max={10}
-            min={1}
-            value={this.props.reps}
-            onChange={this.props.onChangeRep}
-          /></Flex.Item>
-        </Flex>
-        {/* code for save button*/}
-        <Flex justify="center" className="save-button">
-          <Flex.Item>
-          <MediaQuery query="(min-height:668px)">
-          <Button type="primary" inline="true" size="large" onClick={()=>this.props.onSaveButtonClicked()}>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              {this.props.steps <= 0 ? 'NEXT' : 'SAVE'}
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  return(
+    <div className="weight-and-rep">
+    {/* Text for stepper*/}
+    <Flex justify="center" className="stepper-text">
+    <Flex.Item>Weight (kg)</Flex.Item>
+    <Flex.Item>Reps</Flex.Item>
+    </Flex>
+    {/* Code for stepper*/}
+    <Flex justify="center" className="stepper">
+    <Flex.Item><Stepper
+    style={{ width: '30%', minWidth: '110px' }}
+    showNumber
+    max={200}
+    min={1}
+    step={2.5}
+    value={props.state.weight}
+    onChange={(e) => props.onChangeWeight(e)}
+    /></Flex.Item>
+    <Flex.Item><Stepper
+    style={{ width: '30%', minWidth: '110px' }}
+    showNumber
+    max={10}
+    min={1}
+    value={parseInt(props.state.reps)}
+    onChange={props.onChangeRep}
+    /></Flex.Item>
+    </Flex>
+    {/* code for save button*/}
+    <Flex justify="center" className="save-button">
+    { props.state.completedExercise === props.state.exerciseLength &&
+      <Flex.Item>
+      <Button type="primary" inline="true" size="large" onClick={()=> props.onCompleteButtonHandler()}>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      Complete Workout
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </Button>
+      </Flex.Item>
+    }
+    { props.state.completedExercise !== props.state.exerciseLength &&
+      <Flex.Item>
+      <MediaQuery query="(min-height:668px)">
+      <Button type="primary" inline="true" size="large" onClick={()=>
+        {props.state.currentSets > props.state.sets
+          ? props.onNextButtonHandler()
+          : props.onSaveButtonClicked(props.code)}}>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          {props.state.currentSets > props.state.sets?'Next':'SAVE'}
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </Button>
           </MediaQuery>
           <MediaQuery query="(max-height:667px)">
-          <Button type="primary" inline="true" size="small" onClick={(e) => this.props.onSaveButtonClicked(e)}>
+          <Button type="primary" inline="true" size="large" onClick={()=>
+            {props.state.currentSets > props.state.sets
+              ? props.onNextButtonHandler()
+              : props.onSaveButtonClicked(props.code)}}>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              SAVE
+              {props.state.currentSets > props.state.sets?'Next':'SAVE'}
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          </Button>
-          </MediaQuery>
-          </Flex.Item>
-        </Flex>
-      </div>
-    );
-  }
-}
+              </Button>
+              </MediaQuery>
+              </Flex.Item>
+            }
+            </Flex>
+            </div>
+          );
+        }
 
-//this.props.onSaveButtonClicked({this.props.exerciseData.code, this.state.sets ,this.state.reps, this.state.weight)}
+        export default WeightAndRep;
+        //props.onSaveButtonClicked({props.exerciseData.code, this.state.sets ,this.state.reps, this.state.weight)}

@@ -4,18 +4,24 @@
 .image-container {
   position: relative;
   text-align: center;
-  color: white;
 }
 .image-source {
   height: 200px;
   width: 100%;
+  opacity: 0.7;
+  filter: alpha(opacity=80);
+  user-select: none;
+  pointer-events: none;
 }
 .workout-info {
-    position: absolute;
-    bottom: 8px;
-    left: 16px;
+    position:absolute;
+    top:10%;
+    left: 5%;
     text-align: left;
-    font-size: 30px;
+    font-size: 34px;
+    opacity: 1;
+    z-index: 1;
+    color:white;
 }
 .container-without-button {
   display: inline-block;
@@ -62,4 +68,18 @@
   color: white;
   text-align: center;
   z-index: 90;
+}
+
+.link-highlight:active{
+  background-color: #DDDDDD;
+  /*curve highlight on top left and right*/
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+  /* makes highlight more smooth*/
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  /* ...and now for the proper property */
+  transition:.5s;
 }
