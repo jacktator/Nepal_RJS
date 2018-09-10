@@ -79,6 +79,7 @@ import Hoc from '../../../HOC/Hoc';
           {exercises.length > 1 &&
             <WingBlank>
 
+
             <SegmentedControl className='selectItem' selectedIndex={this.state.currentChild} values={[exercises[0].name, exercises[1].name]} onChange={this.onChange} on/>
 
             <select id="mySelect"  onChange={this.getOptionIndex} >
