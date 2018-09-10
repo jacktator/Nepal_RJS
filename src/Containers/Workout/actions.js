@@ -62,7 +62,6 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
 
   //This function is to fetch the list of available workout
   export function fetchWorkoutList(code) {
-    let token = localStorage.getItem('token');
     return(dispatch: Function) => {
       return axios.get(`https://nepal.sk8tech.io/wp-json/wp/v2/exercise?filter[meta_key]=code&filter[meta_value]=${code}`)
       .then((response) => {
@@ -98,7 +97,7 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
       }
     }
 
-    export function saveExerciseData(recordID, week, day, code, weight, sets, reps, record) {
+    export function saveExerciseData(recordID, week, day, name, code, weight, sets, reps, record) {
       return(dispatch: Function) => {
         let temp, weekly_record;
         if(record.weekly_record){
@@ -112,12 +111,12 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
                 temp = { sets: sets, reps: reps, weight: weight }
                 weekly_record[weekIndex].daily_record[dayIndex].data[dataIndex].data.push(temp);
               }else{//dataIndex >= 0
-                temp = {code: code, data: [ { sets: sets, reps: reps, weight: weight }]}
+                temp = {code: code, name: name, data: [ { sets: sets, reps: reps, weight: weight }]}
                 weekly_record[weekIndex].daily_record[dayIndex].data.push(temp);
 
               }
             }else{//dayIndex >= 0
-              temp = {day: day, data: [ {code: code, data: [
+              temp = {day: day, data: [ {code: code, name: name, data: [
                 { sets: sets, reps: reps, weight: weight }]}]}
                 weekly_record[weekIndex].daily_record.push(temp);
               }
@@ -148,6 +147,39 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
           }//ends return dispatch
         }//ends functions saveExerciseData
 
+        export function updatePersonalBest (program, programID, dayIndex, index, value){
+          return(dispatch:Function) => {
+            program.exercises[dayIndex].exercise_list[index].personal_best = value;
+            return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`,
+              {
+                status: "publish",
+                fields: program
+              })
+              .then((response)=> {
+                dispatch(setProgram(response.data.acf));
+              }).catch((error)=> {
+                console.log(error);
+              })
+          }
+        }
+
+
+        export function updateRepsAndWeight (program, programID, dayIndex, index, reps, weight){
+          return(dispatch:Function) => {
+            program.exercises[dayIndex].exercise_list[index].weight = weight;
+            program.exercises[dayIndex].exercise_list[index].reps = reps;
+            return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`,
+              {
+                status: "publish",
+                fields: program
+              })
+              .then((response)=> {
+                dispatch(setProgram(response.data.acf));
+              }).catch((error)=> {
+                console.log(error);
+              })
+          }
+        }
 
 
         export function setCurrentWeek ( currentWeek: Number) {

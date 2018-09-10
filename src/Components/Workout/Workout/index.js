@@ -11,7 +11,7 @@ const Workout = (props) => {
         <div className="workout-info">{props.WorkoutReducers.program.program_name} Workout</div>
           <div className="container-without-button">
             <div className= "image-container">
-              <img className="image-source" src={require("../../../Assets/Workout/sampleImage.jpeg")} alt="header image"/>
+              <img className="image-source" src={require("../../../Assets/Workout/sampleImage.jpeg")} alt="header"/>
             </div>
 
             {/*
@@ -61,7 +61,6 @@ const Workout = (props) => {
                           <img style={{borderStyle:"solid", borderColor:"#f5f5f9",borderWidth:"1px",borderRadius:"5px"}}src={require(`../../../Assets/WorkoutIcons/${key}.jpg`)} height="120px" width="200px" alt="work" />
                         </Card.Body>
                       <Card.Footer
-
                         content={<div>
                                 {!data.is_saved && (
                                     <div style={{textAlign:"center"}}>

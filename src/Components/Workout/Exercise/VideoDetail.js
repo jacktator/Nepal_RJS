@@ -13,7 +13,7 @@ const VideoDetail = ({videos})=>{
 
   return(
     <div>
-    <iframe className="embed-responsive-item" src={url} allow="autoplay; encrypted-media" allowFullScreen/>
+    <iframe title="display-video" className="embed-responsive-item" src={url} allow="autoplay; encrypted-media" allowFullScreen/>
     </div>
   );
 }

@@ -7,7 +7,7 @@ import {bindActionCreators} from 'redux';
 import Info from '../../../Components/Workout/Exercise/Info';
 import ShowHistory from '../../../Components/Workout/Exercise/ShowHistory';
 import Modal from '../../../Components/UI/Modal';
-import {saveExerciseData, getExerciseRecord} from '../actions';
+import {saveExerciseData, getExerciseRecord, updatePersonalBest, updateRepsAndWeight} from '../actions';
 import Loading from '../../../Components/Loading/';
 import Hoc from '../../../HOC/Hoc';
 
@@ -31,6 +31,10 @@ class ExerciseContainer extends Component{
       exerciseLength: null, // represent the total number of workout for current day
       currentSets : 1, // represent the number of set user is currently in
 
+      prescribeWeight: 0,
+      prescribeReps: 0,
+      personalBest: 0,
+
       weight: 0, // represent the prescribe weight for current workout
       reps: 0, // represent the prescribe reps for current workout
       sets: 0,
@@ -51,14 +55,15 @@ class ExerciseContainer extends Component{
     let index = 0;
     if(this.props.match.params.index){
       index = this.props.match.params.index;
-      this.setState({exerciseIndex: this.props.match.params.index})
+      this.setState({exerciseIndex: parseInt(this.props.match.params.index, 10)})
     }
     const {program, dayIndex}= this.props.WorkoutReducers;
     if(program && dayIndex!== null){
       let exerciseLength = program.exercises[dayIndex].exercise_list.length;
       if(program.exercises[dayIndex].exercise_list[index]){
         let exerciseData = program.exercises[dayIndex].exercise_list[index];
-        this.setState({ exerciseLength: exerciseLength, exerciseData,
+        this.setState({ exerciseLength: exerciseLength, exerciseData, personalBest: parseFloat(exerciseData.personal_best),
+                        prescribeWeight: parseFloat(exerciseData.weight), prescribeReps: parseInt(exerciseData.reps, 10),
                         weight: parseFloat(exerciseData.weight), reps: parseInt(exerciseData.reps, 10),
                         sets: parseInt(exerciseData.sets, 10)
                       })
@@ -90,9 +95,18 @@ class ExerciseContainer extends Component{
     let exerciseData = program.exercises[dayIndex].exercise_list[this.state.exerciseIndex];
     let exerciseLength = program.exercises[dayIndex].exercise_list.length;
     let code = exerciseData.code;
+    let reps= 8;
+    if(exerciseData.progression_model === "double progression"){
+      let temp = exerciseData.reps.split('-');
+      reps = parseInt(temp[1], 10);
+    }
+    if(exerciseData.progression_model === "linear") {
+      reps = parseInt(exerciseData.reps, 10);
+    }
     this.setState({
-                    exerciseLength: exerciseLength, exerciseData,
-                    weight: parseFloat(exerciseData.weight), reps: parseInt(exerciseData.reps, 10),
+                    exerciseLength: exerciseLength, exerciseData, personalBest: parseFloat(exerciseData.personal_best),
+                    prescribeWeight: parseFloat(exerciseData.weight), prescribeReps: reps,
+                    weight: parseFloat(exerciseData.weight), reps: reps,
                     sets: parseInt(exerciseData.sets, 10)
                   })
     if(records){
@@ -116,14 +130,15 @@ class ExerciseContainer extends Component{
   }
 
   onNextButtonHandler = () => {
-    let {program, dayIndex}= this.props.WorkoutReducers;
+    // let {program, dayIndex}= this.props.WorkoutReducers;
+    // program.exercises[dayIndex].exercise_list[this.state.exerciseIndex];
     let exerciseIndex;
     if(this.state.exerciseIndex === (this.state.exerciseLength - 1)){
       exerciseIndex = 0;
     }else{
       exerciseIndex = this.state.exerciseIndex +1;
     }
-    program.exercises[dayIndex].exercise_list[this.state.exerciseIndex];
+
     const exerciseLog = [];
     this.setState({ exerciseLog: exerciseLog, isLoading: true, completedExercise: this.state.completedExercise+1});
     this.setState({ currentSets: 1, exerciseIndex })
@@ -132,11 +147,19 @@ class ExerciseContainer extends Component{
     }, 1000);
   }
 
-  onSaveButtonHandler = (code) => {
-    let variation = this.state.reps - parseInt(this.state.exerciseData.reps, 10);
-    let weight = parseFloat(this.state.exerciseData.weight);
-    let exerciseData = {...this.state.exerciseData};
-    let noChange = false;
+  onSaveButtonHandler = () => {
+    let name = this.state.exerciseData.workout;
+    let code = this.state.exerciseData.code;
+    let variation = this.state.reps - this.state.prescribeReps;
+    let weight = this.state.prescribeWeight;
+    let total = this.state.weight * this.state.reps;
+    let {program, dayIndex, programID} = this.props.WorkoutReducers;
+    let {record, recordID, currentWeek, currentDay} = this.props.WorkoutReducers;
+    if(total > this.state.personalBest){
+      this.setState({personalBest: total})
+      //write action to update personal best for given excercise
+      this.props.updatePersonalBest(program, programID, dayIndex, this.state.exerciseIndex, total);
+    }
     if(this.state.exerciseData.progression_model === "linear") {
       switch (variation) {
         case -7: weight -= 10; break;
@@ -155,22 +178,20 @@ class ExerciseContainer extends Component{
         default:
       }
     }
-    exerciseData.weight = weight;
-    this.setState({ weight, exerciseData})
+    this.setState({ weight, prescribeWeight: weight, reps: this.state.prescribeReps})
 
     //compare if its last exercise and last sets
-    if(this.state.completedExercise===this.state.exerciseLength-1 && this.state.currentSets === parseInt(this.state.sets)){
+    if(this.state.completedExercise===this.state.exerciseLength-1 && this.state.currentSets === this.state.sets){
       this.setState({completedExercise: this.state.completedExercise+1});
     }
-    let {recordID, currentWeek, currentDay, record} = this.props.WorkoutReducers;
     let exerciseLog = this.state.exerciseLog;
     exerciseLog.push({weight:this.state.weight, reps:this.state.reps, sets: this.state.currentSets});
 
     this.setState({exerciseLog, currentSets : this.state.currentSets+1})
     if(this.state.sets === this.state.currentSets){
-      alert("This is final set final set with ch");
+      this.props.updateRepsAndWeight(program, programID, dayIndex, this.state.exerciseIndex, this.state.prescibeReps, this.state.prescribeWeight);
     }
-    // this.props.saveExerciseData(recordID, currentWeek, currentDay, code, this.state.weight, this.state.Currentsets, this.state.reps, record);
+    this.props.saveExerciseData(recordID, currentWeek, currentDay, name, code, this.state.weight, this.state.Currentsets, this.state.reps, record);
 
   }
   onChangeWeight = (val) => {
@@ -203,6 +224,7 @@ class ExerciseContainer extends Component{
   }
   render(){
     console.log("this is state", this.state);
+    console.log("workout reducers", this.props.WorkoutReducers);
     if(this.props.WorkoutReducers.program && this.state.error === false){
       const video = "cPAbx5kgCJo";
       const videoDescription = "THIS is test video description";
@@ -281,7 +303,7 @@ function mapStateToProps(state){
 
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
-    saveExerciseData, getExerciseRecord
+    saveExerciseData, getExerciseRecord, updatePersonalBest, updateRepsAndWeight
   }, dispatch
 );
 }

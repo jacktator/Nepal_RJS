@@ -1,12 +1,34 @@
-import React, {Component} from 'react';
-import {NavBar, Icon, NoticeBar,WingBlank,Progress,Tag,Grid,Badge} from 'antd-mobile';
+import React from 'react';
+import {NavBar, Icon, NoticeBar,WingBlank,Progress} from 'antd-mobile';
 import './Exercise.css';
 import RecordList from './RecordList.js';
 import WeightandRep from './WeightAndRep';
 import './RoundPopup.css';
 
 const Exercise = (props) => {
-  let message = "Of we go";
+
+  let message = "";
+  if(props.state.currentSets <= props.state.sets){
+    if(props.state.exerciseData.progression_model === 'linear'){
+      if(props.state.currentSets === props.state.sets){
+        message = `Last set! Do as many reps as possible with ${props.state.prescribeWeight}kg`;
+      }else{
+        message = `Set ${props.state.currentSets} - Aim for ${props.state.prescribeWeight} * ${props.state.prescribeReps}`;
+      }
+    }else if(props.state.exerciseData.progression_model === 'double progression'){
+      if(props.state.currentSets === props.state.sets){
+        message = `Last Set - Do as many reps as possible`;
+      }else if(props.state.prescribeReps <= props.state.reps){
+        message = `Increase the weight`;
+      }else{
+        message = `Aim for more reps`;
+      }
+    }else{
+      //progression model is till failure
+    }
+  }else{
+    message = "Go no next workout"
+  }
     return(
       <div className="exercise">
           {/* navigation bar on top of screen*/}
@@ -63,7 +85,6 @@ const Exercise = (props) => {
          <div className="stepper-list-container">
             <div>
               <WeightandRep
-              code={props.state.exerciseData.code}
               state={props.state}
               onCompleteButtonHandler={props.onCompleteButtonHandler}
               onSaveButtonClicked={props.onSaveButtonClicked}
@@ -76,7 +97,6 @@ const Exercise = (props) => {
             {/* displays the record list, refer to RecordList.js*/}
            <div>
              <RecordList
-              exerciseLog={props.state.exerciseLog}
               state = {props.state}
             />
              {/* Message for showing current goals*/}
@@ -99,11 +119,3 @@ const Exercise = (props) => {
   }
 
 export default Exercise;
-
-{/* <WeightandRep
-                exerciseData = {props.exerciseData}
-                weight = {props.exerciseData.weight}
-                sets = {props.exerciseData.sets}
-                reps = {props.reps}
-                onSaveButtonClicked={props.onSaveButtonClicked}
-            /> */}

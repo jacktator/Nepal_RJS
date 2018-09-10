@@ -1,11 +1,9 @@
 import React , {Component} from 'react';
 import {Accordion,List,InputItem,Toast,Button} from 'antd-mobile';
-
 const Item = List.Item;
 
 //const AccountDetails = (props) => {
 class AccountDetails extends Component{
-
   // state for (!) if they are true or not
   state ={
     CurrentError: false,
@@ -13,7 +11,6 @@ class AccountDetails extends Component{
     ConfirmError: false,
     emailError: false,
   }
-
   // checks if reducer shows an error, sets error state to true (shows the ! icon)
   checkError = () => {
       setTimeout(

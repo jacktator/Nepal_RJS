@@ -1,7 +1,5 @@
 import React  from 'react';
 import {Button} from 'antd-mobile';
-import VideoDetail from './VideoDetail.js';
-
 const ShowHistory = (props) => {
 
     console.log("This is show history page", props);

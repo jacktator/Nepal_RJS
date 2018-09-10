@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { List, Flex } from 'antd-mobile'
+import { List } from 'antd-mobile'
 import {Link} from 'react-router-dom'
 const Item = List.Item
 
@@ -8,12 +8,12 @@ export default class Content extends Component {
   handleClick(e, k) {
     const { progress, days } = this.props.WorkoutReducers.program;
     if (!(this.props.selectedWeek < (progress / days))) {
-      if (!(k < (progress % days))&& (progress % days != 0)) {
+      if (!(k < (progress % days))&& (progress % days !== 0)) {
         e.preventDefault();
       }
     }
   }
-  
+
   render() {
     const { days, progress, program_name } = this.props.WorkoutReducers.program;
 
@@ -21,7 +21,7 @@ export default class Content extends Component {
       <div>
         <List>
               {
-            [...Array(parseInt(days))].map((v, k) => {
+            [...Array(parseInt(days, 10))].map((v, k) => {
               const dayNumber = (this.props.selectedWeek - 1) * days + k + 1;
               return (
                 <Link key={k} to={'/workout/' + dayNumber} onClick={ event => this.handleClick(event, k) }>
