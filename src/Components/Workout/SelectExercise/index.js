@@ -1,35 +1,46 @@
 import React from 'react';
-
 import { Carousel, Button,SegmentedControl, WingBlank,WhiteSpace} from 'antd-mobile';
 import './SelectExercise.css';
 import Loading from '../../Loading';
 import Hoc from '../../../HOC/Hoc';
 
   class SelectExercise extends React.Component {
+
     state = {
     imgHeight: 500,
     currentExercise: 0,
-      index: 0,
-      currentChild:0,
+    index: 0,
+    currentChild:0,
   }
+
+  getOptionIndex = () => {
+    let index = document.getElementById("mySelect").selectedIndex;
+    this.setState({currentChild:index})
+  }
+
 
 //This function
   selectExercise = () => {
     this.props.onSelect(this.props.listExercise.exercises[this.state.index].exercise[this.state.currentExercise])
   }
 
-  onChange = (e) => {
-    console.log(`selectedIndex:${e.nativeEvent.selectedSegmentIndex}`);
-    this.setState({currentChild: e.nativeEvent.selectedSegmentIndex})
-  }
-  
+  // onChange = (e) => {
+  //   console.log(`selectedIndex:${e.nativeEvent.selectedSegmentIndex}`);
+  //     this.setState({currentChild: e.nativeEvent.selectedSegmentIndex})
+  // }
+
+
   render() {
 
     if(this.props.listExercise && this.props.listExercise !== null){
       const exercises = this.props.listExercise.exercises;
+
       console.log(exercises)
       return (
         <div className="container">
+
+
+
           <img src={require("../../../Assets/Modal/ic_cancel.png")} className="cancel-icon" alt="cancel"
           onClick={() => this.props.cancel()}/>
           <Carousel className="space-carousel"
@@ -67,8 +78,17 @@ import Hoc from '../../../HOC/Hoc';
           <WhiteSpace/>
           {exercises.length > 1 &&
             <WingBlank>
+
             <SegmentedControl className='selectItem' selectedIndex={this.state.currentChild} values={[exercises[0].name, exercises[1].name]} onChange={this.onChange} on/>
+
+            <select id="mySelect"  onChange={this.getOptionIndex} >
+              <option  value={exercises[0].name} >{exercises[0].name}</option>
+              <option  value={exercises[1].name} >{exercises[1].name}</option>
+            </select>
             </WingBlank>
+
+
+
           }
           <WhiteSpace/>
         </div>
