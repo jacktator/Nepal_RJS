@@ -6,6 +6,7 @@ import WeightandRep from './WeightAndRep';
 import './RoundPopup.css';
 
 const Exercise = (props) => {
+  let message = "Of we go";
     return(
       <div className="exercise">
           {/* navigation bar on top of screen*/}
@@ -16,7 +17,7 @@ const Exercise = (props) => {
            onLeftClick={(e) => props.onBackButtonClicked(e)}
            className="nav-bar">
            <div className="nav-bar-text">
-            {props.exerciseData.workout} {props.state.exerciseIndex+ 1}/{props.state.exerciseLength}
+            {props.state.exerciseData.workout} {props.state.exerciseIndex+ 1}/{props.state.exerciseLength}
            </div>
          </NavBar>
 
@@ -32,21 +33,19 @@ const Exercise = (props) => {
                 </button>
                 </div> */}
          </div>
-
          <div className="image-block">
-
            {/* prescription circle*/}
            <div className="prescription-circle">
              <nav className="menu">
                <input type="checkbox" href="#" className="menu-open" name="menu-open" id="menu-open"/>
-               <label className="menu-open-button" for="menu-open">
+               <label className="menu-open-button" htmlFor="menu-open">
                  <span className="lines line-1"></span>
                  <span className="lines line-2"></span>
                  <span className="lines line-3"></span>
                </label>
-               <a className="menu-item item-4">{props.exerciseData.sets}x</a>
-               <a className="menu-item item-5">{props.exerciseData.reps}</a>
-               <a className="menu-item item-6">{props.exerciseData.weight} kg</a>
+               <a className="menu-item item-4">{props.state.exerciseData.sets}x</a>
+               <a className="menu-item item-5">{props.state.exerciseData.reps}</a>
+               <a className="menu-item item-6">{props.state.exerciseData.weight} kg</a>
              </nav>
            </div>
 
@@ -54,7 +53,7 @@ const Exercise = (props) => {
            <img src={require("../../../Assets/Exercise/exerciseGif.gif")} className="exercise-image" alt="exercise"/>
            {/* history button */}
            <img src={require("../../../Assets/Exercise/history.svg")} className="_history-icon" alt="history"
-           onClick={() => {alert("can see previous training longs of weights and reps they achieved. this goes to a seperate page.")}}/>
+           onClick={(e) => props.onHistoryButtonHandler(e)}/>
            {/* exercise information*/}
            <img src={require("../../../Assets/Exercise/exerciseInfo.svg")} className="info-icon" alt="info"
              onClick={(e) => props.onInfoClicked(e) }/>
@@ -64,7 +63,7 @@ const Exercise = (props) => {
          <div className="stepper-list-container">
             <div>
               <WeightandRep
-              code={props.exerciseData.code}
+              code={props.state.exerciseData.code}
               state={props.state}
               onCompleteButtonHandler={props.onCompleteButtonHandler}
               onSaveButtonClicked={props.onSaveButtonClicked}
@@ -87,7 +86,7 @@ const Exercise = (props) => {
                icon={null}
                className="display-message"
              >
-               Good Job! you have done more reps this week!
+               {message}
              </NoticeBar>
                {/* progress bar of exercises completed for the day*/}
              <WingBlank>
