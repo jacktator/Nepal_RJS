@@ -8,3 +8,12 @@
   height:100%;
   width: 100%;
 }
+#mySelect{
+  background-color:  #1F90E6;
+  color: white;
+  border:#1F90E6;
+  width:40vw;
+  height:5vh;
+  margin-left: 22vw;
+
+}
