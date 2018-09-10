@@ -48,7 +48,7 @@ const Workout = (props) => {
               {/* testing new UI format*/}
               <WingBlank size="lg">
                   {props.WorkoutReducers.program.exercises[dayIndex].exercise_list.map((data,key) => (
-                    <div>
+                    <div key={key}>
                     <WhiteSpace/>
                     <Card key={key}>
                       <Link to={`/exercise/${key}`} className="link-highlight">

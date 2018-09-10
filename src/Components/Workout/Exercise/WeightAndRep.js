@@ -51,7 +51,7 @@ const WeightAndRep = (props) =>{
           ? props.onNextButtonHandler()
           : props.onSaveButtonClicked(props.code)}}>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          {props.state.currentSets > props.state.sets?'Next':'SAVE'}
+          {props.state.currentSets > props.state.exerciseData.sets?'Next':'SAVE'}
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </Button>
           </MediaQuery>
