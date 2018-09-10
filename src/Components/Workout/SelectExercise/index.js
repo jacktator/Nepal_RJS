@@ -63,13 +63,13 @@ import Loading from '../../Loading';
           <WhiteSpace/>
           {exercises.length > 1 &&
             <WingBlank>
-
             <SegmentedControl className='selectItem' selectedIndex={this.state.currentChild} values={[exercises[0].name, exercises[1].name]} onChange={this.onChange} on/>
-
+            <div className="select-option">
             <select id="mySelect"  onChange={this.getOptionIndex} >
               <option  value={exercises[0].name} >{exercises[0].name}</option>
               <option  value={exercises[1].name} >{exercises[1].name}</option>
             </select>
+           </div>
             </WingBlank>
           }
           <WhiteSpace/>
