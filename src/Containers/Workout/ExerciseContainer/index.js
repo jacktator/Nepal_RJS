@@ -203,11 +203,7 @@ class ExerciseContainer extends Component{
   }
   onLeftClick(e){
     e.preventDefault();
-<<<<<<< HEAD
-
-=======
     alert(e)
->>>>>>> 8dbeeb8ee7db24debbaa9445ca2b300aaae0e465
   }
   onHistoryButtonHandler = (e) => {
     e.preventDefault();
