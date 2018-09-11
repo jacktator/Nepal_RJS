@@ -43,7 +43,7 @@ export default class Content extends Component {
                     disabled={(this.props.selectedWeek)<(progress/days)?false : (progress % days === 0)? false : (!(k<(progress % days)))}
                     >
                       <div style={{fontSize:'16px'}}>
-                          day: {dayNumber}
+                          Day {dayNumber}
                       </div>
                     </Item>)
                   })}

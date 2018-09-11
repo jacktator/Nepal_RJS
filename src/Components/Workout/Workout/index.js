@@ -86,7 +86,7 @@ const Workout = (props) => {
               </div>
 
 
-            <div className="footer-botton">
+            <div className="footer-button">
             <WingBlank>
               <WingBlank>
                 <Button type="primary" onClick={() => props.onStart()}>

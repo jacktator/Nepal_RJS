@@ -44,7 +44,7 @@ onParticularDayClickedHandler =(e, program ) => {
 
     let {record,program} = this.props.WorkoutReducers;
 
-    let totalDays = parseInt(program.days);
+    let totalDays = parseInt((program.days),10);
     let currentWeek = this.props.WorkoutReducers.currentWeek;
     let currentDay = this.props.WorkoutReducers.currentDay;
 

@@ -15,6 +15,7 @@
     width: 100%;
     height: auto;
     user-select: none;
+    z-index: 999;
     -moz-user-select: none;
     -webkit-user-drag: none;
     -webkit-user-select: none;
