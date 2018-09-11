@@ -18,13 +18,8 @@ const RecordList = (props) => {
                   </Item>
                 ) : null
               }
-<<<<<<< HEAD
-              {props.exerciseLog.map((v, key) => (
-                <Item key={key}>
-=======
               {props.state.exerciseLog.map((v, k) => (
                 <Item key={k}>
->>>>>>> 1ec996e2b7d37dc6ca1a4d98c5f5c345c7915e13
                     <Flex justify="between" className="list" style={{color:"grey"}}>
                       <Flex.Item><img className="no-copy"src={require('../../../Assets/Exercise/checkCircle.svg')} alt="check-circle"/></Flex.Item>
                       <Flex.Item><div className="list-text"> {v.weight} kg * {v.reps} reps</div></Flex.Item>
