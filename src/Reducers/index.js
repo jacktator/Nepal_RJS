@@ -11,6 +11,7 @@ import ExerciseReducers from '../Containers/ExerciseContainer/reducer';
 
 import WorkoutReducers from '../Containers/Workout/reducer';
 
+import HistoryReducers from '../Containers/Workout/HistoryContainer/reducer';
 
 //here is for put all seperate data together into a .js file Reducer
 //now Reducer represnts data union
@@ -25,6 +26,7 @@ const Reducer = combineReducers({
   SignUpReducersStates: SignUpReducers,
   ForgetPasswordStates: ForgetPasswordReducers,
   RootStates: RootReducers,
+  HistoryReducers: HistoryReducers
 })
 
 export default Reducer;

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {selectFooter} from '../FooterContainer/actions';
+import {getProgram,getExerciseRecord,setDayIndex} from '../HistoryContainer/action';
 import FooterContainer from'../FooterContainer';
 
 import HistoryWeekly from '../../../Components/Workout/History/HistoryWeekly';
@@ -78,11 +79,17 @@ class PlanContainer extends Component{
     if(this.props.currentFooterTab!== 'historyTab' ){
       this.props.selectFooter('historyTab');
     }
+    this.props.getProgram();
+  }
+  componentDidMount(){
+    if(this.props.HistoryReducers){
+      this.props.getExerciseRecord();
+    }
   }
   onListProgramClickHandler = (e, program) => {
-    e.preventDefault();
-    // let currentHistoryIndex = this.state.history.findIndex( data =>{ return data.program === program});
-    this.setState({ currentPage: this.state.currentPage+1})
+      e.preventDefault();
+      // let currentHistoryIndex = this.state.history.findIndex( data =>{ return data.program === program});
+      this.setState({ currentPage: this.state.currentPage+1})
   }
   onParticularDayClickedHandler =(e, program ) => {
   e.preventDefault();
@@ -133,12 +140,15 @@ class PlanContainer extends Component{
 
 function mapStateToProps(state){
   return {
-    currentFooterTab: state.FooterReducers.currentFooterTab
+    currentFooterTab: state.FooterReducers.currentFooterTab,
+    HistoryReducers: state.HistoryReducers
   }
 }
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
-    selectFooter
+    selectFooter,
+    getProgram,
+    getExerciseRecord,
   }, dispatch
 );
 }
