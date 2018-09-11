@@ -36,29 +36,30 @@ class HistoryDetail extends Component{
     return(
       <Hoc>
       <Header/>
-      <div className='history-detail-container'>
+      <div className="history-detail-container">
       {this.props.exerciseData.map((i,key) => (
         <List key={key}>
-          <Item>
+            <Item>
              <span style={{fontSize:"25px"}}>{i.name}</span>
+             </Item>
           {i.data.map((j,key)=>(
             <List key={key}>
-                <Item>
+              <Item >
                     Sets: {key+1} &nbsp;&nbsp;
-                    Reps : {j.reps} &nbsp;&nbsp;&nbsp;
-                    Weight : {j.weight}
+                    Reps: {j.reps} &nbsp;&nbsp;&nbsp;
+                    Weight: {j.weight}
                 </Item>
             </List>
           ))}
-          </Item>
-        </List>
+          </List>
       ))}
+      
       </div>
       <div className="day-button-container">
         <Button 
           disabled={this.state.currentDay === 1 ? true: false} 
           onClick={() => this.buttonHandler('prev')}
-          type='warning'
+          type='primary'
           style={{position:'absolute',left:'0',marginLeft:'10px',zIndex:'1000'}}
           inline
           size='small'
@@ -74,7 +75,6 @@ class HistoryDetail extends Component{
         >
           {this.state.currentDay === this.state.totalDays ? "No More":"Next"}
         </Button>
-        <div className="days-number">{this.state.currentDay}/{this.state.totalDays}</div>
       </div>
     </Hoc>
     )

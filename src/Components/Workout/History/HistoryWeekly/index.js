@@ -13,7 +13,7 @@ class HistoryWeekly extends Component {
   }
   render() {
     
-    let weekNum = parseInt(this.props.weekNum)
+    let weekNum = parseInt((this.props.weekNum),10)
     // console.log('this is from history container',this.props.record)
     // let week =[];
     // this.props.record.weekly_record.map((i,key) => {
@@ -31,7 +31,7 @@ class HistoryWeekly extends Component {
             tabs={[...Array(weekNum)].map((v,k)=>{return ({title:<span style={(k) > this.props.currentpage? ({textDecoration:'line-through'}):null}>{'WEEK'+(k+1)}</span>})})} 
             renderTabBar={props => <Tabs.DefaultTabBar {...props} page={3}/>}
             swipeable={false}
-            onTabClick={(index)=>{console.log(index),index <= this.props.currentpage ? this.setState({currentPage:index}):null}}
+            onTabClick={(tab,index) => {console.log(index) , index <= this.props.currentpage ? this.setState({currentPage:index}):null}}
           >
             <div className='content'>
                <Content 
