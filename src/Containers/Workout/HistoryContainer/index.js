@@ -15,11 +15,11 @@ class PlanContainer extends Component{
     super(props);
     // console.log(this.props.match.path.substring(1))
     this.state = {
-      history: [
-        {program:'push up', date:'2018/05/15', day:{one:{task: 'task' }, two: { task: 'task'} } },
-        {program:'pull up', date:'2018/05/15', day:{one:{task: 'task' }, two: { task: 'task'} } },
-        {program:'chin up', date:'2018/05/15', day:{one:{task: 'task' }, two: { task: 'task'} } },
-      ],
+      // history: [
+      //   {program:'push up', date:'2018/05/15', day:{one:{task: 'task' }, two: { task: 'task'} } },
+      //   {program:'pull up', date:'2018/05/15', day:{one:{task: 'task' }, two: { task: 'task'} } },
+      //   {program:'chin up', date:'2018/05/15', day:{one:{task: 'task' }, two: { task: 'task'} } },
+      // ],
       currentPage: 1,
     }
   }
@@ -40,30 +40,56 @@ onParticularDayClickedHandler =(e, program ) => {
 
   render() {
     let RenderPage = null;
+    console.log("this is from history",this.props.WorkoutReducers)
+
+    let {record,program} = this.props.WorkoutReducers;
+
+    let totalDays = parseInt(program.days);
+    let currentWeek = this.props.WorkoutReducers.currentWeek;
+    let currentDay = this.props.WorkoutReducers.currentDay;
+
+    let weekIndex = (record.weekly_record.findIndex(i => 
+      {return i.week === currentWeek.toString()}))
+    let weekNum = (record.weekly_record[weekIndex].week);//string
+
+    let dayIndex = (record.weekly_record[weekIndex].daily_record.findIndex(j => 
+      {return j.day === currentDay.toString()}))
+    let exerciseData = (record.weekly_record[weekIndex].daily_record[dayIndex].data)
+
+    const currentlyWeek = Week(program.progress,program.days)
 
     if(this.state.currentPage === 1){
       RenderPage = (
         <HistoryComponent
           onListProgramClick={this.onListProgramClickHandler}
-          data= { this.state.history }
+          WorkoutReducers= {this.props.WorkoutReducers}
         />
       )
     }
     if(this.state.currentPage === 2){
       RenderPage = (
-        <HistoryWeekly onParticularDayClicked={this.onParticularDayClickedHandler}
+        <HistoryWeekly 
+          onParticularDayClicked={this.onParticularDayClickedHandler}
+          weekNum={weekNum}
+          currentpage = {currentlyWeek-1}
+          record ={record}
+          WorkoutReducers={this.props.WorkoutReducers}
         />
       )
     }
     if(this.state.currentPage === 3){
       RenderPage = (
-        <HistoryDetail />
+        <HistoryDetail 
+          exerciseData={exerciseData}
+         day={currentDay}
+         totalDays={totalDays}/>
       )
     }
 
     return (
       <Hoc>
         {RenderPage}
+        <div style={{margin:'auto'}}></div>
         <FooterContainer currentPath='history'/>
       </Hoc>
     )
@@ -72,7 +98,8 @@ onParticularDayClickedHandler =(e, program ) => {
 
 function mapStateToProps(state){
   return {
-    currentFooterTab: state.FooterReducers.currentFooterTab
+    currentFooterTab: state.FooterReducers.currentFooterTab,
+    WorkoutReducers: state.WorkoutReducers
   }
 }
 function matchDispatchToProps(dispatch){
@@ -81,4 +108,7 @@ function matchDispatchToProps(dispatch){
   }, dispatch
 );
 }
+
+const Week = (progress,days) => Math.ceil(progress /days);
+
 export default connect(mapStateToProps, matchDispatchToProps)(PlanContainer)

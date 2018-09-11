@@ -54,3 +54,9 @@
 .plan-radio-text{
   font-size: 20px;
 }
+
+.listHeader{
+  text-align: center;
+  font-weight: bold;
+  font-size: 17px;
+}

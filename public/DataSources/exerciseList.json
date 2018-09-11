@@ -121,7 +121,7 @@
                   {"name":"Lateral Raise (Dumbbell)","progression_model":"double progression"},
                   {"name":"Lateral Raise (Machine)","progression_model":"double progression"},
                   {"name":"Single Arm Lateral Raise (Dumbbell)","progression_model":"double progression"},
-                  {"name":"Single Arm Lateral Raise (Cable Machine)","progression_model":"double progression"}
+                  {"name":"Single Arm Lateral Raise (Cable   Machine)","progression_model":"double progression"}
                 ]
              }]
           },

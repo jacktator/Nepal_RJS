@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {WingBlank,Progress,Button,WhiteSpace} from 'antd-mobile'
 import './Plan.css'
 import StickyTab from './StickyTab'
-
+import Difficulty from './Difficulty'
 
 const Plan = (props) => {
   if(props.WorkoutReducers.program){
@@ -26,6 +26,9 @@ const Plan = (props) => {
         </div>
         <div className="sticky-tab">
           <StickyTab currentpage={currentlyWeek-1} WorkoutReducers={props.WorkoutReducers}/>
+        </div>
+        <div>
+          <Difficulty />
         </div>
       </div>
     )

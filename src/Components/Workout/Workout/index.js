@@ -48,9 +48,9 @@ const Workout = (props) => {
               {/* testing new UI format*/}
               <WingBlank size="lg">
                   {props.WorkoutReducers.program.exercises[dayIndex].exercise_list.map((data,key) => (
-                    <div>
+                    <div key={key}>
                     <WhiteSpace/>
-                    <Card key={key}>
+                    <Card >
                       <Link to={`/exercise/${key}`} className="link-highlight">
                         <Card.Header
                           title={<span style={{whiteSpace:"nowrap"}}>{data.workout}</span>}
