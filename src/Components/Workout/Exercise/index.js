@@ -1,11 +1,34 @@
-import React, {Component} from 'react';
-import {NavBar, Icon, NoticeBar,WingBlank,Progress,Tag,Grid,Badge} from 'antd-mobile';
+import React from 'react';
+import {NavBar, Icon, NoticeBar,WingBlank,Progress} from 'antd-mobile';
 import './Exercise.css';
 import RecordList from './RecordList.js';
 import WeightandRep from './WeightAndRep';
 import './RoundPopup.css';
 
 const Exercise = (props) => {
+
+  let message = "";
+  if(props.state.currentSets <= props.state.sets){
+    if(props.state.exerciseData.progression_model === 'linear'){
+      if(props.state.currentSets === props.state.sets){
+        message = `Last set! Do as many reps as possible with ${props.state.prescribeWeight}kg`;
+      }else{
+        message = `Set ${props.state.currentSets} - Aim for ${props.state.prescribeWeight} * ${props.state.prescribeReps}`;
+      }
+    }else if(props.state.exerciseData.progression_model === 'double progression'){
+      if(props.state.currentSets === props.state.sets){
+        message = `Last Set - Do as many reps as possible`;
+      }else if(props.state.prescribeReps <= props.state.reps){
+        message = `Increase the weight`;
+      }else{
+        message = `Aim for more reps`;
+      }
+    }else{
+      //progression model is till failure
+    }
+  }else{
+    message = "Go no next workout"
+  }
     return(
       <div className="exercise">
           {/* navigation bar on top of screen*/}
@@ -16,7 +39,7 @@ const Exercise = (props) => {
            onLeftClick={(e) => props.onBackButtonClicked(e)}
            className="nav-bar">
            <div className="nav-bar-text">
-            {props.exerciseData.workout} {props.state.exerciseIndex+ 1}/{props.state.exerciseLength}
+            {props.state.exerciseData.workout} {props.state.exerciseIndex+ 1}/{props.state.exerciseLength}
            </div>
          </NavBar>
 
@@ -32,21 +55,19 @@ const Exercise = (props) => {
                 </button>
                 </div> */}
          </div>
-
          <div className="image-block">
-
            {/* prescription circle*/}
            <div className="prescription-circle">
              <nav className="menu">
                <input type="checkbox" href="#" className="menu-open" name="menu-open" id="menu-open"/>
-               <label className="menu-open-button" for="menu-open">
+               <label className="menu-open-button" htmlFor="menu-open">
                  <span className="lines line-1"></span>
                  <span className="lines line-2"></span>
                  <span className="lines line-3"></span>
                </label>
-               <a className="menu-item item-4">{props.exerciseData.sets}x</a>
-               <a className="menu-item item-5">{props.exerciseData.reps}</a>
-               <a className="menu-item item-6">{props.exerciseData.weight} kg</a>
+               <a className="menu-item item-4">{props.state.exerciseData.sets}x</a>
+               <a className="menu-item item-5">{props.state.exerciseData.reps}</a>
+               <a className="menu-item item-6">{props.state.exerciseData.weight} kg</a>
              </nav>
            </div>
 
@@ -54,7 +75,7 @@ const Exercise = (props) => {
            <img src={require("../../../Assets/Exercise/exerciseGif.gif")} className="exercise-image" alt="exercise"/>
            {/* history button */}
            <img src={require("../../../Assets/Exercise/history.svg")} className="_history-icon" alt="history"
-           onClick={() => {alert("can see previous training longs of weights and reps they achieved. this goes to a seperate page.")}}/>
+           onClick={(e) => props.onHistoryButtonHandler(e)}/>
            {/* exercise information*/}
            <img src={require("../../../Assets/Exercise/exerciseInfo.svg")} className="info-icon" alt="info"
              onClick={(e) => props.onInfoClicked(e) }/>
@@ -64,7 +85,6 @@ const Exercise = (props) => {
          <div className="stepper-list-container">
             <div>
               <WeightandRep
-              code={props.exerciseData.code}
               state={props.state}
               onCompleteButtonHandler={props.onCompleteButtonHandler}
               onSaveButtonClicked={props.onSaveButtonClicked}
@@ -77,7 +97,6 @@ const Exercise = (props) => {
             {/* displays the record list, refer to RecordList.js*/}
            <div>
              <RecordList
-              exerciseLog={props.state.exerciseLog}
               state = {props.state}
             />
              {/* Message for showing current goals*/}
@@ -87,7 +106,7 @@ const Exercise = (props) => {
                icon={null}
                className="display-message"
              >
-               Good Job! you have done more reps this week!
+               {message}
              </NoticeBar>
                {/* progress bar of exercises completed for the day*/}
              <WingBlank>
@@ -100,11 +119,3 @@ const Exercise = (props) => {
   }
 
 export default Exercise;
-
-{/* <WeightandRep
-                exerciseData = {props.exerciseData}
-                weight = {props.exerciseData.weight}
-                sets = {props.exerciseData.sets}
-                reps = {props.reps}
-                onSaveButtonClicked={props.onSaveButtonClicked}
-            /> */}

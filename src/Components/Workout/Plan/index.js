@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import {WingBlank,Progress,Button,WhiteSpace} from 'antd-mobile'
+import React from 'react'
+import {WingBlank,Progress,WhiteSpace} from 'antd-mobile'
 import './Plan.css'
 import StickyTab from './StickyTab'
 import Difficulty from './Difficulty'
@@ -37,6 +37,5 @@ const Plan = (props) => {
 
 const progressPercentage = (progress, days) => Math.round((progress - 1) / (days * 5) * 100);
 const currentWeek = (progress, days) => (Math.ceil(progress / days));
-const currentday = (progress, week, days) => (progress - (week -1) * days);
-
+// const currentday = (progress, week, days) => (progress - (week -1) * days);
 export default Plan;

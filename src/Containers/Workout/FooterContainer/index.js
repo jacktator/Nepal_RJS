@@ -8,9 +8,7 @@ import Footer from '../../../Components/Workout/Footer';
 // import {Redirect} from 'react-router';
 
 class FooterContainer extends Component{
-  constructor(props) {
-    super(props);
-  }
+
   render() {
     return (
       // <Hoc>

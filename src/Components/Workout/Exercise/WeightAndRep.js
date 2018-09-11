@@ -1,7 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Stepper, Button,Flex} from 'antd-mobile';
 import MediaQuery from 'react-responsive';
-import { Link } from 'react-router-dom';
 
 const WeightAndRep = (props) =>{
 
@@ -26,9 +25,9 @@ const WeightAndRep = (props) =>{
     <Flex.Item><Stepper
     style={{ width: '30%', minWidth: '110px' }}
     showNumber
-    max={10}
+    max={20}
     min={1}
-    value={parseInt(props.state.reps)}
+    value={parseInt(props.state.reps, 10)}
     onChange={props.onChangeRep}
     /></Flex.Item>
     </Flex>
@@ -51,7 +50,7 @@ const WeightAndRep = (props) =>{
           ? props.onNextButtonHandler()
           : props.onSaveButtonClicked(props.code)}}>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          {props.state.currentSets > props.state.sets?'Next':'SAVE'}
+          {props.state.currentSets > props.state.exerciseData.sets?'Next':'SAVE'}
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </Button>
           </MediaQuery>
@@ -59,7 +58,7 @@ const WeightAndRep = (props) =>{
           <Button type="primary" inline="true" size="large" onClick={()=>
             {props.state.currentSets > props.state.sets
               ? props.onNextButtonHandler()
-              : props.onSaveButtonClicked(props.code)}}>
+              : props.onSaveButtonClicked()}}>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               {props.state.currentSets > props.state.sets?'Next':'SAVE'}
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

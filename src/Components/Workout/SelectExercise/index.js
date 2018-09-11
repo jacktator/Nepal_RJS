@@ -1,16 +1,19 @@
 import React from 'react';
-
 import { Carousel, Button,SegmentedControl, WingBlank,WhiteSpace} from 'antd-mobile';
 import './SelectExercise.css';
 import Loading from '../../Loading';
-import Hoc from '../../../HOC/Hoc';
 
   class SelectExercise extends React.Component {
     state = {
     imgHeight: 500,
     currentExercise: 0,
-      index: 0,
-      currentChild:0,
+    index: 0,
+    currentChild:0,
+  }
+
+  getOptionIndex = () => {
+    let index = document.getElementById("mySelect").selectedIndex;
+    this.setState({currentChild:index})
   }
 
 //This function
@@ -18,13 +21,7 @@ import Hoc from '../../../HOC/Hoc';
     this.props.onSelect(this.props.listExercise.exercises[this.state.index].exercise[this.state.currentExercise])
   }
 
-  onChange = (e) => {
-    console.log(`selectedIndex:${e.nativeEvent.selectedSegmentIndex}`);
-    this.setState({currentChild: e.nativeEvent.selectedSegmentIndex})
-  }
-  
   render() {
-
     if(this.props.listExercise && this.props.listExercise !== null){
       const exercises = this.props.listExercise.exercises;
       console.log(exercises)
@@ -40,7 +37,6 @@ import Hoc from '../../../HOC/Hoc';
             infinite
             afterChange={index => this.setState({currentExercise: index}) }
           >
-
           { exercises[this.state.currentChild].exercise.map( (data, key) => (
             <div className="image-with-description" key={key}>
               <div className="excercise-header" style={{margin:"10px 0px 10px",backgroundColor:'white',color:'black', textAlign: "center"}}>{data.name}</div>
@@ -68,6 +64,12 @@ import Hoc from '../../../HOC/Hoc';
           {exercises.length > 1 &&
             <WingBlank>
             <SegmentedControl className='selectItem' selectedIndex={this.state.currentChild} values={[exercises[0].name, exercises[1].name]} onChange={this.onChange} on/>
+            <div className="select-option">
+            <select id="mySelect"  onChange={this.getOptionIndex} >
+              <option  value={exercises[0].name} >{exercises[0].name}</option>
+              <option  value={exercises[1].name} >{exercises[1].name}</option>
+            </select>
+           </div>
             </WingBlank>
           }
           <WhiteSpace/>
@@ -87,21 +89,5 @@ import Hoc from '../../../HOC/Hoc';
       )
     }
   }
-  // { this.props.excerciseArray.map( (data, key) => (
-  //   <div className="image-with-description" key={key}>
-  //     <div className="excercise-header" style={{ height:'25px',background:'black', color:'white', textAlign: "center"}}>{data.description}</div>
-  //     <img
-  //       key = { data.value }
-  //       src={data.imgurl}
-  //       alt={data.description}
-  //       onLoad={() => {
-  //         // fire window resize event to change height
-  //         window.dispatchEvent(new Event('resize'));
-  //         this.setState({ imgHeight: 'auto', description: data.description });
-  //       }}
-  //     />
-  //   </div>
-  // ))}
-
   }//end class
 export default SelectExercise;

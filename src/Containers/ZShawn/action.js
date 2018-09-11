@@ -1,6 +1,4 @@
-import axios from 'axios';
-
-
+// import axios from 'axios';
 export function fetchJson(){
   return(dispatch)=>{
     return fetch('./DataSources/fatlossday3.json')

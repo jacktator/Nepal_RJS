@@ -8,7 +8,9 @@ export default class StickyTab extends React.Component {
     this.state={currentPage: this.props.currentpage}
   }
   componentDidUpdate(prevProps, prevState) {
-    prevProps.currentpage !== this.props.currentpage ? this.setState({ currentPage: this.props.currentpage }) : null;
+    if(prevProps.currentpage !== this.props.currentpage){
+      this.setState({ currentPage: this.props.currentpage })
+    } 
   }
   render() {
 

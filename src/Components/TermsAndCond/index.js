@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import { WingBlank, WhiteSpace, NavBar } from 'antd-mobile';
-import { Link } from 'react-router-dom';
+import { NavBar } from 'antd-mobile';
 import {Redirect} from 'react-router-dom';
 
 class TermsAndCond extends Component {
-
   state = {
   goBack: false,
   }
-
   handleSubmit = () => {
     this.setState({
       goBack:true,
@@ -19,8 +16,6 @@ class TermsAndCond extends Component {
     if (this.state.goBack === true) {
       return <Redirect to='/profile' />
     }
-
-
     return (
       <div>
         <NavBar

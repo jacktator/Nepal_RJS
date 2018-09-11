@@ -7,13 +7,7 @@ import { Toast } from 'antd-mobile'
 import FooterContainer from'../Workout/FooterContainer';
 
 class ProfileContainer extends Component{
-  constructor(props){
-    super(props);
-  }
-
-
   onSavePassword = () => {
-
     if(this.props.ProfileReducers.fields.currentPassword === "" || this.props.ProfileReducers.fields.newPassword === "" ||this.props.ProfileReducers.fields.confirmPassword === "" ) {
       this.props.showPassError("EMPTY_FIELD");
     } else {

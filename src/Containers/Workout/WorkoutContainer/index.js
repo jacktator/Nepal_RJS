@@ -10,7 +10,6 @@ import SelectExercise from '../../../Components/Workout/SelectExercise';
 import Modal from '../../../Components/UI/Modal';
 import FooterContainer from '../FooterContainer';
 import Hoc from '../../../HOC/Hoc';
-import {WingBlank} from 'antd-mobile';
 
 class WorkoutContainer extends Component{
   constructor(props){

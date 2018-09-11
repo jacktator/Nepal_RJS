@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Icon} from 'antd-mobile';
 import loadingGif from "../../Assets/Loading/loading.gif"
 import './Loading.css';
 class Loading extends Component {

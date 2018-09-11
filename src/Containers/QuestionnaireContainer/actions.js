@@ -81,7 +81,9 @@ export function addProgram (days, goals) {
             {
               status: "publish",
               fields: {
-                program_id: response.data.id
+                program_id: response.data.id,
+                training_goal: response.data.acf.program_name,
+                user_id: response.data.acf.user_id
               }
             }).then((recordResponse) => {
               console.log("Successfully created user record", recordResponse);

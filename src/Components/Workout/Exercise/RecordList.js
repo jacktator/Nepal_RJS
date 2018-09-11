@@ -1,32 +1,39 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Flex, List} from 'antd-mobile';
-
 // icons taken from http://iconfont.cn/
-
 const Item = List.Item
-
 const RecordList = (props) => {
       return(
         <div className="record-list">
           <div className="list-text">
             <List>
               {
-                props.exerciseLog.length < props.state.sets ? (
+                props.state.exerciseLog.length < props.state.sets ? (
                   <Item style={{backgroundColor:'#a2cf6e'}}>
                     <Flex justify="between" className="list">
-                      <Flex.Item>{props.exerciseLog.length+1}</Flex.Item>
+                      <Flex.Item>{props.state.exerciseLog.length+1}</Flex.Item>
                       <Flex.Item><div className="list-text"> {props.state.weight} kg * {props.state.reps} reps</div></Flex.Item>
                       <Flex.Item>current</Flex.Item>
                     </Flex>
                   </Item>
                 ) : null
               }
+<<<<<<< HEAD
               {props.exerciseLog.map((v, key) => (
                 <Item key={key}>
+=======
+              {props.state.exerciseLog.map((v, k) => (
+                <Item key={k}>
+>>>>>>> 1ec996e2b7d37dc6ca1a4d98c5f5c345c7915e13
                     <Flex justify="between" className="list" style={{color:"grey"}}>
                       <Flex.Item><img className="no-copy"src={require('../../../Assets/Exercise/checkCircle.svg')} alt="check-circle"/></Flex.Item>
                       <Flex.Item><div className="list-text"> {v.weight} kg * {v.reps} reps</div></Flex.Item>
-                      <Flex.Item>previous</Flex.Item>
+                      { (v.weight * v.reps === props.state.personalBest) &&
+                        <Flex.Item><img className="no-copy"src={require('../../../Assets/Workout/cup-icon.png')} alt="check-circle"/></Flex.Item>
+                      }
+                      { (v.weight * v.reps !== props.state.personalBest) &&
+                        <Flex.Item>previous</Flex.Item>
+                      }
                     </Flex>
                   </Item>
                ) )}
@@ -35,15 +42,4 @@ const RecordList = (props) => {
         </div>
       )
 }
-
 export default RecordList;
-//          <Flex.Item>
-// {
-//   props.exerciseLog.tick
-//   ?(<img className="no-copy"src={require('../../../Assets/Exercise/checkCircle.svg')} alt="check-circle"/>)
-//   :(<div>{props.exerciseLog.number}</div>)
-// }
-// </Flex.Item>
-// <Flex.Item style={{color:"grey"}}><div className="list-text"> {props.weight} kg * {props.reps} reps</div></Flex.Item>
-// <Flex.Item style={{color:"grey"}}><div className="list-text">{props.exerciseLog.trophy ?(<img className="record-list-trophy" src={require('../../../Assets/Workout/cup-icon.png')} alt="trophy"/>)
-// :(props.exerciseLog.current?(<div>current</div>):(<div>previous</div>))}</div></Flex.Item>
