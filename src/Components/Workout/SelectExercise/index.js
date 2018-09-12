@@ -11,9 +11,8 @@ import Loading from '../../Loading';
     currentChild:0,
   }
 
-  getOptionIndex = () => {
-    let index = document.getElementById("mySelect").selectedIndex;
-    this.setState({currentChild:index})
+  onChange = (e) => {
+    this.setState({index:e})
   }
 
 //This function
@@ -37,7 +36,7 @@ import Loading from '../../Loading';
             infinite
             afterChange={index => this.setState({currentExercise: index}) }
           >
-          { exercises[this.state.currentChild].exercise.map( (data, key) => (
+          { exercises[this.state.index].exercise.map( (data, key) => (
             <div className="image-with-description" key={key}>
               <div className="excercise-header" style={{margin:"10px 0px 10px",backgroundColor:'white',color:'black', textAlign: "center"}}>{data.name}</div>
               <img
@@ -63,12 +62,8 @@ import Loading from '../../Loading';
           <WhiteSpace/>
           {exercises.length > 1 &&
             <WingBlank>
-            <SegmentedControl className='selectItem' selectedIndex={this.state.currentChild} values={[exercises[0].name, exercises[1].name]} onChange={this.onChange} on/>
+            <SegmentedControl className='selectItem' selectedIndex={this.state.index} values={[exercises[0].name, exercises[1].name]} onChange={(e) => this.onChange(e.nativeEvent.selectedSegmentIndex)} on/>
             <div className="select-option">
-            <select id="mySelect"  onChange={this.getOptionIndex} >
-              <option  value={exercises[0].name} >{exercises[0].name}</option>
-              <option  value={exercises[1].name} >{exercises[1].name}</option>
-            </select>
            </div>
             </WingBlank>
           }
