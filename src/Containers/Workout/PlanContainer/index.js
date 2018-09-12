@@ -28,6 +28,12 @@ class PlanContainer extends Component{
 
   componentWillReceiveProps(nextProps){
     console.log("nextProps",nextProps);
+    if(nextProps.WorkoutReducers.programStartDate){
+      let date1 = new Date().getTime();
+      let date2 = new Date(nextProps.WorkoutReducers.programStartDate);
+      let difference = date1 - date2;
+      let daysDifference = Math.floor(difference/1000/60/60/24);
+    }
     if(nextProps.WorkoutReducers.program){
       let {progress, days} = nextProps.WorkoutReducers.program;
       if(days*5 < progress && this.state.count === 0){

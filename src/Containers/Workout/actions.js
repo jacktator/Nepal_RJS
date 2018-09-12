@@ -11,6 +11,7 @@ export function getProgram(){
       const currentDay = progress - ((currentWeek -1 ) * days)
       dispatch(setProgram(response.data[0].acf));
       dispatch(setProgramID(response.data[0].id));
+      dispatch(setProgramStartDate(response.data[0].date));
       dispatch(setCurrentWeek(currentWeek));
       dispatch(setCurrentDay(currentDay));
 
@@ -214,6 +215,13 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
           return {
             type: "SET_PROGRAM_ID",
             payload: id
+          }
+        }
+
+        export function setProgramStartDate (date: Date) {
+          return {
+            type: "SET_PROGRAM_START_DATE",
+            payload: date
           }
         }
 

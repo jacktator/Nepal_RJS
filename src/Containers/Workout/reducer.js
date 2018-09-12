@@ -13,6 +13,11 @@ const WorkoutReducers =(state: Object= DefaultState, action: Function) => {
       ...state, programID: action.payload
     }
 
+    case "SET_PROGRAM_START_DATE":
+    return {
+      ...state, programStartDate: action.payload
+    }
+
     case "SET_WORKOUT_LIST" :
     return {
       ...state, listExercise: action.payload
