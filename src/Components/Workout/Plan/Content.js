@@ -32,15 +32,7 @@ export default class Content extends Component {
                         <Button
                         style={{height:'auto', width:'auto', borderRadius: '50%'}}
                         icon={<img src={require("../../../Assets/Exercise/exerciseInfo.svg")} style={{ backgroundColor: 'black', borderRadius: '50%', marginRight:'0' }} alt="info" />}
-                        onClick={() => prompt(
-                        'Password',
-                        'You can custom buttons',
-                        [
-                          { text: 'a' },
-                          { text: 'b', onPress: password => console.log(`密码为:${password}`) },
-                        ],
-                        'secure-text',
-                      )}
+                        onClick={(e) => this.props.onFeedbackButtonClickedHandler(e)}
                       />}
                       disabled={false}
                       onClick={(e) => { e.preventDefault() }}
@@ -57,7 +49,7 @@ export default class Content extends Component {
                     <div style={{ fontSize: '16px'  }}> {'Day '+ dayNumber} {program_name} </div>
                     </Item>
                   ) }
-                  
+
                 </Link>
                   )
                 })

@@ -24,7 +24,11 @@ const Plan = (props) => {
           </WingBlank>
         </div>
         <div className="sticky-tab">
-          <StickyTab currentpage={currentlyWeek-1} WorkoutReducers={props.WorkoutReducers}/>
+          <StickyTab
+            currentpage={currentlyWeek-1}
+            WorkoutReducers={props.WorkoutReducers}
+            onFeedbackButtonClickedHandler = {props.onFeedbackButtonClickedHandler}
+          />
         </div>
       </div>
     )
