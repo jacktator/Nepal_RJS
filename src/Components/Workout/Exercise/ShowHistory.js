@@ -6,17 +6,15 @@ const ShowHistory = (props) => {
 
   return (
     <div>
-      This is for short history
+      <div>{props.name}</div>
           {props.record.daily_record.map((dailyData, key1) => (
             <div key={key1}>
-            <div>day: {dailyData.day}</div>
               {dailyData.data.map((data, key2) => (
                 <div key={key2}>
                   <div>
-                  { props.code === data.code && (
+                  { props.name === data.name && (
                     <div>
-                      <div> name: {data.name}</div>
-                      <div> code: {data.code}</div>
+                    <div>day: {dailyData.day}</div>
                     {data.data.map((record, key3) => (
                       <div key={key3}>
                         <span>sets: {key3+1} </span>

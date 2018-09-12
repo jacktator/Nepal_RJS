@@ -258,7 +258,7 @@ class ExerciseContainer extends Component{
         {this.state.showHistory && (
           <Modal modalFor = "modal-for-info">
           <ShowHistory
-            code = {this.state.exerciseData.code}
+            name = {this.state.exerciseData.workout}
             record = {this.props.WorkoutReducers.record}
             onBackButtonClicked = {this.onHistoryButtonHandler}
           />

@@ -171,7 +171,6 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
           }
         }
 
-
         export function setCurrentWeek ( currentWeek: Number) {
           return {
             type: "SET_CURRENT_WEEK",
@@ -180,7 +179,6 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
         }
 
         export function setCurrentDay ( currentDay: Number) {
-
           return {
             type: "SET_CURRENT_DAY",
             payload: currentDay
