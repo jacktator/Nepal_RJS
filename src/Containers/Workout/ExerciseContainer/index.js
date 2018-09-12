@@ -110,23 +110,22 @@ class ExerciseContainer extends Component{
                     sets: parseInt(exerciseData.sets, 10)
                   })
     if(records){
-      if(records.weekly_record){
-        let weekIndex = records.weekly_record.findIndex(i => { return i.week === week.toString() });
-        if(weekIndex >= 0){
-          let dayIndex = (records.weekly_record[weekIndex].daily_record.findIndex(i => { return i.day === day.toString()}));
+      if(records.daily_record){
+          let dayIndex = (records.daily_record.findIndex(i => { return i.day === day.toString()}));
           if(dayIndex >= 0){
-            let dataIndex = (records.weekly_record[weekIndex].daily_record[dayIndex].data.findIndex( i => {return i.code === code}));
+            let dataIndex = (records.daily_record[dayIndex].data.findIndex( i => {return i.code === code}));
             if(dataIndex >= 0){
-              console.log("got the data",records.weekly_record[weekIndex].daily_record[dayIndex].data[dataIndex].data);
-              let exerciseLog = records.weekly_record[weekIndex].daily_record[dayIndex].data[dataIndex].data;
+              console.log("got the data",records.daily_record[dayIndex].data[dataIndex].data);
+              let exerciseLog = records.daily_record[dayIndex].data[dataIndex].data;
               console.log("This is exercise log",exerciseLog);
               this.setState({exerciseLog: exerciseLog, currentSets: exerciseLog.length+1})
             }
           }
-        }
       }
     }
-    this.setState({isLoading: false})
+    setTimeout(() => {
+      this.setState({isLoading: false})
+    }, 1000);
   }
 
   onNextButtonHandler = () => {
@@ -259,7 +258,7 @@ class ExerciseContainer extends Component{
         {this.state.showHistory && (
           <Modal modalFor = "modal-for-info">
           <ShowHistory
-            code = {this.state.exerciseData.code}
+            name = {this.state.exerciseData.workout}
             record = {this.props.WorkoutReducers.record}
             onBackButtonClicked = {this.onHistoryButtonHandler}
           />

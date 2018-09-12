@@ -4,17 +4,20 @@ import {Redirect} from 'react-router';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {selectFooter} from '../FooterContainer/actions';
-import {getProgram, keepWorkout, fetchWorkoutList, selectWorkout, setDayIndex, getExerciseRecord} from '../actions';
+import {getProgram, keepWorkout, fetchWorkoutList, selectWorkout, setDayIndex, getExerciseRecord, setCurrentDay} from '../actions';
 import Workout from '../../../Components/Workout/Workout';
 import SelectExercise from '../../../Components/Workout/SelectExercise';
 import Modal from '../../../Components/UI/Modal';
 import FooterContainer from '../FooterContainer';
+import Loading from '../../../Components/Loading';
 import Hoc from '../../../HOC/Hoc';
 
 class WorkoutContainer extends Component{
   constructor(props){
     super(props);
     this.state = {
+      isReady: false,
+      showKeepOrChange: false,
       isChangeWorkout: false,
       backToPlan: false,
       startExcercies: false,
@@ -25,13 +28,21 @@ class WorkoutContainer extends Component{
     if(this.props.currentFooterTab!== 'workoutTab' ){
       this.props.selectFooter('workoutTab');
     }
+    if(this.props.WorkoutReducers.program){
+      const {days, progress} = this.props.WorkoutReducers.program;
+      const currentWeek = Math.ceil(parseInt(this.props.match.params.day,10) / days);
+      const currentDay = parseInt(this.props.match.params.day,10) - ((currentWeek -1 ) * days)
+      const dayIndex = this.props.WorkoutReducers.program.exercises.findIndex(i => { return i.day === currentDay.toString() })
+      this.props.setDayIndex(dayIndex);
+      this.props.setCurrentDay(parseInt(this.props.match.params.day, 10));
+      this.props.getExerciseRecord(this.props.WorkoutReducers.programID);
+      if(progress === this.props.match.params.day && progress <= days ){
+          this.setState({showKeepOrChange: true})
+      }
+      this.setState({isReady: true})
+    }
   }
   componentDidMount(){
-    if(this.props.WorkoutReducers.program){
-      const dayIndex = this.props.WorkoutReducers.program.exercises.findIndex(i => { return i.day === this.props.match.params.day })
-      this.props.setDayIndex(dayIndex);
-      this.props.getExerciseRecord(this.props.WorkoutReducers.programID);
-    }
   }
   //invokes when user click keep button
   onWorkOutKeepHandler = (index ) => {
@@ -62,9 +73,11 @@ class WorkoutContainer extends Component{
   render() {
     console.log("This is from workout", this.props.WorkoutReducers);
     if(this.props.WorkoutReducers.program){
+      if(this.state.isReady){
       return (
         <Hoc>
         <Workout
+        showKeepOrChange = {this.state.showKeepOrChange}
         onExerciseChange = {this.onChangeExerciseHandler}
         onWorkOutKeep = {this.onWorkOutKeepHandler}
         onStart = {this.onStartHandler}
@@ -85,6 +98,11 @@ class WorkoutContainer extends Component{
         <FooterContainer currentPath='workout' />
       </Hoc>
     )
+    }else{//if this.state.isReady is false
+      return(
+        <Loading />
+      )
+    }
   }else{
     return(
       <Redirect to= "/plan" />
@@ -101,7 +119,7 @@ function mapStateToProps(state){
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
     selectFooter, keepWorkout, fetchWorkoutList, getProgram,
-    selectWorkout, setDayIndex, getExerciseRecord
+    selectWorkout, setDayIndex, getExerciseRecord, setCurrentDay
   }, dispatch
 );
 }

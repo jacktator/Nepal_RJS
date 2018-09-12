@@ -60,24 +60,28 @@ const Workout = (props) => {
                         <Card.Body style={{textAlign:"center"}}>
                           <img style={{borderStyle:"solid", borderColor:"#f5f5f9",borderWidth:"1px",borderRadius:"5px"}}src={require(`../../../Assets/WorkoutIcons/${key}.jpg`)} height="120px" width="200px" alt="work" />
                         </Card.Body>
-                      <Card.Footer
-                        content={<div>
-                                {!data.is_saved && (
-                                    <div style={{textAlign:"center"}}>
-                                      <Button type="primary" size="omitted" inline onClick={() =>props.onWorkOutKeep(key)}>&nbsp;&nbsp;Keep&nbsp;&nbsp;</Button>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;
-                                      <Button type="warning" size="omitted" inline onClick={() =>props.onExerciseChange(key)}>Change</Button>
-                                      <WhiteSpace/>
-                                    </div>
-                                )}
-                                {data.is_saved && (
-                                    <div style={{textAlign:"center"}}>
-                                      <Button type="primary" size="omitted" inline style={{ background: '#54D66A'}}>Saved!</Button>
-                                      <WhiteSpace/>
-                                    </div>
-                                )}
-                              </div>
-                              }/>
+
+                        {props.showKeepOrChange &&
+
+                          <Card.Footer
+                            content={<div>
+                                    {!data.is_saved && (
+                                        <div style={{textAlign:"center"}}>
+                                          <Button type="primary" size="omitted" inline onClick={() =>props.onWorkOutKeep(key)}>&nbsp;&nbsp;Keep&nbsp;&nbsp;</Button>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                          <Button type="warning" size="omitted" inline onClick={() =>props.onExerciseChange(key)}>Change</Button>
+                                          <WhiteSpace/>
+                                        </div>
+                                    )}
+                                    {data.is_saved && (
+                                        <div style={{textAlign:"center"}}>
+                                          <Button type="primary" size="omitted" inline style={{ background: '#54D66A'}}>Saved!</Button>
+                                          <WhiteSpace/>
+                                        </div>
+                                    )}
+                                  </div>
+                                  }/>
+                                }
                     </Card>
                     <WhiteSpace/>
                     </div>

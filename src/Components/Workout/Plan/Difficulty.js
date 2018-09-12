@@ -10,7 +10,7 @@ const DifficultyArray = [
     {value:3, difficulty:'Do not complete'},
 ]
 
-const Difficulty =() =>{
+const Difficulty =() => {
     return(
         <div className='listHeader'>How difficult do you think of the exercise?
             {DifficultyArray.map((i, key) => (
@@ -25,5 +25,5 @@ const Difficulty =() =>{
         </div>
     )
 }
-    
+
 export default Difficulty;

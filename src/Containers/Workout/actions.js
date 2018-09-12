@@ -71,7 +71,6 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
       })
     }
   }
-
   //This function update the server when user select keep button in workout
   export function keepWorkout(listIndex, workoutReducers){
     let token = localStorage.getItem('token');
@@ -96,46 +95,37 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
         })
       }
     }
-
     export function saveExerciseData(recordID, week, day, name, code, weight, sets, reps, record) {
       return(dispatch: Function) => {
-        let temp, weekly_record;
-        if(record.weekly_record){
-          weekly_record = record.weekly_record;
-          let weekIndex = weekly_record.findIndex( i => { return i.week ===  week.toString() });
-          if(weekIndex >= 0){
-            let dayIndex = record.weekly_record[weekIndex].daily_record.findIndex( i => { return i.day === day.toString() });
+        let temp, daily_record;
+        if(record.daily_record){
+          daily_record = record.daily_record;
+            let dayIndex = record.daily_record.findIndex( i => { return i.day === day.toString() });
             if(dayIndex >= 0){
-              let dataIndex = record.weekly_record[weekIndex].daily_record[dayIndex].data.findIndex( i => { return i.code === code.toString() });
+              let dataIndex = record.daily_record[dayIndex].data.findIndex( i => { return i.code === code.toString() });
               if(dataIndex >= 0){
                 temp = { sets: sets, reps: reps, weight: weight }
-                weekly_record[weekIndex].daily_record[dayIndex].data[dataIndex].data.push(temp);
+                daily_record[dayIndex].data[dataIndex].data.push(temp);
               }else{//dataIndex >= 0
                 temp = {code: code, name: name, data: [ { sets: sets, reps: reps, weight: weight }]}
-                weekly_record[weekIndex].daily_record[dayIndex].data.push(temp);
-
+                daily_record[dayIndex].data.push(temp);
               }
             }else{//dayIndex >= 0
               temp = {day: day, data: [ {code: code, name: name, data: [
                 { sets: sets, reps: reps, weight: weight }]}]}
-                weekly_record[weekIndex].daily_record.push(temp);
-              }
-            }else{ //weekIndex >= 0
-              temp = { week: week, daily_record:[ {day: day, data: [ {code: code, data: [
-                { sets: sets, reps: reps, weight: weight }]}]}]}
-                weekly_record.push(temp);
+                daily_record.push(temp);
               }
             }else{
               alert("else");
-              weekly_record = [{ week: week, daily_record:[ {day: day, data: [ {code: code, data: [
-                { sets: sets, reps: reps, weight: weight }]}]}]}
+              daily_record = [{ day: day, data: [ {code: code, data: [
+                { sets: sets, reps: reps, weight: weight }]}]}
               ]
             }
             return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/record/${recordID}`,
               {
                 status: "publish",
                 fields: {
-                  weekly_record: weekly_record
+                  daily_record: daily_record
                 }
               })
               .then((response)=> {
@@ -181,7 +171,6 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
           }
         }
 
-
         export function setCurrentWeek ( currentWeek: Number) {
           return {
             type: "SET_CURRENT_WEEK",
@@ -190,7 +179,6 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
         }
 
         export function setCurrentDay ( currentDay: Number) {
-
           return {
             type: "SET_CURRENT_DAY",
             payload: currentDay
