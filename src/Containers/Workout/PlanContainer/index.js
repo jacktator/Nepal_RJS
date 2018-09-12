@@ -39,6 +39,7 @@ function mapStateToProps(state){
     currentFooterTab: state.FooterReducers.currentFooterTab,
     profileReducers: state.ProfileReducers,
     WorkoutReducers: state.WorkoutReducers,
+
   }
 }
 function matchDispatchToProps(dispatch){
