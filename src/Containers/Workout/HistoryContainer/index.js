@@ -93,7 +93,7 @@ class PlanContainer extends Component{
   }
   onParticularDayClickedHandler =(e, program ) => {
   e.preventDefault();
-    this.setState({ currentPage: this.state.currentPage + 1, daySelect: program + 1 })
+    this.setState({ currentPage: this.state.currentPage+1, daySelect: program })
     console.log(program)
     console.log(this.state.daySelect)
   }
@@ -125,7 +125,7 @@ class PlanContainer extends Component{
     }
     if(this.state.currentPage === 3){
       RenderPage = (
-        <HistoryDetail />
+        <HistoryDetail        />
       )
     }
 

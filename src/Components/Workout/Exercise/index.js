@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavBar, Icon, NoticeBar,WingBlank,Progress} from 'antd-mobile';
+import {NavBar, Icon, NoticeBar,WingBlank,Progress, Badge} from 'antd-mobile';
 import './Exercise.css';
 import RecordList from './RecordList.js';
 import WeightandRep from './WeightAndRep';
@@ -32,7 +32,7 @@ const Exercise = (props) => {
     return(
       <div className="exercise">
           {/* navigation bar on top of screen*/}
-         <NavBar
+        <NavBar
            style={{backgroundColor:"white"}}
            mode='light'
            icon={<Icon type="left" size="lg"/>}
@@ -41,34 +41,11 @@ const Exercise = (props) => {
            <div className="nav-bar-text">
             {props.state.exerciseData.workout} {props.state.exerciseIndex+ 1}/{props.state.exerciseLength}
            </div>
-         </NavBar>
-
-         {/* prescription is the black circle on top of image*/}
-          <div className="prescription-circle">
-
-                {/*
-                <div className="prescription">
-                <button className="btn-two">
-                  <div>{props.exerciseData.sets}x</div>
-                  <div>{props.exerciseData.reps} reps</div>
-                  <div>{props.exerciseData.weight} kg</div>
-                </button>
-                </div> */}
-         </div>
-         <div className="image-block">
-           {/* prescription circle*/}
-           <div className="prescription-circle">
-             <nav className="menu">
-               <input type="checkbox" href="#" className="menu-open" name="menu-open" id="menu-open"/>
-               <label className="menu-open-button" htmlFor="menu-open">
-                 <span className="lines line-1"></span>
-                 <span className="lines line-2"></span>
-                 <span className="lines line-3"></span>
-               </label>
-               <a className="menu-item item-4">{props.state.exerciseData.sets}x</a>
-               <a className="menu-item item-5">{props.state.exerciseData.reps}</a>
-               <a className="menu-item item-6">{props.state.exerciseData.weight} kg</a>
-             </nav>
+        </NavBar>
+        <div className="image-block">
+            {/* circle bar on top right of screen*/}
+            <div className="prescription-circle">
+            <Badge text={<div style={{ flexDirection: 'column', display: 'flex', justifyContent:'center', height: '50px', width: '40px', marginTop: '-25px'}}><span style={{height:'13px', marginTop:'-3px'}}>{props.state.exerciseData.sets} sets</span><span style={{height:'13px'}}>{props.state.exerciseData.reps}</span><span style={{height:'13px'}}>{props.state.exerciseData.weight}kg</span></div>} style={{  height:'50px', width:'40px', backgroundColor: '#f19736', borderRadius: '50%' }} />
            </div>
 
            {/* the main gif/image area */}

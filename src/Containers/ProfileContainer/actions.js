@@ -1,4 +1,25 @@
+import axios from 'axios';
 
+export function getUserData(){
+  return (dispatch: Function) => {
+    let token = localStorage.getItem('token');
+    let userId = localStorage.getItem('user_id');
+    return axios(
+      {
+        method: 'get',
+        url: `https://nepal.sk8tech.io/wp-json/wp/v2/Users/${userId}`,
+        headers: {'Authorization': "Bearer" + token},
+      }
+    )
+      .then((response) => {
+        console.log(response.data);
+        dispatch(changeName(response.data.name));
+        dispatch(changeWeight(response.data.acf.weight));
+    }).catch((error)=> {
+      console.log(error);
+    })
+  }
+}
 
 export function changeName (nick_name: string) {
   let name = nick_name.slice(0,1).toUpperCase() + nick_name.slice(1, nick_name.length)

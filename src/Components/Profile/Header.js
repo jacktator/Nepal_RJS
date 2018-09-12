@@ -37,9 +37,8 @@ class Header extends Component {
       return (
         <div>
           <img className="profile-image-sources" src={require('../../Assets/Workout/sampleImage.jpeg')} alt="mainmenu"/>
-          <div className="profile-image-change">
+          {/*<div className="profile-image-change">
             <div className="image-picker">
-              <label for="add-picture">.</label>
               <input id="add-picture" type="file" onChange={this.handleChange}/>
               <div>
           <ImagePicker
@@ -53,7 +52,7 @@ class Header extends Component {
 
               <img className="profile-picture" src={this.state.file} alt="profile_pic"/>
             </div>
-          </div>
+      </div> */}
           <div className="profile-name">{this.props.name}</div>
         </div>
 
@@ -62,3 +61,4 @@ class Header extends Component {
 }
 
 export default Header;
+              // <label for="add-picture">.</label>
