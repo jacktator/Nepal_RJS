@@ -1,12 +1,16 @@
 import React  from 'react';
 import {Button} from 'antd-mobile';
+import'./showHistory.css'
+
 const ShowHistory = (props) => {
 
-  console.log("This is show history page", props);
+ console.log("This is show history page", props);
+ // console.log(props.record)
+ // console.log(props.code)
 
   return (
     <div>
-      <div>{props.name}</div>
+      <div className="show-history-title">{props.name}</div>
           {props.record.daily_record.map((dailyData, key1) => (
             <div key={key1}>
               {dailyData.data.map((data, key2) => (
@@ -14,22 +18,27 @@ const ShowHistory = (props) => {
                   <div>
                   { props.name === data.name && (
                     <div>
-                    <div>day: {dailyData.day}</div>
+                    <div className="exercise-day">day: {dailyData.day}</div>
                     {data.data.map((record, key3) => (
-                      <div key={key3}>
-                        <span>sets: {key3+1} </span>
-                        <span>reps: {record.reps} </span>
-                        <span>weight: {record.weight} </span>
+                      <div key={key3} className="exercise-history-detail">
+                          <div >
+                              <span>sets:  {key3+1} </span>
+                              <span>reps:  {record.reps} </span>
+                              <span>weight:  {record.weight} </span>
+                          </div>
                       </div>
                     ))}
                     </div>
                   )}
                   </div>
                 </div>
+
               ))}
             </div>
           ))}
-      <Button style={{margin: '0px 5vw 5vw'}}onClick={(e) => props.onBackButtonClicked(e) }>
+      <Button style={{margin: '5vh 5vw 5vw',color:"white",
+      backgroundColor:"#1F90E6"
+    }}onClick={(e) => props.onBackButtonClicked(e) }>
         Return
       </Button>
     </div>
