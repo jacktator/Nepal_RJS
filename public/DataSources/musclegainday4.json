@@ -3,11 +3,11 @@
       {
           "day":"1",
           "exerciselist":[
-            {"name":"13 Quadricep Heavy Exercises","code":"13","sets":"3","reps":"7-9","feedback":"2", "workout":"Front Squat (Barbell)", "progression_model":"linear"},
-            {"name":"16 Quadricep Uni-lateral Exercises","code":"16","sets":"3","reps":"10-12","feedback":"4", "workout":"Leg Extensions (Single Leg)", "progression_model":"double progression"},
+            {"name":"13 Quadricep Heavy Exercises","code":"13","sets":"3","reps":"7-9","feedback":"2", "workout":"Front Squat(Barbell)", "progression_model":"linear"},
+            {"name":"16 Quadricep Uni-lateral Exercises","code":"16","sets":"3","reps":"10-12","feedback":"4", "workout":"Leg Extensions(Single Leg)", "progression_model":"double progression"},
             {"name":"18 Hamstring Light Exercises","code":"18","sets":"3","reps":"10-12","feedback":"2", "workout":"Hamstring Curl", "progression_model":"double progression"},
-            {"name":"10 Shoulder Compund Exercises","code":"10","sets":"3","reps":"8-10","feedback":"3", "workout":"Standing Shoulder Press (Barbell)", "progression_model":"linear"},
-            {"name":"1 Tricep Heavy Exercises","code":"1","sets":"3","reps":"8-10","feedback":"3", "workout":"Close Grip Bench Press (Barbell)", "progression_model":"linear"},
+            {"name":"10 Shoulder Compund Exercises","code":"10","sets":"3","reps":"8-10","feedback":"3", "workout":"Standing Shoulder Press(Barbell)", "progression_model":"linear"},
+            {"name":"1 Tricep Heavy Exercises","code":"1","sets":"3","reps":"8-10","feedback":"3", "workout":"Close Grip Bench Press(Barbell)", "progression_model":"linear"},
             {"name":"30 shoulder isolation + Glute isolation","code":"30","sets":"3","reps":"Till Failure","feedback":"4", "workout":"Shoulder Front Raise(Dumbbell)", "progression_model":"double progression"}
           ],
       },  {
