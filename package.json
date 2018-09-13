@@ -24,6 +24,7 @@
     "redux-promise": "^0.6.0",
     "redux-promise-middleware": "^5.1.1",
     "redux-thunk": "^2.3.0",
+    "start": "^5.1.0",
     "youtube-api-search": "0.0.5"
   },
   "scripts": {
@@ -37,6 +38,6 @@
     "babel-plugin-import": "^1.7.0",
     "flow-bin": "^0.73.0",
     "gh-pages": "^1.2.0",
-    "react-app-rewired": "^1.5.2"
+    "react-app-rewired": "^1.6.2"
   }
 }
