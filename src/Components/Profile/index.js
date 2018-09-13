@@ -13,12 +13,19 @@ import './Profile.css';
 // Footer: View terms, logout
 
 class Profile extends Component{
+  constructor(props) {
+    super(props)
+    this.state={
+      files: [{ url: 'https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg', id: '123123' }]
+    }
+  }
+
 
   render(){
     return (
       <div className="profile-container">
       <div className= "profile-image-containers">
-        <Header name = {this.props.name}/>
+          <Header name={this.props.name} files={this.state.files}/>
       </div>
       <div className="profile-list-view-container">
 

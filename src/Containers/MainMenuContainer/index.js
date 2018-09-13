@@ -13,11 +13,6 @@ class MainMenuContainer extends Component{
     this.state = {
       workout:false,
       profile:false,
-      /*rehab and posture:false*/
-      /*profile:false*/
-      /*content:false*/
-      /*ask:false*/
-      /*faq:false*/
     }
   }
   componentWillMount(){
