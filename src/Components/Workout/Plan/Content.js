@@ -31,7 +31,7 @@ export default class Content extends Component {
                       extra={
                         <Button
                         style={{height:'auto', width:'auto', borderRadius: '50%'}}
-                        icon={<img src={require("../../../Assets/Exercise/exerciseInfo.svg")} style={{ backgroundColor: 'black', borderRadius: '50%', marginRight:'0' }} alt="info" />}
+                        icon={<img src={require("../../../Assets/Workout/Exercise/exerciseInfo.svg")} style={{ backgroundColor: 'black', borderRadius: '50%', marginRight:'0' }} alt="info" />}
                         onClick={(e) => this.props.onFeedbackButtonClickedHandler(e)}
                       />}
                       disabled={false}

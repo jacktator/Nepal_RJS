@@ -41,7 +41,7 @@ import Loading from '../../Loading';
               <div className="excercise-header" style={{margin:"10px 0px 10px",backgroundColor:'white',color:'black', textAlign: "center"}}>{data.name}</div>
               <img
                 key = { data.value }
-                src={require(`../../../Assets/Workout/images/${key}.jpeg`)}
+                src={require(`../../../Assets/Workout/Images/${key}.jpeg`)}
                 alt={data.description}
                 onLoad={() => {
                   // fire window resize event to change height

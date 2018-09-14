@@ -1,13 +1,10 @@
 import React  from 'react';
 import {Button} from 'antd-mobile';
 import'./showHistory.css'
-
 const ShowHistory = (props) => {
-
  console.log("This is show history page", props);
  // console.log(props.record)
  // console.log(props.code)
-
   return (
     <div>
       <div className="show-history-title">{props.name}</div>
@@ -18,7 +15,7 @@ const ShowHistory = (props) => {
                   <div>
                   { props.name === data.name && (
                     <div>
-                    <div className="exercise-day">day: {dailyData.day}</div>
+                    <div className="exercise-day">{dailyData.date}</div>
                     {data.data.map((record, key3) => (
                       <div key={key3} className="exercise-history-detail">
                           <div >
@@ -32,7 +29,6 @@ const ShowHistory = (props) => {
                   )}
                   </div>
                 </div>
-
               ))}
             </div>
           ))}
@@ -44,6 +40,5 @@ const ShowHistory = (props) => {
     </div>
 )
 }
-
 
 export default ShowHistory;
