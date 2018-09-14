@@ -1,0 +1,61 @@
+{
+  "exercises":[
+      {
+        "day": "1",
+          "exerciselist":[
+            {"name":"47 Flexibility Exercise upper body","sets":"3","reps":"60-90sec","feedback":"0"},
+            {"name":"48 Mobility Exercise upper body","sets":"3","reps":"20-25","feedback":"0"},
+            {"name":"12 Back light","sets":"3","reps":"10-12","feedback":"2"},
+            {"name":"12 Back light","sets":"3","reps":"10-12","feedback":"3"},
+            {"name":"9 Shoulder Rear Delt Isolation Exercises","sets":"3","reps":"12-15","feedback":"2"},
+            {"name":"51 Posterior Shoulder failure exercises","sets":"3","reps":"Until failure","feedback":"3"},
+            {"name":"24 Abdominal Failure Exercises","sets":"3","reps":"Until failure","feedback":"4"}
+          ],
+      }, {
+        "day": "2",
+        "exerciselist":[
+        {"name":"49 Flexibility Exercise lower body","sets":"3","reps":"60-90sec","feedback":"0"},
+        {"name":"50 Mobility Exercise lower body","sets":"3","reps":"20-25","feedback":"0"},
+        {"name":"12 Back light","sets":"3","reps":"8-10","feedback":"3"},
+        {"name":"16 Quadricep Uni-lateral Exercises","sets":"3","reps":"10-12","feedback":"2"},
+        {"name":"18 Hamstring Light Exercises","sets":"3","reps":"10-12","feedback":"3"},
+        {"name":"20 Glutes Accessory Exercises","sets":"3","reps":"20-25","feedback":"2"},
+        {"name":"23 Abdominal Exercises","sets":"3","reps":"15-20","feedback":"4"}
+          ],
+      },  {
+        "day": "3",
+          "exerciselist":[
+            {"name":"47 Flexibility Exercise upper body","sets":"3","reps":"60-90sec","feedback":"0"},
+            {"name":"48 Mobility Exercise upper body","sets":"3","reps":"20-25","feedback":"0"},
+            {"name":"12 Back light","sets":"3","reps":"12-15","feedback":"4"},
+            {"name":"12 Back light","sets":"3","reps":"12-15","feedback":"2"},
+            {"name":"51 Posterior Shoulder failure exercises","sets":"3","reps":"Until failure","feedback":"3"},
+            {"name":"23 Abdominal Exercises","sets":"3","reps":"15-20","feedback":"3"},
+            {"name":"24 Abdominal Failure Exercises","sets":"3","reps":"Until failure","feedback":"3"}
+          ],
+      }, {
+        "day": "4",
+        "exerciselist":[
+          {"name":"49 Flexibility Exercise lower body","sets":"3","reps":"60-90sec","feedback":"0"},
+          {"name":"50 Mobility Exercise lower body","sets":"3","reps":"20-25","feedback":"0"},
+          {"name":"51 Posterior Shoulder failure exercises","sets":"3","reps":"8-10","feedback":"3"},
+          {"name":"13 Quadricep Heavy Exercises","sets":"3","reps":"8-10","feedback":"4"},
+          {"name":"16 Quadricep Uni-lateral Exercises","sets":"3","reps":"12-15","feedback":"3"},
+          {"name":"20 Glutes Accessory Exercises","sets":"3","reps":"20-25","feedback":"2"},
+          {"name":"24 Abdominal Failure Exercises","sets":"3","reps":"Until failure","feedback":"2"}
+        ],
+      }, {
+        "day": "5",
+        "exerciselist":[
+          {"name":"49 Flexibility Exercise lower body","sets":"3","reps":"60-90sec","feedback":"0"},
+          {"name":"47 Flexibility Exercise upper body","sets":"3","reps":"60-90sec","feedback":"0"},
+          {"name":"50 Mobility Exercise lower body","sets":"3","reps":"60-90sec","feedback":"0"},
+          {"name":"48 Mobility Exercise upper body","sets":"3","reps":"60-90sec","feedback":"0"},
+          {"name":"11 Back Heavy Exercises","sets":"3","reps":"8-10","feedback":"2"},
+          {"name":"20 Glutes Accessory Exercises","sets":"3","reps":"20-25","feedback":"2"},
+          {"name":"51 Posterior Shoulder failure exercises","sets":"3","reps":"Until failure","feedback":"4"},
+          {"name":"23 Abdominal Exercises","sets":"3","reps":"15-20","feedback":"3"}
+        ],
+      }
+  ]
+}
