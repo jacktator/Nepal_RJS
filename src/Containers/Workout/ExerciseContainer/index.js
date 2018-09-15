@@ -77,7 +77,7 @@ class ExerciseContainer extends Component{
     }
   }
 
-  componentWillReceiveProps(nextProps){
+  componentWillReceivethis(nextthis){
     //this.calculateExerciseLog();
   }
 
@@ -110,23 +110,22 @@ class ExerciseContainer extends Component{
                     sets: parseInt(exerciseData.sets, 10)
                   })
     if(records){
-      if(records.weekly_record){
-        let weekIndex = records.weekly_record.findIndex(i => { return i.week === week.toString() });
-        if(weekIndex >= 0){
-          let dayIndex = (records.weekly_record[weekIndex].daily_record.findIndex(i => { return i.day === day.toString()}));
+      if(records.daily_record){
+          let dayIndex = (records.daily_record.findIndex(i => { return i.day === day.toString()}));
           if(dayIndex >= 0){
-            let dataIndex = (records.weekly_record[weekIndex].daily_record[dayIndex].data.findIndex( i => {return i.code === code}));
+            let dataIndex = (records.daily_record[dayIndex].data.findIndex( i => {return i.code === code}));
             if(dataIndex >= 0){
-              console.log("got the data",records.weekly_record[weekIndex].daily_record[dayIndex].data[dataIndex].data);
-              let exerciseLog = records.weekly_record[weekIndex].daily_record[dayIndex].data[dataIndex].data;
+              console.log("got the data",records.daily_record[dayIndex].data[dataIndex].data);
+              let exerciseLog = records.daily_record[dayIndex].data[dataIndex].data;
               console.log("This is exercise log",exerciseLog);
               this.setState({exerciseLog: exerciseLog, currentSets: exerciseLog.length+1})
             }
           }
-        }
       }
     }
-    this.setState({isLoading: false})
+    setTimeout(() => {
+      this.setState({isLoading: false})
+    }, 1000);
   }
 
   onNextButtonHandler = () => {
@@ -223,8 +222,29 @@ class ExerciseContainer extends Component{
     this.setState({ showInfo: !this.state.showInfo})
   }
   render(){
-    console.log("this is state", this.state);
-    console.log("workout reducers", this.props.WorkoutReducers);
+    let message = "";
+    if(this.state.currentSets <= this.state.sets){
+      if(this.state.exerciseData.progression_model === 'linear'){
+        if(this.state.currentSets === this.state.sets){
+          message = `Last set! Do as many reps as possible with ${this.state.prescribeWeight}kg`;
+        }else{
+          message = `Set ${this.state.currentSets} - Aim for ${this.state.prescribeWeight} * ${this.state.prescribeReps}`;
+        }
+      }else if(this.state.exerciseData.progression_model === 'double progression'){
+        if(this.state.currentSets === this.state.sets){
+          message = `Last Set - Do as many reps as possible`;
+        }else if(this.state.prescribeReps <= this.state.reps){
+          message = `Increase the weight`;
+        }else{
+          message = `Aim for more reps`;
+        }
+      }else{
+        //progression model is till failure
+      }
+    }else{
+      message = "Go no next workout"
+    }
+
     if(this.props.WorkoutReducers.program && this.state.error === false){
       const video = "cPAbx5kgCJo";
       const videoDescription = "THIS is test video description";
@@ -247,6 +267,7 @@ class ExerciseContainer extends Component{
         onChangeWeight={this.onChangeWeight}
         onChangeRep={this.onChangeRep}
         onInfoClicked = {this.infoHandler}
+        message = {message}
         /*videos={this.state.selectedVideo}*/
         state = {this.state}
         />
@@ -259,7 +280,7 @@ class ExerciseContainer extends Component{
         {this.state.showHistory && (
           <Modal modalFor = "modal-for-info">
           <ShowHistory
-            code = {this.state.exerciseData.code}
+            name = {this.state.exerciseData.workout}
             record = {this.props.WorkoutReducers.record}
             onBackButtonClicked = {this.onHistoryButtonHandler}
           />
@@ -294,18 +315,18 @@ class ExerciseContainer extends Component{
 }*/
 }
 
-function mapStateToProps(state){
+function mapStateTothis(state){
   return {
     ExerciseReducers: state.ExerciseReducers,
     WorkoutReducers: state.WorkoutReducers,
   }
 }
 
-function matchDispatchToProps(dispatch){
+function matchDispatchTothis(dispatch){
   return bindActionCreators({
     saveExerciseData, getExerciseRecord, updatePersonalBest, updateRepsAndWeight
   }, dispatch
 );
 }
 
-export default connect (mapStateToProps, matchDispatchToProps)(ExerciseContainer);
+export default connect (mapStateTothis, matchDispatchTothis)(ExerciseContainer);

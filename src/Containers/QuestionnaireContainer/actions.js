@@ -35,8 +35,6 @@ export function addQuestionnaire(state) {
 //Function to initialize the program after completion of the questionnaire
 export function addProgram (days, goals) {
   return(dispatch: Function) => {
-    alert("goals");
-    console.log("Added program");
     let user_id = localStorage.getItem('user_id');
     let goal;
     switch (goals) {

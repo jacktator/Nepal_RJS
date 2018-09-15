@@ -7,24 +7,112 @@ export function getProgram(){
     .then((response)=> {
       const progress = response.data[0].acf.progress;
       const days = response.data[0].acf.days;
+      const feedbackValue = response.data[0].acf.feedback_value;
       const currentWeek = Math.ceil(progress / days);
       const currentDay = progress - ((currentWeek -1 ) * days)
-      dispatch(setProgram(response.data[0].acf));
-      dispatch(setProgramID(response.data[0].id));
-      dispatch(setCurrentWeek(currentWeek));
-      dispatch(setCurrentDay(currentDay));
 
+      const programStartDate = new Date(response.data[0].date);
+      const currentDate = new Date().getTime();
+      let difference = currentDate - programStartDate;
+      let daysDifference = Math.floor(difference/1000/60/60/24) + 1;
+      let update = false;
+      const runningWeek = Math.ceil(daysDifference/7)
+      const dayCountForRunningWeek =  daysDifference - (runningWeek-1) * 7 ;
+
+      if(dayCountForRunningWeek <= days){
+        let currentProgress = (runningWeek-1) * days + dayCountForRunningWeek;
+        if(parseInt(progress,10) !== currentProgress){
+          update = true;
+          const askFeedback = parseInt(feedbackValue, 10) ===0 ? true : false
+          dispatch(updateProgress(response.data[0].id, currentProgress, askFeedback))
+        }
+      }else{
+        alert("Need to add logic for off days in action line 30")
+      }
+      if(!update){
+        dispatch(setProgram(response.data[0].acf));
+        dispatch(setProgramID(response.data[0].id));
+        dispatch(setCurrentWeek(currentWeek));
+        dispatch(setCurrentDay(currentDay));
+      }
     }).catch((error)=> {
       console.log(error);
     })
   }
 }
 
+//This function update the current progess of the program.
+export function updateProgress(programID, progress, ask_feedback){
+  return((dispatch: Function) => {
+    axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`,{
+      status: "publish",
+      fields: {
+        progress: progress,
+        ask_feedback: ask_feedback,
+        feedback_value: 0,
+        finish_for_day: false
+      }
+    }).then((response) => {
+      const progress = response.data.acf.progress;
+      const days = response.data.acf.days;
+      const feedbackValue = response.data.acf.feedback_value;
+      const currentWeek = Math.ceil(progress / days);
+      const currentDay = progress - ((currentWeek -1 ) * days)
+      dispatch(setProgram(response.data.acf));
+      dispatch(setProgramID(response.data.id));
+      dispatch(setCurrentWeek(currentWeek));
+      dispatch(setCurrentDay(currentDay));
+    }).catch((error) => {
+      alert("error")
+      console.log(error)
+    })
+  })
+}
+
+//Trigger when user submit the difficultly feedback after completion of the days
+export function updateDailyFeedBack(programID, program, feedbackValue) {
+  return((dispatch: Function) => {
+    const currentWeek = Math.ceil(program.progress / program.days);
+    let currentDay = program.progress - ((currentWeek -1 ) * program.days)
+    let needUpdate = false;
+    let valueChanges = 0;
+    if(program.ask_feedback === true){
+      currentDay = currentDay === 1 ? 3 : (currentDay - 1)
+    }
+    if(feedbackValue === 3){
+      needUpdate = true;
+      valueChanges = -1;
+    }else if(feedbackValue === 1){
+      needUpdate = true;
+      valueChanges = 1;
+    }
+    if(needUpdate){
+      let dayIndex = program.exercises.findIndex( i => { return i.day === currentDay.toString() });
+      program.exercises[dayIndex].exercise_list.map((data, key) => {
+        if(parseInt(data.feedback,10) === currentWeek+1){
+          let sets = parseInt(program.exercises[dayIndex].exercise_list[key].sets, 10)
+          program.exercises[dayIndex].exercise_list[key].sets = sets+valueChanges
+        }
+      })
+    }
+    program.feedback_value =0;
+    program.ask_feedback = false;
+    program.finish_for_day = false;
+    axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`, {
+      status: "publish",
+      fields: program
+    }).then((response)=> {
+      dispatch(setProgram(response.data.acf));
+    }).catch((error) => {
+      alert("error")
+    })
+  })
+}
+
 export function getExerciseRecord(programID){
   return(dispatch: Function) => {
     return axios.get(`https://nepal.sk8tech.io/wp-json/wp/v2/record?filter[meta_key]=program_id&filter[meta_value]=${programID}`)
     .then((response) => {
-      console.log(response);
       dispatch(setExerciseRecord(response.data[0].acf));
       dispatch(setExerciseID(response.data[0].id))
     }).catch((error)=> {
@@ -47,10 +135,6 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
       {
         status: "publish",
         fields: program
-      }, {
-        headers:{
-          Authorization: "Bearer" + token
-        }
       })
       .then((response)=> {
         dispatch(setProgram(response.data.acf));
@@ -71,7 +155,6 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
       })
     }
   }
-
   //This function update the server when user select keep button in workout
   export function keepWorkout(listIndex, workoutReducers){
     let token = localStorage.getItem('token');
@@ -84,62 +167,54 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
         {
           status: "publish",
           fields: program
-        }, {
-          headers:{
-            Authorization: "Bearer" + token
-          }
-        })
-        .then((response)=> {
+        }).then((response)=> {
           dispatch(setProgram(response.data.acf));
         }).catch((error)=> {
           console.log(error);
         })
       }
     }
-
     export function saveExerciseData(recordID, week, day, name, code, weight, sets, reps, record) {
       return(dispatch: Function) => {
-        let temp, weekly_record;
-        if(record.weekly_record){
-          weekly_record = record.weekly_record;
-          let weekIndex = weekly_record.findIndex( i => { return i.week ===  week.toString() });
-          if(weekIndex >= 0){
-            let dayIndex = record.weekly_record[weekIndex].daily_record.findIndex( i => { return i.day === day.toString() });
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+                            "July", "August", "September", "October", "November", "December"
+                            ];
+        let temp, daily_record;
+        let currentDate = new Date();
+        let day = currentDate.getDate();
+        let month = monthNames[currentDate.getMonth()];
+        let year = currentDate.getFullYear();
+        let date = `${day} ${month} ${year}`;
+        if(record.daily_record){
+          daily_record = record.daily_record;
+            let dayIndex = record.daily_record.findIndex( i => { return i.day === day.toString() });
             if(dayIndex >= 0){
-              let dataIndex = record.weekly_record[weekIndex].daily_record[dayIndex].data.findIndex( i => { return i.code === code.toString() });
+              let dataIndex = record.daily_record[dayIndex].data.findIndex( i => { return i.code === code.toString() });
               if(dataIndex >= 0){
                 temp = { sets: sets, reps: reps, weight: weight }
-                weekly_record[weekIndex].daily_record[dayIndex].data[dataIndex].data.push(temp);
+                daily_record[dayIndex].data[dataIndex].data.push(temp);
               }else{//dataIndex >= 0
                 temp = {code: code, name: name, data: [ { sets: sets, reps: reps, weight: weight }]}
-                weekly_record[weekIndex].daily_record[dayIndex].data.push(temp);
-
+                daily_record[dayIndex].data.push(temp);
               }
             }else{//dayIndex >= 0
-              temp = {day: day, data: [ {code: code, name: name, data: [
+              temp = {day: day, date: date, data: [ {code: code, name: name, data: [
                 { sets: sets, reps: reps, weight: weight }]}]}
-                weekly_record[weekIndex].daily_record.push(temp);
-              }
-            }else{ //weekIndex >= 0
-              temp = { week: week, daily_record:[ {day: day, data: [ {code: code, data: [
-                { sets: sets, reps: reps, weight: weight }]}]}]}
-                weekly_record.push(temp);
+                daily_record.push(temp);
               }
             }else{
-              alert("else");
-              weekly_record = [{ week: week, daily_record:[ {day: day, data: [ {code: code, data: [
-                { sets: sets, reps: reps, weight: weight }]}]}]}
+              daily_record = [{ day: day, date: date, data: [ {code: code, data: [
+                { sets: sets, reps: reps, weight: weight }]}]}
               ]
             }
             return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/record/${recordID}`,
               {
                 status: "publish",
                 fields: {
-                  weekly_record: weekly_record
+                  daily_record: daily_record
                 }
               })
               .then((response)=> {
-                  console.log("response:",response.data);
                   dispatch(setExerciseRecord(response.data.acf));
               }).catch((error)=> {
                 console.log(error);
@@ -181,7 +256,6 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
           }
         }
 
-
         export function setCurrentWeek ( currentWeek: Number) {
           return {
             type: "SET_CURRENT_WEEK",
@@ -190,7 +264,6 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
         }
 
         export function setCurrentDay ( currentDay: Number) {
-
           return {
             type: "SET_CURRENT_DAY",
             payload: currentDay
@@ -226,6 +299,13 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
           return {
             type: "SET_PROGRAM_ID",
             payload: id
+          }
+        }
+
+        export function setProgramStartDate (date: Date) {
+          return {
+            type: "SET_PROGRAM_START_DATE",
+            payload: date
           }
         }
 

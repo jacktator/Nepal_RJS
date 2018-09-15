@@ -21,7 +21,7 @@ const RecordList = (props) => {
               {props.state.exerciseLog.map((v, k) => (
                 <Item key={k}>
                     <Flex justify="between" className="list" style={{color:"grey"}}>
-                      <Flex.Item><img className="no-copy"src={require('../../../Assets/Exercise/checkCircle.svg')} alt="check-circle"/></Flex.Item>
+                      <Flex.Item><img className="no-copy"src={require('../../../Assets/Workout/Exercise/checkCircle.svg')} alt="check-circle"/></Flex.Item>
                       <Flex.Item><div className="list-text"> {v.weight} kg * {v.reps} reps</div></Flex.Item>
                       { (v.weight * v.reps === props.state.personalBest) &&
                         <Flex.Item><img className="no-copy"src={require('../../../Assets/Workout/cup-icon.png')} alt="check-circle"/></Flex.Item>

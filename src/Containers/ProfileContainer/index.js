@@ -2,11 +2,17 @@ import React, {Component} from 'react';
 import Profile from '../../Components/Profile'
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import { changeName, changeBirthDate, changeHeight, changeWeight, changeEmail, putPassword,changePassword,showPassError} from './actions';
+import { changeName, changeBirthDate, changeHeight, changeWeight, changeEmail, putPassword,changePassword,showPassError, getUserData} from './actions';
 import { Toast } from 'antd-mobile'
-import FooterContainer from'../Workout/FooterContainer';
+import FooterContainer from '../Workout/FooterContainer';
+import axios from 'axios';
 
 class ProfileContainer extends Component{
+
+  componentDidMount() {
+    this.props.getUserData();
+  }
+
   onSavePassword = () => {
     if(this.props.ProfileReducers.fields.currentPassword === "" || this.props.ProfileReducers.fields.newPassword === "" ||this.props.ProfileReducers.fields.confirmPassword === "" ) {
       this.props.showPassError("EMPTY_FIELD");
@@ -74,7 +80,7 @@ function mapStateToProps(state){
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
     changeWeight,changeHeight,changeName,changeBirthDate,changeEmail,
-    putPassword,showPassError,changePassword
+    putPassword,showPassError,changePassword,getUserData,
   }, dispatch
 );
 }

@@ -10,7 +10,7 @@ export default class StickyTab extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     if(prevProps.currentpage !== this.props.currentpage){
       this.setState({ currentPage: this.props.currentpage })
-    } 
+    }
   }
   render() {
 
@@ -26,7 +26,11 @@ export default class StickyTab extends React.Component {
          onTabClick={(tab,index) => {console.log(index), index <= this.props.currentpage ? this.setState({currentPage: index}) : null}}
        >
           <div className='content'>
-             <Content selectedWeek={this.state.currentPage+1} WorkoutReducers={this.props.WorkoutReducers}/>
+             <Content
+              selectedWeek={this.state.currentPage+1}
+              WorkoutReducers={this.props.WorkoutReducers}
+              onFeedbackButtonClickedHandler = {this.props.onFeedbackButtonClickedHandler}
+            />
          </div>
         </Tabs>
      </div>

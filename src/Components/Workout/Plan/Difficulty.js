@@ -3,10 +3,7 @@ import { Button,Flex,Checkbox} from 'antd-mobile'
 
 const CheckboxItem = Checkbox.CheckboxItem;
 
-
-
 class Difficulty extends Component{
-    
     state = {
         value:null
     }
@@ -50,5 +47,5 @@ class Difficulty extends Component{
         )
     }
 }
-    
+
 export default Difficulty;
