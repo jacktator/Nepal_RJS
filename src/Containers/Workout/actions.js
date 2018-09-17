@@ -1,12 +1,13 @@
 import axios from 'axios';
-
 //This function used to initialize the program to the redux during loading plan page
 export function getProgram(){
-  alert("get program")
   return(dispatch: Function) => {
-    return axios.get("https://nepal.sk8tech.io/wp-json/wp/v2/program?filter[posts_per_page]=1")
+    let user_id = localStorage.getItem('user_id');
+    return axios.get(`https://nepal.sk8tech.io/wp-json/wp/v2/program?
+                    filter[meta_key]=user_id&filter[meta_value]=${user_id}&filter[posts_per_page]=1`
+    )
     .then((response)=> {
-
+      console.log("this is response from get program",response);
       const progress = parseInt(response.data[0].acf.progress,10);
       const days = parseInt(response.data[0].acf.days,10);
       const value = response.data[0].acf.feedback_value;
@@ -59,7 +60,7 @@ export function implementDeloadAlgorithm(programID, program, progress, ask_feedb
         let sets = parseInt(daily_exercise.sets,10)
         let reps = parseInt(daily_exercise.reps,10)
         let weight = parseInt(daily_exercise.weight,10);
-        let deload_strategy = daily_exercise.deload_strategy;
+        // let deload_strategy = daily_exercise.deload_strategy;
         let progression_model = daily_exercise.progression_model;
         reps -= 1;
         program.exercises[index].exercise_list[dayIndex].reps = reps;
@@ -77,20 +78,20 @@ export function implementDeloadAlgorithm(programID, program, progress, ask_feedb
           }
           program.exercises[index].exercise_list[dayIndex].weight = weight;
         }
+        return null;
       })//ends second map function
+      return null;
     })//ends first map function
     program.progress= progress;
     program.ask_feedback= ask_feedback;
     program.feedback_value= 0;
     program.finish_for_day= false;
-
     axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`,{
       status: "publish",
       fields: program
     }).then((response) => {
       const progress = response.data.acf.progress;
       const days = response.data.acf.days;
-      const value = response.data.acf.feedback_value;
       const currentWeek = Math.ceil(progress / days);
       const currentDay = progress - ((currentWeek -1 ) * days)
       dispatch(setProgram(response.data.acf));
@@ -118,7 +119,6 @@ export function updateProgress(programID, progress, ask_feedback){
     }).then((response) => {
       const progress = response.data.acf.progress;
       const days = response.data.acf.days;
-      const value = response.data.acf.feedback_value;
       const currentWeek = Math.ceil(progress / days);
       const currentDay = progress - ((currentWeek -1 ) * days)
       dispatch(setProgram(response.data.acf));
@@ -159,6 +159,7 @@ export function updateDailyFeedBack(programID, program, value) {
           let sets = parseInt(program.exercises[dayIndex].exercise_list[key].sets, 10)
           program.exercises[dayIndex].exercise_list[key].sets = sets+valueChanges
         }
+        return null;
       })
     }
     program.feedback_value =feedbackValue;
@@ -190,7 +191,6 @@ export function getExerciseRecord(programID){
 //This function use to update the program when user change the workout
 export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
   return(dispatch: Function) => {
-    let token = localStorage.getItem('token');
     let id = workoutReducers.programID;
     let { program, dayIndex } = workoutReducers;
     program.exercises[dayIndex].exercise_list[listIndex].workout = selectedExercise.name;
@@ -223,7 +223,6 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
   }
   //This function update the server when user select keep button in workout
   export function keepWorkout(listIndex, workoutReducers){
-    let token = localStorage.getItem('token');
     return(dispatch: Function) => {
       let id = workoutReducers.programID;
       let {program, dayIndex} = workoutReducers;

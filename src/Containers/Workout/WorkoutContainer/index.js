@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import {Redirect} from 'react-router';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
+import { Toast } from 'antd-mobile';
 import {selectFooter} from '../FooterContainer/actions';
 import {getProgram, keepWorkout, fetchWorkoutList, selectWorkout, setDayIndex, getExerciseRecord, setCurrentDay} from '../actions';
 import Workout from '../../../Components/Workout/Workout';
@@ -43,6 +44,12 @@ class WorkoutContainer extends Component{
     }
   }
   componentDidMount(){
+    this.loadingToast();
+  }
+  loadingToast = () => {
+    Toast.loading('Loading...', 2, () => {
+      console.log('Load complete !!!');
+    });
   }
   //invokes when user click keep button
   onWorkOutKeepHandler = (index ) => {
