@@ -37,11 +37,8 @@ export function getProgram(){
         }else{
           dispatch(updateProgress(response.data[0].id, currentProgress, askFeedback))
         }
-<<<<<<< HEAD
       }else{
         console.log("Need to add logic for off days in action line 30")
-=======
->>>>>>> 3fb70e882185d90238cb44e673d1d3209c091771
       }
       if(!update){
         dispatch(setProgram(response.data[0].acf));
