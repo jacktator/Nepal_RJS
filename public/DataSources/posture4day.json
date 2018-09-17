@@ -2,48 +2,48 @@
   "exercises":[
       {
         "day": "1",
-        "exerciselist":[
-              {"name":"47 Flexibility Exercise upper body","sets":"3","reps":"60-90sec","feedback":"0", "workout":"Front Squat (Barbell)", "progression_model":"linear"},
-              {"name":"48 Mobility Exercise upper body","sets":"3","reps":"20-25","feedback":"0", "workout":"bent Over Row (Barbell)", "progression_model":"linear"},
-              {"name":"12 Back light","sets":"3","reps":"10-12","feedback":"2", "workout":"Shoulder Front raise (Dumbbell)", "progression_model":"double progression"},
-              {"name":"12 Back light","sets":"3","reps":"10-12","feedback":"3", "workout":"{30 deg} Bench Supported Reverse Fly (Dumbbell)", "progression_model":"double progression"},
-              {"name":"9 Shoulder Rear Delt Isolation Exercises","sets":"3","reps":"12-15","feedback":"2", "workout":"Standing Bicep Curl (Barbell)", "progression_model":"double progression"},
-              {"name":"51 Posterior Shoulder failure exercises","sets":"3","reps":"Until failure","feedback":"3", "workout":"Close Grip Bench Press (Barbell)", "progression_model":"linear"},
+        "exercise_list":[
+              {"name":"47 Flexibility Exercise upper body","sets":"3","reps":"60-90sec","feedback":"0", "workout":"Front Squat (Barbell)", "progression_model":"linear", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+              {"name":"48 Mobility Exercise upper body","sets":"3","reps":"20-25","feedback":"0", "workout":"bent Over Row (Barbell)", "progression_model":"linear", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+              {"name":"12 Back light","sets":"3","reps":"10-12","feedback":"2", "workout":"Shoulder Front raise (Dumbbell)", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+              {"name":"12 Back light","sets":"3","reps":"10-12","feedback":"3", "workout":"{30 deg} Bench Supported Reverse Fly (Dumbbell)", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+              {"name":"9 Shoulder Rear Delt Isolation Exercises","sets":"3","reps":"12-15","feedback":"2", "workout":"Standing Bicep Curl (Barbell)", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+              {"name":"51 Posterior Shoulder failure exercises","sets":"3","reps":"Until failure","feedback":"3", "workout":"Close Grip Bench Press (Barbell)", "progression_model":"linear", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
               {"name":"24 Abdominal Failure Exercises","sets":"3","reps":"Until failure","feedback":"4", "workout":"Side Plank", "progression_model":"till failure"}
           ]
       }, {
         "day": "2",
-        "exerciselist":[
-            {"name":"49 Flexibility Exercise lower body","sets":"3","reps":"60-90sec","feedback":"0"},
-            {"name":"50 Mobility Exercise lower body","sets":"3","reps":"20-25","feedback":"0"},
-            {"name":"12 Back light","sets":"3","reps":"8-10","feedback":"4"},
-            {"name":"16 Quadricep Uni-lateral Exercises","sets":"3","reps":"10-12","feedback":"2"},
-            {"name":"18 Hamstring Light Exercises","sets":"3","reps":"10-12","feedback":"3"},
-            {"name":"20 Glutes Accessory Exercises","sets":"3","reps":"20-25","feedback":"2"},
-            {"name":"23 Abdominal Exercises","sets":"3","reps":"15-20","feedback":"3"}
-          ],
+        "exercise_list":[
+            {"name":"49 Flexibility Exercise lower body","sets":"3","reps":"60-90sec","feedback":"0", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"50 Mobility Exercise lower body","sets":"3","reps":"20-25","feedback":"0", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"12 Back light","sets":"3","reps":"8-10","feedback":"4", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"16 Quadricep Uni-lateral Exercises","sets":"3","reps":"10-12","feedback":"2", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"18 Hamstring Light Exercises","sets":"3","reps":"10-12","feedback":"3", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"20 Glutes Accessory Exercises","sets":"3","reps":"20-25","feedback":"2", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"23 Abdominal Exercises","sets":"3","reps":"15-20","feedback":"3", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"}
+          ]
       }, {
         "day": "3",
-        "exerciselist":[
-            {"name":"47 Flexibility Exercise upper body","sets":"3","reps":"60-90sec","feedback":"0"},
-            {"name":"48 Mobility Exercise upper body","sets":"3","reps":"20-25","feedback":"0"},
-            {"name":"12 Back light","sets":"3","reps":"12-15","feedback":"3"},
-            {"name":"12 Back light","sets":"3","reps":"12-15","feedback":"2"},
-            {"name":"51 Posterior Shoulder failure exercises","sets":"3"},
-            {"name":"23 Abdominal Exercises","sets":"3","reps":"15-20","feedback":"2"},
-            {"name":"24 Abdominal Failure Exercises","sets":"3","reps":"Until failure","feedback":"4"}
-          ],
+        "exercise_list":[
+            {"name":"47 Flexibility Exercise upper body","sets":"3","reps":"60-90sec","feedback":"0", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"48 Mobility Exercise upper body","sets":"3","reps":"20-25","feedback":"0", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"12 Back light","sets":"3","reps":"12-15","feedback":"3", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"12 Back light","sets":"3","reps":"12-15","feedback":"2", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"51 Posterior Shoulder failure exercises","sets":"3", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"23 Abdominal Exercises","sets":"3","reps":"15-20","feedback":"2", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"24 Abdominal Failure Exercises","sets":"3","reps":"Until failure","feedback":"4", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"}
+          ]
       },  {
         "day": "4",
-        "exerciselist":[
-            {"name":"49 Flexibility Exercise lower body","sets":"3","reps":"60-90sec","feedback":"0"},
-            {"name":"50 Mobility Exercise lower body","sets":"3","reps":"20-25","feedback":"0"},
-            {"name":"51 Posterior Shoulder failure exercises","sets":"3","reps":"8-10","feedback":"3"},
-            {"name":"13 Quadricep Heavy Exercises","sets":"3","reps":"8-10","feedback":"3"},
-            {"name":"16 Quadricep Uni-lateral Exercises","sets":"3","reps":"12-15","feedback":"4"},
-            {"name":"20 Glutes Accessory Exercises","sets":"3","reps":"20-25","feedback":"2"},
-            {"name":"24 Abdominal failure Exercises","sets":"3","reps":"Until failure","feedback":"2"}
-          ],
+        "exercise_list":[
+            {"name":"49 Flexibility Exercise lower body","sets":"3","reps":"60-90sec","feedback":"0", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"50 Mobility Exercise lower body","sets":"3","reps":"20-25","feedback":"0", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"51 Posterior Shoulder failure exercises","sets":"3","reps":"8-10","feedback":"3", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"13 Quadricep Heavy Exercises","sets":"3","reps":"8-10","feedback":"3", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"16 Quadricep Uni-lateral Exercises","sets":"3","reps":"12-15","feedback":"4", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"20 Glutes Accessory Exercises","sets":"3","reps":"20-25","feedback":"2", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"24 Abdominal failure Exercises","sets":"3","reps":"Until failure","feedback":"2", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"}
+          ]
       }
   ]
 }

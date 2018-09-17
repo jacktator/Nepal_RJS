@@ -2,7 +2,7 @@
   "exercises":[
       {
         "day": "1",
-        "exerciselist":[
+        "exercise_list":[
               {"name":"13 Quadricep Heavy Exercises","code":"13","sets":"3","reps":"8-10","feedback":"2", "workout":"Front Squat (Barbell)", "progression_model":"linear", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
               {"name":"11 Back Heavy Exercises","code":"11","sets":"3","reps":"8-10","feedback":"2", "workout":"bent Over Row (Barbell)", "progression_model":"linear", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
               {"name":"32 Light lateral shoulder + hamstring ioslation","code":"32","sets":"3","reps":"8-10","feedback":"4", "workout":"Shoulder Front raise (Dumbbell)", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
@@ -13,7 +13,7 @@
           ]
       }, {
         "day": "2",
-        "exerciselist":[
+        "exercise_list": [
             {"name":"22 Hamstring & Glute Exercises","code":"22","sets":"3","reps":"10-12","feedback":"3", "workout":"Romanian Deadlift (Barbell)", "progression_model":"linear", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
             {"name":"5 Chest Heavy","code":"5","sets":"3","reps":"8-10","feedback":"2", "workout":"Bench Press (Barbell)", "progression_model":"linear", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
             {"name":"12 Back Light Exercises","code":"12","sets":"3","reps":"10-12","feedback":"4", "workout":"Single Arm Row (Dumbbell)", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
@@ -23,7 +23,7 @@
           ]
       }, {
         "day": "3",
-        "exerciselist":[
+        "exercise_list": [
             {"name":"13 Quadricep Heavy Exercises","code":"13","sets":"3","reps":"10-12","feedback":"4", "workout":"Front Squat (Barbell)", "progression_model":"linear", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
             {"name":"10 Shoulder Compund Exercises","code":"10","sets":"3","reps":"10-12","feedback":"2", "workout":"Standing Shoulder Press (Barbell)", "progression_model":"linear", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
             {"name":"14 Quadricep Heavy Compund Accesory Exercises","code":"14","sets":"3","reps":"12-15","feedback":"0", "workout":"Hack Squat", "progression_model":"linear", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
@@ -34,7 +34,7 @@
           ]
       },  {
         "day": "4",
-        "exerciselist":[
+        "exercise_list":[
             {"name":"22 Hamstring & Glute Exercises","code":"22","sets":"3","reps":"12-15","feedback":"2", "workout":"Romanian Deadlift (Barbell)", "progression_model":"linear", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
             {"name":"5 Chest Heavy","code":"5","sets":"3","reps":"10-12","feedback":"3", "workout":"Bench Press (Barbell)", "progression_model":"linear", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
             {"name":"11 Back Heavy Exercises","code":"11","sets":"3","reps":"12-15","feedback":"2", "workout":"Bent Over Row (Barbell)", "progression_model":"linear", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
