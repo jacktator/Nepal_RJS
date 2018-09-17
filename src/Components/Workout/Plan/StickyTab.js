@@ -5,7 +5,9 @@ import Content from './Content'
 export default class StickyTab extends React.Component {
   constructor(props) {
     super(props);
-    this.state={currentPage: this.props.currentpage}
+    this.state={
+      currentPage: this.props.currentpage
+    }
   }
   componentDidUpdate(prevProps, prevState) {
     if(prevProps.currentpage !== this.props.currentpage){
@@ -13,7 +15,7 @@ export default class StickyTab extends React.Component {
     }
   }
   render() {
-
+    console.log(this.state.currentPage)
    return (
      <div className='plan-tabs'>
        <Tabs

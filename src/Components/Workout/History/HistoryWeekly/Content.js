@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { List, Flex } from 'antd-mobile'
-
+import { Link } from 'react-router-dom'; 
 const Item = List.Item
 
 export default class Content extends Component {
@@ -8,93 +8,41 @@ export default class Content extends Component {
   constructor(props){
     super(props);
     this.state = {
-      WorkoutPlans:[
-        {day:'Day 1'},
-        {day:'Day 2'},
-        {day:'Day 3'},
-        {day:'Day 4'},
-      ]
+      // WorkoutPlans:[
+      //   {day:'Day 1'},
+      //   {day:'Day 2'},
+      //   {day:'Day 3'},
+      //   {day:'Day 4'},
+      // ],
+      days:this.props.data.days,
     }
   }
-
+  // onClick={(e,k) => this.props.onParticularDayClicked(e,k+1)}
   render(){
+    let days = parseInt((this.state.days),10)
     return(
         <div>
-           <List> {[...Array(this.props.days)].map((data,key) => (
-           <Flex key={key}>
-              <Flex.Item>
-                  <div>
-                  <Item
-                    arrow="horizontal"
-                    onClick={(e) => this.props.onParticularDayClicked(e, key)}>
-                    <div style={{fontSize:'16px'}}> { 'Day'+(key+1)} </div>
-                  </Item>
-                  </div>
-              </Flex.Item>
-           </Flex>
-         ))}
+           <List> 
+              {[...Array(days)].map((v,k) => {
+                const dayNumber = (this.props.selectedWeek-1) * days + k+1
+                return(
+                <Link key={k} to={`/history/${dayNumber}`}>
+                <Flex >
+                    <Flex.Item>
+                        <div>
+                        <Item
+                          arrow="horizontal"
+                          >
+                          <div style={{fontSize:'16px'}}> { 'Day' +  dayNumber}</div>
+                        </Item>
+                        </div>
+                    </Flex.Item>
+                </Flex>
+                </Link>
+              )
+            })}
            </List>
-
         </div>
     )
   }
 }
-
-// export default class Content extends Component {
-
-//   render(){
-//     let {days,progress} = this.props.WorkoutReducers.program;
-//     let record = this.props.record;
-//     let currentWeek = this.props.WorkoutReducers.currentWeek;
-//     let currentDay = this.props.WorkoutReducers.currentDay;
-
-//     // let weekIndex = (record.weekly_record.findIndex(i => 
-//     //   {return i.week === week.toString()}))
-//     // console.log(weekIndex)
-    
-//     // let dayIndex = (record.weekly_record[weekIndex].daily_record.findIndex(j => 
-//     //   {return j.day === day.toString()}))
-//     // console.log(dayIndex)
-//     // let dayNum = parseInt((record.weekly_record[weekIndex].daily_record[dayIndex].day))
-//     // console.log(typeof(dayNum),dayNum)
-                
-//     let Renderpage = null
-//     if(record){
-//       if(record.weekly_record){
-//         let weekIndex = (record.weekly_record.findIndex(i => 
-//           {return i.week === currentWeek.toString()}))
-//           if(weekIndex >= 0){
-//             let dayIndex = (record.weekly_record[weekIndex].daily_record.findIndex(j => 
-//               {return j.day === currentDay.toString()}))
-//               if(dayIndex >= 0){
-//               let day = (record.weekly_record[weekIndex].daily_record[dayIndex].day)
-//               Renderpage = (
-//                 <List>
-//                   {[...Array(day)].map((v,k) => {
-//                     const dayNumber = (this.props.selectedWeek -1 ) * day +(k+1);
-//                     return(
-//                     <Item 
-//                     key={k}
-//                     arrow="horizontal" 
-//                     onClick={(e)=>this.props.onParticularDayClicked(e)}
-//                     disabled={(this.props.selectedWeek)<(progress/days)?false : (progress % days === 0)? false : (!(k<(progress % days)))}
-//                     >
-//                       <div style={{fontSize:'16px'}}>
-//                           Day {dayNumber}
-//                       </div>
-//                     </Item>)
-//                   })}
-//                 </List>
-//               )
-//             }
-//           }
-//       }
-//     }
-//     return(
-//       <div>
-//         {Renderpage}
-//       </div>
-        
-//     )
-//   }
-// }

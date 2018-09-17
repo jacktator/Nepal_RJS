@@ -1,118 +1,123 @@
-import React, {Component} from 'react';
+import React ,{Component} from 'react';
 import Hoc from '../../../../HOC/Hoc';
+import { List,WhiteSpace,Flex,Button} from 'antd-mobile'
 import Header from '../Header';
-import { List, Button } from 'antd-mobile'
+import FooterContainer from '../../../../Containers/Workout/FooterContainer/'
 
-const HistoryDetail = (props) => {
-  return (
-    <Hoc>
+import { connect } from 'react-redux';
+
+import { Link } from 'react-router-dom'
+
+const Item = List.Item;
+
+class HistoryDetail extends Component {
+  state ={
+    currentDay: Number(this.props.match.params.day)
+  }
+  
+  go =(currentDay)=>{
+    this.setState({
+      currentDay 
+    })
+  }
+  goPrev = () =>{
+    let {currentDay} = this.state
+    this.go(--currentDay)
+  }
+  goNext = () => {
+    let {currentDay} = this.state
+    this.go(++currentDay)
+  }
+
+  render(){
+    let {program,record} = this.props.HistoryReducers
+    const day = parseInt((this.props.match.params.day),10);
+    let daysPerWeek = (parseInt((program.days),10))
+    let totalDays = daysPerWeek*5
+    let dayRecord = (record.daily_record.find((data) => parseInt(data.day,10) === day))
+    // exercises list section
+    let RenderPage = (dayRecord) ?
+    (
+    dayRecord.data.map((i,key)=> (
+      <List key={key}>
+          <WhiteSpace/>
+          <Item >
+            <span style={{textAlign:'left',fontSize:'20px',fontStyle:'italic'}}>
+              {i.name}
+            </span>
+          </Item>
+      {i.data.map((j,key) => (
+            <Item key={key}>
+              Sets:{key+1} &nbsp;&nbsp;
+              Reps:{j.reps} &nbsp;&nbsp;
+              Weight:{j.weight} &nbsp;&nbsp;
+            </Item>
+      ))}
+      </List>
+    ))
+    ):(
+      <div style={{textAlign:'center'}}>No history on day {day} ! </div>
+    )
+    // button section
+    let prevButton =  (this.state.currentDay === 1) ? ( 
+      <Button type='primary' disabled >Prev</Button>
+    ):
+    ( (this.state.currentDay === daysPerWeek*1 +1||
+      this.state.currentDay === daysPerWeek*2 +1 ||
+      this.state.currentDay === daysPerWeek*3 +1 || 
+      this.state.currentDay === daysPerWeek*4 +1) ?(
+      <Link to={`/history/${this.state.currentDay-1}`} onClick={this.goPrev} style={{margin:'auto'}}>
+        <Button type='primary'>Last Week</Button>
+      </Link>
+      ):(
+      <Link to={`/history/${this.state.currentDay-1}`} onClick={this.goPrev} style={{margin:'auto'}}>
+        <Button type='primary'>Prev</Button>
+      </Link>
+      )
+    )
+    let nextButton = (this.state.currentDay >= totalDays ) ?(
+      <Button type='primary' disabled>No More</Button>
+    ):
+    ((this.state.currentDay === daysPerWeek*1 ||
+    this.state.currentDay === daysPerWeek*2 ||
+    this.state.currentDay === daysPerWeek*3 || 
+    this.state.currentDay === daysPerWeek*4) ? (
+      <Link to={`/history/${this.state.currentDay+1}`} onClick={this.goNext} >
+       <Button type='primary'>Next Week</Button>
+      </Link>
+    ):(
+      <Link to={`/history/${this.state.currentDay+1}`} onClick={this.goNext}>
+        <Button type='primary'>Next</Button>
+      </Link>
+    )
+    )
+    return(
+      <Hoc>
       <Header />
-      <div>
-        Content is not ready yet
+      <div className="history-detail-container">
+        {RenderPage}
+      </div>
+      <FooterContainer currentPath='history'/>
+      <div className="day-button-container">
+        <Flex>
+          <Flex.Item>
+          {prevButton}
+          </Flex.Item>
+          <span style={{width:'50%'}}></span>
+          <Flex.Item>
+          {nextButton}
+          </Flex.Item>
+        </Flex> 
       </div>
     </Hoc>
-  )
+    )
+  }
 }
 
-export default HistoryDetail;
-
-// const Item = List.Item
-
-// class HistoryDetail extends Component{
-//   state={
-//     currentDay: this.props.day,
-//     totalDays: this.props.totalDays
-//   }
-  
-//   buttonHandler= (button) =>{
-//     let currentDay = this.state.currentDay
-//     let totalDays = this.state.totalDays
-//     if(button === 'prev'){
-//       if(currentDay > 1){
-//         currentDay -= 1;
-//         this.setState({
-//           currentDay
-//         })
-//       }
-//     }
-//     if(button === 'next'){
-//       if(currentDay < totalDays){
-//         currentDay += 1
-//         this.setState({
-//           currentDay
-//         })
-//       }
-//     }
-//   }
-//   render(){
-//     console.log(this.state.totalDays)
-//     return(
-//       <Hoc>
-//       <Header/>
-//       <div className="history-detail-container">
-//       {this.props.exerciseData.map((i,key) => (
-//         <List key={key}>
-//             <Item>
-//              <span style={{fontSize:"25px"}}>{i.name}</span>
-//              </Item>
-//           {i.data.map((j,key)=>(
-//             <List key={key}>
-//               <Item >
-//                     Sets: {key+1} &nbsp;&nbsp;
-//                     Reps: {j.reps} &nbsp;&nbsp;&nbsp;
-//                     Weight: {j.weight}
-//                 </Item>
-//             </List>
-//           ))}
-//           </List>
-//       ))}
-      
-//       </div>
-//       <div className="day-button-container">
-//         <Button 
-//           disabled={this.state.currentDay === 1 ? true: false} 
-//           onClick={() => this.buttonHandler('prev')}
-//           type='primary'
-//           style={{position:'absolute',left:'0',marginLeft:'10px',zIndex:'1000'}}
-//           inline
-//           size='small'
-//         >
-//           Prev
-//         </Button>
-//         <Button 
-//           type='primary'
-//           onClick={() => this.buttonHandler('next')}
-//           style={{position:'absolute',right:'0',marginRight:'10px',zIndex:'1000'}}
-//           inline
-//           size='small'
-//         >
-//           {this.state.currentDay === this.state.totalDays ? "No More":"Next"}
-//         </Button>
-//       </div>
-//     </Hoc>
-//     )
-//   }
-    
-//     // let name = [];
-//     //try to fetching data
-
-//     // this.props.data.map((i,key) => {
-//     //   console.log(key,"day:",i.day)
-//     //   i.data.map((j,key) => {
-//     //     //  name.push(j.name);
-//     //     console.log(key,"code:",j.code)
-//     //     j.data.map((k,key)=>{
-//     //         console.log
-//     //         (
-//     //           key,
-//     //           "Sets:",k.sets,
-//     //           "Rpes:",k.reps,
-//     //           "Weight:",k.weight
-//     //         )
-//     //     })
-//     //   })
-//     // });
-// }
-
-
-// export default HistoryDetail;
+function mapStateToProps(state){
+  return {
+    currentFooterTab: state.FooterReducers.currentFooterTab,
+    HistoryReducers: state.HistoryReducers,
+  }
+}
+export default connect(mapStateToProps)(HistoryDetail);

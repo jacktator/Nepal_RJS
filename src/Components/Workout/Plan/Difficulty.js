@@ -38,7 +38,6 @@ class Difficulty extends Component{
                                 {i.difficulty}
                             </CheckboxItem>
                         </Flex.Item>
-                        
                     </Flex>
                     
                 ))}
