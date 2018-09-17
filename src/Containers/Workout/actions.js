@@ -16,7 +16,7 @@ export function getProgram(){
       const programStartDate = new Date(response.data[0].date);
       const currentDate = new Date().getTime();
       let difference = currentDate - programStartDate;
-      let daysDifference = 29//Math.floor(difference/1000/60/60/24) + 1;
+      let daysDifference = Math.floor(difference/1000/60/60/24) + 1;
       let update = false;
       const runningWeek = Math.ceil(daysDifference/7)
       const dayCountForRunningWeek =  daysDifference - (runningWeek-1) * 7 ;
