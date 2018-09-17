@@ -103,6 +103,9 @@ class ExerciseContainer extends Component{
     if(exerciseData.progression_model === "linear") {
       reps = parseInt(exerciseData.reps, 10);
     }
+    if(exerciseData.progresison_model === "till failure") {
+      reps = 8;
+    }
     this.setState({
                     exerciseLength: exerciseLength, exerciseData, personalBest: parseFloat(exerciseData.personal_best),
                     prescribeWeight: parseFloat(exerciseData.weight), prescribeReps: reps,
@@ -115,9 +118,7 @@ class ExerciseContainer extends Component{
           if(dayIndex >= 0){
             let dataIndex = (records.daily_record[dayIndex].data.findIndex( i => {return i.code === code}));
             if(dataIndex >= 0){
-              console.log("got the data",records.daily_record[dayIndex].data[dataIndex].data);
               let exerciseLog = records.daily_record[dayIndex].data[dataIndex].data;
-              console.log("This is exercise log",exerciseLog);
               this.setState({exerciseLog: exerciseLog, currentSets: exerciseLog.length+1})
             }
           }
@@ -222,6 +223,7 @@ class ExerciseContainer extends Component{
     this.setState({ showInfo: !this.state.showInfo})
   }
   render(){
+    console.log("This is exercise container",this.props)
     let message = "";
     if(this.state.currentSets <= this.state.sets){
       if(this.state.exerciseData.progression_model === 'linear'){
@@ -238,8 +240,8 @@ class ExerciseContainer extends Component{
         }else{
           message = `Aim for more reps`;
         }
-      }else{
-        //progression model is till failure
+      }else if(this.state.exerciseData.progression_model === 'till failure'){
+        message = `Do as many reps as possible`;
       }
     }else{
       message = "Go no next workout"

@@ -24,7 +24,6 @@ const contentOfTabs = (props) => [
 ]
 
 const Footer = (props) => {
-  console.log("this is from footer", props);
   return(
   <div className='container'>
     <div className="footer-container">
