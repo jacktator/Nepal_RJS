@@ -140,10 +140,9 @@ export function getHistory() {
       console.log(response);
       console.log("response",response.data)
       let historyData = [];
-      response.data.map((data,key) => {
-        historyData.push(data.acf);
-      })
-      
+      response.data.map((data,key) => (
+        historyData.push(data.acf)
+      ))
       dispatch(setHistory(historyData))
     }).catch((error)=> {
       console.log(error);

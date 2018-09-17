@@ -3,9 +3,7 @@ import Hoc from '../../../../HOC/Hoc';
 import { List,WhiteSpace,Flex,Button} from 'antd-mobile'
 import Header from '../Header';
 import FooterContainer from '../../../../Containers/Workout/FooterContainer/'
-
 import { connect } from 'react-redux';
-
 import { Link } from 'react-router-dom'
 
 const Item = List.Item;
@@ -36,8 +34,8 @@ class HistoryDetail extends Component {
     let daysPerWeek = (parseInt((program.days),10))
     let totalDays = daysPerWeek*5
 
-    let historyData = history.find((i) => programID === parseInt((i.program_id),10))
-    let dayRecord = historyData.daily_record.find((j) => parseInt(j.day,10) === day)
+    let dayRecord = history.find((i) => programID === parseInt((i.program_id),10))
+                      .daily_record.find((j) => parseInt(j.day,10) === day)
     console.log(dayRecord)
     // exercises list section
     let RenderPage = (dayRecord) ?
@@ -79,7 +77,7 @@ class HistoryDetail extends Component {
       </Link>
       )
     )
-    let nextButton = (this.state.currentDay >= totalDays ) ?(
+    let nextButton = (this.state.currentDay >= totalDays ) ? (
       <Button type='primary' disabled>No More</Button>
     ):
     ((this.state.currentDay === daysPerWeek*1 ||
