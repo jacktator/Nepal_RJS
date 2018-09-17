@@ -1,5 +1,21 @@
 let DefaultState = {
-    program: 'Loading...'
+    program:{
+        exercises:[{}]
+    },
+    record: {
+        daily_record:[{
+            day:'',
+            date:'',
+            data:[{
+                name:'',
+                code:'',
+                data:[{}],
+            }]
+        }],
+        weekly_record:[{
+            week:'', 
+        }]
+    }
 }
 
 const HistoryReducers = (state:Object=DefaultState, action:Function)=> {

@@ -18,6 +18,7 @@ import ProfileContainer from '../../Containers/ProfileContainer';
 import TermsAndCondComponent from '../TermsAndCond';
 import GetJson from '../../Containers/ZShawn';
 
+import HistoryDetail from '../Workout/History/HistoryDetail/'
 //import {connect} from 'react-redux';
 import ExerciseContainer from '../../Containers/Workout/ExerciseContainer/';
 
@@ -47,6 +48,7 @@ class Root extends Component<Props>{
               <Route path="/plan" exact component={PlanContainer}/>
               <Route path="/footer" exact component={FooterContainer} />
               <Route path="/history" exact component={HistoryContainer}/>
+              <Route path="/history/:day" exact component={HistoryDetail}/>
               <Route path="/profile" exact component={ProfileContainer}/>
               <Route path="/termsandconditions" exact component={TermsAndCondComponent}/>
               <Route path="/questionnaire" exact component={Questionnaire} />
@@ -73,6 +75,7 @@ class Root extends Component<Props>{
             <Route path="/plan" exact component={PlanContainer}/>
             <Route path="/footer" exact component={FooterContainer} />
             <Route path="/history" exact component={HistoryContainer}/>
+            <Route path="/history/:day" exact component={HistoryDetail}/>
             <Route path="/exercise/:index?" exact component={ExerciseContainer}/>
             <Route path="/profile" exact component={ProfileContainer}/>
             <Route path="/termsandconditions" exact component={TermsAndCondComponent}/>

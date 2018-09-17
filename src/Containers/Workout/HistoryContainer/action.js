@@ -12,14 +12,14 @@ export function getProgram(){
         dispatch(setProgramID(response.data[0].id));
         dispatch(setCurrentWeek(currentWeek));
         dispatch(setCurrentDay(currentDay));
-  
+
       }).catch((error)=> {
         console.log(error);
       })
     }
   }
 
-  export function getExerciseRecord(){
+  export function getRecord(){
     return(dispatch: Function) => {
       return axios.get(`https://nepal.sk8tech.io/wp-json/wp/v2/record?filter[meta_key]=program_id&filter[meta_value]=15603`)
       .then((response) => {
@@ -40,10 +40,10 @@ export function getProgram(){
   }
 
   //This function is to set ID for the program
-  export function setProgramID (id: Number) {
+  export function setProgramID (programID: Number) {
     return {
       type: "SET_PROGRAM_ID",
-      payload: id
+      payload: programID
     }
   }
 
@@ -68,9 +68,9 @@ export function getProgram(){
     }
   }
 
-  export function setExerciseID(id: Number) {
+  export function setExerciseID(recordID: Number) {
     return {
       type: "SET_EXERCISE_ID",
-      payload: id
+      payload: recordID
     }
   }
