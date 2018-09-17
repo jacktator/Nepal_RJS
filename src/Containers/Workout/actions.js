@@ -22,30 +22,28 @@ export function getProgram(){
       const dayCountForRunningWeek =  daysDifference - (runningWeek-1) * 7 ;
       let currentProgress;
 
-      dispatch(implementDeloadAlgorithm(response.data[0].id, response.data[0].acf, currentProgress, "askFeedback"))
+      if(dayCountForRunningWeek <= days){
+        currentProgress = (runningWeek-1) * days + dayCountForRunningWeek;
+      }else{
+        currentProgress = (runningWeek-1) * days + days;
+      }
+      if(parseInt(progress,10) !== currentProgress){
+        update = true;
+        const askFeedback = parseInt(value, 10) ===0 ? true : false
 
-      // if(dayCountForRunningWeek <= days){
-      //   currentProgress = (runningWeek-1) * days + dayCountForRunningWeek;
-      // }else{
-      //   currentProgress = (runningWeek-1) * days + days;
-      // }
-      // if(parseInt(progress,10) !== currentProgress){
-      //   update = true;
-      //   const askFeedback = parseInt(value, 10) ===0 ? true : false
-      //
-      //   if(runningWeek === 5 && currentWeek !== 5){
-      //     alert("UpdateProgress with Deload algorithm");
-      //     dispatch(implementDeloadAlgorithm(response.data[0].id, response.data[0].acf, currentProgress, askFeedback))
-      //   }else{
-      //     dispatch(updateProgress(response.data[0].id, currentProgress, askFeedback))
-      //   }
-      // }
-      // if(!update){
-      //   dispatch(setProgram(response.data[0].acf));
-      //   dispatch(setProgramID(response.data[0].id));
-      //   dispatch(setCurrentWeek(currentWeek));
-      //   dispatch(setCurrentDay(currentDay));
-      // }
+        if(runningWeek === 5 && currentWeek !== 5){
+          alert("UpdateProgress with Deload algorithm");
+          dispatch(implementDeloadAlgorithm(response.data[0].id, response.data[0].acf, currentProgress, askFeedback))
+        }else{
+          dispatch(updateProgress(response.data[0].id, currentProgress, askFeedback))
+        }
+      }
+      if(!update){
+        dispatch(setProgram(response.data[0].acf));
+        dispatch(setProgramID(response.data[0].id));
+        dispatch(setCurrentWeek(currentWeek));
+        dispatch(setCurrentDay(currentDay));
+      }
     }).catch((error)=> {
       console.log(error);
     })
