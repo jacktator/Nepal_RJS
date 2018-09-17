@@ -30,11 +30,15 @@ class HistoryDetail extends Component {
   }
 
   render(){
-    let {program,record} = this.props.HistoryReducers
+    let {program,history} = this.props.HistoryReducers
+    const programID = parseInt((this.props.match.params.programID),10)
     const day = parseInt((this.props.match.params.day),10);
     let daysPerWeek = (parseInt((program.days),10))
     let totalDays = daysPerWeek*5
-    let dayRecord = (record.daily_record.find((data) => parseInt(data.day,10) === day))
+
+    let historyData = history.find((i) => programID === parseInt((i.program_id),10))
+    let dayRecord = historyData.daily_record.find((j) => parseInt(j.day,10) === day)
+    console.log(dayRecord)
     // exercises list section
     let RenderPage = (dayRecord) ?
     (
@@ -66,12 +70,12 @@ class HistoryDetail extends Component {
       this.state.currentDay === daysPerWeek*2 +1 ||
       this.state.currentDay === daysPerWeek*3 +1 ||
       this.state.currentDay === daysPerWeek*4 +1) ?(
-      <Link to={`/history/${this.state.currentDay-1}`} onClick={this.goPrev} style={{margin:'auto'}}>
-        <button class='customizedButton-Blue'>Last Week</button>
+      <Link to={`/history/${programID}/${this.state.currentDay-1}`} onClick={this.goPrev} style={{margin:'auto'}}>
+        <button className='customizedButton-Blue'>Last Week</button>
       </Link>
       ):(
-      <Link to={`/history/${this.state.currentDay-1}`} onClick={this.goPrev} style={{margin:'auto'}}>
-        <button class='customizedButton-Blue'>Prev</button>
+      <Link to={`/history/${programID}/${this.state.currentDay-1}`} onClick={this.goPrev} style={{margin:'auto'}}>
+        <button className='customizedButton-Blue'>Prev</button>
       </Link>
       )
     )
@@ -82,12 +86,12 @@ class HistoryDetail extends Component {
     this.state.currentDay === daysPerWeek*2 ||
     this.state.currentDay === daysPerWeek*3 ||
     this.state.currentDay === daysPerWeek*4) ? (
-      <Link to={`/history/${this.state.currentDay+1}`} onClick={this.goNext} >
-       <button class='customizedButton-Blue'>Next Week</button>
+      <Link to={`/history/${programID}/${this.state.currentDay+1}`} onClick={this.goNext} >
+       <button className='customizedButton-Blue'>Next Week</button>
       </Link>
     ):(
-      <Link to={`/history/${this.state.currentDay+1}`} onClick={this.goNext}>
-        <button class='customizedButton-Blue'>Next</button>
+      <Link to={`/history/${programID}/${this.state.currentDay+1}`} onClick={this.goNext}>
+        <button className='customizedButton-Blue'>Next</button>
       </Link>
     )
     )

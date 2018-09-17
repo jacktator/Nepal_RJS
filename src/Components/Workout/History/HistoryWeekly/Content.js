@@ -14,7 +14,7 @@ export default class Content extends Component {
       //   {day:'Day 3'},
       //   {day:'Day 4'},
       // ],
-      days:this.props.data.days,
+      days:this.props.days,
     }
   }
   // onClick={(e,k) => this.props.onParticularDayClicked(e,k+1)}
@@ -24,9 +24,10 @@ export default class Content extends Component {
         <div>
            <List> 
               {[...Array(days)].map((v,k) => {
-                const dayNumber = (this.props.selectedWeek-1) * days + k+1
+                const dayNumber = (this.props.selectedWeek) * days + k+1
+                console.log(dayNumber)
                 return(
-                <Link key={k} to={`/history/${dayNumber}`}>
+                <Link key={k} to={`/history/${this.props.programID}/${dayNumber}`}>
                 <Flex >
                     <Flex.Item>
                         <div>

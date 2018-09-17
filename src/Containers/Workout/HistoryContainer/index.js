@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {selectFooter} from '../FooterContainer/actions';
-import {getHistory} from './action';
+import {getHistory,getProgram} from './action';
 import FooterContainer from'../FooterContainer';
 import Header from '../../../Components/Workout/History/Header'
-import HistoryWeekly from '../../../Components/Workout/History/HistoryWeekly';
+// import HistoryWeekly from '../../../Components/Workout/History/HistoryWeekly';
 import HistoryComponent from '../../../Components/Workout/History';
 import Hoc from '../../../HOC/Hoc';
 
@@ -30,7 +30,7 @@ class HistoryContainer extends Component{
 
   }
   componentDidMount(){
-
+    this.props.getProgram();
     this.props.getHistory().then(()=>{
       this.setState({
         loading:false
@@ -68,50 +68,42 @@ class HistoryContainer extends Component{
 
   render() {
     console.log("history reducer", this.props.HistoryReducers);
-    return(
-      <div>History</div>
-    )
-    // let RenderPage = null;
-    // console.log('THIS IS FORM history',this.props.HistoryReducers)
-    // let {program,record} = this.props.HistoryReducers;
-    // let {progress,days} = program;
-    //
-    // let currentlyWeek = currentWeek(progress,days);
-    //
-    // if(this.state.currentPage === 1){
-    //   RenderPage = (
-    //     <HistoryComponent
-    //       onListProgramClick={this.onListProgramClickHandler}
-    //       data= {this.props.HistoryReducers}
-    //       record={record}
-    //       loading={this.state.loading}
-    //     />
-    //   )
-    // }
+    let RenderPage = null;
+    let {history} =this.props.HistoryReducers;
+    
+    if(this.state.currentPage === 1){
+      RenderPage = (
+        <HistoryComponent
+          onListProgramClick={this.onListProgramClickHandler}
+          history = {history}
+          loading={this.state.loading}
+        />
+      )
+    }
     // if(this.state.currentPage === 2){
     //   RenderPage = (
     //     <HistoryWeekly
     //       currentPage={currentlyWeek-1}
-    //       data={program}
+    //       WorkoutReducers = {this.props.WorkoutReducers}
+    //       history={history}
     //       onParticularWeekClickedHandler={this.onParticularWeekClickedHandler}
     //       onParticularDayClicked={this.onParticularDayClickedHandler}
-    //       daily_record={record.daily_record}
     //     />
     //   )
     // }
-    // // if(this.state.currentPage === 3){
-    // //   RenderPage = (
-    // //     <HistoryDetail daily_record={record.daily_record}/>
-    // //   )
-    // // }
-    //
-    // return (
-    //   <Hoc>
-    //     <Header/>
-    //     {RenderPage}
-    //     <FooterContainer currentPath='history'/>
-    //   </Hoc>
-    // )
+    // if(this.state.currentPage === 3){
+    //   RenderPage = (
+    //     <HistoryDetail daily_record={record.daily_record}/>
+    //   )
+    // }
+    
+    return (
+      <Hoc>
+        <Header/>
+        {RenderPage}
+        <FooterContainer currentPath='history'/>
+      </Hoc>
+    )
   }
 }
 
@@ -125,10 +117,11 @@ function matchDispatchToProps(dispatch){
   return bindActionCreators({
     selectFooter,
     getHistory,
+    getProgram
   }, dispatch
 );
 }
 
-const currentWeek = (progress, days) => (Math.ceil(progress / days));
+
 
 export default connect(mapStateToProps, matchDispatchToProps)(HistoryContainer)
