@@ -67,11 +67,11 @@ class HistoryDetail extends Component {
       this.state.currentDay === daysPerWeek*3 +1 || 
       this.state.currentDay === daysPerWeek*4 +1) ?(
       <Link to={`/history/${this.state.currentDay-1}`} onClick={this.goPrev} style={{margin:'auto'}}>
-        <Button type='primary'>Last Week</Button>
+        <button class='customizedButton-Blue'>Last Week</button>
       </Link>
       ):(
       <Link to={`/history/${this.state.currentDay-1}`} onClick={this.goPrev} style={{margin:'auto'}}>
-        <Button type='primary'>Prev</Button>
+        <button class='customizedButton-Blue'>Prev</button>
       </Link>
       )
     )
@@ -83,11 +83,11 @@ class HistoryDetail extends Component {
     this.state.currentDay === daysPerWeek*3 || 
     this.state.currentDay === daysPerWeek*4) ? (
       <Link to={`/history/${this.state.currentDay+1}`} onClick={this.goNext} >
-       <Button type='primary'>Next Week</Button>
+       <button class='customizedButton-Blue'>Next Week</button>
       </Link>
     ):(
       <Link to={`/history/${this.state.currentDay+1}`} onClick={this.goNext}>
-        <Button type='primary'>Next</Button>
+        <button class='customizedButton-Blue'>Next</button>
       </Link>
     )
     )
