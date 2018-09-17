@@ -6,7 +6,6 @@ import {selectFooter} from '../FooterContainer/actions';
 import {getHistory,getProgram} from './action';
 import FooterContainer from'../FooterContainer';
 import Header from '../../../Components/Workout/History/Header'
-// import HistoryWeekly from '../../../Components/Workout/History/HistoryWeekly';
 import HistoryComponent from '../../../Components/Workout/History';
 import Hoc from '../../../HOC/Hoc';
 
@@ -15,7 +14,6 @@ class HistoryContainer extends Component{
     super(props);
     // console.log(this.props.match.path.substring(1))
     this.state = {
-
       daySelect: 1,
       weekSelect: 1,
       currentPage: 1,
@@ -23,11 +21,9 @@ class HistoryContainer extends Component{
     }
   }
   componentWillMount(){
-
     if(this.props.currentFooterTab!== 'historyTab' ){
       this.props.selectFooter('historyTab');
     }
-
   }
   componentDidMount(){
     this.props.getProgram();
@@ -36,35 +32,34 @@ class HistoryContainer extends Component{
         loading:false
       })
     });
-
   }
 
-  onListProgramClickHandler = (e) => {
+  // onListProgramClickHandler = (e) => {
 
-      e.preventDefault();
-      // let currentHistoryIndex = this.state.history.findIndex( data =>{ return data.program === program});
-      this.setState({
-        currentPage: this.state.currentPage+1,
-      })
-  }
-  onParticularWeekClickedHandler = (e, week) => {
-    this.setState({
-      weekSelect: e,
-      week:this.state.weekSelect+1
-    })
-    console.log("week",week)
-    console.log('week',e);
-  }
-  onParticularDayClickedHandler =(e,day) => {
-    // e.preventDefault();
-    this.setState({
-      currentPage: this.state.currentPage + 1,
-      day: this.state.daySelect+1,
-      daySelect:e
-    })
-    console.log("day",day)
-    // console.log('day',e)
-  }
+  //     e.preventDefault();
+  //     // let currentHistoryIndex = this.state.history.findIndex( data =>{ return data.program === program});
+  //     this.setState({
+  //       currentPage: this.state.currentPage+1,
+  //     })
+  // }
+  // onParticularWeekClickedHandler = (e, week) => {
+  //   this.setState({
+  //     weekSelect: e,
+  //     week:this.state.weekSelect+1
+  //   })
+  //   console.log("week",week)
+  //   console.log('week',e);
+  // }
+  // onParticularDayClickedHandler =(e,day) => {
+  //   // e.preventDefault();
+  //   this.setState({
+  //     currentPage: this.state.currentPage + 1,
+  //     day: this.state.daySelect+1,
+  //     daySelect:e
+  //   })
+  //   console.log("day",day)
+  //   // console.log('day',e)
+  // }
 
   render() {
     console.log("history reducer", this.props.HistoryReducers);
@@ -74,29 +69,11 @@ class HistoryContainer extends Component{
     if(this.state.currentPage === 1){
       RenderPage = (
         <HistoryComponent
-          onListProgramClick={this.onListProgramClickHandler}
           history = {history}
           loading={this.state.loading}
         />
       )
-    }
-    // if(this.state.currentPage === 2){
-    //   RenderPage = (
-    //     <HistoryWeekly
-    //       currentPage={currentlyWeek-1}
-    //       WorkoutReducers = {this.props.WorkoutReducers}
-    //       history={history}
-    //       onParticularWeekClickedHandler={this.onParticularWeekClickedHandler}
-    //       onParticularDayClicked={this.onParticularDayClickedHandler}
-    //     />
-    //   )
-    // }
-    // if(this.state.currentPage === 3){
-    //   RenderPage = (
-    //     <HistoryDetail daily_record={record.daily_record}/>
-    //   )
-    // }
-    
+      }
     return (
       <Hoc>
         <Header/>
@@ -121,7 +98,5 @@ function matchDispatchToProps(dispatch){
   }, dispatch
 );
 }
-
-
 
 export default connect(mapStateToProps, matchDispatchToProps)(HistoryContainer)

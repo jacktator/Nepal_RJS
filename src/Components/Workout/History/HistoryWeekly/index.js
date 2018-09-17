@@ -63,7 +63,6 @@ function mapStateToProps(state){
   return {
     currentFooterTab: state.FooterReducers.currentFooterTab,
     HistoryReducers: state.HistoryReducers,
-    WorkoutReducers:state.WorkoutReducers
   }
 }
 
