@@ -36,7 +36,7 @@ class WorkoutContainer extends Component{
       this.props.setDayIndex(dayIndex);
       this.props.setCurrentDay(parseInt(this.props.match.params.day, 10));
       this.props.getExerciseRecord(this.props.WorkoutReducers.programID);
-      if(progress === this.props.match.params.day && progress <= days ){
+      if(progress === this.props.match.params.day && parseInt(progress,10) <= parseInt(days,10) ){
           this.setState({showKeepOrChange: true})
       }
       this.setState({isReady: true})
@@ -71,7 +71,6 @@ class WorkoutContainer extends Component{
   }
 
   render() {
-    console.log("This is from workout", this.props.WorkoutReducers);
     if(this.props.WorkoutReducers.program){
       if(this.state.isReady){
       return (

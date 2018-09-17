@@ -30,7 +30,6 @@ class ExerciseContainer extends Component{
       exerciseIndex: 0, // store the index of current exercise
       exerciseLength: null, // represent the total number of workout for current day
       currentSets : 1, // represent the number of set user is currently in
-
       prescribeWeight: 0,
       prescribeReps: 0,
       personalBest: 0,
@@ -40,7 +39,7 @@ class ExerciseContainer extends Component{
       sets: 0,
       exerciseData: {
       },
-
+      prevData: {},
       exerciseLog:[], // represent the array of exercise log performed by the user
       error: false, // represent if there is any error occured
     };
@@ -92,6 +91,8 @@ class ExerciseContainer extends Component{
     let records = this.props.WorkoutReducers.record;
     let week = this.props.WorkoutReducers.currentWeek;
     let day = this.props.WorkoutReducers.currentDay;
+    let days_per_week = this.props.WorkoutReducers.program.days;
+    let previous_week_day = parseInt(day,10) - parseInt(days_per_week,10);
     let exerciseData = program.exercises[dayIndex].exercise_list[this.state.exerciseIndex];
     let exerciseLength = program.exercises[dayIndex].exercise_list.length;
     let code = exerciseData.code;
@@ -102,6 +103,9 @@ class ExerciseContainer extends Component{
     }
     if(exerciseData.progression_model === "linear") {
       reps = parseInt(exerciseData.reps, 10);
+    }
+    if(exerciseData.progresison_model === "till failure") {
+      reps = 8;
     }
     this.setState({
                     exerciseLength: exerciseLength, exerciseData, personalBest: parseFloat(exerciseData.personal_best),
@@ -115,10 +119,17 @@ class ExerciseContainer extends Component{
           if(dayIndex >= 0){
             let dataIndex = (records.daily_record[dayIndex].data.findIndex( i => {return i.code === code}));
             if(dataIndex >= 0){
-              console.log("got the data",records.daily_record[dayIndex].data[dataIndex].data);
               let exerciseLog = records.daily_record[dayIndex].data[dataIndex].data;
-              console.log("This is exercise log",exerciseLog);
               this.setState({exerciseLog: exerciseLog, currentSets: exerciseLog.length+1})
+            }
+          }
+          let prev_week_index = (records.daily_record.findIndex(i => { return i.day === previous_week_day.toString()}));
+          if(prev_week_index >= 0){
+            let prev_week_data_index = (records.daily_record[prev_week_index].data.findIndex( i => {return i.code === code}));
+            if(prev_week_data_index >= 0){
+              let last_data_index = records.daily_record[prev_week_index].data[prev_week_data_index].data.length - 1;
+              let prevData = records.daily_record[prev_week_index].data[prev_week_data_index].data[last_data_index];
+              this.setState({prevData: prevData})
             }
           }
       }
@@ -137,9 +148,9 @@ class ExerciseContainer extends Component{
     }else{
       exerciseIndex = this.state.exerciseIndex +1;
     }
-
+    const prevData = {};
     const exerciseLog = [];
-    this.setState({ exerciseLog: exerciseLog, isLoading: true, completedExercise: this.state.completedExercise+1});
+    this.setState({ prevData, exerciseLog, isLoading: true, completedExercise: this.state.completedExercise+1});
     this.setState({ currentSets: 1, exerciseIndex })
     setTimeout(() => {
       this.calculateExerciseLog();
@@ -222,6 +233,8 @@ class ExerciseContainer extends Component{
     this.setState({ showInfo: !this.state.showInfo})
   }
   render(){
+    console.log("this is props", this.props);
+    console.log("this is data of previoue week", this.state.prevData);
     let message = "";
     if(this.state.currentSets <= this.state.sets){
       if(this.state.exerciseData.progression_model === 'linear'){
@@ -238,8 +251,8 @@ class ExerciseContainer extends Component{
         }else{
           message = `Aim for more reps`;
         }
-      }else{
-        //progression model is till failure
+      }else if(this.state.exerciseData.progression_model === 'till failure'){
+        message = `Do as many reps as possible`;
       }
     }else{
       message = "Go no next workout"

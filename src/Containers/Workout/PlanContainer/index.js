@@ -61,6 +61,7 @@ class PlanContainer extends Component{
     this.setState({feedbackValue: value})
   }
   render() {
+    console.log("this is from plan container",this.props)
     const FeedbackArray = [
         {value:3, Feedback:'Too hard'},
         {value:2, Feedback:'Just right'},

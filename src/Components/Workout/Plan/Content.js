@@ -23,7 +23,7 @@ export default class Content extends Component {
               {
             [...Array(parseInt(days, 10))].map((v, k) => {
               const dayNumber = (this.props.selectedWeek - 1) * days + k + 1;
-              { console.log(this.props.WorkoutReducers.program) }
+
               return (
                 <Link key={k} to={'/workout/' + dayNumber} onClick={event => this.handleClick(event, k)}>
                   {(dayNumber == progress) && (ask_feedback) ? (
