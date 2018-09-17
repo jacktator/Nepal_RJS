@@ -16,12 +16,11 @@ font-size: 5vw;
 
 }
 
-span{
+/* span{
   margin-left: 3vw;
   font-size: 4vw;
+} */
 
-
-}
 .exercise-history-detail{
   display:flex;
   flex-direction: row;
