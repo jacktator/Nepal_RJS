@@ -1,12 +1,13 @@
 import axios from 'axios';
-
 //This function used to initialize the program to the redux during loading plan page
 export function getProgram(){
-  alert("get program")
   return(dispatch: Function) => {
-    return axios.get("https://nepal.sk8tech.io/wp-json/wp/v2/program?filter[posts_per_page]=1")
+    let user_id = localStorage.getItem('user_id');
+    return axios.get(`https://nepal.sk8tech.io/wp-json/wp/v2/program?
+                    filter[meta_key]=user_id&filter[meta_value]=${user_id}&filter[posts_per_page]=1`
+    )
     .then((response)=> {
-
+      console.log("this is response from get program",response);
       const progress = parseInt(response.data[0].acf.progress,10);
       const days = parseInt(response.data[0].acf.days,10);
       const value = response.data[0].acf.feedback_value;
@@ -16,7 +17,7 @@ export function getProgram(){
       const programStartDate = new Date(response.data[0].date);
       const currentDate = new Date().getTime();
       let difference = currentDate - programStartDate;
-      let daysDifference = 29//Math.floor(difference/1000/60/60/24) + 1;
+      let daysDifference = Math.floor(difference/1000/60/60/24) + 1;
       let update = false;
       const runningWeek = Math.ceil(daysDifference/7)
       const dayCountForRunningWeek =  daysDifference - (runningWeek-1) * 7 ;
@@ -81,7 +82,6 @@ export function implementDeloadAlgorithm(programID, program, progress, ask_feedb
     program.ask_feedback= ask_feedback;
     program.feedback_value= 0;
     program.finish_for_day= false;
-
     axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`,{
       status: "publish",
       fields: program
