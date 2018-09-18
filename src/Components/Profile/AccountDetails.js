@@ -1,6 +1,7 @@
 import React , {Component} from 'react';
-import {Accordion,List,InputItem,Toast,Button} from 'antd-mobile';
+import {Accordion,List,InputItem,Toast,Button,ImagePicker, Modal} from 'antd-mobile';
 const Item = List.Item;
+const prompt = Modal.prompt;
 
 //const AccountDetails = (props) => {
 class AccountDetails extends Component{
@@ -130,8 +131,8 @@ class AccountDetails extends Component{
                     maxLength={75}
                   ></InputItem>
                  </List>
-               </Accordion.Panel>
-             </Accordion>
+          </Accordion.Panel>
+        </Accordion>
 
       </div>
      );
