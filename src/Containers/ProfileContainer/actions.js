@@ -31,7 +31,6 @@ export function uploadPicture(file) {
       {
         headers: {
           'Authorization': "Bearer" + token,
-          'Content-Disposition': "attachment; filename=" + file.name,
           'Content-Type': "multipart/form-data",
         }
       }
@@ -43,7 +42,7 @@ export function uploadPicture(file) {
       })
       .catch(function (error) {
         console.log(error);
-        console.log(error.response);
+        alert(error.response);
       });  
   }
 }

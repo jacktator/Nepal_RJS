@@ -88,7 +88,7 @@ class Profile extends Component{
           <Button onClick={this.showModal('modal')}>Change Avatar</Button>
           <ActivityIndicator
           toast
-          text="updating..."
+          text="uploading..."
           animating={this.state.animating}
         />
 
