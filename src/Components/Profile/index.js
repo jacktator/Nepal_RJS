@@ -4,6 +4,7 @@ import MyDetails from './MyDetails';
 import AccountDetails from './AccountDetails';
 import Footer from './Footer';
 import axios from 'axios';
+import './Profile.css';
 
 import './Profile.css';
 import {Accordion,List,InputItem,Toast,Button,ImagePicker, Modal, ActivityIndicator} from 'antd-mobile';
@@ -31,8 +32,8 @@ class Profile extends Component{
     super(props)
     this.state={
       files: data,
-      modal: false,
-      animating: false,
+      // modal: false,
+      // animating: false,
     }
   }
 
@@ -75,12 +76,6 @@ class Profile extends Component{
           <Header name={this.props.name} url={this.props.fields.photo} updateFinish={()=>this.updateFinish()}/>
       </div>
         <div className="profile-list-view-container">
-          <Button onClick={this.showModal('modal')}>Change Avatar</Button>
-          <ActivityIndicator
-          toast
-          text="updating..."
-          animating={this.state.animating}
-        />
 
         <Modal
           visible={this.state.modal}
@@ -110,7 +105,35 @@ class Profile extends Component{
         selectHeight= {this.props.selectHeight}
         selectWeight= {this.props.selectWeight}
         fields={this.props.fields}
+        uploadPicture={this.props.uploadPicture}
+        updateFinish={()=>this.updateFinish()}
         />
+        <Button  className="change-avatar-button" onClick={this.showModal('modal')}>Change Avatar</Button>
+        <ActivityIndicator
+        toast
+        text="updating..."
+        animating={this.state.animating}
+      />
+
+      <Modal
+        visible={this.state.modal}
+        transparent
+        maskClosable={false}
+        onClose={this.onClose('modal')}
+        title="Title"
+        footer={[{ text: 'Ok', onPress: () => { this.closeDecision() } }]}
+        wrapProps={{ onTouchStart: this.onWrapTouchStart }}
+      >
+        <div>
+        <ImagePicker
+          length="1"
+          files={this.state.files}
+          onChange={this.onChange}
+          onImageClick={(index, fs) => console.log(index, fs)}
+          selectable={this.state.files.length < 1}
+            />
+        </div>
+      </Modal>
       <AccountDetails
       selectEmail={this.props.selectEmail}
       putPassword={this.props.putPassword}
