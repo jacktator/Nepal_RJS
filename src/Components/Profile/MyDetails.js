@@ -10,60 +10,6 @@ const data = [];
 
 class MyDetails extends Component {
 
-  constructor(props) {
-    super(props)
-    this.state={
-      files: data,
-      modal: false,
-    }
-  }
-  uploadPicture = () => {
-    let token = localStorage.getItem('token');
-    axios({
-      method: 'post',
-      url: 'https://nepal.sk8tech.io/wp-json/wp/v2/media',
-      headers: {
-        'Authorization': "Bearer" + token,
-        'Content-Disposition': `attachment; filename=photo.jpeg`,
-        'Content-Type': 'multipart/form-data'
-      },
-      data: {
-        date : "2015-11-26 10:00:00",
-        date_gmt : "2015-11-26 09:00:00",
-        modified : "2015-11-26 10:00:00",
-        modified_gmt : "2015-11-26 09:00:00",
-        status : "future",
-        title: "Titre media",
-        description : "description media",
-        media_type : this.state.files[0].type,
-        source_url : this.state.files[0].url }
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error.response);
-    });
-  }
-
-  showModal = key => (e) => {
-    e.preventDefault(); // 修复 Android 上点击穿透
-    this.setState({
-      [key]: true,
-    });
-  }
-  onChange = (files, type, index) => {
-    console.log(files, type, index);
-    this.setState({
-      files,
-    });
-  }
-  onClose = key => () => {
-    this.setState({
-      [key]: false,
-    });
-  }
-
  render(){
    const height = [];
    const weight = [];
@@ -116,30 +62,7 @@ class MyDetails extends Component {
             <div className="profile-weight-icon"/>
           </List.Item>
         </Picker>
-
-        <div>
-          <Button  className="change-avatar-button" onClick={this.showModal('modal')}>Change Avatar</Button>
-          <Modal
-           visible={this.state.modal}
-           transparent
-           maskClosable={false}
-           onClose={this.onClose('modal')}
-           title="Title"
-           footer={[{ text: 'Ok', onPress: () => { this.uploadPicture(); this.onClose('modal')(); } }]}
-           wrapProps={{ onTouchStart: this.onWrapTouchStart }}
-          >
-           <div>
-            <ImagePicker
-             length="1"
-             files={this.state.files}
-             onChange={this.onChange}
-             onImageClick={(index, fs) => console.log(index, fs)}
-             selectable={this.state.files.length < 1}
-             />
-           </div>
-          </Modal>
         </div>
-      </div>
     )
 }
 }
