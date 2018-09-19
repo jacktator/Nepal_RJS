@@ -1,29 +1,20 @@
 import React from 'react';
 import './History.css'
 import {List} from 'antd-mobile';
+import {Link}  from 'react-router-dom'
 
-const Item = List.Item;
-  
 const HistoryComponent = (props) => {
-    let program_name = [];
-    program_name.push(props.data.program.program_name);
-    let RenderPage =
-    // (programID === parseInt((props.record.program_id),10) && programID) ? ( 
+    let RenderPage = 
     (!props.loading) ? 
     (
         <List className="history-list">
-          {program_name.map((i, key) =>
-            <Item key={key} onClick={(e) => props.onListProgramClick(e)} arrow='horizontal'>{i}</Item>
+          {props.history.map((i, key) =>
+            <Link key={key} to={`/history/${i.program_id}`}>
+              <List.Item arrow='horizontal'>{i.training_goal}</List.Item>
+            </Link>
           )}
         </List>
     ):(<div className="loader">Loading...</div>)
-      // ):(
-      //   <List>
-      //     <Item>
-      //       No Histroy Found
-      //     </Item>
-      //   </List>
-      //   )
     return(
       <div className="history-container">
         {RenderPage}
@@ -32,3 +23,4 @@ const HistoryComponent = (props) => {
 }
 
 export default HistoryComponent;
+// onClick={(e) => props.onListProgramClick(e)} arrow='horizontal'

@@ -19,7 +19,8 @@ import TermsAndCondComponent from '../TermsAndCond';
 import GetJson from '../../Containers/ZShawn';
 
 import HistoryDetail from '../Workout/History/HistoryDetail/'
-//import {connect} from 'react-redux';
+import HistoryWeekly from '../Workout/History/HistoryWeekly'
+
 import ExerciseContainer from '../../Containers/Workout/ExerciseContainer/';
 
 type Props = {
@@ -42,16 +43,17 @@ class Root extends Component<Props>{
               <Route path="/signup" exact component={SignUp} />
               <Route path="/login/logindetails" exact component={LoginDetails} />
               <Route path="/forgetpassword" exact component={ForgetPassWord} />
-              <Route path="/mainmenu" exact component={MainMenuContainer}/>
-              <Route path="/exercise/:index?" exact component={ExerciseContainer}/>
-              <Route path="/workout/:day" exact component={WorkoutContainer} />
-              <Route path="/plan" exact component={PlanContainer}/>
+              <Route path="/mainmenu" exact render={()=>(<Redirect to='/login/LoginDetails'/>)} />
+              <Route path="/exercise/:index?" exact render={()=>(<Redirect to='/login/LoginDetails'/>)} />
+              <Route path="/workout/:day" exact render={()=>(<Redirect to='/login/LoginDetails'/>)} />
+              <Route path="/plan" exact render={()=>(<Redirect to='/login/LoginDetails'/>)} />
               <Route path="/footer" exact component={FooterContainer} />
-              <Route path="/history" exact component={HistoryContainer}/>
-              <Route path="/history/:day" exact component={HistoryDetail}/>
-              <Route path="/profile" exact component={ProfileContainer}/>
+              <Route path="/history" exact render={()=>(<Redirect to='/login/LoginDetails'/>)} />
+              <Route path="/history/:programID" render={()=>(<Redirect to='/login/LoginDetails'/>)} />
+              <Route path="/history/:day" render={()=>(<Redirect to='/login/LoginDetails'/>)} />
+              <Route path="/profile" exact render={()=>(<Redirect to='/login/LoginDetails'/>)} />
               <Route path="/termsandconditions" exact component={TermsAndCondComponent}/>
-              <Route path="/questionnaire" exact component={Questionnaire} />
+              <Route path="/questionnaire" exact render={()=>(<Redirect to='/login/LoginDetails'/>)} />
               <Route path='/shawn' exact component={GetJson} />
             </Switch>
           {/*</BrowserRouter>*/}
@@ -75,7 +77,8 @@ class Root extends Component<Props>{
             <Route path="/plan" exact component={PlanContainer}/>
             <Route path="/footer" exact component={FooterContainer} />
             <Route path="/history" exact component={HistoryContainer}/>
-            <Route path="/history/:day" exact component={HistoryDetail}/>
+            <Route path="/history/:programID" exact component={HistoryWeekly}/>
+            <Route path="/history/:programID/:day" exact component={HistoryDetail}/>
             <Route path="/exercise/:index?" exact component={ExerciseContainer}/>
             <Route path="/profile" exact component={ProfileContainer}/>
             <Route path="/termsandconditions" exact component={TermsAndCondComponent}/>
@@ -86,5 +89,7 @@ class Root extends Component<Props>{
     );
   }
 }
+
+
 
 export default Root;

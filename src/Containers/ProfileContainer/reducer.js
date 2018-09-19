@@ -4,7 +4,7 @@ let DefaultState = {
     weight: "60",
     height: "170",
     birthDate: "1995-01-01",
-
+    photo: "https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg",
     email:"laxman@gmail.com",
     password:"12345",
     currentPassword:"",
@@ -47,6 +47,13 @@ const ProfileReducers =(state: Object= DefaultState, action: Function) => {
     case "CHANGE_EMAIL":
     fields = {...state.fields};
     fields['email']= action.payload
+    return {
+      ...state, fields
+    }
+    
+    case "CHANGE_AVATAR":
+    fields = {...state.fields};
+    fields['photo']= action.payload
     return {
       ...state, fields
     }

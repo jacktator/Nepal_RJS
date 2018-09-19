@@ -15,11 +15,19 @@ export function getUserData(){
         console.log(response.data);
         dispatch(changeName(response.data.name));
         dispatch(changeWeight(response.data.acf.weight));
+        dispatch(changeAavatar(response.data.acf.photo));
     }).catch((error)=> {
       console.log(error);
     })
   }
 }
+
+export function changeAavatar(photo: string) {
+  return {
+    type: "CHANGE_AVATAR",
+    payload: photo
+  }
+};
 
 export function changeName (nick_name: string) {
   let name = nick_name.slice(0,1).toUpperCase() + nick_name.slice(1, nick_name.length)
@@ -36,6 +44,7 @@ export function changeBirthDate (birthDate: Date) {
     payload: date.toString(),
   }
 }
+
 export function changeWeight (weight: number) {
   return {
     type: "CHANGE_WEIGHT",

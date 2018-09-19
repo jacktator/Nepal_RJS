@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 const Workout = (props) => {
     if(props.WorkoutReducers.dayIndex != null){
       let{dayIndex} = props.WorkoutReducers;
+      alert(dayIndex);
+      console.log("list",props.WorkoutReducers);
       return(
         <div className="container">
         <div className="workout-info">{props.WorkoutReducers.program.program_name} Workout</div>
@@ -13,37 +15,6 @@ const Workout = (props) => {
             <div className= "image-container">
               <img className="image-source" src={require("../../../Assets/Workout/sampleImage.jpeg")} alt="header"/>
             </div>
-
-            {/*
-            <WingBlank>
-              <WhiteSpace size="lg"/>
-
-              {props.WorkoutReducers.program.exercises[dayIndex].exercise_list.map((data,key) => (
-                <div key={key} className="list-workout">
-                  <span style = {{float: 'left', margin: "0 20px 0 0"}}>
-                    <img src={require(`../../../Assets/WorkoutIcons/${key}.jpg`)} height="60px" width="100px" alt="work" />
-                  </span>
-                  {!data.is_saved && (
-                    <span style = {{ float :'right'}}>
-                      <span className="span-button keep" onClick={() => props.onWorkOutKeep(key)}> keep </span>
-                      <WhiteSpace size="xs"/>
-                      <span className="span-button change" onClick={() => props.onExerciseChange(key)}> change </span>
-                    </span>
-                  )}
-                  {data.is_saved && (
-                    <span style = {{ float :'right'}}>
-                      <span className="span-button saved"> saved! </span>
-                    </span>
-                  )}
-                  <span>
-                    {data.workout}
-                    <WhiteSpace />
-                    {data.code}
-                  </span>
-                </div>
-              ))}
-              <WhiteSpace size="lg"/>
-              </WingBlank>  */}
 
               {/* testing new UI format*/}
               <WingBlank size="lg">

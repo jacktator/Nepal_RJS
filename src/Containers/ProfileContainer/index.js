@@ -44,8 +44,7 @@ class ProfileContainer extends Component{
 
     const heightArray = ArrtoObj(70, 270, "length");
     const weightArray = ArrtoObj(20, 300, "weight");
-    const {nick_name,fields} = this.props.ProfileReducers;
-
+    const { nick_name, fields } = this.props.ProfileReducers;
     return (
       <div>
         <Profile

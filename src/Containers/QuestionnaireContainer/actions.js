@@ -1,18 +1,12 @@
-
 import axios from 'axios';
 
 export function addQuestionnaire(state) {
-  let token = localStorage.getItem('token');
   return(dispatch: Function) => {
     return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/10621",
     {
       title: "Questionnaire",
       status: "publish",
       fields: state.fields
-    }, {
-      headers:{
-        Authorization: "Bearer" + token
-      }
     }
   ).then((response) => {
     dispatch(addProgram(response.data.acf.days_per_week, response.data.acf.goals));
