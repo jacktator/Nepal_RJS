@@ -6,6 +6,8 @@ import { createForm } from 'rc-form';
 import './SignUp.css';
 import Logo from '../../Assets/LogoLighter.png';
 import {Redirect} from 'react-router-dom';
+import Modal from '../../Components/UI/Modal'
+import ShowError from '../../Components/Error/ShowError';
 
 var lockerstyle={
   backgroundImage: 'url(https://png.icons8.com/ios/50/000000/lock.png)',
@@ -39,6 +41,7 @@ type Props={
 
 type State={
   able: boolean,
+  isValidEmail: boolean,
 }
 
 class SignUp extends Component<Props, State> {
@@ -46,14 +49,25 @@ class SignUp extends Component<Props, State> {
     super(props)
     this.state={
       able: false,
+      isInvalidEmail: false,
     }
   }
 
   onAbleChange(){
-    const{username, email, password} = this.props.state
-    const able = !this.state.able;
-    this.props.onClickButton(username, email, password)
-    this.setState({able});
+    const{username, email, password} = this.props.state;
+
+    //validating email
+    if(/^[a-z0-9][a-z0-9-_\.]+@([a-z]|[a-z0-9]?[a-z0-9-]+[a-z0-9])\.[a-z0-9]{2,10}(?:\.[a-z]{2,10})?$/.test(email)) {
+       const able = !this.state.able;
+       this.props.onClickButton(username, email, password)
+       this.setState({able});
+    }else{
+      this.setState({isInvalidEmail: true})
+    }
+  }
+
+  cancelErrorMessageHandler = () => {
+    this.setState({ isInvalidEmail:false })
   }
 
   render() {
@@ -80,7 +94,7 @@ class SignUp extends Component<Props, State> {
               </InputItem>
               <InputItem
                 value={email}
-                type="text"
+                type="email"
                 name="email"
                 onChange={(value)=>this.props.onChangeEmail(value)}
                 style={{color: 'grey'}}
@@ -119,7 +133,14 @@ class SignUp extends Component<Props, State> {
           </div>
         </div>
 
-
+        {(this.state.isInvalidEmail === true) && (
+          <Modal modalFor = "modal">
+            <ShowError
+              error= {"Please enter the valid email address"}
+              cancel = {this.cancelErrorMessageHandler}
+            />
+          </Modal>
+        )}
       </div>
 
     );

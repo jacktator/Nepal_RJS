@@ -68,16 +68,6 @@ class Profile extends Component{
     });
   };
 
-  closeDecision = () => {
-    if (this.state.files.length == 0) {
-      this.onClose('modal')()
-    } else {
-      this.props.uploadPicture(this.state.files[0].file);
-      this.onClose('modal')();
-      this.setState({ animating: true });
-    }
-  }
-
   render(){
     return (
       <div className="profile-container">
@@ -98,7 +88,7 @@ class Profile extends Component{
           maskClosable={false}
           onClose={this.onClose('modal')}
           title="Title"
-          footer={[{ text: 'Ok', onPress: () => { this.closeDecision() } }]}
+          footer={[{ text: 'Ok', onPress: () => { this.props.uploadPicture(this.state.files[0].file); this.onClose('modal')(); this.setState({ animating: true }) } }]}
           wrapProps={{ onTouchStart: this.onWrapTouchStart }}
         >
           <div>

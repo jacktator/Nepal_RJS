@@ -21,6 +21,7 @@ class ExerciseContainer extends Component{
     this.state={
       //videos:[],
       //selectedVideo:null,
+      inCurrentProgress: true,
       isFinish: false, // represent if the workout finsh for a day.
       isLoading: false, // represent the loading of data
       goBack: false, // represent if user click back button
@@ -56,8 +57,13 @@ class ExerciseContainer extends Component{
       index = this.props.match.params.index;
       this.setState({exerciseIndex: parseInt(this.props.match.params.index, 10)})
     }
-    const {program, dayIndex}= this.props.WorkoutReducers;
+
+    const {program, currentDay, dayIndex}= this.props.WorkoutReducers;
+
     if(program && dayIndex!== null){
+      if( parseInt(program.progress,10) !== currentDay){
+        this.setState({inCurrentProgress: false})
+      }
       let exerciseLength = program.exercises[dayIndex].exercise_list.length;
       if(program.exercises[dayIndex].exercise_list[index]){
         let exerciseData = program.exercises[dayIndex].exercise_list[index];
@@ -70,6 +76,7 @@ class ExerciseContainer extends Component{
         this.calculateExerciseLog();
       }else{
         this.setState({ error: true})
+
       }
     }else{
       this.setState({ error: true})
@@ -239,8 +246,6 @@ class ExerciseContainer extends Component{
     this.setState({ showInfo: !this.state.showInfo})
   }
   render(){
-    console.log("this is props", this.props);
-    console.log("this is data of previous week", this.state.prevData);
     let message = "";
     if(this.state.currentSets <= this.state.sets){
       if(this.state.exerciseData.progression_model === 'linear'){
@@ -253,7 +258,14 @@ class ExerciseContainer extends Component{
         if(this.state.currentSets === this.state.sets){
           message = `Last Set - Do as many reps as possible`;
         }else if(this.state.currentSets === 1){
-
+          message = `Sets 1`;
+          if(this.state.prevData.reps){
+            if(this.state.prescribeReps <= this.state.prevData.reps){
+              message = `Increase the weight`;
+            }else{
+              message = `Aim for more reps`;
+            }
+          }
         }else{
           if(this.state.exerciseLog[this.state.exerciseLog.length-1].reps){
             if(this.state.prescribeReps <= this.state.exerciseLog[this.state.exerciseLog.length-1].reps){
@@ -262,7 +274,6 @@ class ExerciseContainer extends Component{
               message = `Aim for more reps`;
             }
           }else{
-
           }
         }
       }else if(this.state.exerciseData.progression_model === 'till failure'){
