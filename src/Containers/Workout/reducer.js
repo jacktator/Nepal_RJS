@@ -28,11 +28,6 @@ const WorkoutReducers =(state: Object= DefaultState, action: Function) => {
       ...state, dayIndex: action.payload
     }
 
-    case "SET_CURRENT_WEEK" :
-    return {
-      ...state, currentWeek: action.payload
-    }
-
     case "SET_CURRENT_DAY" :
     return {
       ...state, currentDay: action.payload

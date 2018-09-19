@@ -7,8 +7,9 @@ import {bindActionCreators} from 'redux';
 import Info from '../../../Components/Workout/Exercise/Info';
 import ShowHistory from '../../../Components/Workout/Exercise/ShowHistory';
 import Modal from '../../../Components/UI/Modal';
-import {saveExerciseData, getExerciseRecord, updatePersonalBest, updateRepsAndWeight} from '../actions';
-import Loading from '../../../Components/Loading/';
+import {saveExerciseData, getExerciseRecord, updatePersonalBest, updateRepsAndWeight, completeWorkout} from '../actions';
+import Loading from '../../../Components/Loading';
+import DualRingLoading from '../../../Components/Loading/DualRingLoading';
 import Hoc from '../../../HOC/Hoc';
 
 // import _ from 'lodash';
@@ -76,7 +77,7 @@ class ExerciseContainer extends Component{
     }
   }
 
-  componentWillReceivethis(nextthis){
+  componentWillReceivethis(nextProps){
     //this.calculateExerciseLog();
   }
 
@@ -89,22 +90,25 @@ class ExerciseContainer extends Component{
   calculateExerciseLog = () => {
     let {program, dayIndex}= this.props.WorkoutReducers;
     let records = this.props.WorkoutReducers.record;
-    let week = this.props.WorkoutReducers.currentWeek;
+    //let week = this.props.WorkoutReducers.currentWeek;
     let day = this.props.WorkoutReducers.currentDay;
     let days_per_week = this.props.WorkoutReducers.program.days;
     let previous_week_day = parseInt(day,10) - parseInt(days_per_week,10);
     let exerciseData = program.exercises[dayIndex].exercise_list[this.state.exerciseIndex];
     let exerciseLength = program.exercises[dayIndex].exercise_list.length;
     let code = exerciseData.code;
-    let reps= 8;
+    let reps;
     if(exerciseData.progression_model === "double progression"){
-      let temp = exerciseData.reps.split('-');
-      reps = parseInt(temp[1], 10);
+      if(exerciseData.reps === "Till Failure" || exerciseData.reps === "till failure"){
+        reps = 8;
+      }else{
+        let temp = exerciseData.reps.split('-');
+        reps = parseInt(temp[temp.length-1], 10);
+      }
     }
-    if(exerciseData.progression_model === "linear") {
+    else if(exerciseData.progression_model === "linear") {
       reps = parseInt(exerciseData.reps, 10);
-    }
-    if(exerciseData.progresison_model === "till failure") {
+    }else{
       reps = 8;
     }
     this.setState({
@@ -164,7 +168,7 @@ class ExerciseContainer extends Component{
     let weight = this.state.prescribeWeight;
     let total = this.state.weight * this.state.reps;
     let {program, dayIndex, programID} = this.props.WorkoutReducers;
-    let {record, recordID, currentWeek, currentDay} = this.props.WorkoutReducers;
+    let {record, recordID, currentDay} = this.props.WorkoutReducers;
     if(total > this.state.personalBest){
       this.setState({personalBest: total})
       //write action to update personal best for given excercise
@@ -201,7 +205,8 @@ class ExerciseContainer extends Component{
     if(this.state.sets === this.state.currentSets){
       this.props.updateRepsAndWeight(program, programID, dayIndex, this.state.exerciseIndex, this.state.prescibeReps, this.state.prescribeWeight);
     }
-    this.props.saveExerciseData(recordID, currentWeek, currentDay, name, code, this.state.weight, this.state.Currentsets, this.state.reps, record);
+    this.props.saveExerciseData(recordID, currentDay, name, code, this.state.weight, this.state.Currentsets, this.state.reps, record);
+    this.loadingToast();
 
   }
   onChangeWeight = (val) => {
@@ -225,6 +230,8 @@ class ExerciseContainer extends Component{
     this.setState({ goBack: true})
   }
   onCompleteButtonHandler = () => {
+    let {programID} = this.props.WorkoutReducers;
+    this.props.completeWorkout(programID);
     this.setState({ isFinish: true})
   }
   //Handles when user click info button
@@ -234,7 +241,7 @@ class ExerciseContainer extends Component{
   }
   render(){
     console.log("this is props", this.props);
-    console.log("this is data of previoue week", this.state.prevData);
+    console.log("this is data of previous week", this.state.prevData);
     let message = "";
     if(this.state.currentSets <= this.state.sets){
       if(this.state.exerciseData.progression_model === 'linear'){
@@ -246,10 +253,18 @@ class ExerciseContainer extends Component{
       }else if(this.state.exerciseData.progression_model === 'double progression'){
         if(this.state.currentSets === this.state.sets){
           message = `Last Set - Do as many reps as possible`;
-        }else if(this.state.prescribeReps <= this.state.reps){
-          message = `Increase the weight`;
+        }else if(this.state.currentSets === 1){
+
         }else{
-          message = `Aim for more reps`;
+          if(this.state.exerciseLog[this.state.exerciseLog.length-1].reps){
+            if(this.state.prescribeReps <= this.state.exerciseLog[this.state.exerciseLog.length-1].reps){
+              message = `Increase the weight`;
+            }else{
+              message = `Aim for more reps`;
+            }
+          }else{
+
+          }
         }
       }else if(this.state.exerciseData.progression_model === 'till failure'){
         message = `Do as many reps as possible`;
@@ -263,11 +278,12 @@ class ExerciseContainer extends Component{
       const videoDescription = "THIS is test video description";
       //const videoSearch = _.debounce((term)=>{this.videoSearch(term)}, 300);
       // const {exerciseName,exerciseNumber,exerciseTotal,sets,reps,weight,video,videoDescription,exerciseLog} =  this.props.ExerciseReducers;
+
       return(
         <div className="all">
         {this.state.isLoading === true &&
           (
-            <Hoc><Modal modalFor = "modal-for-select-exercise"><Loading mode="selectExercise"/></Modal></Hoc>
+      <Hoc><Modal modalFor = "modal-for-select-exercise"><Loading mode="selectExercise"/></Modal></Hoc>      
           )
         }
         <Exercise
@@ -330,14 +346,13 @@ class ExerciseContainer extends Component{
 
 function mapStateTothis(state){
   return {
-    ExerciseReducers: state.ExerciseReducers,
     WorkoutReducers: state.WorkoutReducers,
   }
 }
 
 function matchDispatchTothis(dispatch){
   return bindActionCreators({
-    saveExerciseData, getExerciseRecord, updatePersonalBest, updateRepsAndWeight
+    saveExerciseData, getExerciseRecord, updatePersonalBest, updateRepsAndWeight, completeWorkout
   }, dispatch
 );
 }

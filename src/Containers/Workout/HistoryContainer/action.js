@@ -33,7 +33,6 @@ export function getProgram(){
         const askFeedback = parseInt(value, 10) ===0 ? true : false
 
         if(runningWeek === 5 && currentWeek !== 5){
-          alert("UpdateProgress with Deload algorithm");
           dispatch(implementDeloadAlgorithm(response.data[0].id, response.data[0].acf, currentProgress, askFeedback))
         }else{
           dispatch(updateProgress(response.data[0].id, currentProgress, askFeedback))

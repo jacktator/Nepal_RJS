@@ -10,12 +10,18 @@ export default class PopoverMenu extends React.Component {
     selected: '',
   };
   onSelect = (opt) => {
-    if(opt.key === "1") {
-      this.props.popup.workout(opt.props.value)
-    } else if(opt.key === "3"){
-      this.props.popup.profile(opt.props.value)
-    } else {
-      alert("nothing at the moment!");
+    switch (opt.key) {
+      case "1":
+        this.props.popup.workout(opt.props.value)
+        break;
+      case "3":
+        this.props.popup.profile(opt.props.value)
+        break;
+      case "7":
+        this.props.popup.logout(opt.props.value)
+        break;
+      default:
+          alert("nothing at the moment!");
     }
     this.setState({
       visible: false,

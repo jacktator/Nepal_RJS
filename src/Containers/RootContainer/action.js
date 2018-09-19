@@ -6,3 +6,10 @@ export function checkLogin(){
     payload: true
   }
 }
+
+export function checkLogout(){
+  return{
+    type: "CHECK_CHANGE",
+    payload: false
+  }
+}

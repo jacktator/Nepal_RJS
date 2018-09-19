@@ -68,7 +68,7 @@ class Root extends Component<Props>{
           <Switch>
             <Route path="/" exact render={()=>(<Redirect to='/mainmenu'/>)} />
             <Route path="/login" exact render={()=>(<Redirect to='/mainmenu'/>)} />
-            <Route path="/signup" exact render={()=>(<Redirect to='/mainmenu'/>)} />
+            <Route path="/signup" exact component={SignUp} />
             <Route path="/login/logindetails" exact render={()=>(<Redirect to='/mainmenu'/>)} />
             <Route path="/questionnaire" exact component={Questionnaire} />
             <Route path="/forgetpassword" exact component={ForgetPassWord} />
