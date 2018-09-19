@@ -6,6 +6,7 @@ import {Redirect} from 'react-router';
 import HOC from '../../HOC/Hoc';
 import MainMenu from '../../Components/MainMenu';
 import {selectFooter} from '../Workout/FooterContainer/actions';
+import {checkLogout} from '../RootContainer/action';
 
 class MainMenuContainer extends Component{
   constructor(props){
@@ -30,11 +31,19 @@ class MainMenuContainer extends Component{
     //e.preventDefault();
     this.setState({profile:true})
   }
+  logoutHandler = (e) => {
+    // e.preventDefault();
+    this.props.checkLogout();
+  }
 
   render () {
     return (
       <HOC>
-        <MainMenu workout={this.workoutHandler} profile={this.profileHandler}/>
+        <MainMenu
+          workout={this.workoutHandler}
+          profile={this.profileHandler}
+          logout={this.logoutHandler}
+        />
 
         { this.state.workout &&
           <Redirect to="/plan" />
@@ -53,7 +62,7 @@ function mapStateToProps(state){
 }
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
-    selectFooter
+    selectFooter, checkLogout
   }, dispatch
 );
 }

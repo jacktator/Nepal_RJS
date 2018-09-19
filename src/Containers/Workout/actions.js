@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 //This function used to initialize the program to the redux during loading plan page
 export function getProgram(){
   return(dispatch: Function) => {
@@ -7,12 +8,11 @@ export function getProgram(){
                     filter[meta_key]=user_id&filter[meta_value]=${user_id}&filter[posts_per_page]=1`
     )
     .then((response)=> {
-      console.log("this is response from get program",response);
       const progress = parseInt(response.data[0].acf.progress,10);
       const days = parseInt(response.data[0].acf.days,10);
       const value = response.data[0].acf.feedback_value;
       const currentWeek = Math.ceil(progress / days);
-      const currentDay = progress - ((currentWeek -1 ) * days)
+      //const currentDay = progress - ((currentWeek -1 ) * days)
 
       const programStartDate = new Date(response.data[0].date);
       const currentDate = new Date().getTime();
@@ -33,19 +33,17 @@ export function getProgram(){
         const askFeedback = parseInt(value, 10) ===0 ? true : false
 
         if(runningWeek === 5 && currentWeek !== 5){
-          alert("UpdateProgress with Deload algorithm");
           dispatch(implementDeloadAlgorithm(response.data[0].id, response.data[0].acf, currentProgress, askFeedback))
         }else{
           dispatch(updateProgress(response.data[0].id, currentProgress, askFeedback))
         }
       }else{
-        console.log("Need to add logic for off days in action line 30")
+        console.log("Need to add logic for off days in action line 41")
       }
       if(!update){
         dispatch(setProgram(response.data[0].acf));
         dispatch(setProgramID(response.data[0].id));
-        dispatch(setCurrentWeek(currentWeek));
-        dispatch(setCurrentDay(currentDay));
+        dispatch(setCurrentDay(progress));
       }
     }).catch((error)=> {
       console.log(error);
@@ -90,13 +88,9 @@ export function implementDeloadAlgorithm(programID, program, progress, ask_feedb
       status: "publish",
       fields: program
     }).then((response) => {
-      const progress = response.data.acf.progress;
-      const days = response.data.acf.days;
-      const currentWeek = Math.ceil(progress / days);
-      const currentDay = progress - ((currentWeek -1 ) * days)
+      const currentDay = parseInt(response.data.acf.progress,10);
       dispatch(setProgram(response.data.acf));
       dispatch(setProgramID(response.data.id));
-      dispatch(setCurrentWeek(currentWeek));
       dispatch(setCurrentDay(currentDay));
     }).catch((error) => {
       alert("error")
@@ -117,13 +111,9 @@ export function updateProgress(programID, progress, ask_feedback){
         finish_for_day: false
       }
     }).then((response) => {
-      const progress = response.data.acf.progress;
-      const days = response.data.acf.days;
-      const currentWeek = Math.ceil(progress / days);
-      const currentDay = progress - ((currentWeek -1 ) * days)
+      const currentDay = parseInt(response.data.acf.progress,10);
       dispatch(setProgram(response.data.acf));
       dispatch(setProgramID(response.data.id));
-      dispatch(setCurrentWeek(currentWeek));
       dispatch(setCurrentDay(currentDay));
     }).catch((error) => {
       alert("error")
@@ -176,6 +166,7 @@ export function updateDailyFeedBack(programID, program, value) {
   })
 }
 
+//This function use to fetch the exercise record for the current program.
 export function getExerciseRecord(programID){
   return(dispatch: Function) => {
     return axios.get(`https://nepal.sk8tech.io/wp-json/wp/v2/record?filter[meta_key]=program_id&filter[meta_value]=${programID}`)
@@ -239,17 +230,21 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
         })
       }
     }
-    export function saveExerciseData(recordID, week, day, name, code, weight, sets, reps, record) {
+
+    //This function use to save the exercise record the database name record
+    export function saveExerciseData(recordID, day, name, code, weight, sets, reps, record) {
       return(dispatch: Function) => {
         const monthNames = ["January", "February", "March", "April", "May", "June",
                             "July", "August", "September", "October", "November", "December"
                             ];
         let temp, daily_record;
+        //Calculate the current date
         let currentDate = new Date();
-        let day = currentDate.getDate();
-        let month = monthNames[currentDate.getMonth()];
-        let year = currentDate.getFullYear();
-        let date = `${day} ${month} ${year}`;
+        let todayDay = currentDate.getDate();
+        let todayMonth = monthNames[currentDate.getMonth()];
+        let todayYear = currentDate.getFullYear();
+        let date = `${todayDay} ${todayMonth} ${todayYear}`;
+
         if(record.daily_record){
           daily_record = record.daily_record;
             let dayIndex = record.daily_record.findIndex( i => { return i.day === day.toString() });
@@ -287,6 +282,7 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
           }//ends return dispatch
         }//ends functions saveExerciseData
 
+        //This function use to update the personal Best when user hits his personal best
         export function updatePersonalBest (program, programID, dayIndex, index, value){
           return(dispatch:Function) => {
             program.exercises[dayIndex].exercise_list[index].personal_best = value;
@@ -303,7 +299,7 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
           }
         }
 
-
+        //This function update the reps and weight according to week to week changes algorithm
         export function updateRepsAndWeight (program, programID, dayIndex, index, reps, weight){
           return(dispatch:Function) => {
             program.exercises[dayIndex].exercise_list[index].weight = weight;
@@ -312,6 +308,24 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
               {
                 status: "publish",
                 fields: program
+              })
+              .then((response)=> {
+                dispatch(setProgram(response.data.acf));
+              }).catch((error)=> {
+                console.log(error);
+              })
+          }
+        }
+
+        //This function use to mark finish_for_day as true when user click complete workout button after completion of exercise
+        export function completeWorkout(programID){
+          return(dispatch:Function) => {
+            return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`,
+              {
+                status: "publish",
+                fields: {
+                  finish_for_day: true
+                }
               })
               .then((response)=> {
                 dispatch(setProgram(response.data.acf));
