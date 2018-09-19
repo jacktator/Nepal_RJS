@@ -9,7 +9,6 @@ import ShowHistory from '../../../Components/Workout/Exercise/ShowHistory';
 import Modal from '../../../Components/UI/Modal';
 import {saveExerciseData, getExerciseRecord, updatePersonalBest, updateRepsAndWeight, completeWorkout} from '../actions';
 import Loading from '../../../Components/Loading';
-import DualRingLoading from '../../../Components/Loading/DualRingLoading';
 import Hoc from '../../../HOC/Hoc';
 
 // import _ from 'lodash';
@@ -283,7 +282,7 @@ class ExerciseContainer extends Component{
         <div className="all">
         {this.state.isLoading === true &&
           (
-      <Hoc><Modal modalFor = "modal-for-select-exercise"><Loading mode="selectExercise"/></Modal></Hoc>      
+      <Hoc><Modal modalFor = "modal-for-select-exercise"><Loading mode="selectExercise"/></Modal></Hoc>
           )
         }
         <Exercise
