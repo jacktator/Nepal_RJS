@@ -13,10 +13,8 @@ class Difficulty extends Component{
         })
     }
 
-
     handleSubmit = (e) => {
         e.preventDefault();
-        alert(this.state.value)
     }
     render(){
         const DifficultyArray = [
@@ -30,16 +28,16 @@ class Difficulty extends Component{
                 {DifficultyArray.map((i, key) => (
                     <Flex key={key}>
                         <Flex.Item>
-                            <CheckboxItem 
-                                checked={this.state.value === i.difficulty} 
-                                key={key} 
+                            <CheckboxItem
+                                checked={this.state.value === i.difficulty}
+                                key={key}
                                 onChange={()=>this.handleChange(i.difficulty)}
                                 value={this.state.value}>
                                 {i.difficulty}
                             </CheckboxItem>
                         </Flex.Item>
                     </Flex>
-                    
+
                 ))}
                 <Button onClick={this.handleSubmit}>Submit</Button>
             </div>

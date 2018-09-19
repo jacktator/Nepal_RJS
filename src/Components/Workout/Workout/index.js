@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 const Workout = (props) => {
     if(props.WorkoutReducers.dayIndex != null){
       let{dayIndex} = props.WorkoutReducers;
-      alert(dayIndex);
       console.log("list",props.WorkoutReducers);
       return(
         <div className="container">
