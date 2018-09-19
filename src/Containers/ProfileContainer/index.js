@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Profile from '../../Components/Profile'
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import { changeName, changeBirthDate, changeHeight, changeWeight, changeEmail, putPassword,changePassword,showPassError, getUserData} from './actions';
+import { changeName, changeBirthDate, changeHeight, changeWeight, changeEmail, putPassword,changePassword,showPassError, getUserData, uploadPicture} from './actions';
 import { Toast } from 'antd-mobile'
 import FooterContainer from '../Workout/FooterContainer';
 import axios from 'axios';
@@ -56,8 +56,8 @@ class ProfileContainer extends Component{
           nameHandler={this.props.changeName}
           selectHeight={this.props.changeHeight}
           selectWeight={this.props.changeWeight}
-          selectBirthDate = {this.props.changeBirthDate}
-
+          selectBirthDate={this.props.changeBirthDate}
+          uploadPicture={this.props.uploadPicture}
           //accountdetails
           selectEmail = {this.props.changeEmail}
           onSavePassword = {this.onSavePassword}
@@ -79,7 +79,7 @@ function mapStateToProps(state){
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
     changeWeight,changeHeight,changeName,changeBirthDate,changeEmail,
-    putPassword,showPassError,changePassword,getUserData,
+    putPassword,showPassError,changePassword,getUserData,uploadPicture
   }, dispatch
 );
 }

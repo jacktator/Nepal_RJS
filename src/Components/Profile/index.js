@@ -6,7 +6,7 @@ import Footer from './Footer';
 import axios from 'axios';
 
 import './Profile.css';
-import {Accordion,List,InputItem,Toast,Button,ImagePicker, Modal} from 'antd-mobile';
+import {Accordion,List,InputItem,Toast,Button,ImagePicker, Modal, ActivityIndicator} from 'antd-mobile';
 const Item = List.Item;
 const prompt = Modal.prompt;
 const data = [];
@@ -32,36 +32,12 @@ class Profile extends Component{
     this.state={
       files: data,
       modal: false,
+      animating: false,
     }
   }
 
-  uploadPicture = () => {
-    let token = localStorage.getItem('token');
-    axios({
-      method: 'post',
-      url: 'https://nepal.sk8tech.io/wp-json/wp/v2/media', 
-      headers: {
-        'Authorization': "Bearer" + token,
-        'Content-Disposition': `attachment; filename=photo.jpeg`,
-        'Content-Type': 'multipart/form-data'
-      },
-      data: {
-        date : "2015-11-26 10:00:00",
-        date_gmt : "2015-11-26 09:00:00",
-        modified : "2015-11-26 10:00:00",
-        modified_gmt : "2015-11-26 09:00:00",
-        status : "future",
-        title: "Titre media",
-        description : "description media",
-        media_type : this.state.files[0].type,
-        source_url : this.state.files[0].url }
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error.response);
-    });
+  updateFinish() {
+    this.setState({ animating: false });
   }
 
   showModal = key => (e) => {
@@ -86,7 +62,7 @@ class Profile extends Component{
     }
   }
   onChange = (files, type, index) => {
-    console.log(files, type, index);
+    console.log(files);
     this.setState({
       files,
     });
@@ -96,27 +72,33 @@ class Profile extends Component{
     return (
       <div className="profile-container">
       <div className= "profile-image-containers">
-          <Header name={this.props.name} url={this.props.fields.photo} />
+          <Header name={this.props.name} url={this.props.fields.photo} updateFinish={()=>this.updateFinish()}/>
       </div>
         <div className="profile-list-view-container">
-        <Button onClick={this.showModal('modal')}>Change Avatar</Button>
+          <Button onClick={this.showModal('modal')}>Change Avatar</Button>
+          <ActivityIndicator
+          toast
+          text="updating..."
+          animating={this.state.animating}
+        />
+
         <Modal
           visible={this.state.modal}
           transparent
           maskClosable={false}
           onClose={this.onClose('modal')}
           title="Title"
-          footer={[{ text: 'Ok', onPress: () => { this.uploadPicture(); this.onClose('modal')(); } }]}
+          footer={[{ text: 'Ok', onPress: () => { this.props.uploadPicture(this.state.files[0].file); this.onClose('modal')(); this.setState({ animating: true }) } }]}
           wrapProps={{ onTouchStart: this.onWrapTouchStart }}
         >
           <div>
-            <ImagePicker
+          <ImagePicker
             length="1"
             files={this.state.files}
             onChange={this.onChange}
             onImageClick={(index, fs) => console.log(index, fs)}
             selectable={this.state.files.length < 1}
-            />
+              />
           </div>
         </Modal>
         <MyDetails

@@ -22,6 +22,49 @@ export function getUserData(){
   }
 }
 
+export function uploadPicture(file) {
+  return (dispatch: Function) => {
+    const data2 = new FormData();
+    data2.append("file", file);
+    let token = localStorage.getItem('token');
+    return axios.post('https://nepal.sk8tech.io/wp-json/wp/v2/media', data2,
+      {
+        headers: {
+          'Authorization': "Bearer" + token,
+          'Content-Disposition': "attachment; filename=" + file.name,
+          'Content-Type': "multipart/form-data",
+        }
+      }
+    )
+      .then(function (response) {
+        dispatch(updateAvatar(response.data.source_url));
+        console.log("uploadPicture");
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+        console.log(error.response);
+      });  
+  }
+}
+
+export function updateAvatar(url: string) {
+  const aimUrl = "https://nepal.sk8tech.io/wp-json/wp/v2/users/" + localStorage.getItem('user_id');
+  let token = localStorage.getItem('token');
+  return (dispatch: Function) => {
+    return axios.put(aimUrl, { "fields": {"photo": url}}, { headers: { 'Authorization': "Bearer" + token } })
+    .then(function (response) {
+      dispatch(changeAavatar(response.data.acf.photo));
+      console.log("update");
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+      console.log(error.response);
+    });  
+  }
+}
+
 export function changeAavatar(photo: string) {
   return {
     type: "CHANGE_AVATAR",

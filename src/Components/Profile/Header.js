@@ -10,7 +10,15 @@ class Header extends Component {
         files: []
       }
       this.handleChange = this.handleChange.bind(this)
+  }
+  
+  componentDidUpdate(prevProps) {
+    if (this.props.url != prevProps.url) {
+      this.props.updateFinish();
     }
+
+  }
+
     onChange = (files, type, index) => {
       console.log(files, type, index);
       this.setState({
