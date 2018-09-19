@@ -76,8 +76,7 @@ class AccountDetails extends Component{
     const email = this.props.fields.email;
 
     return (
-            <div style={{marginTop:"40px"}}>
-              <div style={{marginTop:"40px"}}/>
+            <div>
               <Accordion className="my-accordion" onChange={this.onChange}>
                <Accordion.Panel header={<Item className="no-select" thumb={require("../../Assets/Profile/lock.svg")}> Change Password</Item>}>
                  <List className="my-list">
@@ -131,8 +130,8 @@ class AccountDetails extends Component{
                     maxLength={75}
                   ></InputItem>
                  </List>
-          </Accordion.Panel>
-        </Accordion>
+             </Accordion.Panel>
+          </Accordion>
 
       </div>
      );
