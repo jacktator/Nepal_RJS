@@ -1,6 +1,6 @@
 import React  from 'react';
 import {Button} from 'antd-mobile';
-import'./showHistory.css'
+import'./Exercise.css';
 const ShowHistory = (props) => {
  console.log("This is show history page", props);
  // console.log(props.record)
