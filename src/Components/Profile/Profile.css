@@ -3,7 +3,7 @@
   width:100%;
   position: absolute;
   user-select: none; */
-  
+
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
@@ -128,4 +128,15 @@
 
 .center-save-button{
   top:3px;
+}
+
+.change-avatar-button{
+  background-color: #3B8EE9;
+  color:white;
+  width:40vw;
+  font-size: 15px;
+  margin-left: 30vw;
+  margin-top: 2vh;
+  margin-bottom: 0vh;
+
 }
