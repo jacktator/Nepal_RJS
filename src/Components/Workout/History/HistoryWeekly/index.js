@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 class HistoryWeekly extends Component {
   
   state = {
-    currentPage: 1
+    currentPage: 0
   }
   componentDidUpdate(prevProps) {
     if(prevProps.currentPage !== this.props.currentPage){
@@ -22,6 +22,7 @@ class HistoryWeekly extends Component {
   }
 
   render(){
+    console.log(this.props)
     let programID = parseInt((this.props.match.params.programID),10)
     let {days} = this.props.HistoryReducers.program
     let {history} = this.props.HistoryReducers
@@ -53,7 +54,7 @@ class HistoryWeekly extends Component {
         :
         <div style={{textAlign:'center'}}>No History Avaiable in This Program</div>
       }
-      <FooterContainer currentPath='history' />
+      <FooterContainer  />
     </Hoc>
    );
   }

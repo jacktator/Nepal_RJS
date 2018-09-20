@@ -28,6 +28,7 @@ class HistoryDetail extends Component {
   }
 
   render(){
+    console.log(this.props)
     let {program,history} = this.props.HistoryReducers
     const programID = parseInt((this.props.match.params.programID),10)
     const day = parseInt((this.props.match.params.day),10);
@@ -99,7 +100,7 @@ class HistoryDetail extends Component {
       <div className="history-detail-container">
         {RenderPage}
       </div>
-      <FooterContainer currentPath='history'/>
+      <FooterContainer/>
       <div className="day-button-container">
         <Flex>
           <Flex.Item>
