@@ -8,7 +8,7 @@ const min = new Date("1948-01-01");
 const max = new Date("2006-12-31");
 const data = [];
 
-class MyDetails extends Component {
+const MyDetails = (props) => {
   // constructor(props) {
   //   super(props)
   //   this.state={
@@ -41,20 +41,19 @@ class MyDetails extends Component {
   //   this.setState({ animating: false });
   // }
 
- render(){
    const height = [];
    const weight = [];
-   const date = new Date(this.props.fields.birthDate);
-   weight.push(parseInt(this.props.fields.weight,10));
-   height.push(parseInt(this.props.fields.height,10));
+   const date = new Date(props.fields.birthDate);
+   weight.push(parseInt(props.fields.weight,10));
+   height.push(parseInt(props.fields.height,10));
 
     return (
       <div style={{marginTop:"40px"}}>
         <InputItem placeholder="Name"
-         value={this.props.name}
+         value={props.name}
          style={{color:"grey"}}
          maxLength={30}
-         onChange={(v) => this.props.nameHandler(v)}>
+         onChange={(v) => props.nameHandler(v)}>
         <div className="profile-name-icon"/>
         </InputItem>
 
@@ -62,19 +61,19 @@ class MyDetails extends Component {
             mode="date"
             title={<div>Date of Birth&nbsp;&nbsp;&nbsp;&nbsp;</div>}
             value={date}
-            onChange={v => this.props.selectBirthDate(v)}
+            onChange={v => props.selectBirthDate(v)}
             minDate={min}
             maxDate={max}>
             <List.Item className="date-of-birth" ><div className="profile-birthday-icon"/></List.Item>
         </DatePicker>
 
         <Picker
-          data={this.props.heightArray}
+          data={props.heightArray}
           cols={1}
           extra=" "
           title={<div>Height(cm)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>}
           value={[height[0]]}
-          onOk={v => this.props.selectHeight(v)}
+          onOk={v => props.selectHeight(v)}
           >
           <List.Item className="height-picker">
             <div className="profile-height-icon"/>
@@ -82,12 +81,12 @@ class MyDetails extends Component {
         </Picker>
 
         <Picker
-          data={this.props.weightArray}
+          data={props.weightArray}
           cols={1}
           extra=" "
           title={<div>Weight(kg)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>}
           value={[weight[0]]}
-          onOk={v => this.props.selectWeight(v)}
+          onOk={v => props.selectWeight(v)}
           >
           <List.Item className="weight-picker">
             <div className="profile-weight-icon"/>
@@ -108,7 +107,7 @@ class MyDetails extends Component {
         maskClosable={false}
         onClose={this.onClose('modal')}
         title="Title"
-        footer={[{ text: 'Ok', onPress: () => { this.props.uploadPicture(this.state.files[0].file); this.onClose('modal')(); this.setState({ animating: true }) } }]}
+        footer={[{ text: 'Ok', onPress: () => { props.uploadPicture(this.state.files[0].file); this.onClose('modal')(); this.setState({ animating: true }) } }]}
         wrapProps={{ onTouchStart: this.onWrapTouchStart }}
       >
         <div>
@@ -124,7 +123,6 @@ class MyDetails extends Component {
         </div>*/}
         </div>
     )
-}
 }
 
 export default MyDetails;

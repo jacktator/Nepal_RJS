@@ -142,7 +142,7 @@ class Profile extends Component{
       passError = {this.props.passError}
       files={this.state.files}
       />
-      <Footer/>
+      <Footer onLogoutHandler={this.props.onLogoutHandler}/>
       </div>
       </div>
     );

@@ -123,7 +123,7 @@ class SignUp extends Component<Props, State> {
                 Create Account
               </Button>
               {this.props.state.error && this.props.history.go(0)}
-              {this.props.isLoggedIn && <Redirect to="/questionnaire" />}
+              {this.props.justRegistered && <Redirect to="/questionnaire" />}
             </WingBlank>
           </div>
           <div className='signup-checkbox'>

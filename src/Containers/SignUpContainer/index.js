@@ -15,7 +15,7 @@ class SignUpContainer extends Component{
     return(
       <div>
         <SignUpWrapper
-          isLoggedIn={this.props.isLoggedIn}
+          justRegistered={this.props.justRegistered}
           state={this.props.SignUpStates}
           onClickButton={this.props.SignUpActions}
           onChangeEmail={this.props.addEmail}
@@ -31,7 +31,7 @@ class SignUpContainer extends Component{
 function mapStateToProps(state){
    return {
      SignUpStates: state.SignUpReducersStates,
-     isLoggedIn: state.RootStates.check
+     justRegistered: state.RootStates.justRegistered
    }
 }
 

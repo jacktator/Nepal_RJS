@@ -1,6 +1,7 @@
 import axios from 'axios';
 // import {checkLogin} from '../RootContainer/action';
 import {LoginDetailsActions} from '../LoginDetailsContainer/action';
+import {checkRegister, redirectToLogin} from '../RootContainer/action';
 export function SignUpActions(username, email, password){
   return(dispatch)=>{
     return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/users/register", {
@@ -13,6 +14,7 @@ export function SignUpActions(username, email, password){
       console.log(response.data);
       console.log(response);
       let login = JSON.parse(response.config.data);
+      dispatch(checkRegister());
       dispatch(LoginDetailsActions(login.email, login.password));
       dispatch(fetchResponse(response.data.code));
     }).catch((error)=>{

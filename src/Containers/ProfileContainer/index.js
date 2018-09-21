@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux';
 import { changeName, changeBirthDate, changeHeight, changeWeight, changeEmail, putPassword,changePassword,showPassError, getUserData, uploadPicture} from './actions';
 import { Toast } from 'antd-mobile'
 import FooterContainer from '../Workout/FooterContainer';
+import {checkLogout} from '../RootContainer/action'; //logout
 import axios from 'axios';
 
 class ProfileContainer extends Component{
@@ -37,7 +38,12 @@ class ProfileContainer extends Component{
       }
     }
 
+
     setTimeout(function(){this.props.showPassError("NO_ERROR");}.bind(this),1500);
+  }
+
+  onLogoutHandler = () => {
+    this.props.checkLogout();
   }
 
   render () {
@@ -60,6 +66,7 @@ class ProfileContainer extends Component{
           uploadPicture={this.props.uploadPicture}
           //accountdetails
           selectEmail = {this.props.changeEmail}
+          onLogoutHandler = {this.onLogoutHandler}
           onSavePassword = {this.onSavePassword}
           putPassword = {this.props.putPassword}
           checkField = {this.checkField}
@@ -79,7 +86,8 @@ function mapStateToProps(state){
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
     changeWeight,changeHeight,changeName,changeBirthDate,changeEmail,
-    putPassword,showPassError,changePassword,getUserData,uploadPicture
+    putPassword,showPassError,changePassword,getUserData,uploadPicture,
+    checkLogout
   }, dispatch
 );
 }
