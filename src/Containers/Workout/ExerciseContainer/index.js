@@ -249,6 +249,15 @@ class ExerciseContainer extends Component{
   cancelErrorMessaegHandler= ()=>{
     this.props.removeError();
   }
+  checkCompleteProgress =()=>{
+    const {finish_for_day} = this.props.WorkoutReducers.program;
+    if(finish_for_day && this.state.isFinish){
+
+        return(
+          <Redirect to="/plan" />
+        )
+    }
+  }
   render(){
     let {error} =this.props.WorkoutReducers;
     console.log(this.props.WorkoutReducers)
@@ -319,9 +328,6 @@ class ExerciseContainer extends Component{
         {this.state.goBack && (
           <Redirect to='/plan' />
         )}
-        {this.state.isFinish && (
-          <Redirect to='/plan' />
-        )}
         {this.state.showHistory && (
           <Modal modalFor = "modal-for-info">
           <ShowHistory
@@ -342,11 +348,12 @@ class ExerciseContainer extends Component{
         )}
         {(error.hasError) && (
           <Modal modalFor='modal'>
-            <ShowError 
+            <ShowError
               error={error.message}
               cancel={this.cancelErrorMessaegHandler}/>
           </Modal>
         )}
+        {this.checkCompleteProgress()}
         </div>
       );
     }else{

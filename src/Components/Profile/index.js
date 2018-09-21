@@ -108,8 +108,8 @@ class Profile extends Component{
         uploadPicture={this.props.uploadPicture}
         updateFinish={()=>this.updateFinish()}
         />
-        <Button  className="change-avatar-button" onClick={this.showModal('modal')}>Change Avatar</Button>
-        {/* <ActivityIndicator
+        {/*<Button  className="change-avatar-button" onClick={this.showModal('modal')}>Change Avatar</Button>
+         <ActivityIndicator
         toast
         text="updating..."
         animating={this.state.animating}
