@@ -6,7 +6,7 @@ import {Link}  from 'react-router-dom'
 const HistoryComponent = (props) => {
     let RenderPage = 
     (!props.loading) ? 
-    (
+    ((props.history)?
         <List className="history-list">
           {props.history.map((i, key) =>
             <Link key={key} to={`/history/${i.program_id}`}>
@@ -14,6 +14,7 @@ const HistoryComponent = (props) => {
             </Link>
           )}
         </List>
+        :<div>No History Yet</div>
     ):(<div className="loader">Loading...</div>)
     return(
       <div className="history-container">

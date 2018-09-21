@@ -87,7 +87,8 @@ const SignUp = (props) => {
               <Button
                 type="primary"
                 onClick={()=>props.onAbleChange()}
-                loading={props.state.able}
+                loading={props.state.able || props.state.loading}
+                disabled={props.state.click}
               >
                 Create Account
               </Button>
