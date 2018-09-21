@@ -16,7 +16,7 @@ const displayButton = (props) => {
           </Flex.Item>
         }
         { props.state.completedExercise !== props.state.exerciseLength &&
-          <Flex.Item>\
+          <Flex.Item>
           <Button type="primary" inline="true" size="large" onClick={()=>
             {props.state.currentSets > props.state.sets
               ? props.onNextButtonHandler()

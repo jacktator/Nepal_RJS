@@ -292,7 +292,7 @@ class ExerciseContainer extends Component{
         <div className="all">
         {this.state.isLoading === true &&
           (
-      <Hoc><Modal modalFor = "modal-for-select-exercise"><Loading mode="selectExercise"/></Modal></Hoc>
+      <Hoc><Modal modalFor = "modal-for-loading"><Loading mode="selectExercise"/></Modal></Hoc>
           )
         }
         <Exercise
