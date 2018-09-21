@@ -28,7 +28,6 @@ class HistoryDetail extends Component {
   }
 
   render(){
-    console.log(this.props)
     let {program,history} = this.props.HistoryReducers
     const programID = parseInt((this.props.match.params.programID),10)
     const day = parseInt((this.props.match.params.day),10);
@@ -37,7 +36,6 @@ class HistoryDetail extends Component {
 
     let dayRecord = history.find((i) => programID === parseInt((i.program_id),10))
                       .daily_record.find((j) => parseInt(j.day,10) === day)
-    console.log(dayRecord ? dayRecord : "No daily record found")
     // exercises list section
     let RenderPage = (dayRecord) ?
     (

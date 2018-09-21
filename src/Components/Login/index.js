@@ -6,21 +6,7 @@ import { Link } from 'react-router-dom';
 import './Login.css';
 import Logo from '../../Assets/LogoLighter.png';
 
-class Login extends Component {
-  state = {
-    Nepal: []
-  }
-
-  componentDidMount() {
-    // console.log("componentDidMount");
-    // axios.get('https://jsonplaceholder.typicode.com/posts')
-    //   .then(response => {
-    //     console.log("componentDidMount");
-    //     console.log(response);
-    //   })
-  }
-
-  render(){
+const Login = (props) => {
     return(
           <div className="login">
             {/*Logo block*/}
@@ -47,13 +33,5 @@ class Login extends Component {
             </div>
           </div>
     );
-  }
 }
-// function mapStateToProps(state){
-//   console.log("mapStateToProps", state);
-//   const loginDetail = state.loginDetail.loginDetail ? state.loginDetail.loginDetail: null;
-//
-//   return loginDetail;
-// }
-// export default connect(mapStateToProps)(Login);
 export default Login;

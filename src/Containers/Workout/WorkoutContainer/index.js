@@ -23,6 +23,7 @@ class WorkoutContainer extends Component{
       backToPlan: false,
       startExcercies: false,
       exercisesIndex: null,
+      count: 1,
     }
   }
   componentWillMount(){
@@ -47,10 +48,14 @@ class WorkoutContainer extends Component{
     this.loadingToast();
   }
   componentWillReceiveProps(nextProps){
-
+    if(nextProps.WorkoutReducers.record ){
+      if(nextProps.WorkoutReducers.records !== ""){
+        Toast.hide();
+      }
+    }
   }
   loadingToast = () => {
-    Toast.loading('Loading...', 2, () => {
+    Toast.loading('Loading...', 0, () => {
       console.log('Load complete !!!');
     });
   }

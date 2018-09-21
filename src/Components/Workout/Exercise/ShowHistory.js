@@ -2,9 +2,6 @@ import React  from 'react';
 import {Button} from 'antd-mobile';
 import'./Exercise.css';
 const ShowHistory = (props) => {
- console.log("This is show history page", props);
- // console.log(props.record)
- // console.log(props.code)
   return (
     <div>
       <div className="show-history-title">{props.name}</div>

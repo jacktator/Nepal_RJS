@@ -66,12 +66,6 @@ class ExerciseContainer extends Component{
       }
       let exerciseLength = program.exercises[dayIndex].exercise_list.length;
       if(program.exercises[dayIndex].exercise_list[index]){
-        let exerciseData = program.exercises[dayIndex].exercise_list[index];
-        this.setState({ exerciseLength: exerciseLength, exerciseData, personalBest: parseFloat(exerciseData.personal_best),
-                        prescribeWeight: parseFloat(exerciseData.weight), prescribeReps: parseInt(exerciseData.reps, 10),
-                        weight: parseFloat(exerciseData.weight), reps: parseInt(exerciseData.reps, 10),
-                        sets: parseInt(exerciseData.sets, 10)
-                      })
         this.loadingToast();
         this.calculateExerciseLog();
       }else{
@@ -83,13 +77,11 @@ class ExerciseContainer extends Component{
     }
   }
 
-  componentWillReceivethis(nextProps){
-    //this.calculateExerciseLog();
+  componentWillReceiveProps(nextProps){
+    Toast.hide();
   }
-
   loadingToast = () => {
-    Toast.loading('Loading...', 1, () => {
-      console.log('Load complete !!!');
+    Toast.loading('Loading...', 0, () => {
     });
   }
 
@@ -145,6 +137,7 @@ class ExerciseContainer extends Component{
       }
     }
     setTimeout(() => {
+      Toast.hide();
       this.setState({isLoading: false})
     }, 1000);
   }
