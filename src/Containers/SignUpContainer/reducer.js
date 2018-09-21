@@ -2,13 +2,14 @@
 
 let DefaultState=
   {
-    username:'Username@com',
-    email:'Email',
-    password:'1235678',
+    username:'raul',
+    email:'raul@gmail.com',
+    password:'raul',
     fetch:'',
-    error:null,
-    hasError:false,
-    message:''
+    error: {
+      hasError: false,
+      message: ''
+    },
   }
 
 const SignUpReducers = (state=DefaultState, action)=>{
@@ -32,12 +33,6 @@ const SignUpReducers = (state=DefaultState, action)=>{
       ...state, username: action.payload
     }
   }
-  else if (action.type==="CATCH_ERROR"){
-    //console.log("add token: "+ action.payload)
-    return {
-      ...state, error: action.payload
-    }
-  }
   else if (action.type==="FETCH_RESPONSE"){
     //console.log("add token: "+ action.payload)
     return {
@@ -45,6 +40,7 @@ const SignUpReducers = (state=DefaultState, action)=>{
     }
   }
   else if (action.type==="CATCH_ERROR"){
+
     //console.log("add token: "+ action.payload)
     error = {...state.error};
     error['hasError']= true;

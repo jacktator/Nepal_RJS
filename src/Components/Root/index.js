@@ -59,7 +59,8 @@ class Root extends Component<Props>{
           </HashRouter>
         </div>
       );
-    }else if(justRegistered){
+    }
+    else if(justRegistered){
       return(
         <div>
           <HashRouter>
@@ -72,8 +73,8 @@ class Root extends Component<Props>{
           </HashRouter>
         </div>
       )
-    }else {
-      return(
+    }
+    return(
         <div>
           <HashRouter>
           {/*<BrowserRouter>*/}
@@ -100,7 +101,6 @@ class Root extends Component<Props>{
           </HashRouter>
         </div>
       )
-    }
   }
 }
 

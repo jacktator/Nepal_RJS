@@ -50,6 +50,7 @@ export function addPassword(password){
 }
 
 export function catchError(error){
+
   return{
     type: "CATCH_ERROR",
     payload: error
