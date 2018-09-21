@@ -11,11 +11,17 @@ let DefaultState = {
     newPassword:"",
     confirmPassword:"",
     passError:"NO_ERROR",
+    
   },
+  error:{
+    hasError: false,
+    message: ''
+  }
 }
 
 const ProfileReducers =(state: Object= DefaultState, action: Function) => {
   let fields = null;
+  let error;
   switch (action.type) {
 
     case "CHANGE_NAME":
@@ -100,6 +106,20 @@ const ProfileReducers =(state: Object= DefaultState, action: Function) => {
     fields['password']=action.payload
     return{
       ...state, fields
+    }
+    case "CATCH_ERROR":
+    error = {...state.error};
+    error['hasError']= true;
+    error['message'] = action.payload;
+    return {
+      ...state, error
+    }
+    case "REMOVE_ERROR":
+    error = {...state.error};
+    error['hasError']= false;
+    error['message'] = action.payload;
+    return {
+      ...state, error
     }
     default:
       return state;

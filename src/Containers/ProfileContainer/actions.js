@@ -18,6 +18,11 @@ export function getUserData(){
         dispatch(changeAavatar(response.data.acf.photo));
     }).catch((error)=> {
       console.log(error);
+      if(error.response){
+        dispatch(catchError(error.response.data.message));
+      }else{
+        dispatch(catchError("Network Connection Error. Please check your network connection"))
+      }
     })
   }
 }
@@ -42,7 +47,11 @@ export function uploadPicture(file) {
       })
       .catch(function (error) {
         console.log(error);
-        alert(error.response);
+        if(error.response){
+          dispatch(catchError(error.response.data.message));
+        }else{
+          dispatch(catchError("Network Connection Error. Please check your network connection"))
+        }
       });  
   }
 }
@@ -60,6 +69,11 @@ export function updateAvatar(url: string) {
     .catch(function (error) {
       console.log(error);
       console.log(error.response);
+      if(error.response){
+        dispatch(catchError(error.response.data.message));
+      }else{
+        dispatch(catchError("Network Connection Error. Please check your network connection"))
+      }
     });  
   }
 }
@@ -129,7 +143,19 @@ export function showPassError (passError: string) {
     payload: passError,
   }
 }
-
+export function catchError(error: string){
+  console.log(error);
+  return{
+    type: "CATCH_ERROR",
+    payload: error
+  }
+}
+export function removeError(){
+  return{
+    type: "REMOVE_ERROR",
+    payload: null
+  }
+}
 // function to change the format of Date to YYYY-MM-DD
 function formatDate(date) {
     var d = new Date(date),

@@ -1,8 +1,13 @@
 let DefaultState = {
   dayIndex: null,
+  error:{
+    hasError:false,
+    message:''
+  }
 }
 
 const WorkoutReducers =(state: Object= DefaultState, action: Function) => {
+  let error;
   switch (action.type) {
     case "SET_PROGRAM":
     return {
@@ -42,7 +47,20 @@ const WorkoutReducers =(state: Object= DefaultState, action: Function) => {
     return {
       ...state, recordID: action.payload
     }
-
+    case "CATCH_ERROR":
+    error = {...state.error};
+    error['hasError']= true;
+    error['message'] = action.payload;
+    return {
+      ...state, error
+    }
+    case "REMOVE_ERROR":
+    error = {...state.error};
+    error['hasError']= false;
+    error['message'] = action.payload;
+    return {
+      ...state, error
+    }
     default:
       return state;
   }

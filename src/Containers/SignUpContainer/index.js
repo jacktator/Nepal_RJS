@@ -1,17 +1,19 @@
 import React, {Component} from 'react';
 import SignUpWrapper from '../../Components/SignUp/';
 import {connect} from 'react-redux';
-import {SignUpActions, addUsername, addEmail, addPassword } from './action';
+import {SignUpActions, addUsername, addEmail, addPassword,removeError} from './action';
 import {bindActionCreators} from 'redux';
+import Modal from '../../Components/UI/Modal';
+import ShowError from '../../Components/Error/ShowError';
 
 class SignUpContainer extends Component{
-
+  cancelErrorMessageHandler =()=>{
+    this.props.removeError();
+  }
   render(){
     console.log("signupConatiner");
-    const {error}= this.props.SignUpStates;
-    if(error){
-      alert(error)
-    }
+    const {error,hasError,message}= this.props.SignUpStates;
+    console.log(error)
     return(
       <div>
         <SignUpWrapper
@@ -23,6 +25,13 @@ class SignUpContainer extends Component{
           onChangeUsername={this.props.addUsername}
           history={this.props.history}
         />
+        {(hasError) && (
+          <Modal modalFor='modal'>
+              <ShowError 
+                error={message}
+                cancel={this.cancelErrorMessageHandler}/>
+          </Modal>
+        )}
       </div>
     );
   }
@@ -41,6 +50,7 @@ function matchDispatchToProps(dispatch){
     addUsername: addUsername,
     addEmail: addEmail,
     addPassword: addPassword,
+    removeError
   }, dispatch);
 }
 

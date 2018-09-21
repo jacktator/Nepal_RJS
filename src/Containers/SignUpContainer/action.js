@@ -55,7 +55,12 @@ export function catchError(error){
     payload: error
   }
 }
-
+export function removeError(){
+  return{
+    type: "REMOVE_ERROR",
+    payload: null
+  }
+}
 export function fetchResponse(fetch){
   console.log("fetch", fetch);
   return{
