@@ -12,6 +12,8 @@ class SignUpContainer extends Component{
     super(props)
     this.state={
       isInvalidEmail: false,
+      loading:false,
+      click:false
     }
   }
 
@@ -19,16 +21,23 @@ class SignUpContainer extends Component{
     const{username, email, password} = this.props.SignUpStates;
     if(/^[a-z0-9][a-z0-9-_\.]+@([a-z]|[a-z0-9]?[a-z0-9-]+[a-z0-9])\.[a-z0-9]{2,10}(?:\.[a-z]{2,10})?$/.test(email)) {
        this.props.SignUpActions(username, email, password)
+       this.setState({
+        loading:true,
+        click:true
+       })
     }else{
-      this.setState({isInvalidEmail: true})
+      this.setState({
+        isInvalidEmail: true,
+      })
     }
   }
 
   cancelInvalidEmailHandler = () => {
-    this.setState({ isInvalidEmail:false })
+    this.setState({ isInvalidEmail:false ,loading:false, click:false})
   }
   cancelErrorMessageHandler =()=>{
     this.props.removeError();
+    this.setState({loading:false, click:false})
   }
 
   render(){
