@@ -78,6 +78,7 @@ class ExerciseContainer extends Component{
   }
 
   componentWillReceiveProps(nextProps){
+
     Toast.hide();
   }
   loadingToast = () => {
@@ -197,15 +198,21 @@ class ExerciseContainer extends Component{
     if(this.state.completedExercise===this.state.exerciseLength-1 && this.state.currentSets === this.state.sets){
       this.setState({completedExercise: this.state.completedExercise+1});
     }
-    let exerciseLog = this.state.exerciseLog;
-    exerciseLog.push({weight:this.state.weight, reps:this.state.reps, sets: this.state.currentSets});
 
-    this.setState({exerciseLog, currentSets : this.state.currentSets+1})
     if(this.state.sets === this.state.currentSets){
       this.props.updateRepsAndWeight(program, programID, dayIndex, this.state.exerciseIndex, this.state.prescibeReps, this.state.prescribeWeight);
     }
     this.props.saveExerciseData(recordID, currentDay, name, code, this.state.weight, this.state.Currentsets, this.state.reps, record);
     this.loadingToast();
+
+    setTimeout(() => {
+      Toast.hide();
+      this.setState({isLoading: false})
+    }, 1000);
+    let exerciseLog = this.state.exerciseLog;
+
+    exerciseLog.push({weight:this.state.weight, reps:this.state.reps, sets: this.state.currentSets});
+    this.setState({exerciseLog, currentSets : this.state.currentSets+1})
 
   }
   onChangeWeight = (val) => {
