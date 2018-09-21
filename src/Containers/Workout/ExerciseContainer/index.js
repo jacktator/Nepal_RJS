@@ -7,9 +7,10 @@ import {bindActionCreators} from 'redux';
 import Info from '../../../Components/Workout/Exercise/Info';
 import ShowHistory from '../../../Components/Workout/Exercise/ShowHistory';
 import Modal from '../../../Components/UI/Modal';
-import {saveExerciseData, getExerciseRecord, updatePersonalBest, updateRepsAndWeight, completeWorkout} from '../actions';
+import {saveExerciseData, getExerciseRecord, updatePersonalBest, updateRepsAndWeight, completeWorkout,removeError} from '../actions';
 import Loading from '../../../Components/Loading';
 import Hoc from '../../../HOC/Hoc';
+import ShowError from '../../../Components/Error/ShowError';
 
 // import _ from 'lodash';
 // import YTSearch from 'youtube-api-search';
@@ -238,7 +239,12 @@ class ExerciseContainer extends Component{
     e.preventDefault();
     this.setState({ showInfo: !this.state.showInfo})
   }
+  cancelErrorMessaegHandler= ()=>{
+    this.props.removeError();
+  }
   render(){
+    let {error} =this.props.WorkoutReducers;
+    console.log(this.props.WorkoutReducers)
     let message = "";
     if(this.state.currentSets <= this.state.sets){
       if(this.state.exerciseData.progression_model === 'linear'){
@@ -327,6 +333,13 @@ class ExerciseContainer extends Component{
           />
           </Modal>
         )}
+        {(error.hasError) && (
+          <Modal modalFor='modal'>
+            <ShowError 
+              error={error.message}
+              cancel={this.cancelErrorMessaegHandler}/>
+          </Modal>
+        )}
         </div>
       );
     }else{
@@ -355,7 +368,7 @@ function mapStateTothis(state){
 
 function matchDispatchTothis(dispatch){
   return bindActionCreators({
-    saveExerciseData, getExerciseRecord, updatePersonalBest, updateRepsAndWeight, completeWorkout
+    saveExerciseData, getExerciseRecord, updatePersonalBest, updateRepsAndWeight, completeWorkout,removeError
   }, dispatch
 );
 }

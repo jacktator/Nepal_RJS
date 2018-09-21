@@ -109,11 +109,11 @@ class Profile extends Component{
         updateFinish={()=>this.updateFinish()}
         />
         <Button  className="change-avatar-button" onClick={this.showModal('modal')}>Change Avatar</Button>
-        <ActivityIndicator
+        {/* <ActivityIndicator
         toast
         text="updating..."
         animating={this.state.animating}
-      />
+      /> */}
 
       <Modal
         visible={this.state.modal}
