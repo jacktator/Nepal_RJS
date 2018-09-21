@@ -83,7 +83,6 @@ export function addProgram (days, goals) {
               console.log(error);
             })
         }).catch((error) => {
-          alert("error")
           if(error.response){
             dispatch(addError(error.response.data.message));
           }else{

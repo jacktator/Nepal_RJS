@@ -3,11 +3,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {selectFooter} from '../FooterContainer/actions';
-import {getHistory,getProgram} from './action';
+import {getHistory,getProgram,removeError} from './action';
 import FooterContainer from'../FooterContainer';
 import Header from '../../../Components/Workout/History/Header'
 import HistoryComponent from '../../../Components/Workout/History';
 import Hoc from '../../../HOC/Hoc';
+import Modal from '../../../Components/UI/Modal';
+import ShowError from '../../../Components/Error/ShowError'
 
 class HistoryContainer extends Component{
   constructor(props){
@@ -33,7 +35,9 @@ class HistoryContainer extends Component{
       })
     });
   }
-
+  cancelErrorMessageHandler = () => {
+    this.props.removeError();
+  }
   // onListProgramClickHandler = (e) => {
 
   //     e.preventDefault();
@@ -64,7 +68,8 @@ class HistoryContainer extends Component{
   render() {
     console.log("history reducer", this.props.HistoryReducers);
     let RenderPage = null;
-    let {history} =this.props.HistoryReducers;
+    let {history,error} =this.props.HistoryReducers;
+    console.log(error)
     
     if(this.state.currentPage === 1){
       RenderPage = (
@@ -79,6 +84,13 @@ class HistoryContainer extends Component{
         <Header/>
         {RenderPage}
         <FooterContainer currentPath='history'/>
+        {(error.hasError) && (
+          <Modal modalFor='modal'>
+              <ShowError 
+                error={error.message}
+                cancel={this.cancelErrorMessageHandler}/>
+          </Modal>
+        )}
       </Hoc>
     )
   }
@@ -94,7 +106,8 @@ function matchDispatchToProps(dispatch){
   return bindActionCreators({
     selectFooter,
     getHistory,
-    getProgram
+    getProgram,
+    removeError
   }, dispatch
 );
 }
