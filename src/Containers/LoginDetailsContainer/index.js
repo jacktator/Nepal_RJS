@@ -22,9 +22,22 @@ type Props = {
 
 
 class LoginDetailsContainer extends Component<Props>{
+  constructor(props){
+    super(props);
+    this.state={
+      loading: false,
+      click: false,
+    }
+  }
 
+  loadingButtonHandler = (loading)=>{
+    const {email, password} = this.props.LoginDetailsStates;
+    this.props.LoginDetailsActions(email, password);
+    this.setState({loading:true, click:true});
+  }
   cancelErrorMessageHandler = () => {
     this.props.removeError();
+    this.setState({loading:false, click:false});
   }
   render(){
     const {email, password, token, error} = this.props.LoginDetailsStates;
@@ -34,6 +47,8 @@ class LoginDetailsContainer extends Component<Props>{
           email={email}
           password={password}
           token={token}
+          state= {this.state}
+          loadingButtonHandler= {this.loadingButtonHandler}
           onChangeEmail={this.props.addEmail}
           onChangePassword={this.props.addPassword}
           onClickButton={this.props.LoginDetailsActions}

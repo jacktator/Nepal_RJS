@@ -1,5 +1,3 @@
-
-
 export function checkLogin(){
   return{
     type: "CHECK_CHANGE",
@@ -13,15 +11,10 @@ export function checkLogout(){
     payload: false
   }
 }
+
 export function checkRegister(){
   return{
     type: "CHECK_REGISTER",
     payload: true
-  }
-}
-export function redirectToLogin(){
-  return{
-    type: "CHECK_REGISTER",
-    payload: false
   }
 }

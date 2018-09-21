@@ -46,6 +46,9 @@ class WorkoutContainer extends Component{
   componentDidMount(){
     this.loadingToast();
   }
+  componentWillReceiveProps(nextProps){
+
+  }
   loadingToast = () => {
     Toast.loading('Loading...', 2, () => {
       console.log('Load complete !!!');

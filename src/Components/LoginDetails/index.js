@@ -23,7 +23,6 @@ var humeniconstyle={
 type State={
   loading: boolean,
 }
-
 type Props = {
   foo: number,
   email: string,
@@ -36,28 +35,8 @@ type Props = {
   token: string,
 
 };
-
-
-class LoginDetails extends Component<Props, State> {
-  constructor(props){
-    super(props);
-    this.state={
-      loading: true,
-    }
-  }
-
-  loadingButton = (loading)=>{
-    const {email, password} = this.props;
-    this.props.onClickButton(email, password);
-    loading = !this.state.loading
-    this.setState({loading});
-  }
-
-  render() {
-    const {email, password, token} = this.props;
-    console.log(email)
-    console.log(password)
-    console.log(token)
+const LoginDetails = (props) => {
+    const {email, password, token} = props;
     return (
       <div className="logindetails">
         {/* logo block*/}
@@ -73,7 +52,7 @@ class LoginDetails extends Component<Props, State> {
                   value={email}
                   type="text"
                   name="email"
-                  onChange={(value)=>this.props.onChangeEmail(value)}
+                  onChange={(value)=>props.onChangeEmail(value)}
                   onExtraClick = {()=> console.log('onExtraClick')}
                   onErrorClick = {()=> console.log('onErrorClick')}
                   style={{color: 'grey'}}
@@ -84,7 +63,7 @@ class LoginDetails extends Component<Props, State> {
                   value={password}
                   type="password"
                   name="password"
-                  onChange={(value)=>this.props.onChangePassword(value)}
+                  onChange={(value)=>props.onChangePassword(value)}
                   style={{color: 'grey'}}
                 >
                 <div style={lockerstyle} />
@@ -95,8 +74,9 @@ class LoginDetails extends Component<Props, State> {
               <WingBlank>
                 <Button
                   type="primary"
-                  onClick={()=>this.loadingButton()}
-                  loading={!this.state.loading}
+                  onClick={()=>props.loadingButtonHandler()}
+                  loading={props.state.loading}
+                  disabled={props.state.click}
                 >
                   Login
                 </Button>
@@ -123,7 +103,6 @@ class LoginDetails extends Component<Props, State> {
         </div>
     </div>
     );
-  }
 }
 
 const LoginDetailsWrapper = createForm()(LoginDetails);
