@@ -108,32 +108,14 @@ class Profile extends Component{
         uploadPicture={this.props.uploadPicture}
         updateFinish={()=>this.updateFinish()}
         />
-        {/*<Button  className="change-avatar-button" onClick={this.showModal('modal')}>Change Avatar</Button>
+       <Button  className="change-avatar-button" onClick={this.showModal('modal')}>Change Avatar</Button>
          <ActivityIndicator
         toast
         text="updating..."
         animating={this.state.animating}
-      /> */}
+      />
 
-      <Modal
-        visible={this.state.modal}
-        transparent
-        maskClosable={false}
-        onClose={this.onClose('modal')}
-        title="Title"
-        footer={[{ text: 'Ok', onPress: () => { this.closeDecision() } }]}
-        wrapProps={{ onTouchStart: this.onWrapTouchStart }}
-      >
-        <div>
-        <ImagePicker
-          length="1"
-          files={this.state.files}
-          onChange={this.onChange}
-          onImageClick={(index, fs) => console.log(index, fs)}
-          selectable={this.state.files.length < 1}
-            />
-        </div>
-      </Modal>
+
       <AccountDetails
       selectEmail={this.props.selectEmail}
       putPassword={this.props.putPassword}
@@ -150,3 +132,24 @@ class Profile extends Component{
 }
 
 export default Profile;
+
+
+// <Modal
+// visible={this.state.modal}
+// transparent
+// maskClosable={false}
+// onClose={this.onClose('modal')}
+// title="Title"
+// footer={[{ text: 'Ok', onPress: () => { this.closeDecision() } }]}
+// wrapProps={{ onTouchStart: this.onWrapTouchStart }}
+// >
+// <div>
+// <ImagePicker
+//   length="1"
+//   files={this.state.files}
+//   onChange={this.onChange}
+//   onImageClick={(index, fs) => console.log(index, fs)}
+//   selectable={this.state.files.length < 1}
+//     />
+// </div>
+// </Modal>

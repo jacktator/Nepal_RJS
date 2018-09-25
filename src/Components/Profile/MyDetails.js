@@ -57,7 +57,7 @@ const MyDetails = (props) => {
         <div className="profile-name-icon"/>
         </InputItem>
 
-        <DatePickser
+        <DatePicker
             mode="date"
             title={<div>Date of Birth&nbsp;&nbsp;&nbsp;&nbsp;</div>}
             value={date}
