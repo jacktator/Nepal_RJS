@@ -38,7 +38,7 @@ class Header extends Component {
       return (
         <div>
           <img className="profile-image-sources" src={require('../../Assets/Workout/sampleImage.jpeg')} alt="mainmenu" />
-          <img className="profile-picture" src={this.props.url} alt="profile_pic" />
+          <div style={{backgroundPosition:'center', position: 'absolute', transform: 'translate(-50%, -50%)', left: '25%', top:'50%', borderRadius:'50%', backgroundSize:'cover', zIndex:'11', height:'120px', width:'120px', backgroundImage: `url(${this.props.url})`}}></div>
           <div className="profile-name">{this.props.name}</div>
         </div>
 
@@ -47,3 +47,5 @@ class Header extends Component {
 }
 
 export default Header;
+//<img className="profile-picture" src={this.props.url} alt="profile_pic" />
+
