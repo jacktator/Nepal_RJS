@@ -33,7 +33,7 @@ class Profile extends Component{
     this.state={
       files: data,
       // modal: false,
-      // animating: false,
+      animating: false,
     }
   }
 
