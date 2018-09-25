@@ -28,7 +28,7 @@ export function getProgram(){
       }else{
         currentProgress = (runningWeek-1) * days + days;
       }
-      if(parseInt(progress,10) !== currentProgress){
+      if(parseInt(progress,10) < currentProgress){
         update = true;
         const askFeedback = parseInt(value, 10) ===0 ? true : false
 
@@ -47,6 +47,11 @@ export function getProgram(){
       }
     }).catch((error)=> {
       console.log(error);
+      if(error.response){
+        dispatch(catchError(error.response.data.message));
+      }else{
+        dispatch(catchError("Network Connection Error. Please check your network connection"))
+      }
     })
   }
 }
@@ -93,8 +98,12 @@ export function implementDeloadAlgorithm(programID, program, progress, ask_feedb
       dispatch(setProgramID(response.data.id));
       dispatch(setCurrentDay(currentDay));
     }).catch((error) => {
-      alert("error")
       console.log(error)
+      if(error.response){
+        dispatch(catchError(error.response.data.message));
+      }else{
+        dispatch(catchError("Network Connection Error. Please check your network connection"))
+      }
     })//end catch
   })//ends dispatch return
 }//ends function
@@ -116,8 +125,12 @@ export function updateProgress(programID, progress, ask_feedback){
       dispatch(setProgramID(response.data.id));
       dispatch(setCurrentDay(currentDay));
     }).catch((error) => {
-      alert("error")
       console.log(error)
+      if(error.response){
+        dispatch(catchError(error.response.data.message));
+      }else{
+        dispatch(catchError("Network Connection Error. Please check your network connection"))
+      }
     })
   })//ends return dispatch
 }
@@ -130,10 +143,14 @@ export function updateDailyFeedBack(programID, program, value) {
     let needUpdate = false;
     let valueChanges = 0;
     let feedbackValue = value;
+    let progress = parseInt(program.progress,10);
 
     if(program.ask_feedback === true){
       currentDay = currentDay === 1 ? 3 : (currentDay - 1);
       feedbackValue = 0;
+    }
+    if(program.finish_for_day === true){
+      program.progress= progress+1;
     }
     if(value === 3){
       needUpdate = true;
@@ -161,7 +178,11 @@ export function updateDailyFeedBack(programID, program, value) {
     }).then((response)=> {
       dispatch(setProgram(response.data.acf));
     }).catch((error) => {
-      alert("error")
+      if(error.response){
+        dispatch(catchError(error.response.data.message));
+      }else{
+        dispatch(catchError("Network Connection Error. Please check your network connection"))
+      }
     })
   })
 }
@@ -174,7 +195,11 @@ export function getExerciseRecord(programID){
       dispatch(setExerciseRecord(response.data[0].acf));
       dispatch(setExerciseID(response.data[0].id))
     }).catch((error)=> {
-      console.log(error);
+      if(error.response){
+        dispatch(catchError(error.response.data.message));
+      }else{
+        dispatch(catchError("Network Connection Error. Please check your network connection"))
+      }
     })
   }//end return dispatch function
 }
@@ -196,7 +221,11 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
       .then((response)=> {
         dispatch(setProgram(response.data.acf));
       }).catch((error)=> {
-        alert("error");
+        if(error.response){
+          dispatch(catchError(error.response.data.message));
+        }else{
+          dispatch(catchError("Network Connection Error. Please check your network connection"))
+        }
       })
     }
   }
@@ -208,7 +237,11 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
       .then((response) => {
         dispatch(setWorkoutList(response.data[0].acf));
       }).catch((error) => {
-        console.log(error);
+        if(error.response){
+          dispatch(catchError(error.response.data.message));
+        }else{
+          dispatch(catchError("Network Connection Error. Please check your network connection"))
+        }
       })
     }
   }
@@ -227,6 +260,11 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
           dispatch(setProgram(response.data.acf));
         }).catch((error)=> {
           console.log(error);
+          if(error.response){
+            dispatch(catchError(error.response.data.message));
+          }else{
+            dispatch(catchError("Network Connection Error. Please check your network connection"))
+          }
         })
       }
     }
@@ -277,7 +315,11 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
               .then((response)=> {
                   dispatch(setExerciseRecord(response.data.acf));
               }).catch((error)=> {
-                console.log(error);
+                if(error.response){
+                  dispatch(catchError(error.response.data.message));
+                }else{
+                  dispatch(catchError("Network Connection Error. Please check your network connection"))
+                }
               })
           }//ends return dispatch
         }//ends functions saveExerciseData
@@ -294,7 +336,11 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
               .then((response)=> {
                 dispatch(setProgram(response.data.acf));
               }).catch((error)=> {
-                console.log(error);
+                if(error.response){
+                  dispatch(catchError(error.response.data.message));
+                }else{
+                  dispatch(catchError("Network Connection Error. Please check your network connection"))
+                }
               })
           }
         }
@@ -312,7 +358,11 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
               .then((response)=> {
                 dispatch(setProgram(response.data.acf));
               }).catch((error)=> {
-                console.log(error);
+                if(error.response){
+                  dispatch(catchError(error.response.data.message));
+                }else{
+                  dispatch(catchError("Network Connection Error. Please check your network connection"))
+                }
               })
           }
         }
@@ -331,6 +381,11 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
                 dispatch(setProgram(response.data.acf));
               }).catch((error)=> {
                 console.log(error);
+                if(error.response){
+                  dispatch(catchError(error.response.data.message));
+                }else{
+                  dispatch(catchError("Network Connection Error. Please check your network connection"))
+                }
               })
           }
         }
@@ -399,5 +454,18 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
           return {
             type: "SET_EXERCISE_ID",
             payload: id
+          }
+        }
+        export function catchError(error: string){
+          console.log(error);
+          return{
+            type: "CATCH_ERROR",
+            payload: error
+          }
+        }
+        export function removeError(){
+          return{
+            type: "REMOVE_ERROR",
+            payload: null
           }
         }

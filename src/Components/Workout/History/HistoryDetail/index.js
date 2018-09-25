@@ -36,7 +36,6 @@ class HistoryDetail extends Component {
 
     let dayRecord = history.find((i) => programID === parseInt((i.program_id),10))
                       .daily_record.find((j) => parseInt(j.day,10) === day)
-    console.log(dayRecord ? dayRecord : "No daily record found")
     // exercises list section
     let RenderPage = (dayRecord) ?
     (
@@ -99,7 +98,7 @@ class HistoryDetail extends Component {
       <div className="history-detail-container">
         {RenderPage}
       </div>
-      <FooterContainer currentPath='history'/>
+      <FooterContainer/>
       <div className="day-button-container">
         <Flex>
           <Flex.Item>

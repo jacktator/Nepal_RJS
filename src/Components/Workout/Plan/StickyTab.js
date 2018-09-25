@@ -15,7 +15,6 @@ export default class StickyTab extends React.Component {
     }
   }
   render() {
-    console.log(this.state.currentPage)
    return (
      <div className='plan-tabs'>
        <Tabs

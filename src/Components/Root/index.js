@@ -26,14 +26,55 @@ import ExerciseContainer from '../../Containers/Workout/ExerciseContainer/';
 type Props = {
   path: string,
   check?: Boolean,
+  justRegistered?: Boolean,
 };
 
 class Root extends Component<Props>{
   render(){
-    const {check} = this.props
-
-    if(!check){
+    const {check,justRegistered} = this.props
+    if(check){
       return(
+        <div>
+          <HashRouter>
+          {/*</BrowserRouter>*/}
+            <Switch>
+              <Route path="/" exact render={()=>(<Redirect to='/mainmenu'/>)} />
+              <Route path="/login" exact render={()=>(<Redirect to='/mainmenu'/>)} />
+              <Route path="/signup" exact render={() =>(<Redirect to='/mainmenu'/>)} />
+              <Route path="/login/logindetails" exact render={()=>(<Redirect to='/mainmenu'/>)} />
+              <Route path="/questionnaire" exact component={Questionnaire} />
+              <Route path="/forgetpassword" exact component={ForgetPassWord} />
+              <Route path="/mainmenu" exact component={MainMenuContainer}/>
+              <Route path="/workout/:day" exact component={WorkoutContainer} />
+              <Route path="/plan" exact component={PlanContainer}/>
+              <Route path="/footer" exact component={FooterContainer} />
+              <Route path="/history" exact component={HistoryContainer}/>
+              <Route path="/history/:programID" exact component={HistoryWeekly}/>
+              <Route path="/history/:programID/:day" exact component={HistoryDetail}/>
+              <Route path="/exercise/:index?" exact component={ExerciseContainer}/>
+              <Route path="/profile" exact component={ProfileContainer}/>
+              <Route path="/termsandconditions" exact component={TermsAndCondComponent}/>
+            </Switch>
+          {/*</BrowserRouter>*/}
+          </HashRouter>
+        </div>
+      );
+    }
+    else if(justRegistered){
+      return(
+        <div>
+          <HashRouter>
+            <Switch>
+              <Route path="/" exact component={Launch}/>
+              <Route path="/login" exact component={Login}/>
+              <Route path="/signup" exact component={SignUp} />
+              <Route path="/questionnaire" exact component={Questionnaire} />
+            </Switch>
+          </HashRouter>
+        </div>
+      )
+    }
+    return(
         <div>
           <HashRouter>
           {/*<BrowserRouter>*/}
@@ -60,33 +101,6 @@ class Root extends Component<Props>{
           </HashRouter>
         </div>
       )
-    }
-    return(
-      <div>
-        <HashRouter>
-      {/*</BrowserRouter>*/}
-          <Switch>
-            <Route path="/" exact render={()=>(<Redirect to='/mainmenu'/>)} />
-            <Route path="/login" exact render={()=>(<Redirect to='/mainmenu'/>)} />
-            <Route path="/signup" exact component={SignUp} />
-            <Route path="/login/logindetails" exact render={()=>(<Redirect to='/mainmenu'/>)} />
-            <Route path="/questionnaire" exact component={Questionnaire} />
-            <Route path="/forgetpassword" exact component={ForgetPassWord} />
-            <Route path="/mainmenu" exact component={MainMenuContainer}/>
-            <Route path="/workout/:day" exact component={WorkoutContainer} />
-            <Route path="/plan" exact component={PlanContainer}/>
-            <Route path="/footer" exact component={FooterContainer} />
-            <Route path="/history" exact component={HistoryContainer}/>
-            <Route path="/history/:programID" exact component={HistoryWeekly}/>
-            <Route path="/history/:programID/:day" exact component={HistoryDetail}/>
-            <Route path="/exercise/:index?" exact component={ExerciseContainer}/>
-            <Route path="/profile" exact component={ProfileContainer}/>
-            <Route path="/termsandconditions" exact component={TermsAndCondComponent}/>
-          </Switch>
-        {/*</BrowserRouter>*/}
-        </HashRouter>
-      </div>
-    );
   }
 }
 

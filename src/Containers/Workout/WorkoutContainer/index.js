@@ -5,10 +5,11 @@ import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { Toast } from 'antd-mobile';
 import {selectFooter} from '../FooterContainer/actions';
-import {getProgram, keepWorkout, fetchWorkoutList, selectWorkout, setDayIndex, getExerciseRecord, setCurrentDay} from '../actions';
+import {getProgram, keepWorkout, fetchWorkoutList, selectWorkout, setDayIndex, getExerciseRecord, setCurrentDay,removeError} from '../actions';
 import Workout from '../../../Components/Workout/Workout';
 import SelectExercise from '../../../Components/Workout/SelectExercise';
 import Modal from '../../../Components/UI/Modal';
+import ShowError from '../../../Components/Error/ShowError';
 import FooterContainer from '../FooterContainer';
 import Loading from '../../../Components/Loading';
 import Hoc from '../../../HOC/Hoc';
@@ -23,6 +24,7 @@ class WorkoutContainer extends Component{
       backToPlan: false,
       startExcercies: false,
       exercisesIndex: null,
+      count: 1,
     }
   }
   componentWillMount(){
@@ -46,8 +48,15 @@ class WorkoutContainer extends Component{
   componentDidMount(){
     this.loadingToast();
   }
+  componentWillReceiveProps(nextProps){
+    if(nextProps.WorkoutReducers.record ){
+      if(nextProps.WorkoutReducers.records !== ""){
+        Toast.hide();
+      }
+    }
+  }
   loadingToast = () => {
-    Toast.loading('Loading...', 2, () => {
+    Toast.loading('Loading...', 0, () => {
       console.log('Load complete !!!');
     });
   }
@@ -76,8 +85,12 @@ class WorkoutContainer extends Component{
   cancelChangeWorkout = () => {
     this.setState({ isChangeWorkout: false })
   }
-
+  cancelErrorMessageHandler =() => {
+    this.props.removeError();
+  }
   render() {
+    const {error} =this.props.WorkoutReducers
+    console.log(error)
     if(this.props.WorkoutReducers.program){
       if(this.state.isReady){
       return (
@@ -96,6 +109,13 @@ class WorkoutContainer extends Component{
             listExercise = {this.props.WorkoutReducers.listExercise}
             cancel = {this.cancelChangeWorkout}
           />
+          </Modal>
+        )}
+        {(error.hasError) && (
+          <Modal modalFor='modal'>
+            <ShowError 
+             error={error.message}
+             cancel={this.cancelErrorMessageHandler}/>
           </Modal>
         )}
         {( this.state.startExcercies) && (
@@ -125,7 +145,8 @@ function mapStateToProps(state){
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
     selectFooter, keepWorkout, fetchWorkoutList, getProgram,
-    selectWorkout, setDayIndex, getExerciseRecord, setCurrentDay
+    selectWorkout, setDayIndex, getExerciseRecord, setCurrentDay,
+    removeError
   }, dispatch
 );
 }

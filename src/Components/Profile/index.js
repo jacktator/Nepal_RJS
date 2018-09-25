@@ -69,16 +69,6 @@ class Profile extends Component{
     });
   };
 
-  closeDecision = () => {
-    if (this.state.files.length == 0) {
-      this.onClose('modal')()
-    } else {
-      this.props.uploadPicture(this.state.files[0].file);
-      this.onClose('modal')();
-      this.setState({ animating: true });
-    }
-  }
-
   render(){
     return (
       <div className="profile-container">
@@ -87,6 +77,25 @@ class Profile extends Component{
       </div>
         <div className="profile-list-view-container">
 
+        <Modal
+          visible={this.state.modal}
+          transparent
+          maskClosable={false}
+          onClose={this.onClose('modal')}
+          title="Title"
+          footer={[{ text: 'Ok', onPress: () => { this.props.uploadPicture(this.state.files[0].file); this.onClose('modal')(); this.setState({ animating: true }) } }]}
+          wrapProps={{ onTouchStart: this.onWrapTouchStart }}
+        >
+          <div>
+          <ImagePicker
+            length="1"
+            files={this.state.files}
+            onChange={this.onChange}
+            onImageClick={(index, fs) => console.log(index, fs)}
+            selectable={this.state.files.length < 1}
+              />
+          </div>
+        </Modal>
         <MyDetails
         name = {this.props.name}
         heightArray={this.props.heightArray}
@@ -99,12 +108,12 @@ class Profile extends Component{
         uploadPicture={this.props.uploadPicture}
         updateFinish={()=>this.updateFinish()}
         />
-        <Button  className="change-avatar-button" onClick={this.showModal('modal')}>Change Avatar</Button>
-        <ActivityIndicator
+        {/*<Button  className="change-avatar-button" onClick={this.showModal('modal')}>Change Avatar</Button>
+         <ActivityIndicator
         toast
         text="updating..."
         animating={this.state.animating}
-      />
+      /> */}
 
       <Modal
         visible={this.state.modal}
@@ -133,7 +142,7 @@ class Profile extends Component{
       passError = {this.props.passError}
       files={this.state.files}
       />
-      <Footer/>
+      <Footer onLogoutHandler={this.props.onLogoutHandler}/>
       </div>
       </div>
     );

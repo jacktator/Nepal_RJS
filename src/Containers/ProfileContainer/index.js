@@ -2,10 +2,13 @@ import React, {Component} from 'react';
 import Profile from '../../Components/Profile'
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import { changeName, changeBirthDate, changeHeight, changeWeight, changeEmail, putPassword,changePassword,showPassError, getUserData, uploadPicture} from './actions';
+import { changeName, changeBirthDate, changeHeight, changeWeight, changeEmail, putPassword,changePassword,showPassError, getUserData, uploadPicture,removeError} from './actions';
 import { Toast } from 'antd-mobile'
 import FooterContainer from '../Workout/FooterContainer';
+import {checkLogout} from '../RootContainer/action'; //logout
 import axios from 'axios';
+import Modal from '../../Components/UI/Modal';
+import ShowError from '../../Components/Error/ShowError';
 
 class ProfileContainer extends Component{
 
@@ -37,14 +40,22 @@ class ProfileContainer extends Component{
       }
     }
 
+
     setTimeout(function(){this.props.showPassError("NO_ERROR");}.bind(this),1500);
   }
 
+  onLogoutHandler = () => {
+    this.props.checkLogout();
+  }
+
+  cancelErrorMessageHandler =()=> {
+    this.props.removeError();
+  }
   render () {
 
     const heightArray = ArrtoObj(70, 270, "length");
     const weightArray = ArrtoObj(20, 300, "weight");
-    const { nick_name, fields } = this.props.ProfileReducers;
+    const { nick_name, fields,error} = this.props.ProfileReducers;
     return (
       <div>
         <Profile
@@ -60,11 +71,20 @@ class ProfileContainer extends Component{
           uploadPicture={this.props.uploadPicture}
           //accountdetails
           selectEmail = {this.props.changeEmail}
+          onLogoutHandler = {this.onLogoutHandler}
           onSavePassword = {this.onSavePassword}
           putPassword = {this.props.putPassword}
           checkField = {this.checkField}
         />
         <FooterContainer currentPath='profile'/>
+        {(error.hasError) && (
+          <Modal modalFor='modal'>
+            <ShowError 
+              error={error.message}
+              cancel={this.cancelErrorMessageHandler}
+              />
+          </Modal>
+        )}
       </div>
     )
   }
@@ -79,7 +99,8 @@ function mapStateToProps(state){
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
     changeWeight,changeHeight,changeName,changeBirthDate,changeEmail,
-    putPassword,showPassError,changePassword,getUserData,uploadPicture
+    putPassword,showPassError,changePassword,getUserData,uploadPicture,
+    checkLogout,removeError
   }, dispatch
 );
 }

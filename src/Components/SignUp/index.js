@@ -5,7 +5,9 @@ import { List, InputItem, WingBlank, Button,} from 'antd-mobile';
 import { createForm } from 'rc-form';
 import './SignUp.css';
 import Logo from '../../Assets/LogoLighter.png';
-import {Redirect} from 'react-router-dom';
+
+import Modal from '../../Components/UI/Modal'
+import ShowError from '../../Components/Error/ShowError';
 
 var lockerstyle={
   backgroundImage: 'url(https://png.icons8.com/ios/50/000000/lock.png)',
@@ -37,31 +39,12 @@ type Props={
   state: Object,
 }
 
-type State={
-  able: boolean,
-}
 
-class SignUp extends Component<Props, State> {
-  constructor(props){
-    super(props)
-    this.state={
-      able: false,
-    }
-  }
+const SignUp = (props) => {
 
-  onAbleChange(){
-    const{username, email, password} = this.props.state
-    const able = !this.state.able;
-    this.props.onClickButton(username, email, password)
-    this.setState({able});
-  }
-
-  render() {
-    const {username, email, password}= this.props.state;
-    // const {able} = this.state
+    const {username, email, password}= props.SignUpStates;
     return (
       <div className="signup">
-
         {/* logo block*/}
         <div className="signup-logo-position">
           <img src={Logo} className="logo" alt="logo"/>
@@ -73,7 +56,7 @@ class SignUp extends Component<Props, State> {
                 value={username}
                 type="text"
                 name="username"
-                onChange={(value)=>this.props.onChangeUsername(value)}
+                onChange={(value)=>props.onChangeUsername(value)}
                 style={{color: 'grey'}}
               >
               <div style={humeniconstyle} />
@@ -82,7 +65,7 @@ class SignUp extends Component<Props, State> {
                 value={email}
                 type="text"
                 name="email"
-                onChange={(value)=>this.props.onChangeEmail(value)}
+                onChange={(value)=>props.onChangeEmail(value)}
                 style={{color: 'grey'}}
               >
               <div style={emailiconstyle} />
@@ -91,7 +74,7 @@ class SignUp extends Component<Props, State> {
                 value={password}
                 type="password"
                 name="password"
-                onChange={(value)=>this.props.onChangePassword(value)}
+                onChange={(value)=>props.onChangePassword(value)}
                 style={{color: 'grey'}}
               >
               <div style={lockerstyle} />
@@ -103,13 +86,13 @@ class SignUp extends Component<Props, State> {
             <WingBlank>
               <Button
                 type="primary"
-                onClick={()=>this.onAbleChange()}
-                loading={this.state.able}
+                onClick={()=>props.onAbleChange()}
+                loading={props.state.able || props.state.loading}
+                disabled={props.state.click}
               >
                 Create Account
               </Button>
-              {this.props.state.error && this.props.history.go(0)}
-              {this.props.isLoggedIn && <Redirect to="/questionnaire" />}
+
             </WingBlank>
           </div>
           <div className='signup-checkbox'>
@@ -123,7 +106,6 @@ class SignUp extends Component<Props, State> {
       </div>
 
     );
-  }
 }
   const SignUpWrapper = createForm()(SignUp);
 

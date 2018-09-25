@@ -47,7 +47,11 @@ export function getProgram(){
         dispatch(setCurrentDay(currentDay));
       }
     }).catch((error)=> {
-      console.log(error);
+      if(error.response){
+        dispatch(catchError(error.response.data.message));
+      }else{
+        dispatch(catchError("Network Connection Error. Please check your network connection"))
+      }
     })
   }
 }
@@ -98,8 +102,12 @@ export function implementDeloadAlgorithm(programID, program, progress, ask_feedb
       dispatch(setCurrentWeek(currentWeek));
       dispatch(setCurrentDay(currentDay));
     }).catch((error) => {
-      alert("error")
       console.log(error)
+      if(error.response){
+        dispatch(catchError(error.response.data.message));
+      }else{
+        dispatch(catchError("Network Connection Error. Please check your network connection"))
+      }
     })//end catch
   })//ends dispatch return
 }//ends function
@@ -124,14 +132,17 @@ export function updateProgress(programID, progress, ask_feedback){
       dispatch(setCurrentWeek(currentWeek));
       dispatch(setCurrentDay(currentDay));
     }).catch((error) => {
-      alert("error")
       console.log(error)
+      if(error.response){
+        dispatch(catchError(error.response.data.message));
+      }else{
+        dispatch(catchError("Network Connection Error. Please check your network connection"))
+      }
     })
   })//ends return dispatch
 }
 
 export function getHistory() {
-  // alert("get history");
   return(dispatch: Function) => {
     let user_id = localStorage.getItem('user_id');
     return axios.get(`https://nepal.sk8tech.io/wp-json/wp/v2/record?filter[meta_key]=user_id&filter[meta_value]=${user_id}`)
@@ -145,6 +156,11 @@ export function getHistory() {
       dispatch(setHistory(historyData))
     }).catch((error)=> {
       console.log(error);
+      if(error.response){
+        dispatch(catchError(error.response.data.message));
+      }else{
+        dispatch(catchError("Network Connection Error. Please check your network connection"))
+      }
     })
   }//end return dispatch function
 }
@@ -181,5 +197,19 @@ export function setProgramID (id: Number) {
   return {
     type: "SET_PROGRAM_ID",
     payload: id
+  }
+}
+
+export function catchError(error: string){
+  console.log(error);
+  return{
+    type: "CATCH_ERROR",
+    payload: error
+  }
+}
+export function removeError(){
+  return{
+    type: "REMOVE_ERROR",
+    payload: null
   }
 }

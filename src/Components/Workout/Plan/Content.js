@@ -15,7 +15,7 @@ export default class Content extends Component {
   }
 
   render() {
-    const { days, progress, program_name, ask_feedback } = this.props.WorkoutReducers.program;
+    const { days, progress, program_name, ask_feedback, finish_for_day } = this.props.WorkoutReducers.program;
 
     return(
       <div>
@@ -26,7 +26,7 @@ export default class Content extends Component {
 
               return (
                 <Link key={k} to={'/workout/' + dayNumber} onClick={event => this.handleClick(event, k)}>
-                  {(dayNumber == progress) && (ask_feedback) ? (
+                  {(dayNumber == progress) && ( finish_for_day || ask_feedback) ? (
                     <Item
                       extra={
                         <Button

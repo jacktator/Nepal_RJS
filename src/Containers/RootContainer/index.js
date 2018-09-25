@@ -10,11 +10,13 @@ type Props={
 
 class RootContainer extends Component<Props>{
   render(){
-    const {check} = this.props.RootStates
+    console.log("This is from root state",this.props.RootStates);
+    const {check, justRegistered} = this.props.RootStates
     return(
       <div>
         <Root
           check={check}
+          justRegistered = {justRegistered}
         />
       </div>
     );

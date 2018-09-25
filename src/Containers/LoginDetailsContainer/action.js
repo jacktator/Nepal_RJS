@@ -98,7 +98,6 @@ export function addPassword(password: string){
 }
 
 export function catchError(error: string){
-  console.log(error);
   return{
     type: "CATCH_ERROR",
     payload: error

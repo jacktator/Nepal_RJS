@@ -23,7 +23,6 @@ import Loading from '../../Loading';
   render() {
     if(this.props.listExercise && this.props.listExercise !== null){
       const exercises = this.props.listExercise.exercises;
-      console.log(exercises)
       return (
         <div className="container">
           <img src={require("../../../Assets/Modal/ic_cancel.png")} className="cancel-icon" alt="cancel"

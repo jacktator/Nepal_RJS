@@ -4,27 +4,8 @@ import {Link,Redirect} from 'react-router-dom';
 
 const Item = List.Item;
 // the Header component of Profile, contains the background image, profile picture and name
-class Footer extends Component {
 
-  state = {
-  goBack: false,
-  }
-
-  handleSubmit = () => {
-    this.setState({
-      goBack:true,
-    });
-
-
-  }
-
-    render() {
-
-
-      if (this.state.goBack === true) {
-        return <Redirect to='/login' />
-      }
-
+const Footer = (props) => {
       return (
         <div style={{marginTop:"40px"}}>
         <List>
@@ -32,9 +13,8 @@ class Footer extends Component {
           <Item>View Terms and Conditions</Item>
         </Link>
         </List>
-        <List><Item onClick={this.handleSubmit}>Logout</Item></List>
+        <List><Item onClick={props.onLogoutHandler}>Logout</Item></List>
         </div>
       )
-    }
 }
 export default Footer;
