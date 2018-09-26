@@ -3,7 +3,7 @@ let DefaultState = {
   fields: {
     weight: "60",
     height: "170",
-    birthDate: "1995-01-01",
+    dateofbirth: "1995-01-01",
     photo: "https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg",
     email:"laxman@gmail.com",
     password:"12345",
@@ -31,7 +31,7 @@ const ProfileReducers =(state: Object= DefaultState, action: Function) => {
 
     case "CHANGE_BIRTH_DATE":
     fields = {...state.fields};
-    fields['birthDate']= action.payload
+    fields['dateofbirth']= action.payload
     return {
       ...state, fields
     }
