@@ -2,7 +2,10 @@ import React, {Component} from 'react';
 import Profile from '../../Components/Profile'
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import { changeName, changeBirthDate, changeHeight, changeWeight, changeEmail, putPassword,changePassword,showPassError, getUserData, uploadPicture,removeError} from './actions';
+import {
+  changeName, changeBirthDate, changeHeight, changeWeight, changeEmail, putPassword, changePassword, showPassError,
+  getUserData, uploadPicture, removeError, updateName, updateBOD, updateWeight, updateHeight, updataPassword
+} from './actions';
 import { Toast } from 'antd-mobile'
 import FooterContainer from '../Workout/FooterContainer';
 import {checkLogout} from '../RootContainer/action'; //logout
@@ -25,6 +28,7 @@ class ProfileContainer extends Component{
           if(this.props.ProfileReducers.fields.newPassword === this.props.ProfileReducers.fields.confirmPassword){
             if(this.props.ProfileReducers.fields.confirmPassword.length >= 5 ) {
               this.props.changePassword(this.props.ProfileReducers.fields.confirmPassword);
+              this.props.updataPassword(this.props.ProfileReducers.fields.newPassword);
               Toast.info('Password Change Successful!');
             } else {
               this.props.showPassError("LENGTH");
@@ -70,11 +74,16 @@ class ProfileContainer extends Component{
           selectBirthDate={this.props.changeBirthDate}
           uploadPicture={this.props.uploadPicture}
           //accountdetails
-          selectEmail = {this.props.changeEmail}
-          onLogoutHandler = {this.onLogoutHandler}
-          onSavePassword = {this.onSavePassword}
-          putPassword = {this.props.putPassword}
-          checkField = {this.checkField}
+          selectEmail={this.props.changeEmail}
+          onLogoutHandler={this.onLogoutHandler}
+          onSavePassword={this.onSavePassword}
+          putPassword={this.props.putPassword}
+          checkField={this.checkField}
+          updateName={this.props.updateName}
+          updateBOD={this.props.updateBOD}
+          updateWeight={this.props.updateWeight}
+          updateHeight={this.props.updateHeight}
+          updataPassword={this.props.updataPassword}
         />
         <FooterContainer currentPath='profile'/>
         {(error.hasError) && (
@@ -100,7 +109,7 @@ function matchDispatchToProps(dispatch){
   return bindActionCreators({
     changeWeight,changeHeight,changeName,changeBirthDate,changeEmail,
     putPassword,showPassError,changePassword,getUserData,uploadPicture,
-    checkLogout,removeError
+    checkLogout,removeError,updateName,updateBOD, updateWeight,updateHeight,updataPassword
   }, dispatch
 );
 }

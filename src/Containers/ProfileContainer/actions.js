@@ -13,9 +13,11 @@ export function getUserData(){
     )
       .then((response) => {
         console.log(response.data);
-        dispatch(changeName(response.data.name));
-        dispatch(changeWeight(response.data.acf.weight));
-        dispatch(changeAavatar(response.data.acf.photo));
+        response.data.name && dispatch(changeName(response.data.name));
+        response.data.acf.weight && dispatch(changeWeight(response.data.acf.weight));
+        response.data.acf.photo && dispatch(changeAavatar(response.data.acf.photo));
+        response.data.acf.dateofbirth && dispatch(changeBirthDate(response.data.acf.dateofbirth));
+        response.data.acf.height && dispatch(changeHeight(response.data.acf.height));
     }).catch((error)=> {
       console.log(error);
       if(error.response){
@@ -78,6 +80,70 @@ export function updateAvatar(url: string) {
   }
 }
 
+export function  updateName(name: string) {
+  const aimUrl = "https://nepal.sk8tech.io/wp-json/wp/v2/users/" + localStorage.getItem('user_id');
+  let token = localStorage.getItem('token');
+  return (dispatch: Function) => {
+    return axios.put(aimUrl, { "name": name }, { headers: { 'Authorization': "Bearer" + token } })
+      .then(res => {
+        dispatch(changeName(res.data.name));
+      })
+      .catch(error => console.log(error));
+  }
+}
+
+export function updateBOD(bod: string) {
+  const aimUrl = "https://nepal.sk8tech.io/wp-json/wp/v2/users/" + localStorage.getItem('user_id');
+  let token = localStorage.getItem('token');
+  return (dispatch: Function) => {
+    return axios.put(aimUrl, {"fields": {"dateofbirth": bod}}, { headers: { 'Authorization': "Bearer" + token } })
+      .then(res => {
+        dispatch(changeBirthDate(res.data.acf.dateofbirth));
+      })
+      .catch(error => console.log(error));
+  }
+}
+
+export function updateWeight(weight: string) {
+  const aimUrl = "https://nepal.sk8tech.io/wp-json/wp/v2/users/" + localStorage.getItem('user_id');
+  let token = localStorage.getItem('token');
+  return (dispatch: Function) => {
+    return axios.put(aimUrl, {"fields": {"weight": weight}}, { headers: { 'Authorization': "Bearer" + token } })
+      .then(res => {
+        console.log(res.data.acf.weight)
+        dispatch(changeWeight(res.data.acf.weight));
+      })
+      .catch(error => console.log(error));
+  }
+}
+
+export function updateHeight(height: string) {
+  const aimUrl = "https://nepal.sk8tech.io/wp-json/wp/v2/users/" + localStorage.getItem('user_id');
+  let token = localStorage.getItem('token');
+  return (dispatch: Function) => {
+    return axios.put(aimUrl, {"fields": {"height": height}}, { headers: { 'Authorization': "Bearer" + token } })
+      .then(res => {
+        console.log(res.data.acf.height)
+        dispatch(changeHeight(res.data.acf.height));
+      })
+      .catch(error => console.log(error));
+  }
+}
+
+export function updataPassword(password: string) {
+  const aimUrl = "https://nepal.sk8tech.io/wp-json/wp/v2/users/" + localStorage.getItem('user_id');
+  let token = localStorage.getItem('token');
+  return (dispatch: Function) => {
+    return axios.put(aimUrl, {"password": password}, { headers: { 'Authorization': "Bearer" + token } })
+      .then(res => {
+        console.log(res.data)
+      })
+      .catch(error => console.log(error));
+  }
+
+  
+}
+
 export function changeAavatar(photo: string) {
   return {
     type: "CHANGE_AVATAR",
@@ -93,11 +159,10 @@ export function changeName (nick_name: string) {
   }
 }
 
-export function changeBirthDate (birthDate: Date) {
-  let date = formatDate(birthDate)
+export function changeBirthDate(dateofbirth: string) {
   return {
     type: "CHANGE_BIRTH_DATE",
-    payload: date.toString(),
+    payload: dateofbirth,
   }
 }
 
@@ -155,16 +220,4 @@ export function removeError(){
     type: "REMOVE_ERROR",
     payload: null
   }
-}
-// function to change the format of Date to YYYY-MM-DD
-function formatDate(date) {
-    var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
-
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
-
-    return [year, month, day].join('-');
 }

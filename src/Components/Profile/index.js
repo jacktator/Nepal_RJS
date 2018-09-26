@@ -37,6 +37,13 @@ class Profile extends Component{
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.name != prevProps.name) {
+      this.updateFinish();
+    }
+
+  }
+
   updateFinish() {
     this.setState({ animating: false });
   }
@@ -69,6 +76,12 @@ class Profile extends Component{
     });
   };
 
+  onCloseWithUpload = (file) => {
+    this.props.uploadPicture(file);
+    this.onClose('modal')();
+    this.setState({ animating: true });
+  }
+
   render(){
     return (
       <div className="profile-container">
@@ -83,7 +96,7 @@ class Profile extends Component{
           maskClosable={false}
           onClose={this.onClose('modal')}
           title="Title"
-          footer={[{ text: 'Ok', onPress: () => { this.props.uploadPicture(this.state.files[0].file); this.onClose('modal')(); this.setState({ animating: true }) } }]}
+          footer={[{ text: 'Ok', onPress: () => { this.state.files.length===0 ? this.onClose('modal')() : this.onCloseWithUpload(this.state.files[0].file) } }]}
           wrapProps={{ onTouchStart: this.onWrapTouchStart }}
         >
           <div>
@@ -97,32 +110,37 @@ class Profile extends Component{
           </div>
         </Modal>
         <MyDetails
-        name = {this.props.name}
-        heightArray={this.props.heightArray}
-        weightArray={this.props.weightArray}
-        nameHandler={this.props.nameHandler}
-        selectBirthDate ={this.props.selectBirthDate}
-        selectHeight= {this.props.selectHeight}
-        selectWeight= {this.props.selectWeight}
-        fields={this.props.fields}
-        uploadPicture={this.props.uploadPicture}
-        updateFinish={()=>this.updateFinish()}
+            name={this.props.name}
+            heightArray={this.props.heightArray}
+            weightArray={this.props.weightArray}
+            nameHandler={this.props.nameHandler}
+            selectBirthDate={this.props.selectBirthDate}
+            selectHeight={this.props.selectHeight}
+            selectWeight={this.props.selectWeight}
+            fields={this.props.fields}
+            uploadPicture={this.props.uploadPicture}
+            updateFinish={() => this.updateFinish()}
+            updateName={this.props.updateName}
+            updateBOD={this.props.updateBOD}
+            updateWeight={this.props.updateWeight}
+            updateHeight={this.props.updateHeight}
         />
        <Button  className="change-avatar-button" onClick={this.showModal('modal')}>Change Avatar</Button>
-         <ActivityIndicator
+      <ActivityIndicator
         toast
         text="updating..."
         animating={this.state.animating}
       />
 
 
-      <AccountDetails
-      selectEmail={this.props.selectEmail}
-      putPassword={this.props.putPassword}
-      onSavePassword={this.props.onSavePassword}
-      fields={this.props.fields}
-      passError = {this.props.passError}
-      files={this.state.files}
+          <AccountDetails
+            updataPassword={this.props.updataPassword}
+            selectEmail={this.props.selectEmail}
+            putPassword={this.props.putPassword}
+            onSavePassword={this.props.onSavePassword}
+            fields={this.props.fields}
+            passError={this.props.passError}
+            files={this.state.files}
       />
       <Footer onLogoutHandler={this.props.onLogoutHandler}/>
       </div>
