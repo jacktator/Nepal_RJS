@@ -1,0 +1,55 @@
+{
+  "exercises":[
+      {
+        "day": "1",
+        "exercise_list":[
+            {"name":"13 Quadricep Heavy Exercises","code":"13","sets":"3","reps":"8-10","feedback":"2", "workout":"Front Squat (Barbell)", "progression_model":"linear", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"10 Shoulder Compund Exercises","code":"10","sets":"3","reps":"8-10","feedback":"2", "workout":"Standing Shoulder Press (Barbell)", "progression_model":"linear", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"3 Bicep Heavy Exercises","code":"3","sets":"3","reps":"8-10","feedback":"3", "workout":"Standing Bicep Curl (Barbell)", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"32 Light lateral shoulder + hamstring ioslation ","code":"32","sets":"3","reps":"10-12","feedback":"2", "workout":"Shoulder Front Raise (Dumbbell)", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"43 Tricep light or glute isolation ","code":"43","sets":"3","reps":"20-25","feedback":"4", "workout":"Straight Bar Pushdown", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"24 Abdominal Failure Exercises","code":"24","sets":"3","reps":"Till Failure","feedback":"4", "workout":"Side Plank", "progression_model":"till failure", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"}
+          ]
+      }, {
+        "day": "2",
+        "exercise_list": [
+          {"name":"22 Hamstring & Glute Exercises","code":"22","sets":"3","reps":"10-12","feedback":"2", "workout":"Romanian Deadlift (Barbell)", "progression_model":"linear", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+          {"name":"5 Chest Heavy","code":"5","sets":"3","reps":"10-12","feedback":"2", "workout":"Bench Press (Barbell)", "progression_model":"linear", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+          {"name":"11 Back Heavy Exercises","code":"11","sets":"3","reps":"10-12","feedback":"4", "workout":"Bent Over Row (Barbell)", "progression_model":"linear", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+          {"name":"39 Chest fly + glute accesory ","code":"39","sets":"3","reps":"15-20","feedback":"3", "workout":"Flat Chest Fly (Dumbbell)", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+          {"name":"12 Back Light Exercises","code":"12","sets":"3","reps":"12-15","feedback":"4", "workout":"Single Arm Row (Dumbbell)", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+          {"name":"20 Glutes Accessory Exercises","code":"20","sets":"3","reps":"Till Failure","feedback":"3", "workout":"Glute Bridge (Single Leg)", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"}
+        ]
+      },  {
+        "day": "3",
+        "exercise_list": [
+            {"name":"14 Quadricep Heavy Compund Accesory Exercises","code":"14","sets":"3","reps":"10-12","feedback":"3", "workout":"Hack Squat", "progression_model":"linear", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"44 Shoulder compound Or glute compund","code":"44","sets":"3","reps":"10-12","feedback":"4", "workout":"Standing Shoulder Press (Barbell)", "progression_model":"linear", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"45 Chest dumbbell or quad unilateral","code":"45","sets":"3","reps":"10-12","feedback":"4", "workout":"Flat Chest Press (Dumbbell)", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"12 Back Light Exercises","code":"12","sets":"3","reps":"12-15","feedback":"2", "workout":"Single Arm Row (Dumbbell)", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"8 Shoulder Isolation Exercises","code":"8","sets":"3","reps":"12-15","feedback":"3", "workout":"Shoulder Front Raise (Dumbbell)", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+            {"name":"2 Tricep Light Exercises","code":"2","sets":"3","reps":"12-15","feedback":"2", "workout":"Straight Bar Pushdown", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"}
+          ]
+      }, {
+        "day": "4",
+        "exercise_list":[
+          {"name":"22 Hamstring & Glute Exercises","code":"22","sets":"3","reps":"9-11","feedback":"4", "workout":"Romanian Deadlift (Barbell)", "progression_model":"linear", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+          {"name":"5 Chest Heavy","code":"5","sets":"3","reps":"9-11","feedback":"3", "workout":"Bench Press (Barbell)", "progression_model":"linear", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+          {"name":"12 Back Light Exercises","code":"12","sets":"3","reps":"9-11","feedback":"2", "workout":"Single Arm Row (Dumbbell)", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+          {"name":"39 Chest fly + glute accesory ","code":"39","sets":"3","reps":"15-20","feedback":"4", "workout":"Flat Chest Fly (Dumbbell)", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+          {"name":"12 Back Light Exercises","code":"12","sets":"3","reps":"12-15","feedback":"3", "workout":"Single Arm Row (Dumbbell)", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+          {"name":"23 Abdominal Exercises","code":"23","sets":"3","reps":"20-25","feedback":"2", "workout":"Crunch With Arms Extended", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"}
+        ]
+      }, {
+        "day": "5",
+        "exercise_list":[
+          {"name":"13 Quadricep Heavy Exercises","code":"13","sets":"3","reps":"12-15","feedback":"4", "workout":"Front Squat (Barbell)", "progression_model":"linear", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+          {"name":"19 Glute Compund Exercises","code":"19","sets":"3","reps":"12-15","feedback":"2", "workout":"Glute Bridge (Barbell)", "progression_model":"linear", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+          {"name":"46 Shoulder rear delt + leg extensions","code":"46","sets":"3","reps":"12-15","feedback":"3", "workout":"{30 deg} Bench Supported Reverse Fly (Dumbbell)", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+          {"name":"4 Bicep Light Exercises","code":"4","sets":"3","reps":"12-15","feedback":"4", "workout":"Standing Bicep Curl (Dumbbell)", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+          {"name":"9 Shoulder Rear Delt Isolation Exercises","code":"9","sets":"3","reps":"15-20","feedback":"2", "workout":"{30 deg} Bench Supported Reverse Fly (Dumbbell)", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+          {"name":"1 Tricep Heavy Exercises","code":"1","sets":"3","reps":"12-15","feedback":"3", "workout":"Close Grip Bench Press (Barbell)", "progression_model":"linear", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"}
+        ]
+      }
+  ]
+}
