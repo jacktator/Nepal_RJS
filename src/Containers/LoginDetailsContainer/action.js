@@ -20,7 +20,7 @@ export function LoginDetailsActions(email:string, password:string){
       dispatch(upDateToken(token));
       dispatch(setGlobalAxiosDefault(token));
       dispatch(checkLogin());
-      // dispatch(validToken(token));
+      dispatch(validToken(token));
     }).catch((error)=>{
       if(error.response){
         dispatch(catchError("The username or password you entered is incorrect."));
@@ -44,6 +44,7 @@ export function validToken(token:string){
       }
     )
     .then((response)=>{
+      console.log("validate token")
       console.log(response.data.data.status)
       dispatch(isAuthenticated(response.data.data.status));
     })

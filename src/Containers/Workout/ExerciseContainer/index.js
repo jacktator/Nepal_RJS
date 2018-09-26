@@ -79,7 +79,6 @@ class ExerciseContainer extends Component{
   }
 
   componentWillReceiveProps(nextProps){
-
     Toast.hide();
   }
   loadingToast = () => {
@@ -210,8 +209,7 @@ class ExerciseContainer extends Component{
       Toast.hide();
       this.setState({isLoading: false})
     }, 1000);
-    let exerciseLog = this.state.exerciseLog;
-
+    let exerciseLog = [...this.state.exerciseLog];
     exerciseLog.push({weight:this.state.weight, reps:this.state.reps, sets: this.state.currentSets});
     this.setState({exerciseLog, currentSets : this.state.currentSets+1})
 
@@ -246,13 +244,16 @@ class ExerciseContainer extends Component{
     e.preventDefault();
     this.setState({ showInfo: !this.state.showInfo})
   }
-  cancelErrorMessaegHandler= ()=>{
+  cancelErrorMessaegHandler = () => {
+
+    let exerciseLog = [...this.state.exerciseLog];
+    exerciseLog.splice((exerciseLog.length-1), 1);
+    this.setState({exerciseLog, currentSets: this.state.currentSets-1})
     this.props.removeError();
   }
-  checkCompleteProgress =()=>{
+  checkCompleteProgress = () => {
     const {finish_for_day} = this.props.WorkoutReducers.program;
     if(finish_for_day && this.state.isFinish){
-
         return(
           <Redirect to="/plan" />
         )
@@ -260,6 +261,7 @@ class ExerciseContainer extends Component{
   }
   render(){
     let {error} =this.props.WorkoutReducers;
+    let exercisePlace = this.props.WorkoutReducers.program.exercise_place;
     let message = "";
     if(this.state.currentSets <= this.state.sets){
       if(this.state.exerciseData.progression_model === 'linear'){
@@ -321,6 +323,7 @@ class ExerciseContainer extends Component{
         onChangeRep={this.onChangeRep}
         onInfoClicked = {this.infoHandler}
         message = {message}
+        exercisePlace = {exercisePlace}
         /*videos={this.state.selectedVideo}*/
         state = {this.state}
         />

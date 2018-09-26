@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import {Redirect} from 'react-router';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import { Toast } from 'antd-mobile';
+import { Toast, ActivityIndicator } from 'antd-mobile';
 import {selectFooter} from '../FooterContainer/actions';
 import {getProgram, keepWorkout, fetchWorkoutList, selectWorkout, setDayIndex, getExerciseRecord, setCurrentDay,removeError} from '../actions';
 import Workout from '../../../Components/Workout/Workout';
@@ -19,6 +19,7 @@ class WorkoutContainer extends Component{
     super(props);
     this.state = {
       isReady: false,
+      animating: true,
       showKeepOrChange: false,
       isChangeWorkout: false,
       backToPlan: false,
@@ -46,19 +47,15 @@ class WorkoutContainer extends Component{
     }
   }
   componentDidMount(){
-    this.loadingToast();
   }
   componentWillReceiveProps(nextProps){
     if(nextProps.WorkoutReducers.record ){
       if(nextProps.WorkoutReducers.records !== ""){
-        Toast.hide();
+        if(this.state.animating){
+            this.setState({ animating: false})
+        }
       }
     }
-  }
-  loadingToast = () => {
-    Toast.loading('Loading...', 0, () => {
-      console.log('Load complete !!!');
-    });
   }
   //invokes when user click keep button
   onWorkOutKeepHandler = (index ) => {
@@ -102,6 +99,13 @@ class WorkoutContainer extends Component{
         onStart = {this.onStartHandler}
         WorkoutReducers ={this.props.WorkoutReducers}
         />
+        <div>
+            <ActivityIndicator
+              toast
+              text="Please Wait..."
+              animating={this.state.animating}
+            />
+        </div>
         {(this.state.isChangeWorkout) && (
           <Modal modalFor = "modal-for-select-exercise">
           <SelectExercise
@@ -113,7 +117,7 @@ class WorkoutContainer extends Component{
         )}
         {(error.hasError) && (
           <Modal modalFor='modal'>
-            <ShowError 
+            <ShowError
              error={error.message}
              cancel={this.cancelErrorMessageHandler}/>
           </Modal>
