@@ -1,5 +1,6 @@
 let DefaultState = {
   dayIndex: null,
+  redirectToQuestionnaire: false,
   error:{
     hasError:false,
     message:''
@@ -47,6 +48,12 @@ const WorkoutReducers =(state: Object= DefaultState, action: Function) => {
     return {
       ...state, recordID: action.payload
     }
+    
+    case "REDIRECT_TO_QUESTIONNAIRE" :
+    return {
+      ...state, redirectToQuestionnaire: action.payload
+    }
+
     case "CATCH_ERROR":
     error = {...state.error};
     error['hasError']= true;

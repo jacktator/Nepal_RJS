@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {selectFooter} from '../FooterContainer/actions';
-import {getHistory,getProgram,removeError} from './action';
+import {getHistory,removeError} from './action';
 import FooterContainer from'../FooterContainer';
 import Header from '../../../Components/Workout/History/Header'
 import HistoryComponent from '../../../Components/Workout/History';
@@ -28,7 +28,6 @@ class HistoryContainer extends Component{
     }
   }
   componentDidMount(){
-    this.props.getProgram();
     this.props.getHistory().then(()=>{
       this.setState({
         loading:false
@@ -70,7 +69,7 @@ class HistoryContainer extends Component{
     let RenderPage = null;
     let {history,error} =this.props.HistoryReducers;
     console.log(error)
-    
+
     if(this.state.currentPage === 1){
       RenderPage = (
         <HistoryComponent
@@ -86,7 +85,7 @@ class HistoryContainer extends Component{
         <FooterContainer currentPath='history'/>
         {(error.hasError) && (
           <Modal modalFor='modal'>
-              <ShowError 
+              <ShowError
                 error={error.message}
                 cancel={this.cancelErrorMessageHandler}/>
           </Modal>
@@ -106,7 +105,6 @@ function matchDispatchToProps(dispatch){
   return bindActionCreators({
     selectFooter,
     getHistory,
-    getProgram,
     removeError
   }, dispatch
 );

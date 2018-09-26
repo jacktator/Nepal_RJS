@@ -260,7 +260,6 @@ class ExerciseContainer extends Component{
   }
   render(){
     let {error} =this.props.WorkoutReducers;
-    console.log(this.props.WorkoutReducers)
     let message = "";
     if(this.state.currentSets <= this.state.sets){
       if(this.state.exerciseData.progression_model === 'linear'){
