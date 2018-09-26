@@ -1,10 +1,10 @@
-export function addError12 (errorMessage: string) {
+export function addError (errorMessage: string) {
   return {
     type: "ADD_ERROR",
     payload: errorMessage
   }
 }
-export function removeError12 () {
+export function removeError () {
   return {
     type: "REMOVE_ERROR",
     payload: null

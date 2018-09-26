@@ -55,7 +55,7 @@ const Exercise = (props) => {
              { props.message != null &&
                <NoticeBar
                  marqueeProps={{ loop: true, fps:40, leading:1000, trailing:1000,style:{padding:'0 100px'}}}
-                 mode="closable"
+                 mode=''
                  icon={null}
                  className="display-message"
                >

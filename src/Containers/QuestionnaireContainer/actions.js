@@ -9,7 +9,7 @@ export function addQuestionnaire(state) {
       fields: state.fields
     }
   ).then((response) => {
-    dispatch(addProgram(response.data.acf.days_per_week, response.data.acf.goals));
+    dispatch(addProgram(response.data.acf.days_per_week, response.data.acf.goals, response.data.acf.exercise_place));
     dispatch(success(true));
     setTimeout(function(){
       dispatch(success(false));
@@ -27,7 +27,7 @@ export function addQuestionnaire(state) {
 }
 
 //Function to initialize the program after completion of the questionnaire
-export function addProgram (days, goals) {
+export function addProgram (days, goals, exercise_place) {
   return(dispatch: Function) => {
     let user_id = localStorage.getItem('user_id');
     let goal;
@@ -50,7 +50,15 @@ export function addProgram (days, goals) {
       default:
         goal = "Please select the goal"
     }
-    let jsonurl = `./DataSources/${goal.replace(' ', '').toLowerCase()}day${days}.json`;
+    let jsonurl;
+    if(exercise_place === "gym"){
+        jsonurl = `./DataSources/Gym/${goal.replace(' ', '').toLowerCase()}day${days}.json`;
+    }else if(exercise_place === "home"){
+        jsonurl = `./DataSources/Home/${goal.replace(' ', '').toLowerCase()}day${days}.json`;
+    }else{
+      alert("nothing found");
+    }
+
       //fetch the list of exercise
       return axios.get(jsonurl)
       .then((res) => {
@@ -64,7 +72,8 @@ export function addProgram (days, goals) {
               days: days,
               exercises: res.data.exercises,
               progress: "1",
-              difficult_level: "1"
+              difficult_level: "1",
+              exercise_place: exercise_place,
           }
         }).then((response) => {
 

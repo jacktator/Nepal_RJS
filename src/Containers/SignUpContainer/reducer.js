@@ -2,9 +2,9 @@
 
 let DefaultState=
   {
-    username:'raul',
-    email:'raul@gmail.com',
-    password:'raul',
+    username:'',
+    email:'',
+    password:'',
     fetch:'',
     error: {
       hasError: false,

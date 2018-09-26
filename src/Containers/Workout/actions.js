@@ -8,42 +8,50 @@ export function getProgram(){
                     filter[meta_key]=user_id&filter[meta_value]=${user_id}&filter[posts_per_page]=1`
     )
     .then((response)=> {
-      const progress = parseInt(response.data[0].acf.progress,10);
-      const days = parseInt(response.data[0].acf.days,10);
-      const value = response.data[0].acf.feedback_value;
-      const currentWeek = Math.ceil(progress / days);
-      //const currentDay = progress - ((currentWeek -1 ) * days)
+      //if there is no data found on program
+      if(response.data.length === 0){
+        dispatch(redirectToQuestionnaire(true));
+        setTimeout(function(){
+          dispatch(redirectToQuestionnaire(false));
+        },1000);
 
-      const programStartDate = new Date(response.data[0].date);
-      const currentDate = new Date().getTime();
-      let difference = currentDate - programStartDate;
-      let daysDifference = Math.floor(difference/1000/60/60/24) + 1;
-      let update = false;
-      const runningWeek = Math.ceil(daysDifference/7)
-      const dayCountForRunningWeek =  daysDifference - (runningWeek-1) * 7 ;
-      let currentProgress;
-
-      if(dayCountForRunningWeek <= days){
-        currentProgress = (runningWeek-1) * days + dayCountForRunningWeek;
       }else{
-        currentProgress = (runningWeek-1) * days + days;
-      }
-      if(parseInt(progress,10) < currentProgress){
-        update = true;
-        const askFeedback = parseInt(value, 10) ===0 ? true : false
+        const progress = parseInt(response.data[0].acf.progress,10);
+        const days = parseInt(response.data[0].acf.days,10);
+        const value = response.data[0].acf.feedback_value;
+        const currentWeek = Math.ceil(progress / days);
+        //const currentDay = progress - ((currentWeek -1 ) * days)
+        const programStartDate = new Date(response.data[0].date);
+        const currentDate = new Date().getTime();
+        let difference = currentDate - programStartDate;
+        let daysDifference = Math.floor(difference/1000/60/60/24) + 1;
+        let update = false;
+        const runningWeek = Math.ceil(daysDifference/7)
+        const dayCountForRunningWeek =  daysDifference - (runningWeek-1) * 7 ;
+        let currentProgress;
 
-        if(runningWeek === 5 && currentWeek !== 5){
-          dispatch(implementDeloadAlgorithm(response.data[0].id, response.data[0].acf, currentProgress, askFeedback))
+        if(dayCountForRunningWeek <= days){
+          currentProgress = (runningWeek-1) * days + dayCountForRunningWeek;
         }else{
-          dispatch(updateProgress(response.data[0].id, currentProgress, askFeedback))
+          currentProgress = (runningWeek-1) * days + days;
         }
-      }else{
-        console.log("Need to add logic for off days in action line 41")
-      }
-      if(!update){
-        dispatch(setProgram(response.data[0].acf));
-        dispatch(setProgramID(response.data[0].id));
-        dispatch(setCurrentDay(progress));
+        if(parseInt(progress,10) < currentProgress){
+          update = true;
+          const askFeedback = parseInt(value, 10) ===0 ? true : false
+
+          if(runningWeek === 5 && currentWeek !== 5){
+            dispatch(implementDeloadAlgorithm(response.data[0].id, response.data[0].acf, currentProgress, askFeedback))
+          }else{
+            dispatch(updateProgress(response.data[0].id, currentProgress, askFeedback))
+          }
+        }else{
+          console.log("Need to add logic for off days in action line 41")
+        }
+        if(!update){
+          dispatch(setProgram(response.data[0].acf));
+          dispatch(setProgramID(response.data[0].id));
+          dispatch(setCurrentDay(progress));
+        }
       }
     }).catch((error)=> {
       console.log(error);
@@ -150,7 +158,8 @@ export function updateDailyFeedBack(programID, program, value) {
       feedbackValue = 0;
     }
     if(program.finish_for_day === true){
-      program.progress= progress+1;
+      progress += 1;
+      program.progress= progress;
     }
     if(value === 3){
       needUpdate = true;
@@ -176,7 +185,9 @@ export function updateDailyFeedBack(programID, program, value) {
       status: "publish",
       fields: program
     }).then((response)=> {
-      dispatch(setProgram(response.data.acf));
+      dispatch(setProgram(response.data[0].acf));
+      dispatch(setProgramID(response.data[0].id));
+      dispatch(setCurrentDay(progress));
     }).catch((error) => {
       if(error.response){
         dispatch(catchError(error.response.data.message));
@@ -454,6 +465,12 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
           return {
             type: "SET_EXERCISE_ID",
             payload: id
+          }
+        }
+        export function redirectToQuestionnaire(value: Boolean) {
+          return {
+            type: "REDIRECT_TO_QUESTIONNAIRE",
+            payload: value
           }
         }
         export function catchError(error: string){

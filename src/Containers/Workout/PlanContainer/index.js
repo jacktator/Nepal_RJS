@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
+import {Redirect} from 'react-router-dom';
+
 import {selectFooter} from '../FooterContainer/actions';
 import {getProgram, updateDailyFeedBack} from '../actions';
 import FooterContainer from'../FooterContainer';
@@ -79,6 +81,7 @@ class PlanContainer extends Component{
         <FooterContainer
           currentPath='plan'
         />
+
         { this.state.finishProgram &&
           <Modal modalFor = "modal">
             <RedirectToQuestionnaire />
@@ -94,12 +97,20 @@ class PlanContainer extends Component{
             />
           </Modal>
         }
+
+        {(this.props.WorkoutReducers.redirectToQuestionnaire) && (
+          <Redirect to='/questionnaire' />
+        )}
+
         </div>
       )
     } else {
       return(
         <Hoc>
         <Loading/>
+        {(this.props.WorkoutReducers.redirectToQuestionnaire) && (
+          <Redirect to='/questionnaire' />
+        )}
         </Hoc>
       )
     }

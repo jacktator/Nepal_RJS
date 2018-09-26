@@ -3,8 +3,10 @@
 
 let DefaultState=
   {
-    email:'boy@test.com',
-    password:12345678,
+    // email:'boy@test.com',
+    // password:12345678,
+    email:'',
+    password:'',
     token: '',
     status: true,
     error: {
