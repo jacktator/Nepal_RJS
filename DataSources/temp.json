@@ -1062,7 +1062,7 @@
                 {"name":"Foam Roller Thoracic Spine ","progression_model":"No model of progression "},
                 {"name":"Bench Shoulder Flexion Stretch ","progression_model":"No model of progression "},
                 {"name":"Foam Roller Weighted Thoracic Mobility ","progression_model":"No model of progression "},
-                {"name":"Weighted Neck Stretch (Trapezius)","progression_model":"No model of progression "}    
+                {"name":"Weighted Neck Stretch (Trapezius)","progression_model":"No model of progression "}
               ]
             }
           ]
@@ -1700,6 +1700,8 @@
                   {"name":"T Lift Rotations ","progression_model":"No progression - reps or time remain the same each week","repitions_time":"30-90 sec"}
                 ]
               }
+
+
             ]
           }
   ]
