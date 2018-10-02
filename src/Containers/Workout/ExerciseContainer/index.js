@@ -23,6 +23,7 @@ class ExerciseContainer extends Component{
       //videos:[],
       //selectedVideo:null,
       inCurrentProgress: true,
+      exercisePlace: null, //represent the place of doing exercise either gym or home
       isFinish: false, // represent if the workout finsh for a day.
       isLoading: false, // represent the loading of data
       goBack: false, // represent if user click back button
@@ -50,7 +51,6 @@ class ExerciseContainer extends Component{
     this.onSaveButtonHandler = this.onSaveButtonHandler.bind(this);
     this.onNextButtonHandler = this.onNextButtonHandler.bind(this);
     this.onHistoryButtonHandler = this.onHistoryButtonHandler.bind(this);
-
   }
   componentWillMount() {
     let index = 0;
@@ -58,10 +58,10 @@ class ExerciseContainer extends Component{
       index = this.props.match.params.index;
       this.setState({exerciseIndex: parseInt(this.props.match.params.index, 10)})
     }
-
-    const {program, currentDay, dayIndex}= this.props.WorkoutReducers;
-
+    const {program, currentDay, dayIndex} = this.props.WorkoutReducers;
     if(program && dayIndex!== null){
+      let exercisePlace = this.props.WorkoutReducers.program.exercise_place;
+      this.setState({exercisePlace})
       if( parseInt(program.progress,10) !== currentDay){
         this.setState({inCurrentProgress: false})
       }
@@ -71,7 +71,6 @@ class ExerciseContainer extends Component{
         this.calculateExerciseLog();
       }else{
         this.setState({ error: true})
-
       }
     }else{
       this.setState({ error: true})
@@ -87,6 +86,7 @@ class ExerciseContainer extends Component{
   }
 
   calculateExerciseLog = () => {
+    let exercisePlace = this.props.WorkoutReducers.program.exercise_place;
     let {program, dayIndex}= this.props.WorkoutReducers;
     let records = this.props.WorkoutReducers.record;
     //let week = this.props.WorkoutReducers.currentWeek;
@@ -97,44 +97,64 @@ class ExerciseContainer extends Component{
     let exerciseLength = program.exercises[dayIndex].exercise_list.length;
     let code = exerciseData.code;
     let reps;
-    if(exerciseData.progression_model === "double progression"){
-      if(exerciseData.reps === "Till Failure" || exerciseData.reps === "till failure"){
-        reps = 8;
-      }else{
-        let temp = exerciseData.reps.split('-');
-        reps = parseInt(temp[temp.length-1], 10);
+
+    if(exercisePlace === "gym"){
+      alert("gym")
+      if(exerciseData.progression_model === "double progression"){
+        if(exerciseData.reps === "Till Failure" || exerciseData.reps === "till failure"){
+          reps = 8;
+        }else{
+          let temp = exerciseData.reps.split('-');
+          reps = parseInt(temp[temp.length-1], 10);
+        }
       }
+      else if(exerciseData.progression_model === "linear") {
+        reps = parseInt(exerciseData.reps, 10);
+      }else{
+        reps = 8;
+      }
+    }else if(exercisePlace === "home"){
+      alert("home");
+      if(exerciseData.progression_model === "rep home"){
+        reps = parseInt(exerciseData.reps, 10);
+      }else if(exerciseData.progression_model === "time home"){
+
+      }else if(exerciseData.progression_model === "no progresson"){
+
+      }else if(exerciseData.progression_model === "till failure"){
+
+      }else if(exerciseData.progression_model === "none"){
+
+      }
+      //write logic for home exercise place
     }
-    else if(exerciseData.progression_model === "linear") {
-      reps = parseInt(exerciseData.reps, 10);
-    }else{
-      reps = 8;
-    }
+
     this.setState({
-                    exerciseLength: exerciseLength, exerciseData, personalBest: parseFloat(exerciseData.personal_best),
-                    prescribeWeight: parseFloat(exerciseData.weight), prescribeReps: reps,
-                    weight: parseFloat(exerciseData.weight), reps: reps,
-                    sets: parseInt(exerciseData.sets, 10)
-                  })
+      exerciseLength: exerciseLength, exerciseData, personalBest: parseFloat(exerciseData.personal_best),
+      prescribeWeight: parseFloat(exerciseData.weight), prescribeReps: reps,
+      weight: parseFloat(exerciseData.weight), reps: reps,
+      sets: parseInt(exerciseData.sets, 10)
+    })
+
     if(records){
       if(records.daily_record){
-          let dayIndex = (records.daily_record.findIndex(i => { return i.day === day.toString()}));
-          if(dayIndex >= 0){
-            let dataIndex = (records.daily_record[dayIndex].data.findIndex( i => {return i.code === code}));
-            if(dataIndex >= 0){
-              let exerciseLog = records.daily_record[dayIndex].data[dataIndex].data;
-              this.setState({exerciseLog: exerciseLog, currentSets: exerciseLog.length+1})
-            }
+        let dayIndex = (records.daily_record.findIndex(i => { return i.day === day.toString()}));
+        if(dayIndex >= 0){
+          let dataIndex = (records.daily_record[dayIndex].data.findIndex( i => {return i.code === code}));
+          if(dataIndex >= 0){
+            let exerciseLog = records.daily_record[dayIndex].data[dataIndex].data;
+            this.setState({exerciseLog: exerciseLog, currentSets: exerciseLog.length+1})
           }
-          let prev_week_index = (records.daily_record.findIndex(i => { return i.day === previous_week_day.toString()}));
-          if(prev_week_index >= 0){
-            let prev_week_data_index = (records.daily_record[prev_week_index].data.findIndex( i => {return i.code === code}));
-            if(prev_week_data_index >= 0){
-              let last_data_index = records.daily_record[prev_week_index].data[prev_week_data_index].data.length - 1;
-              let prevData = records.daily_record[prev_week_index].data[prev_week_data_index].data[last_data_index];
-              this.setState({prevData: prevData})
-            }
+        }
+        let prev_week_index = (records.daily_record.findIndex(i => { return i.day === previous_week_day.toString()}));
+        if(prev_week_index >= 0){
+          let prev_week_data_index = (records.daily_record[prev_week_index].data.findIndex( i => {return i.code === code}));
+          if(prev_week_data_index >= 0){
+            let last_data_index = records.daily_record[prev_week_index].data[prev_week_data_index].data.length - 1;
+            let prevData = records.daily_record[prev_week_index].data[prev_week_data_index].data[last_data_index];
+            this.setState({prevData: prevData})
           }
+        }
       }
     }
     setTimeout(() => {
@@ -161,7 +181,16 @@ class ExerciseContainer extends Component{
     }, 1000);
   }
 
+
   onSaveButtonHandler = () => {
+    if(this.state.exercisePlace === "home"){
+      this.homeExerciseSave();
+    }else if(this.state.exercisePlace === "gym"){
+      this.gymExerciseSave();
+    }
+  }
+
+  gymExerciseSave = () => {
     let name = this.state.exerciseData.workout;
     let code = this.state.exerciseData.code;
     let variation = this.state.reps - this.state.prescribeReps;
@@ -212,7 +241,10 @@ class ExerciseContainer extends Component{
     let exerciseLog = [...this.state.exerciseLog];
     exerciseLog.push({weight:this.state.weight, reps:this.state.reps, sets: this.state.currentSets});
     this.setState({exerciseLog, currentSets : this.state.currentSets+1})
+  }
 
+  homeExerciseSave = () => {
+    alert("home exercise save");
   }
   onChangeWeight = (val) => {
     this.setState({ weight: val });
@@ -245,23 +277,22 @@ class ExerciseContainer extends Component{
     this.setState({ showInfo: !this.state.showInfo})
   }
   cancelErrorMessaegHandler = () => {
-
     let exerciseLog = [...this.state.exerciseLog];
     exerciseLog.splice((exerciseLog.length-1), 1);
     this.setState({exerciseLog, currentSets: this.state.currentSets-1})
     this.props.removeError();
   }
+
   checkCompleteProgress = () => {
     const {finish_for_day} = this.props.WorkoutReducers.program;
     if(finish_for_day && this.state.isFinish){
-        return(
-          <Redirect to="/plan" />
-        )
+      return(
+        <Redirect to="/plan" />
+      )
     }
   }
-  render(){
-    let {error} =this.props.WorkoutReducers;
-    let exercisePlace = this.props.WorkoutReducers.program.exercise_place;
+
+  setMessage =()=> {
     let message = "";
     if(this.state.currentSets <= this.state.sets){
       if(this.state.exerciseData.progression_model === 'linear'){
@@ -298,7 +329,12 @@ class ExerciseContainer extends Component{
     }else{
       message = "Go no next workout"
     }
+    return message;
+  }
 
+  render(){
+    let {error} =this.props.WorkoutReducers;
+    let message = this.setMessage();
     if(this.props.WorkoutReducers.program && this.state.error === false){
       const video = "cPAbx5kgCJo";
       const videoDescription = "THIS is test video description";
@@ -309,7 +345,7 @@ class ExerciseContainer extends Component{
         <div className="all">
         {this.state.isLoading === true &&
           (
-      <Hoc><Modal modalFor = "modal-for-loading"><Loading mode="selectExercise"/></Modal></Hoc>
+            <Hoc><Modal modalFor = "modal-for-loading"><Loading mode="selectExercise"/></Modal></Hoc>
           )
         }
         <Exercise
@@ -323,7 +359,6 @@ class ExerciseContainer extends Component{
         onChangeRep={this.onChangeRep}
         onInfoClicked = {this.infoHandler}
         message = {message}
-        exercisePlace = {exercisePlace}
         /*videos={this.state.selectedVideo}*/
         state = {this.state}
         />
@@ -333,9 +368,9 @@ class ExerciseContainer extends Component{
         {this.state.showHistory && (
           <Modal modalFor = "modal-for-info">
           <ShowHistory
-            name = {this.state.exerciseData.workout}
-            record = {this.props.WorkoutReducers.record}
-            onBackButtonClicked = {this.onHistoryButtonHandler}
+          name = {this.state.exerciseData.workout}
+          record = {this.props.WorkoutReducers.record}
+          onBackButtonClicked = {this.onHistoryButtonHandler}
           />
           </Modal>
         )}
@@ -350,9 +385,9 @@ class ExerciseContainer extends Component{
         )}
         {(error.hasError) && (
           <Modal modalFor='modal'>
-            <ShowError
-              error={error.message}
-              cancel={this.cancelErrorMessaegHandler}/>
+          <ShowError
+          error={error.message}
+          cancel={this.cancelErrorMessaegHandler}/>
           </Modal>
         )}
         {this.checkCompleteProgress()}

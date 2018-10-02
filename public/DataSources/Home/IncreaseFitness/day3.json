@@ -1,0 +1,39 @@
+{
+  "exercises": [
+    {
+      "day": "1",
+      "exercise_list": [
+        {"name":"Lunge Or Squat","code":"66","sets":"3","reps":"20", "feedback":"2", "workout":"Walking Lunges", "progression_model":"rep home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Lunge Or Squat","code":"66","sets":"3","reps":"10", "feedback":"2", "workout":"Rear Foot Elevated Lunges", "progression_model":"rep home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Glutes Or Leg failure","code":"70","sets":"3","reps":"20", "feedback":"3", "workout":"Glute Bridge", "progression_model":"rep home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Conditioning plyometric lower","code":"62","sets":"3","reps":"60 sec", "feedback":"4", "workout":"High Knees", "progression_model":"time home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Conditioning plyometric lower","code":"62","sets":"3","reps":"60 sec", "feedback":"4", "workout":"Star Jumps", "progression_model":"time home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Conditioning lower exercises","code":"68","sets":"3","reps":"", "feedback":"5", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Abdominals Isokinetic (till failure)","code":"61","sets":"3","reps":"10", "feedback":"3", "workout":"V Ups", "progression_model":"rep home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"}
+      ]
+    },
+    {
+      "day": "2",
+      "exercise_list": [
+        {"name":"Push up variations","code":"67","sets":"3","reps":"", "feedback":"3", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Upper failure exercises pull","code":"59","sets":"3","reps":"", "feedback":"2", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Conditioning upper exercises","code":"69","sets":"3","reps":"", "feedback":"4", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Conditioning upper exercises","code":"69","sets":"3","reps":"", "feedback":"2", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Conditioning upper exercises","code":"69","sets":"3","reps":"", "feedback":"5", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Abdominals Isometric","code":"60","sets":"3","reps":"", "feedback":"3", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"}
+      ]
+    },
+    {
+      "day": "3",
+      "exercise_list": [
+        {"name":"","code":"","sets":"","reps":"", "feedback":"", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"","code":"","sets":"","reps":"", "feedback":"", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"","code":"","sets":"","reps":"", "feedback":"", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"","code":"","sets":"","reps":"", "feedback":"", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"","code":"","sets":"","reps":"", "feedback":"", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"","code":"","sets":"","reps":"", "feedback":"", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"}
+      ]
+    }
+
+  ]
+}

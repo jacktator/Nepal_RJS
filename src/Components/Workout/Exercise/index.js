@@ -38,7 +38,6 @@ const Exercise = (props) => {
             <div>
               <WeightandRep
               state={props.state}
-              exercisePlace={props.exercisePlace}
               onCompleteButtonHandler={props.onCompleteButtonHandler}
               onSaveButtonClicked={props.onSaveButtonClicked}
               onNextButtonHandler = {props.onNextButtonHandler}

@@ -52,9 +52,9 @@ export function addProgram (days, goals, exercise_place) {
     }
     let jsonurl;
     if(exercise_place === "gym"){
-        jsonurl = `./DataSources/Gym/${goal.replace(' ', '').toLowerCase()}day${days}.json`;
+        jsonurl = `./DataSources/Gym/${goal.replace(' ', '')}/day${days}.json`;
     }else if(exercise_place === "home"){
-        jsonurl = `./DataSources/Home/${goal.replace(' ', '').toLowerCase()}day${days}.json`;
+        jsonurl = `./DataSources/Home/${goal.replace(' ', '')}/day${days}.json`;
     }else{
       alert("nothing found");
     }

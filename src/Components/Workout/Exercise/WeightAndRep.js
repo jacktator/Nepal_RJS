@@ -51,7 +51,7 @@ const displayButton = (props) => {
         <div className="weight-and-rep">
         {/* Text for stepper*/}
 
-        {(props.exercisePlace==="gym") &&
+        {(props.state.exercisePlace==="gym") &&
           <div>
             <Flex justify="center" className="stepper-text">
             <Flex.Item>Weight (kg)</Flex.Item>
@@ -80,13 +80,13 @@ const displayButton = (props) => {
           </div>
         }
 
-      {(props.exercisePlace==="home") &&
+      {(props.state.exercisePlace==="home") &&
       <div>
         <Flex justify="center" className="stepper-text">
         <Flex.Item>Reps</Flex.Item>
         </Flex>
         <Flex justify="center" className="stepper">
-        
+
         <Flex.Item><Stepper
         style={{ width: '30%', minWidth: '110px' }}
         showNumber
