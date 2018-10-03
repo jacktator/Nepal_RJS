@@ -21,6 +21,7 @@ export function LoginDetailsActions(email:string, password:string){
       dispatch(setGlobalAxiosDefault(token));
       dispatch(checkLogin());
       dispatch(validToken(token));
+
     }).catch((error)=>{
       if(error.response){
         dispatch(catchError("The username or password you entered is incorrect."));

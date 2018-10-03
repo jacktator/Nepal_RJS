@@ -1,13 +1,12 @@
-import React ,{Component} from 'react';
-import {InputItem, DatePicker, List, Picker} from 'antd-mobile';
-import {Accordion, Toast, Button, ImagePicker, Modal, ActivityIndicator} from 'antd-mobile';
-import axios from 'axios';
+import React from 'react';
+import {DatePicker, List, Picker} from 'antd-mobile';
+import {Modal} from 'antd-mobile';
 import './Profile.css';
-import nameIcon from '../../Assets/Profile/nickname.svg'
+//import nameIcon from '../../Assets/Profile/nickname.svg'
 
 const min = new Date("1948-01-01");
 const max = new Date("2006-12-31");
-const data = [];
+//const data = [];
 const prompt = Modal.prompt;
 
 const MyDetails = (props) => {

@@ -1,13 +1,13 @@
 
-import React, { Component } from 'react';
+import React from 'react';
 // import {Link} from 'react-router-dom';
 import { List, InputItem, WingBlank, Button,} from 'antd-mobile';
 import { createForm } from 'rc-form';
 import './SignUp.css';
 import Logo from '../../Assets/LogoLighter.png';
 
-import Modal from '../../Components/UI/Modal'
-import ShowError from '../../Components/Error/ShowError';
+// import Modal from '../../Components/UI/Modal'
+// import ShowError from '../../Components/Error/ShowError';
 
 var lockerstyle={
   backgroundImage: 'url(https://png.icons8.com/ios/50/000000/lock.png)',

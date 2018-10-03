@@ -5,9 +5,10 @@ import {bindActionCreators} from 'redux';
 import {Redirect} from 'react-router-dom';
 
 import {selectFooter} from '../FooterContainer/actions';
-import {getProgram, updateDailyFeedBack} from '../actions';
+import {getProgram, updateDailyFeedBack, removeError} from '../actions';
 import FooterContainer from'../FooterContainer';
 import Plan from '../../../Components/Workout/Plan';
+import ShowError from '../../../Components/Error/ShowError';
 import RedirectToQuestionnaire from '../../../Components/Workout/Plan/RedirectToQuestionnaire';
 import Feedback from '../../../Components/Workout/Plan/Feedback';
 import Hoc from '../../../HOC/Hoc';
@@ -62,7 +63,11 @@ class PlanContainer extends Component{
     e.preventDefault();
     this.setState({feedbackValue: value})
   }
+  cancelErrorMessageHandler =() => {
+    this.props.removeError();
+  }
   render() {
+    const {error} =this.props.WorkoutReducers;
     console.log("this is from plan container",this.props)
     const FeedbackArray = [
         {value:3, Feedback:'Too hard'},
@@ -81,6 +86,14 @@ class PlanContainer extends Component{
         <FooterContainer
           currentPath='plan'
         />
+
+        {(error.hasError) && (
+          <Modal modalFor='modal'>
+            <ShowError
+             error={error.message}
+             cancel={this.cancelErrorMessageHandler}/>
+          </Modal>
+        )}
 
         { this.state.finishProgram &&
           <Modal modalFor = "modal">
@@ -126,7 +139,7 @@ function mapStateToProps(state){
 }
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
-    selectFooter, getProgram, updateDailyFeedBack
+    selectFooter, getProgram, updateDailyFeedBack, removeError
   }, dispatch
 );
 }

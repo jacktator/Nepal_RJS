@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import {Redirect} from 'react-router';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import { Toast, ActivityIndicator } from 'antd-mobile';
+import { ActivityIndicator } from 'antd-mobile';
 import {selectFooter} from '../FooterContainer/actions';
 import {getProgram, keepWorkout, fetchWorkoutList, selectWorkout, setDayIndex, getExerciseRecord, setCurrentDay,removeError} from '../actions';
 import Workout from '../../../Components/Workout/Workout';

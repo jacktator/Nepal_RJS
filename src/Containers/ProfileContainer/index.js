@@ -9,7 +9,6 @@ import {
 import { Toast } from 'antd-mobile'
 import FooterContainer from '../Workout/FooterContainer';
 import {checkLogout} from '../RootContainer/action'; //logout
-import axios from 'axios';
 import Modal from '../../Components/UI/Modal';
 import ShowError from '../../Components/Error/ShowError';
 
@@ -89,7 +88,7 @@ class ProfileContainer extends Component{
         <FooterContainer currentPath='profile'/>
         {(error.hasError) && (
           <Modal modalFor='modal'>
-            <ShowError 
+            <ShowError
               error={error.message}
               cancel={this.cancelErrorMessageHandler}
               />

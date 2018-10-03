@@ -1,6 +1,6 @@
-import React , {Component} from 'react';
+import React from 'react';
 import {List} from 'antd-mobile';
-import {Link,Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 const Item = List.Item;
 // the Header component of Profile, contains the background image, profile picture and name

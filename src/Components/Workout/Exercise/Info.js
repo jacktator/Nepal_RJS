@@ -1,6 +1,6 @@
 import React  from 'react';
 import {Button} from 'antd-mobile';
-import VideoDetail from './VideoDetail.js';
+//import VideoDetail from './VideoDetail.js';
 import YouTube from 'react-youtube';
 
 const Info = (props) => {

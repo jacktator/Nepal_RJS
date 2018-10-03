@@ -1,0 +1,61 @@
+{
+  "exercises": [
+    {
+      "day": "1",
+      "exercise_list": [
+        {"name":"Conditioning plyometric lower","code":"62","sets":"3","reps":"60 sec", "feedback":"2", "workout":"High Knees", "progression_model":"time home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Conditioning plyometric lower","code":"62","sets":"3","reps":"60 sec", "feedback":"3", "workout":"Star Jumps", "progression_model":"time home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Conditioning lower exercises","code":"68","sets":"3","reps":"60 sec", "feedback":"2", "workout":"High Foot Elevated Glute Bridge", "progression_model":"time home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Conditioning lower exercises","code":"68","sets":"3","reps":"60 sec", "feedback":"3", "workout":"Glute Bridge With Leg Extension", "progression_model":"time home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Conditioning upper exercises","code":"69","sets":"3","reps":"60 sec", "feedback":"4", "workout":"Push Up Leg Slides", "progression_model":"time home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Abdominals Isometric(Till failure)","code":"60","sets":"3","reps":"till failure", "feedback":"5", "workout":"Side Plank On Knees (Easy)", "progression_model":"none", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"}
+      ]
+    },
+
+    {
+      "day": "2",
+      "exercise_list": [
+        {"name":"Lunge OR Squat","code":"81","sets":"3","reps":"20", "feedback":"2", "workout":"Walking Lunges", "progression_model":"rep home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Glutes Or Leg failure","code":"70","sets":"3","reps":"till failure", "feedback":"2", "workout":"Glute Bridges", "progression_model":"none", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Push up variation","code":"67","sets":"3","reps":"10", "feedback":"3", "workout":"Wall Push Up (Easy)", "progression_model":"rep home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Upper failure exercises pull","code":"59","sets":"3","reps":"till failure", "feedback":"3", "workout":"Prone Y Lift", "progression_model":"none", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Conditioning upper exercises","code":"69","sets":"3","reps":"60 sec", "feedback":"4", "workout":"Push Up Leg Slides", "progression_model":"time home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Abdominals Isokinetic","code":"61","sets":"3","reps":"10", "feedback":"5", "workout":"V Ups", "progression_model":"rep home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"}
+      ]
+    },
+    {
+      "day": "3",
+      "exercise_list": [
+        {"name":"Conditioning plyometric lower","code":"62","sets":"3","reps":"60 sec", "feedback":"4", "workout":"High Knees", "progression_model":"time home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Conditioning plyometric lower","code":"62","sets":"3","reps":"60 sec", "feedback":"2", "workout":"Star Jumps", "progression_model":"time home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Conditioning lower exercises","code":"68","sets":"3","reps":"60 sec", "feedback":"3", "workout":"High Foot Elevated Glute Bridge", "progression_model":"time home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Conditioning lower exercises","code":"68","sets":"3","reps":"60 sec", "feedback":"3", "workout":"Glute Bridge With Leg Extension", "progression_model":"time home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Conditioning upper exercises","code":"69","sets":"3","reps":"60 sec", "feedback":"5", "workout":"Push Up Leg Slides", "progression_model":"time home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Abdominals Isometric(Till failure)","code":"60","sets":"3","reps":"till failure", "feedback":"2", "workout":"Side Plank On Knees (Easy)", "progression_model":"none", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"}
+      ]
+    },
+    {
+      "day": "4",
+      "exercise_list": [
+        {"name":"Lunge OR Squat","code":"81","sets":"3","reps":"20", "feedback":"4", "workout":"Walking Lunges", "progression_model":"rep home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Glutes Or Leg failure","code":"70","sets":"3","reps":"till failure", "feedback":"3", "workout":"Glute Bridges", "progression_model":"none", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Push up variation","code":"67","sets":"3","reps":"10", "feedback":"3", "workout":"Wall Push Up (Easy)", "progression_model":"rep home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Upper failure exercises pull","code":"59","sets":"3","reps":"till failure", "feedback":"2", "workout":"Prone Y Lift", "progression_model":"none", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Conditioning upper exercises","code":"69","sets":"3","reps":"60 sec", "feedback":"2", "workout":"Push Up Leg Slides", "progression_model":"time home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Abdominals Isokinetic","code":"61","sets":"3","reps":"10", "feedback":"5", "workout":"V Ups", "progression_model":"rep home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"}
+      ]
+    },
+    {
+      "day": "5",
+      "exercise_list": [
+        {"name":"Conditioning plyometric lower","code":"62","sets":"3","reps":"60 sec", "feedback":"3", "workout":"High Knees", "progression_model":"time home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Conditioning plyometric lower","code":"62","sets":"3","reps":"60 sec", "feedback":"5", "workout":"Star Jumps", "progression_model":"time home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Conditioning lower exercises","code":"68","sets":"3","reps":"60 sec", "feedback":"2", "workout":"High Foot Elevated Glute Bridge", "progression_model":"time home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Conditioning lower exercises","code":"68","sets":"3","reps":"60 sec", "feedback":"3", "workout":"Glute Bridge With Leg Extension", "progression_model":"time home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Conditioning upper exercises","code":"69","sets":"3","reps":"60 sec", "feedback":"4", "workout":"Push Up Leg Slides", "progression_model":"time home", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Abdominals Isometric(Till failure)","code":"60","sets":"3","reps":"till failure", "feedback":"2", "workout":"Side Plank On Knees (Easy)", "progression_model":"none", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"}
+      ]
+    }
+
+  ]
+}
