@@ -1,6 +1,5 @@
 import React from 'react';
 import {Stepper, Button,Flex} from 'antd-mobile';
-import MediaQuery from 'react-responsive';
 
 const displayButton = (props) => {
   if(props.state.inCurrentProgress){

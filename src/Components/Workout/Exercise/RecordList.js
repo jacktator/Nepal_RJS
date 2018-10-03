@@ -9,53 +9,92 @@ const displayRecord =(props, index) => {
   {
     return(
       <div className="list-records" key={index}>
-        <Item>
-          <Flex justify="between" className="list" style={{color:"black"}}>
-            <span className="list-number">{index+1}</span>
-            <Flex.Item><img className="no-copy"src={require('../../../Assets/Workout/Exercise/checkCircle.svg')} alt="check-circle"/></Flex.Item>
-            <Flex.Item><div className="list-text"> {props.state.exerciseLog[index].weight} kgs * {props.state.exerciseLog[index].reps} reps</div></Flex.Item>
-            { (props.state.exerciseLog[index].weight * props.state.exerciseLog[index].reps === props.state.personalBest) &&
-              <Flex.Item><img className="no-copy"src={require('../../../Assets/Workout/cup-icon.png')} alt="check-circle"/></Flex.Item>
-            }
-            { (props.state.exerciseLog[index].weight * props.state.exerciseLog[index].reps !== props.state.personalBest) &&
-              <Flex.Item> </Flex.Item>
-            }
-          </Flex>
-        </Item>
+      {(props.state.exercisePlace==="gym") &&
+      <Item>
+        <Flex justify="between" className="list" style={{color:"black"}}>
+          <span className="list-number">{index+1}</span>
+          <Flex.Item><img className="no-copy"src={require('../../../Assets/Workout/Exercise/checkCircle.svg')} alt="check-circle"/></Flex.Item>
+          <Flex.Item><div className="list-text"> {props.state.exerciseLog[index].weight} kgs * {props.state.exerciseLog[index].reps} reps</div></Flex.Item>
+          { (props.state.exerciseLog[index].weight * props.state.exerciseLog[index].reps === props.state.personalBest) &&
+            <Flex.Item><img className="no-copy"src={require('../../../Assets/Workout/cup-icon.png')} alt="check-circle"/></Flex.Item>
+          }
+          { (props.state.exerciseLog[index].weight * props.state.exerciseLog[index].reps !== props.state.personalBest) &&
+            <Flex.Item> </Flex.Item>
+          }
+        </Flex>
+      </Item>
+      }
+      {(props.state.exercisePlace === "home") &&
+      <Item>
+        <Flex justify="between" className="list" style={{color:"black"}}>
+          <span className="list-number">{index+1}</span>
+          <Flex.Item><img className="no-copy"src={require('../../../Assets/Workout/Exercise/checkCircle.svg')} alt="check-circle"/></Flex.Item>
+          <Flex.Item><div className="list-text"> {props.state.exerciseLog[index].reps} reps</div></Flex.Item>
+            <Flex.Item> </Flex.Item>
+
+        </Flex>
+      </Item>
+      }
+
       </div>
     )
   }
   else if (props.state.exerciseLog.length === 0 && index === 0){
     return (
       <div className="list-records" key={index}>
-          {props.state.prevData.weight &&
-            <Item>
-              <Flex justify="between" className="list">
-                <span className="list-number">{index+1}</span>
-                <Flex.Item><div className="list-text"><span style={{color:"#cecece"}}>{props.state.prevData.weight}kgs *{props.state.prevData.reps}reps</span></div></Flex.Item>
-                <Flex.Item><span style={{color:"#cecece"}}>Previous</span></Flex.Item>
-              </Flex>
-            </Item>
-          }
-          {!props.state.prevData.weight &&
-            <Item style={{backgroundColor:'#a2cf6e'}}>
-              <Flex justify="between" className="list">
-                <span className="list-number">{index+1}</span>
-              </Flex>
-            </Item>
-          }
+      {(props.state.exercisePlace === "gym") && (
+        <div>
+        {props.state.prevData.weight &&
+          <Item>
+            <Flex justify="between" className="list">
+              <span className="list-number">{index+1}</span>
+              <Flex.Item><div className="list-text"><span style={{color:"#cecece"}}>{props.state.prevData.weight}kgs *{props.state.prevData.reps}reps</span></div></Flex.Item>
+              <Flex.Item><span style={{color:"#cecece"}}>Previous</span></Flex.Item>
+            </Flex>
+          </Item>
+        }
+        {!props.state.prevData.weight &&
+          <Item style={{backgroundColor:'#a2cf6e'}}>
+            <Flex justify="between" className="list">
+              <span className="list-number">{index+1}</span>
+            </Flex>
+          </Item>
+        }
+        </div>
+      )}
+      {(props.state.exercisePlace === "home") && (
+        <div>
+        {props.state.prevData.weight &&
+          <Item>
+            <Flex justify="between" className="list">
+              <span className="list-number">{index+1}</span>
+              <Flex.Item><div className="list-text"><span style={{color:"#cecece"}}>{props.state.prevData.reps}reps</span></div></Flex.Item>
+              <Flex.Item><span style={{color:"#cecece"}}>Previous</span></Flex.Item>
+            </Flex>
+          </Item>
+        }
+        {!props.state.prevData.reps &&
+          <Item style={{backgroundColor:'#a2cf6e'}}>
+            <Flex justify="between" className="list">
+              <span className="list-number">{index+1}</span>
+            </Flex>
+          </Item>
+        }
+        </div>
+      )}
+
       </div>
     )
   }
   else if(props.state.exerciseLog.length === index){
     return(
-      <div className="list-records" key={index}>
-        <Item style={{backgroundColor:'#a2cf6e'}}>
-          <Flex justify="between" className="list" >
-            <span className="list-number">{index+1}</span>
-          </Flex>
-        </Item>
-      </div>
+        <div className="list-records" key={index}>
+          <Item style={{backgroundColor:'#a2cf6e'}}>
+            <Flex justify="between" className="list" >
+              <span className="list-number">{index+1}</span>
+            </Flex>
+          </Item>
+        </div>
     )
   }
   else if (props.state.exerciseLog.length ===0 && props.state.exerciseData.length === 0){

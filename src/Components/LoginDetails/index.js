@@ -1,5 +1,5 @@
 //@flow
-import React, { Component } from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import {InputItem, WingBlank,Button, List } from 'antd-mobile';
 import { createForm } from 'rc-form';
@@ -20,23 +20,8 @@ var humeniconstyle={
   width: '22px',
 }
 
-type State={
-  loading: boolean,
-}
-type Props = {
-  foo: number,
-  email: string,
-  form: string,
-  password: number,
-  onClickButton: Function,
-  onChangeEmail: Function,
-  onChangePassword: Function,
-  pageChange: Function,
-  token: string,
-
-};
 const LoginDetails = (props) => {
-    const {email, password, token} = props;
+    const {email, password} = props;
     return (
       <div className="logindetails">
         {/* logo block*/}

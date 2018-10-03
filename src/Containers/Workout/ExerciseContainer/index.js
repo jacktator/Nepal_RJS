@@ -65,7 +65,7 @@ class ExerciseContainer extends Component{
       if( parseInt(program.progress,10) !== currentDay){
         this.setState({inCurrentProgress: false})
       }
-      let exerciseLength = program.exercises[dayIndex].exercise_list.length;
+      //let exerciseLength = program.exercises[dayIndex].exercise_list.length;
       if(program.exercises[dayIndex].exercise_list[index]){
         this.loadingToast();
         this.calculateExerciseLog();
@@ -113,6 +113,7 @@ class ExerciseContainer extends Component{
         reps = 8;
       }
     }else if(exercisePlace === "home"){
+      reps = 2;
       if(exerciseData.progression_model === "rep home"){
         reps = parseInt(exerciseData.reps, 10);
       }else if(exerciseData.progression_model === "time home"){
@@ -242,8 +243,29 @@ class ExerciseContainer extends Component{
   }
 
   homeExerciseSave = () => {
-    alert("home exercise save");
+
+    let name = this.state.exerciseData.workout;
+    let code = this.state.exerciseData.code;
+    //let {program, programID} = this.props.WorkoutReducers;
+    let {record, recordID, currentDay} = this.props.WorkoutReducers;
+
+    //compare if its last exercise and last sets
+    if(this.state.completedExercise===this.state.exerciseLength-1 && this.state.currentSets === this.state.sets){
+      this.setState({completedExercise: this.state.completedExercise+1});
+    }
+
+    this.props.saveExerciseData(recordID, currentDay, name, code, 0, this.state.Currentsets, this.state.reps, record);
+    this.loadingToast();
+
+    setTimeout(() => {
+      Toast.hide();
+      this.setState({isLoading: false})
+    }, 1000);
+    let exerciseLog = [...this.state.exerciseLog];
+    exerciseLog.push({weight:this.state.weight, reps:this.state.reps, sets: this.state.currentSets});
+    this.setState({exerciseLog, currentSets : this.state.currentSets+1})
   }
+
   onChangeWeight = (val) => {
     this.setState({ weight: val });
   }

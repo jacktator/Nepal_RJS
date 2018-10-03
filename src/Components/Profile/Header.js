@@ -1,6 +1,6 @@
 import React , {Component} from 'react';
-import initialPic from '../../Assets/Profile/anon.png';
-import { ImagePicker } from 'antd-mobile';
+// import initialPic from '../../Assets/Profile/anon.png';
+// import { ImagePicker } from 'antd-mobile';
 // the Header component of Profile, contains the background image, profile picture and name title
 
 class Header extends Component {
@@ -11,9 +11,9 @@ class Header extends Component {
       }
       this.handleChange = this.handleChange.bind(this)
   }
-  
+
   componentDidUpdate(prevProps) {
-    if (this.props.url != prevProps.url) {
+    if (this.props.url !== prevProps.url) {
       this.props.updateFinish();
     }
 
@@ -34,7 +34,7 @@ class Header extends Component {
     }
 
     render() {
-      const { files } = this.state;
+      //const { files } = this.state;
       return (
         <div>
           <img className="profile-image-sources" src={require('../../Assets/Workout/sampleImage.jpeg')} alt="mainmenu" />
@@ -48,4 +48,3 @@ class Header extends Component {
 
 export default Header;
 //<img className="profile-picture" src={this.props.url} alt="profile_pic" />
-

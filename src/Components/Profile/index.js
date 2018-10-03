@@ -3,13 +3,11 @@ import Header from './Header';
 import MyDetails from './MyDetails';
 import AccountDetails from './AccountDetails';
 import Footer from './Footer';
-import axios from 'axios';
 import './Profile.css';
 
 import './Profile.css';
-import {Accordion,List,InputItem,Toast,Button,ImagePicker, Modal, ActivityIndicator} from 'antd-mobile';
-const Item = List.Item;
-const prompt = Modal.prompt;
+import {Button,ImagePicker, Modal, ActivityIndicator} from 'antd-mobile';
+
 const data = [];
 function closest(el, selector) {
   const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
@@ -38,7 +36,7 @@ class Profile extends Component{
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.name != prevProps.name) {
+    if (this.props.name !== prevProps.name) {
       this.updateFinish();
     }
 

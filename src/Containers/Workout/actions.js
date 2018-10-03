@@ -185,10 +185,12 @@ export function updateDailyFeedBack(programID, program, value) {
       status: "publish",
       fields: program
     }).then((response)=> {
-      dispatch(setProgram(response.data[0].acf));
-      dispatch(setProgramID(response.data[0].id));
+      console.log("This is the response.", response);
+      dispatch(setProgram(response.data.acf));
+      dispatch(setProgramID(response.data.id));
       dispatch(setCurrentDay(progress));
     }).catch((error) => {
+      console.log(error);
       if(error.response){
         dispatch(catchError(error.response.data.message));
       }else{
