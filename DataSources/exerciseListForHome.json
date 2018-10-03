@@ -178,21 +178,6 @@
         ]}
       ]
     },
-    { "code":"64", "name":"Conditioning Lower Hard",
-      "exercises":[
-        {
-          "name":"Conditioning Lower Hard",
-          "exercise":[
-            {"name":"Wall Push Up Squats","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"Wall Walks","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"Walkout Burpee","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"High Foot Elevated Glute Bridge","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"Elevated Glute Bridge With Leg Extension","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"Single Arm Table Top Bridge","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"Side Squat Jumps Landing On Single Leg","progression_model":"rep home", "repetition":"60 sec"}
-        ]}
-      ]
-    },
     { "code":"65", "name":"Conditioning Upper Easy",
       "exercises":[
         {
@@ -226,34 +211,6 @@
     },
     {
       "code":"67",
-      "name":"Lunge Or Squat",
-      "exercises":[
-        {
-          "name":"Lunge Exercises",
-          "exercise":[
-            {"name":"Walking Lunges ","progression_model":"rep home","repetition":"20"},
-            {"name":"Rear Foot Elevated Lunges","progression_model":"rep home","repetition":"10"},
-            {"name":"Front Foot Elevated Lunges ","progression_model":"rep home","repetition":"10"},
-            {"name":"Alternate Lunge Jumps ","progression_model":"rep home","repetition":"10"},
-            {"name":"Static Lunge","progression_model":"rep home","repetition":"10"},
-            {"name":"Step Ups","progression_model":"rep home","repetition":"15"}
-          ]
-        },
-        {
-          "name":"Squat Exercises",
-          "exercise":[
-            {"name":"Squats Close Stance ","progression_model":"rep home","repetition":"15"},
-            {"name":"Squats Normal Stance ","progression_model":"rep home","repetition":"15"},
-            {"name":"Sumo Squats ","progression_model":"rep home","repetition":"15"},
-            {"name":"Squat Jumps ","progression_model":"rep home","repetition":"10"},
-            {"name":"Pistol Squat","progression_model":"rep home","repetition":"5"},
-            {"name":"Pistol Squat To Bench","progression_model":"rep home","repetition":"5"}
-          ]
-        }
-      ]
-    },
-    {
-      "code":"68",
       "name":"Push Up Variations",
       "exercises":[
         {
@@ -276,7 +233,7 @@
       ]
     },
     {
-      "code":"69",
+      "code":"68",
       "name":"Conditioning Lower Exercises",
       "exercises":[
         {
@@ -305,7 +262,7 @@
       ]
     },
     {
-      "code":"70",
+      "code":"69",
       "name":"Conditioning Upper Exercises",
       "exercises":[
         {
@@ -335,7 +292,7 @@
       ]
     },
     {
-      "code":"71",
+      "code":"70",
       "name":"Glutes Or Legs Failure",
       "exercises":[
         {
@@ -361,7 +318,7 @@
       ]
     },
     {
-      "code":"72",
+      "code":"71",
       "name":"Flexibility Exercise  Upper Body",
       "exercises":[
         {
@@ -379,7 +336,7 @@
       ]
     },
     {
-      "code":"73",
+      "code":"72",
       "name":"Flexibility Exercise Lower Body",
       "exercises":[
         {
@@ -397,7 +354,7 @@
       ]
     },
     {
-      "code":"74",
+      "code":"73",
       "name":"Mobility Exercise Lower Body",
       "exercises":[
         {
@@ -411,7 +368,7 @@
       ]
     },
     {
-      "code":"75",
+      "code":"74",
       "name":"Relaxation",
       "exercises":[
         {
@@ -426,7 +383,7 @@
       ]
     },
     {
-      "code":"76",
+      "code":"75",
       "name":"Leg Massage",
       "exercises":[
         {
@@ -441,7 +398,7 @@
       ]
     },
     {
-      "code":"77",
+      "code":"76",
       "name":"Upper Massage",
       "exercises":[
         {
@@ -455,7 +412,7 @@
       ]
     },
     {
-      "code":"78",
+      "code":"77",
       "name":"Stretching Spine",
       "exercises":[
         {
@@ -471,7 +428,7 @@
       ]
     },
     {
-      "code":"79",
+      "code":"78",
       "name":"Leg Or Upper Massage",
       "exercises":[
         {
@@ -494,7 +451,7 @@
       ]
     },
     {
-      "code":"80",
+      "code":"79",
       "name":"Lower Body Flexibility Or Mobility",
       "exercises":[
         {
@@ -520,7 +477,7 @@
       ]
     },
     {
-      "code":"81",
+      "code":"80",
       "name":"Upper Body Flexibility Or Mobility",
       "exercises":[
         {
@@ -542,7 +499,36 @@
           ]
         }
       ]
+    },
+    {
+      "code":"81",
+      "name":"Lunge Or Squat",
+      "exercises":[
+        {
+          "name":"Lunge Exercises",
+          "exercise":[
+            {"name":"Walking Lunges ","progression_model":"rep home","repetition":"20"},
+            {"name":"Rear Foot Elevated Lunges","progression_model":"rep home","repetition":"10"},
+            {"name":"Front Foot Elevated Lunges ","progression_model":"rep home","repetition":"10"},
+            {"name":"Alternate Lunge Jumps ","progression_model":"rep home","repetition":"10"},
+            {"name":"Static Lunge","progression_model":"rep home","repetition":"10"},
+            {"name":"Step Ups","progression_model":"rep home","repetition":"15"}
+          ]
+        },
+        {
+          "name":"Squat Exercises",
+          "exercise":[
+            {"name":"Squats Close Stance ","progression_model":"rep home","repetition":"15"},
+            {"name":"Squats Normal Stance ","progression_model":"rep home","repetition":"15"},
+            {"name":"Sumo Squats ","progression_model":"rep home","repetition":"15"},
+            {"name":"Squat Jumps ","progression_model":"rep home","repetition":"10"},
+            {"name":"Pistol Squat","progression_model":"rep home","repetition":"5"},
+            {"name":"Pistol Squat To Bench","progression_model":"rep home","repetition":"5"}
+          ]
+        }
+      ]
     }
+
 
   ]
 }
