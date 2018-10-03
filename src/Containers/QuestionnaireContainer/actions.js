@@ -1,7 +1,10 @@
 import axios from 'axios';
 
 export function addQuestionnaire(state) {
+
   return(dispatch: Function) => {
+    dispatch(uploading(true));
+
     return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/10621",
     {
       title: "Questionnaire",
@@ -10,10 +13,6 @@ export function addQuestionnaire(state) {
     }
   ).then((response) => {
     dispatch(addProgram(response.data.acf.days_per_week, response.data.acf.goals, response.data.acf.exercise_place));
-    dispatch(success(true));
-    setTimeout(function(){
-      dispatch(success(false));
-    },700);
     //dispatch(questionnaire(state));
   }).catch((error) => {
     if(error.response){
@@ -88,6 +87,13 @@ export function addProgram (days, goals, exercise_place) {
               }
             }).then((recordResponse) => {
               console.log("Successfully created user record", recordResponse);
+
+                dispatch(success(true));
+                dispatch(uploading(false));
+                setTimeout(function(){
+                  dispatch(success(false));
+                },700);
+
             }).catch((error) => {
               console.log(error);
             })
@@ -246,6 +252,12 @@ export function removeError () {
   }
 }
 
+export function uploading (loading: boolean) {
+  return {
+    type: "UPLOADING",
+    payload: loading
+  }
+}
 export function success (success: boolean) {
   return {
     type: "SUCESSFULLY_UPLOAD",

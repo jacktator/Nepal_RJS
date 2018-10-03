@@ -25,6 +25,7 @@ let DefaultState = {
     message: ''
   },
   success: false,
+  isLoading: false,
 }
 
 const QuestionnaireReducers =(state: Object= DefaultState, action: Function) => {
@@ -185,6 +186,12 @@ const QuestionnaireReducers =(state: Object= DefaultState, action: Function) => 
       error['message'] = action.payload;
       return {
         ...state, error
+      }
+
+      case "UPLOADING":
+      let isLoading = action.payload;
+      return {
+        ...state, isLoading
       }
 
       case "SUCESSFULLY_UPLOAD":

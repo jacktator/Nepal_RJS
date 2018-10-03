@@ -99,7 +99,6 @@ class ExerciseContainer extends Component{
     let reps;
 
     if(exercisePlace === "gym"){
-      alert("gym")
       if(exerciseData.progression_model === "double progression"){
         if(exerciseData.reps === "Till Failure" || exerciseData.reps === "till failure"){
           reps = 8;
@@ -114,7 +113,6 @@ class ExerciseContainer extends Component{
         reps = 8;
       }
     }else if(exercisePlace === "home"){
-      alert("home");
       if(exerciseData.progression_model === "rep home"){
         reps = parseInt(exerciseData.reps, 10);
       }else if(exerciseData.progression_model === "time home"){

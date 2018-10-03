@@ -99,7 +99,7 @@ class WorkoutContainer extends Component{
         onStart = {this.onStartHandler}
         WorkoutReducers ={this.props.WorkoutReducers}
         />
-        <div>
+        <div className="Backdrop">
             <ActivityIndicator
               toast
               text="Please Wait..."

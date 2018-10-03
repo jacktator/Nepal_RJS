@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import { Progress, Button,WingBlank,WhiteSpace} from 'antd-mobile';
+import { Progress, Button,WingBlank,WhiteSpace,ActivityIndicator} from 'antd-mobile';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Redirect} from 'react-router';
@@ -145,7 +145,7 @@ class Questionnaire extends Component {
     this.props.removeError();
   }
   render() {
-    const {nick_name, fields} = this.props.QuestionnaireReducers;
+    const {nick_name, fields, isLoading} = this.props.QuestionnaireReducers;
     const percent  = (this.state.currentPage-1)*15;
     const genderArray = [
       { value: "male", label: 'Male' },
@@ -320,6 +320,16 @@ class Questionnaire extends Component {
       </Button>
       <div className="pagination-page-number">{this.state.currentPage}/7</div>
       </div>
+      {(isLoading) && (
+        <div className="Backdrop-ActivityIndicator">
+            <ActivityIndicator
+              toast
+              text="Please Wait..."
+              animating={isLoading}
+            />
+        </div>
+      )}
+
       {(this.state.modal) && (
           <Modal modalFor = "modal">
             <RehabModal
