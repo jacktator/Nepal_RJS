@@ -5,16 +5,15 @@
         {
           "name":"Flexibility Exercise Upper Body",
           "exercise":[
-            {"name":"WeightedChest Stretch On Bench","progression_model":"no"},
-            {"name":"Wall Shoulder Circumductions","progression_model":"no"},
-            {"name":"Face Down Chest Stretch (Scorpions)","progression_model":"no"},
-            {"name":"Foam Roller Thoracic Spine","progression_model":"no"},
-            {"name":"Bench Shoulder Flexion Stretch","progression_model":"no"},
-            {"name":"Foam Roller Weighted Thoracic Mobility","progression_model":"no"},
-            {"name":"Weighted Neck Stretch (Trapezius)","progression_model":"no"},
-
-        ]}
-      ]
+            {"name":"WeightedChest Stretch On Bench","progression_model":"no model"},
+            {"name":"Wall Shoulder Circumductions","progression_model":"no model"},
+            {"name":"Face Down Chest Stretch (Scorpions)","progression_model":"no model"},
+            {"name":"Foam Roller Thoracic Spine","progression_model":"no model"},
+            {"name":"Bench Shoulder Flexion Stretch","progression_model":"no model"},
+            {"name":"Foam Roller Weighted Thoracic Mobility","progression_model":"no model"},
+            {"name":"Weighted Neck Stretch (Trapezius)","progression_model":"no model"}
+        ]
+      }]
     },
     { "code":"48", "name":"Mobility Exercise Upper Body",
       "exercises":[
@@ -34,13 +33,13 @@
         {
           "name":"Flexiblity Exercise Lower Body",
           "exercise":[
-            {"name":"Rear Foot Elevated Thigh Stretch","progression_model":"no"},
-            {"name":"Standing Hamstring Flossing","progression_model":"no"},
-            {"name":"Block Assisted Side Splits","progression_model":"no"},
-            {"name":"90:90 Hamstring Stretch","progression_model":"no"},
-            {"name":"Pigeon Stretch","progression_model":"no"},
-            {"name":"Foam Roller Thigh","progression_model":"no"},
-            {"name":"Hamstring Release On Bar","progression_model":"no"}
+            {"name":"Rear Foot Elevated Thigh Stretch","progression_model":"no model"},
+            {"name":"Standing Hamstring Flossing","progression_model":"no model"},
+            {"name":"Block Assisted Side Splits","progression_model":"no model"},
+            {"name":"90:90 Hamstring Stretch","progression_model":"no model"},
+            {"name":"Pigeon Stretch","progression_model":"no model"},
+            {"name":"Foam Roller Thigh","progression_model":"no model"},
+            {"name":"Hamstring Release On Bar","progression_model":"no model"}
         ]}
       ]
     },

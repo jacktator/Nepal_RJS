@@ -1,0 +1,40 @@
+{
+  "exercises": [
+    {
+      "day": "1",
+      "exercise_list": [
+        {"name":"Quadricep Uni-lateral Exercises","code":"16","sets":"3","reps":"10-12", "feedback":"2", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Back ligth exercises","code":"12","sets":"3","reps":"12-15", "feedback":"3", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Abdominals Isokinetic (till failure)","code":"61","sets":"3","reps":"till failure", "feedback":"4", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Stretching Spine","code":"77","sets":"3","reps":"", "feedback":"0", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Upper body flexibility Or mobility","code":"80","sets":"3","reps":"", "feedback":"0", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Lower body flexibility Or mobility","code":"79","sets":"3","reps":"", "feedback":"0", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Leg Or upper massage","code":"78","sets":"3","reps":"", "feedback":"0", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"Relaxation","code":"74","sets":"1","reps":"", "feedback":"0", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"}
+      ]
+    },
+    {
+      "day": "2",
+      "exercise_list": [
+        {"name":"","code":"","sets":"","reps":"", "feedback":"", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"","code":"","sets":"","reps":"", "feedback":"", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"","code":"","sets":"","reps":"", "feedback":"", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"","code":"","sets":"","reps":"", "feedback":"", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"","code":"","sets":"","reps":"", "feedback":"", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"","code":"","sets":"","reps":"", "feedback":"", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"}
+      ]
+    },
+    {
+      "day": "3",
+      "exercise_list": [
+        {"name":"","code":"","sets":"","reps":"", "feedback":"", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"","code":"","sets":"","reps":"", "feedback":"", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"","code":"","sets":"","reps":"", "feedback":"", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"","code":"","sets":"","reps":"", "feedback":"", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"","code":"","sets":"","reps":"", "feedback":"", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
+        {"name":"","code":"","sets":"","reps":"", "feedback":"", "workout":"", "progression_model":"", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"}
+      ]
+    }
+
+  ]
+}
