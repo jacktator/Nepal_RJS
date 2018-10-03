@@ -81,9 +81,10 @@ class AccountDetails extends Component{
                <Accordion.Panel header={<Item className="no-select" thumb={require("../../Assets/Profile/lock.svg")}> Change Password</Item>}>
                  <List className="my-list">
                    <InputItem
-                     placeholder="Current Password"
-                     type="password"
-                     style={{color: 'grey'}}
+                    placeholder="Current Password"
+                    type="password"
+                    clear
+                    style={{color: 'grey'}}
                      onChange={(v)=>this.props.putPassword(v, "Current")}
                      error={this.state.CurrentError}
                      onErrorClick={this.onErrorClick}
@@ -91,7 +92,8 @@ class AccountDetails extends Component{
                      />
                   <InputItem
                      placeholder="New Password"
-                     type="password"
+                type="password"
+                clear
                      style={{color: 'grey'}}
                      onChange={(v)=>this.props.putPassword(v,"New")}
                      error={this.state.NewError}
@@ -100,7 +102,8 @@ class AccountDetails extends Component{
                      />
                   <InputItem
                      placeholder="Confirm New Password"
-                     type="password"
+                type="password"
+                clear
                      style={{color: 'grey'}}
                      onChange={(v)=>this.props.putPassword(v,"Confirm")}
                      error={this.state.ConfirmError}
