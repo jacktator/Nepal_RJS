@@ -90,6 +90,11 @@ class WorkoutContainer extends Component{
     console.log(error)
     if(this.props.WorkoutReducers.program){
       if(this.state.isReady){
+        let{dayIndex} = this.props.WorkoutReducers;
+        console.log("workout container", this.props.WorkoutReducers);
+        alert(dayIndex);
+        const exercise_list = this.props.WorkoutReducers.program.exercises[dayIndex].exercise_list;
+        console.log("This is exerccise list", exercise_list);
       return (
         <Hoc>
         <Workout

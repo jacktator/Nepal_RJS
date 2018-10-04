@@ -3,10 +3,6 @@ import axios from 'axios';
 import {checkLogin} from '../RootContainer/action';
 
 export function LoginDetailsActions(email:string, password:string){
-  console.log('this function LoginDetailsActions is running')
-  console.log('email:'+ email)
-  console.log('password'+ password)
-
   return(dispatch:Function)=>{
     return axios.post("https://nepal.sk8tech.io/wp-json/jwt-auth/v1/token/", {
       username: email,
