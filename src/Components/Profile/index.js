@@ -46,6 +46,10 @@ class Profile extends Component{
     this.setState({ animating: false });
   }
 
+  updataBegin() {
+    this.setState({ animating: true });
+  }
+
   showModal = key => (e) => {
     e.preventDefault(); // 修复 Android 上点击穿透
     this.setState({
@@ -77,7 +81,7 @@ class Profile extends Component{
   onCloseWithUpload = (file) => {
     this.props.uploadPicture(file);
     this.onClose('modal')();
-    this.setState({ animating: true });
+    this.updataBegin();
   }
 
   render(){
@@ -134,11 +138,11 @@ class Profile extends Component{
           <AccountDetails
             updataPassword={this.props.updataPassword}
             selectEmail={this.props.selectEmail}
-            putPassword={this.props.putPassword}
-            onSavePassword={this.props.onSavePassword}
             fields={this.props.fields}
             passError={this.props.passError}
             files={this.state.files}
+            updateFinish={() => this.updateFinish()}
+            updataBegin={()=>this.updataBegin()}
       />
       <Footer onLogoutHandler={this.props.onLogoutHandler}/>
       </div>
@@ -148,24 +152,3 @@ class Profile extends Component{
 }
 
 export default Profile;
-
-
-// <Modal
-// visible={this.state.modal}
-// transparent
-// maskClosable={false}
-// onClose={this.onClose('modal')}
-// title="Title"
-// footer={[{ text: 'Ok', onPress: () => { this.closeDecision() } }]}
-// wrapProps={{ onTouchStart: this.onWrapTouchStart }}
-// >
-// <div>
-// <ImagePicker
-//   length="1"
-//   files={this.state.files}
-//   onChange={this.onChange}
-//   onImageClick={(index, fs) => console.log(index, fs)}
-//   selectable={this.state.files.length < 1}
-//     />
-// </div>
-// </Modal>

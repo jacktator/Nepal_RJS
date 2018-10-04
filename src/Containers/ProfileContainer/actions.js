@@ -2,8 +2,8 @@ import axios from 'axios';
 
 export function getUserData(){
   return (dispatch: Function) => {
-    let token = localStorage.getItem('token');
-    let userId = localStorage.getItem('user_id');
+    let token = sessionStorage.getItem('token');
+    let userId = sessionStorage.getItem('user_id');
     return axios(
       {
         method: 'get',
@@ -33,7 +33,7 @@ export function uploadPicture(file) {
   return (dispatch: Function) => {
     const data2 = new FormData();
     data2.append("file", file);
-    let token = localStorage.getItem('token');
+    let token = sessionStorage.getItem('token');
     return axios.post('https://nepal.sk8tech.io/wp-json/wp/v2/media', data2,
       {
         headers: {
@@ -59,8 +59,8 @@ export function uploadPicture(file) {
 }
 
 export function updateAvatar(url: string) {
-  const aimUrl = "https://nepal.sk8tech.io/wp-json/wp/v2/users/" + localStorage.getItem('user_id');
-  let token = localStorage.getItem('token');
+  const aimUrl = "https://nepal.sk8tech.io/wp-json/wp/v2/users/" + sessionStorage.getItem('user_id');
+  let token = sessionStorage.getItem('token');
   return (dispatch: Function) => {
     return axios.put(aimUrl, { "fields": {"photo": url}}, { headers: { 'Authorization': "Bearer" + token } })
     .then(function (response) {
@@ -81,8 +81,8 @@ export function updateAvatar(url: string) {
 }
 
 export function  updateName(name: string) {
-  const aimUrl = "https://nepal.sk8tech.io/wp-json/wp/v2/users/" + localStorage.getItem('user_id');
-  let token = localStorage.getItem('token');
+  const aimUrl = "https://nepal.sk8tech.io/wp-json/wp/v2/users/" + sessionStorage.getItem('user_id');
+  let token = sessionStorage.getItem('token');
   return (dispatch: Function) => {
     return axios.put(aimUrl, { "name": name }, { headers: { 'Authorization': "Bearer" + token } })
       .then(res => {
@@ -93,8 +93,8 @@ export function  updateName(name: string) {
 }
 
 export function updateBOD(bod: string) {
-  const aimUrl = "https://nepal.sk8tech.io/wp-json/wp/v2/users/" + localStorage.getItem('user_id');
-  let token = localStorage.getItem('token');
+  const aimUrl = "https://nepal.sk8tech.io/wp-json/wp/v2/users/" + sessionStorage.getItem('user_id');
+  let token = sessionStorage.getItem('token');
   return (dispatch: Function) => {
     return axios.put(aimUrl, {"fields": {"dateofbirth": bod}}, { headers: { 'Authorization': "Bearer" + token } })
       .then(res => {
@@ -105,8 +105,8 @@ export function updateBOD(bod: string) {
 }
 
 export function updateWeight(weight: string) {
-  const aimUrl = "https://nepal.sk8tech.io/wp-json/wp/v2/users/" + localStorage.getItem('user_id');
-  let token = localStorage.getItem('token');
+  const aimUrl = "https://nepal.sk8tech.io/wp-json/wp/v2/users/" + sessionStorage.getItem('user_id');
+  let token = sessionStorage.getItem('token');
   return (dispatch: Function) => {
     return axios.put(aimUrl, {"fields": {"weight": weight}}, { headers: { 'Authorization': "Bearer" + token } })
       .then(res => {
@@ -118,8 +118,8 @@ export function updateWeight(weight: string) {
 }
 
 export function updateHeight(height: string) {
-  const aimUrl = "https://nepal.sk8tech.io/wp-json/wp/v2/users/" + localStorage.getItem('user_id');
-  let token = localStorage.getItem('token');
+  const aimUrl = "https://nepal.sk8tech.io/wp-json/wp/v2/users/" + sessionStorage.getItem('user_id');
+  let token = sessionStorage.getItem('token');
   return (dispatch: Function) => {
     return axios.put(aimUrl, {"fields": {"height": height}}, { headers: { 'Authorization': "Bearer" + token } })
       .then(res => {
@@ -131,8 +131,8 @@ export function updateHeight(height: string) {
 }
 
 export function updataPassword(password: string) {
-  const aimUrl = "https://nepal.sk8tech.io/wp-json/wp/v2/users/" + localStorage.getItem('user_id');
-  let token = localStorage.getItem('token');
+  const aimUrl = "https://nepal.sk8tech.io/wp-json/wp/v2/users/" + sessionStorage.getItem('user_id');
+  let token = sessionStorage.getItem('token');
   return (dispatch: Function) => {
     return axios.put(aimUrl, {"password": password}, { headers: { 'Authorization': "Bearer" + token } })
       .then(res => {

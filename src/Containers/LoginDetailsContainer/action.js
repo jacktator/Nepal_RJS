@@ -15,8 +15,9 @@ export function LoginDetailsActions(email:string, password:string){
     .then((response)=>{
       console.log(response);
       let token = response.data.token
-      window.localStorage.setItem('token', token);
-      window.localStorage.setItem('user_id', response.data.user_id);
+      window.sessionStorage.setItem('token', token);
+      window.sessionStorage.setItem('user_id', response.data.user_id);
+      window.sessionStorage.setItem('user_email', response.data.user_email);
       dispatch(upDateToken(token));
       dispatch(setGlobalAxiosDefault(token));
       dispatch(checkLogin());

@@ -3,7 +3,7 @@ import axios from 'axios';
 //This function used to initialize the program to the redux during loading plan page
 export function getProgram(){
   return(dispatch: Function) => {
-    let user_id = localStorage.getItem('user_id');
+    let user_id = sessionStorage.getItem('user_id');
     return axios.get(`https://nepal.sk8tech.io/wp-json/wp/v2/program?
                     filter[meta_key]=user_id&filter[meta_value]=${user_id}&filter[posts_per_page]=1`
     )
