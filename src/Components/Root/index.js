@@ -32,7 +32,7 @@ type Props = {
 class Root extends Component<Props>{
   render(){
     const {check,justRegistered} = this.props
-    if(check){
+    if(window.sessionStorage.getItem("token")){
       return(
         <div>
           <HashRouter>

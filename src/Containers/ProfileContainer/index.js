@@ -3,7 +3,7 @@ import Profile from '../../Components/Profile'
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {
-  changeName, changeBirthDate, changeHeight, changeWeight, changeEmail, putPassword, changePassword, showPassError,
+  changeName, changeBirthDate, changeHeight, changeWeight, changeEmail, changePassword, showPassError,
   getUserData, uploadPicture, removeError, updateName, updateBOD, updateWeight, updateHeight, updataPassword
 } from './actions';
 import { Toast } from 'antd-mobile'
@@ -18,36 +18,8 @@ class ProfileContainer extends Component{
     this.props.getUserData();
   }
 
-  onSavePassword = () => {
-    if(this.props.ProfileReducers.fields.currentPassword === "" || this.props.ProfileReducers.fields.newPassword === "" ||this.props.ProfileReducers.fields.confirmPassword === "" ) {
-      this.props.showPassError("EMPTY_FIELD");
-    } else {
-      if(this.props.ProfileReducers.fields.password === this.props.ProfileReducers.fields.currentPassword){
-        if(this.props.ProfileReducers.fields.newPassword !== this.props.ProfileReducers.fields.password ){
-          if(this.props.ProfileReducers.fields.newPassword === this.props.ProfileReducers.fields.confirmPassword){
-            if(this.props.ProfileReducers.fields.confirmPassword.length >= 5 ) {
-              this.props.changePassword(this.props.ProfileReducers.fields.confirmPassword);
-              this.props.updataPassword(this.props.ProfileReducers.fields.newPassword);
-              Toast.info('Password Change Successful!');
-            } else {
-              this.props.showPassError("LENGTH");
-            }
-          } else {
-            this.props.showPassError("NOT_MATCH");
-          }
-        } else {
-          this.props.showPassError("SAME_PASS");
-        }
-      } else {
-        this.props.showPassError("INCORRECT_PASS");
-      }
-    }
-
-
-    setTimeout(function(){this.props.showPassError("NO_ERROR");}.bind(this),1500);
-  }
-
   onLogoutHandler = () => {
+    window.sessionStorage.clear();
     this.props.checkLogout();
   }
 
@@ -75,8 +47,6 @@ class ProfileContainer extends Component{
           //accountdetails
           selectEmail={this.props.changeEmail}
           onLogoutHandler={this.onLogoutHandler}
-          onSavePassword={this.onSavePassword}
-          putPassword={this.props.putPassword}
           checkField={this.checkField}
           updateName={this.props.updateName}
           updateBOD={this.props.updateBOD}
@@ -107,7 +77,7 @@ function mapStateToProps(state){
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
     changeWeight,changeHeight,changeName,changeBirthDate,changeEmail,
-    putPassword,showPassError,changePassword,getUserData,uploadPicture,
+    showPassError,changePassword,getUserData,uploadPicture,
     checkLogout,removeError,updateName,updateBOD, updateWeight,updateHeight,updataPassword
   }, dispatch
 );
