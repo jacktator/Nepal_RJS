@@ -54,7 +54,7 @@ const displayButton = (props) => {
           <div>
             <Flex justify="center" className="stepper-text">
             <Flex.Item>Weight (kg)</Flex.Item>
-            <Flex.Item>Reps</Flex.Item>
+            <Flex.Item>{props.state.repsName}</Flex.Item>
             </Flex>
             <Flex justify="center" className="stepper">
             <Flex.Item><Stepper
@@ -69,7 +69,7 @@ const displayButton = (props) => {
             <Flex.Item><Stepper
             style={{ width: '30%', minWidth: '110px' }}
             showNumber
-            max={20}
+            max={30}
             min={1}
             value={parseInt(props.state.reps, 10)}
             onChange={props.onChangeRep}
@@ -82,14 +82,14 @@ const displayButton = (props) => {
       {(props.state.exercisePlace==="home") &&
       <div>
         <Flex justify="center" className="stepper-text">
-        <Flex.Item>Reps</Flex.Item>
+        <Flex.Item>{props.state.repsName}</Flex.Item>
         </Flex>
         <Flex justify="center" className="stepper">
 
         <Flex.Item><Stepper
         style={{ width: '30%', minWidth: '110px' }}
         showNumber
-        max={20}
+        max={100}
         min={1}
         value={parseInt(props.state.reps, 10)}
         onChange={props.onChangeRep}
@@ -99,7 +99,6 @@ const displayButton = (props) => {
       </div>
 
       }
-
 
         {/* code for save button*/}
         <Flex justify="center" className="save-button">

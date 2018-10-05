@@ -3,6 +3,7 @@ import {NavBar, Icon, NoticeBar,WingBlank,Progress, Badge} from 'antd-mobile';
 import './Exercise.css';
 import RecordList from './RecordList.js';
 import WeightandRep from './WeightAndRep';
+import ReadOnly from './ReadOnly';
 import './RoundPopup.css';
 
 const Exercise = (props) => {
@@ -33,43 +34,57 @@ const Exercise = (props) => {
            <img src={require("../../../Assets/Workout/Exercise/exerciseInfo.svg")} className="info-icon" alt="info"
              onClick={(e) => props.onInfoClicked(e) }/>
          </div>
-         {/* displays the text and steppers, as well as the save button. refer to WeightandRep.js*/}
-         <div className="stepper-list-container">
-            <div>
-              <WeightandRep
-              state={props.state}
-              onCompleteButtonHandler={props.onCompleteButtonHandler}
-              onSaveButtonClicked={props.onSaveButtonClicked}
-              onNextButtonHandler = {props.onNextButtonHandler}
-              onChangeWeight={props.onChangeWeight}
-              onChangeRep={props.onChangeRep}
-              steps={props.state.sets-props.state.exerciseLog.length}
-            />
-            </div>
-            {/* displays the record list, refer to RecordList.js*/}
-           <div>
-             <RecordList
-              state = {props.state}
-            />
-             {/* Message for showing current goals*/}
-             { props.message != null &&
-               <NoticeBar
-                 marqueeProps={{ loop: true, fps:40, leading:1000, trailing:1000,style:{padding:'0 100px'}}}
-                 mode=''
-                 icon={null}
-                 className="display-message"
-               >
-                 {props.message}
-               </NoticeBar>
-             }
-               {/* progress bar of exercises completed for the day*/}
-             <WingBlank>
-               <Progress position="normal" percent={0}/>
-             </WingBlank>
-           </div>
-         </div>
+         {displayExercise(props)}
+
       </div>
     );
   }
+  const displayExercise = (props) => {
+    if(props.state.inCurrentProgress){
+    return(
+      <div className="stepper-list-container">
+      {/* displays the text and steppers, as well as the save button. refer to WeightandRep.js*/}
+         <div>
+           <WeightandRep
+           state={props.state}
+           onCompleteButtonHandler={props.onCompleteButtonHandler}
+           onSaveButtonClicked={props.onSaveButtonClicked}
+           onNextButtonHandler = {props.onNextButtonHandler}
+           onChangeWeight={props.onChangeWeight}
+           onChangeRep={props.onChangeRep}
+           steps={props.state.sets-props.state.exerciseLog.length}
+         />
+         </div>
+         {/* displays the record list, refer to RecordList.js*/}
+        <div>
+          <RecordList
+           state = {props.state}
+         />
+          {/* Message for showing current goals*/}
+          { props.message != null &&
+            <NoticeBar
+              marqueeProps={{ loop: true, fps:40, leading:1000, trailing:1000,style:{padding:'0 100px'}}}
+              mode=''
+              icon={null}
+              className="display-message"
+            >
+              {props.message}
+            </NoticeBar>
+          }
+        </div>
+      </div>
+    )
+  }else{
+    return(
+      <div>
+        <ReadOnly
+          state={props.state}
+          onNextButtonHandler = {props.onNextButtonHandler}
+          />
+      </div>
+    )
+  }
+}
+
 
 export default Exercise;

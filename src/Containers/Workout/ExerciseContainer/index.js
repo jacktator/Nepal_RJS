@@ -40,6 +40,7 @@ class ExerciseContainer extends Component{
       weight: 0, // represent the prescribe weight for current workout
       reps: 0, // represent the prescribe reps for current workout
       sets: 0,
+      repsName: "Reps",
       exerciseData: {
       },
       prevData: {},
@@ -97,6 +98,7 @@ class ExerciseContainer extends Component{
     let exerciseLength = program.exercises[dayIndex].exercise_list.length;
     let code = exerciseData.code;
     let reps;
+    let repsName = "Reps";
 
     if(exercisePlace === "gym"){
       if(exerciseData.progression_model === "double progression"){
@@ -113,17 +115,23 @@ class ExerciseContainer extends Component{
         reps = 8;
       }
     }else if(exercisePlace === "home"){
-      reps = 2;
+      console.log(exerciseData.progression_model);
       if(exerciseData.progression_model === "rep home"){
         reps = parseInt(exerciseData.reps, 10);
       }else if(exerciseData.progression_model === "time home"){
-
-      }else if(exerciseData.progression_model === "no progresson"){
-
+          let data = exerciseData.reps.split(" ");
+          reps = parseInt(data[0],10);
+          repsName = data[1];
+      }else if(exerciseData.progression_model === "no progression"){
+        let data = exerciseData.reps.split(" ");
+        let tempData = data[0].split("-");
+        console.log("Temp Data",tempData);
+        reps = parseInt(tempData[1],10);
+        repsName = [data[1]]
       }else if(exerciseData.progression_model === "till failure"){
-
+        reps = 1;
       }else if(exerciseData.progression_model === "none"){
-
+        reps = 1;
       }
       //write logic for home exercise place
     }
@@ -131,7 +139,7 @@ class ExerciseContainer extends Component{
     this.setState({
       exerciseLength: exerciseLength, exerciseData, personalBest: parseFloat(exerciseData.personal_best),
       prescribeWeight: parseFloat(exerciseData.weight), prescribeReps: reps,
-      weight: parseFloat(exerciseData.weight), reps: reps,
+      weight: parseFloat(exerciseData.weight), reps: reps, repsName: repsName,
       sets: parseInt(exerciseData.sets, 10)
     })
 

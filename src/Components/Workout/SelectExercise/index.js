@@ -15,13 +15,38 @@ import Loading from '../../Loading';
     this.setState({index:e})
   }
 
-//This function
+//This function calls the function onSelect from workoutconainter
   selectExercise = () => {
     this.props.onSelect(this.props.listExercise.exercises[this.state.index].exercise[this.state.currentExercise])
   }
 
+  countInArray = (array, value) => {
+    return array.reduce((n, x) => n + (x.code === value), 0);
+  }
   render() {
     if(this.props.listExercise && this.props.listExercise !== null){
+        console.log(this.props.listExercise);
+        console.log(this.props.exerciseList);
+        let {listExercise, exerciseList, exerciseIndex} = this.props;
+        // if(exerciseIndex != null){
+        //   let code = exerciseList[exerciseIndex].code;
+        //   let workout = exerciseList[exerciseIndex]. workout;
+        //   let value = this.countInArray(exerciseList, code);
+        //   console.log("value",value)
+        //   if(value > 1){
+        //     let newArray = [];
+        //     for(let i=0; i<exerciseList.length; i++){
+        //       console.log(exerciseList[i].workout);
+        //       console.log(workout);
+        //
+        //       if(exerciseList[i].workout != workout && exerciseList[i].code === code){
+        //         newArray.push({workout:exerciseList[i].workout})
+        //       }
+        //     }
+        //   }
+        // }
+
+
       const exercises = this.props.listExercise.exercises;
       return (
         <div className="container">
@@ -40,7 +65,7 @@ import Loading from '../../Loading';
               <div className="excercise-header" style={{margin:"10px 0px 10px",backgroundColor:'white',color:'black', textAlign: "center"}}>{data.name}</div>
               <img
                 key = { data.value }
-                src={require(`../../../Assets/Workout/images/${key}.jpeg`)}
+                src={require(`../../../Assets/Workout/Images/${key}.jpeg`)}
                 alt={data.description}
                 onLoad={() => {
                   // fire window resize event to change height

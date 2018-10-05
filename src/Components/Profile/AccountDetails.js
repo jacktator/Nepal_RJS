@@ -25,15 +25,15 @@ class AccountDetails extends Component{
       url: 'https://nepal.sk8tech.io/wp-json/jwt-auth/v1/token/',
       method: 'post',
       data: {
-        username: sessionStorage.getItem('user_email'),
+        username: localStorage.getItem('user_email'),
         password: v,
       }
     })
       .then(res => {
         console.log('check finish');
-        window.sessionStorage.setItem('token', res.data.token);
-        window.sessionStorage.setItem('user_id', res.data.user_id);
-        window.sessionStorage.setItem('user_email', res.data.user_email);
+        window.localStorage.setItem('token', res.data.token);
+        window.localStorage.setItem('user_id', res.data.user_id);
+        window.localStorage.setItem('user_email', res.data.user_email);
         check && this.updatePassword();
         !check && this.props.updateFinish();
         !check && window.location.reload();
@@ -42,8 +42,8 @@ class AccountDetails extends Component{
   }
 
   updatePassword = () => {
-    const token = window.sessionStorage.getItem('token');
-    const url = 'https://nepal.sk8tech.io/wp-json/wp/v2/users/' + sessionStorage.getItem('user_id');
+    const token = window.localStorage.getItem('token');
+    const url = 'https://nepal.sk8tech.io/wp-json/wp/v2/users/' + localStorage.getItem('user_id');
     axios({
       url: url,
       method: 'put',

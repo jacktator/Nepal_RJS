@@ -11,7 +11,7 @@ import { addName, addAge, addGender, addWeight, addExercisePlace,
   addProductivity, addProductiveAfterExercise,
   addWorkInjury, addHealthFeeling,
   addDailyActivity, addCurrentActivity,
-  addQuestionnaire, addError, removeError, success
+  addQuestionnaire, addError, removeError, success, uploading
 }from './actions';
 
 import CurrentStep  from '../../Components/Questionnaire/Progress';
@@ -142,7 +142,9 @@ class Questionnaire extends Component {
     this.setState({ modal: false })
   }
   cancelErrorMessageHandler = () => {
+    this.props.uploading(false);
     this.props.removeError();
+
   }
   render() {
     const {nick_name, fields, isLoading} = this.props.QuestionnaireReducers;
@@ -369,7 +371,7 @@ function matchDispatchToProps(dispatch){
     addWorkInjury, addHealthFeeling,
     addDailyActivity, addCurrentActivity,
     addQuestionnaire,
-    addError, removeError, success
+    addError, removeError, success, uploading
   }, dispatch
 );
 }

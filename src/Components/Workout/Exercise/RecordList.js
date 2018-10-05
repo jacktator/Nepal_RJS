@@ -4,6 +4,18 @@ import './Exercise.css';
 // icons taken from http://iconfont.cn/
 const Item = List.Item
 
+const RecordList = (props) => {
+  return(
+    <div className="record-list">
+      <List>
+      {[...Array(parseInt(props.state.exerciseData.sets,10))].map((value, key) =>(
+        displayRecord(props, key)
+      ))}
+      </List>
+    </div>
+  )
+}
+
 const displayRecord =(props, index) => {
   if(props.state.exerciseLog[index])
   {
@@ -120,17 +132,5 @@ const displayRecord =(props, index) => {
       </div>
     )
   }
-}
-
-const RecordList = (props) => {
-  return(
-    <div className="record-list">
-      <List>
-      {[...Array(parseInt(props.state.exerciseData.sets,10))].map((value, key) =>(
-        displayRecord(props, key)
-      ))}
-      </List>
-    </div>
-  )
 }
 export default RecordList;

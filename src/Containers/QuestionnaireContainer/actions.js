@@ -4,17 +4,20 @@ export function addQuestionnaire(state) {
 
   return(dispatch: Function) => {
     dispatch(uploading(true));
-
-    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire/10621",
+    let token = localStorage.getItem('token');
+    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire",
     {
       title: "Questionnaire",
       status: "publish",
       fields: state.fields
+    }, {
+      headers:{ Authorization: "Bearer" + token }
     }
   ).then((response) => {
     dispatch(addProgram(response.data.acf.days_per_week, response.data.acf.goals, response.data.acf.exercise_place));
     //dispatch(questionnaire(state));
   }).catch((error) => {
+    console.log(error.response);
     if(error.response){
       dispatch(addError(error.response.data.message));
     }else{
@@ -28,7 +31,7 @@ export function addQuestionnaire(state) {
 //Function to initialize the program after completion of the questionnaire
 export function addProgram (days, goals, exercise_place) {
   return(dispatch: Function) => {
-    let user_id = sessionStorage.getItem('user_id');
+    let user_id = localStorage.getItem('user_id');
     let goal;
     switch (goals) {
       case "1":
@@ -55,13 +58,13 @@ export function addProgram (days, goals, exercise_place) {
     }else if(exercise_place === "home"){
         jsonurl = `./DataSources/Home/${goal.replace(' ', '')}/day${days}.json`;
     }else{
-      alert("nothing found");
+      console.log("nothing found");
     }
 
       //fetch the list of exercise
       return axios.get(jsonurl)
       .then((res) => {
-        console.log("Reading from json", res)
+        let token = localStorage.getItem('token');
         return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/program",
         {
           status: "publish",
@@ -74,6 +77,8 @@ export function addProgram (days, goals, exercise_place) {
               difficult_level: "1",
               exercise_place: exercise_place,
           }
+        }, {
+          headers:{ Authorization: "Bearer" + token }
         }).then((response) => {
 
           console.log("success",response);
@@ -85,6 +90,8 @@ export function addProgram (days, goals, exercise_place) {
                 training_goal: response.data.acf.program_name,
                 user_id: response.data.acf.user_id
               }
+            }, {
+              headers:{ Authorization: "Bearer" + token }
             }).then((recordResponse) => {
               console.log("Successfully created user record", recordResponse);
 

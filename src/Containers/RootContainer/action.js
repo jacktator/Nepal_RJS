@@ -6,15 +6,16 @@ export function checkLogin(){
 }
 
 export function checkLogout(){
+  window.localStorage.clear();
   return{
     type: "CHECK_CHANGE",
     payload: false
   }
 }
 
-export function checkRegister(){
+export function checkRegister(justRegistered: Boolean){
   return{
     type: "CHECK_REGISTER",
-    payload: true
+    payload: justRegistered
   }
 }

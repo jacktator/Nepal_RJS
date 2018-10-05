@@ -10,10 +10,12 @@ export function LoginDetailsActions(email:string, password:string){
     })
     .then((response)=>{
       console.log(response);
-      let token = response.data.token
-      window.sessionStorage.setItem('token', token);
-      window.sessionStorage.setItem('user_id', response.data.user_id);
-      window.sessionStorage.setItem('user_email', response.data.user_email);
+      let token = response.data.token;
+      console.log("original ",token);
+      window.localStorage.setItem('token', token);
+      window.localStorage.setItem('user_id', response.data.user_id);
+      window.localStorage.setItem('user_email', response.data.user_email);
+      console.log("get token",localStorage.getItem('token'));
       dispatch(upDateToken(token));
       dispatch(setGlobalAxiosDefault(token));
       dispatch(checkLogin());

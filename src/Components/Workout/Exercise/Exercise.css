@@ -121,9 +121,9 @@ width measurements:
   user-select: none;
 }
 
-.weight-and-rep .save-button{
+.weight-and-rep .save-button .next-button{
   text-align:center;
-  margin: 3% 0 3% 0;
+  margin: 13% 10% 13% 10%;
   user-select: none;
 }
 
