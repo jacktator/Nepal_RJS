@@ -11,12 +11,14 @@ type Props={
 class RootContainer extends Component<Props>{
   render(){
     console.log("This is from root state",this.props.RootStates);
-    const {check, justRegistered} = this.props.RootStates
+    const {check, justRegistered} = this.props.RootStates;
+    const isAuthenticated = this.props.isAuthenticated;
     return(
       <div>
         <Root
-          check={check}
           justRegistered = {justRegistered}
+          isAuthenticated = {isAuthenticated}
+
         />
       </div>
     );
@@ -26,6 +28,7 @@ class RootContainer extends Component<Props>{
 function mapStateToProps(state){
   return{
     RootStates: state.RootStates,
+    isAuthenticated: state.LoginDetailsStates.isAuthenticated,
   }
 }
 

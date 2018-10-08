@@ -25,15 +25,15 @@ class AccountDetails extends Component{
       url: 'https://nepal.sk8tech.io/wp-json/jwt-auth/v1/token/',
       method: 'post',
       data: {
-        username: localStorage.getItem('user_email'),
+        username: sessionStorage.getItem('user_email'),
         password: v,
       }
     })
       .then(res => {
         console.log('check finish');
-        window.localStorage.setItem('token', res.data.token);
-        window.localStorage.setItem('user_id', res.data.user_id);
-        window.localStorage.setItem('user_email', res.data.user_email);
+        window.sessionStorage.setItem('token', res.data.token);
+        window.sessionStorage.setItem('user_id', res.data.user_id);
+        window.sessionStorage.setItem('user_email', res.data.user_email);
         check && this.updatePassword();
         !check && this.props.updateFinish();
         !check && window.location.reload();
@@ -42,8 +42,8 @@ class AccountDetails extends Component{
   }
 
   updatePassword = () => {
-    const token = window.localStorage.getItem('token');
-    const url = 'https://nepal.sk8tech.io/wp-json/wp/v2/users/' + localStorage.getItem('user_id');
+    const token = window.sessionStorage.getItem('token');
+    const url = 'https://nepal.sk8tech.io/wp-json/wp/v2/users/' + sessionStorage.getItem('user_id');
     axios({
       url: url,
       method: 'put',
@@ -85,9 +85,9 @@ class AccountDetails extends Component{
     return (
       <div>
         <Accordion className="my-accordion" onChange={this.onChange}>
-          
+
           <Accordion.Panel header={<Item className="no-select" thumb={require("../../Assets/Profile/lock.svg")}> Change Password</Item>}>
-            
+
             <List className="my-list">
               <InputItem
                 placeholder="Current Password"

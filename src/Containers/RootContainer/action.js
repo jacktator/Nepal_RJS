@@ -6,7 +6,7 @@ export function checkLogin(){
 }
 
 export function checkLogout(){
-  window.localStorage.clear();
+  window.sessionStorage.clear();
   return{
     type: "CHECK_CHANGE",
     payload: false

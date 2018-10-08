@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {Redirect} from 'react-router';
-import { Toast } from 'antd-mobile';
+import { Toast, ActivityIndicator } from 'antd-mobile';
 import Exercise from '../../../Components/Workout/Exercise/';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Info from '../../../Components/Workout/Exercise/Info';
 import ShowHistory from '../../../Components/Workout/Exercise/ShowHistory';
 import Modal from '../../../Components/UI/Modal';
-import {saveExerciseData, getExerciseRecord, updatePersonalBest, updateRepsAndWeight, completeWorkout,removeError} from '../actions';
+import {saveExerciseData, getExerciseRecord, updatePersonalBest, updateRepsAndWeight, completeWorkout, savingExercise, removeError} from '../actions';
 import Loading from '../../../Components/Loading';
 import Hoc from '../../../HOC/Hoc';
 import ShowError from '../../../Components/Error/ShowError';
@@ -26,6 +26,7 @@ class ExerciseContainer extends Component{
       exercisePlace: null, //represent the place of doing exercise either gym or home
       isFinish: false, // represent if the workout finsh for a day.
       isLoading: false, // represent the loading of data
+      isInitializing: true,
       goBack: false, // represent if user click back button
       showHistory: false,
       showInfo: false, // represent if user click show info icon
@@ -56,8 +57,8 @@ class ExerciseContainer extends Component{
   componentWillMount() {
     let index = 0;
     if(this.props.match.params.index){
-      index = this.props.match.params.index;
-      this.setState({exerciseIndex: parseInt(this.props.match.params.index, 10)})
+      index = parseInt(this.props.match.params.index, 10);
+      this.setState({exerciseIndex: index})
     }
     const {program, currentDay, dayIndex} = this.props.WorkoutReducers;
     if(program && dayIndex!== null){
@@ -68,8 +69,7 @@ class ExerciseContainer extends Component{
       }
       //let exerciseLength = program.exercises[dayIndex].exercise_list.length;
       if(program.exercises[dayIndex].exercise_list[index]){
-        this.loadingToast();
-        this.calculateExerciseLog();
+        this.calculateExerciseLog(index);
       }else{
         this.setState({ error: true})
       }
@@ -78,15 +78,12 @@ class ExerciseContainer extends Component{
     }
   }
 
-  componentWillReceiveProps(nextProps){
-    Toast.hide();
-  }
-  loadingToast = () => {
-    Toast.loading('Loading...', 0, () => {
-    });
-  }
 
-  calculateExerciseLog = () => {
+  calculateExerciseLog = (i) => {
+    let index = this.state.exerciseIndex;
+    if(i!==null){
+      index = i;
+    }
     let exercisePlace = this.props.WorkoutReducers.program.exercise_place;
     let {program, dayIndex}= this.props.WorkoutReducers;
     let records = this.props.WorkoutReducers.record;
@@ -94,9 +91,10 @@ class ExerciseContainer extends Component{
     let day = this.props.WorkoutReducers.currentDay;
     let days_per_week = this.props.WorkoutReducers.program.days;
     let previous_week_day = parseInt(day,10) - parseInt(days_per_week,10);
-    let exerciseData = program.exercises[dayIndex].exercise_list[this.state.exerciseIndex];
+    let exerciseData = program.exercises[dayIndex].exercise_list[index];
     let exerciseLength = program.exercises[dayIndex].exercise_list.length;
     let code = exerciseData.code;
+    let workout = exerciseData.workout;
     let reps;
     let repsName = "Reps";
 
@@ -147,7 +145,7 @@ class ExerciseContainer extends Component{
       if(records.daily_record){
         let dayIndex = (records.daily_record.findIndex(i => { return i.day === day.toString()}));
         if(dayIndex >= 0){
-          let dataIndex = (records.daily_record[dayIndex].data.findIndex( i => {return i.code === code}));
+          let dataIndex = (records.daily_record[dayIndex].data.findIndex( i => {return i.code === code && i.name === workout}));
           if(dataIndex >= 0){
             let exerciseLog = records.daily_record[dayIndex].data[dataIndex].data;
             this.setState({exerciseLog: exerciseLog, currentSets: exerciseLog.length+1})
@@ -165,8 +163,7 @@ class ExerciseContainer extends Component{
       }
     }
     setTimeout(() => {
-      Toast.hide();
-      this.setState({isLoading: false})
+      this.setState({isInitializing:false, isLoading: false})
     }, 1000);
   }
 
@@ -184,12 +181,13 @@ class ExerciseContainer extends Component{
     this.setState({ prevData, exerciseLog, isLoading: true, completedExercise: this.state.completedExercise+1});
     this.setState({ currentSets: 1, exerciseIndex })
     setTimeout(() => {
-      this.calculateExerciseLog();
+      this.calculateExerciseLog(null);
     }, 1000);
   }
 
 
   onSaveButtonHandler = () => {
+    this.props.savingExercise(true);
     if(this.state.exercisePlace === "home"){
       this.homeExerciseSave();
     }else if(this.state.exercisePlace === "gym"){
@@ -239,10 +237,8 @@ class ExerciseContainer extends Component{
       this.props.updateRepsAndWeight(program, programID, dayIndex, this.state.exerciseIndex, this.state.prescibeReps, this.state.prescribeWeight);
     }
     this.props.saveExerciseData(recordID, currentDay, name, code, this.state.weight, this.state.Currentsets, this.state.reps, record);
-    this.loadingToast();
 
     setTimeout(() => {
-      Toast.hide();
       this.setState({isLoading: false})
     }, 1000);
     let exerciseLog = [...this.state.exerciseLog];
@@ -263,10 +259,8 @@ class ExerciseContainer extends Component{
     }
 
     this.props.saveExerciseData(recordID, currentDay, name, code, 0, this.state.Currentsets, this.state.reps, record);
-    this.loadingToast();
 
     setTimeout(() => {
-      Toast.hide();
       this.setState({isLoading: false})
     }, 1000);
     let exerciseLog = [...this.state.exerciseLog];
@@ -333,7 +327,7 @@ class ExerciseContainer extends Component{
         if(this.state.currentSets === this.state.sets){
           message = `Last Set - Do as many reps as possible`;
         }else if(this.state.currentSets === 1){
-          message = `Sets 1`;
+
           if(this.state.prevData.reps){
             if(this.state.prescribeReps <= this.state.prevData.reps){
               message = `Increase the weight`;
@@ -348,11 +342,16 @@ class ExerciseContainer extends Component{
             }else{
               message = `Aim for more reps`;
             }
-          }else{
           }
         }
       }else if(this.state.exerciseData.progression_model === 'till failure'){
         message = `Do as many reps as possible`;
+      }else{//for home workout
+        if(this.state.currentSets === this.state.sets){
+            message = `Last set! Do as many reps as possible`;
+        }else{
+          message = "";
+        }
       }
     }else{
       message = "Go no next workout"
@@ -364,6 +363,7 @@ class ExerciseContainer extends Component{
     let {error} =this.props.WorkoutReducers;
     let message = this.setMessage();
     if(this.props.WorkoutReducers.program && this.state.error === false){
+      const {isSavingExercise} = this.props.WorkoutReducers;
       const video = "cPAbx5kgCJo";
       const videoDescription = "THIS is test video description";
       //const videoSearch = _.debounce((term)=>{this.videoSearch(term)}, 300);
@@ -390,6 +390,20 @@ class ExerciseContainer extends Component{
         /*videos={this.state.selectedVideo}*/
         state = {this.state}
         />
+        <div>
+            <ActivityIndicator
+              toast
+              text="initializing..."
+              animating={this.state.isInitializing}
+            />
+        </div>
+        <div>
+            <ActivityIndicator
+              toast
+              text="Saving data to backend. Please wait.."
+              animating={isSavingExercise}
+            />
+        </div>
         {this.state.goBack && (
           <Redirect to='/plan' />
         )}
@@ -447,7 +461,8 @@ function mapStateTothis(state){
 
 function matchDispatchTothis(dispatch){
   return bindActionCreators({
-    saveExerciseData, getExerciseRecord, updatePersonalBest, updateRepsAndWeight, completeWorkout,removeError
+    saveExerciseData, getExerciseRecord, updatePersonalBest,
+    updateRepsAndWeight, completeWorkout,removeError, savingExercise
   }, dispatch
 );
 }

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export function getHistory() {
   return(dispatch: Function) => {
-    let user_id = localStorage.getItem('user_id');
+    let user_id = sessionStorage.getItem('user_id');
     return axios.get(`https://nepal.sk8tech.io/wp-json/wp/v2/record?filter[meta_key]=user_id&filter[meta_value]=${user_id}`)
     .then((response) => {
       console.log(response);
@@ -17,7 +17,7 @@ export function getHistory() {
       if(error.response){
         dispatch(catchError(error.response.data.message));
       }else{
-        dispatch(catchError("Network Connection Error. Please check your network connection"))
+        dispatch(catchError("Oops! Unable to connect to the server. Either your device is offline or server is down."))
       }
     })
   }//end return dispatch function

@@ -31,8 +31,8 @@ type Props = {
 
 class Root extends Component<Props>{
   render(){
-    const {check,justRegistered} = this.props
-    if(localStorage.getItem("token")){
+    const {isAuthenticated,justRegistered} = this.props
+    if(sessionStorage.getItem("token")){
       return(
         <div>
           <HashRouter>

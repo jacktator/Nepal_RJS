@@ -1,12 +1,11 @@
 import axios from 'axios';
-import {setGlobalAxiosDefault} from '../LoginDetailsContainer/action';
+import {validToken} from '../LoginDetailsContainer/action';
 //This function used to initialize the program to the redux during loading plan page
 export function getProgram(){
   return(dispatch: Function) => {
-    let user_id = localStorage.getItem('user_id');
-    let token = localStorage.getItem('token');
-    dispatch(setGlobalAxiosDefault(token));
-
+    let user_id = sessionStorage.getItem('user_id');
+    let token = sessionStorage.getItem('token');
+    //dispatch(validToken(token));
     return axios.get(`https://nepal.sk8tech.io/wp-json/wp/v2/program?
                     filter[meta_key]=user_id&filter[meta_value]=${user_id}&filter[posts_per_page]=1`
     )
@@ -16,7 +15,7 @@ export function getProgram(){
         dispatch(redirectToQuestionnaire(true));
         setTimeout(function(){
           dispatch(redirectToQuestionnaire(false));
-        },1000);
+        },2000);
 
       }else{
         const progress = parseInt(response.data[0].acf.progress,10);
@@ -62,7 +61,7 @@ export function getProgram(){
       if(error.response){
         dispatch(catchError(error.response.data.message));
       }else{
-        dispatch(catchError("Network Connection Error. Please check your network connection"))
+        dispatch(catchError("Oops! Unable to connect to the server. Either your device is offline or server is down."))
       }
     })
   }
@@ -101,7 +100,7 @@ export function implementDeloadAlgorithm(programID, program, progress, ask_feedb
     program.ask_feedback= ask_feedback;
     program.feedback_value= 0;
     program.finish_for_day= false;
-    let token = localStorage.getItem('token');
+    let token = sessionStorage.getItem('token');
     axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`,{
       status: "publish",
       fields: program
@@ -115,7 +114,7 @@ export function implementDeloadAlgorithm(programID, program, progress, ask_feedb
       if(error.response){
         dispatch(catchError(error.response.data.message));
       }else{
-        dispatch(catchError("Network Connection Error. Please check your network connection"))
+        dispatch(catchError("Oops! Unable to connect to the server. Either your device is offline or server is down."))
       }
     })//end catch
   })//ends dispatch return
@@ -124,7 +123,7 @@ export function implementDeloadAlgorithm(programID, program, progress, ask_feedb
 //This function update the current progess of the program.
 export function updateProgress(programID, progress, ask_feedback){
   return((dispatch: Function) => {
-    let token = localStorage.getItem('token');
+    let token = sessionStorage.getItem('token');
     axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`,{
       status: "publish",
       fields: {
@@ -143,7 +142,7 @@ export function updateProgress(programID, progress, ask_feedback){
       if(error.response){
         dispatch(catchError(error.response.data.message));
       }else{
-        dispatch(catchError("Network Connection Error. Please check your network connection"))
+        dispatch(catchError("Oops! Unable to connect to the server. Either your device is offline or server is down."))
       }
     })
   })//ends return dispatch
@@ -187,7 +186,7 @@ export function updateDailyFeedBack(programID, program, value) {
     program.feedback_value =feedbackValue;
     program.ask_feedback = false;
     program.finish_for_day = false;
-    let token = localStorage.getItem('token');
+    let token = sessionStorage.getItem('token');
     axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`, {
       status: "publish",
       fields: program
@@ -201,7 +200,7 @@ export function updateDailyFeedBack(programID, program, value) {
       if(error.response){
         dispatch(catchError(error.response.data.message));
       }else{
-        dispatch(catchError("Network Connection Error. Please check your network connection"))
+        dispatch(catchError("Oops! Unable to connect to the server. Either your device is offline or server is down."))
       }
     })
   })
@@ -219,7 +218,7 @@ export function getExerciseRecord(programID){
       if(error.response){
         dispatch(catchError(error.response.data.message));
       }else{
-        dispatch(catchError("Network Connection Error. Please check your network connection"))
+        dispatch(catchError("Oops! Unable to connect to the server. Either your device is offline or server is down."))
       }
     })
   }//end return dispatch function
@@ -237,7 +236,7 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
     }
     dispatch(setProgram(program));
     dispatch(setWorkoutList(null));
-    let token = localStorage.getItem('token');
+    let token = sessionStorage.getItem('token');
     return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${id}`,
       {
         status: "publish",
@@ -249,7 +248,7 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
         if(error.response){
           dispatch(catchError(error.response.data.message));
         }else{
-          dispatch(catchError("Network Connection Error. Please check your network connection"))
+          dispatch(catchError("Oops! Unable to connect to the server. Either your device is offline or server is down."))
         }
       })
     }
@@ -266,7 +265,7 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
         if(error.response){
           dispatch(catchError(error.response.data.message));
         }else{
-          dispatch(catchError("Network Connection Error. Please check your network connection"))
+          dispatch(catchError("Oops! Unable to connect to the server. Either your device is offline or server is down."))
         }
       })
     }
@@ -278,7 +277,7 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
       let {program, dayIndex} = workoutReducers;
       program.exercises[dayIndex].exercise_list[listIndex].is_saved = true;
       dispatch(setProgram(program));
-      let token = localStorage.getItem('token');
+      let token = sessionStorage.getItem('token');
       return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${id}`,
         {
           status: "publish",
@@ -290,7 +289,7 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
           if(error.response){
             dispatch(catchError(error.response.data.message));
           }else{
-            dispatch(catchError("Network Connection Error. Please check your network connection"))
+            dispatch(catchError("Oops! Unable to connect to the server. Either your device is offline or server is down."))
           }
         })
       }
@@ -328,11 +327,12 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
                 daily_record.push(temp);
               }
             }else{
-              daily_record = [{ day: day, date: date, data: [ {code: code, data: [
+              daily_record = [{ day: day, date: date, data: [ {code: code, name:name, data: [
                 { sets: sets, reps: reps, weight: weight }]}]}
               ]
             }
-            let token = localStorage.getItem('token');
+            console.log(daily_record);
+            let token = sessionStorage.getItem('token');
             return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/record/${recordID}`,
               {
                 status: "publish",
@@ -343,12 +343,14 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
               .then((response)=> {
                   console.log("record updated", response)
                   dispatch(setExerciseRecord(response.data.acf));
+                  dispatch(savingExercise(false));
               }).catch((error)=> {
                 console.log(error.response);
+                dispatch(savingExercise(false));
                 if(error.response){
                   dispatch(catchError(error.response.data.message));
                 }else{
-                  dispatch(catchError("Network Connection Error. Please check your network connection"))
+                  dispatch(catchError("Oops! Unable to connect to the server. Either your device is offline or server is down."))
                 }
               })
           }//ends return dispatch
@@ -358,7 +360,7 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
         export function updatePersonalBest (program, programID, dayIndex, index, value){
           return(dispatch:Function) => {
             program.exercises[dayIndex].exercise_list[index].personal_best = value;
-            let token = localStorage.getItem('token');
+            let token = sessionStorage.getItem('token');
             return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`,
               {
                 status: "publish",
@@ -371,7 +373,7 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
                 if(error.response){
                   dispatch(catchError(error.response.data.message));
                 }else{
-                  dispatch(catchError("Network Connection Error. Please check your network connection"))
+                  dispatch(catchError("Oops! Unable to connect to the server. Either your device is offline or server is down."))
                 }
               })
           }
@@ -382,7 +384,7 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
           return(dispatch:Function) => {
             program.exercises[dayIndex].exercise_list[index].weight = weight;
             program.exercises[dayIndex].exercise_list[index].reps = reps;
-            let token = localStorage.getItem('token');
+            let token = sessionStorage.getItem('token');
             return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`,
               {
                 status: "publish",
@@ -395,7 +397,7 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
                 if(error.response){
                   dispatch(catchError(error.response.data.message));
                 }else{
-                  dispatch(catchError("Network Connection Error. Please check your network connection"))
+                  dispatch(catchError("Oops! Unable to connect to the server. Either your device is offline or server is down."))
                 }
               })
           }
@@ -404,7 +406,7 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
         //This function use to mark finish_for_day as true when user click complete workout button after completion of exercise
         export function completeWorkout(programID){
           return(dispatch:Function) => {
-            let token = localStorage.getItem('token');
+            let token = sessionStorage.getItem('token');
             return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`,
               {
                 status: "publish",
@@ -419,7 +421,7 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
                 if(error.response){
                   dispatch(catchError(error.response.data.message));
                 }else{
-                  dispatch(catchError("Network Connection Error. Please check your network connection"))
+                  dispatch(catchError("Oops! Unable to connect to the server. Either your device is offline or server is down."))
                 }
               })
           }
@@ -489,6 +491,12 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
           return {
             type: "SET_EXERCISE_ID",
             payload: id
+          }
+        }
+        export function savingExercise(isSaving: Boolean) {
+          return{
+            type: "SAVING_EXERCISE",
+            payload: isSaving
           }
         }
         export function redirectToQuestionnaire(value: Boolean) {

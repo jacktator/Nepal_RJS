@@ -19,7 +19,7 @@ class ProfileContainer extends Component{
   }
 
   onLogoutHandler = () => {
-    window.localStorage.clear();
+    window.sessionStorage.clear();
     this.props.checkLogout();
   }
 

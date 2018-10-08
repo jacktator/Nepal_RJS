@@ -1,6 +1,7 @@
 import React from 'react';
 import { Carousel, Button,SegmentedControl, WingBlank,WhiteSpace} from 'antd-mobile';
 import './SelectExercise.css';
+import _ from 'lodash';
 import Loading from '../../Loading';
 
   class SelectExercise extends React.Component {
@@ -25,29 +26,26 @@ import Loading from '../../Loading';
   }
   render() {
     if(this.props.listExercise && this.props.listExercise !== null){
-        console.log(this.props.listExercise);
-        console.log(this.props.exerciseList);
-        let {listExercise, exerciseList, exerciseIndex} = this.props;
-        // if(exerciseIndex != null){
-        //   let code = exerciseList[exerciseIndex].code;
-        //   let workout = exerciseList[exerciseIndex]. workout;
-        //   let value = this.countInArray(exerciseList, code);
-        //   console.log("value",value)
-        //   if(value > 1){
-        //     let newArray = [];
-        //     for(let i=0; i<exerciseList.length; i++){
-        //       console.log(exerciseList[i].workout);
-        //       console.log(workout);
-        //
-        //       if(exerciseList[i].workout != workout && exerciseList[i].code === code){
-        //         newArray.push({workout:exerciseList[i].workout})
-        //       }
-        //     }
-        //   }
-        // }
-
-
-      const exercises = this.props.listExercise.exercises;
+        const exercises = this.props.listExercise.exercises;
+        const exerciseOption = exercises[this.state.index].exercise;
+        let {listExercise, programExerciseList, exerciseIndex} = this.props;
+        if(exerciseIndex != null){
+          let exerciseOption = exercises[this.state.index].exercise;
+          let code = programExerciseList[exerciseIndex].code;
+          let workout = programExerciseList[exerciseIndex]. workout;
+          let value = this.countInArray(programExerciseList, code);
+          if(value > 1){
+            let workoutUnderSameCode = [];
+            for(let i=0; i<programExerciseList.length; i++){
+              if(programExerciseList[i].workout != workout && programExerciseList[i].code === code){
+                workoutUnderSameCode.push({"name":programExerciseList[i].workout})
+              }
+            }
+            console.log("with same code", workoutUnderSameCode);
+            _.pullAllBy(exerciseOption, workoutUnderSameCode, 'name')
+            console.log("after deletion", exerciseOption);
+          }
+        }
       return (
         <div className="container">
           <img src={require("../../../Assets/Modal/ic_cancel.png")} className="cancel-icon" alt="cancel"

@@ -14,7 +14,7 @@ const Workout = (props) => {
 
               {/* testing new UI format*/}
               <WingBlank size="lg">
-                  {props.exerciseList.map((data,key) => (
+                  {props.programExerciseList.map((data,key) => (
                     <div key={key}>
                     <WhiteSpace/>
                     <Card >

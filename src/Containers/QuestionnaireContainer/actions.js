@@ -4,7 +4,7 @@ export function addQuestionnaire(state) {
 
   return(dispatch: Function) => {
     dispatch(uploading(true));
-    let token = localStorage.getItem('token');
+    let token = sessionStorage.getItem('token');
     return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire",
     {
       title: "Questionnaire",
@@ -31,7 +31,7 @@ export function addQuestionnaire(state) {
 //Function to initialize the program after completion of the questionnaire
 export function addProgram (days, goals, exercise_place) {
   return(dispatch: Function) => {
-    let user_id = localStorage.getItem('user_id');
+    let user_id = sessionStorage.getItem('user_id');
     let goal;
     switch (goals) {
       case "1":
@@ -64,7 +64,7 @@ export function addProgram (days, goals, exercise_place) {
       //fetch the list of exercise
       return axios.get(jsonurl)
       .then((res) => {
-        let token = localStorage.getItem('token');
+        let token = sessionStorage.getItem('token');
         return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/program",
         {
           status: "publish",

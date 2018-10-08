@@ -93,7 +93,7 @@ class WorkoutContainer extends Component{
         let{dayIndex} = this.props.WorkoutReducers;
 
         if(dayIndex != null){
-          const exerciseList = this.props.WorkoutReducers.program.exercises[dayIndex].exercise_list;
+          const programExerciseList = this.props.WorkoutReducers.program.exercises[dayIndex].exercise_list;
           const programName = this.props.WorkoutReducers.program.program_name
           return (
             <Hoc>
@@ -102,7 +102,7 @@ class WorkoutContainer extends Component{
             onExerciseChange = {this.onChangeExerciseHandler}
             onWorkOutKeep = {this.onWorkOutKeepHandler}
             onStart = {this.onStartHandler}
-            exerciseList = {exerciseList}
+            programExerciseList = {programExerciseList}
             programName = {programName}
             />
             <div>
@@ -117,7 +117,7 @@ class WorkoutContainer extends Component{
               <SelectExercise
                 onSelect = {this.onSelectExerciseHandler}
                 listExercise = {this.props.WorkoutReducers.listExercise}
-                exerciseList = { exerciseList }
+                programExerciseList = { programExerciseList }
                 exerciseIndex = {this.state.exercisesIndex}
                 cancel = {this.cancelChangeWorkout}
               />

@@ -75,7 +75,6 @@ class PlanContainer extends Component{
         {value:1, Feedback:'Too easy'},
         {value:4, Feedback:'Do not complete'},
     ]
-
     if(this.props.WorkoutReducers.program) {
       return (
         <div>
@@ -135,6 +134,7 @@ function mapStateToProps(state){
     currentFooterTab: state.FooterReducers.currentFooterTab,
     profileReducers: state.ProfileReducers,
     WorkoutReducers: state.WorkoutReducers,
+    isAuthenticated: state.LoginDetailsStates.isAuthenticated,
   }
 }
 function matchDispatchToProps(dispatch){

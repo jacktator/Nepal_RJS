@@ -13,6 +13,7 @@ let DefaultState=
       hasError: false,
       message: ''
     },
+    isAuthenticated: false,
   }
 
 const LoginDetailsReducers = (state: Object=DefaultState, action: Function)=>{
@@ -39,7 +40,7 @@ const LoginDetailsReducers = (state: Object=DefaultState, action: Function)=>{
   else if (action.type==="IS_AUTHENTICATED"){
     //console.log(action.payload)
     return {
-      ...state, status: action.payload
+      ...state, isAuthenticated: action.payload
     }
   }
   else if (action.type==="TEST"){
@@ -65,7 +66,6 @@ const LoginDetailsReducers = (state: Object=DefaultState, action: Function)=>{
       ...state, error
     }
   }
-
     return state;
 }
 export default LoginDetailsReducers;
