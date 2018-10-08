@@ -262,6 +262,7 @@ class ExerciseContainer extends Component{
 
       let repsTotal = this.state.repsTotalForHomeExercise + this.state.reps;
       if(this.state.sets === this.state.currentSets){
+
         if(repsTotal >= (this.state.sets * this.state.prescribeReps)){
           let {program, dayIndex, programID} = this.props.WorkoutReducers;
           let updatedReps = this.state.prescribeReps;
@@ -400,7 +401,6 @@ class ExerciseContainer extends Component{
         onSaveButtonClicked ={this.onSaveButtonHandler}
         onNextButtonHandler = { this.onNextButtonHandler }
         onHistoryButtonHandler = {this.onHistoryButtonHandler}
-        // onSaveButtonClicked={this.onSaveButtonClick}
         onChangeWeight={this.onChangeWeight}
         onChangeRep={this.onChangeRep}
         onInfoClicked = {this.infoHandler}
@@ -427,11 +427,12 @@ class ExerciseContainer extends Component{
         )}
         {this.state.showHistory && (
           <Modal modalFor = "modal-for-info">
-          <ShowHistory
-          name = {this.state.exerciseData.workout}
-          record = {this.props.WorkoutReducers.record}
-          onBackButtonClicked = {this.onHistoryButtonHandler}
-          />
+            <ShowHistory
+              name = {this.state.exerciseData.workout}
+              record = {this.props.WorkoutReducers.record}
+              exercisePlace = {this.state.exercisePlace}
+              onBackButtonClicked = {this.onHistoryButtonHandler}
+            />
           </Modal>
         )}
         {this.state.showInfo && (

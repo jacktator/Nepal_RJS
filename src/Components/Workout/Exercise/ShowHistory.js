@@ -18,7 +18,9 @@ const ShowHistory = (props) => {
                           <div >
                               <span>sets:  {key3+1} </span>
                               <span>reps:  {record.reps} </span>
-                              <span>weight:  {record.weight} </span>
+                              {props.exercisePlace==="gym" && (
+                                <span>weight:  {record.weight} </span>
+                              )}
                           </div>
                       </div>
                     ))}

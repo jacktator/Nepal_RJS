@@ -4,6 +4,7 @@ import {checkLogin} from '../RootContainer/action';
 
 export function LoginDetailsActions(email:string, password:string){
   return(dispatch:Function)=>{
+
     return axios.post("https://nepal.sk8tech.io/wp-json/jwt-auth/v1/token/", {
       username: email,
       password: password,
