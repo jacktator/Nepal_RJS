@@ -17,7 +17,7 @@ const ShowHistory = (props) => {
                       <div key={key3} className="exercise-history-detail">
                           <div >
                               <span>sets:  {key3+1} </span>
-                              <span>reps:  {record.reps} </span>
+                              <span>{data.heading}:  {record.reps} </span>
                               {props.exercisePlace==="gym" && (
                                 <span>weight:  {record.weight} </span>
                               )}

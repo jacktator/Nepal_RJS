@@ -26,7 +26,7 @@ const displayRecord =(props, index) => {
         <Flex justify="between" className="list" style={{color:"black"}}>
           <span className="list-number">{index+1}</span>
           <Flex.Item><img className="no-copy"src={require('../../../Assets/Workout/Exercise/checkCircle.svg')} alt="check-circle"/></Flex.Item>
-          <Flex.Item><div className="list-text"> {props.state.exerciseLog[index].weight} kgs * {props.state.exerciseLog[index].reps} reps</div></Flex.Item>
+          <Flex.Item><div className="list-text"> {props.state.exerciseLog[index].weight} kgs * {props.state.exerciseLog[index].reps} {props.state.repsName}</div></Flex.Item>
           { (props.state.exerciseLog[index].weight * props.state.exerciseLog[index].reps === props.state.personalBest) &&
             <Flex.Item><img className="no-copy"src={require('../../../Assets/Workout/cup-icon.png')} alt="check-circle"/></Flex.Item>
           }
@@ -41,7 +41,7 @@ const displayRecord =(props, index) => {
         <Flex justify="between" className="list" style={{color:"black"}}>
           <span className="list-number">{index+1}</span>
           <Flex.Item><img className="no-copy"src={require('../../../Assets/Workout/Exercise/checkCircle.svg')} alt="check-circle"/></Flex.Item>
-          <Flex.Item><div className="list-text"> {props.state.exerciseLog[index].reps} reps</div></Flex.Item>
+          <Flex.Item><div className="list-text"> {props.state.exerciseLog[index].reps} {props.state.repsName}</div></Flex.Item>
             <Flex.Item> </Flex.Item>
 
         </Flex>
@@ -60,7 +60,7 @@ const displayRecord =(props, index) => {
           <Item>
             <Flex justify="between" className="list">
               <span className="list-number">{index+1}</span>
-              <Flex.Item><div className="list-text"><span style={{color:"#cecece"}}>{props.state.prevData.weight}kgs *{props.state.prevData.reps}reps</span></div></Flex.Item>
+              <Flex.Item><div className="list-text"><span style={{color:"#cecece"}}>{props.state.prevData.weight}kgs *{props.state.prevData.reps} {props.state.repsName}</span></div></Flex.Item>
               <Flex.Item><span style={{color:"#cecece"}}>Previous</span></Flex.Item>
             </Flex>
           </Item>
@@ -80,7 +80,7 @@ const displayRecord =(props, index) => {
           <Item>
             <Flex justify="between" className="list">
               <span className="list-number">{index+1}</span>
-              <Flex.Item><div className="list-text"><span style={{color:"#cecece"}}>{props.state.prevData.reps}reps</span></div></Flex.Item>
+              <Flex.Item><div className="list-text"><span style={{color:"#cecece"}}>{props.state.prevData.reps} {props.state.repsName}</span></div></Flex.Item>
               <Flex.Item><span style={{color:"#cecece"}}>Previous</span></Flex.Item>
             </Flex>
           </Item>

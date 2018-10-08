@@ -101,7 +101,6 @@ export function implementDeloadAlgorithm(programID, program, progress, ask_feedb
     program.ask_feedback= ask_feedback;
     program.feedback_value= 0;
     program.finish_for_day= false;
-    let token = sessionStorage.getItem('token');
     axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`,{
       status: "publish",
       fields: program
@@ -124,7 +123,6 @@ export function implementDeloadAlgorithm(programID, program, progress, ask_feedb
 //This function update the current progess of the program.
 export function updateProgress(programID, progress, ask_feedback){
   return((dispatch: Function) => {
-    let token = sessionStorage.getItem('token');
     axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`,{
       status: "publish",
       fields: {
@@ -187,7 +185,6 @@ export function updateDailyFeedBack(programID, program, value) {
     program.feedback_value =feedbackValue;
     program.ask_feedback = false;
     program.finish_for_day = false;
-    let token = sessionStorage.getItem('token');
     axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`, {
       status: "publish",
       fields: program
@@ -237,7 +234,6 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
     }
     dispatch(setProgram(program));
     dispatch(setWorkoutList(null));
-    let token = sessionStorage.getItem('token');
     return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${id}`,
       {
         status: "publish",
@@ -278,7 +274,6 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
       let {program, dayIndex} = workoutReducers;
       program.exercises[dayIndex].exercise_list[listIndex].is_saved = true;
       dispatch(setProgram(program));
-      let token = sessionStorage.getItem('token');
       return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${id}`,
         {
           status: "publish",
@@ -297,12 +292,13 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
     }
 
     //This function use to save the exercise record the database name record
-    export function saveExerciseData(recordID, day, name, code, weight, sets, reps, record) {
+    export function saveExerciseData(recordID, day, name, code, heading, weight, sets, reps, record) {
       return(dispatch: Function) => {
         const monthNames = ["January", "February", "March", "April", "May", "June",
                             "July", "August", "September", "October", "November", "December"
                             ];
         let temp, daily_record;
+        console.log("Sets from workout aciton",sets);
         //Calculate the current date
         let currentDate = new Date();
         let todayDay = currentDate.getDate();
@@ -319,21 +315,20 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
                 temp = { sets: sets, reps: reps, weight: weight }
                 daily_record[dayIndex].data[dataIndex].data.push(temp);
               }else{//dataIndex >= 0
-                temp = {code: code, name: name, data: [ { sets: sets, reps: reps, weight: weight }]}
+                temp = {code: code, name: name, heading: heading, data: [ { sets: sets, reps: reps, weight: weight }]}
                 daily_record[dayIndex].data.push(temp);
               }
             }else{//dayIndex >= 0
-              temp = {day: day, date: date, data: [ {code: code, name: name, data: [
+              temp = {day: day, date: date, data: [ {code: code, name: name, heading: heading, data: [
                 { sets: sets, reps: reps, weight: weight }]}]}
                 daily_record.push(temp);
               }
             }else{
-              daily_record = [{ day: day, date: date, data: [ {code: code, name:name, data: [
+              daily_record = [{ day: day, date: date, data: [ {code: code, name:name, heading: heading, data: [
                 { sets: sets, reps: reps, weight: weight }]}]}
               ]
             }
             console.log(daily_record);
-            let token = sessionStorage.getItem('token');
             return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/record/${recordID}`,
               {
                 status: "publish",
@@ -361,7 +356,6 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
         export function updatePersonalBest (program, programID, dayIndex, index, value){
           return(dispatch:Function) => {
             program.exercises[dayIndex].exercise_list[index].personal_best = value;
-            let token = sessionStorage.getItem('token');
             return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`,
               {
                 status: "publish",
@@ -385,7 +379,6 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
           return(dispatch:Function) => {
             program.exercises[dayIndex].exercise_list[index].weight = weight;
             program.exercises[dayIndex].exercise_list[index].reps = reps;
-            let token = sessionStorage.getItem('token');
             return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`,
               {
                 status: "publish",
@@ -408,7 +401,6 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
           return(dispatch:Function) => {
             console.log("updateReps");
             program.exercises[dayIndex].exercise_list[index].reps = reps;
-            let token = sessionStorage.getItem('token');
             return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`,
               {
                 status: "publish",
@@ -431,7 +423,6 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
         //This function use to mark finish_for_day as true when user click complete workout button after completion of exercise
         export function completeWorkout(programID){
           return(dispatch:Function) => {
-            let token = sessionStorage.getItem('token');
             return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`,
               {
                 status: "publish",
