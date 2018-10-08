@@ -113,6 +113,9 @@ class PlanContainer extends Component{
         {(this.props.WorkoutReducers.redirectToQuestionnaire) && (
           <Redirect to='/questionnaire' />
         )}
+        {(this.props.isInvalidToken) && (
+          <Redirect to='/login/LoginDetails' />
+        )}
 
         </div>
       )
@@ -122,6 +125,9 @@ class PlanContainer extends Component{
         <Loading/>
         {(this.props.WorkoutReducers.redirectToQuestionnaire) && (
           <Redirect to='/questionnaire' />
+        )}
+        {(this.props.isInvalidToken) && (
+          <Redirect to='/login/LoginDetails' />
         )}
         </Hoc>
       )
@@ -134,7 +140,7 @@ function mapStateToProps(state){
     currentFooterTab: state.FooterReducers.currentFooterTab,
     profileReducers: state.ProfileReducers,
     WorkoutReducers: state.WorkoutReducers,
-    isAuthenticated: state.LoginDetailsStates.isAuthenticated,
+    isInvalidToken: state.LoginDetailsStates.isInvalidToken,
   }
 }
 function matchDispatchToProps(dispatch){

@@ -12,12 +12,12 @@ class RootContainer extends Component<Props>{
   render(){
     console.log("This is from root state",this.props.RootStates);
     const {check, justRegistered} = this.props.RootStates;
-    const isAuthenticated = this.props.isAuthenticated;
+    const isInvalidToken = this.props.isInvalidToken;
     return(
       <div>
         <Root
           justRegistered = {justRegistered}
-          isAuthenticated = {isAuthenticated}
+          isInvalidToken = {isInvalidToken}
 
         />
       </div>
@@ -28,7 +28,7 @@ class RootContainer extends Component<Props>{
 function mapStateToProps(state){
   return{
     RootStates: state.RootStates,
-    isAuthenticated: state.LoginDetailsStates.isAuthenticated,
+    isInvalidToken: state.LoginDetailsStates.isInvalidToken,
   }
 }
 

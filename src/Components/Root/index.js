@@ -30,9 +30,44 @@ type Props = {
 };
 
 class Root extends Component<Props>{
+  routeForUnauthorizedUser(){
+    return(
+        <div>
+          <HashRouter>
+          {/*<BrowserRouter>*/}
+            <Switch>
+              <Route path="/" exact component={Launch}/>
+              <Route path="/login" exact component={Login}/>
+              <Route path="/signup" exact component={SignUp} />
+              <Route path="/login/logindetails" exact component={LoginDetails} />
+              <Route path="/forgetpassword" exact component={ForgetPassWord} />
+              <Route path="/mainmenu" exact render={()=>(<Redirect to='/login/LoginDetails'/>)} />
+              <Route path="/exercise/:index?" exact render={()=>(<Redirect to='/login/LoginDetails'/>)} />
+              <Route path="/workout/:day" exact render={()=>(<Redirect to='/login/LoginDetails'/>)} />
+              <Route path="/plan" exact render={()=>(<Redirect to='/login/LoginDetails'/>)} />
+              <Route path="/footer" exact component={FooterContainer} />
+              <Route path="/history" exact render={()=>(<Redirect to='/login/LoginDetails'/>)} />
+              <Route path="/history/:programID" render={()=>(<Redirect to='/login/LoginDetails'/>)} />
+              <Route path="/history/:day" render={()=>(<Redirect to='/login/LoginDetails'/>)} />
+              <Route path="/profile" exact render={()=>(<Redirect to='/login/LoginDetails'/>)} />
+              <Route path="/termsandconditions" exact component={TermsAndCondComponent}/>
+              <Route path="/questionnaire" exact render={()=>(<Redirect to='/login/LoginDetails'/>)} />
+              <Route path='/shawn' exact component={GetJson} />
+            </Switch>
+          {/*</BrowserRouter>*/}
+          </HashRouter>
+        </div>
+      )
+  }
   render(){
-    const {isAuthenticated,justRegistered} = this.props
-    if(sessionStorage.getItem("token")){
+    const {isInvalidToken,justRegistered} = this.props
+    if(isInvalidToken){
+      return(
+        <div>
+        {this.routeForUnauthorizedUser()}
+        </div>
+      )
+    }else if(sessionStorage.getItem("token")){
       return(
         <div>
           <HashRouter>
@@ -73,34 +108,15 @@ class Root extends Component<Props>{
           </HashRouter>
         </div>
       )
-    }
-    return(
+    }else{
+      return(
         <div>
-          <HashRouter>
-          {/*<BrowserRouter>*/}
-            <Switch>
-              <Route path="/" exact component={Launch}/>
-              <Route path="/login" exact component={Login}/>
-              <Route path="/signup" exact component={SignUp} />
-              <Route path="/login/logindetails" exact component={LoginDetails} />
-              <Route path="/forgetpassword" exact component={ForgetPassWord} />
-              <Route path="/mainmenu" exact render={()=>(<Redirect to='/login/LoginDetails'/>)} />
-              <Route path="/exercise/:index?" exact render={()=>(<Redirect to='/login/LoginDetails'/>)} />
-              <Route path="/workout/:day" exact render={()=>(<Redirect to='/login/LoginDetails'/>)} />
-              <Route path="/plan" exact render={()=>(<Redirect to='/login/LoginDetails'/>)} />
-              <Route path="/footer" exact component={FooterContainer} />
-              <Route path="/history" exact render={()=>(<Redirect to='/login/LoginDetails'/>)} />
-              <Route path="/history/:programID" render={()=>(<Redirect to='/login/LoginDetails'/>)} />
-              <Route path="/history/:day" render={()=>(<Redirect to='/login/LoginDetails'/>)} />
-              <Route path="/profile" exact render={()=>(<Redirect to='/login/LoginDetails'/>)} />
-              <Route path="/termsandconditions" exact component={TermsAndCondComponent}/>
-              <Route path="/questionnaire" exact render={()=>(<Redirect to='/login/LoginDetails'/>)} />
-              <Route path='/shawn' exact component={GetJson} />
-            </Switch>
-          {/*</BrowserRouter>*/}
-          </HashRouter>
+        {this.routeForUnauthorizedUser()}
         </div>
       )
+
+    }
+
   }
 }
 

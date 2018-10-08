@@ -7,7 +7,8 @@ import {bindActionCreators} from 'redux';
 import Info from '../../../Components/Workout/Exercise/Info';
 import ShowHistory from '../../../Components/Workout/Exercise/ShowHistory';
 import Modal from '../../../Components/UI/Modal';
-import {saveExerciseData, getExerciseRecord, updatePersonalBest, updateRepsAndWeight, completeWorkout, savingExercise, removeError} from '../actions';
+import {saveExerciseData, getExerciseRecord, updatePersonalBest, updateRepsAndWeight, updateReps,
+        completeWorkout, savingExercise, removeError} from '../actions';
 import Loading from '../../../Components/Loading';
 import Hoc from '../../../HOC/Hoc';
 import ShowError from '../../../Components/Error/ShowError';
@@ -37,11 +38,11 @@ class ExerciseContainer extends Component{
       prescribeWeight: 0,
       prescribeReps: 0,
       personalBest: 0,
-
       weight: 0, // represent the prescribe weight for current workout
       reps: 0, // represent the prescribe reps for current workout
       sets: 0,
       repsName: "Reps",
+      repsTotalForHomeExercise: 0,
       exerciseData: {
       },
       prevData: {},
@@ -178,7 +179,7 @@ class ExerciseContainer extends Component{
     }
     const prevData = {};
     const exerciseLog = [];
-    this.setState({ prevData, exerciseLog, isLoading: true, completedExercise: this.state.completedExercise+1});
+    this.setState({prevData, exerciseLog, isLoading: true, completedExercise: this.state.completedExercise+1});
     this.setState({ currentSets: 1, exerciseIndex })
     setTimeout(() => {
       this.calculateExerciseLog(null);
@@ -203,11 +204,7 @@ class ExerciseContainer extends Component{
     let total = this.state.weight * this.state.reps;
     let {program, dayIndex, programID} = this.props.WorkoutReducers;
     let {record, recordID, currentDay} = this.props.WorkoutReducers;
-    if(total > this.state.personalBest){
-      this.setState({personalBest: total})
-      //write action to update personal best for given excercise
-      this.props.updatePersonalBest(program, programID, dayIndex, this.state.exerciseIndex, total);
-    }
+
     if(this.state.exerciseData.progression_model === "linear") {
       switch (variation) {
         case -7: weight -= 10; break;
@@ -232,12 +229,16 @@ class ExerciseContainer extends Component{
     if(this.state.completedExercise===this.state.exerciseLength-1 && this.state.currentSets === this.state.sets){
       this.setState({completedExercise: this.state.completedExercise+1});
     }
+    if(total > this.state.personalBest){
+      this.setState({personalBest: total})
+      //write action to update personal best for given excercise
+      this.props.updatePersonalBest(program, programID, dayIndex, this.state.exerciseIndex, total);
+    }
+    this.props.saveExerciseData(recordID, currentDay, name, code, this.state.weight, this.state.Currentsets, this.state.reps, record);
 
     if(this.state.sets === this.state.currentSets){
       this.props.updateRepsAndWeight(program, programID, dayIndex, this.state.exerciseIndex, this.state.prescibeReps, this.state.prescribeWeight);
     }
-    this.props.saveExerciseData(recordID, currentDay, name, code, this.state.weight, this.state.Currentsets, this.state.reps, record);
-
     setTimeout(() => {
       this.setState({isLoading: false})
     }, 1000);
@@ -247,7 +248,6 @@ class ExerciseContainer extends Component{
   }
 
   homeExerciseSave = () => {
-
     let name = this.state.exerciseData.workout;
     let code = this.state.exerciseData.code;
     //let {program, programID} = this.props.WorkoutReducers;
@@ -257,15 +257,33 @@ class ExerciseContainer extends Component{
     if(this.state.completedExercise===this.state.exerciseLength-1 && this.state.currentSets === this.state.sets){
       this.setState({completedExercise: this.state.completedExercise+1});
     }
-
     this.props.saveExerciseData(recordID, currentDay, name, code, 0, this.state.Currentsets, this.state.reps, record);
+    if(this.state.exerciseData.progression_model==="rep home" || this.state.exerciseData.progression_model==="time home"){
+
+      let repsTotal = this.state.repsTotalForHomeExercise + this.state.reps;
+      if(this.state.sets === this.state.currentSets){
+        if(repsTotal >= (this.state.sets * this.state.prescribeReps)){
+          let {program, dayIndex, programID} = this.props.WorkoutReducers;
+          let updatedReps = this.state.prescribeReps;
+          if(this.state.exerciseData.progression_model==="rep home"){
+             updatedReps += 5;
+          }else{
+             updatedReps += 10;
+          }
+          this.props.updateReps(program, programID, dayIndex, this.state.exerciseIndex, updatedReps);
+        }
+          this.setState({repsTotalForHomeExercise: 0})
+      }else{
+        this.setState({repsTotalForHomeExercise: repsTotal})
+      }
+    }
 
     setTimeout(() => {
       this.setState({isLoading: false})
     }, 1000);
     let exerciseLog = [...this.state.exerciseLog];
-    exerciseLog.push({weight:this.state.weight, reps:this.state.reps, sets: this.state.currentSets});
-    this.setState({exerciseLog, currentSets : this.state.currentSets+1})
+    exerciseLog.push({reps:this.state.reps, sets: this.state.currentSets});
+    this.setState({exerciseLog, currentSets : this.state.currentSets+1, reps: this.state.prescribeReps})
   }
 
   onChangeWeight = (val) => {
@@ -462,7 +480,7 @@ function mapStateTothis(state){
 function matchDispatchTothis(dispatch){
   return bindActionCreators({
     saveExerciseData, getExerciseRecord, updatePersonalBest,
-    updateRepsAndWeight, completeWorkout,removeError, savingExercise
+    updateRepsAndWeight, updateReps, completeWorkout,removeError, savingExercise
   }, dispatch
 );
 }

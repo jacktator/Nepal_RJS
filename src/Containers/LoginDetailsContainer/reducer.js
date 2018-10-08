@@ -14,6 +14,7 @@ let DefaultState=
       message: ''
     },
     isAuthenticated: false,
+    isInvalidToken: false,
   }
 
 const LoginDetailsReducers = (state: Object=DefaultState, action: Function)=>{
@@ -64,6 +65,11 @@ const LoginDetailsReducers = (state: Object=DefaultState, action: Function)=>{
     error['message'] = action.payload;
     return {
       ...state, error
+    }
+  }
+  else if(action.type==="SET_TOKEN_ERROR"){
+    return {
+      ...state, isInvalidToken: action.payload
     }
   }
     return state;

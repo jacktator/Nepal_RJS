@@ -5,7 +5,7 @@ export function getProgram(){
   return(dispatch: Function) => {
     let user_id = sessionStorage.getItem('user_id');
     let token = sessionStorage.getItem('token');
-    //dispatch(validToken(token));
+    dispatch(validToken(token));
     return axios.get(`https://nepal.sk8tech.io/wp-json/wp/v2/program?
                     filter[meta_key]=user_id&filter[meta_value]=${user_id}&filter[posts_per_page]=1`
     )
@@ -391,6 +391,30 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
                 fields: program
               })
               .then((response)=> {
+                dispatch(setProgram(response.data.acf));
+              }).catch((error)=> {
+                console.log(error.response);
+                if(error.response){
+                  dispatch(catchError(error.response.data.message));
+                }else{
+                  dispatch(catchError("Oops! Unable to connect to the server. Either your device is offline or server is down."))
+                }
+              })
+          }
+        }
+        //This function update the reps for home exercise according to week to week changes algorithm
+        export function updateReps (program, programID, dayIndex, index, reps){
+          return(dispatch:Function) => {
+            console.log("updateReps");
+            program.exercises[dayIndex].exercise_list[index].reps = reps;
+            let token = sessionStorage.getItem('token');
+            return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`,
+              {
+                status: "publish",
+                fields: program
+              })
+              .then((response)=> {
+                console.log("updated",response);
                 dispatch(setProgram(response.data.acf));
               }).catch((error)=> {
                 console.log(error.response);

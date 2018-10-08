@@ -9,13 +9,10 @@ export function LoginDetailsActions(email:string, password:string){
       password: password,
     })
     .then((response)=>{
-      console.log(response);
       let token = response.data.token;
-      console.log("original ",token);
       window.sessionStorage.setItem('token', token);
       window.sessionStorage.setItem('user_id', response.data.user_id);
       window.sessionStorage.setItem('user_email', response.data.user_email);
-      console.log("get token",sessionStorage.getItem('token'));
       dispatch(upDateToken(token));
       dispatch(setGlobalAxiosDefault(token));
       dispatch(checkLogin());
@@ -45,12 +42,15 @@ export function validToken(token:string){
       }
     )
     .then((response)=>{
+
       console.log(response.data.data.status);
-      dispatch(isAuthenticated(true));
+
+      dispatch(setTokenError(false));
       dispatch(setGlobalAxiosDefault(token));
     })
     .catch((error)=>{
       window.sessionStorage.clear();
+      dispatch(setTokenError(true));
       dispatch(isAuthenticated(false));
     })
   };
@@ -105,5 +105,11 @@ export function removeError(){
   return{
     type: "REMOVE_ERROR",
     payload: null
+  }
+}
+export function setTokenError(isInvalidToken: Boolean) {
+  return{
+    type: "SET_TOKEN_ERROR",
+    payload: isInvalidToken
   }
 }
