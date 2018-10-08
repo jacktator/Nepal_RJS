@@ -1,6 +1,7 @@
 import React from 'react';
 import { Carousel, Button,SegmentedControl, WingBlank,WhiteSpace} from 'antd-mobile';
 import './SelectExercise.css';
+import _ from 'lodash';
 import Loading from '../../Loading';
 
   class SelectExercise extends React.Component {
@@ -15,14 +16,36 @@ import Loading from '../../Loading';
     this.setState({index:e})
   }
 
-//This function
+//This function calls the function onSelect from workoutconainter
   selectExercise = () => {
     this.props.onSelect(this.props.listExercise.exercises[this.state.index].exercise[this.state.currentExercise])
   }
 
+  countInArray = (array, value) => {
+    return array.reduce((n, x) => n + (x.code === value), 0);
+  }
   render() {
     if(this.props.listExercise && this.props.listExercise !== null){
-      const exercises = this.props.listExercise.exercises;
+        const exercises = this.props.listExercise.exercises;
+        const exerciseOption = exercises[this.state.index].exercise;
+        let {listExercise, programExerciseList, exerciseIndex} = this.props;
+        if(exerciseIndex != null){
+          let exerciseOption = exercises[this.state.index].exercise;
+          let code = programExerciseList[exerciseIndex].code;
+          let workout = programExerciseList[exerciseIndex]. workout;
+          let value = this.countInArray(programExerciseList, code);
+          if(value > 1){
+            let workoutUnderSameCode = [];
+            for(let i=0; i<programExerciseList.length; i++){
+              if(programExerciseList[i].workout != workout && programExerciseList[i].code === code){
+                workoutUnderSameCode.push({"name":programExerciseList[i].workout})
+              }
+            }
+            console.log("with same code", workoutUnderSameCode);
+            _.pullAllBy(exerciseOption, workoutUnderSameCode, 'name')
+            console.log("after deletion", exerciseOption);
+          }
+        }
       return (
         <div className="container">
           <img src={require("../../../Assets/Modal/ic_cancel.png")} className="cancel-icon" alt="cancel"
@@ -40,7 +63,7 @@ import Loading from '../../Loading';
               <div className="excercise-header" style={{margin:"10px 0px 10px",backgroundColor:'white',color:'black', textAlign: "center"}}>{data.name}</div>
               <img
                 key = { data.value }
-                src={require(`../../../Assets/Workout/images/${key}.jpeg`)}
+                src={require(`../../../Assets/Workout/Images/${key}.jpeg`)}
                 alt={data.description}
                 onLoad={() => {
                   // fire window resize event to change height

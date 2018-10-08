@@ -23,7 +23,7 @@ export function getUserData(){
       if(error.response){
         dispatch(catchError(error.response.data.message));
       }else{
-        dispatch(catchError("Network Connection Error. Please check your network connection"))
+        dispatch(catchError("Oops! Unable to connect to the server. Either your device is offline or server is down."))
       }
     })
   }
@@ -52,9 +52,9 @@ export function uploadPicture(file) {
         if(error.response){
           dispatch(catchError(error.response.data.message));
         }else{
-          dispatch(catchError("Network Connection Error. Please check your network connection"))
+          dispatch(catchError("Oops! Unable to connect to the server. Either your device is offline or server is down."))
         }
-      });  
+      });
   }
 }
 
@@ -74,9 +74,9 @@ export function updateAvatar(url: string) {
       if(error.response){
         dispatch(catchError(error.response.data.message));
       }else{
-        dispatch(catchError("Network Connection Error. Please check your network connection"))
+        dispatch(catchError("Oops! Unable to connect to the server. Either your device is offline or server is down."))
       }
-    });  
+    });
   }
 }
 
@@ -141,7 +141,7 @@ export function updataPassword(password: string) {
       .catch(error => console.log(error));
   }
 
-  
+
 }
 
 export function changeAavatar(photo: string) {

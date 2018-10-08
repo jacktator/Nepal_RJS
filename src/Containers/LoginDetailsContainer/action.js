@@ -3,18 +3,14 @@ import axios from 'axios';
 import {checkLogin} from '../RootContainer/action';
 
 export function LoginDetailsActions(email:string, password:string){
-  console.log('this function LoginDetailsActions is running')
-  console.log('email:'+ email)
-  console.log('password'+ password)
-
   return(dispatch:Function)=>{
+
     return axios.post("https://nepal.sk8tech.io/wp-json/jwt-auth/v1/token/", {
       username: email,
       password: password,
     })
     .then((response)=>{
-      console.log(response);
-      let token = response.data.token
+      let token = response.data.token;
       window.sessionStorage.setItem('token', token);
       window.sessionStorage.setItem('user_id', response.data.user_id);
       window.sessionStorage.setItem('user_email', response.data.user_email);
@@ -27,7 +23,7 @@ export function LoginDetailsActions(email:string, password:string){
       if(error.response){
         dispatch(catchError("The username or password you entered is incorrect."));
       }else{
-        dispatch(catchError("Network Connection Error. Please check your network connection"))
+        dispatch(catchError("Oops! Unable to connect to the server. Either your device is offline or server is down."))
       }
     })
   };
@@ -37,6 +33,7 @@ export function LoginDetailsActions(email:string, password:string){
 //in functions the values are binded with type which will be used in the Reducer
 
 export function validToken(token:string){
+  console.log("Token",token);
   return(dispatch: Function)=>{
     return axios.post("https://nepal.sk8tech.io/wp-json/jwt-auth/v1/token/validate",
       null, {
@@ -46,16 +43,16 @@ export function validToken(token:string){
       }
     )
     .then((response)=>{
-      console.log("validate token")
-      console.log(response.data.data.status)
-      dispatch(isAuthenticated(response.data.data.status));
+
+      console.log(response.data.data.status);
+
+      dispatch(setTokenError(false));
+      dispatch(setGlobalAxiosDefault(token));
     })
     .catch((error)=>{
-      if(error.response){
-        dispatch(catchError(error.response.data.message));
-      }else{
-        dispatch(catchError("Network Connection Error. Please check your network connection"))
-      }
+      window.sessionStorage.clear();
+      dispatch(setTokenError(true));
+      dispatch(isAuthenticated(false));
     })
   };
 }
@@ -68,11 +65,10 @@ export function setGlobalAxiosDefault(token: string){
   }
 }
 
-export function isAuthenticated(status: string){
-  console.log("is Authenticated",status)
+export function isAuthenticated(status: Boolean){
   return{
     type:"IS_AUTHENTICATED",
-    payload:true
+    payload:status
   }
 }
 
@@ -110,5 +106,11 @@ export function removeError(){
   return{
     type: "REMOVE_ERROR",
     payload: null
+  }
+}
+export function setTokenError(isInvalidToken: Boolean) {
+  return{
+    type: "SET_TOKEN_ERROR",
+    payload: isInvalidToken
   }
 }

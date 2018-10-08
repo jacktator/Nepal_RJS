@@ -90,44 +90,57 @@ class WorkoutContainer extends Component{
     console.log(error)
     if(this.props.WorkoutReducers.program){
       if(this.state.isReady){
-      return (
-        <Hoc>
-        <Workout
-        showKeepOrChange = {this.state.showKeepOrChange}
-        onExerciseChange = {this.onChangeExerciseHandler}
-        onWorkOutKeep = {this.onWorkOutKeepHandler}
-        onStart = {this.onStartHandler}
-        WorkoutReducers ={this.props.WorkoutReducers}
-        />
-        <div>
-            <ActivityIndicator
-              toast
-              text="Please Wait..."
-              animating={this.state.animating}
+        let{dayIndex} = this.props.WorkoutReducers;
+
+        if(dayIndex != null){
+          const programExerciseList = this.props.WorkoutReducers.program.exercises[dayIndex].exercise_list;
+          const programName = this.props.WorkoutReducers.program.program_name
+          return (
+            <Hoc>
+            <Workout
+            showKeepOrChange = {this.state.showKeepOrChange}
+            onExerciseChange = {this.onChangeExerciseHandler}
+            onWorkOutKeep = {this.onWorkOutKeepHandler}
+            onStart = {this.onStartHandler}
+            programExerciseList = {programExerciseList}
+            programName = {programName}
             />
-        </div>
-        {(this.state.isChangeWorkout) && (
-          <Modal modalFor = "modal-for-select-exercise">
-          <SelectExercise
-            onSelect = {this.onSelectExerciseHandler}
-            listExercise = {this.props.WorkoutReducers.listExercise}
-            cancel = {this.cancelChangeWorkout}
-          />
-          </Modal>
-        )}
-        {(error.hasError) && (
-          <Modal modalFor='modal'>
-            <ShowError
-             error={error.message}
-             cancel={this.cancelErrorMessageHandler}/>
-          </Modal>
-        )}
-        {( this.state.startExcercies) && (
-          <Redirect to="/exercise" />
-        )}
-        <FooterContainer currentPath='workout' />
-      </Hoc>
-    )
+            <div>
+                <ActivityIndicator
+                  toast
+                  text="Please Wait..."
+                  animating={this.state.animating}
+                />
+            </div>
+            {(this.state.isChangeWorkout) && (
+              <Modal modalFor = "modal-for-select-exercise">
+              <SelectExercise
+                onSelect = {this.onSelectExerciseHandler}
+                listExercise = {this.props.WorkoutReducers.listExercise}
+                programExerciseList = { programExerciseList }
+                exerciseIndex = {this.state.exercisesIndex}
+                cancel = {this.cancelChangeWorkout}
+              />
+              </Modal>
+            )}
+            {(error.hasError) && (
+              <Modal modalFor='modal'>
+                <ShowError
+                 error={error.message}
+                 cancel={this.cancelErrorMessageHandler}/>
+              </Modal>
+            )}
+            {( this.state.startExcercies) && (
+              <Redirect to="/exercise" />
+            )}
+            <FooterContainer currentPath='workout' />
+          </Hoc>
+        )
+      }else{
+        return(
+          <Loading />
+        )
+      }
     }else{//if this.state.isReady is false
       return(
         <Loading />

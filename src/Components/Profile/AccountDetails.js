@@ -85,9 +85,9 @@ class AccountDetails extends Component{
     return (
       <div>
         <Accordion className="my-accordion" onChange={this.onChange}>
-          
+
           <Accordion.Panel header={<Item className="no-select" thumb={require("../../Assets/Profile/lock.svg")}> Change Password</Item>}>
-            
+
             <List className="my-list">
               <InputItem
                 placeholder="Current Password"

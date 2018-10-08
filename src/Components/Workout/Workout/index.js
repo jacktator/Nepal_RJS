@@ -4,11 +4,9 @@ import './Workout.css';
 import { Link } from 'react-router-dom';
 
 const Workout = (props) => {
-    if(props.WorkoutReducers.dayIndex != null){
-      let{dayIndex} = props.WorkoutReducers;
       return(
         <div className="container">
-        <div className="workout-info">{props.WorkoutReducers.program.program_name} Workout</div>
+        <div className="workout-info">{props.programName} Workout</div>
           <div className="container-without-button">
             <div className= "image-container">
               <img className="image-source" src={require("../../../Assets/Workout/sampleImage.jpeg")} alt="header"/>
@@ -16,7 +14,7 @@ const Workout = (props) => {
 
               {/* testing new UI format*/}
               <WingBlank size="lg">
-                  {props.WorkoutReducers.program.exercises[dayIndex].exercise_list.map((data,key) => (
+                  {props.programExerciseList.map((data,key) => (
                     <div key={key}>
                     <WhiteSpace/>
                     <Card >
@@ -70,11 +68,6 @@ const Workout = (props) => {
             </div>
         </div>//container
       )
-    }else{
-      return(
-        <div> wait</div>
-      )
-    }
 }
 
 export default Workout;

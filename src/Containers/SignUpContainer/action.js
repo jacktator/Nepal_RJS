@@ -14,7 +14,7 @@ export function SignUpActions(username, email, password){
       console.log(response.data);
       console.log(response);
       let login = JSON.parse(response.config.data);
-      dispatch(checkRegister());
+      dispatch(checkRegister(true));
       dispatch(LoginDetailsActions(login.email, login.password));
       dispatch(fetchResponse(response.data.code));
     }).catch((error)=>{
