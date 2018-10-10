@@ -79,9 +79,7 @@ class ExerciseContainer extends Component{
     }
   }
 
-
   calculateExerciseLog = (i) => {
-    console.log("calculate exercise log");
     let index = this.state.exerciseIndex;
     if(i!==null){
       index = i;
@@ -98,8 +96,7 @@ class ExerciseContainer extends Component{
     let code = exerciseData.code;
     let workout = exerciseData.workout;
     let reps;
-    let repsName = "Reps";
-
+    let repsName = this.state.repsName;
     if(exercisePlace === "gym"){
       if(exerciseData.progression_model === "double progression"){
         if(exerciseData.reps === "Till Failure" || exerciseData.reps === "till failure"){
@@ -111,11 +108,15 @@ class ExerciseContainer extends Component{
       }
       else if(exerciseData.progression_model === "linear") {
         reps = parseInt(exerciseData.reps, 10);
+      }else if(exerciseData.progression_model === "no model"){
+        let data = exerciseData.reps.split(" ");
+        let tempData = data[0].split("-");
+        reps = parseInt(tempData[1],10);
+        repsName = [data[1]]
       }else{
         reps = 8;
       }
     }else if(exercisePlace === "home"){
-      console.log(exerciseData.progression_model);
       if(exerciseData.progression_model === "rep home"){
         reps = parseInt(exerciseData.reps, 10);
       }else if(exerciseData.progression_model === "time home"){
@@ -125,7 +126,6 @@ class ExerciseContainer extends Component{
       }else if(exerciseData.progression_model === "no progression"){
         let data = exerciseData.reps.split(" ");
         let tempData = data[0].split("-");
-        console.log("Temp Data",tempData);
         reps = parseInt(tempData[1],10);
         repsName = [data[1]]
       }else if(exerciseData.progression_model === "till failure"){
@@ -135,7 +135,6 @@ class ExerciseContainer extends Component{
       }
       //write logic for home exercise place
     }
-
     this.setState({
       exerciseLength: exerciseLength, exerciseData, personalBest: parseFloat(exerciseData.personal_best),
       prescribeWeight: parseFloat(exerciseData.weight), prescribeReps: reps,
@@ -149,9 +148,7 @@ class ExerciseContainer extends Component{
         if(dayIndex >= 0){
           let dataIndex = (records.daily_record[dayIndex].data.findIndex( i => {return i.code === code && i.name === workout}));
           if(dataIndex >= 0){
-            console.log("record receive from server",records.daily_record[dayIndex].data[dataIndex]);
             let exerciseLog = records.daily_record[dayIndex].data[dataIndex].data;
-            console.log("inside calculateExerciseLog function just setting exerciseLog",exerciseLog);
             this.setState({exerciseLog: exerciseLog, currentSets: exerciseLog.length+1})
           }
         }
@@ -169,7 +166,6 @@ class ExerciseContainer extends Component{
     setTimeout(() => {
       this.setState({isInitializing:false, isLoading: false})
     }, 1000);
-    console.log("At the end of calculateExerciseLog",this.state.exerciseLog);
   }
 
   onNextButtonHandler = () => {
@@ -183,7 +179,6 @@ class ExerciseContainer extends Component{
     }
     const prevData = {};
     const exerciseLog = [];
-    console.log("on Next Button handler", exerciseLog);
     this.setState({prevData, exerciseLog, isLoading: true, completedExercise: this.state.completedExercise+1});
     this.setState({ currentSets: 1, exerciseIndex })
     setTimeout(() => {
@@ -202,7 +197,6 @@ class ExerciseContainer extends Component{
   }
 
   gymExerciseSave = () => {
-      console.log("gym save from state",this.state.exerciseLog);
     let name = this.state.exerciseData.workout;
     let code = this.state.exerciseData.code;
     let variation = this.state.reps - this.state.prescribeReps;
@@ -230,11 +224,6 @@ class ExerciseContainer extends Component{
       }
     }
     this.setState({ weight, prescribeWeight: weight, reps: this.state.prescribeReps})
-
-    //compare if its last exercise and last sets
-    if(this.state.completedExercise===this.state.exerciseLength-1 && this.state.currentSets === this.state.sets){
-      this.setState({completedExercise: this.state.completedExercise+1});
-    }
     if(total > this.state.personalBest){
       this.setState({personalBest: total})
       //write action to update personal best for given excercise
@@ -245,33 +234,19 @@ class ExerciseContainer extends Component{
     if(this.state.sets === this.state.currentSets){
       this.props.updateRepsAndWeight(program, programID, dayIndex, this.state.exerciseIndex, this.state.prescibeReps, this.state.prescribeWeight);
     }
-    setTimeout(() => {
-      this.setState({isLoading: false})
-    }, 1000);
-    let exerciseLog = [...this.state.exerciseLog];
-    console.log("Gym save just before push new value", exerciseLog);
-    exerciseLog.push({weight:this.state.weight, reps:this.state.reps, sets: this.state.currentSets});
-    console.log("Gym save just after push new value", exerciseLog)
-    this.setState({exerciseLog, currentSets : this.state.currentSets+1})
+    this.settingExerciseLogAfterSave();
   }
 
   homeExerciseSave = () => {
-    console.log("on home save Exercise",this.state.exerciseLog);
     let name = this.state.exerciseData.workout;
     let code = this.state.exerciseData.code;
     //let {program, programID} = this.props.WorkoutReducers;
     let {record, recordID, currentDay} = this.props.WorkoutReducers;
 
-    //compare if its last exercise and last sets
-    if(this.state.completedExercise===this.state.exerciseLength-1 && this.state.currentSets === this.state.sets){
-      this.setState({completedExercise: this.state.completedExercise+1});
-    }
     this.props.saveExerciseData(recordID, currentDay, name, code, this.state.repsName, 0, this.state.currentSets, this.state.reps, record);
     if(this.state.exerciseData.progression_model==="rep home" || this.state.exerciseData.progression_model==="time home"){
-
       let repsTotal = this.state.repsTotalForHomeExercise + this.state.reps;
       if(this.state.sets === this.state.currentSets){
-
         if(repsTotal >= (this.state.sets * this.state.prescribeReps)){
           let {program, dayIndex, programID} = this.props.WorkoutReducers;
           let updatedReps = this.state.prescribeReps;
@@ -287,15 +262,23 @@ class ExerciseContainer extends Component{
         this.setState({repsTotalForHomeExercise: repsTotal})
       }
     }
+    this.settingExerciseLogAfterSave();
+  }
 
-    setTimeout(() => {
-      this.setState({isLoading: false})
-    }, 1000);
+  settingExerciseLogAfterSave = () => {
+    //compare if its last exercise and last sets
+    if(this.state.completedExercise===this.state.exerciseLength-1 && this.state.currentSets === this.state.sets){
+      this.setState({completedExercise: this.state.completedExercise+1});
+    }
     let exerciseLog = [...this.state.exerciseLog];
-    console.log("home save just before push Exercise Log", exerciseLog);
-    exerciseLog.push({reps:this.state.reps, sets: this.state.currentSets});
-    console.log("home save just after push exercise log", exerciseLog);
-    this.setState({exerciseLog, currentSets : this.state.currentSets+1, reps: this.state.prescribeReps})
+    /*
+      Splice function doesnot need when user save all three sets at a go.
+      But when user save one sets and close the app and visit later and while saving for second set,
+      there is unexpected addition value appended to the log file. So this splice function used to delete those unexpected data
+    */
+    exerciseLog.splice((this.state.currentSets-1), 1);
+    exerciseLog.push({weight:this.state.weight.toString(), reps:this.state.reps.toString(), sets: this.state.currentSets.toString()});
+    this.setState({exerciseLog, currentSets : this.state.currentSets+1})
   }
 
   onChangeWeight = (val) => {
@@ -331,7 +314,6 @@ class ExerciseContainer extends Component{
   cancelErrorMessaegHandler = () => {
     let exerciseLog = [...this.state.exerciseLog];
     exerciseLog.splice((exerciseLog.length-1), 1);
-    console.log("cancel error message handler", exerciseLog);
     this.setState({exerciseLog, currentSets: this.state.currentSets-1})
     this.props.removeError();
   }
@@ -391,7 +373,6 @@ class ExerciseContainer extends Component{
   }
 
   render(){
-    console.log("this is from render exerciseLog", this.state.exerciseLog);
     let {error} =this.props.WorkoutReducers;
     let message = this.setMessage();
     if(this.props.WorkoutReducers.program && this.state.error === false){

@@ -18,9 +18,9 @@ class SignUpContainer extends Component{
   }
 
   onAbleChange =()=>{
-    const{username, email, password} = this.props.SignUpStates;
+    const{email, password} = this.props.SignUpStates;
     if(/^[a-z0-9][a-z0-9-_\.]+@([a-z]|[a-z0-9]?[a-z0-9-]+[a-z0-9])\.[a-z0-9]{2,10}(?:\.[a-z]{2,10})?$/.test(email)) {
-       this.props.SignUpActions(username, email, password)
+       this.props.SignUpActions(email, password)
        this.setState({
         loading:true,
         click:true
@@ -50,7 +50,6 @@ class SignUpContainer extends Component{
           SignUpStates={this.props.SignUpStates}
           onChangeEmail={this.props.addEmail}
           onChangePassword={this.props.addPassword}
-          onChangeUsername={this.props.addUsername}
           history={this.props.history}
           onAbleChange = {this.onAbleChange}
           state = {this.state}
