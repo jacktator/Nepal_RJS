@@ -33,7 +33,6 @@ export function LoginDetailsActions(email:string, password:string){
 //in functions the values are binded with type which will be used in the Reducer
 
 export function validToken(token:string){
-  console.log("Token",token);
   return(dispatch: Function)=>{
     return axios.post("https://nepal.sk8tech.io/wp-json/jwt-auth/v1/token/validate",
       null, {
@@ -43,9 +42,6 @@ export function validToken(token:string){
       }
     )
     .then((response)=>{
-
-      console.log(response.data.data.status);
-
       dispatch(setTokenError(false));
       dispatch(setGlobalAxiosDefault(token));
     })
@@ -61,7 +57,6 @@ export function setGlobalAxiosDefault(token: string){
   const newToken = "Bearer " + token;
   axios.defaults.headers.common["Authorization"] = newToken;
   return (dispatch: Function) => {
-    console.log('setGlobalAxiosDefault run successfully')
   }
 }
 
@@ -73,7 +68,6 @@ export function isAuthenticated(status: Boolean){
 }
 
 export function upDateToken(token: string){
-  //console.log("now the token is :"+ token)
   return {
     type:"UPDATE_TOKEN",
     payload: token
@@ -81,7 +75,6 @@ export function upDateToken(token: string){
 }
 
 export function addEmail(email: string){
-  //console.log("#####the value of email has been input into action:" + email)
   return {
     type:"ADD_EMAIL",
     payload: email
@@ -89,7 +82,6 @@ export function addEmail(email: string){
 }
 
 export function addPassword(password: string){
-  //console.log("#####the value of password has been input into action")
   return {
     type:"ADD_PASSWORD",
     payload: password

@@ -30,7 +30,6 @@ class AccountDetails extends Component{
       }
     })
       .then(res => {
-        console.log('check finish');
         window.sessionStorage.setItem('token', res.data.token);
         window.sessionStorage.setItem('user_id', res.data.user_id);
         window.sessionStorage.setItem('user_email', res.data.user_email);
@@ -53,7 +52,6 @@ class AccountDetails extends Component{
       headers:{'Authorization': "Bearer" + token}
     })
       .then(res => {
-        console.log('changepass');
         this.checkPassword(this.state.newPassword, false);
       })
   }

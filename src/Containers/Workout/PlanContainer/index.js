@@ -68,7 +68,6 @@ class PlanContainer extends Component{
   }
   render() {
     const {error} =this.props.WorkoutReducers;
-    console.log("this is from plan container",this.props)
     const FeedbackArray = [
         {value:3, Feedback:'Too hard'},
         {value:2, Feedback:'Just right'},
@@ -109,7 +108,6 @@ class PlanContainer extends Component{
             />
           </Modal>
         }
-
         {(this.props.WorkoutReducers.redirectToQuestionnaire) && (
           <Redirect to='/questionnaire' />
         )}

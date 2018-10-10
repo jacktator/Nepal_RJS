@@ -17,7 +17,6 @@ export function addQuestionnaire(state) {
     dispatch(addProgram(response.data.acf.days_per_week, response.data.acf.goals, response.data.acf.exercise_place));
     //dispatch(questionnaire(state));
   }).catch((error) => {
-    console.log(error.response);
     if(error.response){
       dispatch(addError(error.response.data.message));
     }else{
@@ -80,8 +79,6 @@ export function addProgram (days, goals, exercise_place) {
         }, {
           headers:{ Authorization: "Bearer" + token }
         }).then((response) => {
-
-          console.log("success",response);
             return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/record",
             {
               status: "publish",
@@ -93,8 +90,6 @@ export function addProgram (days, goals, exercise_place) {
             }, {
               headers:{ Authorization: "Bearer" + token }
             }).then((recordResponse) => {
-              console.log("Successfully created user record", recordResponse);
-
                 dispatch(success(true));
                 dispatch(uploading(false));
                 setTimeout(function(){

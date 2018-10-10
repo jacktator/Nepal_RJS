@@ -41,7 +41,6 @@ class SignUpContainer extends Component{
   }
 
   render(){
-    console.log(this.props.SignUpStates.error);
     const {error} = this.props.SignUpStates
     return(
       <div>

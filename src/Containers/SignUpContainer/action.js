@@ -10,9 +10,6 @@ export function SignUpActions(username, email, password){
       password: password,
     })
     .then((response)=>{
-      console.log('register successfully!!')
-      console.log(response.data);
-      console.log(response);
       let login = JSON.parse(response.config.data);
       dispatch(checkRegister(true));
       dispatch(LoginDetailsActions(login.email, login.password));
@@ -34,7 +31,6 @@ export function addUsername(username){
 }
 
 export function addEmail(email){
-  //console.log("#####the value of email has been input into action")
   return {
     type:"ADD_EMAIL",
     payload: email
@@ -42,7 +38,6 @@ export function addEmail(email){
 }
 
 export function addPassword(password){
-  //console.log("#####the value of password has been input into action")
   return {
     type:"ADD_PASSWORD",
     payload: password
@@ -63,7 +58,6 @@ export function removeError(){
   }
 }
 export function fetchResponse(fetch){
-  console.log("fetch", fetch);
   return{
     type: "FETCH_RESPONSE",
     payload: fetch
