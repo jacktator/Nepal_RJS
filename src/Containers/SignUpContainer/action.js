@@ -2,10 +2,10 @@ import axios from 'axios';
 // import {checkLogin} from '../RootContainer/action';
 import {LoginDetailsActions} from '../LoginDetailsContainer/action';
 import {checkRegister} from '../RootContainer/action';
-export function SignUpActions(username, email, password){
+export function SignUpActions(email, password){
   return(dispatch)=>{
     return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/users/register", {
-      username: username,
+      username: email,
       email: email,
       password: password,
     })
@@ -15,8 +15,9 @@ export function SignUpActions(username, email, password){
       dispatch(LoginDetailsActions(login.email, login.password));
       dispatch(fetchResponse(response.data.code));
     }).catch((error)=>{
-      if(error.response){
-        dispatch(catchError(error.response.data.message))
+      if (error.response) {
+        console.log(error.response.data);
+        //dispatch(catchError(error.response.data.message))
       }else{
         dispatch(catchError("Unable to connect with server"))
       }

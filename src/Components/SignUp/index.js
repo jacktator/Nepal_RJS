@@ -53,15 +53,6 @@ const SignUp = (props) => {
           <div>
             <List>
               <InputItem
-                value={username}
-                type="text"
-                name="username"
-                onChange={(value)=>props.onChangeUsername(value)}
-                style={{color: 'grey'}}
-              >
-              <div style={humeniconstyle} />
-              </InputItem>
-              <InputItem
                 value={email}
                 type="text"
                 name="email"

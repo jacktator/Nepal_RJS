@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Redirect} from 'react-router-dom';
-
+import { ActivityIndicator } from 'antd-mobile';
 import {selectFooter} from '../FooterContainer/actions';
-import {getProgram, updateDailyFeedBack, removeError} from '../actions';
+import {getProgram, updateDailyFeedBack, removeError, setDiffFinished} from '../actions';
 import FooterContainer from'../FooterContainer';
 import Plan from '../../../Components/Workout/Plan';
 import ShowError from '../../../Components/Error/ShowError';
@@ -52,7 +52,8 @@ class PlanContainer extends Component{
   //Handle submit button click in feedback.
   onSubmitFeedbackHandler = (e) => {
     e.preventDefault();
-    this.setState({ askForFeedback: false})
+    this.setState({ askForFeedback: false });
+    this.props.setDiffFinished(true);
     this.props.updateDailyFeedBack(
               this.props.WorkoutReducers.programID, this.props.WorkoutReducers.program,
               this.state.feedbackValue
@@ -113,7 +114,13 @@ class PlanContainer extends Component{
         )}
         {(this.props.isInvalidToken) && (
           <Redirect to='/login/LoginDetails' />
-        )}
+          )}
+          
+        <ActivityIndicator
+          toast
+          text="Loading..."
+          animating={this.props.WorkoutReducers.isDiffFinished}
+        />
 
         </div>
       )
@@ -143,7 +150,7 @@ function mapStateToProps(state){
 }
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
-    selectFooter, getProgram, updateDailyFeedBack, removeError
+    selectFooter, getProgram, updateDailyFeedBack, removeError, setDiffFinished
   }, dispatch
 );
 }

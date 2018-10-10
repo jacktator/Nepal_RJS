@@ -29,11 +29,10 @@ export default class Content extends Component {
                   {(dayNumber == progress) && ( finish_for_day || ask_feedback) ? (
                     <Item
                       extra={
-                        <Button
+                        <div
                         style={{height:'auto', width:'auto', borderRadius: '50%'}}
-                        icon={<img src={require("../../../Assets/Workout/Exercise/exerciseInfo.svg")} style={{ backgroundColor: 'black', borderRadius: '50%', marginRight:'0' }} alt="info" />}
                         onClick={(e) => this.props.onFeedbackButtonClickedHandler(e)}
-                      />}
+                      ><img src={require("../../../Assets/Workout/Exercise/exerciseInfo.svg")} style={{ backgroundColor: 'black', borderRadius: '50%', marginRight:'0' }} alt="info" /></div>}
                       disabled={false}
                       onClick={(e) => { e.preventDefault() }}
                     >

@@ -191,11 +191,14 @@ export function updateDailyFeedBack(programID, program, value) {
       dispatch(setProgram(response.data.acf));
       dispatch(setProgramID(response.data.id));
       dispatch(setCurrentDay(progress));
+      dispatch(setDiffFinished(false));
     }).catch((error) => {
       console.log(error.response);
-      if(error.response){
+      if (error.response) {
+        dispatch(setDiffFinished(false));
         dispatch(catchError(error.response.data.message));
-      }else{
+      } else {
+        dispatch(setDiffFinished(false));
         dispatch(catchError("Oops! Unable to connect to the server. Either your device is offline or server is down."))
       }
     })
@@ -443,7 +446,14 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
                 }
               })
           }
+}
+        export function setDiffFinished ( isDiffFinished: Boolean) {
+          return {
+            type: "AVA_ACT_DIFF",
+            payload: isDiffFinished
+          }
         }
+        
 
         export function setCurrentWeek ( currentWeek: Number) {
           return {

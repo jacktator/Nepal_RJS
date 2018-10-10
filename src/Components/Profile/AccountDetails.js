@@ -127,18 +127,6 @@ class AccountDetails extends Component{
               </Item>
             </List>
           </Accordion.Panel>
-          <Accordion.Panel header={<Item className="no-select" thumb={require("../../Assets/Profile/email.svg")}> Change Email</Item>}>
-            <List className="my-list">
-              <InputItem
-              error={this.state.emailError}
-              onErrorClick={this.onEmailErrorClick}
-              onChange={v =>{this.props.selectEmail(v);this.checkEmailError()}}
-              value={email}
-              style={{color: 'grey'}}
-              maxLength={75}
-              ></InputItem>
-            </List>
-          </Accordion.Panel>
         </Accordion>
 
       </div>
