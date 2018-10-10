@@ -5,13 +5,13 @@
         {
           "name":"Flexibility Exercise Upper Body",
           "exercise":[
-            {"name":"WeightedChest Stretch On Bench","progression_model":"no model"},
-            {"name":"Wall Shoulder Circumductions","progression_model":"no model"},
-            {"name":"Face Down Chest Stretch (Scorpions)","progression_model":"no model"},
-            {"name":"Foam Roller Thoracic Spine","progression_model":"no model"},
-            {"name":"Bench Shoulder Flexion Stretch","progression_model":"no model"},
-            {"name":"Foam Roller Weighted Thoracic Mobility","progression_model":"no model"},
-            {"name":"Weighted Neck Stretch (Trapezius)","progression_model":"no model"}
+            {"name":"WeightedChest Stretch On Bench","progression_model":"no model", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Wall Shoulder Circumductions","progression_model":"no model", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Face Down Chest Stretch (Scorpions)","progression_model":"no model", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Foam Roller Thoracic Spine","progression_model":"no model", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Bench Shoulder Flexion Stretch","progression_model":"no model", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Foam Roller Weighted Thoracic Mobility","progression_model":"no model", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Weighted Neck Stretch (Trapezius)","progression_model":"no model", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
         ]
       }]
     },
@@ -20,11 +20,11 @@
         {
           "name":"Mobility Exercise Upper Body",
           "exercise":[
-            {"name":"Band Dislocations","progression_model":"double progression"},
-            {"name":"Band","progression_model":"double progression"},
-            {"name":"Prone T Lifts","progression_model":"double progression"},
-            {"name":"Prone Extenernal Rotations","progression_model":"double progression"},
-            {"name":"Banded Wall Presses","progression_model":"double progression"}
+            {"name":"Band Dislocations","progression_model":"double progression", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Band","progression_model":"double progression", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Prone T Lifts","progression_model":"double progression", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Prone Extenernal Rotations","progression_model":"double progression", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Banded Wall Presses","progression_model":"double progression", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
         ]}
       ]
     },
@@ -33,13 +33,13 @@
         {
           "name":"Flexiblity Exercise Lower Body",
           "exercise":[
-            {"name":"Rear Foot Elevated Thigh Stretch","progression_model":"no model"},
-            {"name":"Standing Hamstring Flossing","progression_model":"no model"},
-            {"name":"Block Assisted Side Splits","progression_model":"no model"},
-            {"name":"90:90 Hamstring Stretch","progression_model":"no model"},
-            {"name":"Pigeon Stretch","progression_model":"no model"},
-            {"name":"Foam Roller Thigh","progression_model":"no model"},
-            {"name":"Hamstring Release On Bar","progression_model":"no model"}
+            {"name":"Rear Foot Elevated Thigh Stretch","progression_model":"no model", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Standing Hamstring Flossing","progression_model":"no model", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Block Assisted Side Splits","progression_model":"no model", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"90:90 Hamstring Stretch","progression_model":"no model", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Pigeon Stretch","progression_model":"no model", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Foam Roller Thigh","progression_model":"no model", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Hamstring Release On Bar","progression_model":"no model", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
         ]}
       ]
     },
@@ -48,12 +48,12 @@
         {
           "name":"Mobility Exercise Lower Body",
           "exercise":[
-            {"name":"Single Leg Glute Bridges","progression_model":"double progression"},
-            {"name":"Single Leg Hip Thursts (Bench)","progression_model":"double progression"},
-            {"name":"Banded Crap Walks","progression_model":"double progression"},
-            {"name":"Wall Marching","progression_model":"double progression"},
-            {"name":"Single Leg Tipping Bird","progression_model":"double progression"},
-            {"name":"Standing Hip Internal Rotation","progression_model":"double progression"}
+            {"name":"Single Leg Glute Bridges","progression_model":"double progression", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Single Leg Hip Thursts (Bench)","progression_model":"double progression", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Banded Crap Walks","progression_model":"double progression", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Wall Marching","progression_model":"double progression", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Single Leg Tipping Bird","progression_model":"double progression", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Standing Hip Internal Rotation","progression_model":"double progression", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
         ]}
       ]
     },
@@ -62,13 +62,12 @@
         {
           "name":"Posterior Shoulder Failure Exercises",
           "exercise":[
-            {"name":"Farmers Carry","progression_model":"till failure"},
-            {"name":"Banded","progression_model":"till failure"},
-            {"name":"Prone Y-W'S","progression_model":"till failure"}
+            {"name":"Farmers Carry","progression_model":"till failure", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Banded","progression_model":"till failure", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Prone Y-W'S","progression_model":"till failure", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
         ]}
       ]
     }
-
 
   ]
 }
