@@ -9,7 +9,7 @@
               {"name":"Rear delt + glute isolation","code":"37","sets":"3","reps":"till failure","feedback":"3", "workout":"{30 deg} Bench Supported Reverse Fly (Dumbbell)", "progression_model":"double progression", "video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
               {"name":"Bicep Heavy Exercises","code":"3","sets":"3","reps":"10-12","feedback":"0", "workout":"Standing Bicep Curl (Barbell)", "progression_model":"double progression", "video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
               {"name":"Tricep Heavy Exercises","code":"1","sets":"3","reps":"10-12","feedback":"3", "workout":"Close Grip Bench Press (Barbell)", "progression_model":"linear", "video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
-              {"name":"Abdominal Failure Exercises","code":"24","sets":"3","reps":"Till Failure","feedback":"4", "workout":"Side Plank", "progression_model":"till failure", "video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"}
+              {"name":"Abdominal Failure Exercises","code":"24","sets":"3","reps":"till failure","feedback":"4", "workout":"Side Plank", "progression_model":"till failure", "video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"}
           ]
       }, {
         "day": "2",
@@ -19,7 +19,7 @@
             {"name":"Back Light Exercises","code":"12","sets":"3","reps":"10-12","feedback":"4", "workout":"Single Arm Row (Dumbbell)", "progression_model":"double progression", "video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
             {"name":"Rear delt + glute isolation ","code":"37","sets":"3","reps":"20-25","feedback":"4", "workout":"{30 deg} Bench Supported Reverse Fly (Dumbbell)", "progression_model":"double progression", "video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
             {"name":"Back Light Exercises","code":"12","sets":"3","reps":"10-12","feedback":"3", "workout":"Single Arm Row (Dumbbell)", "progression_model":"double progression", "video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
-            {"name":"Bicep light +glute isolation","code":"35","sets":"3","reps":"Till Failure","feedback":"2", "workout":"Standing Bicep Curl (Dumbbell)", "progression_model":"double progression", "video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"}
+            {"name":"Bicep light +glute isolation","code":"35","sets":"3","reps":"till failure","feedback":"2", "workout":"Standing Bicep Curl (Dumbbell)", "progression_model":"double progression", "video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"}
           ]
       }, {
         "day": "3",
