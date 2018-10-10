@@ -14,7 +14,6 @@ import ShowError from '../../../Components/Error/ShowError'
 class HistoryContainer extends Component{
   constructor(props){
     super(props);
-    // console.log(this.props.match.path.substring(1))
     this.state = {
       daySelect: 1,
       weekSelect: 1,
@@ -50,8 +49,6 @@ class HistoryContainer extends Component{
   //     weekSelect: e,
   //     week:this.state.weekSelect+1
   //   })
-  //   console.log("week",week)
-  //   console.log('week',e);
   // }
   // onParticularDayClickedHandler =(e,day) => {
   //   // e.preventDefault();
@@ -60,12 +57,9 @@ class HistoryContainer extends Component{
   //     day: this.state.daySelect+1,
   //     daySelect:e
   //   })
-  //   console.log("day",day)
-  //   // console.log('day',e)
   // }
 
   render() {
-    console.log("history reducer", this.props.HistoryReducers);
     let RenderPage = null;
     let {history,error} =this.props.HistoryReducers;
     console.log(error)

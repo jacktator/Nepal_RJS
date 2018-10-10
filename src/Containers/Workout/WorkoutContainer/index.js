@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { ActivityIndicator } from 'antd-mobile';
 import {selectFooter} from '../FooterContainer/actions';
-import {getProgram, keepWorkout, fetchWorkoutList, selectWorkout, setDayIndex, getExerciseRecord, setCurrentDay,removeError} from '../actions';
+import {keepWorkout, fetchWorkoutList, selectWorkout, setDayIndex, getExerciseRecord, setCurrentDay,removeError} from '../actions';
 import Workout from '../../../Components/Workout/Workout';
 import SelectExercise from '../../../Components/Workout/SelectExercise';
 import Modal from '../../../Components/UI/Modal';
@@ -86,8 +86,7 @@ class WorkoutContainer extends Component{
     this.props.removeError();
   }
   render() {
-    const {error} =this.props.WorkoutReducers
-    console.log(error)
+    const {error} =this.props.WorkoutReducers;
     if(this.props.WorkoutReducers.program){
       if(this.state.isReady){
         let{dayIndex} = this.props.WorkoutReducers;
@@ -134,6 +133,10 @@ class WorkoutContainer extends Component{
               <Redirect to="/exercise" />
             )}
             <FooterContainer currentPath='workout' />
+
+            {(this.props.WorkoutReducers.redirectToQuestionnaire) && (
+              <Redirect to='/questionnaire' />
+            )}
           </Hoc>
         )
       }else{
@@ -143,7 +146,13 @@ class WorkoutContainer extends Component{
       }
     }else{//if this.state.isReady is false
       return(
-        <Loading />
+        <Hoc>
+          {(this.props.WorkoutReducers.redirectToQuestionnaire) && (
+            <Redirect to='/questionnaire' />
+          )}
+
+          <Loading />
+        </Hoc>
       )
     }
   }else{
@@ -161,7 +170,7 @@ function mapStateToProps(state){
 }
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
-    selectFooter, keepWorkout, fetchWorkoutList, getProgram,
+    selectFooter, keepWorkout, fetchWorkoutList,
     selectWorkout, setDayIndex, getExerciseRecord, setCurrentDay,
     removeError
   }, dispatch

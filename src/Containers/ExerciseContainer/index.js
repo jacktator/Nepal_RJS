@@ -30,9 +30,7 @@ class ExerciseContainer extends Component{
     e.preventDefault();
     this.setState({ goBack: true})
   }
-  saveButtonHandler = (rep) => {
-    console.log(rep);
-  }
+  
   infoHandler = (e) => {
     e.preventDefault();
     this.setState({ showInfo: !this.state.showInfo})

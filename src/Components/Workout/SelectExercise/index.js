@@ -41,9 +41,7 @@ import Loading from '../../Loading';
                 workoutUnderSameCode.push({"name":programExerciseList[i].workout})
               }
             }
-            console.log("with same code", workoutUnderSameCode);
             _.pullAllBy(exerciseOption, workoutUnderSameCode, 'name')
-            console.log("after deletion", exerciseOption);
           }
         }
       return (

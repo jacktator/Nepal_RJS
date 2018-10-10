@@ -5,8 +5,6 @@ export function getHistory() {
     let user_id = sessionStorage.getItem('user_id');
     return axios.get(`https://nepal.sk8tech.io/wp-json/wp/v2/record?filter[meta_key]=user_id&filter[meta_value]=${user_id}`)
     .then((response) => {
-      console.log(response);
-      console.log("response",response.data)
       let historyData = [];
       response.data.map((data,key) => (
         historyData.push(data.acf)

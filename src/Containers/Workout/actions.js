@@ -17,7 +17,6 @@ export function getProgram(){
         setTimeout(function(){
           dispatch(redirectToQuestionnaire(false));
         },2000);
-
       }else{
         const progress = parseInt(response.data[0].acf.progress,10);
         const days = parseInt(response.data[0].acf.days,10);
@@ -49,7 +48,7 @@ export function getProgram(){
             dispatch(updateProgress(response.data[0].id, currentProgress, askFeedback))
           }
         }else{
-          console.log("Need to add logic for off days in action line 41")
+          //if progress is less than current progress
         }
         if(!update){
           dispatch(setProgram(response.data[0].acf));
@@ -189,7 +188,6 @@ export function updateDailyFeedBack(programID, program, value) {
       status: "publish",
       fields: program
     }).then((response)=> {
-      console.log("This is the response.", response);
       dispatch(setProgram(response.data.acf));
       dispatch(setProgramID(response.data.id));
       dispatch(setCurrentDay(progress));
@@ -209,11 +207,20 @@ export function updateDailyFeedBack(programID, program, value) {
 
 //This function use to fetch the exercise record for the current program.
 export function getExerciseRecord(programID){
+  console.log("get Exercise Record");
   return(dispatch: Function) => {
     return axios.get(`https://nepal.sk8tech.io/wp-json/wp/v2/record?filter[meta_key]=program_id&filter[meta_value]=${programID}`)
     .then((response) => {
-      dispatch(setExerciseRecord(response.data[0].acf));
-      dispatch(setExerciseID(response.data[0].id))
+      if(response.data.length === 0){
+        console.log("record not found");
+        dispatch(redirectToQuestionnaire(true));
+        setTimeout(function(){
+          dispatch(redirectToQuestionnaire(false));
+        },2000);
+      }else{
+        dispatch(setExerciseRecord(response.data[0].acf));
+        dispatch(setExerciseID(response.data[0].id))
+      }
     }).catch((error)=> {
       console.log(error.response);
       if(error.response){
@@ -301,7 +308,6 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
                             "July", "August", "September", "October", "November", "December"
                             ];
         let temp, daily_record;
-        console.log("Sets from workout aciton",sets);
         //Calculate the current date
         let currentDate = new Date();
         let todayDay = currentDate.getDate();
@@ -331,7 +337,6 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
                 { sets: sets, reps: reps, weight: weight }]}]}
               ]
             }
-            console.log(daily_record);
             return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/record/${recordID}`,
               {
                 status: "publish",
@@ -340,7 +345,6 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
                 }
               })
               .then((response)=> {
-                  console.log("record updated", response)
                   dispatch(setExerciseRecord(response.data.acf));
                   dispatch(savingExercise(false));
               }).catch((error)=> {
@@ -402,7 +406,6 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
         //This function update the reps for home exercise according to week to week changes algorithm
         export function updateReps (program, programID, dayIndex, index, reps){
           return(dispatch:Function) => {
-            console.log("updateReps");
             program.exercises[dayIndex].exercise_list[index].reps = reps;
             return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`,
               {
@@ -410,7 +413,6 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
                 fields: program
               })
               .then((response)=> {
-                console.log("updated",response);
                 dispatch(setProgram(response.data.acf));
               }).catch((error)=> {
                 console.log(error.response);

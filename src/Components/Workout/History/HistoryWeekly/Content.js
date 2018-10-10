@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { List, Flex } from 'antd-mobile'
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 const Item = List.Item
 
 export default class Content extends Component {
@@ -22,10 +22,9 @@ export default class Content extends Component {
     let days = parseInt((this.state.days),10)
     return(
         <div>
-           <List> 
+           <List>
               {[...Array(days)].map((v,k) => {
                 const dayNumber = (this.props.selectedWeek) * days + k+1
-                console.log(dayNumber)
                 return(
                 <Link key={k} to={`/history/${this.props.programID}/${dayNumber}`}>
                 <Flex >
