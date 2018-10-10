@@ -8,9 +8,9 @@ const RecordList = (props) => {
   return(
     <div className="record-list">
       <List>
-      {[...Array(parseInt(props.state.exerciseData.sets,10))].map((value, key) =>(
-        displayRecord(props, key)
-      ))}
+        {[...Array(parseInt(props.state.exerciseData.sets, 10))].map((value, key) => {
+          return displayRecord(props, key);
+        })}
       </List>
     </div>
   )

@@ -2,6 +2,7 @@ let DefaultState = {
   dayIndex: null,
   redirectToQuestionnaire: false,
   isSavingExercise: false,
+  isDiffFinished: false,
   error:{
     hasError:false,
     message:''
@@ -66,6 +67,12 @@ const WorkoutReducers =(state: Object= DefaultState, action: Function) => {
     return {
       ...state, error
     }
+    
+    case "AVA_ACT_DIFF" :
+    return {
+      ...state, isDiffFinished: action.payload
+    }
+    
     case "REMOVE_ERROR":
     error = {...state.error};
     error['hasError']= false;
