@@ -6,15 +6,13 @@ export function fetchJson(){
       response.json()
     })
     .then((json)=>{
-      console.log(json)
       dispatch(storeJson(json))
     })
     .catch((error)=>{
-      console.log('not working')
+      console.log(error)
     })
   }
 }
-
 
 function storeJson(data){
   return{

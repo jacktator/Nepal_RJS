@@ -2,7 +2,6 @@
 import axios from 'axios';
 
 export function ForgetPasswordActions(email: string){
-  console.log('the reset has been successful!!')
   return(dispatch: Function)=>{
     return axios.post("", {
       email: email,

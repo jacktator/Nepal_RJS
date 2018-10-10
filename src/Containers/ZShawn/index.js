@@ -22,12 +22,10 @@ class GetJson extends Component {
       this.setState({jsonString:response.data})
     })
     .catch((error)=>{
-      console.log('not working')
     })
   }
 
   render(){
-    console.log(this.state.jsonString.exercises)
     return(
       <Hoc>
         <button onClick={()=>this.getJson()} style={{color: 'red'}}> testing </button>

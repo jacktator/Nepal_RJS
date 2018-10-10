@@ -10,7 +10,6 @@ type Props={
 
 class RootContainer extends Component<Props>{
   render(){
-    console.log("This is from root state",this.props.RootStates);
     const {check, justRegistered} = this.props.RootStates;
     const isInvalidToken = this.props.isInvalidToken;
     return(
