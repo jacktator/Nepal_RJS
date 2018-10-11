@@ -5,12 +5,12 @@
         {
           "name":"Lunge Exercises",
           "exercise":[
-            {"name":"Walking Lunges","progression_model":"rep home", "repetition":"20"},
-            {"name":"Rear Foot Elevated Lunges","progression_model":"rep home", "repetition":"10"},
-            {"name":"Front Foot Elevated Lunges","progression_model":"rep home", "repetition":"10"},
-            {"name":"Alternate Lunge Jumps","progression_model":"rep home", "repetition":"10"},
-            {"name":"Static Lunge","progression_model":"rep home", "repetition":"10"},
-            {"name":"Step Ups","progression_model":"rep home", "repetition":"15"}
+            {"name":"Walking Lunges","progression_model":"rep home", "repetition":"20", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Rear Foot Elevated Lunges","progression_model":"rep home", "repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Front Foot Elevated Lunges","progression_model":"rep home", "repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Alternate Lunge Jumps","progression_model":"rep home", "repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Static Lunge","progression_model":"rep home", "repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Step Ups","progression_model":"rep home", "repetition":"15", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
         ]}
       ]
     },
@@ -19,12 +19,12 @@
         {
           "name":"Squat Exercises",
           "exercise":[
-            {"name":"Squats Close Stance","progression_model":"rep home", "repetition":"15"},
-            {"name":"Squats Normal Stance","progression_model":"rep home", "repetition":"15"},
-            {"name":"Sumo Squats","progression_model":"rep home", "repetition":"15"},
-            {"name":"Squat Jumps","progression_model":"rep home", "repetition":"10"},
-            {"name":"Pistol Squat","progression_model":"rep home", "repetition":"5"},
-            {"name":"Pistol Squat to Bench","progression_model":"rep home", "repetition":"5"}
+            {"name":"Squats Close Stance","progression_model":"rep home", "repetition":"15", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Squats Normal Stance","progression_model":"rep home", "repetition":"15", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Sumo Squats","progression_model":"rep home", "repetition":"15", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Squat Jumps","progression_model":"rep home", "repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Pistol Squat","progression_model":"rep home", "repetition":"5", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Pistol Squat to Bench","progression_model":"rep home", "repetition":"5", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
         ]}
       ]
     },
@@ -33,8 +33,8 @@
         {
           "name":"Hip Hinge Exercises",
           "exercise":[
-            {"name":"Single Legged Stiff Leg Dead-Lift","progression_model":"rep home", "repetition":"10"},
-            {"name":"Romanian Dead-Lift","progression_model":"rep home", "repetition":"10"}
+            {"name":"Single Legged Stiff Leg Dead-Lift","progression_model":"rep home", "repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Romanian Dead-Lift","progression_model":"rep home", "repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
         ]}
       ]
     },
@@ -43,12 +43,12 @@
         {
           "name":"Glutes",
           "exercise":[
-            {"name":"Glute Bridge","progression_model":"rep home", "repetition":"20"},
-            {"name":"Single Legged Glute Bridge","progression_model":"rep home", "repetition":"10"},
-            {"name":"Frog Pump","progression_model":"rep home", "repetition":"20"},
-            {"name":"Side Lying Abduction","progression_model":"rep home", "repetition":"20"},
-            {"name":"Side Plank With Side Lying Abduction","progression_model":"rep home", "repetition":"10"},
-            {"name":"Marching Glute Bridge","progression_model":"rep home", "repetition":"20"}
+            {"name":"Glute Bridge","progression_model":"rep home", "repetition":"20", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Single Legged Glute Bridge","progression_model":"rep home", "repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Frog Pump","progression_model":"rep home", "repetition":"20", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Side Lying Abduction","progression_model":"rep home", "repetition":"20", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Side Plank With Side Lying Abduction","progression_model":"rep home", "repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Marching Glute Bridge","progression_model":"rep home", "repetition":"20", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
         ]}
       ]
     },
@@ -57,10 +57,10 @@
         {
           "name":"Leg Failure Exercises",
           "exercise":[
-            {"name":"Glute Bridges","progression_model":"none", "repetition":"till failure"},
-            {"name":"Squat Pulses","progression_model":"none", "repetition":"till failure"},
-            {"name":"Lunge Pulses","progression_model":"none", "repetition":"till failure"},
-            {"name":"Donkey Kicks","progression_model":"none", "repetition":"till failure"}
+            {"name":"Glute Bridges","progression_model":"none", "repetition":"till failure", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Squat Pulses","progression_model":"none", "repetition":"till failure", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Lunge Pulses","progression_model":"none", "repetition":"till failure", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Donkey Kicks","progression_model":"none", "repetition":"till failure", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
         ]}
       ]
     },
@@ -69,9 +69,9 @@
         {
           "name":"Easy",
           "exercise":[
-            {"name":"Wall Push Up (Easy)","progression_model":"rep home", "repetition":"10"},
-            {"name":"Incline Push Up (Easy)","progression_model":"rep home", "repetition":"10"},
-            {"name":"Knee Push Up (Difficult)","progression_model":"rep home", "repetition":"10"}
+            {"name":"Wall Push Up (Easy)","progression_model":"rep home", "repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Incline Push Up (Easy)","progression_model":"rep home", "repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Knee Push Up (Difficult)","progression_model":"rep home", "repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
         ]}
       ]
     },
@@ -80,13 +80,13 @@
         {
           "name":"Hard Push Up",
           "exercise":[
-            {"name":"Wall Push Up (Easy)","progression_model":"rep home", "repetition":"10"},
-            {"name":"Incline Push Up (Easy)","progression_model":"rep home", "repetition":"10"},
-            {"name":"Knee Push Up (Difficult)","progression_model":"rep home", "repetition":"10"},
-            {"name":"Foot Elevated Push Up (Difficult)","progression_model":"rep home", "repetition":"10"},
-            {"name":"Close Grip Push Up (Difficult)","progression_model":"rep home", "repetition":"10"},
-            {"name":"Wide Grip Push Up (Difficult)","progression_model":"rep home", "repetition":"10"},
-            {"name":"Spiderman Push Up (Difficult)","progression_model":"rep home", "repetition":"10"}
+            {"name":"Wall Push Up (Easy)","progression_model":"rep home", "repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Incline Push Up (Easy)","progression_model":"rep home", "repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Knee Push Up (Difficult)","progression_model":"rep home", "repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Foot Elevated Push Up (Difficult)","progression_model":"rep home", "repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Close Grip Push Up (Difficult)","progression_model":"rep home", "repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Wide Grip Push Up (Difficult)","progression_model":"rep home", "repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Spiderman Push Up (Difficult)","progression_model":"rep home", "repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
         ]}
       ]
     },
@@ -95,12 +95,12 @@
         {
           "name":"Upper Body Failure Exercises (Pull)",
           "exercise":[
-            {"name":"Prone Y Lift","progression_model":"none", "repetition":"till failure"},
-            {"name":"Prone T Lift","progression_model":"none", "repetition":"till failure"},
-            {"name":"Prone Y to W","progression_model":"none", "repetition":"till failure"},
-            {"name":"Wall Handstand Hold","progression_model":"none", "repetition":"till failure"},
-            {"name":"Doorway Row Single Arm","progression_model":"none", "repetition":"till failure"},
-            {"name":"Wall Elbow Push Away","progression_model":"none", "repetition":"till failure"}
+            {"name":"Prone Y Lift","progression_model":"none", "repetition":"till failure", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Prone T Lift","progression_model":"none", "repetition":"till failure", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Prone Y to W","progression_model":"none", "repetition":"till failure", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Wall Handstand Hold","progression_model":"none", "repetition":"till failure", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Doorway Row Single Arm","progression_model":"none", "repetition":"till failure", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Wall Elbow Push Away","progression_model":"none", "repetition":"till failure", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
         ]}
       ]
     },
@@ -109,14 +109,14 @@
         {
           "name":"Abdominals Isometric (till failure)",
           "exercise":[
-            {"name":"Side Plank On Knees (Easy)","progression_model":"none", "repetition":"till failure"},
-            {"name":"Side Plank (Difficult)","progression_model":"none", "repetition":"till failure"},
-            {"name":"Plank On Knees(Easy)","progression_model":"none", "repetition":"till failure"},
-            {"name":"Plank (Difficult)","progression_model":"none", "repetition":"till failure"},
-            {"name":"Hollow Body Hold (Easy)","progression_model":"none", "repetition":"till failure"},
-            {"name":"Hollow Body Hold (Difficult)","progression_model":"none", "repetition":"till failure"},
-            {"name":"Dead Bug (Easy)","progression_model":"none", "repetition":"till failure"},
-            {"name":"Dead Bug (Difficult)","progression_model":"none", "repetition":"till failure"}
+            {"name":"Side Plank On Knees (Easy)","progression_model":"none", "repetition":"till failure", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Side Plank (Difficult)","progression_model":"none", "repetition":"till failure", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Plank On Knees(Easy)","progression_model":"none", "repetition":"till failure", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Plank (Difficult)","progression_model":"none", "repetition":"till failure", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Hollow Body Hold (Easy)","progression_model":"none", "repetition":"till failure", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Hollow Body Hold (Difficult)","progression_model":"none", "repetition":"till failure", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Dead Bug (Easy)","progression_model":"none", "repetition":"till failure", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Dead Bug (Difficult)","progression_model":"none", "repetition":"till failure", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
         ]}
       ]
     },
@@ -125,13 +125,13 @@
         {
           "name":"Abdominals Isokinetic (till failure)",
           "exercise":[
-            {"name":"V Ups","progression_model":"rep home", "repetition":"10"},
-            {"name":"Butterfly Lateral Flexion","progression_model":"rep home", "repetition":"10"},
-            {"name":"Side Plank Knee To Elbow","progression_model":"rep home", "repetition":"10"},
-            {"name":"Side Plank With Knee Flexion","progression_model":"rep home", "repetition":"10"},
-            {"name":"Lying Leg Raises","progression_model":"rep home", "repetition":"20"},
-            {"name":"Reverse Crunch","progression_model":"rep home", "repetition":"10"},
-            {"name":"Crunch With Arms Extended","progression_model":"rep home", "repetition":"10"}
+            {"name":"V Ups","progression_model":"rep home", "repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Butterfly Lateral Flexion","progression_model":"rep home", "repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Side Plank Knee To Elbow","progression_model":"rep home", "repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Side Plank With Knee Flexion","progression_model":"rep home", "repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Lying Leg Raises","progression_model":"rep home", "repetition":"20", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Reverse Crunch","progression_model":"rep home", "repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Crunch With Arms Extended","progression_model":"rep home", "repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
         ]}
       ]
     },
@@ -140,12 +140,12 @@
         {
           "name":"Conditioning Plyometric Lower",
           "exercise":[
-            {"name":"High Knees","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"Star Jumps","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"Long Jumps","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"Single Lep Hop","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"Side Squat Jumps","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"Burpees","progression_model":"rep home", "repetition":"60 sec"}
+            {"name":"High Knees","progression_model":"rep home", "repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Star Jumps","progression_model":"rep home", "repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Long Jumps","progression_model":"rep home", "repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Single Lep Hop","progression_model":"rep home", "repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Side Squat Jumps","progression_model":"rep home", "repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Burpees","progression_model":"rep home", "repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
         ]}
       ]
     },
@@ -154,12 +154,12 @@
         {
           "name":"Conditioning Lower Easy",
           "exercise":[
-            {"name":"High Foot Elevated Glute Bridge","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"Glute Bridge With Leg Extension","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"Hands Overhead Crab Walk","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"Table Top Bridge","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"Mountain Climber (Feet Slide On Cardboard)","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"Mountain Climber","progression_model":"rep home", "repetition":"60 sec"}
+            {"name":"High Foot Elevated Glute Bridge","progression_model":"rep home", "repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Glute Bridge With Leg Extension","progression_model":"rep home", "repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Hands Overhead Crab Walk","progression_model":"rep home", "repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Table Top Bridge","progression_model":"rep home", "repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Mountain Climber (Feet Slide On Cardboard)","progression_model":"rep home", "repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Mountain Climber","progression_model":"rep home", "repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
         ]}
       ]
     },
@@ -168,13 +168,13 @@
         {
           "name":"Conditioning Lower Hard",
           "exercise":[
-            {"name":"Wall Push Up Squats","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"Wall Walks","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"Walkout Burpee","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"High Foot Elevated Glute Bridge","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"Elevated Glute Bridge With Leg Extension","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"Single Arm Table Top Bridge","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"Side Squat Jumps Landing On Single Leg","progression_model":"rep home", "repetition":"60 sec"}
+            {"name":"Wall Push Up Squats","progression_model":"rep home", "repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Wall Walks","progression_model":"rep home", "repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Walkout Burpee","progression_model":"rep home", "repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"High Foot Elevated Glute Bridge","progression_model":"rep home", "repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Elevated Glute Bridge With Leg Extension","progression_model":"rep home", "repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Single Arm Table Top Bridge","progression_model":"rep home", "repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Side Squat Jumps Landing On Single Leg","progression_model":"rep home", "repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
         ]}
       ]
     },
@@ -183,12 +183,12 @@
         {
           "name":"Conditioning Upper Easy",
           "exercise":[
-            {"name":"Push Up Leg Slides","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"Alternating Arm And Leg Lift","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"Tricep Wall Press","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"Plank Up Downs","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"Hamstring Walk Out","progression_model":"rep home", "repetition":"60 sec"},
-            {"name":"Single Arm Thread The Needle","progression_model":"rep home", "repetition":"60 sec"}
+            {"name":"Push Up Leg Slides","progression_model":"rep home", "repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Alternating Arm And Leg Lift","progression_model":"rep home", "repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Tricep Wall Press","progression_model":"rep home", "repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Plank Up Downs","progression_model":"rep home", "repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Hamstring Walk Out","progression_model":"rep home", "repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Single Arm Thread The Needle","progression_model":"rep home", "repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
         ]}
       ]
     },
@@ -197,14 +197,14 @@
         {
           "name":"Conditioning Upper Hard",
           "exercise":[
-            {"name":"Down Dog To Up Dog","progression_model":"rep home", "repetition":"30 sec"},
-            {"name":"Reptile Push Ups","progression_model":"rep home", "repetition":"30 sec"},
-            {"name":"Push Up With Alternating Arm And Leg Lift","progression_model":"rep home", "repetition":"30 sec"},
-            {"name":"Side Plank Push Up","progression_model":"rep home", "repetition":"30 sec"},
-            {"name":"Floor To Wall","progression_model":"rep home", "repetition":"30 sec"},
-            {"name":"Wall Handstand Push Up","progression_model":"rep home", "repetition":"30 sec"},
-            {"name":"Wall Handstand Renegade Row","progression_model":"rep home", "repetition":"30 sec"},
-            {"name":"Wall Mountain Climbers","progression_model":"rep home", "repetition":"30 sec"}
+            {"name":"Down Dog To Up Dog","progression_model":"rep home", "repetition":"30 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Reptile Push Ups","progression_model":"rep home", "repetition":"30 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Push Up With Alternating Arm And Leg Lift","progression_model":"rep home", "repetition":"30 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Side Plank Push Up","progression_model":"rep home", "repetition":"30 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Floor To Wall","progression_model":"rep home", "repetition":"30 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Wall Handstand Push Up","progression_model":"rep home", "repetition":"30 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Wall Handstand Renegade Row","progression_model":"rep home", "repetition":"30 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Wall Mountain Climbers","progression_model":"rep home", "repetition":"30 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
 
         ]}
       ]
@@ -216,18 +216,18 @@
         {
           "name":"Easy",
           "exercise":[
-            {"name":"Wall Push Up (Easy)","progression_model":"rep home","repetition":"10"},
-            {"name":"Incline Push Up (Easy)","progression_model":"rep home","repetition":"10"},
-            {"name":" Knee Push Up (Difficult)","progression_model":"rep home","repetition":"10"}
+            {"name":"Wall Push Up (Easy)","progression_model":"rep home","repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Incline Push Up (Easy)","progression_model":"rep home","repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":" Knee Push Up (Difficult)","progression_model":"rep home","repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
           ]
         },
         {
           "name":"Hard Push Up",
           "exercise":[
-            {"name":"Foot Elevated Push Up (Difficult)","progression_model":"rep home","repetition":"10"},
-            {"name":"Close Grip Push Up (Difficult)","progression_model":"rep home","repetition":"10"},
-            {"name":"Wide Grip Push Up (Difficult)","progression_model":"rep home","repetition":"10"},
-            {"name":" Spiderman Push Up (Difficult)","progression_model":"rep home","repetition":"10"}
+            {"name":"Foot Elevated Push Up (Difficult)","progression_model":"rep home","repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Close Grip Push Up (Difficult)","progression_model":"rep home","repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Wide Grip Push Up (Difficult)","progression_model":"rep home","repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":" Spiderman Push Up (Difficult)","progression_model":"rep home","repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
           ]
         }
       ]
@@ -239,24 +239,24 @@
         {
           "name":"Conditioning Lower Easy",
           "exercise":[
-            {"name":"High Foot Elevated Glute Bridge","progression_model":"time home","repetition":"60 sec"},
-            {"name":" Glute Bridge With Leg Extension","progression_model":"time home","repetition":"60 sec"},
-            {"name":"Hands Overhead Crab Walk","progression_model":"time home","repetition":"60 sec"},
-            {"name":"Table Top Bridge","progression_model":"time home","repetition":"60 sec"},
-            {"name":"Mountain Climber (Feet Slide On Cardboard)","progression_model":"time home","repetition":"60 sec"},
-            {"name":"Mountain Climbers","progression_model":"time home","repetition":"60 sec"}
+            {"name":"High Foot Elevated Glute Bridge","progression_model":"time home","repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":" Glute Bridge With Leg Extension","progression_model":"time home","repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Hands Overhead Crab Walk","progression_model":"time home","repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Table Top Bridge","progression_model":"time home","repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Mountain Climber (Feet Slide On Cardboard)","progression_model":"time home","repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Mountain Climbers","progression_model":"time home","repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
           ]
         },
         {
           "name":"Conditioning Lower Hard",
           "exercise":[
-            {"name":"Wall Push Up Squats","progression_model":"time home","repetition":"30 sec"},
-            {"name":"Wall Walks","progression_model":"time home","repetition":"30 sec"},
-            {"name":"Walkout Burpee","progression_model":"time home","repetition":"30 sec"},
-            {"name":" High Foot Elevated Glute Bridge","progression_model":"time home","repetition":"30 sec"},
-            {"name":" Elevated Glute Bridge With Leg Extension","progression_model":"time home","repetition":"30 sec"},
-            {"name":"Single Arm Table Top Bridge","progression_model":"time home","repetition":"30 sec"},
-            {"name":"Side Squat Jumps Landing On Single Leg","progression_model":"time home","repetition":"30 sec"}
+            {"name":"Wall Push Up Squats","progression_model":"time home","repetition":"30 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Wall Walks","progression_model":"time home","repetition":"30 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Walkout Burpee","progression_model":"time home","repetition":"30 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":" High Foot Elevated Glute Bridge","progression_model":"time home","repetition":"30 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":" Elevated Glute Bridge With Leg Extension","progression_model":"time home","repetition":"30 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Single Arm Table Top Bridge","progression_model":"time home","repetition":"30 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Side Squat Jumps Landing On Single Leg","progression_model":"time home","repetition":"30 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
           ]
         }
       ]
@@ -268,25 +268,25 @@
         {
           "name":"Conditioning Upper Easy",
           "exercise":[
-            {"name":"Push Up Leg Slides","progression_model":"time home","repetition":"60 sec"},
-            {"name":"Alternating Arm And Leg Lift","progression_model":"time home","repetition":"60 sec"},
-            {"name":"Tricep Wall Press","progression_model":"time home","repetition":"60 sec"},
-            {"name":"Plank Up Downs","progression_model":"time home","repetition":"60 sec"},
-            {"name":"Hamstring Walk Out","progression_model":"time home","repetition":"60 sec"},
-            {"name":"Single Arm Thread The Needle","progression_model":"time home","repetition":"60 sec"}
+            {"name":"Push Up Leg Slides","progression_model":"time home","repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Alternating Arm And Leg Lift","progression_model":"time home","repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Tricep Wall Press","progression_model":"time home","repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Plank Up Downs","progression_model":"time home","repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Hamstring Walk Out","progression_model":"time home","repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Single Arm Thread The Needle","progression_model":"time home","repetition":"60 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
           ]
         },
         {
           "name":"Conditioning Upper Hard",
           "exercise":[
-            {"name":"Down Dog To Up Dog","progression_model":"time home","repetition":"30 sec"},
-            {"name":"Reptile","progression_model":"time home","repetition":"30 sec"},
-            {"name":"Push Up With Alternating Arm And Leg Lift","progression_model":"time home","repetition":"30 sec"},
-            {"name":"Side Plank Push Up","progression_model":"time home","repetition":"30 sec"},
-            {"name":"Floor To Wall","progression_model":"time home","repetition":"30 sec"},
-            {"name":"Wall Handstand Push Up","progression_model":"time home","repetition":"30 sec"},
-            {"name":"Wall Handstand Renegade Row","progression_model":"time home","repetition":"30 sec"},
-            {"name":"Mountain Climber On The Wall","progression_model":"time home","repetition":"30 sec"}
+            {"name":"Down Dog To Up Dog","progression_model":"time home","repetition":"30 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Reptile","progression_model":"time home","repetition":"30 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Push Up With Alternating Arm And Leg Lift","progression_model":"time home","repetition":"30 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Side Plank Push Up","progression_model":"time home","repetition":"30 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Floor To Wall","progression_model":"time home","repetition":"30 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Wall Handstand Push Up","progression_model":"time home","repetition":"30 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Wall Handstand Renegade Row","progression_model":"time home","repetition":"30 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Mountain Climber On The Wall","progression_model":"time home","repetition":"30 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
           ]
         }
       ]
@@ -298,21 +298,21 @@
         {
           "name":"Glutes",
           "exercise":[
-            {"name":"Glute Bridge","progression_model":"rep home","repetition":"20"},
-            {"name":"Single Legged Glute Bridge","progression_model":"rep home","repetition":"10"},
-            {"name":"Frog Pump","progression_model":"rep home","repetition":"20"},
-            {"name":"Side Lying Abduction","progression_model":"rep home","repetition":"20"},
-            {"name":"Side Plank With Side Lying Abduction","progression_model":"rep home","repetition":"10"},
-            {"name":"Marching Glute Bridge","progression_model":"rep home","repetition":"20"}
+            {"name":"Glute Bridge","progression_model":"rep home","repetition":"20", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Single Legged Glute Bridge","progression_model":"rep home","repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Frog Pump","progression_model":"rep home","repetition":"20", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Side Lying Abduction","progression_model":"rep home","repetition":"20", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Side Plank With Side Lying Abduction","progression_model":"rep home","repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Marching Glute Bridge","progression_model":"rep home","repetition":"20", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
           ]
         },
         {
           "name":"Leg Failure Exercises",
           "exercise":[
-            {"name":"Glute Bridges","progression_model":"till failure","repetition":"till failure"},
-            {"name":"Squat Pulses","progression_model":"till failure","repetition":"till failure"},
-            {"name":"Lunge Pulses","progression_model":"till failure","repetition":"till failure"},
-            {"name":"Donkey Kicks","progression_model":"till failure","repetition":"till failure"}
+            {"name":"Glute Bridges","progression_model":"till failure","repetition":"till failure", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Squat Pulses","progression_model":"till failure","repetition":"till failure", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Lunge Pulses","progression_model":"till failure","repetition":"till failure", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Donkey Kicks","progression_model":"till failure","repetition":"till failure", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
           ]
         }
       ]
@@ -324,13 +324,13 @@
         {
           "name":"Flexibility Exercise  Upper Body",
           "exercise":[
-            {"name":"Doorway Chest Stretch","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Wall Shoulder Circumductions","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Face Down Chest Stretch (Scorpions)","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Bench Shoulder Flexion Stretch","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Neck Stretch","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Upper Mobility - Ir/Flex/Pro - Er/ Ext/ Ret","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Towel/ Stick Dislocations","progression_model":"no progression","repetition":"30-90 sec"}
+            {"name":"Doorway Chest Stretch","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Wall Shoulder Circumductions","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Face Down Chest Stretch (Scorpions)","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Bench Shoulder Flexion Stretch","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Neck Stretch","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Upper Mobility - Ir/Flex/Pro - Er/ Ext/ Ret","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Towel/ Stick Dislocations","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
           ]
         }
       ]
@@ -342,13 +342,13 @@
         {
           "name":"Flexibility Exercise Lower Body",
           "exercise":[
-            {"name":"Rear Foot Elevated Thigh Stretch","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Standing Hamstring Flossing","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Wall Assisted Side Splits","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"90:90 Hamstring Stretch","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Pigeon Stretch","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Kneeling Lateral Flexion Against Wall","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Kneeling Adductor Stretch","progression_model":"no progression","repetition":"30-90 sec"}
+            {"name":"Rear Foot Elevated Thigh Stretch","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Standing Hamstring Flossing","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Wall Assisted Side Splits","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"90:90 Hamstring Stretch","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Pigeon Stretch","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Kneeling Lateral Flexion Against Wall","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Kneeling Adductor Stretch","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
           ]
         }
       ]
@@ -360,9 +360,9 @@
         {
           "name":"Posterior Shoulder Failure Exercises",
           "exercise":[
-            {"name":"Stepping With Arm Swing - Gait Practice","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Single Leg Tipping Bird","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Standing Hip Internal Rotation","progression_model":"no progression","repetition":"30-90 sec"}
+            {"name":"Stepping With Arm Swing - Gait Practice","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Single Leg Tipping Bird","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Standing Hip Internal Rotation","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
           ]
         }
       ]
@@ -374,10 +374,10 @@
         {
           "name":"Relaxation",
           "exercise":[
-            {"name":"Diaphragmatic Breathing","progression_model":"no progression","repetition":"5-10 min"},
-            {"name":"Buteyko Breathing","progression_model":"no progression","repetition":"5-10 min"},
-            {"name":"Thoracic Opening With Nasal Breathing","progression_model":"no progression","repetition":"5-10 min"},
-            {"name":"Meditation","progression_model":"no progression","repetition":"5-10 min"}
+            {"name":"Diaphragmatic Breathing","progression_model":"no progression","repetition":"5-10 min", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Buteyko Breathing","progression_model":"no progression","repetition":"5-10 min", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Thoracic Opening With Nasal Breathing","progression_model":"no progression","repetition":"5-10 min", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Meditation","progression_model":"no progression","repetition":"5-10 min", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
           ]
         }
       ]
@@ -389,10 +389,10 @@
         {
           "name":"Leg Massage",
           "exercise":[
-            {"name":"Foam Roller Thigh","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Foam Roller Hamstrings","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Foam Roller Adductors","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Foam Roller Glutes","progression_model":"no progression","repetition":"30-90 sec"}
+            {"name":"Foam Roller Thigh","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Foam Roller Hamstrings","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Foam Roller Adductors","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Foam Roller Glutes","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
           ]
         }
       ]
@@ -404,9 +404,9 @@
         {
           "name":"Upper Massage",
           "exercise":[
-            {"name":"Foam Roller Lower Back","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Foam Roller Posterior Shoulder","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Foam Roller Chest","progression_model":"no progression","repetition":"30-90 sec"}
+            {"name":"Foam Roller Lower Back","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Foam Roller Posterior Shoulder","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Foam Roller Chest","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
           ]
         }
       ]
@@ -418,11 +418,11 @@
         {
           "name":"Stretching Spine",
           "exercise":[
-            {"name":"Mobility Bridge","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Spinal Rotations - Knees 90 Deg Lying On Side","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Foam Roller Thoracic Spine","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Cat Camel Stretch","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Windmill Stretch","progression_model":"no progression","repetition":"30-90 sec"}
+            {"name":"Mobility Bridge","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Spinal Rotations - Knees 90 Deg Lying On Side","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Foam Roller Thoracic Spine","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Cat Camel Stretch","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Windmill Stretch","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
           ]
         }
       ]
@@ -434,18 +434,18 @@
         {
           "name":"Leg Massage",
           "exercise":[
-            {"name":"Foam Roller Thigh","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Foam Roller Hamstrings","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Foam Roller Adductors","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Foam Roller Glutes","progression_model":"no progression","repetition":"30-90 sec"}
+            {"name":"Foam Roller Thigh","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Foam Roller Hamstrings","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Foam Roller Adductors","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Foam Roller Glutes","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
           ]
         },
         {
           "name":"Upper Massage",
           "exercise":[
-            {"name":"Foam Roller Lower Back","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Foam Roller Posterior Shoulder","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Foam Roller Chest","progression_model":"no progression","repetition":"30-90 sec"}
+            {"name":"Foam Roller Lower Back","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Foam Roller Posterior Shoulder","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Foam Roller Chest","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
           ]
         }
       ]
@@ -457,21 +457,21 @@
         {
           "name":"Flexibility Exercise Lower Body",
           "exercise":[
-            {"name":"Rear Foot Elevated Thigh Stretch","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Standing Hamstring Flossing","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Wall Assisted Side Splits","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"90:90 Hamstring Stretch","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Pigeon Stretch","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Kneeling Lateral Flexion Against Wall","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Kneeling Adductor Stretch","progression_model":"no progression","repetition":"30-90 sec"}
+            {"name":"Rear Foot Elevated Thigh Stretch","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Standing Hamstring Flossing","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Wall Assisted Side Splits","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"90:90 Hamstring Stretch","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Pigeon Stretch","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Kneeling Lateral Flexion Against Wall","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Kneeling Adductor Stretch","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
           ]
         },
         {
           "name":"Mobility Exercise Lower Body",
           "exercise":[
-            {"name":"Stepping With Arm Swing - Gait Practice","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Single Leg Tipping Bird","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Standing Hip Internal Rotation","progression_model":"no progression","repetition":"30-90 sec"}
+            {"name":"Stepping With Arm Swing - Gait Practice","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Single Leg Tipping Bird","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Standing Hip Internal Rotation","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
           ]
         }
       ]
@@ -483,19 +483,19 @@
         {
           "name":"Flexibility Exercise  Upper Body",
           "exercise":[
-            {"name":"Weighted Chest Stretch On Bench","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Wall Shoulder Circumductions","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Face Down Chest Stretch (Scorpions)","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"Bench Shoulder Flexion Stretch","progression_model":"no progression","repetition":"30-90 sec"}
+            {"name":"Weighted Chest Stretch On Bench","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Wall Shoulder Circumductions","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Face Down Chest Stretch (Scorpions)","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Bench Shoulder Flexion Stretch","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
           ]
         },
         {
           "name":"Mobility Exercise  Upper Body",
           "exercise":[
-            {"name":"Upper Mobility - Ir/Flex/Pro - Er/ Ext/ Ret","progression_model":"No progression - reps or time remian the same each week","repetition":"30-90 sec"},
-            {"name":"Band Or Stick Dislocations","progression_model":"No progression - reps or time remian the same each week","repetition":"30-90 sec"},
-            {"name":"Band Pull Aparts","progression_model":"no progression","repetition":"30-90 sec"},
-            {"name":"T Lift Rotations","progression_model":"no progression","repetition":"30-90 sec"}
+            {"name":"Upper Mobility - Ir/Flex/Pro - Er/ Ext/ Ret","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Band Or Stick Dislocations","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Band Pull Aparts","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"T Lift Rotations","progression_model":"no progression","repetition":"30-90 sec", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
           ]
         }
       ]
@@ -507,23 +507,23 @@
         {
           "name":"Lunge Exercises",
           "exercise":[
-            {"name":"Walking Lunges","progression_model":"rep home","repetition":"20"},
-            {"name":"Rear Foot Elevated Lunges","progression_model":"rep home","repetition":"10"},
-            {"name":"Front Foot Elevated Lunges","progression_model":"rep home","repetition":"10"},
-            {"name":"Alternate Lunge Jumps","progression_model":"rep home","repetition":"10"},
-            {"name":"Static Lunge","progression_model":"rep home","repetition":"10"},
-            {"name":"Step Ups","progression_model":"rep home","repetition":"15"}
+            {"name":"Walking Lunges","progression_model":"rep home","repetition":"20", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Rear Foot Elevated Lunges","progression_model":"rep home","repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Front Foot Elevated Lunges","progression_model":"rep home","repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Alternate Lunge Jumps","progression_model":"rep home","repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Static Lunge","progression_model":"rep home","repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Step Ups","progression_model":"rep home","repetition":"15", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
           ]
         },
         {
           "name":"Squat Exercises",
           "exercise":[
-            {"name":"Squats Close Stance","progression_model":"rep home","repetition":"15"},
-            {"name":"Squats Normal Stance","progression_model":"rep home","repetition":"15"},
-            {"name":"Sumo Squats","progression_model":"rep home","repetition":"15"},
-            {"name":"Squat Jumps","progression_model":"rep home","repetition":"10"},
-            {"name":"Pistol Squat","progression_model":"rep home","repetition":"5"},
-            {"name":"Pistol Squat To Bench","progression_model":"rep home","repetition":"5"}
+            {"name":"Squats Close Stance","progression_model":"rep home","repetition":"15", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Squats Normal Stance","progression_model":"rep home","repetition":"15", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Sumo Squats","progression_model":"rep home","repetition":"15", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Squat Jumps","progression_model":"rep home","repetition":"10", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Pistol Squat","progression_model":"rep home","repetition":"5", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" },
+            {"name":"Pistol Squat To Bench","progression_model":"rep home","repetition":"5", "video_link": "dy2UQofvwH8", "icon_link": "2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg" }
           ]
         }
       ]

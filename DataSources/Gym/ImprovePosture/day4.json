@@ -3,46 +3,46 @@
       {
         "day": "1",
         "exercise_list":[
-              {"name":"Flexibility Exercise upper body","code":"47","sets":"3","reps":"60-90sec","feedback":"0", "workout":"Weighted Chest Stretch On Bench", "progression_model":"no model", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
-              {"name":"Mobility Exercise upper body","code":"48","sets":"3","reps":"20-25","feedback":"0", "workout":"Band Dislocations", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
-              {"name":"Back light","code":"12","sets":"3","reps":"10-12","feedback":"2", "workout":"Single Arm Row (Dumbbell)", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
-              {"name":"Back light","code":"12","sets":"3","reps":"10-12","feedback":"3", "workout":"Chest Supported Row (Dumbbell)", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
-              {"name":"Shoulder Rear Delt Isolation Exercises","code":"9","sets":"3","reps":"12-15","feedback":"2", "workout":"(30 Deg) Bench Supported Reverse Fly (Dumbbell)", "progression_model":"double progression", "video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
-              {"name":"Posterior Shoulder failure exercises","code":"51","sets":"3","reps":"Until failure","feedback":"3", "workout":"Farmers Carry", "progression_model":"till failure","video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
-              {"name":"Abdominal Failure Exercises","code":"24","sets":"3","reps":"Until failure","feedback":"4", "workout":"Side Plank", "progression_model":"till failure","video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"}
+              {"name":"Flexibility Exercise upper body","code":"47","sets":"3","reps":"60-90 sec","feedback":"0", "workout":"Weighted Chest Stretch On Bench", "progression_model":"no model", "video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
+              {"name":"Mobility Exercise upper body","code":"48","sets":"3","reps":"20-25","feedback":"0", "workout":"Band Dislocations", "progression_model":"double progression", "video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
+              {"name":"Back light","code":"12","sets":"3","reps":"10-12","feedback":"2", "workout":"Single Arm Row (Dumbbell)", "progression_model":"double progression", "video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
+              {"name":"Back light","code":"12","sets":"3","reps":"10-12","feedback":"3", "workout":"Chest Supported Row (Dumbbell)", "progression_model":"double progression", "video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
+              {"name":"Shoulder Rear Delt Isolation Exercises","code":"9","sets":"3","reps":"12-15","feedback":"2", "workout":"(30 Deg) Bench Supported Reverse Fly (Dumbbell)", "progression_model":"double progression", "video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
+              {"name":"Posterior Shoulder failure exercises","code":"51","sets":"3","reps":"Until failure","feedback":"3", "workout":"Farmers Carry", "progression_model":"till failure","video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
+              {"name":"Abdominal Failure Exercises","code":"24","sets":"3","reps":"Until failure","feedback":"4", "workout":"Side Plank", "progression_model":"till failure","video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"}
           ]
       }, {
         "day": "2",
         "exercise_list":[
-            {"name":"Flexibility Exercise lower body","code":"49","sets":"3","reps":"60-90sec","feedback":"0","workout":"Rear Foot Elevated Thigh Stretch","progression_model":"no model","video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
-            {"name":"Mobility Exercise lower body","code":"50","sets":"3","reps":"20-25","feedback":"0","workout":"Single Leg Glute Bridges","progression_model":"double progression","video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
-            {"name":"Back light","code":"12","sets":"3","reps":"8-10","feedback":"4","workout":"Single Arm Row (Dumbbell)","progression_model":"double progression","video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
-            {"name":"Quadricep Uni-lateral Exercises","code":"16","sets":"3","reps":"10-12","feedback":"2","workout":"Leg Extensions (Single Leg)","progression_model":"double progression","video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
-            {"name":"Hamstring Light Exercises","code":"18","sets":"3","reps":"10-12","feedback":"3","workout":"Hamstring Curl","progression_model":"double progression","video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
-            {"name":"Glutes Accessory Exercises","code":"20","sets":"3","reps":"20-25","feedback":"2","workout":"Glute Bridge (Single Leg)","progression_model":"double progression","video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
-            {"name":"Abdominal Exercises","code":"23","sets":"3","reps":"15-20","feedback":"3","workout":"Crunch With Arms Extended","progression_model":"double progression","video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"}
+            {"name":"Flexibility Exercise lower body","code":"49","sets":"3","reps":"60-90 sec","feedback":"0","workout":"Rear Foot Elevated Thigh Stretch","progression_model":"no model","video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
+            {"name":"Mobility Exercise lower body","code":"50","sets":"3","reps":"20-25","feedback":"0","workout":"Single Leg Glute Bridges","progression_model":"double progression","video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
+            {"name":"Back light","code":"12","sets":"3","reps":"8-10","feedback":"4","workout":"Single Arm Row (Dumbbell)","progression_model":"double progression","video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
+            {"name":"Quadricep Uni-lateral Exercises","code":"16","sets":"3","reps":"10-12","feedback":"2","workout":"Leg Extensions (Single Leg)","progression_model":"double progression","video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
+            {"name":"Hamstring Light Exercises","code":"18","sets":"3","reps":"10-12","feedback":"3","workout":"Hamstring Curl","progression_model":"double progression","video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
+            {"name":"Glutes Accessory Exercises","code":"20","sets":"3","reps":"20-25","feedback":"2","workout":"Glute Bridge (Single Leg)","progression_model":"double progression","video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
+            {"name":"Abdominal Exercises","code":"23","sets":"3","reps":"15-20","feedback":"3","workout":"Crunch With Arms Extended","progression_model":"double progression","video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"}
           ]
       }, {
         "day": "3",
         "exercise_list":[
-            {"name":"Flexibility Exercise upper body","code":"47","sets":"3","reps":"60-90sec","feedback":"0","workout":"Weighted Chest Stretch On Bench","progression_model":"no model","video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
-            {"name":"Mobility Exercise upper body","code":"48","sets":"3","reps":"20-25","feedback":"0","workout":"Band Dislocations","progression_model":"double progression","video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
-            {"name":"Back light","code":"12","sets":"3","reps":"12-15","feedback":"3","workout":"Single Arm Row (Dumbbell)","progression_model":"double progression","video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
-            {"name":"Back light","code":"12","sets":"3","reps":"12-15","feedback":"2","workout":"Chest Supported Row (Dumbbell)","progression_model":"double progression","video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
-            {"name":"Posterior Shoulder failure exercises","code":"51","sets":"3","workout":"Farmers Carry","progression_model":"till failure","video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
-            {"name":"Abdominal Exercises","code":"23","sets":"3","reps":"15-20","feedback":"2","workout":"Crunch With Arms Extended","progression_model":"double progression","video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
-            {"name":"Abdominal Failure Exercises","code":"24","sets":"3","reps":"Until failure","feedback":"4","workout":"side Plank","progression_model":"till failure","video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"}
+            {"name":"Flexibility Exercise upper body","code":"47","sets":"3","reps":"60-90 sec","feedback":"0","workout":"Weighted Chest Stretch On Bench","progression_model":"no model","video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
+            {"name":"Mobility Exercise upper body","code":"48","sets":"3","reps":"20-25","feedback":"0","workout":"Band Dislocations","progression_model":"double progression","video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
+            {"name":"Back light","code":"12","sets":"3","reps":"12-15","feedback":"3","workout":"Single Arm Row (Dumbbell)","progression_model":"double progression","video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
+            {"name":"Back light","code":"12","sets":"3","reps":"12-15","feedback":"2","workout":"Chest Supported Row (Dumbbell)","progression_model":"double progression","video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
+            {"name":"Posterior Shoulder failure exercises","code":"51","sets":"3","workout":"Farmers Carry","progression_model":"till failure","video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
+            {"name":"Abdominal Exercises","code":"23","sets":"3","reps":"15-20","feedback":"2","workout":"Crunch With Arms Extended","progression_model":"double progression","video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
+            {"name":"Abdominal Failure Exercises","code":"24","sets":"3","reps":"Until failure","feedback":"4","workout":"side Plank","progression_model":"till failure","video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"}
           ]
       },  {
         "day": "4",
         "exercise_list":[
-            {"name":"Flexibility Exercise lower body","code":"49","sets":"3","reps":"60-90sec","feedback":"0","workout":"Rear Foot Elevated Thigh Stretch","progression_model":"no model","video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
-            {"name":"Mobility Exercise lower body","code":"50","sets":"3","reps":"20-25","feedback":"0","workout":"Single Leg Glute Bridges","progression_model":"double progression","video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
-            {"name":"Posterior Shoulder failure exercises","code":"51","sets":"3","reps":"8-10","feedback":"3","workout":"Farmers Carry","progression_model":"till failure","video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
-            {"name":"Quadricep Heavy Exercises","code":"13","sets":"3","reps":"8-10","feedback":"3","workout":"Front Squat (Barbell)","progression_model":"linear","video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
-            {"name":"Quadricep Uni-lateral Exercises","code":"16","sets":"3","reps":"12-15","feedback":"4","workout":"Leg Extensions (Single Leg)","progression_model":"double progression","video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
-            {"name":"Glutes Accessory Exercises","code":"20","sets":"3","reps":"20-25","feedback":"2","workout":"Glute Bridge (Single Leg)","progression_model":"double  progression","video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"},
-            {"name":"Abdominal failure Exercises","code":"24","sets":"3","reps":"Until failure","feedback":"2","workout":"Side Plank","progression_model":"till failure","video_link":"https://www.youtube.com/watch?v=IODxDxX7oi4"}
+            {"name":"Flexibility Exercise lower body","code":"49","sets":"3","reps":"60-90 sec","feedback":"0","workout":"Rear Foot Elevated Thigh Stretch","progression_model":"no model","video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
+            {"name":"Mobility Exercise lower body","code":"50","sets":"3","reps":"20-25","feedback":"0","workout":"Single Leg Glute Bridges","progression_model":"double progression","video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
+            {"name":"Posterior Shoulder failure exercises","code":"51","sets":"3","reps":"8-10","feedback":"3","workout":"Farmers Carry","progression_model":"till failure","video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
+            {"name":"Quadricep Heavy Exercises","code":"13","sets":"3","reps":"8-10","feedback":"3","workout":"Front Squat (Barbell)","progression_model":"linear","video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
+            {"name":"Quadricep Uni-lateral Exercises","code":"16","sets":"3","reps":"12-15","feedback":"4","workout":"Leg Extensions (Single Leg)","progression_model":"double progression","video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
+            {"name":"Glutes Accessory Exercises","code":"20","sets":"3","reps":"20-25","feedback":"2","workout":"Glute Bridge (Single Leg)","progression_model":"double  progression","video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
+            {"name":"Abdominal failure Exercises","code":"24","sets":"3","reps":"Until failure","feedback":"2","workout":"Side Plank","progression_model":"till failure","video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"}
           ]
       }
   ]
