@@ -13,7 +13,9 @@ class MainMenuContainer extends Component{
     super(props);
     this.state = {
       workout:false,
+      rehab: false,
       profile:false,
+
     }
   }
   componentWillMount(){
@@ -25,6 +27,9 @@ class MainMenuContainer extends Component{
   workoutHandler = (e) => {
     //e.preventDefault();
     this.setState({workout: true})
+  }
+  rehabHandler = (e) => {
+    this.setState({rehab: true})
   }
 
   profileHandler = (e) => {
@@ -41,12 +46,16 @@ class MainMenuContainer extends Component{
       <HOC>
         <MainMenu
           workout={this.workoutHandler}
+          rehab={this.rehabHandler}
           profile={this.profileHandler}
           logout={this.logoutHandler}
         />
 
         { this.state.workout &&
           <Redirect to="/plan" />
+        }
+        { this.state.rehab &&
+          <Redirect to="/rehab" />
         }
         { this.state.profile &&
           <Redirect to="/profile" />

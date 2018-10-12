@@ -54,6 +54,7 @@ export function getProgram(){
           dispatch(setProgram(response.data[0].acf));
           dispatch(setProgramID(response.data[0].id));
           dispatch(setCurrentDay(progress));
+          dispatch(getExerciseRecord(response.data[0].id));
         }
       }
     }).catch((error)=> {
@@ -108,6 +109,7 @@ export function implementDeloadAlgorithm(programID, program, progress, ask_feedb
       dispatch(setProgram(response.data.acf));
       dispatch(setProgramID(response.data.id));
       dispatch(setCurrentDay(currentDay));
+      dispatch(getExerciseRecord(response.data.id));
     }).catch((error) => {
       console.log(error.response)
       if(error.response){
@@ -135,6 +137,7 @@ export function updateProgress(programID, progress, ask_feedback){
       dispatch(setProgram(response.data.acf));
       dispatch(setProgramID(response.data.id));
       dispatch(setCurrentDay(currentDay));
+      dispatch(getExerciseRecord(response.data.id));
     }).catch((error) => {
       console.log(error.response)
       if(error.response){
@@ -207,7 +210,6 @@ export function updateDailyFeedBack(programID, program, value) {
 
 //This function use to fetch the exercise record for the current program.
 export function getExerciseRecord(programID){
-  console.log("get Exercise Record");
   return(dispatch: Function) => {
     return axios.get(`https://nepal.sk8tech.io/wp-json/wp/v2/record?filter[meta_key]=program_id&filter[meta_value]=${programID}`)
     .then((response) => {
@@ -280,18 +282,23 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
   //This function update the server when user select keep button in workout
   export function keepWorkout(listIndex, workoutReducers){
     return(dispatch: Function) => {
+      dispatch(isClickedKeep(true));
       let id = workoutReducers.programID;
-      let {program, dayIndex} = workoutReducers;
+      let {dayIndex} = workoutReducers;
+      let program = JSON.parse(JSON.stringify(workoutReducers.program));
       program.exercises[dayIndex].exercise_list[listIndex].is_saved = true;
-      dispatch(setProgram(program));
       return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${id}`,
         {
           status: "publish",
           fields: program
         }).then((response)=> {
+          console.log("Respone",response);
           dispatch(setProgram(response.data.acf));
+          dispatch(isClickedKeep(false));
         }).catch((error)=> {
-          console.log(error.response);
+          console.log(error);
+          dispatch(isClickedKeep(false));
+          dispatch(setProgram(workoutReducers.program));
           if(error.response){
             dispatch(catchError(error.response.data.message));
           }else{
@@ -453,7 +460,7 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
             payload: isDiffFinished
           }
         }
-        
+
 
         export function setCurrentWeek ( currentWeek: Number) {
           return {
@@ -533,6 +540,21 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
             payload: value
           }
         }
+
+        export function isClickedKeep(value: Boolean) {
+          return {
+            type: "IS_CLICKED_KEEP",
+            payload: value
+          }
+        }
+
+        export function settingCurrentDay(value: Boolean) {
+            return {
+              type: "IS_SETTING_CURRENT_DAY",
+              payload: value
+            }
+        }
+
         export function catchError(error: string){
           console.log(error);
           return{

@@ -8,7 +8,7 @@ const Info = (props) => {
   return (
     <div>
     <YouTube
-      videoId="miomuSGoPzI"
+      videoId={props.exerciseData.video_link}
       opts={{
        width: '100%',
        }}

@@ -3,6 +3,8 @@ let DefaultState = {
   redirectToQuestionnaire: false,
   isSavingExercise: false,
   isDiffFinished: false,
+  isClickedKeep: false,
+  isSettingCurrentDay: false,
   error:{
     hasError:false,
     message:''
@@ -55,6 +57,16 @@ const WorkoutReducers =(state: Object= DefaultState, action: Function) => {
     return {
       ...state, redirectToQuestionnaire: action.payload
     }
+
+    case "IS_CLICKED_KEEP" :
+    return {
+      ...state, isClickedKeep: action.payload
+    }
+    case "IS_SETTING_CURRENT_DAY" :
+    return {
+      ...state, isSettingCurrentDay: action.payload,
+    }
+
     case "SAVING_EXERCISE" :
     return {
       ...state, isSavingExercise: action.payload
@@ -67,12 +79,12 @@ const WorkoutReducers =(state: Object= DefaultState, action: Function) => {
     return {
       ...state, error
     }
-    
+
     case "AVA_ACT_DIFF" :
     return {
       ...state, isDiffFinished: action.payload
     }
-    
+
     case "REMOVE_ERROR":
     error = {...state.error};
     error['hasError']= false;

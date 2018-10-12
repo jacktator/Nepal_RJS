@@ -61,7 +61,8 @@ import Loading from '../../Loading';
               <div className="excercise-header" style={{margin:"10px 0px 10px",backgroundColor:'white',color:'black', textAlign: "center"}}>{data.name}</div>
               <img
                 key = { data.value }
-                src={require(`../../../Assets/Workout/Images/${key}.jpeg`)}
+                src={`https://nepal.sk8tech.io/wp-content/uploads/${data.image_link}`}
+
                 alt={data.description}
                 onLoad={() => {
                   // fire window resize event to change height

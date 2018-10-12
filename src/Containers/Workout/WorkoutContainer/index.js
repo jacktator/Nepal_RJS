@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { ActivityIndicator } from 'antd-mobile';
 import {selectFooter} from '../FooterContainer/actions';
-import {keepWorkout, fetchWorkoutList, selectWorkout, setDayIndex, getExerciseRecord, setCurrentDay,removeError} from '../actions';
+import {keepWorkout, fetchWorkoutList, selectWorkout,
+        setDayIndex, getExerciseRecord, setCurrentDay, removeError, settingCurrentDay
+        } from '../actions';
 import Workout from '../../../Components/Workout/Workout';
 import SelectExercise from '../../../Components/Workout/SelectExercise';
 import Modal from '../../../Components/UI/Modal';
@@ -19,7 +21,6 @@ class WorkoutContainer extends Component{
     super(props);
     this.state = {
       isReady: false,
-      animating: true,
       showKeepOrChange: false,
       isChangeWorkout: false,
       backToPlan: false,
@@ -33,28 +34,20 @@ class WorkoutContainer extends Component{
       this.props.selectFooter('workoutTab');
     }
     if(this.props.WorkoutReducers.program){
+      this.props.settingCurrentDay(true);
       const {days, progress} = this.props.WorkoutReducers.program;
       const currentWeek = Math.ceil(parseInt(this.props.match.params.day,10) / days);
       const currentDay = parseInt(this.props.match.params.day,10) - ((currentWeek -1 ) * days)
       const dayIndex = this.props.WorkoutReducers.program.exercises.findIndex(i => { return i.day === currentDay.toString() })
       this.props.setDayIndex(dayIndex);
       this.props.setCurrentDay(parseInt(this.props.match.params.day, 10));
-      this.props.getExerciseRecord(this.props.WorkoutReducers.programID);
       if(progress === this.props.match.params.day && parseInt(progress,10) <= parseInt(days,10) ){
           this.setState({showKeepOrChange: true})
       }
       this.setState({isReady: true})
-    }
-  }
-  componentDidMount(){
-  }
-  componentWillReceiveProps(nextProps){
-    if(nextProps.WorkoutReducers.record ){
-      if(nextProps.WorkoutReducers.records !== ""){
-        if(this.state.animating){
-            this.setState({ animating: false})
-        }
-      }
+      setTimeout(() => {
+        this.props.settingCurrentDay(false);
+      }, 1500);
     }
   }
   //invokes when user click keep button
@@ -93,6 +86,8 @@ class WorkoutContainer extends Component{
 
         if(dayIndex != null){
           const programExerciseList = this.props.WorkoutReducers.program.exercises[dayIndex].exercise_list;
+          console.log("Workout Reducer",this.props.WorkoutReducers);
+          console.log("Program Workout List",programExerciseList);
           const programName = this.props.WorkoutReducers.program.program_name
           return (
             <Hoc>
@@ -108,7 +103,14 @@ class WorkoutContainer extends Component{
                 <ActivityIndicator
                   toast
                   text="Please Wait..."
-                  animating={this.state.animating}
+                  animating={this.props.WorkoutReducers.isSettingCurrentDay}
+                />
+            </div>
+            <div>
+                <ActivityIndicator
+                  toast
+                  text="Saving..."
+                  animating={this.props.WorkoutReducers.isClickedKeep}
                 />
             </div>
             {(this.state.isChangeWorkout) && (
@@ -172,7 +174,7 @@ function matchDispatchToProps(dispatch){
   return bindActionCreators({
     selectFooter, keepWorkout, fetchWorkoutList,
     selectWorkout, setDayIndex, getExerciseRecord, setCurrentDay,
-    removeError
+    removeError, settingCurrentDay
   }, dispatch
 );
 }

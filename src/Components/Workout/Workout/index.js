@@ -4,6 +4,7 @@ import './Workout.css';
 import { Link } from 'react-router-dom';
 
 const Workout = (props) => {
+  console.log("props", props);
       return(
         <div className="container">
         <div className="workout-info">{props.programName} Workout</div>
@@ -25,7 +26,7 @@ const Workout = (props) => {
                         />
                       </Link>
                         <Card.Body style={{textAlign:"center"}}>
-                          <img style={{borderStyle:"solid", borderColor:"#f5f5f9",borderWidth:"1px",borderRadius:"5px"}}src={require(`../../../Assets/Workout/Icons/${key}.jpg`)} height="120px" width="200px" alt="work" />
+                          <img style={{borderStyle:"solid", borderColor:"#f5f5f9",borderWidth:"1px",borderRadius:"5px"}}src={`https://nepal.sk8tech.io/wp-content/uploads/${data.icon_link}`} height="120px" width="200px" alt="work" />
                         </Card.Body>
 
                         {props.showKeepOrChange &&

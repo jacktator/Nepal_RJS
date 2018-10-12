@@ -432,9 +432,9 @@ class ExerciseContainer extends Component{
         {this.state.showInfo && (
           <Modal modalFor = "modal-for-info">
           <Info
-          onBackButtonClicked = {this.infoHandler}
-          video = {video}
-          videoDescription = {videoDescription}
+            onBackButtonClicked = {this.infoHandler}
+            exerciseData = {this.state.exerciseData}
+            videoDescription = {videoDescription}
           />
           </Modal>
         )}

@@ -18,7 +18,7 @@ const MainMenu = (props) => {
               <div><img src={require("../../Assets/MainMenuIcons/workout.svg")} className="square-button-icon" alt="icon"/></div>
               <div>Workout</div>
               </button>
-              <button onClick={()=> alert("not available yet")}className="square-button">
+              <button onClick={(v)=> props.rehab(v)} className="square-button">
               <div><img src={require("../../Assets/MainMenuIcons/rehab.svg")} className="square-button-icon" alt="icon"/></div>
               <div>Rehab and Posture</div>
               </button>

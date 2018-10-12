@@ -115,7 +115,7 @@ class PlanContainer extends Component{
         {(this.props.isInvalidToken) && (
           <Redirect to='/login/LoginDetails' />
           )}
-          
+
         <ActivityIndicator
           toast
           text="Loading..."
