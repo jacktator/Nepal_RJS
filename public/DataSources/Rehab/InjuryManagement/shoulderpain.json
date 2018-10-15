@@ -1,28 +1,30 @@
 {
-  "injuryPrevention" : [
+  "rehab_name": "Injury Management",
+  "rehab_category" : "Shoulder Pain",
+  "data" : [
     {
       "type" : "Mobility",
-      "name" : "Psoas and hamstring mobility",
+      "name" : "Arms straight shoulder rolls",
       "sets" : "3",
-      "reps" : "",
-      "time" : "30-60"
+      "reps" : "10-20",
+      "time" : ""
     },{
       "type" : "Mobility",
-      "name" : "Seated piriformis stretch",
+      "name" : "Wall chest stretch",
       "sets" : "3",
       "reps" : "",
       "time" : "30-60"
     },{
       "type" : "Release work",
-      "name" : "Foam roller glute release",
+      "name" : "Foam roller thoracic mobilisation",
       "sets" : "3",
       "reps" : "",
       "time" : "30-60"
     },{
       "type" : "Strength endurance",
-      "name" : "Wall squats",
+      "name" : "Hands and knees scapula hugs",
       "sets" : "3",
-      "reps" : "10-15",
+      "reps" : "10-20",
       "time" : ""
     }
   ]

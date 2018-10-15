@@ -7,7 +7,7 @@ import ForgetPasswordReducers from '../Containers/ForgetPasswordContainer/reduce
 import RootReducers from '../Containers/RootContainer/reducer';
 import FooterReducers from '../Containers/Workout/FooterContainer/reducer';
 import ProfileReducers from '../Containers/ProfileContainer/reducer';
-
+import RehabReducers from '../Containers/Rehab/reducer';
 import WorkoutReducers from '../Containers/Workout/reducer';
 
 import HistoryReducers from '../Containers/Workout/HistoryContainer/reducer';
@@ -17,6 +17,7 @@ import HistoryReducers from '../Containers/Workout/HistoryContainer/reducer';
 
 const Reducer = combineReducers({
   WorkoutReducers,
+  RehabReducers,
   QuestionnaireReducers,
   FooterReducers,
   ProfileReducers,

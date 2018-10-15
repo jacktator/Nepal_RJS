@@ -556,7 +556,6 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
         }
 
         export function catchError(error: string){
-          console.log(error);
           return{
             type: "CATCH_ERROR",
             payload: error

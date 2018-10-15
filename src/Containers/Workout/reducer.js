@@ -71,6 +71,10 @@ const WorkoutReducers =(state: Object= DefaultState, action: Function) => {
     return {
       ...state, isSavingExercise: action.payload
     }
+    case "AVA_ACT_DIFF" :
+    return {
+      ...state, isDiffFinished: action.payload
+    }
 
     case "CATCH_ERROR":
     error = {...state.error};
@@ -78,11 +82,6 @@ const WorkoutReducers =(state: Object= DefaultState, action: Function) => {
     error['message'] = action.payload;
     return {
       ...state, error
-    }
-
-    case "AVA_ACT_DIFF" :
-    return {
-      ...state, isDiffFinished: action.payload
     }
 
     case "REMOVE_ERROR":

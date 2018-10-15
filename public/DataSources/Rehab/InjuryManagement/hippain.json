@@ -1,28 +1,30 @@
 {
-  "injuryPrevention" : [
+  "rehab_name": "Injury Management",
+  "rehab_category" : "Hip Pain",
+  "data" : [
     {
       "type" : "Mobility",
-      "name" : "Arms straight shoulder rolls",
+      "name" : "Psoas and hamstring mobility",
       "sets" : "3",
-      "reps" : "10-20",
-      "time" : ""
+      "reps" : "",
+      "time" : "30-60"
     },{
       "type" : "Mobility",
-      "name" : "Wall chest stretch",
+      "name" : "Seated piriformis stretch",
       "sets" : "3",
       "reps" : "",
       "time" : "30-60"
     },{
       "type" : "Release work",
-      "name" : "Foam roller thoracic mobilisation",
+      "name" : "Foam roller glute release",
       "sets" : "3",
       "reps" : "",
       "time" : "30-60"
     },{
       "type" : "Strength endurance",
-      "name" : "Hands and knees scapula hugs",
+      "name" : "Wall squats",
       "sets" : "3",
-      "reps" : "10-20",
+      "reps" : "10-15",
       "time" : ""
     }
   ]

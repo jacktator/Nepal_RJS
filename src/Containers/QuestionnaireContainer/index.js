@@ -168,17 +168,17 @@ class Questionnaire extends Component {
       { value: '5', used_for:'home', label: 'Increase fitness', description:"High intensity exercise to develop and increase your overall fitness."},
     ];
     const postureCorrectionArray= [
-      { value: '1a', description: 'Rounded shoulder and forward head', imgurl: 'https://muscularstrength.com/uploads/froala/18fc5d8c9a007cb8238d910aa106b91ad7e0066f.png'},
-      { value: '1b', description: 'Anterior pelvic tilt', imgurl: 'http://fitness4backpain.com/wp-content/uploads/Kyphosis-Normal-vs-Hyper.jpg'},
-      { value: '1c', description: 'Sway posture', imgurl: 'https://www.hunterphysio.com.au/wp-content/uploads/2017/05/lower-back-02.jpg'},
-      { value: '0', description: 'None' },
+      { value: 1, description: 'Rounded shoulder and forward head', imgurl: 'https://muscularstrength.com/uploads/froala/18fc5d8c9a007cb8238d910aa106b91ad7e0066f.png'},
+      { value: 2, description: 'Anterior pelvic tilt', imgurl: 'http://fitness4backpain.com/wp-content/uploads/Kyphosis-Normal-vs-Hyper.jpg'},
+      { value: 3, description: 'Sway posture', imgurl: 'https://www.hunterphysio.com.au/wp-content/uploads/2017/05/lower-back-02.jpg'},
+      { value: 0, description: 'None' },
     ];
     const injuryManagementArray= [
-      { value: '2', description: 'Lower Back Pain', imgurl: 'http://totalphysiocare.com.au/wp-content/uploads/2017/05/lower-back-pain-relief.png'},
-      { value: '3', description: 'Neck Pain', imgurl: 'https://static.wixstatic.com/media/b1546b_f6a11249f1a346e08fc817d7cece04c3~mv2.jpg/v1/fill/w_630,h_382,al_c,lg_1,q_80/b1546b_f6a11249f1a346e08fc817d7cece04c3~mv2.webp'},
-      { value: '4', description: 'Shoulder Pain', imgurl: 'https://feelpainrelief.com/wp-content/uploads/2015/09/shoulder-pain-300x200.jpg'},
-      { value: '5', description: 'Hip Pain', imgurl: 'https://qph.fs.quoracdn.net/main-qimg-4d054f876feaa4b3d4944914a6f7cb66-c'},
-      { value: '0', description: 'None' },
+      { value: 1, description: 'Lower Back Pain', imgurl: 'http://totalphysiocare.com.au/wp-content/uploads/2017/05/lower-back-pain-relief.png'},
+      { value: 2, description: 'Neck Pain', imgurl: 'https://static.wixstatic.com/media/b1546b_f6a11249f1a346e08fc817d7cece04c3~mv2.jpg/v1/fill/w_630,h_382,al_c,lg_1,q_80/b1546b_f6a11249f1a346e08fc817d7cece04c3~mv2.webp'},
+      { value: 3, description: 'Shoulder Pain', imgurl: 'https://feelpainrelief.com/wp-content/uploads/2015/09/shoulder-pain-300x200.jpg'},
+      { value: 4, description: 'Hip Pain', imgurl: 'https://qph.fs.quoracdn.net/main-qimg-4d054f876feaa4b3d4944914a6f7cb66-c'},
+      { value: 0, description: 'None' },
     ];
 
     const stressArray= [
@@ -343,7 +343,7 @@ class Questionnaire extends Component {
           </Modal>
       )}
       {(this.props.QuestionnaireReducers.success) && (
-        <Redirect to='/mainmenu/' />
+        <Redirect to='/mainmenu/'/>
       )}
       {(this.props.QuestionnaireReducers.error.hasError === true) && (
         <Modal modalFor = "modal">

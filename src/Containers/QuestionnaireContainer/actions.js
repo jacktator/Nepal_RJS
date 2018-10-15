@@ -15,8 +15,11 @@ export function addQuestionnaire(state) {
     }
   ).then((response) => {
     dispatch(addProgram(response.data.acf.days_per_week, response.data.acf.goals, response.data.acf.exercise_place));
+    dispatch(prepareRehabData(response.data.acf.injury_management, response.data.acf.posture_correction));
+
     //dispatch(questionnaire(state));
   }).catch((error) => {
+    console.log(error);
     if(error.response){
       dispatch(addError(error.response.data.message));
     }else{
@@ -27,49 +30,38 @@ export function addQuestionnaire(state) {
 }
 }
 
+
 //Function to initialize the program after completion of the questionnaire
 export function addProgram (days, goals, exercise_place) {
   return(dispatch: Function) => {
     let user_id = sessionStorage.getItem('user_id');
-    let goal;
+    let goalName;
     switch (goals) {
-      case "1":
-        goal = "Muscle Gain";
-        break;
-      case "2":
-        goal = "Fat Loss";
-        break;
-      case "3":
-        goal = "Decrease Stress";
-        break;
-      case "4":
-        goal = "Improve Posture";
-        break;
-      case "5":
-        goal = "Increase Fitness";
-        break;
-      default:
-        goal = "Please select the goal"
+      case "1": goalName = "Muscle Gain"; break;
+      case "2": goalName = "Fat Loss"; break;
+      case "3": goalName = "Decrease Stress"; break;
+      case "4": goalName = "Improve Posture"; break;
+      case "5": goalName = "Increase Fitness"; break;
+      default: goalName = "Please select the goal"
     }
     let jsonurl;
     if(exercise_place === "gym"){
-        jsonurl = `./DataSources/Workout/Gym/${goal.replace(' ', '')}/day${days}.json`;
+        jsonurl = `./DataSources/Workout/Gym/${goalName.replace(' ', '')}/day${days}.json`;
     }else if(exercise_place === "home"){
-        jsonurl = `./DataSources/Workout/Home/${goal.replace(' ', '')}/day${days}.json`;
+        jsonurl = `./DataSources/Workout/Home/${goalName.replace(' ', '')}/day${days}.json`;
     }else{
       console.log("nothing found");
     }
-
       //fetch the list of exercise
+      let token = sessionStorage.getItem('token');
       return axios.get(jsonurl)
       .then((res) => {
-        let token = sessionStorage.getItem('token');
         return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/program",
         {
           status: "publish",
           fields: {
               user_id: user_id,
-              program_name: goal,
+              program_name: goalName,
               days: days,
               exercises: res.data.exercises,
               progress: "1",
@@ -95,26 +87,112 @@ export function addProgram (days, goals, exercise_place) {
                 setTimeout(function(){
                   dispatch(success(false));
                 },700);
-
             }).catch((error) => {
               console.log(error);
-            })
+            }) // posting record
         }).catch((error) => {
+          console.log(error);
           if(error.response){
             dispatch(addError(error.response.data.message));
           }else{
             console.log(error);
             dispatch(addError("OOPs! something went wrong."))
           }
-        })
+        })// posting program
       }).catch((error)=> {
+        console.log(error);
         if(error.response){
           dispatch(addError(error.response.data.message));
         }else{
           console.log(error);
           dispatch(addError("OOPs! something went wrong."))
         }
+      })//reading json url
+  }
+}
+
+//This function receives the rehab data and store it in the backend
+export function addRehab(rehab){
+  return(dispatch: Function) =>{
+    let user_id = sessionStorage.getItem('user_id');
+    let token = sessionStorage.getItem('token');
+    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/rehab_program",
+    {
+      status: "publish",
+      fields: {
+        user_id : user_id,
+        rehab : rehab,
+      }
+    }, {
+      headers:{ Authorization: "Bearer" + token }
+    }).then((response) => {
+      
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
+}
+/*  This function collect the data for both injurymanagement and posture correction
+    and send to to another function to store it in backend
+*/
+export function  prepareRehabData(injuryManagement, postureCorretion) {
+  return(dispatch: Function) => {
+    let injuryManagementCategory;
+    let postureCorrectionCategory;
+    let injuryManagementJsonPath;
+    let postureCorrectionJsonPath;
+    let rehab =[];
+    switch (injuryManagement) {
+      case "1": injuryManagementCategory ="lowerbackpain"; break;
+      case "2": injuryManagementCategory ="neckpain"; break;
+      case "3": injuryManagementCategory ="shoulderpain"; break;
+      case "4": injuryManagementCategory ="hippain"; break;
+      default: injuryManagementCategory = "";
+    }
+    switch (postureCorretion) {
+      case "1": postureCorrectionCategory = "roundedshoulder"; break;
+      case "2": postureCorrectionCategory = "anteriorpelvictilt"; break;
+      case "3": postureCorrectionCategory = "swayposture"; break;
+      default: postureCorrectionCategory = "";
+    }
+    if(injuryManagementCategory !== ""){
+      injuryManagementJsonPath = `./DataSources/Rehab/InjuryManagement/${injuryManagementCategory}.json`;
+      return axios.get(injuryManagementJsonPath)
+      .then((injuryManagementResponse) => {
+        rehab.push(injuryManagementResponse.data);
+        if(postureCorrectionCategory != ""){
+            //upload both postureCorrection and injuryManagement
+          postureCorrectionJsonPath = `./DataSources/Rehab/PostureCorrection/${postureCorrectionCategory}.json`;
+          return axios.get(postureCorrectionJsonPath)
+          .then((postureCorrectionResponse) => {
+            rehab.push(postureCorrectionResponse.data);
+            dispatch(addRehab(rehab));
+          }).catch((error)=> {
+            console.log("error",error)
+          })
+        }else{ // for if(postureCorrectionCategory != "")
+            //upload only injurymanagement part
+          dispatch(addRehab(rehab));
+        }
+      }).catch((error) => {
+        console.log("error",error);
       })
+    }else{ //for if(injuryManagementCategory !== "")
+      if(postureCorrectionCategory !== ""){
+        postureCorrectionJsonPath = `./DataSources/Rehab/PostureCorrection/${postureCorrectionCategory}.json`;
+        if(postureCorrectionCategory != ""){
+          postureCorrectionJsonPath = `./DataSources/Rehab/PostureCorrection/${postureCorrectionCategory}.json`;
+          return axios.get(postureCorrectionJsonPath)
+          .then((postureCorrectionResponse) => {
+            rehab.push(postureCorrectionResponse.data);
+            //Upload only posture correction part
+            dispatch(addRehab(rehab));
+          }).catch((error)=> {
+            console.log("error",error)
+          })
+        }
+      }
+    }
   }
 }
 
