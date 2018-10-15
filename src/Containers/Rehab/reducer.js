@@ -1,5 +1,6 @@
 let DefaultState = {
   isInitializing: true,
+  isUploading: false,
   error: {
     hasError: false,
     message:''
@@ -15,9 +16,20 @@ const RehabReducers = (state: Object = DefaultState, action: Function) => {
       }
 
     case "SET_REHAB_ID" :
-        return {
+      return {
           ...state, rehabID: action.payload
-        }
+      }
+
+    case "SET_REHAB_LIST" :
+      return {
+        ...state, rehabList: action.payload
+      }
+
+    case "UPLOADING_TO_SERVER" :
+      return {
+        ...state, isUploading: action.payload
+      }
+
     case "SET_INITIALISATION" :
       return {
         ...state, isInitializing: action.payload

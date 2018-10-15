@@ -29,7 +29,7 @@ const MainRehab = (props) => {
                 <Card.Footer
                   content={<div>
                     <div style={{textAlign:"center"}}>
-                      <Button type="warning" size="omitted" inline onClick={() => props.onChange()}>Change</Button>
+                      <Button type="warning" size="omitted" inline onClick={() => props.onChange(rehab.rehab_category, data.type, key, key1)}>Change</Button>
                       <WhiteSpace/>
                     </div>
                   </div>

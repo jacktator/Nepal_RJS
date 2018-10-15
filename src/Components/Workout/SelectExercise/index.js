@@ -58,7 +58,7 @@ import Loading from '../../Loading';
           >
           { exercises[this.state.index].exercise.map( (data, key) => (
             <div className="image-with-description" key={key}>
-              <div className="excercise-header" style={{margin:"10px 0px 10px",backgroundColor:'white',color:'black', textAlign: "center"}}>{data.name}</div>
+              <div className="excercise-header" style={{margin:"10px 0px 10px",backgroundColor:'white',color:'black', textAlign: "center"}}>{data.name} :{key}</div>
               <img
                 key = { data.value }
                 src={`https://nepal.sk8tech.io/wp-content/uploads/${data.image_link}`}

@@ -238,7 +238,8 @@ export function getExerciseRecord(programID){
 export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
   return(dispatch: Function) => {
     let id = workoutReducers.programID;
-    let { program, dayIndex } = workoutReducers;
+    let { dayIndex }= workoutReducers;
+    let program = JSON.parse(JSON.stringify(workoutReducers.program));
     program.exercises[dayIndex].exercise_list[listIndex].workout = selectedExercise.name;
     program.exercises[dayIndex].exercise_list[listIndex].progression_model = selectedExercise.progression_model;
     if(selectedExercise.repetition !== "n/a"){

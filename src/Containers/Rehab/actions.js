@@ -26,7 +26,67 @@ export function fetchRehab(){
     })
   }
 }
+
+export function fetchRehabList(name, type){
+  return(dispatch: Function) => {
+    return axios.get(`https://nepal.sk8tech.io/wp-json/wp/v2/rehab?filter[meta_key]=name&filter[meta_value]=${name}`)
+    .then((response) => {
+      let rehabData = JSON.parse(JSON.stringify(response.data[0].acf));
+      let index = rehabData.rehab_list.findIndex(i => { return i.type === type});
+      let rehabList = rehabData.rehab_list[index];
+      console.log(rehabList);
+      dispatch(setRehabList(rehabList));
+    }).catch((error) => {
+      console.log(error);
+      console.log(error.response);
+      if(error.response){
+        dispatch(catchError(error.response.data.message));
+      }else{
+        dispatch(catchError("Oops! Unable to connect to the server. Either your device is offline or server is down."))
+      }
+    })
+  }
+}
+
+export function selectRehab(rehabID, rehab, selectedRehab, rehabIndex, dataIndex){
+  return(dispatch : Function) => {
+    dispatch(uploadingToServer(true));
+    let rehabArray = JSON.parse(JSON.stringify(rehab));
+    console.log("rehab before calculation", rehabArray)
+    console.log("selectedRehab",selectedRehab);
+    rehabArray[rehabIndex].data[dataIndex].name = selectedRehab.name;
+    rehabArray[rehabIndex].data[dataIndex].sets = selectedRehab.sets;
+    rehabArray[rehabIndex].data[dataIndex].reps = selectedRehab.reps;
+    rehabArray[rehabIndex].data[dataIndex].time = selectedRehab.time;
+    console.log("rehab after calculation", rehabArray)
+    axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/rehab_program/${rehabID}`,
+    {
+      status: "publish",
+      fields:{
+        rehab: rehabArray
+      }
+    }).then((response) => {
+        console.log(response)
+        dispatch(setRehab(response.data.acf))
+        dispatch(uploadingToServer(false));
+    }).catch((error)=> {
+      dispatch(uploadingToServer(false));
+      if(error.response){
+        dispatch(catchError(error.response.data.message));
+      }else{
+        dispatch(catchError("Oops! Unable to connect to the server. Either your device is offline or server is down."))
+      }
+    })
+  }
+}
+export function setRehabList(rehabList: Object){
+  return {
+    type : "SET_REHAB_LIST",
+    payload: rehabList
+  }
+}
 export function setRehab(rehab: Object) {
+  console.log("Setting rehab")
   return {
     type: "SET_REHAB",
     payload: rehab
@@ -38,6 +98,12 @@ export function setRehabID(id: Number) {
     payload: id
   }
 }
+export function uploadingToServer(value : Boolean) {
+  return {
+    type: "UPLOADING_TO_SERVER",
+    payload: value
+  }
+}
 export function setInitialisation(value: Boolean){
   return {
     type: "SET_INITIALISATION",
@@ -46,7 +112,7 @@ export function setInitialisation(value: Boolean){
 }
 
 export function catchError(error: string){
-  console.log(error);
+  console.log("Catch error");
   return{
     type: "CATCH_ERROR",
     payload: error

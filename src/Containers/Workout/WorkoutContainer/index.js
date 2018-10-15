@@ -86,8 +86,6 @@ class WorkoutContainer extends Component{
 
         if(dayIndex != null){
           const programExerciseList = this.props.WorkoutReducers.program.exercises[dayIndex].exercise_list;
-          console.log("Workout Reducer",this.props.WorkoutReducers);
-          console.log("Program Workout List",programExerciseList);
           const programName = this.props.WorkoutReducers.program.program_name
           return (
             <Hoc>
