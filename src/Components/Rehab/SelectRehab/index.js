@@ -9,8 +9,6 @@ import Loading from '../../Loading';
 
       currentRehab: 0,
       imgHeight: 500,
-      index: 0,
-      currentChild:0,
   }
 
   selectExercise = () => {
