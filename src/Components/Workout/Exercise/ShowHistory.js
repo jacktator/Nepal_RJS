@@ -31,9 +31,7 @@ const ShowHistory = (props) => {
               ))}
             </div>
           ))}
-      <Button style={{margin: '5vh 5vw 5vw',color:"white",
-      backgroundColor:"#1F90E6"
-    }}onClick={(e) => props.onBackButtonClicked(e) }>
+      <Button className="history-return-button-style" onClick={(e) => props.onBackButtonClicked(e) }>
         Return
       </Button>
     </div>

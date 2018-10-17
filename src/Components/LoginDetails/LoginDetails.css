@@ -47,9 +47,15 @@
 }
 
 .logindetails-doyouhaveaccount{
+  color: grey;
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
-
+/* .lockerstyle{
+  background-image: url(https://png.icons8.com/ios/50/000000/lock.png);
+  background-size: cover;
+  height: '22px';
+  width: '22px';
+} */
 /* style={{ width: '100%', color: '', textAlign: 'center'}} */

@@ -89,6 +89,27 @@ width measurements:
   right:0%;
 }
 
+.badge-container-style{
+  height: 50px;
+  width: 40px;
+  background-color: #f19736;
+  border-radius: 50%;
+}
+
+
+
+.badge-text-container-style{
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  width: 40px;
+  margin-top: -25px;
+}
+.badge-text-container-style span{
+  /* color: green; */
+  height: 13px;
+}
 @media only screen and (min-width: 900px) {
   .exercise .prescription-circle{
     height: 120px;
@@ -210,4 +231,10 @@ font-size: 5vw;
 }
 .no-copy{
   margin-left: 0vw;
+}
+
+.history-return-button-style{
+  margin: 5vh 5vw 5vw;
+  color: white;
+  background-color: #1F90E6;
 }
