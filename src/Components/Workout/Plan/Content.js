@@ -30,9 +30,12 @@ export default class Content extends Component {
                     <Item
                       extra={
                         <div
-                        style={{height:'auto', width:'auto', borderRadius: '50%'}}
+                        style={{ height:'auto', width:'auto', borderRadius: '50%'}}
                         onClick={(e) => this.props.onFeedbackButtonClickedHandler(e)}
-                      ><img src={require("../../../Assets/Workout/Exercise/exerciseInfo.svg")} style={{ backgroundColor: 'black', borderRadius: '50%', marginRight:'0' }} alt="info" /></div>}
+                        >
+                          <img src={require("../../../Assets/Workout/Exercise/exerciseInfo.svg")} style={{ backgroundColor: 'black', borderRadius: '50%', marginRight:'0' }} alt="info" />
+                        </div>
+                      }
                       disabled={false}
                       onClick={(e) => { e.preventDefault() }}
                     >

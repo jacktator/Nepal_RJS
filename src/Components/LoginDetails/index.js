@@ -74,7 +74,7 @@ const LoginDetails = (props) => {
           </Link>
         </div>
     {/* no account block*/}
-        <div className="logindetails-doyouhaveaccount" style={{color: 'grey'}}>
+        <div className="logindetails-doyouhaveaccount" >
           Do not have an account?
         </div>
     {/* register button block*/}

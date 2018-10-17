@@ -254,11 +254,11 @@ class Questionnaire extends Component {
 
       <div className="pagination-container">
       <Button type="primary" disabled={this.state.currentPage === 1 ? true: false}  onClick={() => this.buttonHandler('previous')}
-        inline size="medium" style={{position:'absolute',left:'0',marginLeft:'10px',zIndex:'1000'}}>
+        inline size="medium" className="pagination-container-left-button">
           Previous
       </Button>
       <Button type="primary" onClick={() => this.buttonHandler('next')}
-      inline size="medium" style={{position:'absolute',right:'0',marginRight:'10px',zIndex:'1000'}}>
+      inline size="medium" className="pagination-container-right-button">
       {this.state.currentPage === 7 ? "Finish": "Next"}
       </Button>
       <div className="pagination-page-number">{this.state.currentPage}/7</div>

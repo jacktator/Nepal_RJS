@@ -43,6 +43,25 @@
   border: 0.2px solid black;
 }
 
+/* .profile-avatar-sources{
+  background-position: center;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 25%;
+  top: 50%;
+  background-size: cover;
+  z-index: 11;
+  height: 120px;
+  width: 120px;
+} */
+
+.profile-my-detials{
+  display: flex;
+  height: 44px;
+  align-items: center;
+  padding-left: 15px;
+  background-color: white;
+}
 .profile-image-change {
   position:absolute;
   top:45%;
@@ -55,6 +74,17 @@
   position:absolute;
   font-size:0px;
 
+}
+
+.profile-button-style{
+  width: 255px;
+  height: 100%;
+  background-color: white;
+  color: #888;
+  font-size: 17px;
+  text-align: start;
+  border: 0;
+  padding-left: 0;
 }
 
 .image-picker label{

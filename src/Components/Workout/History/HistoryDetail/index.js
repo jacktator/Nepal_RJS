@@ -43,7 +43,7 @@ class HistoryDetail extends Component {
       <List key={key}>
           <WhiteSpace/>
           <Item >
-            <span style={{textAlign:'left',fontSize:'20px',fontStyle:'italic'}}>
+            <span style={{color:'green', textAlign:'left',fontSize:'20px',fontStyle:'italic'}}>
               {i.name}
             </span>
           </Item>

@@ -18,10 +18,9 @@ const MyDetails = (props) => {
 
     return (
       <div style={{marginTop:"40px"}}>
-        <div style={{display:'flex', height:'44px', alignItems:'center', paddingLeft:'15px', backgroundColor:'white'}}>
+        <div className="profile-my-detials">
           <div style={{width:'85px'}}><div className="profile-name-icon"></div></div>
-          <button
-            style={{width:'255px', backgroundColor:'white', color:'#888', fontSize:'17px', height:'100%', textAlign:'start', border:'0', paddingLeft:'0'}}
+          <button className="profile-button-style"
             onClick={() => prompt('Change name', 'new name', [
             { text: 'Cancel' },
               { text: 'Submit', onPress: value => { props.updateName(value)} },

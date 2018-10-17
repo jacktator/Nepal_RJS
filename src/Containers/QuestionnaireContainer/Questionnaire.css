@@ -42,3 +42,15 @@
     top:0;
     background-color: rgba(0, 0, 0, 0.8);
 }
+
+.pagination-container-left-button{
+  float:left;
+  margin: 10px 10px;
+  z-index: 1000;
+}
+
+.pagination-container-right-button{
+  float:right;
+  margin: 10px 10px;
+  z-index: 1000;
+}
