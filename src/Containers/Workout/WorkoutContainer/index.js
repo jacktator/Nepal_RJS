@@ -14,6 +14,7 @@ import Modal from '../../../Components/UI/Modal';
 import ShowError from '../../../Components/Error/ShowError';
 import FooterContainer from '../FooterContainer';
 import Loading from '../../../Components/Loading';
+import FooterTry from '../../Footer';
 import Hoc from '../../../HOC/Hoc';
 
 class WorkoutContainer extends Component{
@@ -132,8 +133,8 @@ class WorkoutContainer extends Component{
             {( this.state.startExcercies) && (
               <Redirect to="/exercise" />
             )}
-            <FooterContainer currentPath='workout' />
-
+              <FooterContainer currentPath='workout' />
+              <FooterTry />
             {(this.props.WorkoutReducers.redirectToQuestionnaire) && (
               <Redirect to='/questionnaire' />
             )}

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class RehabExerciseContainer extends Component {
   constructor(props){
@@ -6,9 +6,9 @@ class RehabExerciseContainer extends Component {
   }
 
   render() {
-    return(
-      <div>
-      </div>
+    return (
+      <div></div>
+
     )
   }
 }
