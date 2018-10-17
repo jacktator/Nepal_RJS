@@ -13,11 +13,15 @@ width measurements:
 .exercise{
   background-color:white;
   height: 100vh;
+  /* border-style:solid;
+  border-width:2px;
+  border-color:blue; */
 }
 
 .exercise .nav-bar{
   text-align: center;
   top: 0;
+
   width: 100%;
   margin: 16px 0 16px 0;
 }
@@ -210,4 +214,31 @@ font-size: 5vw;
 }
 .no-copy{
   margin-left: 0vw;
+}
+
+
+.ExerciseCues{
+  /* border-style:solid;
+  border-width:2px;
+  border-color:green;
+*/
+  padding: 0 10px 0 10px; 
+}
+.exercise .RehabProgress{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.completeButton{
+  margin: 10px 0 10px 0;
+}
+
+.RepsBox{
+  /* border-style:solid;
+  border-width:2px;
+  border-color:green; */
+  padding: 10px 0 10px 0;
+
 }
