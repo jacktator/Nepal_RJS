@@ -1,6 +1,8 @@
 let DefaultState = {
   isInitializing: true,
   isUploading: false,
+  injury_management: null,
+  posture_correction: null,
   error: {
     hasError: false,
     message:''
@@ -51,6 +53,15 @@ const RehabReducers = (state: Object = DefaultState, action: Function) => {
         ...state, error
       }
 
+      case "ADD_INJURY_MANAGEMENT" :
+      return {
+        ...state, injury_management: action.payload
+      }
+
+      case "ADD_POSTURE_CORRECTION" :
+      return {
+        ...state, posture_correction: action.payload
+      }
     default:
       return state;
 

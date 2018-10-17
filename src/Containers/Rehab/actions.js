@@ -125,3 +125,16 @@ export function removeError(){
     payload: null
   }
 }
+
+export function addInjuryManagement (injury_management: String) {
+  return {
+    type: "ADD_INJURY_MANAGEMENT",
+    payload: injury_management
+  }
+}
+export function addPostureCorrection (posture_correction: String) {
+  return {
+    type: "ADD_POSTURE_CORRECTION",
+    payload: posture_correction
+  }
+}
