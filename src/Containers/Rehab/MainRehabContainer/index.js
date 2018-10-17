@@ -9,11 +9,13 @@ import SelectRehab from '../../../Components/Rehab/SelectRehab';
 import Hoc from '../../../HOC/Hoc';
 import Loading from '../../../Components/Loading';
 import Modal from '../../../Components/UI/Modal';
+import RehabExerciseContainer from '../RehabExerciseContainer';
 
 class MainRehabContainer extends Component {
   constructor(props){
     super(props);
     this.state = {
+      isStartRehab: false,
       isChangeRehab: false,
       rehabIndex: null,
       dataIndex: null,
@@ -24,7 +26,7 @@ class MainRehabContainer extends Component {
   }
 
   onStartRehabButtonHandler = () => {
-    alert("on Start button clicked");
+    this.setState({isStartRehab: true})
   }
 
   onChangeButtonHandler = (category, type, rehabIndex,dataIndex) => {
@@ -68,6 +70,11 @@ class MainRehabContainer extends Component {
               <ShowError
                error={error.message}
                cancel={this.cancelErrorMessageHandler}/>
+            </Modal>
+          )}
+          {(this.state.isStartRehab) && (
+            <Modal modalFor='modal'>
+              <RehabExerciseContainer />
             </Modal>
           )}
           {(this.state.isChangeRehab) && (
