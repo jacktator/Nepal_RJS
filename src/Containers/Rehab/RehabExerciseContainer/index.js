@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import RehabExercise from '../../../Components/Rehab/RehabExercise';
 
 class RehabExerciseContainer extends Component {
   constructor(props){
@@ -8,6 +9,7 @@ class RehabExerciseContainer extends Component {
   render() {
     return(
       <div>
+        <RehabExercise/>
       </div>
     )
   }
