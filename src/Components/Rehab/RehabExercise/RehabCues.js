@@ -1,7 +1,7 @@
 import React from 'react';
 import {List} from 'antd-mobile';
 import {Link} from 'react-router-dom';
-import './Exercise.css'
+import './RehabExercise.css'
 
 const Item = List.Item;
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Progress} from 'antd-mobile';
-import './Exercise.css'
+import './RehabExercise.css'
 
 const RehabProgress = (props) => {
   return(

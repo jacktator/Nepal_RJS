@@ -4,6 +4,7 @@ import {Redirect} from 'react-router';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { ActivityIndicator } from 'antd-mobile';
+
 import {selectFooter} from '../FooterContainer/actions';
 import {keepWorkout, fetchWorkoutList, selectWorkout,
         setDayIndex, getExerciseRecord, setCurrentDay, removeError, settingCurrentDay

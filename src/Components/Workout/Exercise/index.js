@@ -26,18 +26,18 @@ const Exercise = (props) => {
             {
               props.state.exercisePlace === 'gym' ? (
                 <Badge text={<div style={{ flexDirection: 'column', display: 'flex', justifyContent: 'center', height: '50px', width: '40px', marginTop: '-25px' }}>
-              <span style={{ height: '13px', marginTop: '-3px' }}>{props.state.exerciseData.sets} sets</span>
-              <span style={{ height: '13px' }}>{props.state.exerciseData.reps}</span>
-              <span style={{ height: '13px' }}>{props.state.exerciseData.weight}kg</span>
-              </div>}
-                  style={{ height: '50px', width: '40px', backgroundColor: '#f19736', borderRadius: '50%' }} />) : (
+                <span style={{ height: '13px', marginTop: '-3px' }}>{props.state.exerciseData.sets} sets</span>
+                <span style={{ height: '13px' }}>{props.state.exerciseData.reps}</span>
+                <span style={{ height: '13px' }}>{props.state.exerciseData.weight}kg</span>
+                </div>}
+                  style={{ height: '50px', width: '40px', backgroundColor: '#f19736', borderRadius: '50%' }} />
+                ) : (
                     <Badge text={<div style={{ flexDirection: 'column', display: 'flex', justifyContent: 'center', height: '50px', width: '40px', marginTop: '-25px' }}>
                     <span style={{ height: '13px', marginTop: '-3px' }}>{props.state.exerciseData.sets} sets</span>
                     <span style={{ height: '13px' }}>{props.state.exerciseData.reps}</span>
                     </div>}
                   style={{ height: '50px', width: '40px', backgroundColor: '#f19736', borderRadius: '50%' }} />
-    
-            )
+                )
             }
            </div>
            {/* the main gif/image area */}

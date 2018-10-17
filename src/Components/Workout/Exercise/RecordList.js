@@ -56,7 +56,7 @@ const displayRecord =(props, index) => {
       <div className="list-records" key={index}>
       {(props.state.exercisePlace === "gym") && (
         <div>
-        {props.state.prevData.weight &&
+        {props.state.prevData.weight ? (
           <Item>
             <Flex justify="between" className="list">
               <span className="list-number">{index+1}</span>
@@ -64,14 +64,13 @@ const displayRecord =(props, index) => {
               <Flex.Item><span style={{color:"#cecece"}}>Previous</span></Flex.Item>
             </Flex>
           </Item>
-        }
-        {!props.state.prevData.weight &&
+        ):(
           <Item style={{backgroundColor:'#a2cf6e'}}>
             <Flex justify="between" className="list">
               <span className="list-number">{index+1}</span>
             </Flex>
           </Item>
-        }
+        )}
         </div>
       )}
       {(props.state.exercisePlace === "home") && (

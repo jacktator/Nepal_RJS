@@ -1,11 +1,10 @@
 import React from 'react';
 import {NavBar, Icon, Badge, Button, WingBlank, Card, WhiteSpace} from 'antd-mobile';
 import {Link} from 'react-router-dom';
-import './Exercise.css'
 import RehabProgress from './RehabProgress'
-import ExerciseCues from './ExerciseCues'
-import RepsBox from './RepsBox'
-
+import RehabCues from './RehabCues'
+import RecordList from './RecordList'
+import './RehabExercise.css'
 
 const RehabExercise = (props) => {
   return(
@@ -40,10 +39,12 @@ const RehabExercise = (props) => {
          </div>
 
          {/* Exercise Cues Here */}
-         <ExerciseCues/>
+         <RehabCues/>
 
          {/* reps group Here */}
-         <RepsBox/>
+         <RecordList
+          complete = {props.complete}
+         />
 
          {/* Progress  Here */}
          <RehabProgress/>

@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import {ActivityIndicator} from 'antd-mobile';
-import {fetchRehab, fetchRehabList, selectRehab, removeError} from '../actions';
+import {Redirect} from 'react-router';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+
+import {fetchRehab, fetchRehabList, selectRehab, removeError} from '../actions';
 import MainRehab from '../../../Components/Rehab/MainRehab';
 import ShowError from '../../../Components/Error/ShowError';
 import SelectRehab from '../../../Components/Rehab/SelectRehab';
@@ -73,10 +75,9 @@ class MainRehabContainer extends Component {
             </Modal>
           )}
           {(this.state.isStartRehab) && (
-            <Modal modalFor='modal'>
-              <RehabExerciseContainer />
-            </Modal>
+            <Redirect to="/rehab-exercise" />
           )}
+
           {(this.state.isChangeRehab) && (
             <Modal modalFor = "modal-for-select-exercise">
               <SelectRehab

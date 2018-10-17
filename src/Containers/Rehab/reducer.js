@@ -1,6 +1,7 @@
 let DefaultState = {
   isInitializing: true,
   isUploading: false,
+  isFetchingRehabRecord: false,
   injury_management: null,
   posture_correction: null,
   error: {
@@ -22,9 +23,24 @@ const RehabReducers = (state: Object = DefaultState, action: Function) => {
           ...state, rehabID: action.payload
       }
 
+    case "SET_REHAB_RECORD" :
+      return {
+        ...state, rehabRecord: action.payload
+      }
+
+    case "SET_REHAB_RECORD_ID" :
+      return {
+        ...state, rehabRecordID: action.payload
+      }
+
     case "SET_REHAB_LIST" :
       return {
         ...state, rehabList: action.payload
+      }
+
+    case "IS_FETCHING_REHAB_RECORD" :
+      return {
+        ...state, isFetchingRehabRecord: action.payload
       }
 
     case "UPLOADING_TO_SERVER" :

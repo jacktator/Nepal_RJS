@@ -126,7 +126,7 @@ export function addRehab(rehab){
     }, {
       headers:{ Authorization: "Bearer" + token }
     }).then((response) => {
-      
+
     }).catch((error) => {
       console.log(error);
     })
