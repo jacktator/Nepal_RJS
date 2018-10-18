@@ -3,8 +3,7 @@ import {Tabs} from 'antd-mobile'
 import Content from './Content'
 import Hoc from '../../../../HOC/Hoc';
 import Header from '../Header';
-import FooterContainer from '../../../../Containers/Workout/FooterContainer/'
-
+import Footer from '../../../../Containers/Workout/FooterContainer';
 import { connect } from 'react-redux';
 
 
@@ -52,7 +51,7 @@ class HistoryWeekly extends Component {
         :
         <div style={{textAlign:'center'}}>No History Avaiable in This Program</div>
       }
-      <FooterContainer  />
+      <Footer />
     </Hoc>
    );
   }
@@ -60,7 +59,6 @@ class HistoryWeekly extends Component {
 
 function mapStateToProps(state){
   return {
-    currentFooterTab: state.FooterReducers.currentFooterTab,
     HistoryReducers: state.HistoryReducers,
   }
 }

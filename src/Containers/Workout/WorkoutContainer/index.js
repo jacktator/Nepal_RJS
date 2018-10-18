@@ -4,6 +4,7 @@ import {Redirect} from 'react-router';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { ActivityIndicator } from 'antd-mobile';
+
 import {selectFooter} from '../FooterContainer/actions';
 import {keepWorkout, fetchWorkoutList, selectWorkout,
         setDayIndex, getExerciseRecord, setCurrentDay, removeError, settingCurrentDay
@@ -14,7 +15,6 @@ import Modal from '../../../Components/UI/Modal';
 import ShowError from '../../../Components/Error/ShowError';
 import FooterContainer from '../FooterContainer';
 import Loading from '../../../Components/Loading';
-import FooterTry from '../../Footer';
 import Hoc from '../../../HOC/Hoc';
 
 class WorkoutContainer extends Component{
@@ -133,8 +133,8 @@ class WorkoutContainer extends Component{
             {( this.state.startExcercies) && (
               <Redirect to="/exercise" />
             )}
-              <FooterContainer currentPath='workout' />
-              <FooterTry />
+            <FooterContainer currentPath='workout' />
+
             {(this.props.WorkoutReducers.redirectToQuestionnaire) && (
               <Redirect to='/questionnaire' />
             )}

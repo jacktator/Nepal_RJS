@@ -440,9 +440,10 @@ class ExerciseContainer extends Component{
         )}
         {(error.hasError) && (
           <Modal modalFor='modal'>
-          <ShowError
-          error={error.message}
-          cancel={this.cancelErrorMessaegHandler}/>
+            <ShowError
+              error={error.message}
+              cancel={this.cancelErrorMessaegHandler}
+            />
           </Modal>
         )}
         {this.checkCompleteProgress()}
@@ -466,13 +467,13 @@ class ExerciseContainer extends Component{
 }*/
 }
 
-function mapStateTothis(state){
+function mapStateToProps(state){
   return {
     WorkoutReducers: state.WorkoutReducers,
   }
 }
 
-function matchDispatchTothis(dispatch){
+function matchDispatchToProps(dispatch){
   return bindActionCreators({
     saveExerciseData, getExerciseRecord, updatePersonalBest,
     updateRepsAndWeight, updateReps, completeWorkout,removeError, savingExercise
@@ -480,4 +481,4 @@ function matchDispatchTothis(dispatch){
 );
 }
 
-export default connect (mapStateTothis, matchDispatchTothis)(ExerciseContainer);
+export default connect (mapStateToProps, matchDispatchToProps)(ExerciseContainer);
