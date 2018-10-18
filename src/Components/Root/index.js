@@ -16,7 +16,7 @@ import HistoryContainer from '../../Containers/Workout/HistoryContainer';
 import MainMenuContainer from '../../Containers/MainMenuContainer';
 import MainRehabContainer from '../../Containers/Rehab/MainRehabContainer';
 import RehabExerciseContainer from '../../Containers/Rehab/RehabExerciseContainer';
-//import WeeklyQuestionnaireContainer from '../../Containers/Rehab/WeeklyQuestionnaireContainer';
+import WeeklyQuestionnaireContainer from '../../Containers/Rehab/WeeklyQuestionnaireContainer';
 import ProfileContainer from '../../Containers/ProfileContainer';
 import TermsAndCondComponent from '../TermsAndCond';
 import GetJson from '../../Containers/ZShawn';
@@ -86,7 +86,7 @@ class Root extends Component<Props>{
               <Route path="/workout/:day" exact component={WorkoutContainer} />
               <Route path="/rehab" exact component={MainRehabContainer}/>
               <Route path="/rehab-exercise" exact component={RehabExerciseContainer} />
-              {/* <Route path="/weekly-rehab-questionaire" exact component={WeeklyQuestionnaireContainer} /> */}
+              <Route path="/weekly-rehab-questionaire" exact component={WeeklyQuestionnaireContainer} />
               <Route path="/plan" exact component={PlanContainer}/>
               <Route path="/footer" exact component={FooterContainer} />
               <Route path="/history" exact component={HistoryContainer}/>

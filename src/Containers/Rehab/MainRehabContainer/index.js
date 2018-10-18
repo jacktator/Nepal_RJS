@@ -1,19 +1,23 @@
 import React, {Component} from 'react';
 import {ActivityIndicator} from 'antd-mobile';
-import {fetchRehab, fetchRehabList, selectRehab, removeError} from '../actions';
+import {Redirect} from 'react-router';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+
+import {fetchRehab, fetchRehabList, selectRehab, removeError} from '../actions';
 import MainRehab from '../../../Components/Rehab/MainRehab';
 import ShowError from '../../../Components/Error/ShowError';
 import SelectRehab from '../../../Components/Rehab/SelectRehab';
 import Hoc from '../../../HOC/Hoc';
 import Loading from '../../../Components/Loading';
 import Modal from '../../../Components/UI/Modal';
+import RehabExerciseContainer from '../RehabExerciseContainer';
 
 class MainRehabContainer extends Component {
   constructor(props){
     super(props);
     this.state = {
+      isStartRehab: false,
       isChangeRehab: false,
       rehabIndex: null,
       dataIndex: null,
@@ -24,7 +28,7 @@ class MainRehabContainer extends Component {
   }
 
   onStartRehabButtonHandler = () => {
-    alert("on Start button clicked");
+    this.setState({isStartRehab: true})
   }
 
   onChangeButtonHandler = (category, type, rehabIndex,dataIndex) => {
@@ -70,6 +74,10 @@ class MainRehabContainer extends Component {
                cancel={this.cancelErrorMessageHandler}/>
             </Modal>
           )}
+          {(this.state.isStartRehab) && (
+            <Redirect to="/rehab-exercise" />
+          )}
+
           {(this.state.isChangeRehab) && (
             <Modal modalFor = "modal-for-select-exercise">
               <SelectRehab
