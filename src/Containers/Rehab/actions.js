@@ -14,6 +14,7 @@ export function fetchRehab(){
         dispatch(setRehabID(response.data[0].id))
         dispatch(setRehab(response.data[0].acf))
         dispatch(setInitialisation(false));
+        dispatch(getRehabRecord(response.data[0].id))
       }
     }).catch((error) => {
       if(error.response){
@@ -121,16 +122,31 @@ export function getRehabRecord(rehabID){
   }
 }
 
-export function saveRehabRecord(rehabRecordID, record, rehabCategory, name, sets, title, value){
+export function saveRehabRecord(rehabRecordID, record, rehabCategory, name, sets, title, data){
   return(dispatch: Function) => {
     let token = sessionStorage.getItem('token');
+    console.log(record);
     let rehabRecord = JSON.parse(JSON.stringify(record));
-    let rehab;
+    let rehab, temp;
     if(rehabRecord.rehab){
         rehab = rehabRecord.rehab;
+        let rehabIndex = rehab.findIndex( i => { return (i.rehab_category === rehabCategory) });
+        if(rehabIndex >= 0){
+          let dataIndex = rehab[rehabIndex].data.findIndex ( i => { return (i.name === name) });
+          if(dataIndex >=0) {
+            temp = {data:data}
+            rehab[rehabIndex].data[dataIndex].value.push(temp);
+          }else{//can not find the dataIndex
+            temp = { name: name, sets:sets, repsortime: title, value:[{data: data}] }
+            rehab[rehabIndex].data.push(temp);
+          }
+        }else{//can not find the rehabIndex
+          temp = [{ rehab_category:rehabCategory, data: [{ name: name, sets:sets, repsortime: title, value:[{data: data}] }] }]
+          rehab.push(temp);
+        }
     }else{
       //cannot find the rehabRecord create the new value instead
-      rehab = [{ rehab_category:rehabCategory, data: [{ name: name, sets:sets, repsortime: title, value:[{data: value}] }] }]
+      rehab = [{ rehab_category:rehabCategory, data: [{ name: name, sets:sets, repsortime: title, value:[{data: data}] }] }]
     }
     return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/rehab_record/${rehabRecordID}`,{
       status: "publish",
@@ -140,6 +156,7 @@ export function saveRehabRecord(rehabRecordID, record, rehabCategory, name, sets
     }, {
       headers:{ Authorization: "Bearer" + token }
     }).then((response)=> {
+      dispatch(setRehabRecord(response.data.acf));
       alert("success");
       console.log(response);
     }).catch((error)=> {

@@ -17,12 +17,22 @@ const RecordList = (props) => {
        </List>
      </div>
      {/* complete butotn Here */}
+     { (props.state.currentSets > props.state.sets) ? (
+       <div className="completeButton">
+         <Button type="primary" inline onClick={()=> props.next() }>
+            Next
+         </Button>
+       </div>
+     ):(
+       <div className="completeButton">
+         <Button type="primary" inline onClick={()=> props.complete() }>
+           Complete
+         </Button>
+       </div>
+     )
 
-      <div className="completeButton">
-        <Button type="primary" inline onClick={()=> props.complete() }>
-          Complete
-        </Button>
-      </div>
+     }
+
     </div>
   )
 }

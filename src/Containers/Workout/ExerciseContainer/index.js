@@ -181,9 +181,7 @@ class ExerciseContainer extends Component{
     const exerciseLog = [];
     this.setState({prevData, exerciseLog, isLoading: true, completedExercise: this.state.completedExercise+1});
     this.setState({ currentSets: 1, exerciseIndex })
-    setTimeout(() => {
-      this.calculateExerciseLog(null);
-    }, 1000);
+    this.calculateExerciseLog(exerciseIndex);
   }
 
 

@@ -8,7 +8,6 @@ import './RehabExercise.css'
 
 const RehabExercise = (props) => {
   return(
-
     <div className="exercise">
           {/* navigation bar on top of screen*/}
         <NavBar
@@ -18,7 +17,7 @@ const RehabExercise = (props) => {
            /* onLeftClick={(e) => props.onBackButtonClicked(e)} */
            className="nav-bar">
            <div className="nav-bar-text">
-           Exercise Name 1/6
+           {props.state.rehabName}
             {/* props.state.exerciseData.workout */} { /* props.state.exerciseIndex+ 1}/{props.state.exerciseLength */}
            </div>
         </NavBar>
@@ -44,6 +43,7 @@ const RehabExercise = (props) => {
          {/* reps group Here */}
          <RecordList
           state = {props.state}
+          next = {props.next}
           complete = {props.complete}
          />
 
