@@ -19,7 +19,7 @@ const RecordList = (props) => {
       {/* complete butotn Here */}
 
       <div className="completeButton">
-        <Button type="primary" inline onClick={()=> props.complete() }>
+        <Button type="primary" style={{backgroundColor: '#1BC390'}} inline onClick={()=> props.complete() }>
           Complete
         </Button>
       </div>

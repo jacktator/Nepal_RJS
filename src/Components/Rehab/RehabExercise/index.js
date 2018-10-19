@@ -31,7 +31,7 @@ const RehabExercise = (props) => {
               <span style={{ height: '13px', marginTop: '-3px' }}>{/*props.state.exerciseData.sets*/}3X</span>
               <span style={{ height: '13px' }}>{/*props.state.exerciseData.reps*/}10-12</span>
               </div>}
-              style={{ height: '50px', width: '40px', backgroundColor: '#00EEB2', borderRadius: '50%' }}
+              style={{ height: '50px', width: '40px', backgroundColor: '#1BC390', borderRadius: '50%' }}
             />
           </div>
            {/* the main gif/image area */}
