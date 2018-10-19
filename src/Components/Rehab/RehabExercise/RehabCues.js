@@ -9,12 +9,10 @@ const ExerciseCues = (props) => {
   return(
     <div className="ExerciseCues">
       <List>
-        <Item>
-          exercise
-        </Item>
-        <Item>
-          exercise
-        </Item>
+        <Item> Shoulder back </Item>
+        <Item> Chest up </Item>
+        <Item> Track knee over toe</Item>
+        <Item> Braced core </Item>
       </List>
     </div>
   )

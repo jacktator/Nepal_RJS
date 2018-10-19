@@ -43,6 +43,7 @@ const RehabExercise = (props) => {
 
          {/* reps group Here */}
          <RecordList
+          state = {props.state}
           complete = {props.complete}
          />
 

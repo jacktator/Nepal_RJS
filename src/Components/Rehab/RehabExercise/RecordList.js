@@ -11,7 +11,7 @@ const RecordList = (props) => {
      {/* reps group Here */}
      <div className="record-list">
        <List>
-         {[...Array(4)].map((value, key) => {
+         {[...Array(props.state.sets)].map((value, key) => {
            return displayRecord(props, key);
          })}
        </List>
@@ -32,7 +32,7 @@ const displayRecord =(props, index) => {
       <div className="list-records" key={index} >
         <Item >
           <Flex justify="between" className="list">
-          <span className="list-number">{index+1}</span>
+          <span className="list-number">{index+1}.   {props.state.highestReps} {props.state.repsOrSec}</span>
           </Flex>
         </Item>
       </div>

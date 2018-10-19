@@ -121,16 +121,16 @@ export function getRehabRecord(rehabID){
   }
 }
 
-export function saveRehabRecord(rehabRecordID, record){
+export function saveRehabRecord(rehabRecordID, record, rehabCategory, name, sets, title, value){
   return(dispatch: Function) => {
     let token = sessionStorage.getItem('token');
     let rehabRecord = JSON.parse(JSON.stringify(record));
     let rehab;
     if(rehabRecord.rehab){
-      //got the rehab data
+        rehab = rehabRecord.rehab;
     }else{
       //cannot find the rehabRecord create the new value instead
-      //rehab = [{ rehab_category:"raul", data: [{ name: "lg", sets:3}] }]
+      rehab = [{ rehab_category:rehabCategory, data: [{ name: name, sets:sets, repsortime: title, value:[{data: value}] }] }]
     }
     return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/rehab_record/${rehabRecordID}`,{
       status: "publish",
@@ -140,6 +140,7 @@ export function saveRehabRecord(rehabRecordID, record){
     }, {
       headers:{ Authorization: "Bearer" + token }
     }).then((response)=> {
+      alert("success");
       console.log(response);
     }).catch((error)=> {
       console.log(error);
