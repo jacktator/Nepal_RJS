@@ -8,15 +8,15 @@ const Item = List.Item
 const RecordList = (props) => {
   return(
     <div className="RepsBox">
-      {/* reps group Here */}
-      <div className="record-list">
-        <List>
-          {[...Array(4)].map((value, key) => {
-            return displayRecord(props, key);
-          })}
-        </List>
-      </div>
-      {/* complete butotn Here */}
+     {/* reps group Here */}
+     <div className="record-list">
+       <List>
+         {[...Array(props.state.sets)].map((value, key) => {
+           return displayRecord(props, key);
+         })}
+       </List>
+     </div>
+     {/* complete butotn Here */}
 
       <div className="completeButton">
         <Button type="primary" style={{backgroundColor: '#1BC390'}} inline onClick={()=> props.complete() }>
@@ -28,15 +28,15 @@ const RecordList = (props) => {
 }
 
 const displayRecord =(props, index) => {
-  return(
-    <div className="list-records" key={index} >
-      <Item >
-        <Flex justify="between" className="list">
-          <span className="list-number">{index+1}</span>
-        </Flex>
-      </Item>
-    </div>
-  )
+    return(
+      <div className="list-records" key={index} >
+        <Item >
+          <Flex justify="between" className="list">
+          <span className="list-number">{index+1}.   {props.state.highestReps} {props.state.repsOrSec}</span>
+          </Flex>
+        </Item>
+      </div>
+    )
 
 }
 export default RecordList;

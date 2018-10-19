@@ -13,31 +13,67 @@ class RehabExerciseContainer extends Component {
   constructor(props){
     super(props);
     this.state = {
-      rehabIndex: 0
+      rehabIndex: 0,
+      dataIndex: 0,
+      rehabCategory: "",
+      rehabName: "",
+      sets: 0,
+      repsOrSec: "reps",
+      highestReps: 0,
     }
   }
   componentWillMount() {
     this.props.getRehabRecord(this.props.RehabReducers.rehabID);
-    let index=0;
+    let rehabIndex=0;
+    let dataIndex=0;
     if(this.props.match.params.index) {
-      index = parseInt(this.props.match.params.index, 10);
-      this.setState({rehabIndex : index})
+      rehabIndex = parseInt(this.props.match.params.index, 10);
+      this.setState({rehabIndex})
     }
+    this.calculateRehabLog();
+  }
+
+  calculateRehabLog = () => {
+    let {rehab} = this.props.RehabReducers;
+    if(rehab){
+      let rehabIndex = this.state.rehabIndex;
+      let dataIndex = this.state.dataIndex;
+      let rehabData = rehab.rehab[rehabIndex].data[dataIndex];
+      let rehabCategory = rehab.rehab[rehabIndex].rehab_category;
+      let repsOrSec, highestReps;
+      let rehabName = rehabData.name;
+      let sets = parseInt(rehabData.sets,10)
+      if(rehabData.reps==""){
+        repsOrSec = "Sec";
+        let temp = rehabData.time.split('-');
+        highestReps = parseInt(temp[temp.length-1], 10);
+      }else{
+        repsOrSec = "Reps";
+        let temp = rehabData.reps.split('-');
+        highestReps = parseInt(temp[temp.length-1], 10);
+      }
+      this.setState({
+        rehabName, sets, repsOrSec, highestReps, rehabCategory
+      })
+    }
+
   }
   onCompleteButtonHander = () => {
     let {rehabRecordID} = this.props.RehabReducers;
     let {rehabRecord} = this.props.RehabReducers;
-    this.props.saveRehabRecord(rehabRecordID, rehabRecord);
+    let {sets, highestReps, repsOrSec, rehabCategory, rehabName} = this.state;
+    this.props.saveRehabRecord(rehabRecordID, rehabRecord, rehabCategory,rehabName, sets, repsOrSec, highestReps);
   }
+
   render() {
     var days = new Date().getDay();
-    console.log(days);
     let {rehab, isFetchingRehabRecord,rehabRecord} = this.props.RehabReducers;
-    console.log("rehab_record",rehabRecord);
     if(rehab){
+      console.log("Data from state", this.state);
       return(
         <div>
           <RehabExercise
+            state = {this.state}
             complete = {this.onCompleteButtonHander}
           />
           {isFetchingRehabRecord && (
