@@ -8,12 +8,11 @@ const Item = List.Item;
 const ExerciseCues = (props) => {
   return(
     <div className="ExerciseCues">
-      <List>
-        <Item> Shoulder back </Item>
-        <Item> Chest up </Item>
-        <Item> Track knee over toe</Item>
-        <Item> Braced core </Item>
-      </List>
+      <sapn> Shoulder back </sapn>
+      <sapn> Chest up </sapn>
+      <sapn> Track knee over toe </sapn>
+      <sapn> Braced core </sapn>
+      
     </div>
   )
 }
