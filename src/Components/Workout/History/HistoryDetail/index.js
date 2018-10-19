@@ -2,9 +2,9 @@ import React ,{Component} from 'react';
 import Hoc from '../../../../HOC/Hoc';
 import { List,WhiteSpace,Flex,Button} from 'antd-mobile'
 import Header from '../Header';
-import FooterContainer from '../../../../Containers/Workout/FooterContainer/'
+import Footer from '../../../../Containers/Workout/FooterContainer';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const Item = List.Item;
 
@@ -98,7 +98,6 @@ class HistoryDetail extends Component {
       <div className="history-detail-container">
         {RenderPage}
       </div>
-      <FooterContainer/>
       <div className="day-button-container">
         <Flex>
           <Flex.Item>
@@ -109,7 +108,8 @@ class HistoryDetail extends Component {
           {nextButton}
           </Flex.Item>
         </Flex>
-      </div>
+        </div>
+        <Footer />
     </Hoc>
     )
   }
@@ -117,7 +117,6 @@ class HistoryDetail extends Component {
 
 function mapStateToProps(state){
   return {
-    currentFooterTab: state.FooterReducers.currentFooterTab,
     HistoryReducers: state.HistoryReducers,
   }
 }

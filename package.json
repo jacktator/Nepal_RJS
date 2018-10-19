@@ -4,6 +4,9 @@
   "private": true,
   "homepage": "https://jacktator.github.io/Nepal_RJS",
   "dependencies": {
+    "@material-ui/core": "^3.2.2",
+    "@material-ui/icons": "^3.0.1",
+    "@material-ui/lab": "^3.0.0-alpha.20",
     "antd-mobile": "^2.2.0",
     "axios": "^0.18.0",
     "flow": "^0.2.3",

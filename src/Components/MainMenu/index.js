@@ -1,5 +1,6 @@
 import React from 'react';
 import FooterContainer from '../../Containers/Workout/FooterContainer/';
+import FooterTry from '../../Containers/Footer'
 import PopoverMenu from './PopoverMenu';
 
 import './MainMenu.css';
@@ -43,7 +44,8 @@ const MainMenu = (props) => {
               <div>FAQ</div>
               </button>
           </div>
-          <FooterContainer />
+            <FooterContainer />
+            <FooterTry url={window.location.toString().split('#')[1]} />
       </div>
 
     )

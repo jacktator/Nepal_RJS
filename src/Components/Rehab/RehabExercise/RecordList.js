@@ -18,11 +18,11 @@ const RecordList = (props) => {
      </div>
      {/* complete butotn Here */}
 
-     <div className="completeButton">
-      <Button type="primary" inline size="small" onClick={()=> props.complete() }>
-        Complete
-      </Button>
-     </div>
+      <div className="completeButton">
+        <Button type="primary" inline onClick={()=> props.complete() }>
+          Complete
+        </Button>
+      </div>
     </div>
   )
 }
