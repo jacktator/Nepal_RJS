@@ -10,20 +10,32 @@ width measurements:
   768x1024  Ipad
   1024x1366 Ipad 2
 */
+
+
 .exercise{
   background-color:white;
-  height: 100vh;
-  /* border-style:solid;
-  border-width:2px;
-  border-color:blue; */
+  height: 100%;
+
+  overflow: auto;
+
+  /* border: 1px solid blue; */
+  width: 100%;
+  display: -webkit-flex;
+  -webkit-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .exercise .nav-bar{
   text-align: center;
   top: 0;
-
   width: 100%;
   margin: 16px 0 16px 0;
+
+  /* -webkit-flex: 1 1 10%;
+           flex: 1 1 10%;
+   -webkit-order: 1;
+           order: 1; */
 }
 
 .exercise .nav-bar-text{
@@ -35,6 +47,7 @@ width measurements:
 .exercise .image-block{
   position:relative;
   text-align: center;
+  margin: 16px 0 16px 0;
 }
 
 .exercise .exercise-image{
@@ -84,7 +97,7 @@ width measurements:
   top: 9%;
   z-index: 1;
   text-align: center;*/
-  
+
   position:absolute;
   height:18%;
   width:18%;
@@ -218,27 +231,32 @@ font-size: 5vw;
 
 
 .ExerciseCues{
-  /* border-style:solid;
-  border-width:2px;
-  border-color:green;
-*/
-  padding: 0 10px 0 10px;
-}
-.exercise .RehabProgress{
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
-
-.completeButton{
-  margin: 10px 0 10px 0;
+  width:80%;
+  margin: 16px auto 16px auto;
+  display: block;
+  /* border: 1px solid blue; */
 }
 
 .RepsBox{
-  /* border-style:solid;
-  border-width:2px;
-  border-color:green; */
-  padding: 10px 0 10px 0;
+  /* border: 1px solid blue; */
+  position: relative;
 
+  width:100%;
+  display: block;
+  margin: 16px auto 16px auto;
+
+  order: 4;
+}
+
+.completeButton{
+  text-align:center;
+  margin-top: 16px;
+  /* margin: 16px 0 0 0; */
+}
+
+.RehabProgress{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
