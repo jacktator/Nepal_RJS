@@ -40,9 +40,22 @@ const RecordList = (props) => {
 const displayRecord =(props, index) => {
     return(
       <div className="list-records" key={index} >
-        <Item >
-          <Flex justify="between" className="list">
-          <span className="list-number">{index+1}.   {props.state.highestReps} {props.state.repsOrSec}</span>
+
+        <Item>
+          <Flex justify="between" className="list" style={{color:"black"}}>
+            <Flex.Item>
+              <span>{index+1}</span>
+            </Flex.Item>
+            <Flex.Item>
+              <img src={require('../../../Assets/Rehab/RehabExercise/checkCircle.svg')} alt="check-circle"/>
+            </Flex.Item>
+            <Flex.Item>
+              <div>
+                {props.state.highestReps} {props.state.repsOrSec}
+              </div>
+            </Flex.Item>
+            <Flex.Item>
+            </Flex.Item>
           </Flex>
         </Item>
       </div>

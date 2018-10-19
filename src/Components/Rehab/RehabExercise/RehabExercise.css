@@ -15,9 +15,7 @@ width measurements:
 .exercise{
   background-color:white;
   height: 100%;
-
   overflow: auto;
-
   /* border: 1px solid blue; */
   width: 100%;
   display: -webkit-flex;
@@ -30,7 +28,7 @@ width measurements:
   text-align: center;
   top: 0;
   width: 100%;
-  margin: 16px 0 16px 0;
+  margin: 32px 0 16px 0;
 
   /* -webkit-flex: 1 1 10%;
            flex: 1 1 10%;
@@ -222,19 +220,18 @@ font-size: 5vw;
 
 }
 
-.list-number{
-  margin-left: 10vw;
-}
-.no-copy{
-  margin-left: 0vw;
-}
-
 
 .ExerciseCues{
   width:80%;
   margin: 16px auto 16px auto;
   display: block;
   /* border: 1px solid blue; */
+}
+
+
+.ExerciseCues sapn{
+  display: block;
+  font-size: 16px;
 }
 
 .RepsBox{
