@@ -16,12 +16,6 @@ var lockerstyle={
   width: '22px',
 }
 
-var humeniconstyle={
-  backgroundImage: 'url(https://png.icons8.com/ios/50/000000/gender-neutral-user.png)',
-  backgroundSize: 'cover',
-  height: '22px',
-  width: '22px',
-}
 var emailiconstyle={
   backgroundImage: 'url(https://png.icons8.com/ios/50/000000/new-post.png)',
   backgroundSize: 'cover',
@@ -42,7 +36,7 @@ type Props={
 
 const SignUp = (props) => {
 
-    const {username, email, password}= props.SignUpStates;
+    const {email, password}= props.SignUpStates;
     return (
       <div className="signup">
         {/* logo block*/}

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {WingBlank, WhiteSpace} from 'antd-mobile';
 import { Link } from 'react-router-dom';
 // import axios from 'axios';

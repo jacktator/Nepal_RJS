@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
-import { Carousel, Button,SegmentedControl, WingBlank,WhiteSpace} from 'antd-mobile';
+import { Carousel, Button,WingBlank,WhiteSpace} from 'antd-mobile';
 import './SelectExercise.css';
-import _ from 'lodash';
+// import _ from 'lodash';
 import Loading from '../../Loading';
 
   class SelectRehab extends Component {

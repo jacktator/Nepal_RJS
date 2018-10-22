@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, WingBlank, Card, WhiteSpace, Tabs } from 'antd-mobile';
+import { Button, WingBlank, Card, WhiteSpace } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 
 

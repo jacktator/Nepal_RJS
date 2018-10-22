@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Redirect} from 'react-router';
-import { Toast, ActivityIndicator } from 'antd-mobile';
+import { ActivityIndicator } from 'antd-mobile';
 import Exercise from '../../../Components/Workout/Exercise/';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -375,7 +375,6 @@ class ExerciseContainer extends Component{
     let message = this.setMessage();
     if(this.props.WorkoutReducers.program && this.state.error === false){
       const {isSavingExercise} = this.props.WorkoutReducers;
-      const video = "cPAbx5kgCJo";
       const videoDescription = "THIS is test video description";
       //const videoSearch = _.debounce((term)=>{this.videoSearch(term)}, 300);
       // const {exerciseName,exerciseNumber,exerciseTotal,sets,reps,weight,video,videoDescription,exerciseLog} =  this.props.ExerciseReducers;

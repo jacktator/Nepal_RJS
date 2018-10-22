@@ -11,7 +11,6 @@ import SelectRehab from '../../../Components/Rehab/SelectRehab';
 import Hoc from '../../../HOC/Hoc';
 import Loading from '../../../Components/Loading';
 import Modal from '../../../Components/UI/Modal';
-import RehabExerciseContainer from '../RehabExerciseContainer';
 
 class MainRehabContainer extends Component {
   constructor(props){
@@ -51,8 +50,13 @@ class MainRehabContainer extends Component {
   }
   render(){
     const {error} =this.props.RehabReducers;
-    let {isInitializing, rehab} = this.props.RehabReducers;
-    if(!isInitializing && rehab){
+    let {rehab, isInitializing, redirectToWeeklyQuestionnaire} = this.props.RehabReducers;
+    
+    if(redirectToWeeklyQuestionnaire){
+      return(
+        <Redirect to="/weekly-rehab-questionaire" />
+      )
+    }else if(!isInitializing && rehab){
       return(
         <div>
           <MainRehab
@@ -60,6 +64,7 @@ class MainRehabContainer extends Component {
             onStartRehab={this.onStartRehabButtonHandler}
             onChange={this.onChangeButtonHandler}
           />
+        {/* showing loading until data is saved to the database */}
           <div>
               <ActivityIndicator
                 toast
@@ -67,6 +72,7 @@ class MainRehabContainer extends Component {
                 animating={this.props.RehabReducers.isUploading}
               />
           </div>
+          {/* pop up the error message when got the error */}
           {(error.hasError) && (
             <Modal modalFor='modal'>
               <ShowError
@@ -74,10 +80,14 @@ class MainRehabContainer extends Component {
                cancel={this.cancelErrorMessageHandler}/>
             </Modal>
           )}
+          {/* redirect to rehab-exercise page when user clicks start rehab button */}
           {(this.state.isStartRehab) && (
             <Redirect to="/rehab-exercise" />
           )}
-
+          {( redirectToWeeklyQuestionnaire) && (
+            <Redirect to="/weekly-rehab-questionaire" />
+          )}
+          {/* loads change rehab page when user click change rehab button */}
           {(this.state.isChangeRehab) && (
             <Modal modalFor = "modal-for-select-exercise">
               <SelectRehab

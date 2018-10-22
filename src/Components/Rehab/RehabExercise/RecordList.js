@@ -38,20 +38,21 @@ const RecordList = (props) => {
 }
 
 const displayRecord =(props, index) => {
+  console.log("display record",props.state.rehabLog[index]);
+  if(props.state.rehabLog[index]) {
     return(
       <div className="list-records" key={index} >
-
         <Item>
           <Flex justify="between" className="list" style={{color:"black"}}>
             <Flex.Item>
               <span>{index+1}</span>
             </Flex.Item>
             <Flex.Item>
-              <img src={require('../../../Assets/Rehab/RehabExercise/checkCircle.svg')} alt="check-circle"/>
+              <img src={require('../../../Assets/Rehab/checkCircle.svg')} alt="check-circle"/>
             </Flex.Item>
             <Flex.Item>
               <div>
-                {props.state.highestReps} {props.state.repsOrSec}
+                {props.state.highestValue} {props.state.repsOrSec}
               </div>
             </Flex.Item>
             <Flex.Item>
@@ -60,6 +61,28 @@ const displayRecord =(props, index) => {
         </Item>
       </div>
     )
-
+  } else {
+    return(
+      <div className="list-records" key={index} >
+        <Item>
+          <Flex justify="between" className="list" style={{color:"black"}}>
+            <Flex.Item>
+              <span>{index+1}</span>
+            </Flex.Item>
+            <Flex.Item>
+              <img src={require('../../../Assets/Rehab/blankCircle.svg')} alt="check-circle"/>
+            </Flex.Item>
+            <Flex.Item>
+              <div>
+                {props.state.highestValue} {props.state.repsOrSec}
+              </div>
+            </Flex.Item>
+            <Flex.Item>
+            </Flex.Item>
+          </Flex>
+        </Item>
+      </div>
+    )
+  }
 }
 export default RecordList;

@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
-import { List, Icon, Modal, Button } from 'antd-mobile'
+import { List} from 'antd-mobile'
 import {Link} from 'react-router-dom'
 const Item = List.Item
-const prompt = Modal.prompt;
 export default class Content extends Component {
 
   handleClick(e, k) {
@@ -26,7 +25,7 @@ export default class Content extends Component {
 
               return (
                 <Link key={k} to={'/workout/' + dayNumber} onClick={event => this.handleClick(event, k)}>
-                  {(dayNumber == progress) && ( finish_for_day || ask_feedback) ? (
+                  {(dayNumber === progress) && ( finish_for_day || ask_feedback) ? (
                     <Item
                       extra={
                         <div

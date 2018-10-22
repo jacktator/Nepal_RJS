@@ -6,11 +6,13 @@ const CheckboxItem = Checkbox.CheckboxItem;
 const InjuryManagement = (props) => {
   return(
     <div>
-      <h2 style={{textAlign: 'center'}}>Injury Management</h2>
+    {props.heading !== "" && (
+      <h2 style={{textAlign: 'center'}}>{props.heading}</h2>
+    )}
       <div>
-      <div className="listHeader">
-        What is your current rehab focus?
-      </div>
+        <div className="listHeader">
+          {props.title}
+        </div>
         {props.data.map((i,key) => (
           <Flex key={key}>
             <Flex.Item>

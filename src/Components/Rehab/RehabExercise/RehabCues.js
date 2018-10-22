@@ -1,18 +1,13 @@
 import React from 'react';
-import {List} from 'antd-mobile';
-import {Link} from 'react-router-dom';
 import './RehabExercise.css'
-
-const Item = List.Item;
 
 const ExerciseCues = (props) => {
   return(
     <div className="ExerciseCues">
-      <sapn> Shoulder back </sapn>
-      <sapn> Chest up </sapn>
-      <sapn> Track knee over toe </sapn>
-      <sapn> Braced core </sapn>
-      
+      <span> Shoulder back </span>
+      <span> Chest up </span>
+      <span> Track knee over toe </span>
+      <span> Braced core </span>
     </div>
   )
 }

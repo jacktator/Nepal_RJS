@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {addPostureCorrection, addInjuryManagement} from '../actions';
+import {Button} from 'antd-mobile';
+
+import {addPostureCorrection, addInjuryManagement, prepareRehabData} from '../actions';
 import InjuryManagement from '../../../Components/Questionnaire/InjuryManagement';
 import PostureCorrection from '../../../Components/Questionnaire/PostureCorrection';
-
 import Modal from '../../../Components/UI/Modal';
 import RehabModal from '../../../Components/Questionnaire/Popup/RehabModal';
 import {postureCorrectionArray, injuryManagementArray} from '../../DataSources/AllArrays';
@@ -29,36 +30,46 @@ class WeeklyQuestionnaireContainer extends Component{
     this.cancelModalHandler();
     this.props.addPostureCorrection(value);
   }
+  onSubmitButtonHandler= () => {
+    let {injury_management, posture_correction} = this.props.RehabReducers;
+    this.props.prepareRehabData(injury_management.toString(), posture_correction.toString());
+  }
   render(){
     let {injury_management, posture_correction} = this.props.RehabReducers;
-    console.log("injury", injury_management);
-    console.log("posture", posture_correction);
     return(
       <div>
-      <InjuryManagement
-        selectInjuryManagement={this.props.addInjuryManagement}
-        data= {injuryManagementArray}
-        fields = {injury_management}
-        showModal = {this.showModal}
-      />
-      <PostureCorrection
-        data = {postureCorrectionArray}
-        fields = {posture_correction}
-        selectPostureCorrection={this.props.addPostureCorrection}
-        showModal = {this.showModal}
-      />
-        This is weekly rehab questionnaire
+        <br/><br/>
+        <h2 style={{textAlign: 'center'}}>Rehab Focus Questionnaire</h2>
+        <br/><br/>
+        <InjuryManagement
+          selectInjuryManagement={this.props.addInjuryManagement}
+          data= {injuryManagementArray}
+          fields = {injury_management}
+          heading = {""}
+          title = {"What do your current rehab focus for injury management?"}
+          showModal = {this.showModal}
+        />
+        <PostureCorrection
+          data = {postureCorrectionArray}
+          fields = {posture_correction}
+          heading = {""}
+          title = {"What is your current rehab focus for posture correction?"}
+          selectPostureCorrection={this.props.addPostureCorrection}
+          showModal = {this.showModal}
+        />
+        <br/>
+        <Button type="primary" onClick ={()=> this.onSubmitButtonHandler()}> Submit </Button>
 
-        {(this.state.modal) && (
-            <Modal modalFor = "modal">
-              <RehabModal
-                data = {this.state.dataForModal}
-                type = {this.state.rehabTypeForModal}
-                cancel = {this.cancelModalHandler}
-                select = {this.state.rehabTypeForModal === 'forPosture'? this.addPostureCorrection: this.addInjuryManagement }
-              />
-            </Modal>
-        )}
+          {(this.state.modal) && (
+              <Modal modalFor = "modal">
+                <RehabModal
+                  data = {this.state.dataForModal}
+                  type = {this.state.rehabTypeForModal}
+                  cancel = {this.cancelModalHandler}
+                  select = {this.state.rehabTypeForModal === 'forPosture'? this.addPostureCorrection: this.addInjuryManagement }
+                />
+              </Modal>
+          )}
       </div>
     )
   }
@@ -71,7 +82,7 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return bindActionCreators({
-    addInjuryManagement, addPostureCorrection
+    addInjuryManagement, addPostureCorrection, prepareRehabData
   }, dispatch
 );
 }

@@ -1,8 +1,7 @@
 import React , {Component} from 'react';
-import { Accordion, List, InputItem, Toast, Button, ImagePicker, Modal } from 'antd-mobile';
+import { Accordion, List, InputItem, Toast, Button} from 'antd-mobile';
 import axios from 'axios';
 const Item = List.Item;
-const prompt = Modal.prompt;
 
 //const AccountDetails = (props) => {
 class AccountDetails extends Component{
@@ -79,7 +78,6 @@ class AccountDetails extends Component{
   }
 
   render() {
-    const email = this.props.fields.email;
     return (
       <div>
         <Accordion className="my-accordion" onChange={this.onChange}>

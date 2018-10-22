@@ -192,6 +192,8 @@ class Questionnaire extends Component {
           selectInjuryManagement={this.props.addInjuryManagement}
           data= {injuryManagementArray}
           fields = {fields.injury_management}
+          heading = {"Injury Management"}
+          title = {"What is your current rehab focus?"}
           showModal = {this.showModal}
         />
       );
@@ -200,6 +202,8 @@ class Questionnaire extends Component {
         <PostureCorrection
           data = {postureCorrectionArray}
           fields = {fields.posture_correction}
+          heading = {"Posture Correction"}
+          title = {"What is your current rehab focus?"}
           selectPostureCorrection={this.props.addPostureCorrection}
           showModal = {this.showModal}
         />

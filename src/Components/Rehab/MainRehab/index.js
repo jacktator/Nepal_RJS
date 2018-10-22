@@ -1,13 +1,10 @@
 import React from 'react';
 
-import { Button, WingBlank, Card, WhiteSpace } from 'antd-mobile';
-import AppBar from '@material-ui/core/AppBar';
+import { Button, WingBlank} from 'antd-mobile';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-
 import ContainedExercises from './containedExercise';
-import { Link } from 'react-router-dom';
+
 import Footer from '../Footer'
 
   class MainRehab extends React.Component {
@@ -20,7 +17,6 @@ import Footer from '../Footer'
     };
 
     render() {
-      const { classes } = this.props;
       const { value } = this.state;
       return (
         <div className="container">
@@ -41,7 +37,7 @@ import Footer from '../Footer'
                 return <Tab disableRipple key={k} label={v} />
               })}
           </Tabs>
-            <ContainedExercises rehab={this.props.rehab} />
+            <ContainedExercises rehab={this.props.rehab} onChange={this.props.onChange}/>
 
           </div>
 

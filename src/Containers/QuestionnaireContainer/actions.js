@@ -1,7 +1,6 @@
 import axios from 'axios';
-
+import {prepareRehabData} from '../Rehab/actions';
 export function addQuestionnaire(state) {
-
   return(dispatch: Function) => {
     dispatch(uploading(true));
     let token = sessionStorage.getItem('token');
@@ -12,8 +11,7 @@ export function addQuestionnaire(state) {
       fields: state.fields
     }, {
       headers:{ Authorization: "Bearer" + token }
-    }
-  ).then((response) => {
+    }).then((response) => {
     dispatch(addProgram(response.data.acf.days_per_week, response.data.acf.goals, response.data.acf.exercise_place));
     dispatch(prepareRehabData(response.data.acf.injury_management, response.data.acf.posture_correction));
 
@@ -108,91 +106,6 @@ export function addProgram (days, goals, exercise_place) {
           dispatch(addError("OOPs! something went wrong."))
         }
       })//reading json url
-  }
-}
-
-//This function receives the rehab data and store it in the backend
-export function addRehab(rehab){
-  return(dispatch: Function) =>{
-    let user_id = sessionStorage.getItem('user_id');
-    let token = sessionStorage.getItem('token');
-    return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/rehab_program",
-    {
-      status: "publish",
-      fields: {
-        user_id : user_id,
-        rehab : rehab,
-      }
-    }, {
-      headers:{ Authorization: "Bearer" + token }
-    }).then((response) => {
-
-    }).catch((error) => {
-      console.log(error);
-    })
-  }
-}
-/*  This function collect the data for both injurymanagement and posture correction
-    and send to to another function to store it in backend
-*/
-export function  prepareRehabData(injuryManagement, postureCorretion) {
-  return(dispatch: Function) => {
-    let injuryManagementCategory;
-    let postureCorrectionCategory;
-    let injuryManagementJsonPath;
-    let postureCorrectionJsonPath;
-    let rehab =[];
-    switch (injuryManagement) {
-      case "1": injuryManagementCategory ="lowerbackpain"; break;
-      case "2": injuryManagementCategory ="neckpain"; break;
-      case "3": injuryManagementCategory ="shoulderpain"; break;
-      case "4": injuryManagementCategory ="hippain"; break;
-      default: injuryManagementCategory = "";
-    }
-    switch (postureCorretion) {
-      case "1": postureCorrectionCategory = "roundedshoulder"; break;
-      case "2": postureCorrectionCategory = "anteriorpelvictilt"; break;
-      case "3": postureCorrectionCategory = "swayposture"; break;
-      default: postureCorrectionCategory = "";
-    }
-    if(injuryManagementCategory !== ""){
-      injuryManagementJsonPath = `./DataSources/Rehab/InjuryManagement/${injuryManagementCategory}.json`;
-      return axios.get(injuryManagementJsonPath)
-      .then((injuryManagementResponse) => {
-        rehab.push(injuryManagementResponse.data);
-        if(postureCorrectionCategory != ""){
-            //upload both postureCorrection and injuryManagement
-          postureCorrectionJsonPath = `./DataSources/Rehab/PostureCorrection/${postureCorrectionCategory}.json`;
-          return axios.get(postureCorrectionJsonPath)
-          .then((postureCorrectionResponse) => {
-            rehab.push(postureCorrectionResponse.data);
-            dispatch(addRehab(rehab));
-          }).catch((error)=> {
-            console.log("error",error)
-          })
-        }else{ // for if(postureCorrectionCategory != "")
-            //upload only injurymanagement part
-          dispatch(addRehab(rehab));
-        }
-      }).catch((error) => {
-        console.log("error",error);
-      })
-    }else{ //for if(injuryManagementCategory !== "")
-      if(postureCorrectionCategory !== ""){
-        postureCorrectionJsonPath = `./DataSources/Rehab/PostureCorrection/${postureCorrectionCategory}.json`;
-        if(postureCorrectionCategory != ""){
-          postureCorrectionJsonPath = `./DataSources/Rehab/PostureCorrection/${postureCorrectionCategory}.json`;
-          return axios.get(postureCorrectionJsonPath)
-          .then((postureCorrectionResponse) => {
-            rehab.push(postureCorrectionResponse.data);
-            //Upload only posture correction part
-            dispatch(addRehab(rehab));
-          }).catch((error)=> {
-            console.log("error",error)
-          })
-        }
-      }
-    }
   }
 }
 

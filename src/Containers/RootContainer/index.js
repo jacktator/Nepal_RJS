@@ -10,7 +10,7 @@ type Props={
 
 class RootContainer extends Component<Props>{
   render(){
-    const {check, justRegistered} = this.props.RootStates;
+    const {justRegistered} = this.props.RootStates;
     const isInvalidToken = this.props.isInvalidToken;
     return(
       <div>
@@ -35,7 +35,6 @@ function matchDispatchToProps(dispatch){
   return bindActionCreators(
     {
       checkLogin: checkLogin,
-
     }, dispatch
   );
 }

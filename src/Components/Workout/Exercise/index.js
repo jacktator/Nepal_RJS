@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavBar, Icon, NoticeBar,WingBlank,Progress, Badge} from 'antd-mobile';
+import {NavBar, Icon, NoticeBar, Badge} from 'antd-mobile';
 import './Exercise.css';
 import RecordList from './RecordList.js';
 import WeightandRep from './WeightAndRep';

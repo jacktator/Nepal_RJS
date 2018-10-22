@@ -1,4 +1,5 @@
 let DefaultState = {
+  redirectToWeeklyQuestionnaire: false,
   isInitializing: true,
   isUploading: false,
   isFetchingRehabRecord: false,
@@ -51,6 +52,11 @@ const RehabReducers = (state: Object = DefaultState, action: Function) => {
     case "SET_INITIALISATION" :
       return {
         ...state, isInitializing: action.payload
+      }
+
+    case "REDIRECT_TO_QUESTIONNARIE" :
+      return {
+        ...state, redirectToWeeklyQuestionnaire: action.payload
       }
 
     case "CATCH_ERROR":

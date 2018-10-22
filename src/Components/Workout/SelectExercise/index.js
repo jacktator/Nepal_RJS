@@ -27,17 +27,16 @@ import Loading from '../../Loading';
   render() {
     if(this.props.listExercise && this.props.listExercise !== null){
         const exercises = this.props.listExercise.exercises;
-        const exerciseOption = exercises[this.state.index].exercise;
-        let {listExercise, programExerciseList, exerciseIndex} = this.props;
+        let {programExerciseList, exerciseIndex} = this.props;
         if(exerciseIndex != null){
           let exerciseOption = exercises[this.state.index].exercise;
           let code = programExerciseList[exerciseIndex].code;
-          let workout = programExerciseList[exerciseIndex]. workout;
+          let workout = programExerciseList[exerciseIndex].workout;
           let value = this.countInArray(programExerciseList, code);
           if(value > 1){
             let workoutUnderSameCode = [];
             for(let i=0; i<programExerciseList.length; i++){
-              if(programExerciseList[i].workout != workout && programExerciseList[i].code === code){
+              if(programExerciseList[i].workout !== workout && programExerciseList[i].code === code){
                 workoutUnderSameCode.push({"name":programExerciseList[i].workout})
               }
             }

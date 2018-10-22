@@ -85,7 +85,7 @@ class Root extends Component<Props>{
               <Route path="/mainmenu" exact component={MainMenuContainer}/>
               <Route path="/workout/:day" exact component={WorkoutContainer} />
               <Route path="/rehab" exact component={MainRehabContainer}/>
-              <Route path="/rehab-exercise" exact component={RehabExerciseContainer} />
+              <Route path="/rehab-exercise/:index?/:dataIndex?" exact component={RehabExerciseContainer} />
               <Route path="/weekly-rehab-questionaire" exact component={WeeklyQuestionnaireContainer} />
               <Route path="/plan" exact component={PlanContainer}/>
               <Route path="/footer" exact component={FooterContainer} />

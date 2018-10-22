@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Redirect} from 'react-router';
+import {ActivityIndicator} from 'antd-mobile';
 
 import {getRehabRecord, saveRehabRecord} from '../actions';
 import RehabExercise from '../../../Components/Rehab/RehabExercise';
@@ -13,51 +14,56 @@ class RehabExerciseContainer extends Component {
   constructor(props){
     super(props);
     this.state = {
+      goBack: false,
+
       rehabIndex: 0,
       dataIndex: 0,
       currentSets: 1,
       rehabCategory: "",
       rehabName: "",
+      reps: "",
       sets: 0,
       repsOrSec: "reps",
-      highestReps: 0,
+      highestValue: 0,
       rehabLog: [],
     }
   }
+
   componentWillMount() {
     //this.props.getRehabRecord(this.props.RehabReducers.rehabID);
-    let rehabIndex=0;
-    let dataIndex=0;
-    if(this.props.match.params.index) {
+    let rehabIndex = 0;
+    let dataIndex = 0;
+    if(this.props.match.params.index && this.props.match.params.dataIndex) {
       rehabIndex = parseInt(this.props.match.params.index, 10);
-      this.setState({rehabIndex})
+      dataIndex = parseInt(this.props.match.params.dataIndex, 10);
+      this.setState({rehabIndex, dataIndex})
     }
     this.calculateRehabLog(rehabIndex, dataIndex);
   }
 
   calculateRehabLog = (rehabIndex, dataIndex) => {
-    console.log(rehabIndex);
-    console.log(dataIndex);
     let {rehab} = this.props.RehabReducers;
     let {rehabRecord} = this.props.RehabReducers;
-    console.log("rehab form calculate rehab log",rehab);
     if(rehab){
         let rehabData = rehab.rehab[rehabIndex].data[dataIndex];
         let rehabCategory = rehab.rehab[rehabIndex].rehab_category;
-        let repsOrSec, highestReps;
+        let repsOrSec, highestValue, reps;
         let rehabName = rehabData.name;
         let sets = parseInt(rehabData.sets,10)
-        if(rehabData.reps==""){
+        console.log("rehabData", rehabData);
+        if(rehabData.reps === ""){
           repsOrSec = "Sec";
           let temp = rehabData.time.split('-');
-          highestReps = parseInt(temp[temp.length-1], 10);
+          highestValue = parseInt(temp[temp.length-1], 10);
+          reps = rehabData.time+"sec";
         }else{
           repsOrSec = "Reps";
           let temp = rehabData.reps.split('-');
-          highestReps = parseInt(temp[temp.length-1], 10);
+          highestValue = parseInt(temp[temp.length-1], 10);
+          reps = rehabData.reps;
         }
         this.setState({
-          rehabName, sets, repsOrSec, highestReps, rehabCategory
+          rehabName, sets, reps, repsOrSec, highestValue, rehabCategory
         })
         if(rehabRecord){
           if(rehabRecord.rehab){
@@ -65,18 +71,18 @@ class RehabExerciseContainer extends Component {
             if(rehabIndex >= 0){
               let dataIndex = rehabRecord.rehab[rehabIndex].data.findIndex ( i => { return (i.name === rehabName) });
               if(dataIndex >=0) {
-                let rehabLog = rehabRecord.rehab[rehabIndex].data[dataIndex];
-                this.setState({ rehabLog, currentSets: rehabLog.value.length + 1 })
+                let rehabLog = rehabRecord.rehab[rehabIndex].data[dataIndex].value;
+                this.setState({ rehabLog, currentSets: rehabLog.length + 1 })
               }
             }
           }
         }
+      }
     }
-  }
 
   onNextButtonHandler = () => {
-    this.setState({rehabLog:[],currentSets: 1, rehabCategory: "", rehabName: "", sets: 0, repsOrSec: "reps", highestReps: 0})
-    alert("next button");
+    this.setState({rehabLog:[], currentSets: 1, rehabCategory: "", rehabName: "",
+                    sets: 0, repsOrSec: "reps", highestValue: 0 })
     let rehabIndex = this.state.rehabIndex;
     let dataIndex = this.state.dataIndex;
     if(dataIndex !== 3){
@@ -94,27 +100,33 @@ class RehabExerciseContainer extends Component {
       }
     }
     this.calculateRehabLog(rehabIndex, dataIndex);
-
   }
-  onCompleteButtonHander = () => {
+
+  onCompleteButtonHandler = () => {
     let {rehabRecordID} = this.props.RehabReducers;
     let {rehabRecord} = this.props.RehabReducers;
-    let {sets, highestReps, repsOrSec, rehabCategory, rehabName} = this.state;
-    this.props.saveRehabRecord(rehabRecordID, rehabRecord, rehabCategory,rehabName, sets, repsOrSec, highestReps);
-    this.setState({ currentSets: this.state.currentSets+1 })
+    let {sets, highestValue, repsOrSec, rehabCategory, rehabName} = this.state;
+    let rehabLog = [...this.state.rehabLog]
+    rehabLog.splice((this.state.currentSets-1),1);
+    rehabLog.push({data : this.state.highestValue});
+    this.props.saveRehabRecord(rehabRecordID, rehabRecord, rehabCategory,rehabName, sets, repsOrSec, highestValue);
+    this.setState({rehabLog, currentSets: this.state.currentSets+1 })
+  }
+  onBackButtonHandler = (e) => {
+    e.preventDefault();
+    this.setState({ goBack: true})
   }
 
   render() {
-    var days = new Date().getDay();
-    let {rehab, isFetchingRehabRecord,rehabRecord} = this.props.RehabReducers;
+    let {rehab, isFetchingRehabRecord} = this.props.RehabReducers;
     if(rehab){
-      console.log("Data from state", this.state);
       return(
         <div>
           <RehabExercise
             state = {this.state}
             next = {this.onNextButtonHandler }
-            complete = {this.onCompleteButtonHander}
+            complete = {this.onCompleteButtonHandler}
+            back = {this.onBackButtonHandler}
           />
           {isFetchingRehabRecord && (
             <Hoc>
@@ -122,6 +134,17 @@ class RehabExerciseContainer extends Component {
                 <Loading mode="selectExercise"/>
               </Modal>
             </Hoc>
+          )}
+          {/* showing loading until data is saved to the database */}
+          <div>
+              <ActivityIndicator
+                toast
+                text="Please Wait..."
+                animating={this.props.RehabReducers.isUploading}
+              />
+          </div>
+          {this.state.goBack && (
+            <Redirect to='/rehab' />
           )}
         </div>
       )

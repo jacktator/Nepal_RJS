@@ -6,7 +6,7 @@ export function getProgram(){
   return(dispatch: Function) => {
     let user_id = sessionStorage.getItem('user_id');
     let token = sessionStorage.getItem('token');
-    dispatch(validToken(token));
+    //dispatch(validToken(token));
     return axios.get(`https://nepal.sk8tech.io/wp-json/wp/v2/program?
                     filter[meta_key]=user_id&filter[meta_value]=${user_id}&filter[posts_per_page]=1`
     )
@@ -101,9 +101,12 @@ export function implementDeloadAlgorithm(programID, program, progress, ask_feedb
     program.ask_feedback= ask_feedback;
     program.feedback_value= 0;
     program.finish_for_day= false;
+    let token = sessionStorage.getItem('token');
     axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`,{
       status: "publish",
       fields: program
+    }, {
+      headers:{ Authorization: "Bearer" + token }
     }).then((response) => {
       const currentDay = parseInt(response.data.acf.progress,10);
       dispatch(setProgram(response.data.acf));
@@ -124,6 +127,7 @@ export function implementDeloadAlgorithm(programID, program, progress, ask_feedb
 //This function update the current progess of the program.
 export function updateProgress(programID, progress, ask_feedback){
   return((dispatch: Function) => {
+    let token = sessionStorage.getItem('token');
     axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`,{
       status: "publish",
       fields: {
@@ -132,6 +136,8 @@ export function updateProgress(programID, progress, ask_feedback){
         feedback_value: 0,
         finish_for_day: false
       }
+    }, {
+      headers:{ Authorization: "Bearer" + token }
     }).then((response) => {
       const currentDay = parseInt(response.data.acf.progress,10);
       dispatch(setProgram(response.data.acf));
@@ -187,9 +193,12 @@ export function updateDailyFeedBack(programID, program, value) {
     program.feedback_value =feedbackValue;
     program.ask_feedback = false;
     program.finish_for_day = false;
+    let token = sessionStorage.getItem('token');
     axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`, {
       status: "publish",
       fields: program
+    }, {
+      headers:{ Authorization: "Bearer" + token }
     }).then((response)=> {
       dispatch(setProgram(response.data.acf));
       dispatch(setProgramID(response.data.id));
@@ -247,10 +256,13 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
     }
     dispatch(setProgram(program));
     dispatch(setWorkoutList(null));
+    let token = sessionStorage.getItem('token');
     return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${id}`,
       {
         status: "publish",
         fields: program
+      }, {
+        headers:{ Authorization: "Bearer" + token }
       }).then((response)=> {
         dispatch(setProgram(response.data.acf));
       }).catch((error)=> {
@@ -288,10 +300,13 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
       let {dayIndex} = workoutReducers;
       let program = JSON.parse(JSON.stringify(workoutReducers.program));
       program.exercises[dayIndex].exercise_list[listIndex].is_saved = true;
+      let token = sessionStorage.getItem('token');
       return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${id}`,
         {
           status: "publish",
           fields: program
+        }, {
+          headers:{ Authorization: "Bearer" + token }
         }).then((response)=> {
           console.log("Respone",response);
           dispatch(setProgram(response.data.acf));
@@ -345,12 +360,15 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
                 { sets: sets, reps: reps, weight: weight }]}]}
               ]
             }
+            let token = sessionStorage.getItem('token');
             return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/record/${recordID}`,
               {
                 status: "publish",
                 fields: {
                   daily_record: daily_record
                 }
+              }, {
+                headers:{ Authorization: "Bearer" + token }
               })
               .then((response)=> {
                   dispatch(setExerciseRecord(response.data.acf));
@@ -371,12 +389,14 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
         export function updatePersonalBest (program, programID, dayIndex, index, value){
           return(dispatch:Function) => {
             program.exercises[dayIndex].exercise_list[index].personal_best = value;
+            let token = sessionStorage.getItem('token');
             return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`,
               {
                 status: "publish",
                 fields: program
-              })
-              .then((response)=> {
+              },{
+                headers:{ Authorization: "Bearer" + token }
+              }).then((response)=> {
                 dispatch(setProgram(response.data.acf));
               }).catch((error)=> {
                 console.log(error.response);
@@ -394,12 +414,14 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
           return(dispatch:Function) => {
             program.exercises[dayIndex].exercise_list[index].weight = weight;
             program.exercises[dayIndex].exercise_list[index].reps = reps;
+            let token = sessionStorage.getItem('token');
             return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`,
               {
                 status: "publish",
                 fields: program
-              })
-              .then((response)=> {
+              }, {
+                headers:{ Authorization: "Bearer" + token }
+              }).then((response)=> {
                 dispatch(setProgram(response.data.acf));
               }).catch((error)=> {
                 console.log(error.response);
@@ -415,12 +437,14 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
         export function updateReps (program, programID, dayIndex, index, reps){
           return(dispatch:Function) => {
             program.exercises[dayIndex].exercise_list[index].reps = reps;
+            let token = sessionStorage.getItem('token');
             return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`,
               {
                 status: "publish",
                 fields: program
-              })
-              .then((response)=> {
+              }, {
+                headers:{ Authorization: "Bearer" + token }
+              }).then((response)=> {
                 dispatch(setProgram(response.data.acf));
               }).catch((error)=> {
                 console.log(error.response);
@@ -436,14 +460,16 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
         //This function use to mark finish_for_day as true when user click complete workout button after completion of exercise
         export function completeWorkout(programID){
           return(dispatch:Function) => {
+            let token = sessionStorage.getItem('token');
             return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${programID}`,
               {
                 status: "publish",
                 fields: {
                   finish_for_day: true
                 }
-              })
-              .then((response)=> {
+              },{
+                headers:{ Authorization: "Bearer" + token }
+              }).then((response)=> {
                 dispatch(setProgram(response.data.acf));
               }).catch((error)=> {
                 console.log(error.response);
