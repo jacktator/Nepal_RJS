@@ -112,6 +112,13 @@ class WorkoutContainer extends Component{
                   animating={this.props.WorkoutReducers.isClickedKeep}
                 />
             </div>
+            <div>
+                <ActivityIndicator
+                  toast
+                  text="Updating exercise. Please wait.."
+                  animating={this.props.WorkoutReducers.isSavingExercise}
+                />
+            </div>
             {(this.state.isChangeWorkout) && (
               <Modal modalFor = "modal-for-select-exercise">
               <SelectExercise

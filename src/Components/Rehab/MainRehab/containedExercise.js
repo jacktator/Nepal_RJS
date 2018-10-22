@@ -13,7 +13,7 @@ const ContainedExercises = (props) => {
                     <WhiteSpace />
                     {rehab.data.map((data, key1) => (
                         <Card key={key1}>
-                            <Link to={`/rehab`} className="link-highlight">
+                            <Link to={`/rehab-exercise/${key}/${key1}`} className="link-highlight">
                                 <Card.Header
                                     title={<span style={{ whiteSpace: "nowrap" }}>{data.name}</span>}
                                 />
@@ -23,6 +23,9 @@ const ContainedExercises = (props) => {
                             </Card.Body>
                             <Card.Footer
                                 content={<div>
+                                  { data.is_completed &&
+                                    <img src={require('../../../Assets/Rehab/checkCircle.svg')} height="50px" alt="check-circle"/>
+                                  }
                                     <div style={{ textAlign: "center" }}>
                                         <Button type="warning" size="omitted" inline onClick={() => props.onChange(rehab.rehab_category, data.type, key, key1)}>Change</Button>
                                         <WhiteSpace />

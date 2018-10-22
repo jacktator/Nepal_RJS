@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import {Redirect} from 'react-router';
 import {ActivityIndicator} from 'antd-mobile';
 
-import {getRehabRecord, saveRehabRecord} from '../actions';
+import {getRehabRecord, saveRehabRecord, completedCurrentRehab} from '../actions';
 import RehabExercise from '../../../Components/Rehab/RehabExercise';
 import Modal from '../../../Components/UI/Modal';
 import Hoc from '../../../HOC/Hoc';
@@ -103,13 +103,19 @@ class RehabExerciseContainer extends Component {
   }
 
   onCompleteButtonHandler = () => {
-    let {rehabRecordID} = this.props.RehabReducers;
-    let {rehabRecord} = this.props.RehabReducers;
+    let {rehabRecordID, rehabRecord} = this.props.RehabReducers;
     let {sets, highestValue, repsOrSec, rehabCategory, rehabName} = this.state;
-    let rehabLog = [...this.state.rehabLog]
+    let rehabLog = [...this.state.rehabLog];
+    if(this.state.currentSets === this.state.sets){
+    }
     rehabLog.splice((this.state.currentSets-1),1);
     rehabLog.push({data : this.state.highestValue});
-    this.props.saveRehabRecord(rehabRecordID, rehabRecord, rehabCategory,rehabName, sets, repsOrSec, highestValue);
+
+    this.props.saveRehabRecord(rehabRecordID, rehabRecord, rehabCategory,rehabName, sets, repsOrSec, highestValue,);
+    if(this.state.currentSets === this.state.sets){
+      let {rehabID, rehab} = this.props.RehabReducers;
+      this.props.completedCurrentRehab(rehabID, rehab, this.state.rehabIndex, this.state.dataIndex);
+    }
     this.setState({rehabLog, currentSets: this.state.currentSets+1 })
   }
   onBackButtonHandler = (e) => {
@@ -162,7 +168,7 @@ function mapStateToProps(state){
 }
 function mapDispatchToProps(dispatch){
   return bindActionCreators({
-    getRehabRecord, saveRehabRecord
+    getRehabRecord, saveRehabRecord, completedCurrentRehab
   }, dispatch);
 }
 export default connect (mapStateToProps, mapDispatchToProps)(RehabExerciseContainer);
