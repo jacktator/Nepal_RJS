@@ -20,6 +20,7 @@ import WeeklyQuestionnaireContainer from '../../Containers/Rehab/WeeklyQuestionn
 import ProfileContainer from '../../Containers/ProfileContainer';
 import TermsAndCondComponent from '../TermsAndCond';
 import GetJson from '../../Containers/ZShawn';
+import Try from '../HOC';
 
 import HistoryDetail from '../Workout/History/HistoryDetail/'
 import HistoryWeekly from '../Workout/History/HistoryWeekly'
