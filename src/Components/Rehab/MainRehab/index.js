@@ -40,7 +40,7 @@ class MainRehab extends React.Component {
               midPartTabsValue={this.state.midPartTabsValue}
               handleChange={this.midPartTabsValueHandleChange}
               tapBarContent={tapBarContent}
-              currentProcess={2}
+              currentProcess={this.props.currentProcess}
             />
             <ContainedExercises rehab={this.props.rehab} onChange={this.props.onChange} />
           </div>
