@@ -246,6 +246,7 @@ export function getExerciseRecord(programID){
 //This function use to update the program when user change the workout
 export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
   return(dispatch: Function) => {
+    dispatch(savingExercise(true));
     let id = workoutReducers.programID;
     let { dayIndex }= workoutReducers;
     let program = JSON.parse(JSON.stringify(workoutReducers.program));
@@ -254,7 +255,6 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
     if(selectedExercise.repetition !== "n/a"){
       program.exercises[dayIndex].exercise_list[listIndex].reps = selectedExercise.repetition;
     }
-    dispatch(setProgram(program));
     dispatch(setWorkoutList(null));
     let token = sessionStorage.getItem('token');
     return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/program/${id}`,
@@ -265,8 +265,9 @@ export function selectWorkout(listIndex, workoutReducers, selectedExercise) {
         headers:{ Authorization: "Bearer" + token }
       }).then((response)=> {
         dispatch(setProgram(response.data.acf));
+        dispatch(savingExercise(false));
       }).catch((error)=> {
-        console.log(error.response);
+        dispatch(savingExercise(false));
         if(error.response){
           dispatch(catchError(error.response.data.message));
         }else{

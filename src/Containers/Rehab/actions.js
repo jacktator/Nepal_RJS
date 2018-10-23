@@ -21,10 +21,25 @@ export function fetchRehab(){
 
               dispatch(redirectToQuestionnaire(true));
         }else{
-          dispatch(setRehabID(response.data[0].id))
-          dispatch(setRehab(response.data[0].acf))
-          dispatch(setInitialisation(false));
-          dispatch(getRehabRecord(response.data[0].id))
+          console.log(response.data[0].acf.days, "and", today);
+          if(parseInt(response.data[0].acf.days,10) === today){
+            console.log("no need to update");
+            dispatch(setRehabID(response.data[0].id))
+            dispatch(setRehab(response.data[0].acf))
+            dispatch(setInitialisation(false));
+            dispatch(getRehabRecord(response.data[0].id))
+          }else{
+            let rehabID = response.data[0].id;
+            let rehabData = response.data[0].acf;
+            rehabData.rehab.map((value, rehabIndex) => {
+              value.data.map((value1, dataIndex) => {
+                rehabData.rehab[rehabIndex].data[dataIndex].is_completed = false;
+                return null;
+              })
+              return null;
+            })
+            dispatch(updateRehabProgram(rehabID, rehabData))
+          }
         }
       }
     }).catch((error) => {
@@ -33,6 +48,29 @@ export function fetchRehab(){
       }else{
         dispatch(catchError("Oops! Unable to connect to the server. Either your device is offline or server is down."))
       }
+    })
+  }
+}
+
+export function updateRehabProgram(rehabID, rehabData) {
+  return(dispatch: Function) => {
+    let token = sessionStorage.getItem('token');
+    return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/rehab_program/${rehabID}`,{
+      status: "publish",
+      fields: {
+        rehab: rehabData.rehab
+      }
+    }, {
+      headers:{ Authorization: "Bearer" + token }
+    }).then((response)=> {
+      dispatch(setRehabID(response.data.id))
+      dispatch(setRehab(response.data.acf))
+      dispatch(setInitialisation(false));
+      console.log(response)
+    }).catch((error) => {
+      dispatch(setInitialisation(false));
+      console.log(error);
+      console.log(error.response);
     })
   }
 }
@@ -122,6 +160,16 @@ export function getRehabRecord(rehabID){
     }).catch((error)=> {
       console.log(error.response);
     })
+  }
+}
+
+export function completedCurrentRehab(rehabID, rehab, rehabIndex, dataIndex){
+  return(dispatch: Function) => {
+    console.log(rehabID);
+    let token = sessionStorage.getItem('token');
+    let rehabData = JSON.parse(JSON.stringify(rehab));
+    rehabData.rehab[rehabIndex].data[dataIndex].is_completed = true;
+    dispatch(updateRehabProgram(rehabID, rehabData))
   }
 }
 
