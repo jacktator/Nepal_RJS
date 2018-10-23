@@ -101,9 +101,7 @@ class MainRehabContainer extends Component {
       )
     }else{
       return(
-        <Hoc>
           <Loading />
-        </Hoc>
       )
     }
 
