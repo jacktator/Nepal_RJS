@@ -11,8 +11,9 @@ const ContainedExercises = (props) => {
                         <ExerciseCard 
                         key={key1}
                         title={data.name}
-                        to='/rehab'
+                        to={`/rehab-exercise/${key}/${key1}`}
                         onChange={()=>props.onChange(rehab.rehab_category, data.type, key, key1)}
+                        finish={data.is_completed}
                         />
                     ))}
                 </div>

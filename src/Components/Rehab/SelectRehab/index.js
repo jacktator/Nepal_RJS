@@ -27,11 +27,11 @@ const styles = theme => ({
         backgroundColor: theme.palette.background.default,
     },
     img: {
-        height: 255,
         display: 'block',
         maxWidth: 400,
         overflow: 'hidden',
         width: '100%',
+        height: 'auto',
     },
 });
 
@@ -106,7 +106,7 @@ class SwipeableTextMobileStepper extends React.Component {
                   </Button>
                         }
                     />
-                    <Button style={{borderRadius: 0}} variant="contained" color="primary" fullWidth disableRipple onClick={() => this.selectExercise()}>Select</Button>
+                    <Button style={{ borderRadius: 0 }} variant="contained" color="primary" fullWidth disableRipple onClick={() => this.selectExercise()}>Select</Button>
 
                 </div>
             );
