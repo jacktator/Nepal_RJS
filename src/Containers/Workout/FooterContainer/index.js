@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { selectFooter } from './actions';
-import Footer from '../../../Components/Workout/Footer/index3';
+import Footer from '../../../Components/Workout/Footer/index';
 
 class FooterContainer extends Component {
 

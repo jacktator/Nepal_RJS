@@ -17,14 +17,22 @@ const FooterContent = [
 const tapBarContent = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat','Sun'];
 
 class MainRehab extends React.Component {
-  state = {
-    value: 0,
-    midPartTabsValue: 0,
-  };
-
-  midPartTabsValueHandleChange = (event, value) => {
+  constructor(props){
+    super(props);
+    this.state={
+      value: 0,
+      midPartTabsValue: 0,  
+    };
+    this.midPartTabsValueHandleChange=this.midPartTabsValueHandleChange.bind(this);
+    this.clickHandle=this.clickHandle.bind(this);
+  }
+  midPartTabsValueHandleChange (event, value)  {
     this.setState({ midPartTabsValue: value });
   };
+
+  clickHandle (exid) {
+    this.props.fetchRehabPreviousRecord(this.props.RehabReducersid,exid);
+  }
 
   render() {
     return (
@@ -41,6 +49,7 @@ class MainRehab extends React.Component {
               handleChange={this.midPartTabsValueHandleChange}
               tapBarContent={tapBarContent}
               currentProcess={new Date().getDay() === 0 ? 6 : new Date().getDay()}
+              fetchRehabPreviousRecord={this.clickHandle}
             />
             <ContainedExercises rehab={this.props.rehab} onChange={this.props.onChange} />
           </div>

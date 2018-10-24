@@ -4,7 +4,7 @@ import {Redirect} from 'react-router';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import {fetchRehab, fetchRehabList, selectRehab, removeError} from '../actions';
+import {fetchRehab, fetchRehabList, selectRehab, removeError, fetchRehabPreviousRecord} from '../actions';
 import MainRehab from '../../../Components/Rehab/MainRehab';
 import ShowError from '../../../Components/Error/ShowError';
 import SelectRehab from '../../../Components/Rehab/SelectRehab';
@@ -66,6 +66,8 @@ class MainRehabContainer extends Component {
             rehab = {rehab.rehab}
             onStartRehab={this.onStartRehabButtonHandler}
             onChange={this.onChangeButtonHandler}
+            fetchRehabPreviousRecord={this.props.fetchRehabPreviousRecord}
+            RehabReducersid = {this.props.RehabReducers.rehabID}
           />
         {/* showing loading until data is saved to the database */}
           <div>
@@ -117,7 +119,7 @@ function mapStateToProps(state){
 }
 function mapDispatchToProps(dispatch){
   return bindActionCreators({
-      fetchRehab, fetchRehabList, selectRehab, removeError
+      fetchRehab, fetchRehabList, selectRehab, removeError, fetchRehabPreviousRecord
     },dispatch
   );
 }

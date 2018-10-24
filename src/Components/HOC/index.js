@@ -8,7 +8,7 @@ class FooterComponent extends React.Component {
     state = {
         value: 3,
         completed: 20,
-        midPartTabsValue: 0,
+        midPartTabsValue: new Date().getDay(),
     };
 
     handleChange = (event, value) => {

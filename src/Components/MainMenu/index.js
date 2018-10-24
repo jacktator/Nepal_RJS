@@ -45,7 +45,6 @@ const MainMenu = (props) => {
               </button>
           </div>
             <FooterContainer />
-            <FooterTry url={window.location.toString().split('#')[1]} />
       </div>
 
     )
