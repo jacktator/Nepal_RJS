@@ -21,7 +21,7 @@ class MainRehab extends React.Component {
     super(props);
     this.state={
       value: 0,
-      midPartTabsValue: 0,  
+      midPartTabsValue: new Date().getUTCDay()-1,  
     };
     this.midPartTabsValueHandleChange=this.midPartTabsValueHandleChange.bind(this);
     this.clickHandle=this.clickHandle.bind(this);
