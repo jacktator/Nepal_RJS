@@ -8,7 +8,7 @@ const ContainedExercises = (props) => {
                 <div key={key}>
                     <h2>{rehab.rehab_category}</h2>
                     {rehab.data.map((data, key1) => (
-                        <ExerciseCard 
+                        <ExerciseCard
                         key={key1}
                         title={data.name}
                         to={`/rehab-exercise/${key}/${key1}`}
