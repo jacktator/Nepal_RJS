@@ -50,8 +50,7 @@ class MainRehabContainer extends Component {
   }
   render(){
     const {error} =this.props.RehabReducers;
-    console.log("Rehab Reducres",this.props.RehabReducers);
-    let {rehab, isInitializing, redirectToWeeklyQuestionnaire, previousRehabRecord} = this.props.RehabReducers;
+    let {rehab, isInitializing, redirectToWeeklyQuestionnaire, previousRehabRecord, isFetchingPreviousRecord} = this.props.RehabReducers;
     if(redirectToWeeklyQuestionnaire){
       return(
         <Redirect to="/weekly-rehab-questionaire" />
@@ -65,6 +64,7 @@ class MainRehabContainer extends Component {
             onStartRehab={this.onStartRehabButtonHandler}
             onChange={this.onChangeButtonHandler}
             fetchRehabPreviousRecord={this.props.fetchRehabPreviousRecord}
+            isFetchingPreviousRecord = {isFetchingPreviousRecord}
             RehabReducersid = {this.props.RehabReducers.rehabID}
           />
         {/* showing loading until data is saved to the database */}

@@ -1,4 +1,5 @@
 import React from 'react';
+import {ActivityIndicator} from 'antd-mobile';
 import ExerciseCard from '../../HOC/Exercises';
 
 const display = (rehab) => {
@@ -16,7 +17,19 @@ const display = (rehab) => {
 }
 
 const PreviousRecord = (props) => {
-  if(props.data){
+
+  if(props.isFetching){
+    return(
+      <div>
+          <ActivityIndicator
+            toast
+            text="Please Wait..."
+            animating={props.isFetching}
+          />
+      </div>
+    )
+  }
+  else if(props.data){
     if(props.data.rehab){
       return(
               <div style={{height:'100%', overflow:'scroll', width:'90vw', marginLeft:'5vw'}}>

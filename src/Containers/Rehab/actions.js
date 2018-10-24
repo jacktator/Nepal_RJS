@@ -5,6 +5,7 @@ export function fetchRehab(){
   return(dispatch: Function) => {
     dispatch(setInitialisation(true));
     let user_id = sessionStorage.getItem('user_id');
+    console.log(user_id);
     return axios.get(`https://nepal.sk8tech.io/wp-json/wp/v2/rehab_program?
                     filter[meta_key]=user_id&filter[meta_value]=${user_id}&filter[posts_per_page]=1`
     ).then((response) => {
@@ -15,13 +16,18 @@ export function fetchRehab(){
         var currentDate = new Date();
         var timeDiff = Math.abs(currentDate.getTime() - createdDate.getTime());
         var diffDays = Math.floor(timeDiff / (1000 * 3600 * 24));
-        var today = currentDate.getDay();
-        if((today === 1 && diffDays > 2) || (today === 2 && diffDays > 3) || (today === 3 && diffDays > 4)
-            || (today === 5 && diffDays > 6) || (today === 6 && diffDays > 7) ){
+        var today
+        if(currentDate.getDay() === 0) {
+          today =6;
+        }else{
+          today = currentDate.getDay()-1;
+        }
+        if((today === 0 && diffDays > 2) || (today === 1 && diffDays > 3) || (today === 2 && diffDays > 4)
+            || (today === 3 && diffDays > 6) || (today === 4 && diffDays > 7) ){
 
               dispatch(redirectToQuestionnaire(true));
         }else{
-          if(parseInt(response.data[0].acf.days,10) === today){
+          if(response.data[0].acf.days === today.toString()){
             dispatch(setRehabID(response.data[0].id))
             dispatch(setRehab(response.data[0].acf))
             dispatch(setInitialisation(false));
@@ -29,6 +35,7 @@ export function fetchRehab(){
           }else{
             let rehabID = response.data[0].id;
             let rehabData = response.data[0].acf;
+            rehabData.days = today;
             rehabData.rehab.map((value, rehabIndex) => {
               value.data.map((value1, dataIndex) => {
                 rehabData.rehab[rehabIndex].data[dataIndex].is_completed = false;
@@ -62,6 +69,7 @@ export function updateRehabProgram(rehabID, rehabData) {
     }, {
       headers:{ Authorization: "Bearer" + token }
     }).then((response)=> {
+      console.log("updated rehab program",response)
       dispatch(setRehabID(response.data.id))
       dispatch(setRehab(response.data.acf))
       dispatch(setInitialisation(false));
@@ -124,37 +132,57 @@ export function selectRehab(rehabID, rehab, selectedRehab, rehabIndex, dataIndex
     })
   }
 }
+
+export function createRehabRecord(rehabID, day) {
+  return(dispatch: Function) => {
+    let user_id = sessionStorage.getItem('user_id');
+    let token = sessionStorage.getItem('token');
+    return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/rehab_record`,
+      {
+          status: "publish",
+          fields:{
+            user_id: user_id,
+            rehab_program_id: rehabID,
+            day: day
+          }
+      }, {
+        headers:{ Authorization: "Bearer" + token }
+      }).then((response) => {
+          dispatch(setRehabRecord(response.data.acf));
+          dispatch(setRehabRecordID(response.data.id));
+          dispatch(isFetchingRehabRecord(false))
+      }).catch((error) =>{
+        console.log(error.response);
+      })
+  }
+}
 //This function is used to fetch the record for given rehabID
 export function getRehabRecord(rehabID){
   return(dispatch: Function) => {
     dispatch(isFetchingRehabRecord(true));
-    var day = new Date().getDay();
-    return axios.get(`https://nepal.sk8tech.io/wp-json/wp/v2/rehab_record?filter[meta_key]=rehab_program_id&filter[meta_value]=${rehabID}&filter[meta_key]=day&filter[meta_value]=${day}`)
+    var day = new Date().getDay()-1;
+    let user_id = sessionStorage.getItem('user_id');
+    return axios.get(`https://nepal.sk8tech.io/wp-json/wp/v2/rehab_record?filter[meta_key]=rehab_program_id&filter[meta_value]=${rehabID}`)
     .then((response) => {
       if(response.data.length === 0 ){
-        let user_id = sessionStorage.getItem('user_id');
-        let token = sessionStorage.getItem('token');
-        return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/rehab_record`,
-          {
-              status: "publish",
-              fields:{
-                user_id: user_id,
-                rehab_program_id: rehabID,
-                day: day
-              }
-          }, {
-            headers:{ Authorization: "Bearer" + token }
-          }).then((response) => {
-              dispatch(setRehabRecord(response.data.acf));
-              dispatch(setRehabRecordID(response.data.id));
-              dispatch(isFetchingRehabRecord(false))
-          }).catch((error) =>{
-            console.log(error.response);
-          })
+        dispatch(createRehabRecord(rehabID, day));
       }else{
-        dispatch(setRehabRecord(response.data[0].acf));
-        dispatch(setRehabRecordID(response.data[0].id));
-        dispatch(isFetchingRehabRecord(false))
+          let found = false, index;
+          for(let i=0; i<response.data.length; i++){
+            if(response.data[i].acf.day === day.toString()){
+              found = true;
+              index = i;
+              break;
+            }
+          }
+          if(found){
+            dispatch(setRehabRecord(response.data[index].acf));
+            dispatch(setRehabRecordID(response.data[index].id));
+            dispatch(isFetchingRehabRecord(false))
+          }else{
+            dispatch(createRehabRecord(rehabID, day));
+          }
+
       }
     }).catch((error)=> {
       console.log(error.response);
@@ -164,9 +192,11 @@ export function getRehabRecord(rehabID){
 
 export function completedCurrentRehab(rehabID, rehab, rehabIndex, dataIndex){
   return(dispatch: Function) => {
+    console.log("completedCurrentRehab")
     let token = sessionStorage.getItem('token');
     let rehabData = JSON.parse(JSON.stringify(rehab));
     rehabData.rehab[rehabIndex].data[dataIndex].is_completed = true;
+    console.log("Updated rehab Data",rehabData)
     dispatch(updateRehabProgram(rehabID, rehabData))
   }
 }
@@ -178,7 +208,7 @@ export function saveRehabRecord(rehabRecordID, record, rehabCategory, name, sets
     let token = sessionStorage.getItem('token');
     let rehab, temp, rehabRecord;
     rehabRecord = JSON.parse(JSON.stringify(record));
-    if(rehabRecord.record){
+    if(rehabRecord.rehab){
         rehab = rehabRecord.rehab;
         let rehabIndex = rehab.findIndex( i => { return (i.rehab_category === rehabCategory) });
         if(rehabIndex >= 0){
@@ -220,19 +250,24 @@ export function addRehab(rehab){
   return(dispatch: Function) =>{
     let user_id = sessionStorage.getItem('user_id');
     let token = sessionStorage.getItem('token');
+    let days = new Date().getDay() - 1;
     return axios.post("https://nepal.sk8tech.io/wp-json/wp/v2/rehab_program",
     {
       status: "publish",
       fields: {
         user_id : user_id,
+        days: days,
         rehab : rehab,
       }
     }, {
       headers:{ Authorization: "Bearer" + token }
     }).then((response) => {
         dispatch(redirectToQuestionnaire(false))
+          dispatch(uploadingToServer(false))
     }).catch((error) => {
-      console.log("error",error);
+        dispatch(uploadingToServer(false))
+        alert("got some error")
+        console.log("error",error);
     })
   }
 }
@@ -241,6 +276,7 @@ export function addRehab(rehab){
 */
 export function  prepareRehabData(injuryManagement, postureCorretion) {
   return(dispatch: Function) => {
+    dispatch(uploadingToServer(true))
     let injuryManagementCategory;
     let postureCorrectionCategory;
     let injuryManagementJsonPath;
@@ -279,6 +315,7 @@ export function  prepareRehabData(injuryManagement, postureCorretion) {
           dispatch(addRehab(rehab));
         }
       }).catch((error) => {
+        dispatch(uploadingToServer(false))
         console.log("error",error);
       })
     }else{ //for if(injuryManagementCategory !== "")
@@ -292,6 +329,7 @@ export function  prepareRehabData(injuryManagement, postureCorretion) {
             //Upload only posture correction part
             dispatch(addRehab(rehab));
           }).catch((error)=> {
+            dispatch(uploadingToServer(false))
             console.log("error",error)
           })
         }
@@ -299,20 +337,26 @@ export function  prepareRehabData(injuryManagement, postureCorretion) {
     }
   }
 }
+
 //fetching record for previous week
-export function fetchRehabPreviousRecord(rehabID: Number, days: Number){
-  console.log("fetching rehab previous week record");
+export function fetchRehabPreviousRecord(rehabID: Number, day: Number){
   return(dispatch: Function) => {
+    console.log("this is day",day);
     dispatch(isFetchingPreviousRecord(true));
     return axios.get(`https://nepal.sk8tech.io/wp-json/wp/v2/rehab_record?
-                      filter[meta_key]=rehab_program_id&filter[meta_value]=${rehabID}&filter[meta_key]=day&filter[meta_value]=${days}`
+                      filter[meta_key]=rehab_program_id&filter[meta_value]=${rehabID}`
     ).then((response) => {
-      if(response.data.length > 0) {
-        dispatch(setPreviousDaysRecord(response.data[0].acf));
-        console.log("resposse for fetch previous data");
-        console.log(response.data[0].acf);
-      }else {
-        console.log("no data found");
+      let recordFound = false, index;
+      for(let i=0; i<response.data.length ; i++){
+        if(response.data[i].acf.day === day.toString()){
+          recordFound = true;
+          index = i;
+          break;
+        }
+      }
+      if(recordFound){
+        dispatch(setPreviousDaysRecord(response.data[index].acf));
+      }else{
         dispatch(setPreviousDaysRecord(null))
       }
       dispatch(isFetchingPreviousRecord(false));

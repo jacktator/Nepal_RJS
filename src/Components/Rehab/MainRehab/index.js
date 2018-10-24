@@ -1,5 +1,6 @@
 import React from 'react';
 import ContainedExercises from './containedExercise';
+import PreviousRecord from './PreviousRecord';
 import HomeIcon from '@material-ui/icons/HomeOutlined';
 import ClanderIcon from '@material-ui/icons/HelpOutlineOutlined';
 import ContentIcon from '@material-ui/icons/AssessmentOutlined';
@@ -21,7 +22,7 @@ class MainRehab extends React.Component {
     super(props);
     this.state={
       value: 0,
-      midPartTabsValue: 0,
+      midPartTabsValue: new Date().getUTCDay()-1,
     };
     this.midPartTabsValueHandleChange=this.midPartTabsValueHandleChange.bind(this);
     this.clickHandle=this.clickHandle.bind(this);
@@ -35,6 +36,8 @@ class MainRehab extends React.Component {
   }
 
   render() {
+    let day = new Date().getDay()-1;
+
     return (
       <MainComponent
         backgroundImage='image/sampleImage.jpeg'
@@ -51,7 +54,11 @@ class MainRehab extends React.Component {
               currentProcess={new Date().getDay() === 0 ? 6 : new Date().getDay()}
               fetchRehabPreviousRecord={this.clickHandle}
             />
-            <ContainedExercises rehab={this.props.rehab} onChange={this.props.onChange} />
+            {day === this.state.midPartTabsValue ?
+              <ContainedExercises rehab={this.props.rehab} onChange={this.props.onChange} />
+              :
+              <PreviousRecord data={this.props.previousRehabRecord} isFetching = {this.props.isFetchingPreviousRecord}/>
+            }
           </div>
         }
       />

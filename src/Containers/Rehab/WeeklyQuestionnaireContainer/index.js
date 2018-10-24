@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {Button} from 'antd-mobile';
+import {Button, ActivityIndicator} from 'antd-mobile';
+import {Redirect} from 'react-router';
 
 import {addPostureCorrection, addInjuryManagement, prepareRehabData} from '../actions';
 import InjuryManagement from '../../../Components/Questionnaire/InjuryManagement';
@@ -32,10 +33,20 @@ class WeeklyQuestionnaireContainer extends Component{
   }
   onSubmitButtonHandler= () => {
     let {injury_management, posture_correction} = this.props.RehabReducers;
-    this.props.prepareRehabData(injury_management.toString(), posture_correction.toString());
+    if(!injury_management || !posture_correction){
+      alert("Please select both values before you submit. Thank you");
+    }else{
+      this.props.prepareRehabData(injury_management.toString(), posture_correction.toString());
+    }
+
   }
   render(){
-    let {injury_management, posture_correction} = this.props.RehabReducers;
+    let {injury_management, posture_correction, redirectToWeeklyQuestionnaire, isUploading} = this.props.RehabReducers;
+    if(!redirectToWeeklyQuestionnaire){
+      return(
+        <Redirect to="/rehab" />
+      )
+    }
     return(
       <div>
         <br/><br/>
@@ -70,6 +81,14 @@ class WeeklyQuestionnaireContainer extends Component{
                 />
               </Modal>
           )}
+
+          <div>
+              <ActivityIndicator
+                toast
+                text="Please Wait..."
+                animating={isUploading}
+              />
+          </div>
       </div>
     )
   }
