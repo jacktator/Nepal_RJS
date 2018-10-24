@@ -21,9 +21,7 @@ export function fetchRehab(){
 
               dispatch(redirectToQuestionnaire(true));
         }else{
-          console.log(response.data[0].acf.days, "and", today);
           if(parseInt(response.data[0].acf.days,10) === today){
-            console.log("no need to update");
             dispatch(setRehabID(response.data[0].id))
             dispatch(setRehab(response.data[0].acf))
             dispatch(setInitialisation(false));
@@ -39,6 +37,7 @@ export function fetchRehab(){
               return null;
             })
             dispatch(updateRehabProgram(rehabID, rehabData))
+            dispatch(getRehabRecord(response.data[0].id))
           }
         }
       }
@@ -66,7 +65,7 @@ export function updateRehabProgram(rehabID, rehabData) {
       dispatch(setRehabID(response.data.id))
       dispatch(setRehab(response.data.acf))
       dispatch(setInitialisation(false));
-      console.log(response)
+
     }).catch((error) => {
       dispatch(setInitialisation(false));
       console.log(error);
@@ -132,7 +131,7 @@ export function getRehabRecord(rehabID){
     var day = new Date().getDay();
     return axios.get(`https://nepal.sk8tech.io/wp-json/wp/v2/rehab_record?filter[meta_key]=rehab_program_id&filter[meta_value]=${rehabID}&filter[meta_key]=day&filter[meta_value]=${day}`)
     .then((response) => {
-      if(response.data.length ===0 ){
+      if(response.data.length === 0 ){
         let user_id = sessionStorage.getItem('user_id');
         let token = sessionStorage.getItem('token');
         return axios.post(`https://nepal.sk8tech.io/wp-json/wp/v2/rehab_record`,
@@ -165,7 +164,6 @@ export function getRehabRecord(rehabID){
 
 export function completedCurrentRehab(rehabID, rehab, rehabIndex, dataIndex){
   return(dispatch: Function) => {
-    console.log(rehabID);
     let token = sessionStorage.getItem('token');
     let rehabData = JSON.parse(JSON.stringify(rehab));
     rehabData.rehab[rehabIndex].data[dataIndex].is_completed = true;
@@ -178,9 +176,9 @@ export function saveRehabRecord(rehabRecordID, record, rehabCategory, name, sets
   return(dispatch: Function) => {
     dispatch(uploadingToServer(true));
     let token = sessionStorage.getItem('token');
-    let rehabRecord = JSON.parse(JSON.stringify(record));
-    let rehab, temp;
-    if(rehabRecord.rehab){
+    let rehab, temp, rehabRecord;
+    rehabRecord = JSON.parse(JSON.stringify(record));
+    if(rehabRecord.record){
         rehab = rehabRecord.rehab;
         let rehabIndex = rehab.findIndex( i => { return (i.rehab_category === rehabCategory) });
         if(rehabIndex >= 0){
@@ -301,6 +299,29 @@ export function  prepareRehabData(injuryManagement, postureCorretion) {
     }
   }
 }
+//fetching record for previous week
+export function fetchRehabPreviousRecord(rehabID: Number, days: Number){
+  console.log("fetching rehab previous week record");
+  return(dispatch: Function) => {
+    dispatch(isFetchingPreviousRecord(true));
+    return axios.get(`https://nepal.sk8tech.io/wp-json/wp/v2/rehab_record?
+                      filter[meta_key]=rehab_program_id&filter[meta_value]=${rehabID}&filter[meta_key]=day&filter[meta_value]=${days}`
+    ).then((response) => {
+      if(response.data.length > 0) {
+        dispatch(setPreviousDaysRecord(response.data[0].acf));
+        console.log("resposse for fetch previous data");
+        console.log(response.data[0].acf);
+      }else {
+        console.log("no data found");
+        dispatch(setPreviousDaysRecord(null))
+      }
+      dispatch(isFetchingPreviousRecord(false));
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
+
+}
 
 export function setRehabList(rehabList: Object){
   return {
@@ -331,6 +352,19 @@ export function setRehabRecordID(id: Number) {
   return {
     type: "SET_REHAB_RECORD_ID",
     payload: id
+  }
+}
+export function setPreviousDaysRecord(data: Object){
+  console.log("setting previous week record");
+  return {
+    type: "SET_PREVIOUS_DAYS_RECORD",
+    payload: data
+  }
+}
+export function isFetchingPreviousRecord(value: Boolean) {
+  return {
+    type: "IS_FETCHING_PREVIOUS_RECORD",
+    payload: value
   }
 }
 export function isFetchingRehabRecord(value: Boolean) {

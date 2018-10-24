@@ -3,6 +3,7 @@ let DefaultState = {
   isInitializing: true,
   isUploading: false,
   isFetchingRehabRecord: false,
+  isFetchingPreviousRecord: false,
   injury_management: null,
   posture_correction: null,
   error: {
@@ -42,6 +43,15 @@ const RehabReducers = (state: Object = DefaultState, action: Function) => {
     case "IS_FETCHING_REHAB_RECORD" :
       return {
         ...state, isFetchingRehabRecord: action.payload
+      }
+
+    case "SET_PREVIOUS_DAYS_RECORD" :
+      return {
+        ...state, previousRehabRecord: action.payload
+      }
+    case "IS_FETCHING_PREVIOUS_RECORD" :
+      return {
+        ...state, isFetchingPreviousRecord: action.payload
       }
 
     case "UPLOADING_TO_SERVER" :
