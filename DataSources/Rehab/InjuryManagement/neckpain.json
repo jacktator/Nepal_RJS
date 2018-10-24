@@ -1,0 +1,31 @@
+{
+  "rehab_name": "Injury Management",
+  "rehab_category" : "Neck Pain",
+  "data" : [
+    {
+      "type" : "Mobility",
+      "name" : "Chin tucks",
+      "sets" : "3",
+      "reps" : "10-20",
+      "time" : ""
+    },{
+      "type" : "Mobility",
+      "name" : "Arms straight shoulder rolls",
+      "sets" : "3",
+      "reps" : "10-20",
+      "time" : ""
+    },{
+      "type" : "Release work",
+      "name" : "Foam roller thoracic mobilisation",
+      "sets" : "3",
+      "reps" : "",
+      "time" : "30-60"
+    },{
+      "type" : "Strength endurance",
+      "name" : "Deep neck flexor training",
+      "sets" : "3",
+      "reps" : "",
+      "time" : "30-60"
+    }
+  ]
+}

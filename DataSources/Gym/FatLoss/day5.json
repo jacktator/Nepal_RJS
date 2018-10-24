@@ -18,7 +18,7 @@
           {"name":"Back Heavy Exercises","code":"11","sets":"3","reps":"10-12","feedback":"4", "workout":"Bent Over Row (Barbell)", "progression_model":"linear", "video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
           {"name":"Chest fly + glute accesory ","code":"39","sets":"3","reps":"15-20","feedback":"3", "workout":"Flat Chest Fly (Dumbbell)", "progression_model":"double progression", "video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
           {"name":"Back Light Exercises","code":"12","sets":"3","reps":"12-15","feedback":"4", "workout":"Single Arm Row (Dumbbell)", "progression_model":"double progression", "video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"},
-          {"name":"Glutes Accessory Exercises","code":"20","sets":"3","reps":"Till Failure","feedback":"3", "workout":"Glute Bridge (Single Leg)", "progression_model":"double progression", "video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"}
+          {"name":"Glutes Accessory Exercises","code":"20","sets":"3","reps":"till failure","feedback":"3", "workout":"Glute Bridge (Single Leg)", "progression_model":"double progression", "video_link":"IODxDxX7oi4","icon_link":"2018/10/Icon-9.jpg", "image_link":"2018/10/Images-1.jpeg"}
         ]
       },  {
         "day": "3",

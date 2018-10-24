@@ -1,0 +1,289 @@
+{
+  "rehabList" : [
+    {
+      "name" : "Lower Back Pain",
+      "rehab_list" : [
+        {
+          "type" : "Mobility",
+          "data" : [
+            {"name":"Seated spinal rotations","sets":"3","reps":"5-10","time":""},
+            {"name":"Spinal flexion + extension sitting","sets":"3","reps":"10-15","time":""},
+            {"name":"Psoas and hamstring mobility","sets":"3","reps":"","time":"30-60"},
+            {"name":"Seated piriformis","sets":"3","reps":"","time":"30-60"},
+            {"name":"Mobility bridges","sets":"3","reps":"10-20","time":""},
+            {"name":"Flexion + Extension pattern standing","sets":"3","reps":"10-15","time":""},
+            {"name":"Standing hamstring stretch","sets":"3","reps":"","time":"30-60"},
+            {"name":"Standing rip opener","sets":"3","reps":"10-15","time":""},
+            {"name":"Wall thoracic extension","sets":"3","reps":"","time":"30-60"},
+            {"name":"Wall spinal twist","sets":"3","reps":"","time":"30-60"}
+          ]
+        },{
+          "type":"Release work",
+          "data":[
+            {"name":"Foam roller thoracic mobilisation","sets":"3","reps":"","time":"30-60"},
+            {"name":"Foam roller lower back","sets":"3","reps":"","time":"30-60"},
+            {"name":"Foam roller glute release","sets":"3","reps":"","time":"30-60"},
+            {"name":"Ball release gluteals","sets":"3","reps":"","time":"30-60"},
+            {"name":"Ball release hamstring sitting","sets":"3","reps":"","time":"30-60"},
+            {"name":"Ball release lower back lying","sets":"3","reps":"","time":"30-60"},
+            {"name":"Ball release lower back standing on wall","sets":"3","reps":"","time":"30-60"}
+          ]
+        },{
+          "type":"Strength endurance",
+          "data":[
+            {"name":"Plank on toes","sets":"3","reps":"","time":"30-60"},
+            {"name":"Plank on knees","sets":"3","reps":"","time":"30-60"},
+            {"name":"Side plank feet","sets":"3","reps":"","time":"30-60"},
+            {"name":"Side plank knees","sets":"3","reps":"","time":"30-60"},
+            {"name":"Bird dog","sets":"3","reps":"10-20","time":""},
+            {"name":"Abdominal brace with squat","sets":"3","reps":"10-15","time":""},
+            {"name":"Abdominal brace with leg drop","sets":"3","reps":"20-30","time":""},
+            {"name":"Abdominal brace with arm and leg drop","sets":"3","reps":"20-30","time":""},
+            {"name":"Glute bridges","sets":"3","reps":"20-30","time":""},
+            {"name":"Kneeling hip hinge","sets":"3","reps":"10-20","time":""},
+            {"name":"Single leg tipping bird","sets":"3","reps":"10-15","time":""}
+          ]
+        }
+      ]
+    },{
+      "name":"Neck Pain",
+      "rehab_list":[
+        {
+          "type":"Mobility",
+          "data":[
+            {"name":"Chin tucks","sets":"3","reps":"10-20","time":""},
+            {"name":"Arms straight shoulder rolls","sets":"3","reps":"10-20","time":""},
+            {"name":"Chair neck stretch","sets":"3","reps":"","time":"30-60"},
+            {"name":"Flexion + Extension patterns standing","sets":"3","reps":"5-10","time":""},
+            {"name":"Desk thoracic mobilisation","sets":"3","reps":"","time":"30-60"},
+            {"name":"Shoulder shrugs","sets":"3","reps":"20-30","time":""},
+            {"name":"Wall thoracic mobility","sets":"3","reps":"","time":"30-60"}
+          ]
+        },{
+          "type":"Release work",
+          "data":[
+            {"name":"Foam roller thoracic mobilisation","sets":"3","reps":"","time":"30-60"},
+            {"name":"Foam roller rhomboid release","sets":"3","reps":"","time":"30-60"},
+            {"name":"Self massage headache relief","sets":"3","reps":"","time":"30-60"},
+            {"name":"Self message neck relief","sets":"3","reps":"","time":"30-60"},
+            {"name":"Ball release upper neck","sets":"3","reps":"","time":"30-60"},
+            {"name":"Ball release upper trapezius","sets":"3","reps":"","time":"30-60"},
+            {"name":"Ball thoracic mobility","sets":"3","reps":"","time":"30-60"}
+          ]
+        },{
+          "type":"Strength endurance",
+          "data":[
+            {"name":"Deep neck flexor training","sets":"3","reps":"","time":"30-60"},
+            {"name":"Hands and knees scapula hugs","sets":"3","reps":"10-20","time":""},
+            {"name":"Neck rolls","sets":"3","reps":"10-15","time":""},
+            {"name":"T lifts","sets":"3","reps":"20-30","time":""},
+            {"name":"T lift circles","sets":"3","reps":"20-30","time":""},
+            {"name":"Wall overhead squat - facing wall","sets":"3","reps":"5-10","time":""},
+            {"name":"Wall shoulder extension","sets":"3","reps":"10-15","time":""}
+          ]
+        }
+      ]
+    },{
+      "name":"Shoulder Pain",
+      "rehab_list":[
+        {
+          "type":"Mobility",
+          "data":[
+            {"name":"Arms straight shoulder rolls","sets":"3","reps":"10-20","time":""},
+            {"name":"Wall chest stretch","sets":"3","reps":"","time":"30-60"},
+            {"name":"Step and swing","sets":"3","reps":"5-10","time":""},
+            {"name":"Wall circumductions","sets":"3","reps":"5-10","time":""},
+            {"name":"Band pullaparts","sets":"3","reps":"10-20","time":""},
+            {"name":"Stick/ band dislocations","sets":"3","reps":"5-10","time":""},
+            {"name":"Wall shoulder external rotations","sets":"3","reps":"10-15","time":""},
+            {"name":"Wall angles","sets":"3","reps":"10-15","time":""},
+            {"name":"Wall thoracic mobility","sets":"3","reps":"","time":"30-60"}
+          ]
+        },{
+          "type":"Release work",
+          "data":[
+            {"name":"Foam roller thoracic mobilisation","sets":"3","reps":"","time":"30-60"},
+            {"name":"Foam roller rhomboid release","sets":"3","reps":"","time":"30-60"},
+            {"name":"Foam roller lat release","sets":"3","reps":"","time":"30-60"},
+            {"name":"Ball chest release on doorway","sets":"3","reps":"","time":"30-60"},
+            {"name":"Ball middle back release on wall","sets":"3","reps":"","time":"30-60"},
+            {"name":"Ball release upper trapezius on wall","sets":"3","reps":"","time":"30-60"},
+            {"name":"Ball thoracic mobility","sets":"3","reps":"","time":"30-60"}
+          ]
+        },{
+          "type":"Strength endurance",
+          "data":[
+            {"name":"Hands and knees scapula hugs","sets":"3","reps":"10-20","time":""},
+            {"name":"Banded wall shoulder press","sets":"3","reps":"10-15","time":""},
+            {"name":"Band pullaparts","sets":"3","reps":"10-20","time":""},
+            {"name":"Banded sword drill","sets":"3","reps":"10-15","time":""},
+            {"name":"Single arm trap raise","sets":"3","reps":"10-15","time":""},
+            {"name":"Modified down dog shoulder strength","sets":"3","reps":"5-10","time":""},
+            {"name":"Wall shoulder extension","sets":"3","reps":"10-15","time":""}
+          ]
+        }
+      ]
+    },{
+      "name":"Hip Pain",
+      "rehab_list":[
+        {
+          "type":"Mobility",
+          "data":[
+            {"name":"Psoas and hamstring mobility","sets":"3","reps":"","time":"30-60"},
+            {"name":"Seated piriformis stretch","sets":"3","reps":"","time":"30-60"},
+            {"name":"Groin stretch","sets":"3","reps":"","time":"30-60"},
+            {"name":"Wall TFL stretch","sets":"3","reps":"","time":"30-60"},
+            {"name":"Single leg hip circumductions","sets":"3","reps":"5-10","time":""},
+            {"name":"Single leg deadlifts","sets":"3","reps":"10-15","time":""},
+            {"name":"Desk thigh stretch","sets":"3","reps":"","time":"30-60"},
+            {"name":"Deep squat with twist","sets":"3","reps":"5-10","time":""},
+            {"name":"Wall Groin stretch","sets":"3","reps":"","time":"30-60"}
+          ]
+        },{
+          "type":"Release work",
+          "data":[
+            {"name":"Foam roller glute release","sets":"3","reps":"","time":"30-60"},
+            {"name":"Foam roller thigh release","sets":"3","reps":"","time":"30-60"},
+            {"name":"Foam roller groin release","sets":"3","reps":"","time":"30-60"},
+            {"name":"Ball release TFL","sets":"3","reps":"","time":"30-60"},
+            {"name":"Ball release guteals","sets":"3","reps":"","time":"30-60"},
+            {"name":"Ball release thigh","sets":"3","reps":"","time":"30-60"},
+            {"name":"Ball release hamstring","sets":"3","reps":"","time":"30-60"},
+            {"name":"Ball release hamstring sitting","sets":"3","reps":"","time":"30-60"}
+          ]
+        },{
+          "type":"Strength endurance",
+          "data":[
+            {"name":"Wall squats","sets":"3","reps":"10-15","time":""},
+            {"name":"Wall single leg squat holds","sets":"3","reps":"","time":"30-60"},
+            {"name":"Glute bridges","sets":"3","reps":"20-30","time":""},
+            {"name":"Frog bridges","sets":"3","reps":"20-30","time":""},
+            {"name":"Face down kickbacks","sets":"3","reps":"20-30","time":""},
+            {"name":"Side lying glute lifts","sets":"3","reps":"20-30","time":""},
+            {"name":"Face down hip scour","sets":"3","reps":"5-10","time":""}
+          ]
+        }
+      ]
+    },{
+      "name" : "Rounded Shoulder",
+      "rehab_list" : [
+        {
+          "type" : "Mobility",
+          "data" : [
+            {"name":"Arms straight shoulder rolls","sets":"3","reps":"10-20","time":""},
+            {"name":"Wall chest stretch","sets":"3","reps":"","time":"30-60"},
+            {"name":"Chin tucks","sets":"3","reps":"10-20","time":""},
+            {"name":"Wall circumductions","sets":"3","reps":"5-10","time":""},
+            {"name":"Band pullaparts","sets":"3","reps":"10-20","time":""},
+            {"name":"Stick/ band dislocations","sets":"3","reps":"10-20","time":""},
+            {"name":"Wall shoulder external rotations","sets":"3","reps":"10-15","time":""},
+            {"name":"Wall angels","sets":"3","reps":"10-15","time":""},
+            {"name":"Wall thoracic mobility","sets":"3","reps":"","time":"30-60"},
+            {"name":"Chair neck stretch","sets":"3","reps":"","time":"30-60"}
+          ]
+        },{
+          "type" : "Release work",
+          "data" : [
+            {"name":"Foam roller thoracic mobilisation","sets":"3","reps":"","time":"30-60"},
+            {"name":"Foam roller supine lying","sets":"3","reps":"","time":"30-60"},
+            {"name":"Foam roller lat release","sets":"3","reps":"","time":"30-60"},
+            {"name":"Ball chest release on doorway","sets":"3","reps":"","time":"30-60"},
+            {"name":"Ball levator scapula release on wall","sets":"3","reps":"","time":"30-60"},
+            {"name":"Ball release upper trapezius on wall","sets":"3","reps":"","time":"30-60"},
+            {"name":"Ball thoracic mobility","sets":"3","reps":"","time":"30-60"}
+          ]
+        },{
+          "type" : "Strength endurance",
+          "data" : [
+            {"name":"Deep neck flexor training","sets":"3","reps":"","time":""},
+            {"name":"Hands and knees scapula hugs","sets":"3","reps":"10-20","time":""},
+            {"name":"Neck rolls","sets":"3","reps":"10-15","time":""},
+            {"name":"T lifts","sets":"3","reps":"15-25","time":""},
+            {"name":"T lift circles","sets":"3","reps":"15-25","time":""},
+            {"name":"Banded sword drill","sets":"3","reps":"10-15","time":""},
+            {"name":"Shoulder shugs","sets":"3","reps":"15-25","time":""}
+          ]
+        }
+      ]
+    },{
+      "name" : "Anterior Relvic Tilt",
+      "rehab_list" : [
+        {
+          "type" : "Mobility",
+          "data" : [
+            {"name":"Desk thigh stretch","sets":"3","reps":"","time":"30-60"},
+            {"name":"Kneeling thigh stretch","sets":"3","reps":"","time":"30-60"},
+            {"name":"Rear foot elevated thigh stretch","sets":"3","reps":"","time":"30-60"},
+            {"name":"Windmill stretch","sets":"3","reps":"5-10","time":""},
+            {"name":"Spinal flexion + extension sitting","sets":"3","reps":"5-10","time":""},
+            {"name":"Plevic tilts against wall","sets":"3","reps":"10-20","time":""}
+          ]
+        },{
+          "type" : "Release work",
+          "data" : [
+            {"name":"Foam roller thigh","sets":"3","reps":"","time":"30-60"},
+            {"name":"Foam roller thoracic mobilisation","sets":"3","reps":"","time":"30-60"},
+            {"name":"Foam roller lower back muscles","sets":"3","reps":"","time":"30-60"},
+            {"name":"Ball release thigh","sets":"3","reps":"","time":"30-60"},
+            {"name":"Ball release TFL","sets":"3","reps":"","time":"30-60"},
+            {"name":"Ball release Quadratus Lumborum","sets":"3","reps":"","time":"30-60"},
+            {"name":"Foam roller wall traction","sets":"3","reps":"","time":"30-60"}
+          ]
+        },{
+          "type" : "Strength endurance",
+          "data" : [
+            {"name":"Plank hold","sets":"3","reps":"","time":"30-60"},
+            {"name":"Dish hold","sets":"3","reps":"","time":"30-60"},
+            {"name":"Dead bugs","sets":"3","reps":"","time":"30-60"},
+            {"name":"Bridges","sets":"3","reps":"20-30","time":""},
+            {"name":"Single leg bridges","sets":"3","reps":"10-15","time":""},
+            {"name":"Overhead static lunge","sets":"3","reps":"5-10","time":""},
+            {"name":"Wall overhead squat","sets":"3","reps":"5-10","time":""}
+          ]
+        }
+      ]
+    },{
+      "name" : "Sway Posture",
+      "rehab_list" : [
+        {
+          "type" : "Mobility",
+          "data" : [
+            {"name":"Seated piriformis stretch","sets":"3","reps":"","time":"30-60"},
+            {"name":"Standing hamstring stretch","sets":"3","reps":"","time":"30-60"},
+            {"name":"Band pullaparts","sets":"3","reps":"10-20","time":""},
+            {"name":"Flexion + Extension pattern standing","sets":"3","reps":"5-10","time":""},
+            {"name":"Wall shoulder external rotations","sets":"3","reps":"10-15","time":""},
+            {"name":"Wall angels","sets":"3","reps":"10-15","time":""},
+            {"name":"Wall thoracic mobility","sets":"3","reps":"","time":"30-60"},
+            {"name":"Pelvic tilts against wall","sets":"3","reps":"10-20","time":""}
+          ]
+        },{
+          "type" : "Release work",
+          "data" : [
+            {"name":"Foam roller thoracic mobilisation","sets":"3","reps":"","time":"30-60"},
+            {"name":"Foam roller glute release","sets":"3","reps":"","time":"30-60"},
+            {"name":"Foam roller supine lying","sets":"3","reps":"","time":"30-60"},
+            {"name":"Foam roller lower back muscles","sets":"3","reps":"","time":"30-60"},
+            {"name":"Ball thoracic mobility","sets":"3","reps":"","time":"30-60"},
+            {"name":"Ball release hamstring sitting","sets":"3","reps":"","time":"30-60"}
+          ]
+        },{
+          "type" : "Strength endurance",
+          "data" : [
+            {"name":"Plank hold","sets":"3","reps":"","time":"30-60"},
+            {"name":"Dish hold","sets":"3","reps":"","time":"30-60"},
+            {"name":"Dead bugs","sets":"3","reps":"","time":"30-60"},
+            {"name":"Bridges","sets":"3","reps":"20-30","time":""},
+            {"name":"Single leg bridges","sets":"3","reps":"10-15","time":""},
+            {"name":"Overhead static lunge","sets":"3","reps":"5-10","time":""},
+            {"name":"Wall overhead squat","sets":"3","reps":"5-10","time":""},
+            {"name":"Mountain climbers","sets":"3","reps":"","time":"30-60"},
+            {"name":"Band pullaparts","sets":"3","reps":"10-20","time":""},
+            {"name":"Wall marching drill","sets":"3","reps":"","time":"30-60"}
+          ]
+        }
+      ]
+    }
+
+  ]
+}

@@ -1,0 +1,32 @@
+
+    {
+      "rehab_name": "Posture Correction",
+      "rehab_category" : "Anterior Pelvic Tilt",
+      "data" : [
+        {
+          "type" : "Mobility",
+          "name" : "Desk thigh stretch",
+          "sets" : "3",
+          "reps" : "",
+          "time" : "30-60"
+        },{
+          "type" : "Mobility",
+          "name" : "Kneeling thigh stretch",
+          "sets" : "3",
+          "reps" : "",
+          "time" : "30-60"
+        },{
+          "type" : "Release work",
+          "name" : "Foam roller thigh",
+          "sets" : "3",
+          "reps" : "",
+          "time" : "30-60"
+        },{
+          "type" : "Strength endurance",
+          "name" : "Plank hold",
+          "sets" : "3",
+          "reps" : "",
+          "time" : "30-60"
+        }
+      ]
+    }
