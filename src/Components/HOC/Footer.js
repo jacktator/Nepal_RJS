@@ -21,7 +21,7 @@ class FooterComponent extends React.Component {
             <div
                 style={{ width: '100%', height: '100%' }}
             >
-                {this.props.showBottomButton && <Button style={{height:'5vh'}} variant="contained" color="primary" fullWidth disableRipple onClick={() => this.props.FooterButtonClick()}>Start Rehub </Button>}
+                {this.props.showBottomButton && <Button style={{height:'5vh'}} variant="contained" color="primary" fullWidth disableRipple onClick={() => this.props.FooterButtonClick()}>Start Rehab </Button>}
                 <BottomNavigation
                     value={value}
                     onChange={this.handleChange}

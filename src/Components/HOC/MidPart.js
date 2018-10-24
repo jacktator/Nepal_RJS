@@ -33,7 +33,7 @@ class MidPartComponent extends React.Component {
                 style={{ width: '100%', height:'30px', minHeight:'30px',borderBottom:'solid 1px gray' }}
             >
                 {this.props.tapBarContent.map((v, k) => {
-                    return <Tab style={{minHeight:'30px'}} classes={{disabled: classes.disabled}} disabled={(k+1 > this.props.currentProcess)} disableRipple key={k} label={v} />
+                    return <Tab style={{minHeight:'30px'}} classes={{disabled: classes.disabled}} disabled={(k >= this.props.currentProcess)} disableRipple key={k} label={v} />
                 })}
             </Tabs>);
     }

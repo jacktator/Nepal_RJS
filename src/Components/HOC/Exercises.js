@@ -7,6 +7,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
+import TickIcon from '@material-ui/icons/CheckCircle';
 import {Link} from 'react-router-dom';
 
 const styles = theme => ({
@@ -23,6 +24,10 @@ const styles = theme => ({
   },
   content: {
     flex: '1 0 auto',
+    display:'flex',
+    alignItems:'center',
+    paddingTop:'10px',
+    paddingBottom:'10px',
   },
   cover: {
     width: 120,
@@ -31,6 +36,8 @@ const styles = theme => ({
   controls: {
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'space-between',
+    height:'38px',
   },
   playIcon: {
     height: 38,
@@ -54,6 +61,7 @@ function MediaControlCard(props) {
           <IconButton aria-label="Play/pause" disableRipple >
             <span style={{fontSize:'14px'}}>Change</span>
           </IconButton>
+          {props.finish && <TickIcon style={{color:'green', marginRight:'12px'}}/>}
         </div>
       </div>
       <CardMedia

@@ -14,7 +14,7 @@ const FooterContent = [
   { label: 'Training', to: '/rehab', Icon: <TrainingIcon /> },
 ]
 
-const tapBarContent = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
+const tapBarContent = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat','Sun'];
 
 class MainRehab extends React.Component {
   state = {
@@ -40,7 +40,7 @@ class MainRehab extends React.Component {
               midPartTabsValue={this.state.midPartTabsValue}
               handleChange={this.midPartTabsValueHandleChange}
               tapBarContent={tapBarContent}
-              currentProcess={this.props.currentProcess}
+              currentProcess={new Date().getDay() === 0 ? 6 : new Date().getDay()}
             />
             <ContainedExercises rehab={this.props.rehab} onChange={this.props.onChange} />
           </div>
