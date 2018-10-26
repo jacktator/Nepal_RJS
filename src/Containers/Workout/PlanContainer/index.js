@@ -68,6 +68,7 @@ class PlanContainer extends Component{
     this.props.removeError();
   }
   render() {
+    console.log(this.props.WorkoutReducers)
     const {error} =this.props.WorkoutReducers;
     const FeedbackArray = [
         {value:3, Feedback:'Too hard'},

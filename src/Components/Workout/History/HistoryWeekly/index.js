@@ -20,11 +20,16 @@ class HistoryWeekly extends Component {
     }
   }
   render(){
+    console.log(this.props.HistoryReducers)
+    console.log(this.props.WorkoutReducers)
     let programID = parseInt((this.props.match.params.programID),10)
-    let {days} = this.props.HistoryReducers.program
+    let days;
+    if(this.props.HistoryReducers.program){
+       days = this.props.HistoryReducers.program.days;
+    }
     let {history} = this.props.HistoryReducers
-
     let historyData = history.find((j) => programID === parseInt((j.program_id),10))
+    console.log(historyData)
   return (
     <Hoc>
       <Header/>
@@ -60,8 +65,9 @@ class HistoryWeekly extends Component {
 function mapStateToProps(state){
   return {
     HistoryReducers: state.HistoryReducers,
+    WorkoutReducers: state.WorkoutReducers
   }
 }
 
 // const currentWeek = (progress, days) => (Math.ceil(progress / days));
-export default connect(mapStateToProps)(HistoryWeekly);
+export default connect(mapStateToProps,null)(HistoryWeekly);

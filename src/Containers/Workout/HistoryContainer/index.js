@@ -11,6 +11,7 @@ import Hoc from '../../../HOC/Hoc';
 import Modal from '../../../Components/UI/Modal';
 import ShowError from '../../../Components/Error/ShowError'
 
+import {Toast} from 'antd-mobile';
 class HistoryContainer extends Component{
   constructor(props){
     super(props);
@@ -35,6 +36,9 @@ class HistoryContainer extends Component{
   }
   cancelErrorMessageHandler = () => {
     this.props.removeError();
+  }
+  exerciseOnClick = () =>{
+    alert("loading to plan page...");
   }
   // onListProgramClickHandler = (e) => {
 
@@ -62,13 +66,14 @@ class HistoryContainer extends Component{
   render() {
     let RenderPage = null;
     let {history,error} =this.props.HistoryReducers;
-    console.log(error)
+    console.log(this.props.HistoryReducers)
 
     if(this.state.currentPage === 1){
       RenderPage = (
         <HistoryComponent
-          history = {history}
+          HistoryReducers = {this.props.HistoryReducers}
           loading={this.state.loading}
+          exerciseOnClick = {this.exerciseOnClick}
         />
       )
       }
