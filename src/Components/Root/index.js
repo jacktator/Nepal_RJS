@@ -20,7 +20,8 @@ import WeeklyQuestionnaireContainer from '../../Containers/Rehab/WeeklyQuestionn
 import ProfileContainer from '../../Containers/ProfileContainer';
 import TermsAndCondComponent from '../TermsAndCond';
 import GetJson from '../../Containers/ZShawn';
-import Try from '../HOC';
+import Try from '../../MainMenu';
+import TryWork from '../../History';
 
 import HistoryDetail from '../Workout/History/HistoryDetail/'
 import HistoryWeekly from '../Workout/History/HistoryWeekly'
@@ -96,6 +97,8 @@ class Root extends Component<Props>{
               <Route path="/exercise/:index?" exact component={ExerciseContainer}/>
               <Route path="/profile" exact component={ProfileContainer}/>
               <Route path="/termsandconditions" exact component={TermsAndCondComponent}/>
+              <Route path="/Try" exact component={Try}/>
+              <Route path="/try/plan" exact component={TryWork}/>
             </Switch>
           {/*</BrowserRouter>*/}
           </HashRouter>

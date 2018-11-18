@@ -2,7 +2,9 @@ export const style={
     top:{
         height: '23vh',
         width:'100%',
-    },
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        },
     title:{
         color:'white',
         marginLeft: '4vw',
@@ -33,6 +35,6 @@ export const style={
     },
     progress:{
         marginTop:'5px',
-        width:'100vw',
+        width:'100%',
     }
 };

@@ -29,12 +29,12 @@ class FooterComponent extends React.Component {
                     </Typography>
                     {this.props.showProgress && <div style={{height:'40%', width:'90%', marginLeft:'5%'}}>
                         <Typography component='p' style={style.header_description}>
-                            You are currently at {this.props.currentWeek} Week 
+                            You are currently at {this.props.currentWeek || 1} Week 
                         </Typography>
                         <Typography component='p' style={style.header_description}>
-                            {this.props.progress} Completed 
+                            {this.props.progress || 0}% Completed 
                         </Typography>
-                        <LinearProgress variant="determinate" value={this.state.completed} style={style.progress} />
+                        <LinearProgress variant="determinate" value={this.props.progress || 0} style={style.progress} />
                     </div>}
                 </div>}
                 <div style={this.props.showBottomButton ? style.midWithBotton : style.midWithoutBotton}>
@@ -42,6 +42,7 @@ class FooterComponent extends React.Component {
                 </div>
                 <div style={(this.props.showBottomButton ? style.bottomWithBotton : style.bottomWithoutBotton)}>
                     <Footer 
+                    currentPage= {this.props.currentPage} 
                     showBottomButton={this.props.showBottomButton}
                     FooterContent={this.props.FooterContent}
                     FooterButtonClick={this.props.FooterButtonClick}

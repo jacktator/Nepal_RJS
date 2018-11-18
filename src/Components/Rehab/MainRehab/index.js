@@ -39,7 +39,7 @@ class MainRehab extends React.Component {
       <MainComponent
         backgroundImage='image/sampleImage.jpeg'
         title='Rehab'
-        FooterContent={FooterContent}
+        FooterContent={1}
         showBottomButton
         FooterButtonClick = {this.props.onStartRehab}
         midComponent={
@@ -48,8 +48,9 @@ class MainRehab extends React.Component {
               midPartTabsValue={this.state.midPartTabsValue}
               handleChange={this.midPartTabsValueHandleChange}
               tapBarContent={tapBarContent}
+              hasClick
               currentProcess={new Date().getDay() === 0 ? 6 : new Date().getDay()}
-              fetchRehabPreviousRecord={this.clickHandle}
+              onTagClick={this.clickHandle}
             />
             <ContainedExercises rehab={this.props.rehab} onChange={this.props.onChange} />
           </div>
