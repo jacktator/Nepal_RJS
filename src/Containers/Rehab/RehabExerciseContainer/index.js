@@ -50,7 +50,6 @@ class RehabExerciseContainer extends Component {
         let repsOrSec, highestValue, reps;
         let rehabName = rehabData.name;
         let sets = parseInt(rehabData.sets,10)
-        console.log("rehabData", rehabData);
         if(rehabData.reps === ""){
           repsOrSec = "Sec";
           let temp = rehabData.time.split('-');
@@ -106,8 +105,6 @@ class RehabExerciseContainer extends Component {
     let {rehabRecordID, rehabRecord} = this.props.RehabReducers;
     let {sets, highestValue, repsOrSec, rehabCategory, rehabName} = this.state;
     let rehabLog = [...this.state.rehabLog];
-    if(this.state.currentSets === this.state.sets){
-    }
     rehabLog.splice((this.state.currentSets-1),1);
     rehabLog.push({data : this.state.highestValue});
 
@@ -124,6 +121,7 @@ class RehabExerciseContainer extends Component {
   }
 
   render() {
+    console.log("this prpos",this.props.RehabReducers);
     let {rehab, isFetchingRehabRecord} = this.props.RehabReducers;
     if(rehab){
       return(
