@@ -1,4 +1,3 @@
-//@flow
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import { List, InputItem, WhiteSpace, WingBlank,Button} from 'antd-mobile';
@@ -15,13 +14,6 @@ var humeniconstyle={
   height: '22px',
   width: '22px',
 }
-
-type Props={
-  email: string,
-  onChangeInput: Function,
-  onClickButton: Function,
-}
-
 
 class ForgetPassWord extends Component<Props> {
   render() {

@@ -1,16 +1,20 @@
-import React, { Component } from 'react';
-import Root from './Containers/RootContainer/';
+import React from 'react';
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { HashRouter } from 'react-router-dom';
+import RootRouter from './Router';
+import theme from './theme';
 
-class App extends Component {
+const App = () => (
+  <HashRouter>
+    <MuiThemeProvider theme={theme}>
+      <CssBaseline />
+      <RootRouter />
+    </MuiThemeProvider>
+  </HashRouter>
 
-  render() {
-    return (
-      <div>
-        <Root/>
-      </div>
-    );
-  }
-}
+);
+
 export default App;
 
 

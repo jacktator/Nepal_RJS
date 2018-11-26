@@ -1,108 +1,34 @@
 import React from 'react';
-import MainComponent from '../Components/HOC';
-import FitnessIcon from '@material-ui/icons/FitnessCenterOutlined';
-import RehabIcon from '@material-ui/icons/EnhancedEncryptionOutlined';
-import ProfileIcon from '@material-ui/icons/PermContactCalendarOutlined';
-import QuestionIcon from '@material-ui/icons/HelpOutlineOutlined';
-import FAQIcon from '@material-ui/icons/LibraryBooksOutlined';
-import ContentIcon from '@material-ui/icons/ListAltOutlined';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import {Link} from 'react-router-dom';
-import Card from '@material-ui/core/Card';
+import { Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import SpeedDialTooltipOpen from '../HOC/speedDial';
+import styles from './styles';
 
-const styles = {
-    card: {
-      boxShadow:'unset',
-      borderRadius:'0',
-      borderWidth:'1px 1px 1px 1px',
-      borderStyle:'solid',
-      borderColor:'white',
-      backgroundColor:'#489fce',
-    },
-    CardContent:{
-        height: '100%',
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        padding: '0px',
-        justifyContent: 'center',
-    }
-  };
-  
+const menu = [{ name: 'Workout', color: 'rgba(0,96,100,0.5)' }, { name: 'Rehab', color: 'rgba(86,200,216,0.5)' },
+  { name: 'Profile', color: 'rgba(111,249,255,0.4)' }, { name: 'Content', color: 'rgba(0,172,193,0.4)' },
+  { name: 'Question', color: 'rgba(38,198,218,0.3)' }, { name: 'FAQ', color: 'rgba(136,255,255,0.3)' }];
 
-class MainRehab extends React.Component {
-  constructor(props){
-    super(props);
-    this.state={
-      value: 0,
-      midPartTabsValue: new Date().getUTCDay()-1,  
-    };
-    this.midPartTabsValueHandleChange=this.midPartTabsValueHandleChange.bind(this);
-    this.clickHandle=this.clickHandle.bind(this);
-  }
-  midPartTabsValueHandleChange (event, value)  {
-    this.setState({ midPartTabsValue: value });
-  };
 
-  clickHandle (exid) {
-    this.props.fetchRehabPreviousRecord(this.props.RehabReducersid,exid);
-  }
-
+class Mainmenu extends React.PureComponent {
   render() {
-      const classes = this.props.classes;
+    const { classes } = this.props;
     return (
-      <MainComponent
-        backgroundImage='image/mainmenu.png'
-        title=' '
-        FooterContent={1}
-        midComponent={
-          <div style={{height:'100%', width:'100%', display:'grid',gridTemplateColumns:'1fr 1fr', gridTemplateRows:'1fr 1fr 1fr'}}>
-          <Card className={classes.card}>
-          <CardContent className={classes.CardContent} component={Link} to='/try/plan'>
-              <FitnessIcon style={{fontSize:'50', color:'white'}} />
-              <Typography style={{ marginTop:'10px'}} component='h6' variant='subtitle1'>
-                  Workout
-              </Typography>
-          </CardContent></Card>
-          <Card className={classes.card}>
-          <CardContent className={classes.CardContent} component={Link} to='/rehab'>
-              <RehabIcon style={{fontSize:'50', color:'white'}} />
-              <Typography style={{marginTop:'10px'}} component='h6' variant='subtitle1'>
-              Rehab and Posture
-              </Typography>
-          </CardContent></Card>
-          <Card className={classes.card}><CardContent className={classes.CardContent} component={Link} to='/profile'>
-              <ProfileIcon style={{fontSize:'50', color:'white'}} />
-              <Typography style={{marginTop:'10px'}} component='h6' variant='subtitle1'>
-                    Profile
-              </Typography>
-          </CardContent></Card>
-          <Card className={classes.card}><CardContent className={classes.CardContent}>
-              <ContentIcon style={{fontSize:'50', color:'white'}} />
-              <Typography style={{marginTop:'10px'}} component='h6' variant='subtitle1'>
-              Content
-              </Typography>
-          </CardContent></Card>
-          <Card className={classes.card}><CardContent className={classes.CardContent}>
-              <QuestionIcon style={{fontSize:'50', color:'white'}} />
-              <Typography style={{marginTop:'10px'}} component='h6' variant='subtitle1'>
-              Ask a Question
-              </Typography>
-          </CardContent></Card>
-          <Card className={classes.card}><CardContent className={classes.CardContent}>
-              <FAQIcon style={{fontSize:'50', color:'white'}} />
-              <Typography style={{marginTop:'10px'}} component='h6' variant='subtitle1'>
-              FAQ
-              </Typography>
-          </CardContent></Card>
-          </div>
-        }
-      />
-    )
+      <div className={classes.background}>
+        <Grid container className={classes.container} alignItems="center" direction="column" justify="space-between">
+          <SpeedDialTooltipOpen />
+          <Grid container justify="center" alignContent="center" alignItems="center" className={classes.topGrid}>
+            <Typography variant="h2" component="h2">Nepal</Typography>
+          </Grid>
+          <Grid container justify="center" alignContent="center" alignItems="center" className={classes.menuGrid}>
+            {menu.map(v => (
+              <Grid key={v.name} style={{ backgroundColor: v.color }} justify="center" alignItems="center" className={classes.childGrid} container>
+                <Typography style={{ color: 'darkcyan' }} variant="h6" component="h6">{v.name}</Typography>
+              </Grid>
+            ))}
+          </Grid>
+        </Grid>
+      </div>
+    );
   }
 }
-
-export default withStyles(styles)(MainRehab);
+export default withStyles(styles)(Mainmenu);

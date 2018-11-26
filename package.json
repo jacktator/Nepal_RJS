@@ -1,47 +1,47 @@
 {
-  "name": "nepal-app",
-  "version": "0.1.0",
-  "private": true,
-  "homepage": "https://jacktator.github.io/Nepal_RJS",
-  "dependencies": {
-    "@material-ui/core": "^3.2.2",
-    "@material-ui/icons": "^3.0.1",
-    "@material-ui/lab": "^3.0.0-alpha.20",
-    "antd-mobile": "^2.2.0",
-    "axios": "^0.18.0",
-    "flow": "^0.2.3",
-    "history": "^4.7.2",
-    "lodash": "^4.17.10",
-    "rc-form": "^2.2.0",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "react-hover-image": "^1.0.0",
-    "react-redux": "^5.0.7",
-    "react-responsive": "^4.1.0",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.4",
-    "react-swipeable-views": "^0.13.0",
-    "react-youtube": "^7.6.0",
-    "redux": "^4.0.0",
-    "redux-axios-middleware": "^4.0.0",
-    "redux-logger": "^3.0.6",
-    "redux-promise": "^0.6.0",
-    "redux-promise-middleware": "^5.1.1",
-    "redux-thunk": "^2.3.0",
-    "start": "^5.1.0",
-    "youtube-api-search": "0.0.5"
-  },
-  "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test --env=jsdom",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
-  },
-  "devDependencies": {
-    "babel-plugin-import": "^1.7.0",
-    "flow-bin": "^0.73.0",
-    "gh-pages": "^1.2.0",
-    "react-app-rewired": "^1.6.2"
-  }
+    "name": "nepal-app",
+    "version": "0.1.0",
+    "private": true,
+    "homepage": "https://jacktator.github.io/Nepal_RJS",
+    "dependencies": {
+        "@material-ui/core": "^3.5.1",
+        "@material-ui/icons": "^3.0.1",
+        "@material-ui/lab": "^3.0.0-alpha.23",
+        "axios": "^0.18.0",
+        "flow": "^0.2.3",
+        "lodash": "^4.17.11",
+        "prop-types": "^15.6.2",
+        "react": "^16.6.3",
+        "react-dom": "^16.6.3",
+        "react-redux": "^5.1.1",
+        "react-router-dom": "^4.3.1",
+        "react-scripts": "2.1.1",
+        "react-swipeable-views": "^0.13.0",
+        "react-youtube": "^7.8.0",
+        "redux": "^4.0.1",
+        "redux-axios-middleware": "^4.0.0",
+        "redux-logger": "^3.0.6",
+        "redux-promise": "^0.6.0",
+        "redux-promise-middleware": "^5.1.1",
+        "redux-thunk": "^2.3.0",
+        "youtube-api-search": "0.0.5"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test --env=jsdom",
+        "eject": "react-scripts eject",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
+    },
+    "devDependencies": {
+        "flow-bin": "^0.73.0",
+        "gh-pages": "^1.2.0"
+    },
+    "browserslist": [
+        ">0.2%",
+        "not dead",
+        "not ie <= 11",
+        "not op_mini all"
+    ]
 }
