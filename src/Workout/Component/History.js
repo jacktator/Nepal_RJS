@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import {
-  List, ListItem, ListItemIcon, ListItemText, Divider, Typography, Grid, Paper,
+  List, ListItem, ListItemIcon, ListItemText, Divider, Typography, Paper,
 } from '@material-ui/core';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import RightIcon from '@material-ui/icons/KeyboardArrowRight';
@@ -17,7 +17,7 @@ const iconDisplay = (finish) => {
   }
 };
 
-class SimpleList extends React.PureComponent {
+class History extends React.PureComponent {
   render() {
     const { classes } = this.props;
     return (
@@ -26,7 +26,7 @@ class SimpleList extends React.PureComponent {
             [...Array(this.props.days || 5)].map((v, k) => (
               <ListItem key={k} component={Paper} divider elevation={4} className={classes.infoListItem}>
                 <ListItemText primary={(
-                  <Typography color="secondary" variant="body1">{`Day ${k + 1}`}</Typography>)}
+                  <Typography variant="body1" color="secondary">{`Day ${k + 1}`}</Typography>)}
                 />
                 <ListItemIcon>{iconDisplay(this.props.finish)}</ListItemIcon>
               </ListItem>
@@ -37,8 +37,8 @@ class SimpleList extends React.PureComponent {
   }
 }
 
-SimpleList.propTypes = {
+History.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SimpleList);
+export default withStyles(styles)(History);

@@ -2,7 +2,7 @@ import React from 'react';
 import Splash from './Component/Splash';
 
 const index = () => (
-    <Splash/>
+  <Splash />
 );
 
 export default index;
