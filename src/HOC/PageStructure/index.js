@@ -2,18 +2,19 @@ import React from 'react';
 import { Typography, Grid, Paper } from '@material-ui/core';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { withStyles } from '@material-ui/core/styles';
-import { styles } from './style.js';
+import { styles } from './style';
 import Footer from './Footer';
 import MidPart from './MidPart';
 
 class index extends React.PureComponent {
   render() {
     const {
-      classes, backgroundImage, tapBarContent, title,
+      classes, backgroundImage, tapBarContent, title, top,
     } = this.props;
     return (
       <div className={classes.container}>
         <Grid container className={classes.containerGrid} direction="column" justify="space-between" alignContent="space-between">
+          {top && (
           <Grid container className={classes.top} style={{ backgroundImage: `url("${backgroundImage}")` }}>
             <Grid container className={classes.topInline} justify="center" direction="column">
               <Typography variant="h5" color="secondary">{title}</Typography>
@@ -21,6 +22,7 @@ class index extends React.PureComponent {
               <Typography variant="body2" color="secondary">100% completed</Typography>
             </Grid>
           </Grid>
+          )}
           <Grid container className={classes.mid} direction="column" justify="space-around" alignContent="space-around" alignItems="center">
             {!!tapBarContent && <MidPart tapBarContent={tapBarContent} />}
             {this.props.midComponent}

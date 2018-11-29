@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import {
-  List, ListItem, ListItemIcon, ListItemText, Divider, Typography, Grid, Paper,
+  List, ListItem, Paper, Divider, Typography, Grid, Button,
 } from '@material-ui/core';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import RightIcon from '@material-ui/icons/KeyboardArrowRight';
-import { styles } from '../styles';
+import HOClistitem from '../HOC/listitem';
+import { styles } from '../../styles';
 
 const iconDisplay = (finish) => {
   switch (finish) {
@@ -21,18 +22,11 @@ class SimpleList extends React.PureComponent {
   render() {
     const { classes } = this.props;
     return (
-      <List className={classes.root} component="nav" disablePadding>
-        {
-            [...Array(this.props.days || 5)].map((v, k) => (
-              <ListItem key={k} component={Paper} divider elevation={4} className={classes.infoListItem}>
-                <ListItemText primary={(
-                  <Typography color="secondary" variant="body1">{`Day ${k + 1}`}</Typography>)}
-                />
-                <ListItemIcon>{iconDisplay(this.props.finish)}</ListItemIcon>
-              </ListItem>
-            ))
-        }
-      </List>
+      <div className={classes.root}>
+        <List component="nav" disablePadding>
+          <HOClistitem />
+        </List>
+      </div>
     );
   }
 }

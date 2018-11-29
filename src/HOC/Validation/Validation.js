@@ -18,9 +18,9 @@ ErrorType.prototype.check = function (input) {
         resDiscription = discription;
         return { error, resDiscription };
       }
-      return { error, resDiscription };
     },
   );
+  return { error, resDiscription };
 };
 
 const EmailValidation = new ErrorType(1, 'email', rules.email);

@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Typography, TextField, InputAdornment, IconButton,
-} from '@material-ui/core/Typography';
+} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import { Visibility, VisibilityOff } from '@material-ui/icons/Visibility';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import { validation } from './Validation';
 
 const getRandomInt = () => {
@@ -62,7 +63,7 @@ const styles = theme => ({
   underline: {},
 });
 
-class inputFiles extends React.Component {
+class InputFiles extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -123,7 +124,7 @@ class inputFiles extends React.Component {
   }
 }
 
-inputFiles.propTypes = {
+InputFiles.propTypes = {
   classes: PropTypes.object.isRequired,
   confirm: PropTypes.string,
   value: PropTypes.string.isRequired,
@@ -131,4 +132,4 @@ inputFiles.propTypes = {
   type: PropTypes.string.isRequired,
 };
 
-export default withStyles(styles)(inputFiles);
+export default withStyles(styles)(InputFiles);

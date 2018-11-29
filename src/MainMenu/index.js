@@ -15,7 +15,7 @@ class Mainmenu extends React.PureComponent {
     return (
       <div className={classes.background}>
         <Grid container className={classes.container} alignItems="center" direction="column" justify="space-between">
-          <SpeedDialTooltipOpen />
+          <SpeedDialTooltipOpen shadow />
           <Grid container justify="center" alignContent="center" alignItems="center" className={classes.topGrid}>
             <Typography variant="h2" component="h2">Nepal</Typography>
           </Grid>

@@ -22,8 +22,12 @@ const styles = theme => ({
     height: '24px',
     backgroundColor: 'unset',
   },
-  speedDial: {
-
+  speedDialRight: {
+    position: 'absolute',
+    top: 0,
+    right: theme.spacing.unit * 2,
+  },
+  speedDialLeft: {
     position: 'absolute',
     top: theme.spacing.unit,
     left: theme.spacing.unit * 2,
@@ -85,15 +89,17 @@ class SpeedDialTooltipOpen extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const {
+      classes, right, secondary, shadow,
+    } = this.props;
     const { open } = this.state;
 
     return (
       <SpeedDial
-        ButtonProps={{ style: { backgroundColor: 'unset', transform: 'scale(0.8)' }, disableRipple: true }}
+        ButtonProps={{ style: { backgroundColor: 'unset', transform: 'scale(0.8)', boxShadow: shadow ? '' : 'unset' }, disableRipple: true }}
         ariaLabel="SpeedDial tooltip example"
-        className={classes.speedDial}
-        icon={<SpeedDialIcon icon={<ViewHandleIcon color="primary" />} className={classes.rootIcon} />}
+        className={right ? classes.speedDialRight : classes.speedDialLeft}
+        icon={<SpeedDialIcon icon={<ViewHandleIcon color={secondary ? 'secondary' : 'primary'} />} className={classes.rootIcon} />}
         onBlur={this.handleClose}
         onClick={this.handleClick}
         onClose={this.handleClose}
@@ -120,6 +126,9 @@ class SpeedDialTooltipOpen extends React.Component {
 
 SpeedDialTooltipOpen.propTypes = {
   classes: PropTypes.object.isRequired,
+  right: PropTypes.bool,
+  secondary: PropTypes.bool,
+  shadow: PropTypes.bool,
 };
 
 export default withStyles(styles)(SpeedDialTooltipOpen);
