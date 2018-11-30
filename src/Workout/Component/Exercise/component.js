@@ -2,12 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import {
-  List, ListItem, ListItemIcon, ListItemText, Divider, Typography, Paper, Grid, TextField,
+  Button, List, ListItem, ListItemIcon, ListItemText, Divider, Typography, Paper, Grid, TextField,
 } from '@material-ui/core';
-import FeedbackIcon from '@material-ui/icons/Feedback';
-import RightIcon from '@material-ui/icons/KeyboardArrowRight';
-import NumberSelect from '../../../HOC/numberSelect';
-import { add, min } from '../../../HOC/numberSelect';
+import CheckCircle from '@material-ui/icons/CheckCircle';
+import NumberSelect, { add, min } from '../../../HOC/numberSelect';
 import { styles } from '../../styles';
 
 class ExerciseComponent extends React.PureComponent {
@@ -41,8 +39,19 @@ class ExerciseComponent extends React.PureComponent {
 
   render() {
     const { classes } = this.props;
+    const { weight, sets } = this.state;
     return (
-      <Grid container item style={{ flex: 1, overflowY: 'scroll', padding: '5vmin 5vmin 5vmin' }} direction="column" justify="space-around" alignItems="stretch">
+      <Grid
+        container
+        item
+        style={{
+          flex: 1, overflowY: 'scroll', whiteSpace: 'nowrap', padding: '5vmin 5vmin 5vmin',
+        }}
+        wrap="nowrap"
+        direction="column"
+        justify="space-around"
+        alignItems="stretch"
+      >
         <Grid container item>
           <Paper style={{ width: '100%', height: '25vh', borderRadius: '10px' }}>
           this is video
@@ -53,19 +62,41 @@ class ExerciseComponent extends React.PureComponent {
             <NumberSelect
               minClickHandle={this.weightMin}
               addClickHandle={this.weightAdd}
-              value={this.state.weight}
+              value={weight}
               label="weight"
             />
             <NumberSelect
               minClickHandle={this.setsMin}
               addClickHandle={this.setsAdd}
-              value={this.state.sets}
+              value={sets}
               label="sets"
             />
           </Grid>
-          <Grid>button2</Grid>
+          <Grid><Button fullWidth variant="contained" color="primary" disableTouchRipple><Typography color="secondary">SAVE</Typography></Button></Grid>
         </Grid>
-        <Grid container item />
+        <Grid container item>
+          <List component="nav" style={{ width: '100%' }}>
+            <ListItem divider>
+              <ListItemText primary="1" />
+              <ListItemIcon><CheckCircle /></ListItemIcon>
+              <ListItemText primary="10 weight X 10 sets" />
+              <ListItemText primary="Previous" />
+            </ListItem>
+            <ListItem divider>
+              <ListItemText primary="1" />
+              <ListItemIcon><CheckCircle /></ListItemIcon>
+              <ListItemText primary="10 weight X 10 sets" />
+              <ListItemText primary="Previous" />
+            </ListItem>
+            <ListItem divider>
+              <ListItemText primary="1" />
+              <ListItemIcon><CheckCircle /></ListItemIcon>
+              <ListItemText primary="10 weight X 10 sets" />
+              <ListItemText primary="Previous" />
+            </ListItem>
+
+          </List>
+        </Grid>
       </Grid>
     );
   }

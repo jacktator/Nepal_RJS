@@ -29,11 +29,11 @@ const NumberSelect = (props) => {
     minClickHandle, value, addClickHandle, label,
   } = props;
   return (
-    <Grid container item justify="center" alignItems="center">
-      <Grid>
-        <Typography>{label}</Typography>
+    <Grid container item justify="space-around" alignItems="center">
+      <Grid item xs={3}>
+        <Typography variant="button">{label}</Typography>
       </Grid>
-      <Grid>
+      <Grid item>
         <IconButton name="min" onClick={minClickHandle} color="primary" disableTouchRipple>
           <Remove />
         </IconButton>
