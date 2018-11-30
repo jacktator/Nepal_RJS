@@ -9,16 +9,16 @@ import Add from '@material-ui/icons/Add';
 export const add = name => (state, props) => {
   if (state[name] < 100) {
     return ({
-      [name]: state[name] + props.step,
+      [name]: state[name] + 1,
     });
   }
   return { state };
 };
 
 export const min = name => (state, props) => {
-  if (state[name] >= props.step) {
+  if (state[name] >= 1) {
     return ({
-      [name]: state[name] - props.step,
+      [name]: state[name] - 1,
     });
   }
   return { state };
