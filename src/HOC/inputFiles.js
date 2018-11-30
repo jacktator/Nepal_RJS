@@ -19,10 +19,19 @@ const typeValidation = (type, value, confirm) => {
   if (confirm && (value !== confirm)) {
     return { error: false, resDiscription: 'should same as password' };
   }
+  if (type === 'number') {
+    return { error: false, resDiscription: '' };
+  }
   return validation(`${type}`, value);
 };
 
 const inputType = {
+  number: {
+    id: `number${getRandomInt()}`,
+    placeholder: '',
+    name: 'number',
+    adornmentText: '',
+  },
   email: {
     id: `email${getRandomInt()}`,
     placeholder: 'Example@gmail.com',
@@ -46,15 +55,26 @@ const inputType = {
 };
 
 const styles = theme => ({
-  inputFileLable: {
-    color: theme.palette.secondary.main,
+  inputFileLablePrimary: {
+    color: theme.palette.primary.main,
   },
-  inputFile: {
+  inputFilePrimary: {
     '&:before': {
-      borderBottom: `1px solid ${theme.palette.primary.light}`,
+      borderBottom: `1px solid ${theme.palette.primary.main}`,
     },
     '&:hover:not($disabled):not($error):not($focused):before': {
-      borderBottom: `1px solid ${theme.palette.primary.light}`,
+      borderBottom: `1px solid ${theme.palette.primary.main}`,
+    },
+  },
+  inputFileLableSecondary: {
+    color: theme.palette.secondary.main,
+  },
+  inputFileSecondary: {
+    '&:before': {
+      borderBottom: `1px solid ${theme.palette.secondary.main}`,
+    },
+    '&:hover:not($disabled):not($error):not($focused):before': {
+      borderBottom: `1px solid ${theme.palette.secondary.main}`,
     },
   },
   disabled: {},
@@ -78,7 +98,7 @@ class InputFiles extends React.Component {
 
   render() {
     const {
-      classes, value, onChangeHandle, type, confirm,
+      classes, value, onChangeHandle, type, confirm, light, number, fullwidth,
     } = this.props;
     const { showPassword } = this.state;
     const { error, resDiscription } = typeValidation(type, value, confirm);
@@ -90,18 +110,21 @@ class InputFiles extends React.Component {
         id={id}
         style={{ margin: 16 }}
         placeholder={placeholder}
-        fullWidth
-        type={password && (showPassword ? 'text' : 'password')}
-        error={!error}
+        fullWidth={fullwidth}
+        type={number ? 'text' : (password && (showPassword ? 'text' : 'password'))}
+        error={!number && !error}
         name={name}
-        helperText={!error && resDiscription}
-        onChange={onChangeHandle}
+        helperText={!number && (!error && resDiscription)}
+        onChange={onChangeHandle || null}
         value={value}
         FormHelperTextProps={{ style: { color: '#f9a49e' } }}
         InputProps={{
-          classes: {
-            underline: classes.inputFile,
-            input: classes.inputFileLable,
+          classes: light ? {
+            underline: classes.inputFilePrimary,
+            input: classes.inputFileLablePrimary,
+          } : {
+            underline: classes.inputFileSecondary,
+            input: classes.inputFileLableSecondary,
           },
           startAdornment: (
             <InputAdornment position="start">
@@ -127,9 +150,12 @@ class InputFiles extends React.Component {
 InputFiles.propTypes = {
   classes: PropTypes.object.isRequired,
   confirm: PropTypes.string,
+  light: PropTypes.bool,
   value: PropTypes.string.isRequired,
-  onChangeHandle: PropTypes.func.isRequired,
+  onChangeHandle: PropTypes.func,
   type: PropTypes.string.isRequired,
+  number: PropTypes.bool,
+  fullwidth: PropTypes.bool,
 };
 
 export default withStyles(styles)(InputFiles);

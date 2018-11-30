@@ -106,7 +106,7 @@ class SpeedDialTooltipOpen extends React.Component {
         onFocus={this.handleOpen}
         onMouseEnter={this.handleOpen}
         onMouseLeave={this.handleClose}
-        direction={window.orientation === (90 || 270) ? 'right' : 'down'}
+        direction={right ? (window.orientation === (90 || 270) ? 'left' : 'down') : (window.orientation === (90 || 270) ? 'right' : 'down')}
         open={open}
       >
         {actions.map(action => (

@@ -40,11 +40,13 @@ class Login extends React.Component {
                       onChangeHandle={this.onChangeHandle}
                       value={email}
                       type="email"
+                      fullwidth
                     />
                     <HOCInputFile
                       onChangeHandle={this.onChangeHandle}
                       value={password}
                       type="password"
+                      fullwidth
                     />
                   </Grid>
                   <Grid item>

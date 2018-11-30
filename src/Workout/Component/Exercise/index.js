@@ -1,12 +1,9 @@
 import React from 'react';
-import { Grid, Paper } from '@material-ui/core';
+import {
+  Grid, Paper, AppBar, Toolbar, Typography, Button, IconButton,
+} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
 import LeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import MenuIcon from '@material-ui/icons/Menu';
 import { styles } from '../../styles';
@@ -14,9 +11,6 @@ import MainComponent from '../../../HOC/PageStructure';
 import SpeedDialTooltipOpen from '../../../HOC/speedDial';
 
 import Component from './component';
-
-const tapBarContent = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'];
-
 
 class HistoryIndex extends React.Component {
   constructor(props) {
@@ -48,7 +42,7 @@ class HistoryIndex extends React.Component {
             <Grid container item alignContent="space-between" alignItems="center">
               <AppBar position="static">
                 <Toolbar style={{ justifyContent: 'space-between' }}>
-                  <IconButton className={classes.menuButton} color="secondary" aria-label="Menu">
+                  <IconButton className={classes.menuButton} color="secondary" aria-label="Menu" disableTouchRipple>
                     <LeftIcon style={{ fontSize: '30px' }} />
                   </IconButton>
                   <Typography variant="h6" color="secondary" className={classes.grow}>Title</Typography>
@@ -58,7 +52,7 @@ class HistoryIndex extends React.Component {
                 </Toolbar>
               </AppBar>
             </Grid>
-            <Grid container item style={{ flex: 1 }}>1</Grid>
+            <Component step={10} />
           </Grid>
           )}
       />

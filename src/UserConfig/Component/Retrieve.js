@@ -39,6 +39,7 @@ class Login extends React.Component {
                       onChangeHandle={this.onChangeHandle}
                       value={email}
                       type="email"
+                      fullwidth
                     />
                   </Grid>
                   <Grid item>

@@ -24,7 +24,7 @@ export const styles = theme => ({
     height: '80%',
   },
   infoListItem: {
-    margin: '5px 0 5px 0',
+    margin: '10px 0 10px 0',
     backgroundColor: theme.palette.primary.main,
   },
   midPaper: {
