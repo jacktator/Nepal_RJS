@@ -33,6 +33,7 @@ class MainRehab extends React.Component {
         currentWeek={this.props.currentWeek}
         currentPage={2}
         FooterContent={1}
+        showBottomButton
         tapBarContent={tapBarContent}
         midComponent={(
           <Grid container style={{ flex: 1 }} justify="center" alignContent="space-around" alignItems="center">

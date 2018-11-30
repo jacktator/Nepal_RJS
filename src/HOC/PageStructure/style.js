@@ -14,6 +14,7 @@ export const styles = theme => ({
   mid: {
     flex: '1',
     backgroundColor: '#e1e2e1',
+    overflowY: 'scroll',
   },
   bottom: {
     backgroundColor: 'blue',
