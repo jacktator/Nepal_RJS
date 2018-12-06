@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Typography, TextField, InputAdornment, IconButton,
-} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import IconButton from '@material-ui/core/IconButton';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import { validation } from './Validation';
@@ -105,6 +106,7 @@ class InputFiles extends React.Component {
     const {
       id, name, placeholder, adornmentText, password,
     } = inputType[type];
+
     return (
       <TextField
         id={id}
@@ -129,7 +131,8 @@ class InputFiles extends React.Component {
           startAdornment: (
             <InputAdornment position="start">
               <Typography variant="h6" component="h6" color="secondary">{adornmentText}</Typography>
-            </InputAdornment>),
+            </InputAdornment>
+          ),
           endAdornment: password && (
           <InputAdornment position="end">
             <IconButton
