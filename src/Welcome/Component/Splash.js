@@ -38,15 +38,11 @@ const Splash = (props) => {
       <Grid className={classes.gridRoot} container spacing={0} justify="space-between" alignItems="stretch" direction="column">
         <Grid container className={classes.autoFlex}>
           <Paper className={classes.root}>
-            <Typography className={classes.titile} variant="h2" component="h3" align="center" color="textSecondary" gutterBottom>
-              Nepal
-            </Typography>
+            <Typography className={classes.titile} variant="h2" component="h3" align="center" color="textSecondary" gutterBottom>Nepal</Typography>
           </Paper>
         </Grid>
         <Grid container style={{ height: '10vh' }} justify="center">
-          <Button disableTouchRipple className={classes.button} color="primary">
-            Get Started
-          </Button>
+          <Button disableTouchRipple className={classes.button} color="primary">Get Started</Button>
         </Grid>
       </Grid>
     </div>

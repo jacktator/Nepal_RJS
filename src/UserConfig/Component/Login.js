@@ -32,10 +32,12 @@ class Login extends React.Component {
           <Grid container className={classes.autoFlex}>
             <Paper className={classes.paper}>
               <Grid container className={classes.gridRoot} direction="column">
+
                 <Grid container justify="center" alignItems="flex-end" style={{ height: '33vh' }}>
                   <Typography variant="h2" component="h3" align="center" color="secondary" gutterBottom>Nepal</Typography>
                 </Grid>
-                <Grid container direction="column" justify="center" className={classes.autoFlex}>
+
+                <Grid container className={classes.autoFlex} direction="column" justify="center">
                   <Grid container alignContent="center">
                     <HOCInputFile
                       onChangeHandle={this.onChangeHandle}
@@ -50,19 +52,23 @@ class Login extends React.Component {
                       fullwidth
                     />
                   </Grid>
+
                   <Grid item>
                     <Button variant="text" color="secondary" fullWidth disableTouchRipple>Forget Password</Button>
                     <Button variant="text" color="secondary" fullWidth disableTouchRipple>Register</Button>
                   </Grid>
 
                 </Grid>
-
               </Grid>
             </Paper>
           </Grid>
+
           <Grid container style={{ height: '10vh' }} justify="center">
-            <Button disableTouchRipple className={classes.button} color="primary">Sign In</Button>
+            <Button disableTouchRipple className={classes.button} color="primary">
+              Sign In
+            </Button>
           </Grid>
+
         </Grid>
       </div>
     );
