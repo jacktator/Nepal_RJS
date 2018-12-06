@@ -33,7 +33,7 @@ class Login extends React.Component {
             <Paper className={classes.paper}>
               <Grid container className={classes.gridRoot} direction="column">
 
-                <Grid container justify="center" alignItems="flex-end" style={{ height: '33vh' }}>
+                <Grid container style={{ height: '33vh' }} justify="center" alignItems="flex-end">
                   <Typography variant="h2" component="h3" align="center" color="secondary" gutterBottom>Nepal</Typography>
                 </Grid>
 
@@ -57,16 +57,14 @@ class Login extends React.Component {
                     <Button variant="text" color="secondary" fullWidth disableTouchRipple>Forget Password</Button>
                     <Button variant="text" color="secondary" fullWidth disableTouchRipple>Register</Button>
                   </Grid>
-
+                  
                 </Grid>
               </Grid>
             </Paper>
           </Grid>
 
           <Grid container style={{ height: '10vh' }} justify="center">
-            <Button disableTouchRipple className={classes.button} color="primary">
-              Sign In
-            </Button>
+            <Button disableTouchRipple className={classes.button} color="primary">Sign In</Button>
           </Grid>
 
         </Grid>
