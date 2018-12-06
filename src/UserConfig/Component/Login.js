@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
+
 import styles from '../styles';
 import HOCInputFile from '../../HOC/inputFiles';
 
@@ -27,7 +28,7 @@ class Login extends React.Component {
     const { email, password } = this.state;
     return (
       <div className={classes.container}>
-        <Grid className={classes.gridRoot} container spacing={0} justify="space-between" alignItems="stretch" direction="column">
+        <Grid container className={classes.gridRoot} spacing={0} justify="space-between" alignItems="stretch" direction="column">
           <Grid container className={classes.autoFlex}>
             <Paper className={classes.paper}>
               <Grid container className={classes.gridRoot} direction="column">
@@ -63,12 +64,13 @@ class Login extends React.Component {
             <Button disableTouchRipple className={classes.button} color="primary">Sign In</Button>
           </Grid>
         </Grid>
-
       </div>
     );
   }
 }
+
 Login.propTypes = {
   classes: PropTypes.object.isRequired,
 };
+
 export default withStyles(styles)(Login);

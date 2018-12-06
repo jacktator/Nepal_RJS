@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
 
 const styles = theme => ({
   root: {
@@ -38,18 +38,23 @@ const Splash = (props) => {
       <Grid className={classes.gridRoot} container spacing={0} justify="space-between" alignItems="stretch" direction="column">
         <Grid container className={classes.autoFlex}>
           <Paper className={classes.root}>
-            <Typography className={classes.titile} variant="h2" component="h3" align="center" color="textSecondary" gutterBottom>Nepal</Typography>
+            <Typography className={classes.titile} variant="h2" component="h3" align="center" color="textSecondary" gutterBottom>
+              Nepal
+            </Typography>
           </Paper>
         </Grid>
         <Grid container style={{ height: '10vh' }} justify="center">
-          <Button disableTouchRipple className={classes.button} color="primary">Get Started</Button>
+          <Button disableTouchRipple className={classes.button} color="primary">
+            Get Started
+          </Button>
         </Grid>
       </Grid>
-
     </div>
   );
 };
+
 Splash.propTypes = {
   classes: PropTypes.object.isRequired,
 };
+
 export default withStyles(styles)(Splash);

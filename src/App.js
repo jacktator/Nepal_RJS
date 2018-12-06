@@ -1,7 +1,7 @@
 import React from 'react';
+import { HashRouter } from 'react-router-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { HashRouter } from 'react-router-dom';
 import RootRouter from './Router';
 import theme from './theme';
 
