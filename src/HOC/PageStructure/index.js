@@ -10,7 +10,7 @@ import { styles } from './style';
 class index extends React.PureComponent {
   render() {
     const {
-      classes, backgroundImage, tapBarContent, title, top, showBottomButton, midComponent
+      classes, backgroundImage, tapBarContent, title, top, showBottomButton, midComponent, currentPage
     } = this.props;
     return (
       <div className={classes.container}>
@@ -32,7 +32,7 @@ class index extends React.PureComponent {
           </Grid>
 
           <Grid container>
-            <Footer FooterContent={1} showBottomButton={showBottomButton} />
+            <Footer FooterContent={1} showBottomButton={showBottomButton} currentPage={currentPage} />
           </Grid>
 
         </Grid>
@@ -49,6 +49,7 @@ index.propTypes = {
   top: PropTypes.bool,
   showBottomButton: PropTypes.bool,
   midComponent: PropTypes.object.isRequired,
+  currentPage: PropTypes.number,
 };
 
 export default withStyles(styles)(index);
