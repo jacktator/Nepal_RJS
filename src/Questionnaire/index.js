@@ -95,10 +95,10 @@ class index extends React.Component {
 
         </Grid>
       </div>
-
     );
   }
 }
+
 index.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,

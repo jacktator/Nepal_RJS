@@ -1,4 +1,4 @@
-const styles = theme => ({
+const styles = ({
   card: {
     boxShadow: 'unset',
     borderRadius: '0',

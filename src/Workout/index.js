@@ -7,7 +7,7 @@ import DailyPage from './Component/Daily';
 import HistoryPage from './Component/History';
 import ExercisePage from './Component/Exercise';
 
-const Workout = props => (
+const Workout = () => (
   <Switch>
     <Route path="/workout/plan" component={PlanPage} />
     <Route path="/workout/daily" component={DailyPage} />
@@ -16,4 +16,5 @@ const Workout = props => (
     <Redirect from="/workout/" to="/workout/plan" />
   </Switch>
 );
+
 export default Workout;
