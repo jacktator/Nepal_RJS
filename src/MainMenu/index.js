@@ -1,34 +1,49 @@
 import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 import SpeedDialTooltipOpen from '../HOC/speedDial';
 import styles from './styles';
 
-const menu = [{ name: 'Workout', color: 'rgba(0,96,100,0.5)' }, { name: 'Rehab', color: 'rgba(86,200,216,0.5)' },
-  { name: 'Profile', color: 'rgba(111,249,255,0.4)' }, { name: 'Content', color: 'rgba(0,172,193,0.4)' },
-  { name: 'Question', color: 'rgba(38,198,218,0.3)' }, { name: 'FAQ', color: 'rgba(136,255,255,0.3)' }];
-
+const menu = [
+  { name: 'Workout', color: 'rgba(0,96,100,0.5)' }, 
+  { name: 'Rehab', color: 'rgba(86,200,216,0.5)' },
+  { name: 'Profile', color: 'rgba(111,249,255,0.4)' }, 
+  { name: 'Content', color: 'rgba(0,172,193,0.4)' },
+  { name: 'Question', color: 'rgba(38,198,218,0.3)' }, 
+  { name: 'FAQ', color: 'rgba(136,255,255,0.3)' }
+];
 
 class Mainmenu extends React.PureComponent {
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.background}>
-        <Grid container className={classes.container} alignItems="center" direction="column" justify="space-between">
+        <Grid container className={classes.container} direction="column" justify="space-between" alignItems="center">
+
           <SpeedDialTooltipOpen shadow />
-          <Grid container justify="center" alignContent="center" alignItems="center" className={classes.topGrid}>
+
+          <Grid container className={classes.topGrid} justify="center" alignContent="center" alignItems="center">
             <Typography variant="h2" component="h2">Nepal</Typography>
           </Grid>
-          <Grid container justify="center" alignContent="center" alignItems="center" className={classes.menuGrid}>
+
+          <Grid container className={classes.menuGrid} justify="center" alignContent="center" alignItems="center">
             {menu.map(v => (
-              <Grid key={v.name} style={{ backgroundColor: v.color }} justify="center" alignItems="center" className={classes.childGrid} container>
+              <Grid container className={classes.childGrid} key={v.name} style={{ backgroundColor: v.color }} justify="center" alignItems="center">
                 <Typography style={{ color: 'darkcyan' }} variant="h6" component="h6">{v.name}</Typography>
               </Grid>
             ))}
           </Grid>
+
         </Grid>
       </div>
     );
   }
 }
+
+Mainmenu.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
 export default withStyles(styles)(Mainmenu);
