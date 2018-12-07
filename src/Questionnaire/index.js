@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Button, MobileStepper, Grid, Paper,
-} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import MobileStepper from '@material-ui/core/MobileStepper';
+import Paper from '@material-ui/core/Paper';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import renderComponent from './Component';
-import styles from './styles';
 import Dialog from '../HOC/Dialog';
-
+import styles from './styles';
 
 class index extends React.Component {
   constructor(props) {
@@ -57,6 +57,7 @@ class index extends React.Component {
     return (
       <div className={classes.container}>
         <Grid container className={classes.rootGrid} direction="column" justify="space-between">
+
           <Grid container className={classes.topGrid} justify="center" alignItems="center">
             <Paper elevation={12} className={classes.paper}>
               {renderComponent({
@@ -70,22 +71,25 @@ class index extends React.Component {
               handleClose={this.handleClose}
             />
           </Grid>
+
           <Grid container className={classes.bottomGrid}>
             <MobileStepper
               steps={maxSteps}
               position="static"
               activeStep={activeStep}
               className={classes.mobileStepper}
-              nextButton={(
+              nextButton={
                 <Button disableTouchRipple color="primary" size="small" onClick={this.handleNext}>
                   {activeStep === maxSteps - 1 ? 'Finish' : 'Next'}
                   {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-                </Button>)}
-              backButton={(
+                </Button>
+              }
+              backButton={
                 <Button disableTouchRipple color="primary" size="small" onClick={this.handleBack} disabled={activeStep === 0}>
                   {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
                         Back
-                </Button>)}
+                </Button>
+              }
             />
           </Grid>
 

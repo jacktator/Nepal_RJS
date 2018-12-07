@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,
-} from '@material-ui/core/Button';
+} from '@material-ui/core';
 
 const AlertDialog = (props) => {
   const {

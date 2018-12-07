@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Radio, FormControl, FormControlLabel, RadioGroup, Typography, TextField, InputAdornment, Grid,
-} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Grid from '@material-ui/core/Grid';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
 import SwipeableTemporaryDrawer from '../../../HOC/swipableSelect';
 import styles from '../../styles';
 
@@ -24,11 +29,14 @@ class First extends React.Component {
     const { classes } = this.props;
     const { value } = this.state;
     return (
-      <Grid container direction="column" justify="space-around" alignItems="center" style={{ height: '100%' }}>
-        <Grid style={{ height: '20%' }} container alignItems="center" justify="center">
+      <Grid container style={{ height: '100%' }} direction="column" justify="space-around" alignItems="center">
+
+        <Grid container style={{ height: '20%' }} justify="center" alignItems="center">
           <Typography variant="h5" component="h5" color="textPrimary">Your Details</Typography>
         </Grid>
-        <Grid container spacing={40} className={classes.topGrid} style={{ width: '100%', margin: '0' }} justify="center" alignContent="flex-start" alignItems="center">
+
+        <Grid container className={classes.topGrid} style={{ width: '100%', margin: '0' }} spacing={40} justify="center" alignContent="flex-start" alignItems="center">
+          
           <Grid item xs={12}>
             <TextField
               id="email"
@@ -43,8 +51,9 @@ class First extends React.Component {
               }}
             />
           </Grid>
+
           <Grid item xs={12}>
-            <FormControl component="fieldset" className={classes.formControl}>
+            <FormControl className={classes.formControl} component="fieldset">
               <Typography variant="body1" component="h6" color="textPrimary">Gender: </Typography>
               <RadioGroup
                 aria-label="Gender"
@@ -59,6 +68,7 @@ class First extends React.Component {
               </RadioGroup>
             </FormControl>
           </Grid>
+
           <Grid item xs={12}>
             <SwipeableTemporaryDrawer
               id="age"
@@ -68,6 +78,7 @@ class First extends React.Component {
               }
             />
           </Grid>
+
           <Grid item xs={12}>
             <SwipeableTemporaryDrawer
               id="weight"
@@ -84,7 +95,9 @@ class First extends React.Component {
     );
   }
 }
+
 First.propTypes = {
   classes: PropTypes.object.isRequired,
 };
+
 export default withStyles(styles)(First);
