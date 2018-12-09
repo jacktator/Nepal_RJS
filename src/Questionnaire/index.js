@@ -77,12 +77,12 @@ class index extends React.Component {
               activeStep={activeStep}
               className={classes.mobileStepper}
               nextButton={(
-                <Button disableTouchRipple color="primary" size="small" onClick={this.handleNext}>
+                <Button  color="primary" size="small" onClick={this.handleNext}>
                   {activeStep === maxSteps - 1 ? 'Finish' : 'Next'}
                   {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
                 </Button>)}
               backButton={(
-                <Button disableTouchRipple color="primary" size="small" onClick={this.handleBack} disabled={activeStep === 0}>
+                <Button  color="primary" size="small" onClick={this.handleBack} disabled={activeStep === 0}>
                   {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
                         Back
                 </Button>)}

@@ -33,7 +33,7 @@ class MidPartComponent extends React.Component {
         scrollable
         scrollButtons="auto"
         style={{
-          width: '100%', height: '30px', minHeight: '30px', borderBottom: 'solid 1px gray', backgroundColor: theme.palette.primary.main,
+          width: '100%', height: '30px', minHeight: '30px', backgroundColor: theme.palette.primary.main,
         }}
       >
         {this.props.tapBarContent.map((v, k) => <Tab onClick={() => this.props.hasClick && this.props.onTagClick(k)} style={{ minHeight: '30px' }} classes={{ disabled: classes.disabled }} disabled={(k >= (this.props.currentProcess || 1))} disableRipple key={k} label={v} />)}

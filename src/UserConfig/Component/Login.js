@@ -50,8 +50,8 @@ class Login extends React.Component {
                     />
                   </Grid>
                   <Grid item>
-                    <Button variant="text" color="secondary" fullWidth disableTouchRipple>Forget Password</Button>
-                    <Button variant="text" color="secondary" fullWidth disableTouchRipple>Register</Button>
+                    <Button variant="text" color="secondary" fullWidth>Forget Password</Button>
+                    <Button variant="text" color="secondary" fullWidth>Register</Button>
                   </Grid>
 
                 </Grid>
@@ -60,7 +60,7 @@ class Login extends React.Component {
             </Paper>
           </Grid>
           <Grid container style={{ height: '10vh' }} justify="center">
-            <Button disableTouchRipple className={classes.button} color="primary">Sign In</Button>
+            <Button className={classes.button} color="primary">Sign In</Button>
           </Grid>
         </Grid>
 

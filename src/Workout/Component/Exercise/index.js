@@ -82,7 +82,7 @@ class HistoryIndex extends React.Component {
             <Grid container item direction="column" alignContent="space-between" alignItems="center">
               <AppBar position="static">
                 <Toolbar style={{ justifyContent: 'space-between' }}>
-                  <IconButton className={classes.menuButton} color="secondary" aria-label="Menu" disableTouchRipple>
+                  <IconButton className={classes.menuButton} color="secondary" aria-label="Menu" >
                     <LeftIcon style={{ fontSize: '30px' }} />
                   </IconButton>
                   <Typography variant="h6" color="secondary" className={classes.grow}>Title</Typography>

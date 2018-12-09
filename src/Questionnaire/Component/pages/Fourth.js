@@ -43,7 +43,7 @@ class Fourth extends React.Component {
                     key={v.id}
                     onClick={() => handleClickOpen({ discription: v.describe, title: v.title })}
                     control={
-                      <Checkbox disableTouchRipple color="primary" checked={rehab === `${v.id}`} onChange={this.handleRehabChange} value={`${v.id}`} />
+                      <Checkbox  color="primary" checked={rehab === `${v.id}`} onChange={this.handleRehabChange} value={`${v.id}`} />
               }
                     label={v.title}
                   />

@@ -24,14 +24,14 @@ class index extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, progress, currentWeek } = this.props;
     return (
       <MainComponent
         top
         backgroundImage="image/sampleImage.jpeg"
         title="Workout"
-        progress={this.props.progress}
-        currentWeek={this.props.currentWeek}
+        progress={progress}
+        currentWeek={currentWeek}
         currentPage={2}
         FooterContent={1}
         tapBarContent={tapBarContent}

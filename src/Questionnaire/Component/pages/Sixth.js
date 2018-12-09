@@ -48,7 +48,7 @@ class Sixth extends React.Component {
                     onClick={() => handleClickOpen({ discription: v.describe, title: v.title })}
                     key={v.id}
                     control={
-                      <Checkbox disableTouchRipple color="primary" checked={pain === `${v.id}`} onChange={this.handlePainChange} value={`${v.id}`} />
+                      <Checkbox  color="primary" checked={pain === `${v.id}`} onChange={this.handlePainChange} value={`${v.id}`} />
               }
                     label={v.title}
                   />
@@ -67,7 +67,7 @@ class Sixth extends React.Component {
                     key={v.id}
                     onClick={() => handleClickOpen({ discription: v.describe, title: v.title })}
                     control={
-                      <Checkbox disableTouchRipple color="primary" checked={health === `${v.id}`} onChange={this.handleHealthChange} value={`${v.id}`} />
+                      <Checkbox  color="primary" checked={health === `${v.id}`} onChange={this.handleHealthChange} value={`${v.id}`} />
               }
                     label={v.title}
                   />

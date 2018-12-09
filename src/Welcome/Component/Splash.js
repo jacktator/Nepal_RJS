@@ -42,7 +42,7 @@ const Splash = (props) => {
           </Paper>
         </Grid>
         <Grid container style={{ height: '10vh' }} justify="center">
-          <Button disableTouchRipple className={classes.button} color="primary">Get Started</Button>
+          <Button  className={classes.button} color="primary">Get Started</Button>
         </Grid>
       </Grid>
 

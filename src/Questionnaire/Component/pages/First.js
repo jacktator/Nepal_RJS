@@ -54,8 +54,8 @@ class First extends React.Component {
                 onChange={this.handleChange}
                 row
               >
-                <FormControlLabel value="female" control={<Radio disableTouchRipple color="primary" />} label="Female" />
-                <FormControlLabel value="male" control={<Radio disableTouchRipple color="primary" />} label="Male" />
+                <FormControlLabel value="female" control={<Radio  color="primary" />} label="Female" />
+                <FormControlLabel value="male" control={<Radio  color="primary" />} label="Male" />
               </RadioGroup>
             </FormControl>
           </Grid>

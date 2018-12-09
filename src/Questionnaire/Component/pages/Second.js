@@ -60,8 +60,8 @@ class Second extends React.Component {
                 onChange={this.handleLocationChange}
                 row
               >
-                <FormControlLabel labelPlacement="start" style={{ marginRight: '0' }} value="gym" control={<Radio disableTouchRipple color="primary" />} label="Gym" />
-                <FormControlLabel labelPlacement="start" style={{ marginRight: '0' }} value="home" control={<Radio disableTouchRipple color="primary" />} label="Home" />
+                <FormControlLabel labelPlacement="start" style={{ marginRight: '0' }} value="gym" control={<Radio  color="primary" />} label="Gym" />
+                <FormControlLabel labelPlacement="start" style={{ marginRight: '0' }} value="home" control={<Radio  color="primary" />} label="Home" />
               </RadioGroup>
             </FormControl>
           </Grid>
@@ -76,7 +76,7 @@ class Second extends React.Component {
                     onClick={() => handleClickOpen({ discription: v.describe, title: v.title })}
                     key={v.id}
                     control={
-                      <Checkbox disableTouchRipple color="primary" checked={goal === `${v.id}`} onChange={this.handleGoalChange} value={`${v.id}`} />
+                      <Checkbox  color="primary" checked={goal === `${v.id}`} onChange={this.handleGoalChange} value={`${v.id}`} />
               }
                     label={v.title}
                   />

@@ -66,7 +66,7 @@ class Login extends React.Component {
             </Paper>
           </Grid>
           <Grid container style={{ height: '10vh' }} justify="center">
-            <Button disableTouchRipple className={classes.button} color="primary">Register</Button>
+            <Button  className={classes.button} color="primary">Register</Button>
           </Grid>
         </Grid>
 

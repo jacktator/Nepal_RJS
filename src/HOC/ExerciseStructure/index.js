@@ -78,7 +78,7 @@ const ExerciseStructure = (props) => {
             />
           ))}
         </Grid>
-        <Grid><Button fullWidth variant="contained" color="primary" disableTouchRipple><Typography color="secondary">SAVE</Typography></Button></Grid>
+        <Grid><Button fullWidth variant="contained" color="primary" ><Typography color="secondary">SAVE</Typography></Button></Grid>
       </Grid>
       <Grid container item>
         <List component="nav" style={{ width: '100%' }}>

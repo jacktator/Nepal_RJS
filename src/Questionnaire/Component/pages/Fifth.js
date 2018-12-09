@@ -48,7 +48,7 @@ class Fifth extends React.Component {
                     onClick={() => handleClickOpen({ discription: v.describe, title: v.title })}
                     key={v.id}
                     control={
-                      <Checkbox disableTouchRipple color="primary" checked={stressed === `${v.id}`} onChange={this.handleStressedChange} value={`${v.id}`} />
+                      <Checkbox  color="primary" checked={stressed === `${v.id}`} onChange={this.handleStressedChange} value={`${v.id}`} />
               }
                     label={v.title}
                   />
@@ -68,7 +68,7 @@ class Fifth extends React.Component {
                     onClick={() => handleClickOpen({ discription: v.describe, title: v.title })}
 
                     control={
-                      <Checkbox disableTouchRipple color="primary" checked={productive === `${v.id}`} onChange={this.handleProductiveChange} value={`${v.id}`} />
+                      <Checkbox  color="primary" checked={productive === `${v.id}`} onChange={this.handleProductiveChange} value={`${v.id}`} />
               }
                     label={v.title}
                   />
