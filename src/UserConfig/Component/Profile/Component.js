@@ -7,14 +7,16 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import { withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
-
+import { Typography } from '@material-ui/core';
+import Divider from '@material-ui/core/Divider';
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
   root: {
     backgroundColor: theme.palette.primary.main,
     marginTop: '20%',
     width: '92%',
-    height: '85%',
+    minHeight: '80vh',
   },
   container: {
     backgroundColor: '#e1e2e1',
@@ -22,6 +24,11 @@ const styles = theme => ({
     height: '100vh',
     width: '100vw',
     overflowY: 'scroll',
+  },
+  contentContainer: {
+    position: 'relative',
+    marginTop: '15%',
+    width: '94%',
   },
   avatarGridContainer: {
     position: 'relative',
@@ -62,6 +69,12 @@ const styles = theme => ({
   titile: {
     marginTop: '33vh',
   },
+  detailedLableHead: {
+    width: '30%',
+  },
+  divider: {
+    backgroundColor: theme.palette.secondary.main,
+  },
 });
 
 const Profile = (props) => {
@@ -70,7 +83,7 @@ const Profile = (props) => {
     <Grid container className={classes.container} justify="center" alignItems="center">
       <Paper className={classes.root}>
         <Grid container className={classes.avatarGridContainer} justify="center">
-          <div className={classes.avatarGridContainer}>
+          <Grid className={classes.avatarGridContainer}>
             <Avatar component={Paper} className={classes.avatarContainer}>
               <AccountCircle color="primary" className={classes.avatar} />
             </Avatar>
@@ -80,9 +93,31 @@ const Profile = (props) => {
                 <CloudUploadIcon style={{ fontSize: '5vmin' }} color="secondary" />
               </IconButton>
             </label>
-          </div>
+          </Grid>
+          <Grid container spacing={16} className={classes.contentContainer} direction="column" justify="space-around">
+            <Grid item container justify="flex-start">
+              <Typography className={classes.detailedLableHead} variant="h6" color="secondary">Name:  </Typography>
+              <Typography variant="h6" color="secondary">UserName</Typography>
+            </Grid>
+            <Divider className={classes.divider} />
+            <Grid item container justify="flex-start">
+              <Typography className={classes.detailedLableHead} variant="h6" color="secondary">DoB:  </Typography>
+              <Typography variant="h6" color="secondary">1999 - 12 - 12</Typography>
+            </Grid>
+            <Divider className={classes.divider} />
+            <Grid item container justify="flex-start">
+              <Typography className={classes.detailedLableHead} variant="h6" color="secondary">weight:  </Typography>
+              <Typography variant="h6" color="secondary">100kg</Typography>
+            </Grid>
+            <Divider className={classes.divider} />
+          </Grid>
+          <Grid className={classes.contentContainer} container direction="column" justify="center" alignItems="center">
+            <Button color="secondary">Update Information</Button>
+            <Button color="secondary">Change Password</Button>
+            <Button color="secondary">View Terms and Conditions</Button>
+            <Button color="secondary">Logout</Button>
+          </Grid>
         </Grid>
-sss
       </Paper>
     </Grid>
   );

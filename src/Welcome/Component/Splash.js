@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import { Link } from 'react-router-dom';
 
 const styles = theme => ({
   root: {
@@ -42,7 +43,7 @@ const Splash = (props) => {
           </Paper>
         </Grid>
         <Grid container style={{ height: '10vh' }} justify="center">
-          <Button  className={classes.button} color="primary">Get Started</Button>
+          <Button fullWidth component={Link} to="/user" className={classes.button} color="primary">Get Started</Button>
         </Grid>
       </Grid>
 

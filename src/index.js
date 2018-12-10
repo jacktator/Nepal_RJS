@@ -3,17 +3,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import './index.css';
-import { applyMiddleware, createStore } from 'redux';
-import thunk from 'redux-thunk';
+import axios from 'axios';
 import App from './App';
-import reducer from './Reducers';
+import { BASE_URL } from './config';
+import { setAuthTokenInHeader } from './UserConfig/action';
+import store from './store';
 
-const store = createStore(reducer, applyMiddleware(thunk));
-// ,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-// here is for passing the data of redux to the App by put the store into the tag of Provider
+// Set base URL in request
+axios.defaults.baseURL = BASE_URL;
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
+// Check the token
+if (localStorage.jwtToken) {
+  setAuthTokenInHeader(localStorage.jwtToken);
+}
 ReactDOM.render(
-  <App />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root'),
 );
 

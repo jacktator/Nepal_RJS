@@ -133,7 +133,7 @@ class InputFiles extends React.Component {
           endAdornment: password && (
           <InputAdornment position="end">
             <IconButton
-              
+
               aria-label="Toggle password visibility"
               onClick={this.handleClickShowPassword}
             >

@@ -39,13 +39,13 @@ const styles = theme => ({
 });
 
 const actions = [
-  { icon: <WorkoutIcon color="primary" />, name: 'Workout' },
-  { icon: <TrainingIcon color="primary" />, name: 'Rehab and Posture' },
-  { icon: <PersonIcon color="primary" />, name: 'Profile' },
-  { icon: <ContentIcon color="primary" />, name: 'Content' },
-  { icon: <ClanderIcon color="primary" />, name: 'Ask a Question' },
-  { icon: <HelpIcon color="primary" />, name: 'FAQ' },
-  { icon: <LogoutIcon color="primary" />, name: 'Logout' },
+  { icon: <WorkoutIcon color="primary" />, name: 'Workout', to: '/workout' },
+  { icon: <TrainingIcon color="primary" />, name: 'Rehab and Posture', to: '/rehab' },
+  { icon: <PersonIcon color="primary" />, name: 'Profile', to: '/user/profile' },
+  { icon: <ContentIcon color="primary" />, name: 'Content', to: '/' },
+  { icon: <ClanderIcon color="primary" />, name: 'Ask a Question', to: '/' },
+  { icon: <HelpIcon color="primary" />, name: 'FAQ', to: '/' },
+  { icon: <LogoutIcon color="primary" />, name: 'Logout', to: '/' },
 ];
 
 class SpeedDialTooltipOpen extends React.Component {
@@ -72,6 +72,10 @@ class SpeedDialTooltipOpen extends React.Component {
     this.setState(state => ({
       open: !state.open,
     }));
+  }
+
+  handleActionClick(to) {
+    window.location.hash = to;
   }
 
   handleOpen() {
@@ -103,9 +107,6 @@ class SpeedDialTooltipOpen extends React.Component {
         onBlur={this.handleClose}
         onClick={this.handleClick}
         onClose={this.handleClose}
-        onFocus={this.handleOpen}
-        onMouseEnter={this.handleOpen}
-        onMouseLeave={this.handleClose}
         direction={right ? (window.orientation === (90 || 270) ? 'left' : 'down') : (window.orientation === (90 || 270) ? 'right' : 'down')}
         open={open}
       >
@@ -116,7 +117,7 @@ class SpeedDialTooltipOpen extends React.Component {
             icon={action.icon}
             tooltipTitle={action.name}
             tooltipOpen={window.orientation !== (90 || 270)}
-            onClick={this.handleClick}
+            onClick={() => this.handleActionClick(action.to)}
           />
         ))}
       </SpeedDial>
