@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import SpeedDial from '@material-ui/lab/SpeedDial';
+import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
+import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
 import ClanderIcon from '@material-ui/icons/HelpOutlineOutlined';
 import ContentIcon from '@material-ui/icons/AssessmentOutlined';
-import TrainingIcon from '@material-ui/icons/FitnessCenterOutlined';
-import WorkoutIcon from '@material-ui/icons/DirectionsRunOutlined';
-import ViewHandleIcon from '@material-ui/icons/ViewHeadline';
-import SpeedDial from '@material-ui/lab/SpeedDial';
-import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
-import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
 import HelpIcon from '@material-ui/icons/Help';
-import PersonIcon from '@material-ui/icons/Person';
 import LogoutIcon from '@material-ui/icons/ExitToApp';
+import PersonIcon from '@material-ui/icons/Person';
+import TrainingIcon from '@material-ui/icons/FitnessCenterOutlined';
+import ViewHandleIcon from '@material-ui/icons/ViewHeadline';
+import WorkoutIcon from '@material-ui/icons/DirectionsRunOutlined';
 
 const styles = theme => ({
   root: {
@@ -99,7 +99,7 @@ class SpeedDialTooltipOpen extends React.Component {
         ButtonProps={{ style: { backgroundColor: 'unset', transform: 'scale(0.8)', boxShadow: shadow ? '' : 'unset' }, disableRipple: true }}
         ariaLabel="SpeedDial tooltip example"
         className={right ? classes.speedDialRight : classes.speedDialLeft}
-        icon={<SpeedDialIcon icon={<ViewHandleIcon color={secondary ? 'secondary' : 'primary'} />} className={classes.rootIcon} />}
+        icon={<SpeedDialIcon icon={<ViewHandleIcon className={classes.rootIcon} color={secondary ? 'secondary' : 'primary'} />} />}
         onBlur={this.handleClose}
         onClick={this.handleClick}
         onClose={this.handleClose}

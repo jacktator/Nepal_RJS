@@ -17,8 +17,8 @@ class ExerciseComponent extends React.PureComponent {
 }
 
 ExerciseComponent.propTypes = {
-  select: PropTypes.array.isRequired,
-  ExList: PropTypes.array.isRequired,
+  select: PropTypes.array,
+  ExList: PropTypes.array,
 };
 
 export default ExerciseComponent;
