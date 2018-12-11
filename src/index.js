@@ -14,8 +14,8 @@ axios.defaults.baseURL = BASE_URL;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 // Check the token
-if (localStorage.jwtToken) {
-  setAuthTokenInHeader(localStorage.jwtToken);
+if (sessionStorage.token) {
+  setAuthTokenInHeader(sessionStorage.token);
 }
 ReactDOM.render(
   <Provider store={store}>

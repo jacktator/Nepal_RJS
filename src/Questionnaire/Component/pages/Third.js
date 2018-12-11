@@ -2,29 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   FormControl, FormControlLabel, Typography,
-  Checkbox, FormHelperText, FormGroup, Grid,
+  Checkbox, FormGroup, Grid,
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import styles from '../../styles';
 import { third } from '../contentData';
 
-class Third extends React.Component {
+class Third extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      rehab: '',
-    };
-    this.handleRehabChange = this.handleRehabChange.bind(this);
+    this.thirdWeekHandleChange = this.thirdWeekHandleChange.bind(this);
   }
 
-  handleRehabChange(event) {
-    this.setState({ rehab: event.target.value });
+
+  thirdWeekHandleChange(event) {
+    this.props.handleChangeState('third', event.target.name, event.target.value);
   }
 
 
   render() {
-    const { classes, handleClickOpen } = this.props;
-    const { rehab } = this.state;
+    const { classes, handleClickOpen, data } = this.props;
+    const { rehab } = data;
     const error = rehab === '';
     return (
       <Grid container direction="column" justify="space-around" alignItems="center" style={{ height: '100%' }}>
@@ -41,9 +39,10 @@ class Third extends React.Component {
                     style={{ justifyContent: 'space-between' }}
                     labelPlacement="start"
                     key={v.id}
+                    name="rehab"
                     onClick={() => handleClickOpen({ discription: v.describe, title: v.title })}
                     control={
-                      <Checkbox  color="primary" checked={rehab === `${v.id}`} onChange={this.handleRehabChange} value={`${v.id}`} />
+                      <Checkbox color="primary" checked={rehab === `${v.id}`} onChange={this.thirdWeekHandleChange} value={`${v.id}`} />
               }
                     label={v.title}
                   />

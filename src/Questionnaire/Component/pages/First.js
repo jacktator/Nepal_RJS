@@ -10,19 +10,18 @@ import styles from '../../styles';
 class First extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      value: 'female',
-    };
-    this.handleChange = this.handleChange.bind(this);
+    this.firstWeekHandleChange = this.firstWeekHandleChange.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
+  firstWeekHandleChange(event) {
+    this.props.handleChangeState('first', event.target.name, event.target.value);
   }
 
   render() {
-    const { classes } = this.props;
-    const { value } = this.state;
+    const { classes, data } = this.props;
+    const {
+      name, age, gender, weight,
+    } = data;
     return (
       <Grid container direction="column" justify="space-around" alignItems="center" style={{ height: '100%' }}>
         <Grid style={{ height: '20%' }} container alignItems="center" justify="center">
@@ -31,14 +30,17 @@ class First extends React.Component {
         <Grid container spacing={40} className={classes.topGrid} style={{ width: '100%', margin: '0' }} justify="center" alignContent="flex-start" alignItems="center">
           <Grid item xs={12}>
             <TextField
-              id="email"
-              placeholder="Example@gmail.com"
+              id="name"
+              placeholder="Please enter your name"
               fullWidth
+              name="name"
+              value={name}
+              onChange={this.firstWeekHandleChange}
               InputProps={{
                 classes: { underline: classes.inputFile },
                 startAdornment: (
                   <InputAdornment position="start">
-                    <Typography variant="body1" component="h6" color="textPrimary">Email: </Typography>
+                    <Typography variant="body1" component="h6" color="textPrimary">Name: </Typography>
                   </InputAdornment>),
               }}
             />
@@ -48,14 +50,14 @@ class First extends React.Component {
               <Typography variant="body1" component="h6" color="textPrimary">Gender: </Typography>
               <RadioGroup
                 aria-label="Gender"
-                name="gender1"
+                name="gender"
                 className={classes.group}
-                value={value}
-                onChange={this.handleChange}
+                value={gender}
+                onChange={this.firstWeekHandleChange}
                 row
               >
-                <FormControlLabel value="female" control={<Radio  color="primary" />} label="Female" />
-                <FormControlLabel value="male" control={<Radio  color="primary" />} label="Male" />
+                <FormControlLabel value="female" control={<Radio color="primary" />} label="Female" />
+                <FormControlLabel value="male" control={<Radio color="primary" />} label="Male" />
               </RadioGroup>
             </FormControl>
           </Grid>
@@ -63,6 +65,8 @@ class First extends React.Component {
             <SwipeableTemporaryDrawer
               id="age"
               label="Age"
+              value={age}
+              onChange={this.firstWeekHandleChange}
               content={
                 [...Array(72).keys()].map(v => v + 12)
               }
@@ -72,6 +76,8 @@ class First extends React.Component {
             <SwipeableTemporaryDrawer
               id="weight"
               label="Weight"
+              value={weight}
+              onChange={this.firstWeekHandleChange}
               unit="kg"
               content={
                 [...Array(280).keys()].map(v => `${v + 20} kg`)
