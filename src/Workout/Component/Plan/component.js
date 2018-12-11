@@ -44,7 +44,6 @@ class SimpleList extends React.PureComponent {
 SimpleList.propTypes = {
   classes: PropTypes.object.isRequired,
   days: PropTypes.number,
-  // need to be required
   finish: PropTypes.bool,
 };
 

@@ -50,7 +50,6 @@ class index extends React.Component {
 
 index.propTypes = {
   classes: PropTypes.object.isRequired,
-  //need to be required
   progress: PropTypes.object,
   currentWeek: PropTypes.number,
 };
