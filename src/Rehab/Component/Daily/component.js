@@ -1,22 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import {
-  List, ListItem, Paper, Divider, Typography, Grid, Button,
-} from '@material-ui/core';
-import FeedbackIcon from '@material-ui/icons/Feedback';
-import RightIcon from '@material-ui/icons/KeyboardArrowRight';
+import List from '@material-ui/core/List';
 import HOClistitem from '../HOC/listitem';
 import { styles } from '../../styles';
-
-const iconDisplay = (finish) => {
-  switch (finish) {
-    case true:
-      return <FeedbackIcon />;
-    default:
-      return <RightIcon />;
-  }
-};
 
 class SimpleList extends React.PureComponent {
   render() {
