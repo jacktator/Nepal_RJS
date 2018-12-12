@@ -28,14 +28,14 @@ export const fourth = [
 ];
 
 export const fifth = {
-  stressed: [
+  stress: [
     { id: 1, title: 'Stress free', describe: 'I never feel stressed' },
     { id: 2, title: 'Minimally Stressed', describe: 'I rarely feel stressed' },
     { id: 3, title: 'Moderately stressed', describe: 'I feel stressed occasionally' },
     { id: 4, title: 'Highly Stressed', describe: 'I feel quite stressed most days' },
     { id: 5, title: 'Extremely Stressed', describe: 'I feel highly stressed every day' },
   ],
-  productive: [
+  productivity: [
     { id: 1, title: 'None of the time', describe: 'I have not felt productive at all in the last 4 weeks' },
     { id: 2, title: 'Rarely', describe: 'I felt productive rarely in the last 4 weeks' },
     { id: 3, title: 'Half the time', describe: 'I felt productive for half of the days in the past 4 weeks' },
@@ -45,7 +45,7 @@ export const fifth = {
 };
 
 export const sixth = {
-  pain: [
+  injury: [
     { id: 1, title: 'No Pain', describe: 'I never feel injury or posture related pain' },
     { id: 2, title: 'Rarely in Pain', describe: 'I feel injury or posture related pain every few weeks or months' },
     { id: 3, title: 'Sometimes in Pain', describe: 'I feel injury or posture related pain 1-2 times a week' },
@@ -75,4 +75,28 @@ export const seventh = {
     { id: 4, title: 'Hard Exercise', describe: 'I exercise 5-6 times weekly' },
     { id: 5, title: 'Intense Exercise', describe: 'I do intense exercise 6+ times weekly' },
   ],
+};
+
+export const initialData = {
+  first: {
+    name: '', age: '', gender: '', weight: '',
+  },
+  second: {
+    days: '', location: 'home', goal: '',
+  },
+  third: {
+    rehab: '',
+  },
+  fourth: {
+    posture: '',
+  },
+  fifth: {
+    stress: '', productivity: '',
+  },
+  sixth: {
+    injury: '', health: '',
+  },
+  seventh: {
+    active: '', exercise: '',
+  },
 };

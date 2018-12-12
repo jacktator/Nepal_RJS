@@ -84,7 +84,7 @@ const ExerciseStructure = (props) => {
           ))}
         </Grid>
         <Grid>
-          <Button fullWidth variant="contained" color="primary" disableTouchRipple>
+          <Button fullWidth variant="contained" color="primary" >
             <Typography color="secondary">SAVE</Typography>
           </Button>
         </Grid>

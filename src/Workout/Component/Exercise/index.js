@@ -83,7 +83,7 @@ class ExerciseIndex extends React.Component {
             <Grid container item direction="column" alignContent="space-between" alignItems="center">
               <AppBar position="static">
                 <Toolbar style={{ justifyContent: 'space-between' }}>
-                  <IconButton className={classes.menuButton} disableTouchRipple color="secondary" aria-label="Menu">
+                  <IconButton className={classes.menuButton} color="secondary" aria-label="Menu" >
                     <LeftIcon style={{ fontSize: '30px' }} />
                   </IconButton>
                   <Typography className={classes.grow} variant="h6" color="secondary">Title</Typography>

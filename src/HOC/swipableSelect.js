@@ -42,7 +42,6 @@ class SwipeableTemporaryDrawer extends React.Component {
     super(props);
     this.state = {
       bottom: false,
-      value: '',
     };
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -57,14 +56,15 @@ class SwipeableTemporaryDrawer extends React.Component {
   }
 
   handleClick(v) {
-    this.setState({ value: v });
+    const { onChange, id } = this.props;
+    onChange({ target: { name: id, value: v } });
   }
 
   render() {
     const {
-      classes, content, id, unit, label,
+      classes, content, id, unit, label, value,
     } = this.props;
-    const { bottom, value } = this.state;
+    const { bottom } = this.state;
 
     const fullList = (arr) => (
       <div className={classes.fullList}>

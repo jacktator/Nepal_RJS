@@ -13,20 +13,17 @@ import { fourth } from '../contentData';
 class Fourth extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      rehab: '',
-    };
-    this.handleRehabChange = this.handleRehabChange.bind(this);
+    this.fourthWeekHandleChange = this.fourthWeekHandleChange.bind(this);
   }
 
-  handleRehabChange(event) {
-    this.setState({ rehab: event.target.value });
+  fourthWeekHandleChange(event) {
+    this.props.handleChangeState('fourth', event.target.name, event.target.value);
   }
 
   render() {
-    const { classes, handleClickOpen } = this.props;
-    const { rehab } = this.state;
-    const error = rehab === '';
+    const { classes, handleClickOpen, data } = this.props;
+    const { posture } = data;
+    const error = posture === '';
     return (
       <Grid container style={{ height: '100%' }} direction="column" justify="space-around" alignItems="center">
 
@@ -44,9 +41,10 @@ class Fourth extends React.Component {
                     style={{ justifyContent: 'space-between' }}
                     labelPlacement="start"
                     key={v.id}
+                    name="posture"
                     onClick={() => handleClickOpen({ discription: v.describe, title: v.title })}
                     control={
-                      <Checkbox disableTouchRipple color="primary" checked={rehab === `${v.id}`} onChange={this.handleRehabChange} value={`${v.id}`} />
+                      <Checkbox color="primary" checked={posture === `${v.id}`} onChange={this.fourthWeekHandleChange} value={`${v.id}`} />
                     }
                     label={v.title}
                   />

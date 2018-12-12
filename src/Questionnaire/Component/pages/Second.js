@@ -13,28 +13,19 @@ import SwipeableTemporaryDrawer from '../../../HOC/swipableSelect';
 import styles from '../../styles';
 import { second } from '../contentData';
 
-class Second extends React.Component {
+class Second extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      goal: '',
-      location: 'home',
-    };
-    this.handleGoalChange = this.handleGoalChange.bind(this);
-    this.handleLocationChange = this.handleLocationChange.bind(this);
+    this.secondWeekHandleChange = this.secondWeekHandleChange.bind(this);
   }
 
-  handleGoalChange(event) {
-    this.setState({ goal: event.target.value });
-  }
-
-  handleLocationChange(event) {
-    this.setState({ location: event.target.value });
+  secondWeekHandleChange(event) {
+    this.props.handleChangeState('second', event.target.name, event.target.value);
   }
 
   render() {
-    const { classes, handleClickOpen } = this.props;
-    const { goal, location } = this.state;
+    const { classes, handleClickOpen, data } = this.props;
+    const { days, location, goal } = data;
     const error = goal === '';
     return (
       <Grid container style={{ height: '100%' }} direction="column" justify="space-around" alignItems="center">
@@ -50,7 +41,9 @@ class Second extends React.Component {
               How many days per week would you like to exercise:
             </Typography>
             <SwipeableTemporaryDrawer
-              id="age"
+              id="days"
+              value={days}
+              onChange={this.secondWeekHandleChange}
               content={
                 [...Array(3).keys()].map(v => v + 3)
               }
@@ -67,11 +60,11 @@ class Second extends React.Component {
                 name="location"
                 className={classes.group}
                 value={location}
-                onChange={this.handleLocationChange}
+                onChange={this.secondWeekHandleChange}
                 row
               >
-                <FormControlLabel labelPlacement="start" style={{ marginRight: '0' }} value="gym" control={<Radio disableTouchRipple color="primary" />} label="Gym" />
-                <FormControlLabel labelPlacement="start" style={{ marginRight: '0' }} value="home" control={<Radio disableTouchRipple color="primary" />} label="Home" />
+                <FormControlLabel labelPlacement="start" style={{ marginRight: '0' }} value="gym" control={<Radio color="primary" />} label="Gym" />
+                <FormControlLabel labelPlacement="start" style={{ marginRight: '0' }} value="home" control={<Radio color="primary" />} label="Home" />
               </RadioGroup>
             </FormControl>
           </Grid>
@@ -88,8 +81,9 @@ class Second extends React.Component {
                     labelPlacement="start"
                     onClick={() => handleClickOpen({ discription: v.describe, title: v.title })}
                     key={v.id}
+                    name="goal"
                     control={
-                      <Checkbox disableTouchRipple color="primary" checked={goal === `${v.id}`} onChange={this.handleGoalChange} value={`${v.id}`} />
+                      <Checkbox color="primary" checked={goal === `${v.id}`} name="goal" onChange={this.secondWeekHandleChange} value={`${v.id}`} />
                     }
                     label={v.title}
                   />

@@ -10,28 +10,20 @@ import Typography from '@material-ui/core/Typography';
 import styles from '../../styles';
 import { seventh } from '../contentData';
 
-class Seventh extends React.Component {
+class Seventh extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      active: '',
-      exercise: '',
-    };
-    this.handleActiveChange = this.handleActiveChange.bind(this);
-    this.handleExerciseChange = this.handleExerciseChange.bind(this);
+    this.seventhWeekHandleChange = this.seventhWeekHandleChange.bind(this);
   }
 
-  handleActiveChange(event) {
-    this.setState({ active: event.target.value });
+  seventhWeekHandleChange(event) {
+    this.props.handleChangeState('seventh', event.target.name, event.target.value);
   }
 
-  handleExerciseChange(event) {
-    this.setState({ exercise: event.target.value });
-  }
 
   render() {
-    const { classes, handleClickOpen } = this.props;
-    const { active, exercise } = this.state;
+    const { classes, handleClickOpen, data } = this.props;
+    const { active, exercise } = data;
     const error = active === '';
     return (
       <Grid container style={{ height: '100%' }} direction="column" justify="space-around" alignItems="center">
@@ -51,8 +43,9 @@ class Seventh extends React.Component {
                     labelPlacement="start"
                     onClick={() => handleClickOpen({ discription: v.describe, title: v.title })}
                     key={v.id}
+                    name="active"
                     control={
-                      <Checkbox disableTouchRipple color="primary" checked={active === `${v.id}`} onChange={this.handleActiveChange} value={`${v.id}`} />
+                      <Checkbox color="primary" checked={active === `${v.id}`} onChange={this.seventhWeekHandleChange} value={`${v.id}`} />
                     }
                     label={v.title}
                   />
@@ -70,9 +63,10 @@ class Seventh extends React.Component {
                     style={{ justifyContent: 'space-between' }}
                     labelPlacement="start"
                     key={v.id}
+                    name="exercise"
                     onClick={() => handleClickOpen({ discription: v.describe, title: v.title })}
                     control={
-                      <Checkbox disableTouchRipple color="primary" checked={exercise === `${v.id}`} onChange={this.handleExerciseChange} value={`${v.id}`} />
+                      <Checkbox color="primary" checked={exercise === `${v.id}`} onChange={this.seventhWeekHandleChange} value={`${v.id}`} />
                     }
                     label={v.title}
                   />

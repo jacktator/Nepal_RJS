@@ -10,29 +10,20 @@ import Typography from '@material-ui/core/Typography';
 import styles from '../../styles';
 import { sixth } from '../contentData';
 
-class Sixth extends React.Component {
+class Sixth extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      pain: '',
-      health: '',
-    };
-    this.handlePainChange = this.handlePainChange.bind(this);
-    this.handleHealthChange = this.handleHealthChange.bind(this);
+    this.sixthWeekHandleChange = this.sixthWeekHandleChange.bind(this);
   }
 
-  handlePainChange(event) {
-    this.setState({ pain: event.target.value });
-  }
-
-  handleHealthChange(event) {
-    this.setState({ health: event.target.value });
+  sixthWeekHandleChange(event) {
+    this.props.handleChangeState('sixth', event.target.name, event.target.value);
   }
 
   render() {
-    const { classes, handleClickOpen } = this.props;
-    const { pain, health } = this.state;
-    const error = pain === '';
+    const { classes, handleClickOpen, data } = this.props;
+    const { injury, health } = data;
+    const error = injury === '';
     return (
       <Grid container style={{ height: '100%' }} direction="column" justify="space-around" alignItems="center">
 
@@ -45,14 +36,15 @@ class Sixth extends React.Component {
             <FormControl required className={classes.formControl} error={error} component="fieldset">
               <Typography variant="body1" component="h6" color="textPrimary"> Do you experience injury or posture related pain at work?</Typography>
               <FormGroup>
-                {sixth.pain.map(v => (
+                {sixth.injury.map(v => (
                   <FormControlLabel
                     style={{ justifyContent: 'space-between' }}
                     labelPlacement="start"
                     onClick={() => handleClickOpen({ discription: v.describe, title: v.title })}
                     key={v.id}
+                    name="injury"
                     control={
-                      <Checkbox disableTouchRipple color="primary" checked={pain === `${v.id}`} onChange={this.handlePainChange} value={`${v.id}`} />
+                      <Checkbox color="primary" checked={injury === `${v.id}`} onChange={this.sixthWeekHandleChange} value={`${v.id}`} />
                     }
                     label={v.title}
                   />
@@ -70,9 +62,10 @@ class Sixth extends React.Component {
                     style={{ justifyContent: 'space-between' }}
                     labelPlacement="start"
                     key={v.id}
+                    name="health"
                     onClick={() => handleClickOpen({ discription: v.describe, title: v.title })}
                     control={
-                      <Checkbox disableTouchRipple color="primary" checked={health === `${v.id}`} onChange={this.handleHealthChange} value={`${v.id}`} />
+                      <Checkbox color="primary" checked={health === `${v.id}`} onChange={this.sixthWeekHandleChange} value={`${v.id}`} />
                     }
                     label={v.title}
                   />

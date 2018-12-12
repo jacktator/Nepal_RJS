@@ -10,29 +10,20 @@ import Typography from '@material-ui/core/Typography';
 import styles from '../../styles';
 import { fifth } from '../contentData';
 
-class Fifth extends React.Component {
+class Fifth extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      stressed: '',
-      productive: '',
-    };
-    this.handleStressedChange = this.handleStressedChange.bind(this);
-    this.handleProductiveChange = this.handleProductiveChange.bind(this);
+    this.firstWeekHandleChange = this.firstWeekHandleChange.bind(this);
   }
 
-  handleStressedChange(event) {
-    this.setState({ stressed: event.target.value });
-  }
-
-  handleProductiveChange(event) {
-    this.setState({ productive: event.target.value });
+  firstWeekHandleChange(event) {
+    this.props.handleChangeState('fifth', event.target.name, event.target.value);
   }
 
   render() {
-    const { classes, handleClickOpen } = this.props;
-    const { stressed, productive } = this.state;
-    const error = stressed === '';
+    const { classes, handleClickOpen, data } = this.props;
+    const { stress, productivity } = data;
+    const error = stress === '';
     return (
       <Grid container style={{ height: '100%' }} direction="column" justify="space-around" alignItems="center">
 
@@ -46,14 +37,15 @@ class Fifth extends React.Component {
             <FormControl required className={classes.formControl} error={error} component="fieldset">
               <Typography variant="body1" component="h6" color="textPrimary">How often do you feel stressed at work: </Typography>
               <FormGroup>
-                {fifth.stressed.map(v => (
+                {fifth.stress.map(v => (
                   <FormControlLabel
                     style={{ justifyContent: 'space-between' }}
                     labelPlacement="start"
                     onClick={() => handleClickOpen({ discription: v.describe, title: v.title })}
                     key={v.id}
+                    name="stress"
                     control={
-                      <Checkbox disableTouchRipple color="primary" checked={stressed === `${v.id}`} onChange={this.handleStressedChange} value={`${v.id}`} />
+                      <Checkbox color="primary" checked={stress === `${v.id}`} onChange={this.firstWeekHandleChange} value={`${v.id}`} />
                     }
                     label={v.title}
                   />
@@ -66,14 +58,15 @@ class Fifth extends React.Component {
             <FormControl required className={classes.formControl} error={error} component="fieldset">
               <Typography variant="body1" component="h6" color="textPrimary">In last 4 weeks, I have felt productive:</Typography>
               <FormGroup>
-                {fifth.productive.map(v => (
+                {fifth.productivity.map(v => (
                   <FormControlLabel
                     style={{ justifyContent: 'space-between' }}
                     labelPlacement="start"
                     key={v.id}
                     onClick={() => handleClickOpen({ discription: v.describe, title: v.title })}
+                    name="productivity"
                     control={
-                      <Checkbox disableTouchRipple color="primary" checked={productive === `${v.id}`} onChange={this.handleProductiveChange} value={`${v.id}`} />
+                      <Checkbox color="primary" checked={productivity === `${v.id}`} onChange={this.firstWeekHandleChange} value={`${v.id}`} />
                     }
                     label={v.title}
                   />

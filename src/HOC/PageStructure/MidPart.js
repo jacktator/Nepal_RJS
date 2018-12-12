@@ -35,7 +35,7 @@ class MidPartComponent extends React.Component {
         scrollable
         scrollButtons="auto"
         style={{
-          width: '100%', height: '30px', minHeight: '30px', borderBottom: 'solid 1px gray', backgroundColor: theme.palette.primary.main,
+          width: '100%', height: '30px', minHeight: '30px', backgroundColor: theme.palette.primary.main,
         }}
       >
         {tapBarContent.map((v, k) => 

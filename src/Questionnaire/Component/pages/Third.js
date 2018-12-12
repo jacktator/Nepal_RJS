@@ -10,22 +10,20 @@ import Typography from '@material-ui/core/Typography';
 import styles from '../../styles';
 import { third } from '../contentData';
 
-class Third extends React.Component {
+class Third extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      rehab: '',
-    };
-    this.handleRehabChange = this.handleRehabChange.bind(this);
+    this.thirdWeekHandleChange = this.thirdWeekHandleChange.bind(this);
   }
 
-  handleRehabChange(event) {
-    this.setState({ rehab: event.target.value });
+
+  thirdWeekHandleChange(event) {
+    this.props.handleChangeState('third', event.target.name, event.target.value);
   }
 
   render() {
-    const { classes, handleClickOpen } = this.props;
-    const { rehab } = this.state;
+    const { classes, handleClickOpen, data } = this.props;
+    const { rehab } = data;
     const error = rehab === '';
     return (
       <Grid container style={{ height: '100%' }} direction="column" justify="space-around" alignItems="center">
@@ -44,9 +42,10 @@ class Third extends React.Component {
                     style={{ justifyContent: 'space-between' }}
                     labelPlacement="start"
                     key={v.id}
+                    name="rehab"
                     onClick={() => handleClickOpen({ discription: v.describe, title: v.title })}
                     control={
-                      <Checkbox disableTouchRipple color="primary" checked={rehab === `${v.id}`} onChange={this.handleRehabChange} value={`${v.id}`} />
+                      <Checkbox color="primary" checked={rehab === `${v.id}`} onChange={this.thirdWeekHandleChange} value={`${v.id}`} />
                     }
                     label={v.title}
                   />

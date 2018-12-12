@@ -136,7 +136,7 @@ class InputFiles extends React.Component {
           endAdornment: password && (
           <InputAdornment position="end">
             <IconButton
-              disableTouchRipple
+
               aria-label="Toggle password visibility"
               onClick={this.handleClickShowPassword}
             >
