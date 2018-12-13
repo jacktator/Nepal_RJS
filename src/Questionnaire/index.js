@@ -7,11 +7,14 @@ import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import renderComponent from './Component';
 import styles from './styles';
 import Dialog from '../HOC/Dialog';
 import { initialData } from './Component/contentData';
+import { createQuestionnaire } from './action';
 
 
 class index extends React.PureComponent {
@@ -23,6 +26,7 @@ class index extends React.PureComponent {
       title: '',
       discription: '',
       ...initialData,
+      loading: false,
     };
     this.handleNext = this.handleNext.bind(this);
     this.handleBack = this.handleBack.bind(this);
@@ -35,6 +39,7 @@ class index extends React.PureComponent {
 
   handleNext() {
     const { activeStep } = this.state;
+
     if (activeStep < 6) {
       this.setState(prevState => ({
         activeStep: prevState.activeStep + 1,
@@ -67,6 +72,9 @@ class index extends React.PureComponent {
     const {
       first, second, third, fourth, fifth, sixth, seventh,
     } = this.state;
+    const files = {
+      ...first, ...second, ...third, ...fourth, ...fifth, ...sixth, ...seventh,
+    };
     const fristV = !!first.name && !!first.age && !!first.gender && !!first.weight;
     const secondV = !!second.days && !!second.location && !!second.goal;
     const thirdV = !!third.rehab;
@@ -74,24 +82,25 @@ class index extends React.PureComponent {
     const fifthV = !!fifth.stress && !!fifth.productivity;
     const sixthV = !!sixth.injury && !!sixth.health;
     const seventhV = !!seventh.active && !!seventh.exercise;
-    return (fristV && secondV && thirdV && fourthV && fifthV && sixthV && seventhV);
+    return ({ empty: fristV && secondV && thirdV && fourthV && fifthV && sixthV && seventhV, files });
   }
 
-
   validationHandle() {
-    if (this.validation()) {
+    const { empty, files } = this.validation();
+    if (empty) {
+      this.setState({ loading: true });
+      this.props.createQuestionnaire(files);
       return;
     }
     this.setState({ open: true, title: 'error', discription: 'You need to finish each question' });
   }
 
   render() {
-    const { classes, theme } = this.props;
+    const { classes, theme, queryStatus } = this.props;
     const {
-      activeStep, open, discription, title, ...data
+      activeStep, open, loading, discription, title, ...data
     } = this.state;
     const maxSteps = 7;
-    const finValidation = (activeStep === maxSteps - 1) && this.validation();
     return (
       <div className={classes.container}>
         <Grid container className={classes.rootGrid} direction="column" justify="space-between">
@@ -108,34 +117,45 @@ class index extends React.PureComponent {
               handleClose={this.handleClose}
             />
           </Grid>
-          <Grid container className={classes.bottomGrid}>
-            <MobileStepper
-              steps={maxSteps}
-              position="static"
-              activeStep={activeStep}
-              className={classes.mobileStepper}
-              nextButton={(
-                <Button color="primary" size="small" onClick={this.handleNext} component={finValidation ? Link : 'button'} to={finValidation ? '/mainmenu' : undefined}>
-                  {activeStep === maxSteps - 1 ? 'Finish' : 'Next'}
-                  {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-                </Button>)}
-              backButton={(
-                <Button color="primary" size="small" onClick={this.handleBack} disabled={activeStep === 0}>
-                  {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+          <Grid container justify="center" className={classes.bottomGrid}>
+            {(loading) ? <CircularProgress size={30} />
+              : (
+                <MobileStepper
+                  steps={maxSteps}
+                  position="static"
+                  activeStep={activeStep}
+                  className={classes.mobileStepper}
+                  nextButton={(
+                    <Button color="primary" size="small" onClick={this.handleNext}>
+                      {activeStep === maxSteps - 1 ? 'Finish' : 'Next'}
+                      {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+                    </Button>)}
+                  backButton={(
+                    <Button color="primary" size="small" onClick={this.handleBack} disabled={activeStep === 0}>
+                      {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
                         Back
-                </Button>)}
-            />
+                    </Button>)}
+                />
+              )
+}
           </Grid>
-
+          {queryStatus && <Redirect to="/mainmenu" />}
         </Grid>
       </div>
-
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    queryStatus: state.Questionnaire.queryStatus,
+  };
+}
+
 index.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
+  queryStatus: PropTypes.bool.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(index);
+export default connect(mapStateToProps, { createQuestionnaire })(withStyles(styles, { withTheme: true })(index));

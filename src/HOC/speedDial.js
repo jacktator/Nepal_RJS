@@ -12,6 +12,7 @@ import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
 import HelpIcon from '@material-ui/icons/Help';
 import PersonIcon from '@material-ui/icons/Person';
 import LogoutIcon from '@material-ui/icons/ExitToApp';
+import { deleteAuthToken } from '../UserConfig/action';
 
 const styles = theme => ({
   root: {
@@ -45,7 +46,7 @@ const actions = [
   { icon: <ContentIcon color="primary" />, name: 'Content', to: '/' },
   { icon: <ClanderIcon color="primary" />, name: 'Ask a Question', to: '/' },
   { icon: <HelpIcon color="primary" />, name: 'FAQ', to: '/' },
-  { icon: <LogoutIcon color="primary" />, name: 'Logout', to: '/' },
+  { icon: <LogoutIcon color="primary" />, name: 'Logout', to: '/logout' },
 ];
 
 class SpeedDialTooltipOpen extends React.Component {
@@ -75,6 +76,10 @@ class SpeedDialTooltipOpen extends React.Component {
   }
 
   handleActionClick(to) {
+    if (to === '/logout') {
+      deleteAuthToken();
+      window.location.replace('/');
+    }
     window.location.hash = to;
   }
 

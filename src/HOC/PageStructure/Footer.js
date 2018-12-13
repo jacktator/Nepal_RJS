@@ -18,9 +18,9 @@ const FooterContent = (type) => {
     case 1:
       return [
         { label: 'Home', to: '/mainmenu', Icon: <HomeIcon /> },
-        { label: 'History', to: '/history', Icon: <HistoryIcon /> },
-        { label: 'Plan', to: '/plan', Icon: <PlanIcon /> },
-        { label: 'Workout', to: '/workout', Icon: <WorkoutIcon /> },
+        { label: 'History', to: '/workout/history', Icon: <HistoryIcon /> },
+        { label: 'Plan', to: '/workout/plan', Icon: <PlanIcon /> },
+        { label: 'Workout', to: '/workout/exercise', Icon: <WorkoutIcon /> },
       ];
     default:
       return [

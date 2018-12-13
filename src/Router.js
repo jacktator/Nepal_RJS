@@ -7,15 +7,17 @@ import Questionnaire from './Questionnaire';
 import MainMenu from './MainMenu';
 import Workout from './Workout';
 import Rehab from './Rehab';
+import AddExercise from './addExercise';
 
 
 export default () => (
   <Switch>
     <Route exact path="/" component={HomePage} />
     <Route path="/user" component={UserPage} />
-    <Route path="/questionnaire" component={Questionnaire} />
+    <PrivateRouter path="/questionnaire" component={Questionnaire} />
     <PrivateRouter path="/mainmenu" component={MainMenu} />
     <PrivateRouter path="/workout" component={Workout} />
     <PrivateRouter path="/rehab" component={Rehab} />
   </Switch>
 );
+// <PrivateRouter path="/addExercise" component={AddExercise} />

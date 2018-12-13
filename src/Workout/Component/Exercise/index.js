@@ -13,6 +13,14 @@ import { add, min } from '../../../HOC/numberSelect';
 
 import ExerciseComponent from './component';
 
+
+const exList = [
+  {
+    content: '10 weight X 10 sets',
+    status: 'Previous',
+  },
+];
+
 class HistoryIndex extends React.Component {
   constructor(props) {
     super(props);
@@ -22,11 +30,16 @@ class HistoryIndex extends React.Component {
       currentPage: 2,
       weight: 0,
       sets: 0,
+      ExList: [{
+        content: '10 weight X 10 sets',
+        status: 'Previous',
+      }],
     };
     this.weightAdd = this.weightAdd.bind(this);
     this.weightMin = this.weightMin.bind(this);
     this.setsAdd = this.setsAdd.bind(this);
     this.setsMin = this.setsMin.bind(this);
+    this.saveData = this.saveData.bind(this);
   }
 
   weightAdd() {
@@ -45,9 +58,18 @@ class HistoryIndex extends React.Component {
     this.setState(min('sets'));
   }
 
+  saveData() {
+    exList.push({
+      content: `${this.state.weight} weight X ${this.state.sets} sets`,
+      status: 'Previous',
+    });
+    const newExList = [].concat(JSON.parse(JSON.stringify(exList)));
+    this.setState({ ExList: newExList });
+  }
+
   render() {
     const { classes } = this.props;
-    const { weight, sets } = this.state;
+    const { weight, sets, ExList } = this.state;
     const select = [
       {
         label: 'weight',
@@ -61,13 +83,7 @@ class HistoryIndex extends React.Component {
         value: sets,
       },
     ];
-    const ExList = [
-      {
-        latest: true,
-        content: '10 weight X 10 sets',
-        status: 'Previous',
-      },
-    ];
+
 
     return (
       <MainComponent
@@ -75,14 +91,14 @@ class HistoryIndex extends React.Component {
         title="Workout"
         progress={this.props.progress}
         currentWeek={this.props.currentWeek}
-        currentPage={2}
+        currentPage={3}
         FooterContent={1}
         midComponent={(
           <Grid container style={{ flex: 1 }} justify="center" alignContent="space-between" alignItems="center" direction="column">
             <Grid container item direction="column" alignContent="space-between" alignItems="center">
               <AppBar position="static">
                 <Toolbar style={{ justifyContent: 'space-between' }}>
-                  <IconButton className={classes.menuButton} color="secondary" aria-label="Menu" >
+                  <IconButton className={classes.menuButton} color="secondary" aria-label="Menu">
                     <LeftIcon style={{ fontSize: '30px' }} />
                   </IconButton>
                   <Typography variant="h6" color="secondary" className={classes.grow}>Title</Typography>
@@ -96,6 +112,7 @@ class HistoryIndex extends React.Component {
               step={10}
               select={select}
               ExList={ExList}
+              onSaveClick={this.saveData}
             />
           </Grid>
           )}

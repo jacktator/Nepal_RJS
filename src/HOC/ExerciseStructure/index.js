@@ -25,7 +25,9 @@ const styles = theme => ({
 });
 
 const ExerciseStructure = (props) => {
-  const { classes, select, ExList } = props;
+  const {
+    classes, select, ExList, onSaveClick,
+  } = props;
   return (
     <Grid
       container
@@ -78,15 +80,15 @@ const ExerciseStructure = (props) => {
             />
           ))}
         </Grid>
-        <Grid><Button fullWidth variant="contained" color="primary" ><Typography color="secondary">SAVE</Typography></Button></Grid>
+        <Grid><Button fullWidth variant="contained" color="primary" onClick={onSaveClick}><Typography color="secondary">SAVE</Typography></Button></Grid>
       </Grid>
       <Grid container item>
         <List component="nav" style={{ width: '100%' }}>
           {!!ExList && ExList.map((v, k) => (
             <ExListItem
-              key={v.content}
+              key={`${v.content}${k}`}
               id={k}
-              latest={v.latest}
+              latest={k === ExList.length}
               content={v.content}
               status={v.status}
             />

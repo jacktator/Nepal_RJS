@@ -11,7 +11,7 @@ import store from './store';
 
 // Set base URL in request
 axios.defaults.baseURL = BASE_URL;
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 // Check the token
 if (sessionStorage.token) {

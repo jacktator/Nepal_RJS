@@ -1,4 +1,7 @@
-const a = [
+import React from 'react';
+import axios from 'axios';
+
+const data = [
   {
     day: '1', name: '13 Quadricep Heavy Exercises', id: '13', sets: '3', reps: '7-9', feedback: '2', workout: 'Front Squat (Barbell)', progression_model: 'linear', video_link: 'IODxDxX7oi4', icon_link: '2018/10/Icon-9.jpg', image_link: '2018/10/Images-1.jpeg',
   },
@@ -84,3 +87,25 @@ const a = [
     day: '5', name: '24 Abdominal Failure Exercises', id: '24', sets: '3', reps: 'Till Failure', feedback: '2', workout: 'Side Plank', progression_model: 'till failure', video_link: 'IODxDxX7oi4', icon_link: '2018/10/Icon-9.jpg', image_link: '2018/10/Images-1.jpeg',
   },
 ];
+
+class addExercise extends React.Component {
+  componentDidMount() {
+    console.log(data.length);
+    data.forEach((v) => {
+      axios.post('/gym_mg_5', { fields: v, status: 'publish' })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => { console.log(err); });
+    });
+  }
+
+  render() {
+    return (
+      <div />
+    );
+  }
+}
+
+
+export default addExercise;

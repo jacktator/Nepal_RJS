@@ -1,12 +1,26 @@
 export const second = {
-  gym: [{ id: 1, title: 'Muscle size and strength', describe: 'Weight training principles designed to build muscle and strength' },
-    { id: 2, title: 'Fat loss/Definition', describe: 'A combination of cardio and weight training to target fat loss and increase muscle definition' },
-    { id: 3, title: 'Decrease stress', describe: 'Using exercise strategies to reduce stress levels and restore balance back in your body' },
-    { id: 4, title: 'Improve posture', describe: 'Utilising specific exercises and weight training to correct postural imbalances' },
+  gym: [{
+    id: 1, title: 'Muscle size and strength', describe: 'Weight training principles designed to build muscle and strength', path: 'MuscleGain',
+  },
+  {
+    id: 2, title: 'Fat loss/Definition', describe: 'A combination of cardio and weight training to target fat loss and increase muscle definition', path: 'FatLoss',
+  },
+  {
+    id: 3, title: 'Decrease stress', describe: 'Using exercise strategies to reduce stress levels and restore balance back in your body', path: 'DecreaseStress',
+  },
+  {
+    id: 4, title: 'Improve posture', describe: 'Utilising specific exercises and weight training to correct postural imbalances', path: 'ImprovePosture',
+  },
   ],
-  home: [{ id: 5, title: 'Fat loss/Definition', describe: 'A combination of cardio and weight training to target fat loss and increase muscle definition' },
-    { id: 6, title: 'Decrease stress', describe: 'Using exercise strategies to reduce stress levels and restore balance back in your body' },
-    { id: 7, title: 'increase fitness', describe: 'High intensity exercise to develop and increase your overall fitness' },
+  home: [{
+    id: 5, title: 'Fat loss/Definition', describe: 'A combination of cardio and weight training to target fat loss and increase muscle definition', path: 'FatLoss',
+  },
+  {
+    id: 6, title: 'Decrease stress', describe: 'Using exercise strategies to reduce stress levels and restore balance back in your body', path: 'DecreaseStress',
+  },
+  {
+    id: 7, title: 'increase fitness', describe: 'High intensity exercise to develop and increase your overall fitness', path: 'IncreaseFitness',
+  },
   ],
 };
 

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const setAuthTokenInHeader = (token) => {
-  axios.defaults.headers.common.Authorization = `Bearer${token}`;
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   window.sessionStorage.setItem('token', token);
 };
 
@@ -23,9 +23,9 @@ export const loginAction = userData => (dispatch) => {
   axios.post('https://nepal.sk8tech.io/wp-json/jwt-auth/v1/token/', userData)
     .then((res) => {
       console.log(res);
-      setAuthTokenInHeader(res.data.token);
+      setAuthTokenInHeader(res.data.token.token);
       window.sessionStorage.setItem('user_id', res.data.user_id);
-      window.sessionStorage.setItem('user_email', res.data.user_email);
+      window.sessionStorage.setItem('user_email', res.data.token.user_email);
       dispatch(loginState());
     })
     .catch((err) => {

@@ -32,7 +32,7 @@ class HistoryIndex extends React.Component {
         title="Workout"
         progress={this.props.progress}
         currentWeek={this.props.currentWeek}
-        currentPage={2}
+        currentPage={1}
         FooterContent={1}
         tapBarContent={tapBarContent}
         midComponent={(

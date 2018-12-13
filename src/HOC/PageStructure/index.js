@@ -9,7 +9,7 @@ import MidPart from './MidPart';
 class index extends React.PureComponent {
   render() {
     const {
-      classes, backgroundImage, tapBarContent, title, top, showBottomButton, midComponent,
+      classes, backgroundImage, tapBarContent, title, top, showBottomButton, midComponent, FooterContent, currentPage,
     } = this.props;
     return (
       <div className={classes.container}>
@@ -28,7 +28,7 @@ class index extends React.PureComponent {
             {midComponent}
           </Grid>
           <Grid container>
-            <Footer FooterContent={1} showBottomButton={showBottomButton} />
+            <Footer FooterContent={FooterContent} showBottomButton={showBottomButton} currentPage={currentPage} />
           </Grid>
         </Grid>
       </div>

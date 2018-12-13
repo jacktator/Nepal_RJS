@@ -11,7 +11,7 @@ const Rehab = props => (
     <Route path="/rehab/information" component={PlanPage} />
     <Route path="/rehab/content" component={DailyPage} />
     <Route path="/rehab/training" component={ExercisePage} />
-    <Redirect from="/rehab/" to="/rehab/training" />
+    <Redirect from="/rehab/" to="/rehab/content" />
   </Switch>
 );
 export default Rehab;
