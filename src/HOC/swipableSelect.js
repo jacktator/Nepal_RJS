@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-import Dropdown from '@material-ui/icons/ArrowDropDown';
+import DropdownIcon from '@material-ui/icons/ArrowDropDown';
 
 const styles = theme => ({
   list: {
@@ -66,13 +66,13 @@ class SwipeableTemporaryDrawer extends React.Component {
     } = this.props;
     const { bottom } = this.state;
 
-    const fullList = arr => (
+    const fullList = (arr) => (
       <div className={classes.fullList}>
         {!!arr && arr.map(text => (
           <Typography
+            className={classes.inlineText}
             align="center"
             key={text}
-            className={classes.inlineText}
             onClick={() => this.handleClick(text)}
             variant="body1"
             component="h6"
@@ -94,8 +94,8 @@ class SwipeableTemporaryDrawer extends React.Component {
           InputProps={{
             classes: { underline: classes.inputFile },
             endAdornment: (
-              <InputAdornment position="start">
-                <Dropdown />
+              <InputAdornment position="end">
+                <DropdownIcon />
               </InputAdornment>),
             startAdornment: (
               <InputAdornment position="start">
@@ -124,6 +124,10 @@ class SwipeableTemporaryDrawer extends React.Component {
 
 SwipeableTemporaryDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired,
+  content: PropTypes.array.isRequired,
+  unit: PropTypes.string,
+  label: PropTypes.string,
 };
 
 export default withStyles(styles)(SwipeableTemporaryDrawer);

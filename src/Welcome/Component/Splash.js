@@ -1,11 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import { Link } from 'react-router-dom';
 
 const styles = theme => ({
   root: {
@@ -46,11 +46,12 @@ const Splash = (props) => {
           <Button fullWidth component={Link} to="/user" className={classes.button} color="primary">Get Started</Button>
         </Grid>
       </Grid>
-
     </div>
   );
 };
+
 Splash.propTypes = {
   classes: PropTypes.object.isRequired,
 };
+
 export default withStyles(styles)(Splash);

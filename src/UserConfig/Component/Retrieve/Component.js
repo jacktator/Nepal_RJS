@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import HOCInputFile from '../../../HOC/inputFiles';
 import styles from '../../styles';
-
 
 const Component = (props) => {
   const {
@@ -16,14 +15,17 @@ const Component = (props) => {
   } = props;
   return (
     <div className={classes.container}>
-      <Grid className={classes.gridRoot} container spacing={0} justify="space-between" alignItems="stretch" direction="column">
+      <Grid container className={classes.gridRoot} spacing={0} justify="space-between" alignItems="stretch" direction="column">
+        
         <Grid container className={classes.autoFlex}>
           <Paper className={classes.paper}>
             <Grid container className={classes.gridRoot} direction="column">
-              <Grid container justify="center" alignItems="flex-end" style={{ height: '33vh' }}>
+              
+              <Grid container style={{ height: '33vh' }} justify="center" alignItems="flex-end">
                 <Typography variant="h2" component="h3" align="center" color="secondary" gutterBottom>Nepal</Typography>
               </Grid>
-              <Grid container direction="column" justify="space-evenly" className={classes.autoFlex}>
+
+              <Grid container className={classes.autoFlex} direction="column" justify="space-evenly">
                 <Grid container alignContent="center">
                   <HOCInputFile
                     onChangeHandle={onChangeHandle}
@@ -40,19 +42,21 @@ const Component = (props) => {
             </Grid>
           </Paper>
         </Grid>
+
         <Grid container style={{ height: '10vh' }} justify="center">
           {loading ? <CircularProgress size={30} /> : <Button className={classes.button} color="primary">Retrieve</Button>}
         </Grid>
-      </Grid>
 
+      </Grid>
     </div>
   );
 };
+
 Component.propTypes = {
   classes: PropTypes.object.isRequired,
   onChangeHandle: PropTypes.func.isRequired,
   email: PropTypes.string.isRequired,
   loading: PropTypes.bool.isRequired,
-
 };
+
 export default withStyles(styles)(Component);

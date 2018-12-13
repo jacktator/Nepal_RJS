@@ -1,10 +1,11 @@
 import React from 'react';
-import { Grid, Paper } from '@material-ui/core';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import Component from './component';
 import MainComponent from '../../../HOC/PageStructure';
 import { styles } from '../../styles';
-
-import Component from './component';
 
 const tapBarContent = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'];
 
@@ -41,10 +42,16 @@ class index extends React.Component {
               <Component />
             </Paper>
           </Grid>
-          )}
+        )}
       />
     );
   }
 }
+
+index.propTypes = {
+  classes: PropTypes.object.isRequired,
+  progress: PropTypes.object,
+  currentWeek: PropTypes.number,
+};
 
 export default withStyles(styles)(index);

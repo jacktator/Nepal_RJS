@@ -7,7 +7,6 @@ import Questionnaire from './Questionnaire';
 import MainMenu from './MainMenu';
 import Workout from './Workout';
 import Rehab from './Rehab';
-import AddExercise from './addExercise';
 
 
 export default () => (

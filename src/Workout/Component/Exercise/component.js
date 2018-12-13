@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ExerciseStructure from '../../../HOC/ExerciseStructure';
 
 class ExerciseComponent extends React.PureComponent {
@@ -14,5 +15,10 @@ class ExerciseComponent extends React.PureComponent {
     );
   }
 }
+
+ExerciseComponent.propTypes = {
+  select: PropTypes.array,
+  ExList: PropTypes.array,
+};
 
 export default ExerciseComponent;

@@ -1,10 +1,11 @@
 import React from 'react';
-import { Grid, Paper } from '@material-ui/core';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import MainComponent from '../../../HOC/PageStructure';
-import { styles } from '../../styles';
-
 import Component from './component';
+import { styles } from '../../styles';
 
 const tapBarContent = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'];
 
@@ -24,14 +25,14 @@ class HistoryIndex extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, progress, currentWeek } = this.props;
     return (
       <MainComponent
         top
         backgroundImage="image/sampleImage.jpeg"
         title="Workout"
-        progress={this.props.progress}
-        currentWeek={this.props.currentWeek}
+        progress={progress}
+        currentWeek={currentWeek}
         currentPage={1}
         FooterContent={1}
         tapBarContent={tapBarContent}
@@ -41,10 +42,16 @@ class HistoryIndex extends React.Component {
               <Component />
             </Paper>
           </Grid>
-          )}
+        )}
       />
     );
   }
 }
+
+HistoryIndex.propTypes = {
+  classes: PropTypes.object.isRequired,
+  progress: PropTypes.object,
+  currentWeek: PropTypes.number,
+};
 
 export default withStyles(styles)(HistoryIndex);

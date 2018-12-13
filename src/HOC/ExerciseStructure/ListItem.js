@@ -1,9 +1,9 @@
 import React from 'react';
-import {
-  ListItem, ListItemIcon, ListItemText,
-} from '@material-ui/core';
 import PropTypes from 'prop-types';
-import CheckCircle from '@material-ui/icons/CheckCircle';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
 const ExerciseListItem = (props) => {
   const {
@@ -11,7 +11,7 @@ const ExerciseListItem = (props) => {
   } = props;
   return (
     <ListItem divider>
-      {latest ? <ListItemIcon><CheckCircle color="primary" /></ListItemIcon> : <ListItemText primary={id} />}
+      {latest ? <ListItemIcon><CheckCircleIcon color="primary" /></ListItemIcon> : <ListItemText primary={id} />}
       <ListItemText primary={content} />
       <ListItemText primary={status} />
     </ListItem>

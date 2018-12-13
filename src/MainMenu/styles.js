@@ -1,4 +1,4 @@
-const styles = theme => ({
+const styles = ({
   card: {
     boxShadow: 'unset',
     borderRadius: '0',
@@ -44,7 +44,6 @@ const styles = theme => ({
   },
   childGrid: {
     '@media screen and (orientation:landscape)': { width: '40vmin', height: '40vmin' },
-
     width: '43vmin',
     height: '43vmin',
   },

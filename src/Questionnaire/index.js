@@ -1,21 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import MobileStepper from '@material-ui/core/MobileStepper';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import MobileStepper from '@material-ui/core/MobileStepper';
+import Paper from '@material-ui/core/Paper';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import renderComponent from './Component';
-import styles from './styles';
 import Dialog from '../HOC/Dialog';
+import styles from './styles';
 import { initialData } from './Component/contentData';
 import { createQuestionnaire } from './action';
-
 
 class index extends React.PureComponent {
   constructor(props) {
@@ -104,6 +103,7 @@ class index extends React.PureComponent {
     return (
       <div className={classes.container}>
         <Grid container className={classes.rootGrid} direction="column" justify="space-between">
+
           <Grid container className={classes.topGrid} justify="center" alignItems="center">
             <Paper elevation={12} className={classes.paper}>
               {renderComponent({

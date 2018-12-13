@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  FormControl, FormControlLabel, Typography,
-  Checkbox, FormHelperText, FormGroup, Grid,
-} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormGroup from '@material-ui/core/FormGroup';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 import styles from '../../styles';
 import { fourth } from '../contentData';
 
@@ -23,13 +25,15 @@ class Fourth extends React.Component {
     const { posture } = data;
     const error = posture === '';
     return (
-      <Grid container direction="column" justify="space-around" alignItems="center" style={{ height: '100%' }}>
-        <Grid style={{ height: '20%' }} container alignItems="center" justify="center">
+      <Grid container style={{ height: '100%' }} direction="column" justify="space-around" alignItems="center">
+
+        <Grid container style={{ height: '20%' }} justify="center" alignItems="center">
           <Typography variant="h5" component="h5" color="textPrimary">Posture Correction</Typography>
         </Grid>
-        <Grid container spacing={40} className={classes.topGrid} style={{ width: '100%', margin: '0' }} justify="center" alignContent="flex-start" alignItems="flex-start">
+
+        <Grid container className={classes.topGrid} style={{ width: '100%', margin: '0' }} spacing={40} justify="center" alignContent="flex-start" alignItems="flex-start">
           <Grid item xs={12} style={{ paddingTop: '0' }}>
-            <FormControl required error={error} component="fieldset" className={classes.formControl}>
+            <FormControl required className={classes.formControl} error={error} component="fieldset">
               <Typography variant="body1" component="h6" color="textPrimary">What is your current rehab focus: </Typography>
               <FormGroup>
                 {fourth.map(v => (
@@ -41,7 +45,7 @@ class Fourth extends React.Component {
                     onClick={() => handleClickOpen({ discription: v.describe, title: v.title })}
                     control={
                       <Checkbox color="primary" checked={posture === `${v.id}`} onChange={this.fourthWeekHandleChange} value={`${v.id}`} />
-              }
+                    }
                     label={v.title}
                   />
                 ))}
@@ -49,12 +53,16 @@ class Fourth extends React.Component {
             </FormControl>
           </Grid>
         </Grid>
+
       </Grid>
     );
   }
 }
+
 Fourth.propTypes = {
   classes: PropTypes.object.isRequired,
   handleClickOpen: PropTypes.func.isRequired,
+  data:PropTypes.object.isRequired,
 };
+
 export default withStyles(styles)(Fourth);

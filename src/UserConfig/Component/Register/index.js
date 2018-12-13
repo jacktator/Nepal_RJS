@@ -66,4 +66,5 @@ function mapStateToProps(state) {
     registerStatus: state.UserConfig.RegisterStatus,
   };
 }
+
 export default connect(mapStateToProps, { registerAction })(Register);

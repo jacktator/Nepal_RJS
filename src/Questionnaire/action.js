@@ -13,7 +13,7 @@ export const createProgram = () => (dispatch) => {
     user_id,
     finish_date: '',
     days,
-    progress: '0',
+    progress: '1',
     ask_feedback: false,
     feedback_value: '0',
     finish_for_day: false,
@@ -23,6 +23,7 @@ export const createProgram = () => (dispatch) => {
     { status: 'publish', fields })
     .then((res) => {
       console.log(res);
+      sessionStorage.setItem('progress', 0);
       dispatch(finishQuery());
     })
     .catch((error) => {
@@ -67,7 +68,7 @@ export const createQuestionnaire = data => (dispatch) => {
     })
     .then((res) => {
       const resData = res.data.acf;
-      const path = second[resData.exercise_place].find(v => v.id === (1 * resData.goals));
+      const path = second[resData.exercise_place].find(v => v.id === (1 * resData.goals)).path;
       sessionStorage.setItem('path', path);
       sessionStorage.setItem('location', resData.exercise_place);
       sessionStorage.setItem('days', resData.days_per_week);

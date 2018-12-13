@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import First from './pages/First';
 import Second from './pages/Second';
 import Third from './pages/Third';
@@ -25,6 +26,13 @@ const renderComponent = (props) => {
     6: <Seventh data={seventh} handleChangeState={handleChangeState} handleClickOpen={handleClickOpen} />,
   };
   return components[activeStep];
+};
+
+renderComponent.propTypes = {
+  activeStep: PropTypes.number.isRequired,
+  handleClickOpen: PropTypes.func.isRequired,
+  handleChangeState: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
 export default renderComponent;

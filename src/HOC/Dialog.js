@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -33,4 +34,12 @@ const AlertDialog = (props) => {
     </div>
   );
 };
+
+AlertDialog.propTypes = {
+  title: PropTypes.string.isRequired,
+  discription: PropTypes.string.isRequired,
+  open: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func.isRequired,
+};
+
 export default AlertDialog;

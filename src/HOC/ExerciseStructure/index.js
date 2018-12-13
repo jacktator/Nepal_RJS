@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Button, List, Typography, Paper, Grid, Card, CardContent,
-} from '@material-ui/core';
-import History from '@material-ui/icons/History';
 import { withStyles } from '@material-ui/core/styles';
-import PlayCircle from '@material-ui/icons/PlayCircleFilled';
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import Grid from '@material-ui/core/Grid';
+import List from '@material-ui/core/List';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import HistoryIcon from '@material-ui/icons/History';
+import PlayCircleIcon from '@material-ui/icons/PlayCircleFilled';
 import NumberSelect from '../numberSelect';
 import ExListItem from './ListItem';
 
@@ -41,6 +44,7 @@ const ExerciseStructure = (props) => {
       alignItems="stretch"
       spacing={24}
     >
+
       <Grid container item>
         <Paper style={{
           width: '100%', height: '25vh', borderRadius: '10px', position: 'relative',
@@ -50,13 +54,13 @@ const ExerciseStructure = (props) => {
             className={classes.card}
             style={{ backgroundColor: 'unset' }}
           >
-            <History style={{ fontSize: '30px' }} color="primary" />
+            <HistoryIcon style={{ fontSize: '30px' }} color="primary" />
           </div>
           <div
             className={classes.card}
             style={{ bottom: '0', backgroundColor: 'unset' }}
           >
-            <PlayCircle color="primary" style={{ fontSize: '30px' }} />
+            <PlayCircleIcon color="primary" style={{ fontSize: '30px' }} />
           </div>
           <Card
             color="primary"
@@ -68,6 +72,7 @@ const ExerciseStructure = (props) => {
           </Card>
         </Paper>
       </Grid>
+
       <Grid container item direction="column" alignItems="stretch">
         <Grid>
           {!!select && select.map(v => (
@@ -82,6 +87,7 @@ const ExerciseStructure = (props) => {
         </Grid>
         <Grid><Button fullWidth variant="contained" color="primary" onClick={onSaveClick}><Typography color="secondary">SAVE</Typography></Button></Grid>
       </Grid>
+
       <Grid container item>
         <List component="nav" style={{ width: '100%' }}>
           {!!ExList && ExList.map((v, k) => (
@@ -92,8 +98,7 @@ const ExerciseStructure = (props) => {
               content={v.content}
               status={v.status}
             />
-          ))
-}
+          ))}
         </List>
       </Grid>
     </Grid>
@@ -101,6 +106,7 @@ const ExerciseStructure = (props) => {
 };
 
 ExerciseStructure.propTypes = {
+  classes: PropTypes.object.isRequired,
   select: PropTypes.array,
   ExList: PropTypes.array,
 };

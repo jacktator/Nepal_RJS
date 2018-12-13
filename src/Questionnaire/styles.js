@@ -58,7 +58,6 @@ const styles = theme => ({
   disabled: {},
   focused: {},
   error: {},
-
 });
 
 export default styles;
