@@ -31,6 +31,8 @@ const renderComponent = (props) => {
 renderComponent.propTypes = {
   activeStep: PropTypes.number.isRequired,
   handleClickOpen: PropTypes.func.isRequired,
+  handleChangeState: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
 export default renderComponent;

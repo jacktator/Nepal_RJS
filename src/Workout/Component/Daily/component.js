@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
-import FeedbackIcon from '@material-ui/icons/Feedback';
-import RightIcon from '@material-ui/icons/KeyboardArrowRight';
 import HOClistitem from '../HOC/listitem';
 import { styles } from '../../styles';
 

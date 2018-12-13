@@ -63,6 +63,7 @@ class Third extends React.PureComponent {
 Third.propTypes = {
   classes: PropTypes.object.isRequired,
   handleClickOpen: PropTypes.func.isRequired,
+  data:PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(Third);

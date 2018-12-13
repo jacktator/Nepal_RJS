@@ -84,6 +84,7 @@ class Seventh extends React.PureComponent {
 Seventh.propTypes = {
   classes: PropTypes.object.isRequired,
   handleClickOpen: PropTypes.func.isRequired,
+  data:PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(Seventh);

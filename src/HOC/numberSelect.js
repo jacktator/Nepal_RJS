@@ -38,14 +38,14 @@ const NumberSelect = (props) => {
 
       <Grid item>
         <IconButton name="min" onClick={minClickHandle} color="primary" >
-          <Remove />
+          <RemoveIcon />
         </IconButton>
         <Chip
           label={<Typography color="secondary">{value}</Typography>}
           color="primary"
         />
         <IconButton name="add" onClick={addClickHandle} color="primary" >
-          <Add />
+          <AddIcon />
         </IconButton>
       </Grid>
       

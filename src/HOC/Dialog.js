@@ -34,4 +34,11 @@ const AlertDialog = (props) => {
   );
 };
 
+AlertDialog.propTypes = {
+  title: PropTypes.string.isRequired,
+  discription: PropTypes.string.isRequired,
+  open: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func.isRequired,
+};
+
 export default AlertDialog;

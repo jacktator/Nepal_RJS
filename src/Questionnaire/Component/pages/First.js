@@ -104,6 +104,7 @@ class First extends React.Component {
 
 First.propTypes = {
   classes: PropTypes.object.isRequired,
+  data:PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(First);

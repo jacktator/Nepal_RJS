@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
+import Grid from '@material-ui/core/Grid';
+import IconButton from '@material-ui/core/IconButton';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-import { withStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import { Typography } from '@material-ui/core';
-import Divider from '@material-ui/core/Divider';
-import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
   root: {
@@ -83,18 +83,20 @@ const Profile = (props) => {
     <Grid container className={classes.container} justify="center" alignItems="center">
       <Paper className={classes.root}>
         <Grid container className={classes.avatarGridContainer} justify="center">
+
           <Grid className={classes.avatarGridContainer}>
-            <Avatar component={Paper} className={classes.avatarContainer}>
-              <AccountCircle color="primary" className={classes.avatar} />
+            <Avatar className={classes.avatarContainer} component={Paper}>
+              <AccountCircle className={classes.avatar} color="primary" />
             </Avatar>
             <input accept="image/*" className={classes.input} id="icon-button-file" type="file" />
             <label htmlFor="icon-button-file">
-              <IconButton component={Paper} className={classes.avatarButton}>
+              <IconButton className={classes.avatarButton} component={Paper}>
                 <CloudUploadIcon style={{ fontSize: '5vmin' }} color="secondary" />
               </IconButton>
             </label>
           </Grid>
-          <Grid container spacing={16} className={classes.contentContainer} direction="column" justify="space-around">
+
+          <Grid container className={classes.contentContainer} spacing={16} direction="column" justify="space-around">
             <Grid item container justify="flex-start">
               <Typography className={classes.detailedLableHead} variant="h6" color="secondary">Name:  </Typography>
               <Typography variant="h6" color="secondary">UserName</Typography>
@@ -111,18 +113,22 @@ const Profile = (props) => {
             </Grid>
             <Divider className={classes.divider} />
           </Grid>
+
           <Grid className={classes.contentContainer} container direction="column" justify="center" alignItems="center">
             <Button color="secondary">Update Information</Button>
             <Button color="secondary">Change Password</Button>
             <Button color="secondary">View Terms and Conditions</Button>
             <Button color="secondary">Logout</Button>
           </Grid>
+
         </Grid>
       </Paper>
     </Grid>
   );
 };
+
 Profile.propTypes = {
   classes: PropTypes.object.isRequired,
 };
+
 export default withStyles(styles)(Profile);

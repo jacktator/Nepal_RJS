@@ -1,11 +1,11 @@
+import axios from 'axios';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import axios from 'axios';
 import App from './App';
 import { BASE_URL } from './config';
 import { setAuthTokenInHeader } from './UserConfig/action';
 import store from './store';
+import './index.css';
 
 // Set base URL in request
 axios.defaults.baseURL = BASE_URL;

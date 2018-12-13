@@ -83,6 +83,7 @@ class Sixth extends React.PureComponent {
 Sixth.propTypes = {
   classes: PropTypes.object.isRequired,
   handleClickOpen: PropTypes.func.isRequired,
+  data:PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(Sixth);

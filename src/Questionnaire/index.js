@@ -76,7 +76,6 @@ class index extends React.PureComponent {
     return (fristV && secondV && thirdV && fourthV && fifthV && sixthV && seventhV);
   }
 
-
   validationHandle() {
     if (this.validation()) {
       return;
