@@ -28,9 +28,12 @@ class Login extends React.Component {
   }
 
   render() {
-    const { email, password, loading } = this.state;
+    const {
+      email, password, loading,
+    } = this.state;
+    const { loginStatus } = this.props;
     return (
-      sessionStorage.token ? (<Redirect to="/mainmenu" />) : (
+      (loading && loginStatus) ? (<Redirect to="/mainmenu" />) : (
         <Component
           email={email}
           password={password}
@@ -43,8 +46,14 @@ class Login extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    loginStatus: state.UserConfig.LoginStatus,
+  };
+}
+
 Login.propTypes = {
   loginAction: PropTypes.func.isRequired,
 };
 
-export default connect(null, { loginAction })(Login);
+export default connect(mapStateToProps, { loginAction })(Login);

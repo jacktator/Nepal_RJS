@@ -44,7 +44,7 @@ class index extends React.PureComponent {
 index.propTypes = {
   classes: PropTypes.object.isRequired,
   backgroundImage: PropTypes.string,
-  tapBarContent: PropTypes.array.isRequired,
+  tapBarContent: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]).isRequired,
   title: PropTypes.string,
   top: PropTypes.bool,
   showBottomButton: PropTypes.bool,

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
+import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import Paper from '@material-ui/core/Paper';
@@ -46,31 +47,25 @@ const ExerciseStructure = (props) => {
     >
 
       <Grid container item>
-        <Paper style={{
+        <Card style={{
           width: '100%', height: '25vh', borderRadius: '10px', position: 'relative',
         }}
         >
-          <div
-            className={classes.card}
-            style={{ backgroundColor: 'unset' }}
-          >
+          <div className={classes.card} style={{ backgroundColor: 'unset' }}>
             <HistoryIcon style={{ fontSize: '30px' }} color="primary" />
           </div>
-          <div
-            className={classes.card}
-            style={{ bottom: '0', backgroundColor: 'unset' }}
-          >
+          <div className={classes.card} style={{ bottom: '0', backgroundColor: 'unset' }}>
             <PlayCircleIcon color="primary" style={{ fontSize: '30px' }} />
           </div>
-          <Card
-            color="primary"
-            className={classes.card}
-            style={{ right: '0' }}
-          >
+          <Card color="primary" className={classes.card} style={{ right: '0' }}>
             <Typography color="secondary">3X</Typography>
             <Typography color="secondary">12X12</Typography>
           </Card>
-        </Paper>
+          <CardMedia
+            style={{ height: '100%', width: '100%' }}
+            image="/image/exerciseGif.gif"
+          />
+        </Card>
       </Grid>
 
       <Grid container item direction="column" alignItems="stretch">

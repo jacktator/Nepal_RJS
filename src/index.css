@@ -35,3 +35,7 @@ body {
   border-width:1px;
   box-sizing:border-box;
 }
+
+a {
+  text-decoration: none
+}

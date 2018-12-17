@@ -4,6 +4,6 @@ export const BASE_URL = 'https://nepal.sk8tech.io/wp-json/wp/v2';
 export const programmeTable = {
   DecreaseStress: 'ds',
   FatLoss: 'fl',
-  IncreaseFitness: 'is',
+  IncreaseFitness: 'if',
   MuscleGain: 'mg',
 };

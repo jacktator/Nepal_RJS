@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -22,29 +23,42 @@ const iconDisplay = (finish) => {
 
 class SimpleList extends React.PureComponent {
   render() {
-    const { classes, finish, days } = this.props;
+    const {
+      classes, finish, days, currentWeek, progress,
+    } = this.props;
+    const starDayNumber = days * (currentWeek);
     return (
+      !!progress && (
       <List className={classes.root} component="nav" disablePadding>
         {
             [...Array(days || 5)].map((v, k) => (
-              <ListItem divider className={classes.infoListItem} key={k} component={Paper} elevation={4}>
-                <ListItemText primary={(
-                  <Typography variant="body1" color="secondary">{`Day ${k + 1}`}</Typography>
+              <Link key={`day${starDayNumber + k + 1}`} style={{ width: '100%', height: '100%' }} to={`/workout/daily/${k + 1}`}>
+                <ListItem divider disabled={starDayNumber + k + 1 > progress} className={classes.infoListItem} component={Paper} elevation={4}>
+                  <ListItemText primary={(
+                    <Typography variant="body1" color="secondary">{`Day ${starDayNumber + k + 1}`}</Typography>
                   )}
-                />
-                <ListItemIcon>{iconDisplay(finish)}</ListItemIcon>
-              </ListItem>
+                  />
+                  <ListItemIcon>{iconDisplay(finish)}</ListItemIcon>
+                </ListItem>
+              </Link>
+
             ))
         }
       </List>
+      )
     );
   }
 }
 
 SimpleList.propTypes = {
-  classes: PropTypes.object.isRequired,
-  days: PropTypes.number,
+  classes: PropTypes.object,
+  days: PropTypes.number.isRequired,
   finish: PropTypes.bool,
+  currentWeek: PropTypes.number.isRequired,
+};
+
+SimpleList.defaultProps = {
+  finish: false,
 };
 
 export default withStyles(styles)(SimpleList);

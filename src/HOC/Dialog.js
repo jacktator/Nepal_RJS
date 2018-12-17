@@ -9,7 +9,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 const AlertDialog = (props) => {
   const {
-    title, discription, open, handleClose,
+    title, discription, open, handleClose, media,
   } = props;
   return (
     <div>
@@ -21,14 +21,15 @@ const AlertDialog = (props) => {
       >
         <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
         <DialogContent>
+          {!!discription && (
           <DialogContentText color="primary" id="alert-dialog-description">
             {discription}
           </DialogContentText>
+          )}
+          {!!media && media}
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary" autoFocus>
-                Ok
-          </Button>
+          <Button onClick={handleClose} color="primary" autoFocus> Ok </Button>
         </DialogActions>
       </Dialog>
     </div>
@@ -40,6 +41,7 @@ AlertDialog.propTypes = {
   discription: PropTypes.string.isRequired,
   open: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
+  media: PropTypes.element,
 };
 
 export default AlertDialog;

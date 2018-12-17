@@ -10,7 +10,7 @@ import ExercisePage from './Component/Exercise';
 const Workout = () => (
   <Switch>
     <Route path="/workout/plan" component={PlanPage} />
-    <Route path="/workout/daily" component={DailyPage} />
+    <Route path="/workout/daily/:dayInWeekSelected" component={DailyPage} />
     <Route path="/workout/history" component={HistoryPage} />
     <Route path="/workout/exercise" component={ExercisePage} />
     <Redirect from="/workout/" to="/workout/plan" />

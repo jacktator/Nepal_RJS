@@ -93,6 +93,7 @@ class ExerciseIndex extends React.Component {
         currentWeek={this.props.currentWeek}
         currentPage={3}
         FooterContent={1}
+        tapBarContent={false}
         midComponent={(
           <Grid container style={{ flex: 1 }} direction="column" justify="center" alignContent="space-between" alignItems="center">
 
