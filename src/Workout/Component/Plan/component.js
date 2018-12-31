@@ -15,13 +15,27 @@ import { styles } from '../../styles';
 const iconDisplay = (finish) => {
   switch (finish) {
     case true:
-      return <FeedbackIcon />;
+      return <FeedbackIcon color="secondary" />;
     default:
       return <RightIcon />;
   }
 };
 
 class SimpleList extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.onItemClick = this.onItemClick.bind(this);
+  }
+
+  onItemClick(event, data) {
+    if (~~data.current !== ~~this.props.progress) {
+      event.preventDefault();
+    } else if (~~data.current === ~~this.props.progress && data.finish) {
+      event.preventDefault();
+      this.props.handleQuestionnaireOpen();
+    }
+  }
+
   render() {
     const {
       classes, finish, days, currentWeek, progress,
@@ -32,16 +46,15 @@ class SimpleList extends React.PureComponent {
       <List className={classes.root} component="nav" disablePadding>
         {
             [...Array(days || 5)].map((v, k) => (
-              <Link key={`day${starDayNumber + k + 1}`} style={{ width: '100%', height: '100%' }} to={`/workout/daily/${k + 1}`}>
-                <ListItem divider disabled={starDayNumber + k + 1 > progress} className={classes.infoListItem} component={Paper} elevation={4}>
+              <Link key={`day${starDayNumber + k + 1}`} onClick={event => this.onItemClick(event, { current: starDayNumber + k + 1, finish })} style={{ width: '100%', height: '100%' }} to={`/workout/daily/${k + 1}`}>
+                <ListItem divider disabled={~~starDayNumber + k + 1 !== ~~progress} style={~~starDayNumber + k + 1 < ~~progress ? { backgroundColor: '#4caf50' } : null} className={classes.infoListItem} component={Paper} elevation={4}>
                   <ListItemText primary={(
                     <Typography variant="body1" color="secondary">{`Day ${starDayNumber + k + 1}`}</Typography>
                   )}
                   />
-                  <ListItemIcon>{iconDisplay(finish)}</ListItemIcon>
+                  <ListItemIcon>{iconDisplay(starDayNumber + k + 1 === progress * 1 ? finish : false)}</ListItemIcon>
                 </ListItem>
               </Link>
-
             ))
         }
       </List>

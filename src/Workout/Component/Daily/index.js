@@ -8,49 +8,122 @@ import Component from './component';
 import MainComponent from '../../../HOC/PageStructure';
 import { styles } from '../../styles';
 import {
-  statusArray, finishDailyQuery, getExercisesSample, getCurrentProgram, getDailyExercises,
+  statusArray, finishDailyQuery, getExercisesSample,
+  getCurrentProgram, getDailyExercises, setRenderExercise,
+  selectExercise, setSelectedExercisesQuery, setSelectedExercises, userKeepExercise,
 } from '../../action';
 
 class MainRehab extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      renderExercise: [],
       dialogOpen: false,
+      dialogSelected: 0,
+      dialogIndexSelected: 0,
+      selectedFatherExercises: -1,
+      midSelectExercise: [],
+      err: false,
+
     };
     this.midPartTabsValueHandleChange = this.midPartTabsValueHandleChange.bind(this);
     this.renderExercise = this.renderExercise.bind(this);
     this.openDialog = this.openDialog.bind(this);
     this.closeDialog = this.closeDialog.bind(this);
+    this.handleNext = this.handleNext.bind(this);
+    this.handleBack = this.handleBack.bind(this);
+    this.selectDialogIndex = this.selectDialogIndex.bind(this);
+    this.keepExercise = this.keepExercise.bind(this);
+    this.selectMidExercise = this.selectMidExercise.bind(this);
+    this.closeErrDialog = this.closeErrDialog.bind(this);
   }
 
-
   componentDidMount() {
-    if (sessionStorage.getItem('progress') === null) {
-      getCurrentProgram();
-    }
     const {
       exercises, finishDailyQuery, getDailyExercises,
     } = this.props;
+    if (this.props.renderExercises.length !== 0) {
+      return;
+    }
     getDailyExercises({ length: exercises.length });
     finishDailyQuery(true);
   }
 
   componentDidUpdate(prevProps) {
     const sampleChanged = prevProps.unselectedExercises !== this.props.unselectedExercises;
+    const exerciseChanged = prevProps.exercises !== this.props.exercises;
     const statusChanged = prevProps.programSelectStatus !== this.props.programSelectStatus;
-    if (sampleChanged || statusChanged) {
+    if (sampleChanged || statusChanged || exerciseChanged) {
       this.renderExercise();
     }
   }
 
-  openDialog() {
+  selectMidExercise(data) {
+    const { midSelectExercise, selectedFatherExercises } = this.state;
+    const m = JSON.parse(JSON.stringify(midSelectExercise));
+    m[selectedFatherExercises] = data;
+    this.setState({ midSelectExercise: m });
+    this.closeDialog();
+  }
+
+  handleNext() {
+    this.setState(prevState => ({
+      dialogSelected: prevState.dialogSelected + 1,
+    }));
+  }
+
+  handleBack() {
+    this.setState(prevState => ({
+      dialogSelected: prevState.dialogSelected - 1,
+    }));
+  }
+
+  keepExercise(data) {
+    const { midSelectExercise, selectedFatherExercises } = this.state;
+    if (midSelectExercise.length < selectedFatherExercises + 1 || !midSelectExercise[selectedFatherExercises]) {
+      this.setState({ err: true });
+      return;
+    }
+    this.props.finishDailyQuery(true);
+    const m = [].concat(this.props.exercises);
+    const replace = midSelectExercise[selectedFatherExercises];
+    m.push({ ...data, name: replace.name, progression_model: replace.progression_model });
+    const f = [...m.map(v => `(${[...Object.values(v)].join()})`)].join(';');
+    const fin = m.length === this.props.unselectedExercises.length;
+    this.props.userKeepExercise(f, fin);
+  }
+
+  openDialog(id, listID) {
     this.setState({ dialogOpen: true });
+    if (listID === this.state.selectedFatherExercises) {
+      return;
+    }
+    this.selectFatherExercise(listID);
+    this.props.setSelectedExercises([]);
+    this.props.setSelectedExercisesQuery(true);
+    this.setState({
+      dialogSelected: 0,
+      dialogIndexSelected: 0,
+    });
+    this.props.selectExercise(id);
+  }
+
+  selectFatherExercise(id) {
+    this.setState({ selectedFatherExercises: id });
+  }
+
+  selectDialogIndex(id) {
+    this.setState({ dialogSelected: 0 });
+    this.setState({ dialogIndexSelected: id });
   }
 
   closeDialog() {
     this.setState({ dialogOpen: false });
   }
+
+  closeErrDialog() {
+    this.setState({ err: false });
+  }
+
 
   midPartTabsValueHandleChange(event, value) {
     this.setState({ midPartTabsValue: value });
@@ -63,27 +136,28 @@ class MainRehab extends React.PureComponent {
     const statusIndex = statusArray.findIndex(v => v === programSelectStatus);
     switch (statusIndex) {
       case 0:
-        this.setState({ renderExercise: exercises });
+        this.props.setRenderExercise(exercises);
         return;
       case 1:
-        this.setState({ renderExercise: unselectedExercises });
+        this.props.setRenderExercise(unselectedExercises);
         return;
       case 2:
         const newArray = [].concat(exercises, unselectedExercises.slice(exercises.length));
-        this.setState({ renderExercise: newArray });
+        this.props.setRenderExercise(newArray);
         return;
       default:
-        this.setState({ renderExercise: unselectedExercises });
+        this.props.setRenderExercise(unselectedExercises);
     }
   }
 
 
   render() {
     const {
-      classes, currentWeek, progress, dailyQuery,
+      classes, currentWeek, progress, dailyQuery, renderExercises, selectedExercises, selectedExercisesQuery,
     } = this.props;
-    const { renderExercise, dialogOpen } = this.state;
-    console.log(renderExercise);
+    const {
+      err, dialogOpen, dialogSelected, dialogIndexSelected, midSelectExercise,
+    } = this.state;
     return (
       <MainComponent
         backgroundImage="image/sampleImage.jpeg"
@@ -98,11 +172,24 @@ class MainRehab extends React.PureComponent {
           <Grid container style={{ flex: 1 }} justify="center" alignContent="space-around" alignItems="center">
             <Paper className={classes.midPaper} elevation={8}>
               <Component
-                renderExercise={renderExercise}
+                userKeepExercise={this.keepExercise}
+                renderExercise={renderExercises}
+                selectedExercisesQuery={selectedExercisesQuery}
+                selectedExercises={selectedExercises}
                 dailyQuery={dailyQuery}
                 openDialog={dialogOpen}
                 handleClose={this.closeDialog}
                 handleOpenDialog={this.openDialog}
+                midSelectExercise={midSelectExercise}
+                handleNext={this.handleNext}
+                handleBack={this.handleBack}
+                dialogIndexSelected={dialogIndexSelected}
+                dialogSelected={dialogSelected}
+                selectDialogIndex={this.selectDialogIndex}
+                selectMidExercise={this.selectMidExercise}
+                err={err}
+                handleErrClose={this.closeErrDialog}
+
               />
             </Paper>
           </Grid>
@@ -114,10 +201,10 @@ class MainRehab extends React.PureComponent {
 
 function mapStateToProps(state) {
   const {
-    unselectedExercises, programSelectStatus, exercises, dailyQuery,
+    unselectedExercises, programSelectStatus, exercises, dailyQuery, renderExercises, selectedExercises, selectedExercisesQuery,
   } = state.Workout;
   return {
-    unselectedExercises, programSelectStatus, exercises, dailyQuery,
+    unselectedExercises, programSelectStatus, exercises, dailyQuery, renderExercises, selectedExercises, selectedExercisesQuery,
   };
 }
 
@@ -132,5 +219,13 @@ MainRehab.propTypes = {
 };
 
 export default connect(mapStateToProps, {
-  getDailyExercises, finishDailyQuery, getCurrentProgram, getExercisesSample,
+  getDailyExercises,
+  finishDailyQuery,
+  getCurrentProgram,
+  getExercisesSample,
+  setRenderExercise,
+  selectExercise,
+  setSelectedExercisesQuery,
+  setSelectedExercises,
+  userKeepExercise,
 })(withStyles(styles)(MainRehab));

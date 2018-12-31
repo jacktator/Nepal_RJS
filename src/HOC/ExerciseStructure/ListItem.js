@@ -11,7 +11,7 @@ const ExerciseListItem = (props) => {
   } = props;
   return (
     <ListItem divider>
-      {latest ? <ListItemIcon><CheckCircleIcon color="primary" /></ListItemIcon> : <ListItemText primary={id} />}
+      {latest ? <ListItemIcon><CheckCircleIcon color="primary" /></ListItemIcon> : <ListItemText primary={id + 1} />}
       <ListItemText primary={content} />
       <ListItemText primary={status} />
     </ListItem>

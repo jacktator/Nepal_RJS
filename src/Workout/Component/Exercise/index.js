@@ -7,19 +7,17 @@ import IconButton from '@material-ui/core/IconButton';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import LeftIcon from '@material-ui/icons/KeyboardArrowLeft';
+import { connect } from 'react-redux';
 import ExerciseComponent from './component';
 import MainComponent from '../../../HOC/PageStructure';
 import SpeedDialTooltipOpen from '../../../HOC/speedDial';
 import { add, min } from '../../../HOC/numberSelect';
 import { styles } from '../../styles';
-
-
-const exList = [
-  {
-    content: '10 weight X 10 sets',
-    status: 'Previous',
-  },
-];
+import {
+  getExerciseDetail, setAllDayExercises, selectExercise, setTodayExercises,
+  finishExercisePageQuery, updataOneExercise, finishAllDailyExercises,
+} from '../../action';
+import LoadingComponent from '../../../HOC/Loading';
 
 class ExerciseIndex extends React.Component {
   constructor(props) {
@@ -29,17 +27,47 @@ class ExerciseIndex extends React.Component {
       midPartTabsValue: 0,
       currentPage: 2,
       weight: 0,
-      sets: 0,
+      reps: 0,
+      youtbueID: '_e7AzzwpDUM',
+      youtube: false,
+      history: false,
+      title: 'youtube',
       ExList: [{
-        content: '10 weight X 10 sets',
+        content: '10 weight X 10 reps',
         status: 'Previous',
       }],
     };
     this.weightAdd = this.weightAdd.bind(this);
     this.weightMin = this.weightMin.bind(this);
-    this.setsAdd = this.setsAdd.bind(this);
-    this.setsMin = this.setsMin.bind(this);
+    this.repsAdd = this.repsAdd.bind(this);
+    this.repsMin = this.repsMin.bind(this);
     this.saveData = this.saveData.bind(this);
+    this.returnBack = this.returnBack.bind(this);
+    this.onClose = this.onClose.bind(this);
+    this.onOpen = this.onOpen.bind(this);
+    this.onFinishAllExercise = this.onFinishAllExercise.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.renderExercises.length === 0) {
+      window.location.href = `#/workout/daily/${sessionStorage.dayInWeek}`;
+      return;
+    }
+    this.props.finishExercisePageQuery(true);
+    this.props.getExerciseDetail({ exeLength: this.props.renderExercises.length });
+    this.setState({ reps: !/^[0-9]*$/.test(this.props.renderExercises[this.props.match.params.exerciseOrder - 1].reps) ? 0 : 1 * this.props.renderExercises[this.props.match.params.exerciseOrder].reps });
+  }
+
+  onClose(input) {
+    this.setState({ [input]: false });
+  }
+
+  onOpen(input) {
+    this.setState({ [input]: true });
+  }
+
+  returnBack() {
+    this.props.history.goBack();
   }
 
   weightAdd() {
@@ -50,26 +78,54 @@ class ExerciseIndex extends React.Component {
     this.setState(min('weight'));
   }
 
-  setsAdd() {
-    this.setState(add('sets'));
+  repsAdd() {
+    this.setState(add('reps'));
   }
 
-  setsMin() {
-    this.setState(min('sets'));
+  repsMin() {
+    this.setState(min('reps'));
   }
 
-  saveData() {
-    exList.push({
-      content: `${this.state.weight} weight X ${this.state.sets} sets`,
-      status: 'Previous',
-    });
-    const newExList = [].concat(JSON.parse(JSON.stringify(exList)));
-    this.setState({ ExList: newExList });
+  saveData(wei) {
+    const { exerciseOrder } = this.props.match.params;
+    const showedExercises = this.props.todayExercises[`exe_${exerciseOrder}`];
+    let result = '';
+    if (wei) {
+      result = showedExercises ? `${showedExercises};(${this.state.reps})` : `(${this.state.reps})`;
+    } else {
+      result = showedExercises ? `${showedExercises};(${this.state.reps},${this.state.weight})` : `(${this.state.reps},${this.state.weight})`;
+    }
+    const m = { ...this.props.todayExercises, [`exe_${exerciseOrder}`]: result };
+    this.props.updataOneExercise({ exeNum: exerciseOrder, exeData: result });
+    // this.props.setTodayExercises(m);
+  }
+
+  onFinishAllExercise() {
+    const a = this.props.todayExercises;
+    const b = [...this.props.renderExercises];
+    const finish = b.some((item, k) => (item.sets * 1) > a[`exe_${k + 1}`].split(';').length);
+    if (!finish) {
+      this.props.finishAllDailyExercises();
+      window.location.hash = '#/workout';
+    }
   }
 
   render() {
-    const { classes } = this.props;
-    const { weight, sets, ExList } = this.state;
+    const {
+      classes, renderExercises, alldayExercises, exercisePageQuery, todayExercises,
+    } = this.props;
+    const {
+      weight, reps, youtube, youtbueID, title, history,
+    } = this.state;
+    const { exerciseOrder } = this.props.match.params;
+    const showedExercises = todayExercises[`exe_${exerciseOrder}`] || '';
+    const a = showedExercises.split(';');
+    const res = a[0] !== '' && [...[...a].map((v) => {
+      const b = [...v.substring(1, v.length - 1).split(',')];
+      return ({ reps: b[0], weight: b.length > 1 ? b[1] : null });
+    })];
+    const thisExerciseDetail = renderExercises[exerciseOrder - 1];
+    const finishCurrentExercise = res.length >= thisExerciseDetail.sets * 1;
     const select = [
       {
         label: 'weight',
@@ -77,10 +133,10 @@ class ExerciseIndex extends React.Component {
         add: this.weightAdd,
         value: weight,
       }, {
-        label: 'sets',
-        min: this.setsMin,
-        add: this.setsAdd,
-        value: sets,
+        label: 'reps',
+        min: this.repsMin,
+        add: this.repsAdd,
+        value: reps,
       },
     ];
 
@@ -96,14 +152,16 @@ class ExerciseIndex extends React.Component {
         tapBarContent={false}
         midComponent={(
           <Grid container style={{ flex: 1 }} direction="column" justify="center" alignContent="space-between" alignItems="center">
-
+            <LoadingComponent
+              open={exercisePageQuery}
+            />
             <Grid container item direction="column" alignContent="space-between" alignItems="center">
               <AppBar position="static">
                 <Toolbar style={{ justifyContent: 'space-between' }}>
-                  <IconButton className={classes.menuButton} color="secondary" aria-label="Menu">
+                  <IconButton className={classes.menuButton} onClick={this.returnBack} color="secondary" aria-label="Menu">
                     <LeftIcon style={{ fontSize: '30px' }} />
                   </IconButton>
-                  <Typography className={classes.grow} variant="h6" color="secondary">Title</Typography>
+                  <Typography className={classes.grow} variant="h6" color="secondary">{thisExerciseDetail ? thisExerciseDetail.name : 'title'}</Typography>
                   <div style={{ minHeight: '56px', minWidth: '56px' }}>
                     <SpeedDialTooltipOpen right secondary />
                   </div>
@@ -113,9 +171,20 @@ class ExerciseIndex extends React.Component {
 
             <ExerciseComponent
               step={10}
+              thisExerciseDetail={thisExerciseDetail}
               select={select}
-              ExList={ExList}
+              ExList={res}
               onSaveClick={this.saveData}
+              youtbueID={youtbueID}
+              onOpen={this.onOpen}
+              onClose={this.onClose}
+              youtubeOpenStatus={youtube}
+              title={title}
+              history={history}
+              currentExerciseOrder={exerciseOrder}
+              finishCurrentExercise={finishCurrentExercise}
+              onFinishAllExercise={this.onFinishAllExercise}
+              dailyExerciseLength={renderExercises.length}
             />
 
           </Grid>
@@ -125,10 +194,21 @@ class ExerciseIndex extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  const {
+    renderExercises, alldayExercises, exercisePageQuery, todayExercises,
+  } = state.Workout;
+  return {
+    renderExercises, alldayExercises, exercisePageQuery, todayExercises,
+  };
+}
+
 ExerciseIndex.propTypes = {
   classes: PropTypes.object.isRequired,
   progress: PropTypes.object,
   currentWeek: PropTypes.number,
 };
 
-export default withStyles(styles)(ExerciseIndex);
+export default connect(mapStateToProps, {
+  getExerciseDetail, setAllDayExercises, selectExercise, setTodayExercises, finishExercisePageQuery, updataOneExercise, finishAllDailyExercises,
+})(withStyles(styles)(ExerciseIndex));

@@ -17,17 +17,31 @@ const handleExercise = data => [...data.map(v => v.acf)];
 const dealStringToExerciseArray = (input) => {
   const b = [...input.map((v) => {
     const vi = v.substring(1, v.length - 1).split(',');
-    return Object.assign({}, { name: vi[0], id: vi[1], icon_link: vi[2] });
+    return Object.assign({}, {
+      name: vi[0], id: vi[1], icon_link: vi[2], feedback: vi[3], image_link: vi[4], progression_model: vi[5], reps: vi[6], sets: vi[7], video_link: vi[8],
+    });
   })];
   return b;
 };
 
+const getExerciseDetailByProgress = (input, progressNum) => {
+  const result = input.find(v => v.acf.progress === progressNum);
+  if (result) {
+    return result;
+  }
+  return false;
+};
+
 const getDayInWeek = (progress, days) => {
-  if (progress <= days) {
+  if (~~progress <= ~~days) {
+    console.log('<=', ~~days);
+    console.log('<=', ~~progress);
+    console.log('<=', progress <= days);
     return progress;
-  } if (progress % days === 0) {
+  } if (~~progress % ~~days === 0) {
+    console.log('progress % days === 0');
     return days;
-  } return progress % days;
+  } return ~~progress % ~~days;
 };
 
 export const finishQuery = boo => ({ type: 'FINISH_Program_QUERY', payload: boo });
@@ -36,19 +50,61 @@ export const setExercises = data => ({ type: 'SET_DAY_EXERCISES', payload: data 
 export const setUnselectedExercises = data => ({ type: 'SET_UNSELECTED_EXERCISES', payload: data });
 export const setProgramSelectedState = data => ({ type: 'SET_PROGRAM_SELECTED_STATE', payload: data });
 export const finishDailyQuery = boo => ({ type: 'FINISH_Daily_QUERY', payload: boo });
-export const setRenderExercise = data => ({ type: 'SET_RENDER_EXERCISES', payload: data });
+export const setRenderExercise = data => ({ type: 'SET_RENDER_EXERCISE', payload: data });
+export const setExerciseDetails = data => ({ type: 'SET_EXERCISE_DETAILS', payload: data });
+export const setAllDayExercises = data => ({ type: 'SET_ALLDAY_EXERCISES', payload: data });
+export const setTodayExercises = data => ({ type: 'SET_TODAY_EXERCISES', payload: data });
+export const setSelectedExercises = data => ({ type: 'SET_SELECTED_EXERCISES', payload: data });
+export const setSelectedExercisesQuery = data => ({ type: 'SELECTED_EXERCISES_QUERY', payload: data });
+export const finishExercisePageQuery = data => ({ type: 'FINISH_EXERCISE_PAGE_QUERY', payload: data });
 
-export const updataOneExercise = data => (dispatch) => {
-  axios.post(`/day_${data.day}/${data.id}`, { fields: { [`exe_${data.exeNum}`]: data.exeData } })
-    .then(res => console.log(res))
-    .catch(res => console.log(res));
+
+// daily page change button's dialog get exercises
+export const selectExercise = id => (dispatch) => {
+  console.log('sdasdasdasd');
+  axios.get(`https://nepal.sk8tech.io/wp-json/acf/v3/exercise?filter[meta_key]=id&filter[meta_value]=${id}`)
+    .then((res) => {
+      let b = [...res.data[0].acf.childexercises.map(v => v.a)];
+      b = b.map((v) => {
+        let result = v.split(';');
+        const header = result.shift();
+        result = result.map((v1) => {
+          const c = v1.substring(1, v1.length - 1).split(',');
+          c.pop();
+          return ({ name: c[0], progression_model: c[1] });
+        });
+        b.length > 1 && result.push(header);
+        return result;
+      });
+      dispatch(setSelectedExercises(b));
+      dispatch(setSelectedExercisesQuery(false));
+    })
+    .catch(err => console.log(err));
 };
 
-export const newDaylyExercise = data => (dispatch) => {
-  const { day, exeLength, programmeID } = data;
-  axios.post(`/day_${day}`, { fields: { exeLength, programmeID } })
-    .then()
-    .catch();
+
+export const getExerciseDetail = data => (dispatch) => {
+  const { programmeID, progress, dayInWeek } = sessionStorage;
+  axios.get(`https://nepal.sk8tech.io/wp-json/acf/v3/day_${dayInWeek}?filter[meta_key]=programmeid&filter[meta_value]=${programmeID}`)
+    .then((res) => {
+      console.log('getExerciseDetail', res);
+      dispatch(setAllDayExercises(res.data));
+      const haveExercise = getExerciseDetailByProgress(res.data);
+      if (typeof (haveExercise) === 'object') {
+        sessionStorage.setItem('dayTableId', haveExercise.id);
+        dispatch(setTodayExercises(haveExercise.acf));
+        dispatch(finishExercisePageQuery(false));
+        // check
+        console.log('do something');
+        return;
+      }
+      dispatch(createNewExercise({
+        day: dayInWeek, exeLength: data.exeLength, programmeID, progress,
+      }));
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 
@@ -83,13 +139,18 @@ export const getCurrentProgram = getExe => (dispatch) => {
       const data = (res.data)[0].acf;
       console.log(data);
       const dayInWeek = getDayInWeek(data.progress, data.days);
-      const exercises = dealStringToExerciseArray(data[`day_${dayInWeek}_exe`].split(';'));
+      console.log(dayInWeek);
+      const exercises = data[`day_${dayInWeek}_exe`] !== '' ? dealStringToExerciseArray(data[`day_${dayInWeek}_exe`].split(';')) : [];
       sessionStorage.setItem('progress', data.progress);
       sessionStorage.setItem('dayInWeek', dayInWeek);
       sessionStorage.setItem('path', data.program_name);
       sessionStorage.setItem('location', data.exercise_place);
       sessionStorage.setItem('days', data.days);
       sessionStorage.setItem('programmeID', (res.data)[0].id);
+      sessionStorage.setItem('finishDay', data.select_finish);
+      sessionStorage.setItem('finish_for_day', data.finish_for_day);
+      sessionStorage.setItem('ask_feedback', data.ask_feedback);
+      sessionStorage.setItem('feedback_value', data.feedback_value);
       dispatch(setExercises(exercises));
       dispatch(finishQuery(false));
       if (getExe) {
@@ -118,6 +179,24 @@ export const getDailyProgramExercise = data => (dispatch) => {
     .catch();
 };
 
+// create a new row at day_${number} table as a new record
+export const createNewExercise = data => (dispatch) => {
+  axios.post(`/day_${data.day}`, {
+    fields: {
+      exelength: data.exeLength, programmeid: data.programmeID, finish: false, progress: data.progress,
+    },
+    status: 'publish',
+  })
+    .then((res) => {
+      sessionStorage.setItem('dayTableId', res.data.id);
+      dispatch(finishExercisePageQuery(false));
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 export const getDailyExercises = data => (dispatch) => {
   // if users directly access this page, get program first
   if (data.length === 0) {
@@ -126,7 +205,7 @@ export const getDailyExercises = data => (dispatch) => {
     return;
   }
   const {
-    days, location, path, dayInWeek,
+    days, location, path, dayInWeek, finishDay,
   } = sessionStorage;
   const baseInfo = {
     location,
@@ -135,11 +214,56 @@ export const getDailyExercises = data => (dispatch) => {
     dayInWeek,
   };
   console.log('progress is not null');
-  dispatch(getExercisesSample(baseInfo, data.length));
-  // axios.get(`https://nepal.sk8tech.io/wp-json/acf/v3/day_${days}`)
-  //   .then((res) => {
-  //     const { dealedRES } = handleExercise(res.data);
-  //     dispatch(setExercises(dealedRES));
-  //   })
-  //   .catch(err => console.log(err));
+  finishDay < dayInWeek && dispatch(getExercisesSample(baseInfo, data.length));
+};
+
+export const userKeepExercise = (data, fin) => (dispatch) => {
+  const pass = fin ? {
+    fields: {
+      [`day_${sessionStorage.dayInWeek}_exe`]: data,
+      select_finish: sessionStorage.dayInWeek,
+    },
+  } : {
+    fields: {
+      [`day_${sessionStorage.dayInWeek}_exe`]: data,
+    },
+  };
+  axios.post(`/program/${sessionStorage.programmeID}`, pass)
+    .then((res) => {
+      const exercises = dealStringToExerciseArray(res.data.acf[`day_${sessionStorage.dayInWeek}_exe`].split(';'));
+      dispatch(setExercises(exercises));
+      dispatch(finishDailyQuery(false));
+      sessionStorage.setItem('finishDay', res.data.acf.select_finish);
+      console.log(res.data.acf.day_1_exe);
+    })
+    .catch(err => console.log(err));
+};
+
+// Exercise page on saving button click update exercise data
+export const updataOneExercise = data => (dispatch) => {
+  const { dayInWeek, dayTableId } = sessionStorage;
+  axios.post(`/day_${dayInWeek}/${dayTableId}`, { fields: { [`exe_${data.exeNum}`]: data.exeData } })
+    .then((res) => {
+      dispatch(setTodayExercises(res.data.acf));
+      console.log(res.data.acf);
+    })
+    .catch(res => console.log(res));
+};
+
+// When user finish final exercise update program
+export const finishAllDailyExercises = data => (dispatch) => {
+  axios.post(`/program/${sessionStorage.programmeID}`, { fields: { finish_for_day: true } })
+    .then((res) => { console.log(res); sessionStorage.setItem('finish_for_day', true); })
+    .catch(err => console.log(err));
+};
+
+// When user finish daily questionnaire select
+export const selectDailyQuestionnaire = data => (dispatch) => {
+  axios.post(`/program/${sessionStorage.programmeID}`, { fields: { feedback_value: data, progress: ~~sessionStorage.progress + 1, finish_for_day: false } })
+    .then((res) => {
+      console.log(res);
+      sessionStorage.setItem('finish_for_day', false);
+      sessionStorage.setItem('progress', ~~sessionStorage.progress + 1);
+    })
+    .catch(err => console.log(err));
 };

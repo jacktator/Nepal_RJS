@@ -19,4 +19,3 @@ export default () => (
     <PrivateRouter path="/rehab" component={Rehab} />
   </Switch>
 );
-// <PrivateRouter path="/addExercise" component={AddExercise} />

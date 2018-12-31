@@ -21,7 +21,7 @@ class ExerciseIndex extends React.Component {
       midPartTabsValue: 0,
       currentPage: 2,
       weight: 0,
-      sets: 0,
+      reps: 0,
     };
     this.weightAdd = this.weightAdd.bind(this);
     this.weightMin = this.weightMin.bind(this);
@@ -38,16 +38,16 @@ class ExerciseIndex extends React.Component {
   }
 
   setsAdd() {
-    this.setState(add('sets'));
+    this.setState(add('reps'));
   }
 
   setsMin() {
-    this.setState(min('sets'));
+    this.setState(min('reps'));
   }
 
   render() {
     const { classes, currentWeek, progress } = this.props;
-    const { weight, sets } = this.state;
+    const { weight, reps } = this.state;
     const select = [
       {
         label: 'weight',
@@ -55,16 +55,16 @@ class ExerciseIndex extends React.Component {
         add: this.weightAdd,
         value: weight,
       }, {
-        label: 'sets',
+        label: 'reps',
         min: this.setsMin,
         add: this.setsAdd,
-        value: sets,
+        value: reps,
       },
     ];
     const ExList = [
       {
         latest: true,
-        content: '10 weight X 10 sets',
+        content: '10 weight X 10 reps',
         status: 'Previous',
       },
     ];
@@ -83,7 +83,7 @@ class ExerciseIndex extends React.Component {
             <Grid container item direction="column" alignContent="space-between" alignItems="center">
               <AppBar position="static">
                 <Toolbar style={{ justifyContent: 'space-between' }}>
-                  <IconButton className={classes.menuButton} color="secondary" aria-label="Menu" >
+                  <IconButton className={classes.menuButton} color="secondary" aria-label="Menu">
                     <LeftIcon style={{ fontSize: '30px' }} />
                   </IconButton>
                   <Typography className={classes.grow} variant="h6" color="secondary">Title</Typography>

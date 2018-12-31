@@ -10,7 +10,7 @@ import { styles } from './style';
 class index extends React.PureComponent {
   render() {
     const {
-      classes, backgroundImage, tapBarContent, title, top, showBottomButton, midComponent, FooterContent, currentPage,
+      classes, backgroundImage, tapBarContent, title, top, showBottomButton, midComponent, FooterContent, currentPage, currentWeek, tabsValue, onTagClick,
     } = this.props;
     return (
       <div className={classes.container}>
@@ -27,7 +27,7 @@ class index extends React.PureComponent {
           )}
 
           <Grid container className={classes.mid} direction="column" justify="space-around" alignContent="space-around" alignItems="center">
-            {!!tapBarContent && <MidPart tapBarContent={tapBarContent} />}
+            {!!tapBarContent && <MidPart onTagClick={onTagClick} tabsValue={tabsValue} currentWeek={currentWeek} tapBarContent={tapBarContent} />}
             {midComponent}
           </Grid>
 

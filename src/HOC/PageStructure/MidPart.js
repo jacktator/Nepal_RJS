@@ -10,45 +10,33 @@ const styles = ({
   },
 });
 
-class MidPartComponent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 0,
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event, value) {
-    this.setState({ value });
-  }
-
+class MidPartComponent extends React.PureComponent {
   render() {
-    const { 
-      classes, theme, tapBarContent, hasClick, onTagClick, currentProcess 
+    const {
+      classes, theme, tapBarContent, onTagClick, currentWeek, tabsValue,
     } = this.props;
     return (
       <Tabs
-        value={1}
+        value={tabsValue}
         indicatorColor="primary"
-        textColor="primary"
+        textColor="secondary"
         scrollable
+        onChange={onTagClick}
         scrollButtons="auto"
         style={{
           width: '100%', height: '30px', minHeight: '30px', backgroundColor: theme.palette.primary.main,
         }}
       >
-        {tapBarContent.map((v, k) => 
+        {tapBarContent.map((v, k) => (
           <Tab
-            onClick={() => hasClick && onTagClick(k)}
             style={{ minHeight: '30px' }}
             classes={{ disabled: classes.disabled }}
-            disabled={(k >= (currentProcess || 1))}
+            disabled={(k >= (currentWeek || 1))}
             disableRipple
-            key={k}
-            label={v} 
+            key={v}
+            label={v}
           />
-        )}
+        ))}
       </Tabs>
     );
   }

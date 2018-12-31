@@ -18,6 +18,7 @@ export const createProgram = () => (dispatch) => {
     feedback_value: '0',
     finish_for_day: false,
     exercise_place: location,
+    select_finish: 0,
   };
   axios.post('https://nepal.sk8tech.io/wp-json/wp/v2/program',
     { status: 'publish', fields })

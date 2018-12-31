@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
@@ -6,13 +7,16 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import LoadingComponent from './Loading';
+
 
 const AlertDialog = (props) => {
   const {
-    title, discription, open, handleClose, media,
+    title, discription, open, handleClose, media, loadingStatus, selectMidExercise, exe, other, otherClickFunction,
   } = props;
   return (
     <div>
+      <LoadingComponent open={loadingStatus} />
       <Dialog
         open={open}
         onClose={handleClose}
@@ -29,7 +33,14 @@ const AlertDialog = (props) => {
           {!!media && media}
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary" autoFocus> Ok </Button>
+          <Button
+            onClick={
+            exe ? () => selectMidExercise({ name: exe.name, progression_model: exe.progression_model }) : other ? otherClickFunction : handleClose}
+            color="primary"
+            autoFocus
+          >
+          Ok
+          </Button>
         </DialogActions>
       </Dialog>
     </div>

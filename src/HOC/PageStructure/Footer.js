@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -49,9 +50,9 @@ class FooterComponent extends React.PureComponent {
             fullWidth
             color="secondary"
             disableRipple
-            onClick={() => FooterButtonClick()}
+            onClick={FooterButtonClick}
           >
-            Start Rehab
+                Start Rehab
           </Button>
           )
         }

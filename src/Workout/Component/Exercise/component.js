@@ -4,13 +4,12 @@ import ExerciseStructure from '../../../HOC/ExerciseStructure';
 
 class ExerciseComponent extends React.PureComponent {
   render() {
-    const { select, ExList, onSaveClick } = this.props;
     return (
       <div style={{
         flex: 1, overflowY: 'scroll', whiteSpace: 'nowrap', width: '96vw', marginTop: '5vmin', overflowX: 'hidden',
       }}
       >
-        <ExerciseStructure select={select} ExList={ExList} onSaveClick={onSaveClick} />
+        <ExerciseStructure {...this.props} />
       </div>
     );
   }
@@ -18,7 +17,6 @@ class ExerciseComponent extends React.PureComponent {
 
 ExerciseComponent.propTypes = {
   select: PropTypes.array,
-  ExList: PropTypes.array,
 };
 
 export default ExerciseComponent;
