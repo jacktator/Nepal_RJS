@@ -1,0 +1,62 @@
+const a = [
+  {
+    day: '1', name: 'Quadricep Heavy Exercises', id: '13', sets: '3', reps: '7-9', feedback: '2', workout: 'Front Squat(Barbell)', progression_model: 'linear', video_link: 'IODxDxX7oi4', icon_link: '2018/10/Icon-9.jpg', image_link: '2018/10/Images-1.jpeg',
+  },
+  {
+    day: '1', name: 'Chest Heavy', id: '5', sets: '3', reps: '7-9', feedback: '2', workout: 'Bench Press(Barbell)', progression_model: 'linear', video_link: 'IODxDxX7oi4', icon_link: '2018/10/Icon-9.jpg', image_link: '2018/10/Images-1.jpeg',
+  },
+  {
+    day: '1', name: 'Back Heavy Exercises', id: '11', sets: '3', reps: '7-9', feedback: '3', workout: 'Bent Over Row(Barbell)', progression_model: 'linear', video_link: 'IODxDxX7oi4', icon_link: '2018/10/Icon-9.jpg', image_link: '2018/10/Images-1.jpeg',
+  },
+  {
+    day: '1', name: 'Shoulder Compound Exercises', id: '10', sets: '3', reps: '8-10', feedback: '4', workout: 'Standing Shoulder Press(Barbell)', progression_model: 'linear', video_link: 'IODxDxX7oi4', icon_link: '2018/10/Icon-9.jpg', image_link: '2018/10/Images-1.jpeg',
+  },
+  {
+    day: '1', name: 'Back light + chest light exercise', id: '25', sets: '3', reps: '10-12', feedback: '4', workout: 'Flat Chest Fly(Dumbbell)', progression_model: 'double progression', video_link: 'IODxDxX7oi4', icon_link: '2018/10/Icon-9.jpg', image_link: '2018/10/Images-1.jpeg',
+  },
+  {
+    day: '1', name: 'Shoulder lateral + tricep light', id: '26', sets: '3', reps: '10-12', feedback: '0', workout: 'Shoulder Front Raise(Dumbbell)', progression_model: 'double progression', video_link: 'IODxDxX7oi4', icon_link: '2018/10/Icon-9.jpg', image_link: '2018/10/Images-1.jpeg',
+  },
+  {
+    day: '1', name: 'Abdominal Exercises', id: '23', sets: '3', reps: '15-20', feedback: '3', workout: 'Crunch With Arms Extended', progression_model: 'double progression', video_link: 'IODxDxX7oi4', icon_link: '2018/10/Icon-9.jpg', image_link: '2018/10/Images-1.jpeg',
+  },
+  {
+    day: '2', name: 'Quadricep Heavy Exercises', id: '13', sets: '3', reps: '8-10', feedback: '3', workout: 'Front Squat (Barbell)', progression_model: 'linear', video_link: 'IODxDxX7oi4', icon_link: '2018/10/Icon-9.jpg', image_link: '2018/10/Images-1.jpeg',
+  },
+  {
+    day: '2', name: 'Back Light Exercises', id: '12', sets: '3', reps: '10-12', feedback: '2', workout: 'Single Arm Row(Dumbbell)', progression_model: 'double progression', video_link: 'IODxDxX7oi4', icon_link: '2018/10/Icon-9.jpg', image_link: '2018/10/Images-1.jpeg',
+  },
+  {
+    day: '2', name: 'Chest Dumbbellpress  + Quad isolation extension', id: '27', sets: '3', reps: '12-15', feedback: '4', workout: 'Flat Chest Press(Dumbbell)', progression_model: 'double progression', video_link: 'IODxDxX7oi4', icon_link: '2018/10/Icon-9.jpg', image_link: '2018/10/Images-1.jpeg',
+  },
+  {
+    day: '2', name: 'Hamstring Light Exercises', id: '18', sets: '3', reps: '10-12', feedback: '2', workout: 'Hamstring Curl', progression_model: 'double progression', video_link: 'IODxDxX7oi4', icon_link: '2018/10/Icon-9.jpg', image_link: '2018/10/Images-1.jpeg',
+  },
+  {
+    day: '2', name: 'Shoulder Rear Delt Isolation Exercises', id: '9', sets: '3', reps: '12-15', feedback: '4', workout: '{30 deg} Bench Supported Reverse Fly(Dumbbell)', progression_model: 'double progression', video_link: 'IODxDxX7oi4', icon_link: '2018/10/Icon-9.jpg', image_link: '2018/10/Images-1.jpeg',
+  },
+  {
+    day: '2', name: 'Back Light Exercises', id: '12', sets: '3', reps: '10-12', feedback: '3', workout: 'Single Arm Row(Dumbbell)', progression_model: 'double progression', video_link: 'IODxDxX7oi4', icon_link: '2018/10/Icon-9.jpg', image_link: '2018/10/Images-1.jpeg',
+  },
+  {
+    day: '3', name: 'Quadricep Heavy Exercises', id: '13', sets: '3', reps: '7-9', feedback: '4', workout: 'Front Squat (Barbell)', progression_model: 'linear', video_link: 'IODxDxX7oi4', icon_link: '2018/10/Icon-9.jpg', image_link: '2018/10/Images-1.jpeg',
+  },
+  {
+    day: '3', name: 'Chest Heavy', id: '5', sets: '3', reps: '8-10', feedback: '3', workout: 'Bench Press(Barbell)', progression_model: 'linear', video_link: 'IODxDxX7oi4', icon_link: '2018/10/Icon-9.jpg', image_link: '2018/10/Images-1.jpeg',
+  },
+  {
+    day: '3', name: 'Back Heavy Exercises', id: '11', sets: '3', reps: '8-10', feedback: '0', workout: 'Bent Over Row(Barbell)', progression_model: 'linear', video_link: 'IODxDxX7oi4', icon_link: '2018/10/Icon-9.jpg', image_link: '2018/10/Images-1.jpeg',
+  },
+  {
+    day: '3', name: 'Back light + hamstring light', id: '28', sets: '3', reps: '10-12', feedback: '3', workout: 'Single Arm Row(Dumbbell)', progression_model: 'double progression', video_link: 'IODxDxX7oi4', icon_link: '2018/10/Icon-9.jpg', image_link: '2018/10/Images-1.jpeg',
+  },
+  {
+    day: '3', name: 'Lateral shoulder + light biceps', id: '29', sets: '3', reps: '12-15', feedback: '2', workout: 'Shoulder Front Raise(Dumbbell)', progression_model: 'double progression', video_link: 'IODxDxX7oi4', icon_link: '2018/10/Icon-9.jpg', image_link: '2018/10/Images-1.jpeg',
+  },
+  {
+    day: '3', name: 'Tricep Light Exercises', id: '2', sets: '3', reps: '12-15', feedback: '2', workout: 'Straight Bar Pushdown', progression_model: 'double progression', video_link: 'IODxDxX7oi4', icon_link: '2018/10/Icon-9.jpg', image_link: '2018/10/Images-1.jpeg',
+  },
+  {
+    day: '3', name: 'Abdominal Failure Exercises', id: '24', sets: '3', reps: 'Till Failure', feedback: '4', workout: 'Side Plank', progression_model: 'till failure', video_link: 'IODxDxX7oi4', icon_link: '2018/10/Icon-9.jpg', image_link: '2018/10/Images-1.jpeg',
+  },
+];
