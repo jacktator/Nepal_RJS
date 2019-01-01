@@ -34,12 +34,8 @@ const getExerciseDetailByProgress = (input, progressNum) => {
 
 const getDayInWeek = (progress, days) => {
   if (~~progress <= ~~days) {
-    console.log('<=', ~~days);
-    console.log('<=', ~~progress);
-    console.log('<=', progress <= days);
     return progress;
   } if (~~progress % ~~days === 0) {
-    console.log('progress % days === 0');
     return days;
   } return ~~progress % ~~days;
 };
@@ -57,7 +53,7 @@ export const setTodayExercises = data => ({ type: 'SET_TODAY_EXERCISES', payload
 export const setSelectedExercises = data => ({ type: 'SET_SELECTED_EXERCISES', payload: data });
 export const setSelectedExercisesQuery = data => ({ type: 'SELECTED_EXERCISES_QUERY', payload: data });
 export const finishExercisePageQuery = data => ({ type: 'FINISH_EXERCISE_PAGE_QUERY', payload: data });
-
+export const setHistoryProgramme = data => ({ type: 'SET_HISTORY_PROGRAMME', payload: data });
 
 // daily page change button's dialog get exercises
 export const selectExercise = id => (dispatch) => {
@@ -258,12 +254,27 @@ export const finishAllDailyExercises = data => (dispatch) => {
 };
 
 // When user finish daily questionnaire select
-export const selectDailyQuestionnaire = data => (dispatch) => {
+export const selectDailyQuestionnaire = (data, callback) => (dispatch) => {
   axios.post(`/program/${sessionStorage.programmeID}`, { fields: { feedback_value: data, progress: ~~sessionStorage.progress + 1, finish_for_day: false } })
     .then((res) => {
       console.log(res);
       sessionStorage.setItem('finish_for_day', false);
       sessionStorage.setItem('progress', ~~sessionStorage.progress + 1);
+      callback();
     })
     .catch(err => console.log(err));
+};
+
+/*
+  When user click the button on the top left corner for showing the history of this specific exercise in the programme
+*/
+export const getThisExerciseHistory = input => (dispatch) => {
+  axios.get(`/day_${sessionStorage.dayInWeek}?filter[meta_key]=programmeid&filter[meta_value]=${sessionStorage.programmeID}&orderby=date&order=desc`)
+    .then((res) => {
+      const data = res.data.map((v, k) => ({
+        date: v.date, exe: v.acf.exe_[input],
+      }));
+      console.log(res);
+    })
+    .catch();
 };

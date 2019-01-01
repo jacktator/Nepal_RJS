@@ -11,6 +11,7 @@ export default function (state = {
   selectedExercises: [],
   exercisePageQuery: false,
   alldayExercises: [[], [], [], [], [], [], [], [], [], []],
+  historyProgrammeList: [],
   todayExercises: {
     exeLength: '',
     exe_1: '',
@@ -26,14 +27,6 @@ export default function (state = {
   },
 }, action) {
   switch (action.type) {
-    case 'FINISH_Program_QUERY':
-      return {
-        ...state, programQuery: action.payload,
-      };
-    case 'DIRECT_QUESTIONNAIRE':
-      return {
-        ...state, directToQuestionnaire: action.payload,
-      };
     case 'SET_DAY_EXERCISES':
       return {
         ...state, exercises: action.payload,
@@ -45,10 +38,6 @@ export default function (state = {
     case 'SET_PROGRAM_SELECTED_STATE':
       return {
         ...state, programSelectStatus: action.payload,
-      };
-    case 'FINISH_Daily_QUERY':
-      return {
-        ...state, dailyQuery: action.payload,
       };
     case 'SET_RENDER_EXERCISE':
       return {
@@ -66,17 +55,33 @@ export default function (state = {
       return {
         ...state, selectedExercises: action.payload,
       };
-    case 'SELECTED_EXERCISES_QUERY':
+    case 'SET_HISTORY_PROGRAMME':
       return {
-        ...state, selectedExercisesQuery: action.payload,
+        ...state, historyProgrammeList: action.payload,
+      };
+    case 'SET_TODAY_EXERCISES':
+      return {
+        ...state, todayExercises: action.payload,
+      };
+    case 'FINISH_Program_QUERY':
+      return {
+        ...state, programQuery: action.payload,
+      };
+    case 'FINISH_Daily_QUERY':
+      return {
+        ...state, dailyQuery: action.payload,
       };
     case 'FINISH_EXERCISE_PAGE_QUERY':
       return {
         ...state, exercisePageQuery: action.payload,
       };
-    case 'SET_TODAY_EXERCISES':
+    case 'DIRECT_QUESTIONNAIRE':
       return {
-        ...state, todayExercises: action.payload,
+        ...state, directToQuestionnaire: action.payload,
+      };
+    case 'SELECTED_EXERCISES_QUERY':
+      return {
+        ...state, selectedExercisesQuery: action.payload,
       };
     default:
       return state;

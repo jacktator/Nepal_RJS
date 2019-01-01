@@ -55,7 +55,7 @@ class index extends React.Component {
   }
 
   handleQuestionnaireClose() {
-    this.props.selectDailyQuestionnaire(this.state.questionnaireSelected);
+    this.props.selectDailyQuestionnaire(this.state.questionnaireSelected, refresh);
     this.setState({ dailyQuestionnaireOpen: false });
   }
 

@@ -23,19 +23,12 @@ class ExerciseIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 0,
-      midPartTabsValue: 0,
-      currentPage: 2,
       weight: 0,
       reps: 0,
       youtbueID: '_e7AzzwpDUM',
       youtube: false,
       history: false,
       title: 'youtube',
-      ExList: [{
-        content: '10 weight X 10 reps',
-        status: 'Previous',
-      }],
     };
     this.weightAdd = this.weightAdd.bind(this);
     this.weightMin = this.weightMin.bind(this);
@@ -95,7 +88,7 @@ class ExerciseIndex extends React.Component {
     } else {
       result = showedExercises ? `${showedExercises};(${this.state.reps},${this.state.weight})` : `(${this.state.reps},${this.state.weight})`;
     }
-    const m = { ...this.props.todayExercises, [`exe_${exerciseOrder}`]: result };
+    // const m = { ...this.props.todayExercises, [`exe_${exerciseOrder}`]: result };
     this.props.updataOneExercise({ exeNum: exerciseOrder, exeData: result });
     // this.props.setTodayExercises(m);
   }
