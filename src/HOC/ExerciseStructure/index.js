@@ -38,7 +38,7 @@ const styles = theme => ({
 const ExerciseStructure = (props) => {
   const {
     classes, select, ExList, onSaveClick, youtbueID, onOpen, finishCurrentExercise, dailyExerciseLength,
-    onClose, youtubeOpenStatus, title, history, thisExerciseDetail, currentExerciseOrder, onFinishAllExercise,
+    onClose, youtubeOpenStatus, title, history, thisExerciseDetail, currentExerciseOrder, onFinishAllExercise, historyForSpecificExercise,
   } = props;
   const onYoutubeOpen = () => {
     onOpen('youtube');
@@ -75,6 +75,7 @@ const ExerciseStructure = (props) => {
         title={title}
         onHistoryClose={onHistoryClose}
         history={history}
+        historyForSpecificExercise={historyForSpecificExercise}
       />
       <Grid container item>
         <Card style={{

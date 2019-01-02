@@ -42,11 +42,12 @@ class SimpleList extends React.PureComponent {
     } = this.props;
     const starDayNumber = days * (currentWeek);
     return (
-      !!progress && (
-      <List className={classes.root} component="nav" disablePadding>
-        {
+      isNaN(progress) ? <div />
+        : (
+          <List className={classes.root} component="nav" disablePadding>
+            {
             [...Array(days || 5)].map((v, k) => (
-              <Link key={`day${starDayNumber + k + 1}`} onClick={event => this.onItemClick(event, { current: starDayNumber + k + 1, finish })} style={{ width: '100%', height: '100%' }} to={`/workout/daily/${k + 1}`}>
+              <Link key={`day${(starDayNumber || 0) + k + 1}`} onClick={event => this.onItemClick(event, { current: starDayNumber + k + 1, finish })} style={{ width: '100%', height: '100%' }} to={`/workout/daily/${k + 1}`}>
                 <ListItem divider disabled={~~starDayNumber + k + 1 !== ~~progress} style={~~starDayNumber + k + 1 < ~~progress ? { backgroundColor: '#4caf50' } : null} className={classes.infoListItem} component={Paper} elevation={4}>
                   <ListItemText primary={(
                     <Typography variant="body1" color="secondary">{`Day ${starDayNumber + k + 1}`}</Typography>
@@ -57,8 +58,8 @@ class SimpleList extends React.PureComponent {
               </Link>
             ))
         }
-      </List>
-      )
+          </List>
+        )
     );
   }
 }

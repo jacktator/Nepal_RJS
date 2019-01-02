@@ -12,6 +12,8 @@ export default function (state = {
   exercisePageQuery: false,
   alldayExercises: [[], [], [], [], [], [], [], [], [], []],
   historyProgrammeList: [],
+  historyForSpecificExercise: [],
+  specificProgrammeHistory: [],
   todayExercises: {
     exeLength: '',
     exe_1: '',
@@ -62,6 +64,14 @@ export default function (state = {
     case 'SET_TODAY_EXERCISES':
       return {
         ...state, todayExercises: action.payload,
+      };
+    case 'SET_SPECIFIC_EXERCISE_HISTORY':
+      return {
+        ...state, historyForSpecificExercise: action.payload,
+      };
+    case 'SET_SPECIFIC_PROGRAMME_HISTORY':
+      return {
+        ...state, specificProgrammeHistory: action.payload,
       };
     case 'FINISH_Program_QUERY':
       return {

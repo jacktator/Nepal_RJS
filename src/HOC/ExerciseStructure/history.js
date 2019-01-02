@@ -5,8 +5,6 @@ import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import Avatar from '@material-ui/core/Avatar';
-import BeachAccessIcon from '@material-ui/icons/BeachAccess';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -25,7 +23,7 @@ const styles = theme => ({
 
 function ResponsiveDialog(props) {
   const {
-    classes, fullScreen, history, title, onHistoryClose,
+    classes, fullScreen, history, title, onHistoryClose, historyForSpecificExercise,
   } = props;
   return (
     <Dialog
@@ -37,18 +35,25 @@ function ResponsiveDialog(props) {
       <DialogTitle id="responsive-dialog-title">{title}</DialogTitle>
       <DialogContent>
         <List className={classes.root}>
-          <ListItem>
-            <ListItemText primary="Photos" secondary="Jan 9, 2014" />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="Work" secondary="Jan 7, 2014" />
-          </ListItem>
-          <ListItem>
-            <Avatar>
-              <BeachAccessIcon />
-            </Avatar>
-            <ListItemText primary="Vacation" secondary="July 20, 2014" />
-          </ListItem>
+          {historyForSpecificExercise.length === 0
+            ? (
+              <ListItem>
+                <ListItemText primary="Do not have history" />
+              </ListItem>
+            )
+            : [...historyForSpecificExercise].map(v => (
+              <ListItem>
+                <ListItemText primary={v.date} />
+                {
+              !!v.exe && [...v.exe.split(';').map(va => va.substring(1, va.length - 1))].map((vb) => {
+                const a = vb.split(',');
+                return (
+                  <ListItemText primary={a.length === 0 ? `reps: ${a[0]}` : `reps: ${a[0]} X weight: ${a[1]}`} />
+                );
+              })
+            }
+              </ListItem>
+            )) }
         </List>
       </DialogContent>
       <DialogActions>

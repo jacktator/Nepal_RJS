@@ -10,7 +10,7 @@ import { styles } from './style';
 class index extends React.PureComponent {
   render() {
     const {
-      classes, backgroundImage, tapBarContent, title, top, showBottomButton, midComponent, FooterContent, currentPage, currentWeek, tabsValue, onTagClick,
+      classes, backgroundImage, tapBarContent, title, top, showBottomButton, midComponent, FooterContent, currentPage, currentWeek, tabsValue, onTagClick, topDiscription,
     } = this.props;
     return (
       <div className={classes.container}>
@@ -20,8 +20,8 @@ class index extends React.PureComponent {
             <Grid container className={classes.top} style={{ backgroundImage: `url("${backgroundImage}")` }}>
               <Grid container className={classes.topInline} justify="center" direction="column">
                 <Typography variant="h5" color="secondary">{title}</Typography>
-                <Typography variant="body2" color="secondary">You are currently at week 1</Typography>
-                <Typography variant="body2" color="secondary">100% completed</Typography>
+                {topDiscription && <Typography variant="body2" color="secondary">You are currently at week 1</Typography>}
+                {topDiscription && <Typography variant="body2" color="secondary">100% completed</Typography>}
               </Grid>
             </Grid>
           )}

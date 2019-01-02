@@ -83,7 +83,7 @@ class index extends React.Component {
     const {
       progress, days, path, finish_for_day,
     } = sessionStorage;
-    const finish = JSON.parse(finish_for_day);
+    const finish = !!finish_for_day && JSON.parse(finish_for_day);
     const currentWeek = Math.ceil(progress / days) - 1;
     return (
       <div>
@@ -116,6 +116,7 @@ class index extends React.Component {
         />
         <MainComponent
           top
+          topDiscription
           backgroundImage="image/sampleImage.jpeg"
           title={path || 'Workout'}
           progress={progress || 1}

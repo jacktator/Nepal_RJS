@@ -15,7 +15,7 @@ import { add, min } from '../../../HOC/numberSelect';
 import { styles } from '../../styles';
 import {
   getExerciseDetail, setAllDayExercises, selectExercise, setTodayExercises,
-  finishExercisePageQuery, updataOneExercise, finishAllDailyExercises,
+  finishExercisePageQuery, updataOneExercise, finishAllDailyExercises, getThisExerciseHistory,
 } from '../../action';
 import LoadingComponent from '../../../HOC/Loading';
 
@@ -46,8 +46,13 @@ class ExerciseIndex extends React.Component {
       window.location.href = `#/workout/daily/${sessionStorage.dayInWeek}`;
       return;
     }
+    if (this.props.renderExercises[this.props.match.params.exerciseOrder - 1].day === undefined) {
+      window.location.href = `#/workout/daily/${sessionStorage.dayInWeek}`;
+      return;
+    }
     this.props.finishExercisePageQuery(true);
     this.props.getExerciseDetail({ exeLength: this.props.renderExercises.length });
+    this.props.getThisExerciseHistory(this.props.match.params.exerciseOrder);
     this.setState({ reps: !/^[0-9]*$/.test(this.props.renderExercises[this.props.match.params.exerciseOrder - 1].reps) ? 0 : 1 * this.props.renderExercises[this.props.match.params.exerciseOrder].reps });
   }
 
@@ -105,7 +110,7 @@ class ExerciseIndex extends React.Component {
 
   render() {
     const {
-      classes, renderExercises, alldayExercises, exercisePageQuery, todayExercises,
+      classes, renderExercises, alldayExercises, exercisePageQuery, todayExercises, historyForSpecificExercise,
     } = this.props;
     const {
       weight, reps, youtube, youtbueID, title, history,
@@ -132,6 +137,7 @@ class ExerciseIndex extends React.Component {
         value: reps,
       },
     ];
+    console.log('render exes', renderExercises);
 
 
     return (
@@ -178,6 +184,8 @@ class ExerciseIndex extends React.Component {
               finishCurrentExercise={finishCurrentExercise}
               onFinishAllExercise={this.onFinishAllExercise}
               dailyExerciseLength={renderExercises.length}
+              historyForSpecificExercise={historyForSpecificExercise}
+              getThisExerciseHistory={getThisExerciseHistory}
             />
 
           </Grid>
@@ -189,10 +197,10 @@ class ExerciseIndex extends React.Component {
 
 function mapStateToProps(state) {
   const {
-    renderExercises, alldayExercises, exercisePageQuery, todayExercises,
+    renderExercises, alldayExercises, exercisePageQuery, todayExercises, historyForSpecificExercise,
   } = state.Workout;
   return {
-    renderExercises, alldayExercises, exercisePageQuery, todayExercises,
+    renderExercises, alldayExercises, exercisePageQuery, todayExercises, historyForSpecificExercise,
   };
 }
 
@@ -203,5 +211,5 @@ ExerciseIndex.propTypes = {
 };
 
 export default connect(mapStateToProps, {
-  getExerciseDetail, setAllDayExercises, selectExercise, setTodayExercises, finishExercisePageQuery, updataOneExercise, finishAllDailyExercises,
+  getExerciseDetail, setAllDayExercises, selectExercise, setTodayExercises, finishExercisePageQuery, updataOneExercise, finishAllDailyExercises, getThisExerciseHistory,
 })(withStyles(styles)(ExerciseIndex));

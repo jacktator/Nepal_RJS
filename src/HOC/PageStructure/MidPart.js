@@ -17,7 +17,7 @@ class MidPartComponent extends React.PureComponent {
     } = this.props;
     return (
       <Tabs
-        value={tabsValue}
+        value={tabsValue || 0}
         indicatorColor="primary"
         textColor="secondary"
         scrollable

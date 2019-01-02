@@ -40,20 +40,22 @@ const getDayInWeek = (progress, days) => {
   } return ~~progress % ~~days;
 };
 
-export const finishQuery = boo => ({ type: 'FINISH_Program_QUERY', payload: boo });
-export const noProgram = () => ({ type: 'DIRECT_QUESTIONNAIRE', payload: true });
 export const setExercises = data => ({ type: 'SET_DAY_EXERCISES', payload: data });
 export const setUnselectedExercises = data => ({ type: 'SET_UNSELECTED_EXERCISES', payload: data });
 export const setProgramSelectedState = data => ({ type: 'SET_PROGRAM_SELECTED_STATE', payload: data });
-export const finishDailyQuery = boo => ({ type: 'FINISH_Daily_QUERY', payload: boo });
 export const setRenderExercise = data => ({ type: 'SET_RENDER_EXERCISE', payload: data });
 export const setExerciseDetails = data => ({ type: 'SET_EXERCISE_DETAILS', payload: data });
 export const setAllDayExercises = data => ({ type: 'SET_ALLDAY_EXERCISES', payload: data });
 export const setTodayExercises = data => ({ type: 'SET_TODAY_EXERCISES', payload: data });
 export const setSelectedExercises = data => ({ type: 'SET_SELECTED_EXERCISES', payload: data });
 export const setSelectedExercisesQuery = data => ({ type: 'SELECTED_EXERCISES_QUERY', payload: data });
-export const finishExercisePageQuery = data => ({ type: 'FINISH_EXERCISE_PAGE_QUERY', payload: data });
 export const setHistoryProgramme = data => ({ type: 'SET_HISTORY_PROGRAMME', payload: data });
+export const setSpecificExericseHistory = data => ({ type: 'SET_SPECIFIC_EXERCISE_HISTORY', payload: data });
+export const setHistoryForSpecificProgramme = data => ({ type: 'SET_SPECIFIC_PROGRAMME_HISTORY', payload: data });
+export const finishQuery = boo => ({ type: 'FINISH_Program_QUERY', payload: boo });
+export const finishDailyQuery = boo => ({ type: 'FINISH_Daily_QUERY', payload: boo });
+export const finishExercisePageQuery = data => ({ type: 'FINISH_EXERCISE_PAGE_QUERY', payload: data });
+export const noProgram = () => ({ type: 'DIRECT_QUESTIONNAIRE', payload: true });
 
 // daily page change button's dialog get exercises
 export const selectExercise = id => (dispatch) => {
@@ -124,7 +126,7 @@ export const getExercisesSample = (baseInfo, selectedLength) => (dispatch) => {
 // Programme Page called
 
 export const getCurrentProgram = getExe => (dispatch) => {
-  axios.get(`https://nepal.sk8tech.io/wp-json/acf/v3/program?filter[author]=${sessionStorage.user_id}&orderby=date&order=desc`)
+  axios.get(`/program?filter[author]=${sessionStorage.user_id}&orderby=date&order=desc`)
     .then((res) => {
       // if user do not have any programme page redirect to the questionnaire page
       if (res.data.length === 0) {
@@ -149,6 +151,7 @@ export const getCurrentProgram = getExe => (dispatch) => {
       sessionStorage.setItem('feedback_value', data.feedback_value);
       dispatch(setExercises(exercises));
       dispatch(finishQuery(false));
+      dispatch(setHistoryProgramme([...res.data.map(v => ({ id: v.id, date: v.date, ...v.acf }))]));
       if (getExe) {
         const baseInfo = {
           location: data.exercise_place, path: data.program_name, days: data.days, dayInWeek,
@@ -271,10 +274,24 @@ export const selectDailyQuestionnaire = (data, callback) => (dispatch) => {
 export const getThisExerciseHistory = input => (dispatch) => {
   axios.get(`/day_${sessionStorage.dayInWeek}?filter[meta_key]=programmeid&filter[meta_value]=${sessionStorage.programmeID}&orderby=date&order=desc`)
     .then((res) => {
-      const data = res.data.map((v, k) => ({
-        date: v.date, exe: v.acf.exe_[input],
+      const data = res.data.length === 0 ? [] : res.data.map(v => ({
+        date: v.date, exe: v.acf[`exe_${input}`],
       }));
+      dispatch(setSpecificExericseHistory(data));
       console.log(res);
     })
-    .catch();
+    .catch(err => console.log(err));
+};
+
+// History page get recorded
+export const getExerciseHistory = input => (dispatch) => {
+  axios.get(`/day_${input.day}?filter[meta_key]=programmeid&filter[meta_value]=${input.programmeID}`)
+    .then((res) => {
+      console.log(res);
+      const a = [].concat(JSON.parse(JSON.stringify(input.currentData)));
+      a[input.day - 1] = res.data;
+      console.log(a);
+      dispatch(setHistoryForSpecificProgramme(a));
+    })
+    .catch(err => console.log(err));
 };
