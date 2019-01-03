@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 import LoadingComponent from '../../../../HOC/Loading';
 import MainComponent from '../../../../HOC/PageStructure';
 import { styles } from '../../../styles';
+import Component from './component';
+import { finishHistoryQuery, getExerciseHistory } from '../../../action';
 
 const tapBarContent = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'];
 
@@ -16,14 +18,21 @@ class Calendar extends React.PureComponent {
     this.state = {
       tabs: 0,
       renderData: {},
+      renderProgrammeIndex: -1,
     };
     this.onTabsClick = this.onTabsClick.bind(this);
   }
 
   componentDidMount() {
     const urlProgrammeID = this.props.match.params.programmeID;
-    const a = [...this.props.historyProgrammeList].find((v, k) => v.id = urlProgrammeID);
-    this.setState({ renderData: a });
+    const a = this.props.historyProgrammeList && [...this.props.historyProgrammeList].findIndex(v => v.id === urlProgrammeID * 1);
+    console.log([...this.props.historyProgrammeList].find((v, k) => { console.log('id', v.id); console.log('ID', urlProgrammeID); return (v.id === urlProgrammeID * 1); }));
+    // this.props.finishHistoryQuery(true);
+    if (a === -1) {
+      window.location.href = '#/workout/history';
+      return;
+    }
+    this.setState({ renderData: this.props.historyProgrammeList[a], renderProgrammeIndex: a });
   }
 
   onTabsClick(event, value) {
@@ -32,15 +41,16 @@ class Calendar extends React.PureComponent {
   }
 
   render() {
-    const { classes } = this.props;
-    const { tabs, renderData } = this.state;
+    const { classes, historyQuery } = this.props;
+    const { tabs, renderData, renderProgrammeIndex } = this.state;
     return (
       <div>
-        <LoadingComponent open={false} />
+        <LoadingComponent open={historyQuery} />
+
         <MainComponent
           top
           backgroundImage="image/sampleImage.jpeg"
-          title={renderData.program_name || 'history'}
+          title={renderData ? renderData.program_name : 'history'}
           currentWeek={1}
           tabsValue={tabs}
           currentPage={1}
@@ -50,7 +60,13 @@ class Calendar extends React.PureComponent {
           midComponent={(
             <Grid container style={{ flex: 1 }} justify="center" alignContent="space-around" alignItems="center">
               <Paper className={classes.midPaper} elevation={8}>
-                <div>sssssss</div>
+                <Component
+                  starDayNumber={tabs * renderData.days}
+                  days={renderData ? renderData.days : 4}
+                  week={tabs}
+                  programmeID={this.props.match.params.programmeID}
+                  renderProgrammeIndex={renderProgrammeIndex}
+                />
               </Paper>
             </Grid>
             )}
@@ -61,10 +77,10 @@ class Calendar extends React.PureComponent {
 }
 
 function mapStateToProps(state) {
-  const { programQuery, directToQuestionnaire } = state.Workout;
+  const { historyProgrammeList, historyQuery, specificProgrammeHistory } = state.Workout;
   return {
-    programQuery, directToQuestionnaire,
+    historyProgrammeList, historyQuery, specificProgrammeHistory,
   };
 }
 
-export default connect(mapStateToProps, null)(withStyles(styles)(Calendar));
+export default connect(mapStateToProps, { finishHistoryQuery, getExerciseHistory })(withStyles(styles)(Calendar));

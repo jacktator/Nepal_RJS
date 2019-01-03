@@ -9,8 +9,8 @@ import Details from './details';
 const History = () => (
   <Switch>
     <Route path="/workout/history" exact component={ProgrammeList} />
-    <Route path="/workout/history/:programmeID" component={Calendar} />
-    <Route path="/workout/history/:programmeID/:dayInWeek" component={Details} />
+    <Route path="/workout/history/:programmeID" exact component={Calendar} />
+    <Route path="/workout/history/:programmeID/:dayInWeek&:week&:index" exact component={Details} />
   </Switch>
 );
 

@@ -4,44 +4,106 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { connect } from 'react-redux';
-import LoadingComponent from '../../../../HOC/Loading';
-import MainComponent from '../../../../HOC/PageStructure';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import Typography from '@material-ui/core/Typography';
+import ListItemText from '@material-ui/core/ListItemText';
+import AppBar from '@material-ui/core/AppBar';
+import IconButton from '@material-ui/core/IconButton';
+import Toolbar from '@material-ui/core/Toolbar';
+import LeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import { styles } from '../../../styles';
+import MainComponent from '../../../../HOC/PageStructure';
+import LoadingComponent from '../../../../HOC/Loading';
+import { getExerciseHistory, finishHistoryQuery, dealStringToExerciseArray } from '../../../action';
+import Component from './component';
 
 class Details extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      render: [],
+    };
+    this.returnBack = this.returnBack.bind(this);
+  }
+
+  componentDidMount() {
+    const { dayInWeek, programmeID, index } = this.props.match.params;
+    console.log('dayInWeek', dayInWeek);
+    console.log('programmeID', programmeID);
+    console.log('index', index);
+    console.log(this.props.specificProgrammeHistory);
+    if (!this.props.specificProgrammeHistory[dayInWeek] && this.props.historyProgrammeList.length !== 0) {
+      this.props.finishHistoryQuery(true);
+      const str = this.props.historyProgrammeList[index][`day_${dayInWeek * 1 + 1}_exe`];
+      const m = this.props.historyProgrammeList.length !== 0 && dealStringToExerciseArray(str.substring(1, str.length - 1).split(';'));
+      this.setState({ render: m });
+      const a = this.props.specificProgrammeHistory;
+      this.props.getExerciseHistory({ day: (dayInWeek * 1 + 1), programmeID, currentData: a });
+    }
+  }
+
+  returnBack() {
+    window.location.href = `#/workout/history/${this.props.match.params.programmeID}`;
+  }
+
   render() {
-    const { classes } = this.props;
+    const { classes, historyQuery, specificProgrammeHistory } = this.props;
+    const {
+      dayInWeek, week,
+    } = this.props.match.params;
+    const { render } = this.state;
+    console.log(this.props.match);
     return (
-      <div>
-        <LoadingComponent open={false} />
+      <>
+        <LoadingComponent open={historyQuery} />
         <MainComponent
-          top
-          backgroundImage="image/sampleImage.jpeg"
-          title="Workout"
-          progress={1}
-          currentWeek={1}
-          tabsValue={0}
-          currentPage={2}
+          currentPage={1}
           FooterContent={1}
-          onTagClick={e => console.log(e.target)}
+          tapBarContent={false}
           midComponent={(
-            <Grid container style={{ flex: 1 }} justify="center" alignContent="space-around" alignItems="center">
-              <Paper className={classes.midPaper} elevation={8}>
-                <div>ssssssskjodjaosidjo</div>
+            <Grid container style={{ flex: 1 }} justify="center" alignContent="space-between" alignItems="center">
+              <AppBar position="static">
+                <Toolbar style={{ justifyContent: 'space-between' }}>
+                  <IconButton className={classes.menuButton} onClick={this.returnBack} color="secondary" aria-label="Menu">
+                    <LeftIcon style={{ fontSize: '30px' }} />
+                  </IconButton>
+                </Toolbar>
+              </AppBar>
+              <Paper style={{ height: '90%', marginBottom: '2.5%' }} className={classes.midPaper} elevation={8}>
+                <List className={classes.root} component="nav" disablePadding>
+                  {render.length > 0
+                    ? (
+                      <Component
+                        render={render}
+                        data={specificProgrammeHistory}
+                        week={week}
+                        dayInWeek={dayInWeek}
+                      />
+                    )
+                    : (
+                      <ListItem>
+                        <ListItemText primary={<Typography variant="body1">There is nothing</Typography>} />
+                      </ListItem>
+                    )
+ }
+                </List>
               </Paper>
             </Grid>
             )}
         />
-      </div>
+      </>
     );
   }
 }
 
 function mapStateToProps(state) {
-  const { programQuery, directToQuestionnaire } = state.Workout;
+  const {
+    historyProgrammeList, specificProgrammeHistory, historyQuery,
+  } = state.Workout;
   return {
-    programQuery, directToQuestionnaire,
+    historyProgrammeList, specificProgrammeHistory, historyQuery,
   };
 }
 
-export default connect(mapStateToProps, null)(withStyles(styles)(Details));
+export default connect(mapStateToProps, { getExerciseHistory, finishHistoryQuery })(withStyles(styles)(Details));

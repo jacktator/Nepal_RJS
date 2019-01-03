@@ -7,35 +7,22 @@ import { connect } from 'react-redux';
 import MainComponent from '../../../../HOC/PageStructure';
 import Component from './component';
 import { styles } from '../../../styles';
-import { getExerciseHistory } from '../../../action';
+import { getExerciseHistory, finishHistoryQuery } from '../../../action';
 
-class HistoryIndex extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 0,
-      midPartTabsValue: 0,
-      currentPage: 2,
-    };
-    this.midPartTabsValueHandleChange = this.midPartTabsValueHandleChange.bind(this);
-  }
-
-  midPartTabsValueHandleChange(event, value) {
-    this.setState({ midPartTabsValue: value });
-  }
-
-  componentDidMount() {
-    if (this.props.historyProgrammeList[0]) {
-      const m = this.props.historyProgrammeList[0];
-      const a = this.props.specificProgrammeHistory;
-      this.props.getExerciseHistory({ day: m.days, programmeID: m.id, currentData: a });
-      console.log('run History');
-    }
-  }
+class HistoryIndex extends React.PureComponent {
+  // componentDidMount() {
+  //   if (this.props.historyProgrammeList[0]) {
+  //     this.props.finishHistoryQuery(true);
+  //     const m = this.props.historyProgrammeList[0];
+  //     const a = this.props.specificProgrammeHistory;
+  //     this.props.getExerciseHistory({ day: m.days, programmeID: m.id, currentData: a });
+  //     console.log('run History');
+  //   }
+  // }
 
   render() {
     const {
-      classes, progress, currentWeek, historyProgrammeList,
+      classes, progress, historyProgrammeList,
     } = this.props;
     console.log(historyProgrammeList);
     return (
@@ -44,7 +31,6 @@ class HistoryIndex extends React.Component {
         backgroundImage="image/sampleImage.jpeg"
         title="History"
         progress={progress}
-        currentWeek={currentWeek}
         currentPage={1}
         FooterContent={1}
         tapBarContent={false}
@@ -73,8 +59,7 @@ function mapStateToProps(state) {
 
 HistoryIndex.propTypes = {
   classes: PropTypes.object.isRequired,
-  progress: PropTypes.object,
-  currentWeek: PropTypes.number,
+  progress: PropTypes.string,
 };
 
-export default connect(mapStateToProps, { getExerciseHistory })(withStyles(styles)(HistoryIndex));
+export default connect(mapStateToProps, { getExerciseHistory, finishHistoryQuery })(withStyles(styles)(HistoryIndex));

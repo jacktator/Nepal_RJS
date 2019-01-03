@@ -12,16 +12,22 @@ import RightIcon from '@material-ui/icons/KeyboardArrowRight';
 import { styles } from '../../../styles';
 
 const Component = (props) => {
-  const { starDayNumber, days } = props;
+  const {
+    classes, starDayNumber, days, week, programmeID, renderProgrammeIndex,
+  } = props;
+  console.log('days', Array((days * 1 || 5)));
   return (
-    <List>
-      {Array(days).map((v, k) => (
-        <ListItem>
-          <ListItemText
-            primary={`day${starDayNumber + k + 1}`}
-          />
-          <ListItemIcon><RightIcon /></ListItemIcon>
-        </ListItem>
+    <List className={classes.root} component="nav">
+      {[...Array((days * 1 || 5)).keys()].map((v, k) => (
+        <Link key={starDayNumber + k + 1 || k} to={`./${programmeID}/${k}&${week}&${renderProgrammeIndex}`}>
+          <ListItem className={classes.infoListItem} component={Paper} elevation={4}>
+            <ListItemText
+              primary={<Typography variant="body2" color="secondary">{`Day${starDayNumber + k + 1}`}</Typography>}
+            />
+            <ListItemIcon><RightIcon /></ListItemIcon>
+          </ListItem>
+
+        </Link>
       ))}
     </List>
   );

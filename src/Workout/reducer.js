@@ -2,6 +2,7 @@ export default function (state = {
   programQuery: false,
   directToQuestionnaire: false,
   dailyQuery: false,
+  historyQuery: false,
   exercises: [],
   unselectedExercises: [],
   programSelectStatus: 'UNFETCHED',
@@ -84,6 +85,10 @@ export default function (state = {
     case 'FINISH_EXERCISE_PAGE_QUERY':
       return {
         ...state, exercisePageQuery: action.payload,
+      };
+    case 'Finish_History_Query':
+      return {
+        ...state, historyQuery: action.payload,
       };
     case 'DIRECT_QUESTIONNAIRE':
       return {

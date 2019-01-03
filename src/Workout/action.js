@@ -14,7 +14,7 @@ const programSelectState = (sampleLength, selectedLength) => {
 
 const handleExercise = data => [...data.map(v => v.acf)];
 
-const dealStringToExerciseArray = (input) => {
+export const dealStringToExerciseArray = (input) => {
   const b = [...input.map((v) => {
     const vi = v.substring(1, v.length - 1).split(',');
     return Object.assign({}, {
@@ -55,6 +55,7 @@ export const setHistoryForSpecificProgramme = data => ({ type: 'SET_SPECIFIC_PRO
 export const finishQuery = boo => ({ type: 'FINISH_Program_QUERY', payload: boo });
 export const finishDailyQuery = boo => ({ type: 'FINISH_Daily_QUERY', payload: boo });
 export const finishExercisePageQuery = data => ({ type: 'FINISH_EXERCISE_PAGE_QUERY', payload: data });
+export const finishHistoryQuery = data => ({ type: 'Finish_History_Query', payload: data });
 export const noProgram = () => ({ type: 'DIRECT_QUESTIONNAIRE', payload: true });
 
 // daily page change button's dialog get exercises
@@ -285,13 +286,14 @@ export const getThisExerciseHistory = input => (dispatch) => {
 
 // History page get recorded
 export const getExerciseHistory = input => (dispatch) => {
-  axios.get(`/day_${input.day}?filter[meta_key]=programmeid&filter[meta_value]=${input.programmeID}`)
+  axios.get(`/day_${input.day}?filter[meta_key]=programmeid&filter[meta_value]=${input.programmeID}&orderby=date&order=asc`)
     .then((res) => {
       console.log(res);
       const a = [].concat(JSON.parse(JSON.stringify(input.currentData)));
       a[input.day - 1] = res.data;
       console.log(a);
       dispatch(setHistoryForSpecificProgramme(a));
+      dispatch(finishHistoryQuery(false));
     })
     .catch(err => console.log(err));
 };
