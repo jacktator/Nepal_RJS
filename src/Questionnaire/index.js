@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -111,6 +112,7 @@ class index extends React.PureComponent {
               })}
             </Paper>
             <Dialog
+              loadingStatus={false}
               open={open}
               discription={discription}
               title={title}

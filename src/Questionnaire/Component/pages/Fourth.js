@@ -42,7 +42,7 @@ class Fourth extends React.Component {
                     labelPlacement="start"
                     key={v.id}
                     name="posture"
-                    onClick={() => handleClickOpen({ discription: v.describe, title: v.title })}
+                    onClick={() => handleClickOpen({ discription: v.describe || '', title: v.title })}
                     control={
                       <Checkbox color="primary" checked={posture === `${v.id}`} onChange={this.fourthWeekHandleChange} value={`${v.id}`} />
                     }
@@ -62,7 +62,7 @@ class Fourth extends React.Component {
 Fourth.propTypes = {
   classes: PropTypes.object.isRequired,
   handleClickOpen: PropTypes.func.isRequired,
-  data:PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(Fourth);

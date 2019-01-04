@@ -19,25 +19,25 @@ export const registerState = () => ({
   payload: true,
 });
 
-export const loginAction = userData => (dispatch) => {
+export const loginAction = (userData, callBack) => (dispatch) => {
   axios.post('https://nepal.sk8tech.io/wp-json/jwt-auth/v1/token/', userData)
     .then((res) => {
       console.log(res);
       setAuthTokenInHeader(res.data.token.token);
       window.sessionStorage.setItem('user_id', res.data.user_id);
       window.sessionStorage.setItem('user_email', res.data.token.user_email);
+      !!callBack && dispatch(callBack());
       dispatch(loginState());
     })
     .catch((err) => {
       console.log(err);
     });
 };
-
 export const registerAction = userData => (dispatch) => {
   axios.post('/users/register', userData)
     .then(
       (res) => {
-        dispatch(registerState());
+        dispatch(loginAction({ username: userData.username, password: userData.password }, registerState));
       },
     )
     .catch(

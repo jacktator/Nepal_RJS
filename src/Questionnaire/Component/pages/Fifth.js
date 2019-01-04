@@ -32,7 +32,7 @@ class Fifth extends React.PureComponent {
         </Grid>
 
         <Grid container className={classes.topGrid} style={{ width: '100%', margin: '0' }} spacing={40} justify="center" alignContent="flex-start" alignItems="flex-start">
-          
+
           <Grid item xs={12} style={{ paddingTop: '0' }}>
             <FormControl required className={classes.formControl} error={error} component="fieldset">
               <Typography variant="body1" component="h6" color="textPrimary">How often do you feel stressed at work: </Typography>
@@ -41,7 +41,7 @@ class Fifth extends React.PureComponent {
                   <FormControlLabel
                     style={{ justifyContent: 'space-between' }}
                     labelPlacement="start"
-                    onClick={() => handleClickOpen({ discription: v.describe, title: v.title })}
+                    onClick={() => handleClickOpen({ discription: v.describe || '', title: v.title })}
                     key={v.id}
                     name="stress"
                     control={
@@ -84,7 +84,7 @@ class Fifth extends React.PureComponent {
 Fifth.propTypes = {
   classes: PropTypes.object.isRequired,
   handleClickOpen: PropTypes.func.isRequired,
-  data:PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(Fifth);

@@ -43,7 +43,7 @@ class Third extends React.PureComponent {
                     labelPlacement="start"
                     key={v.id}
                     name="rehab"
-                    onClick={() => handleClickOpen({ discription: v.describe, title: v.title })}
+                    onClick={() => handleClickOpen({ discription: v.describe || '', title: v.title })}
                     control={
                       <Checkbox color="primary" checked={rehab === `${v.id}`} onChange={this.thirdWeekHandleChange} value={`${v.id}`} />
                     }
@@ -63,7 +63,7 @@ class Third extends React.PureComponent {
 Third.propTypes = {
   classes: PropTypes.object.isRequired,
   handleClickOpen: PropTypes.func.isRequired,
-  data:PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(Third);

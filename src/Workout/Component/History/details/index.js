@@ -35,11 +35,13 @@ class Details extends React.PureComponent {
     console.log(this.props.specificProgrammeHistory);
     if (!this.props.specificProgrammeHistory[dayInWeek] && this.props.historyProgrammeList.length !== 0) {
       this.props.finishHistoryQuery(true);
+      const a = this.props.specificProgrammeHistory;
+      this.props.getExerciseHistory({ day: (dayInWeek * 1 + 1), programmeID, currentData: a });
+    }
+    if (this.props.historyProgrammeList[index]) {
       const str = this.props.historyProgrammeList[index][`day_${dayInWeek * 1 + 1}_exe`];
       const m = this.props.historyProgrammeList.length !== 0 && dealStringToExerciseArray(str.substring(1, str.length - 1).split(';'));
       this.setState({ render: m });
-      const a = this.props.specificProgrammeHistory;
-      this.props.getExerciseHistory({ day: (dayInWeek * 1 + 1), programmeID, currentData: a });
     }
   }
 
@@ -68,6 +70,13 @@ class Details extends React.PureComponent {
                   <IconButton className={classes.menuButton} onClick={this.returnBack} color="secondary" aria-label="Menu">
                     <LeftIcon style={{ fontSize: '30px' }} />
                   </IconButton>
+                  {specificProgrammeHistory[dayInWeek] && (
+                  <Typography variant="h6" color="secondary">
+                    {new Date(specificProgrammeHistory[dayInWeek][week].date).toDateString()}
+                  </Typography>
+
+                  )}
+                  <div style={{ height: '54px', minWidth: '54px' }} />
                 </Toolbar>
               </AppBar>
               <Paper style={{ height: '90%', marginBottom: '2.5%' }} className={classes.midPaper} elevation={8}>

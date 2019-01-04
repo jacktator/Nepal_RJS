@@ -40,7 +40,7 @@ class Sixth extends React.PureComponent {
                   <FormControlLabel
                     style={{ justifyContent: 'space-between' }}
                     labelPlacement="start"
-                    onClick={() => handleClickOpen({ discription: v.describe, title: v.title })}
+                    onClick={() => handleClickOpen({ discription: v.describe || '', title: v.title })}
                     key={v.id}
                     name="injury"
                     control={
@@ -83,7 +83,7 @@ class Sixth extends React.PureComponent {
 Sixth.propTypes = {
   classes: PropTypes.object.isRequired,
   handleClickOpen: PropTypes.func.isRequired,
-  data:PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(Sixth);

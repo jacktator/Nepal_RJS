@@ -41,7 +41,7 @@ class Seventh extends React.PureComponent {
                   <FormControlLabel
                     style={{ justifyContent: 'space-between' }}
                     labelPlacement="start"
-                    onClick={() => handleClickOpen({ discription: v.describe, title: v.title })}
+                    onClick={() => handleClickOpen({ discription: v.describe || '', title: v.title })}
                     key={v.id}
                     name="active"
                     control={
@@ -84,7 +84,7 @@ class Seventh extends React.PureComponent {
 Seventh.propTypes = {
   classes: PropTypes.object.isRequired,
   handleClickOpen: PropTypes.func.isRequired,
-  data:PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(Seventh);

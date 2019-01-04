@@ -51,7 +51,7 @@ class Calendar extends React.PureComponent {
           top
           backgroundImage="image/sampleImage.jpeg"
           title={renderData ? renderData.program_name : 'history'}
-          currentWeek={1}
+          currentWeek={5}
           tabsValue={tabs}
           currentPage={1}
           FooterContent={1}
