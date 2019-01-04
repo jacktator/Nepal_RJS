@@ -23,7 +23,7 @@ class HOCListItem extends React.PureComponent {
               <Typography color="secondary" variant="body1">This</Typography>
               <Grid container>
                 <Grid item container justify="center" xs={6} color="secondary" component={Typography}>Change</Grid>
-                <Grid item container style={{ color: 'red' }} justify="center" xs={6} component={Typography}>Keep</Grid>
+                <Grid item container style={{ color: '#98ee99' }} justify="center" xs={6} component={Typography}>Keep</Grid>
               </Grid>
             </Grid>
 

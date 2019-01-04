@@ -166,6 +166,7 @@ class MainRehab extends React.PureComponent {
         currentWeek={currentWeek}
         currentPage={2}
         FooterContent={1}
+        workout
         showBottomButton
         tapBarContent={false}
         midComponent={(

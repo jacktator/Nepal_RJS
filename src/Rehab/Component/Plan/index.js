@@ -7,7 +7,7 @@ import Component from './component';
 import MainComponent from '../../../HOC/PageStructure';
 import { styles } from '../../styles';
 
-const tapBarContent = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'];
+const tapBarContent = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
 
 class index extends React.Component {
   constructor(props) {

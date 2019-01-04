@@ -139,7 +139,7 @@ export const getCurrentProgram = getExe => (dispatch) => {
       console.log(data);
       const dayInWeek = getDayInWeek(data.progress, data.days);
       console.log(dayInWeek);
-      const exercises = data[`day_${dayInWeek}_exe`] !== '' ? dealStringToExerciseArray(data[`day_${dayInWeek}_exe`].split(';')) : [];
+      const exercises = data[`day_${dayInWeek}_exe`] && data[`day_${dayInWeek}_exe`] !== '' ? dealStringToExerciseArray(data[`day_${dayInWeek}_exe`].split(';')) : [];
       sessionStorage.setItem('progress', data.progress);
       sessionStorage.setItem('dayInWeek', dayInWeek);
       sessionStorage.setItem('path', data.program_name);

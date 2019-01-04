@@ -10,7 +10,7 @@ import { styles } from './style';
 class index extends React.PureComponent {
   render() {
     const {
-      classes, backgroundImage, tapBarContent, title, top, showBottomButton, midComponent, FooterContent, currentPage, currentWeek, tabsValue, onTagClick, topDiscription,
+      classes, backgroundImage, tapBarContent, title, top, workout, showBottomButton, midComponent, FooterContent, currentPage, currentWeek, tabsValue, onTagClick, topDiscription,
     } = this.props;
     return (
       <div className={classes.container}>
@@ -32,7 +32,7 @@ class index extends React.PureComponent {
           </Grid>
 
           <Grid container>
-            <Footer FooterContent={FooterContent} showBottomButton={showBottomButton} currentPage={currentPage} />
+            <Footer workout={workout} FooterContent={FooterContent} showBottomButton={showBottomButton} currentPage={currentPage} />
           </Grid>
 
         </Grid>

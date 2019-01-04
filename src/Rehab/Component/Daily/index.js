@@ -7,17 +7,20 @@ import Component from './component';
 import MainComponent from '../../../HOC/PageStructure';
 import { styles } from '../../styles';
 
-const tapBarContent = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'];
+const tapBarContent = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
 
 class MainRehab extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 0,
       midPartTabsValue: 0,
-      currentPage: 2,
+      currentWeek: 0,
     };
     this.midPartTabsValueHandleChange = this.midPartTabsValueHandleChange.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({ currentWeek: new Date().getUTCDay() - 1 });
   }
 
   midPartTabsValueHandleChange(event, value) {
@@ -25,15 +28,18 @@ class MainRehab extends React.Component {
   }
 
   render() {
-    const { classes, currentWeek, progress } = this.props;
+    const { classes } = this.props;
+    const { currentWeek, midPartTabsValue } = this.state;
     return (
       <MainComponent
+        top
         backgroundImage="image/sampleImage.jpeg"
-        title="Workout"
-        progress={progress}
+        title="Rehab"
         currentWeek={currentWeek}
-        currentPage={2}
-        FooterContent={1}
+        currentPage={1}
+        FooterContent={3}
+        onTagClick={this.midPartTabsValueHandleChange}
+        tabsValue={midPartTabsValue}
         showBottomButton
         tapBarContent={tapBarContent}
         midComponent={(

@@ -13,7 +13,7 @@ export const createProgram = () => (dispatch) => {
     user_id,
     finish_date: '',
     days,
-    progress: '1',
+    progress: 1,
     ask_feedback: false,
     feedback_value: '0',
     finish_for_day: false,
@@ -24,7 +24,7 @@ export const createProgram = () => (dispatch) => {
     { status: 'publish', fields })
     .then((res) => {
       console.log(res);
-      sessionStorage.setItem('progress', 0);
+      sessionStorage.setItem('progress', 1);
       dispatch(finishQuery());
     })
     .catch((error) => {

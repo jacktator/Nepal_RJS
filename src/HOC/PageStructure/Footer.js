@@ -38,7 +38,7 @@ const FooterContentSet = (type) => {
 class FooterComponent extends React.PureComponent {
   render() {
     const {
-      classes, showBottomButton, currentPage, FooterContent, FooterButtonClick,
+      classes, showBottomButton, currentPage, FooterContent, FooterButtonClick, workout,
     } = this.props;
     return (
       <Paper className={classes.footerPaper}>
@@ -52,7 +52,7 @@ class FooterComponent extends React.PureComponent {
             disableRipple
             onClick={FooterButtonClick}
           >
-                Start Rehab
+            { workout ? 'Start Workout' : 'Start Rehab' }
           </Button>
           )
         }
