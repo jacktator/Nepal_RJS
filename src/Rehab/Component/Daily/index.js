@@ -7,7 +7,7 @@ import Component from './component';
 import MainComponent from '../../../HOC/PageStructure';
 import { styles } from '../../styles';
 
-const tapBarContent = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
+const tapBarContent = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
 
 class MainRehab extends React.Component {
   constructor(props) {

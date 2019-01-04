@@ -38,7 +38,7 @@ class Details extends React.PureComponent {
       const a = this.props.specificProgrammeHistory;
       this.props.getExerciseHistory({ day: (dayInWeek * 1 + 1), programmeID, currentData: a });
     }
-    if (this.props.historyProgrammeList[index]) {
+    if (this.props.historyProgrammeList[index] && this.props.historyProgrammeList[index][`day_${dayInWeek * 1 + 1}_exe`]) {
       const str = this.props.historyProgrammeList[index][`day_${dayInWeek * 1 + 1}_exe`];
       const m = this.props.historyProgrammeList.length !== 0 && dealStringToExerciseArray(str.substring(1, str.length - 1).split(';'));
       this.setState({ render: m });
@@ -55,7 +55,7 @@ class Details extends React.PureComponent {
       dayInWeek, week,
     } = this.props.match.params;
     const { render } = this.state;
-    console.log(this.props.match);
+    console.log(specificProgrammeHistory);
     return (
       <>
         <LoadingComponent open={historyQuery} />
@@ -70,6 +70,7 @@ class Details extends React.PureComponent {
                   <IconButton className={classes.menuButton} onClick={this.returnBack} color="secondary" aria-label="Menu">
                     <LeftIcon style={{ fontSize: '30px' }} />
                   </IconButton>
+                  {console.log(specificProgrammeHistory[dayInWeek])}
                   {specificProgrammeHistory[dayInWeek] && (
                   <Typography variant="h6" color="secondary">
                     {new Date(specificProgrammeHistory[dayInWeek][week].date).toDateString()}
