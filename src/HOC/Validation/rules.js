@@ -6,7 +6,7 @@ const emptyRule = {
 // eslint-disable-next-line import/prefer-default-export
 export const rules = {
   email: [
-    emptyRule, 
+    emptyRule,
     {
       discription: 'Please input a valid email',
       regex: /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/,

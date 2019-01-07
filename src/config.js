@@ -8,3 +8,17 @@ export const programmeTable = {
   IncreaseFitness: 'if',
   MuscleGain: 'mg',
 };
+
+export const rehabProgramme = {
+  posture: {
+    rs: 'rounded_shoulders',
+    apt: 'anterior_pelvic_tilt',
+    sp: 'sway_posture',
+  },
+  injury: {
+    lbp: 'lower_back_pain',
+    np: 'neck_pain',
+    sp: 'shoulder_pain',
+    hp: 'hip_pain',
+  },
+};
