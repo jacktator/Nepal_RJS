@@ -44,10 +44,13 @@ class ExerciseIndex extends React.Component {
   componentDidMount() {
     if (this.props.renderExercises.length === 0) {
       window.location.href = `#/workout/daily/${sessionStorage.dayInWeek}`;
+      console.log('this.props.renderExercises.length', this.props.renderExercises.length);
       return;
     }
-    if (this.props.renderExercises[this.props.match.params.exerciseOrder - 1].day === undefined) {
+    if (this.props.renderExercises[this.props.match.params.exerciseOrder - 1].day !== undefined) {
+      console.log(this.props.renderExercises);
       window.location.href = `#/workout/daily/${sessionStorage.dayInWeek}`;
+      console.log('this.props.renderExercises[this.props.match.params.exerciseOrder - 1].day', this.props.renderExercises[this.props.match.params.exerciseOrder - 1].day);
       return;
     }
     this.props.finishExercisePageQuery(true);
@@ -160,7 +163,7 @@ class ExerciseIndex extends React.Component {
                   <IconButton className={classes.menuButton} onClick={this.returnBack} color="secondary" aria-label="Menu">
                     <LeftIcon style={{ fontSize: '30px' }} />
                   </IconButton>
-                  <Typography className={classes.grow} variant="h6" color="secondary">{thisExerciseDetail ? thisExerciseDetail.name : 'title'}</Typography>
+                  <Typography className={classes.grow} style={{ fontSize: 'x-small' }} color="secondary">{thisExerciseDetail ? thisExerciseDetail.name : 'title'}</Typography>
                   <div style={{ minHeight: '56px', minWidth: '56px' }}>
                     <SpeedDialTooltipOpen right secondary />
                   </div>

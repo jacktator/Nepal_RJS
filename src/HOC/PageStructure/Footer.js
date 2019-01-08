@@ -23,7 +23,7 @@ const FooterContentSet = (type) => {
         { label: 'Home', to: '/mainmenu', Icon: <HomeIcon /> },
         { label: 'History', to: '/workout/history', Icon: <HistoryIcon /> },
         { label: 'Plan', to: '/workout/plan', Icon: <PlanIcon /> },
-        { label: 'Workout', to: '/workout/exercise', Icon: <WorkoutIcon /> },
+        { label: 'Workout', to: `/workout/daily/${sessionStorage.progress}`, Icon: <WorkoutIcon /> },
       ];
     default:
       return [

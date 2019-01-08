@@ -41,14 +41,14 @@ function ResponsiveDialog(props) {
                 <ListItemText primary="Do not have history" />
               </ListItem>
             )
-            : [...historyForSpecificExercise].map(v => (
-              <ListItem>
+            : [...historyForSpecificExercise].map((v, k) => (
+              <ListItem key={`${k}list`}>
                 <ListItemText primary={v.date} />
                 {
-              !!v.exe && [...v.exe.split(';').map(va => va.substring(1, va.length - 1))].map((vb) => {
+              !!v.exe && [...v.exe.split(';').map(va => va.substring(1, va.length - 1))].map((vb, kb) => {
                 const a = vb.split(',');
                 return (
-                  <ListItemText primary={a.length === 0 ? `reps: ${a[0]}` : `reps: ${a[0]} X weight: ${a[1]}`} />
+                  <ListItemText key={`${kb}listtext`} primary={a.length === 0 ? `reps: ${a[0]}` : `reps: ${a[0]} X weight: ${a[1]}`} />
                 );
               })
             }
