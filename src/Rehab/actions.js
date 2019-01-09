@@ -5,6 +5,18 @@ const arrayOfRehab = {
   posture: ['rs', 'apt', 'sp'],
   injury: ['lbp', 'np', 'sp', 'hp'],
 };
+const destructure = (data) => {
+  if (data === '') return;
+  const a = data.split(';');
+  const result = {
+    injury: a[0],
+    posture: a[1],
+  };
+  let m = a[0].split(',');
+  m = m.split('|');
+  const n = a[1];
+};
+
 export const setPosture = data => ({ type: 'SET_POSTURE', payload: data });
 export const setInjury = data => ({ type: 'SET_INJURY', payload: data });
 export const showQuestionnaireForCreate = data => ({ type: 'SHOW_QUESTIONNAIRE_CREATE', payload: data });
@@ -16,7 +28,9 @@ export const getDailyRehab = data => (dispatch) => {
       console.log(res);
       if (res.data.length === 0) { dispatch(showQuestionnaireForCreate(true)); return; }
       if (res.data[0].progress === 7) { dispatch(showQuestionnaireForCreate(true)); }
-      res.data[0].acf.posture && dispatch(getPosture(res.data[0].acf.posture));
+      const { injury, posture } = res.data[0].acf;
+      posture && dispatch(getPosture(posture));
+      injury && dispatch(getPosture(injury));
     })
     .catch(err => console.log(err));
 };
@@ -44,6 +58,7 @@ export const createNewRehab = data => (dispatch) => {
 };
 
 export const getPosture = data => (dispatch) => {
+  console.log(rehabProgramme.posture[data]);
   axios.get(`/${rehabProgramme.posture[data]}`)
     .then(
       (ref) => {

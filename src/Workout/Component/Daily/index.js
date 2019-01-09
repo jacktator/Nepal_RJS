@@ -164,7 +164,7 @@ class MainRehab extends React.PureComponent {
         title="Workout"
         progress={progress}
         currentWeek={currentWeek}
-        currentPage={2}
+        currentPage={3}
         FooterContent={1}
         workout
         showBottomButton
