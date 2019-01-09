@@ -34,19 +34,27 @@ class index extends React.PureComponent {
     this.handleClose = this.handleClose.bind(this);
     this.handleChangeState = this.handleChangeState.bind(this);
     this.validation = this.validation.bind(this);
-    this.validationHandle = this.validationHandle.bind(this);
   }
 
   handleNext() {
     const { activeStep } = this.state;
-
+    const { page, files } = this.validation();
     if (activeStep < 6) {
-      this.setState(prevState => ({
-        activeStep: prevState.activeStep + 1,
-      }));
+      console.log(page);
+      if (page[activeStep]) {
+        this.setState(prevState => ({
+          activeStep: prevState.activeStep + 1,
+        }));
+        return;
+      }
+      this.setState({ open: true, title: 'error', discription: 'You need to finish each question' });
+    }
+    if (activeStep === 6 && page[activeStep]) {
+      this.setState({ loading: true });
+      this.props.createQuestionnaire(files);
       return;
     }
-    this.validationHandle();
+    this.setState({ open: true, title: 'error', discription: 'You need to finish each question' });
   }
 
   handleBack() {
@@ -82,17 +90,8 @@ class index extends React.PureComponent {
     const fifthV = !!fifth.stress && !!fifth.productivity;
     const sixthV = !!sixth.injury && !!sixth.health;
     const seventhV = !!seventh.active && !!seventh.exercise;
-    return ({ empty: fristV && secondV && thirdV && fourthV && fifthV && sixthV && seventhV, files });
-  }
-
-  validationHandle() {
-    const { empty, files } = this.validation();
-    if (empty) {
-      this.setState({ loading: true });
-      this.props.createQuestionnaire(files);
-      return;
-    }
-    this.setState({ open: true, title: 'error', discription: 'You need to finish each question' });
+    const page = [fristV, secondV, thirdV, fourthV, fifthV, sixthV, seventhV];
+    return ({ page, files });
   }
 
   render() {

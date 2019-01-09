@@ -106,6 +106,7 @@ class InputFiles extends React.Component {
     const {
       id, name, placeholder, adornmentText, password,
     } = inputType[type];
+
     return (
       <TextField
         id={id}
