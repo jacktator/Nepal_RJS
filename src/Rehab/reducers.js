@@ -3,6 +3,9 @@ export default function (state = {
   injury: [],
   showCreationQuestionnaire: false,
   querryCreating: false,
+  selectedRehabExercises: {},
+  querryDailyData: false,
+  rehabExercisesRecorded: [],
 }, action) {
   switch (action.type) {
     case 'SET_POSTURE':
@@ -20,6 +23,18 @@ export default function (state = {
     case 'QUERRY_CREATING':
       return {
         ...state, querryCreating: action.payload,
+      };
+    case 'SET_SELECTED_EXERCISES':
+      return {
+        ...state, selectedRehabExercises: action.payload,
+      };
+    case 'SET_REHAB_EXERCISE_RECORDED':
+      return {
+        ...state, rehabExercisesRecorded: action.payload,
+      };
+    case 'FINISH_QUERRY_DAILY_DATA':
+      return {
+        ...state, querryDailyData: action.payload,
       };
     default:
       return state;

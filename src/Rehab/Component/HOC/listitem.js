@@ -9,7 +9,9 @@ import { styles } from '../../styles';
 
 class HOCListItem extends React.PureComponent {
   render() {
-    const { classes } = this.props;
+    const { classes, exeData, funcs } = this.props;
+    const { openDialog, closeDialog } = funcs;
+    console.log(exeData);
     return (
       <ListItem>
         <Paper className={classes.listItemPaper}>
@@ -20,9 +22,9 @@ class HOCListItem extends React.PureComponent {
             </Grid>
 
             <Grid container className={classes.itemRight} justify="space-around" alignContent="center" alignItems="center">
-              <Typography color="secondary" variant="body1">This</Typography>
+              <Typography color="secondary" variant="body1">{exeData.name}</Typography>
               <Grid container>
-                <Grid item container justify="center" xs={6} color="secondary" component={Typography}>Change</Grid>
+                <Grid item container justify="center" xs={6} color="secondary" component={Typography} onClick={openDialog}>Change</Grid>
                 <Grid item container style={{ color: '#98ee99' }} justify="center" xs={6} component={Typography}>Keep</Grid>
               </Grid>
             </Grid>

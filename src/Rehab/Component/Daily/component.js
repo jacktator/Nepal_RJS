@@ -9,10 +9,15 @@ import { styles } from '../../styles';
 
 class SimpleList extends React.PureComponent {
   render() {
-    const { classes, injury, posture } = this.props;
+    const {
+      classes, injury, posture, injuryExes, postureExes, openDialog,
+    } = this.props;
+
+    console.log(injuryExes);
+    console.log(postureExes);
     return (
       <div className={classes.root}>
-        {injury && (
+        {Object.keys(injuryExes).length > 0 && (
         <List
           component="nav"
           disablePadding
@@ -21,25 +26,40 @@ class SimpleList extends React.PureComponent {
             <Typography variant="h6" color="primary">{injury || 'Injury'}</Typography>
           </ListItem>
           <ListItem>
-            <Typography color="primary">Mobility</Typography>
+            <Typography color="primary"> Mobility</Typography>
           </ListItem>
-          <HOClistitem />
+          <HOClistitem
+            exeData={injuryExes.mobility[0]}
+            funcs={() => openDialog(injuryExes.mobility)}
+          />
           <ListItem>
-            <Typography color="primary">Mobility</Typography>
+            <Typography color="primary"> Mobility</Typography>
           </ListItem>
-          <HOClistitem />
+          <HOClistitem
+            exeData={injuryExes.mobility[1]}
+            funcs={() => openDialog(injuryExes.mobility)}
+
+          />
           <ListItem>
-            <Typography color="primary">Release</Typography>
+            <Typography color="primary"> Release</Typography>
           </ListItem>
-          <HOClistitem />
+          <HOClistitem
+            exeData={injuryExes.releaseWork[0]}
+            funcs={() => openDialog(injuryExes.releaseWork)}
+
+          />
           <ListItem>
-            <Typography color="primary">Strength</Typography>
+            <Typography color="primary"> Strength</Typography>
           </ListItem>
-          <HOClistitem />
+          <HOClistitem
+            exeData={injuryExes.strengthEndurance[0]}
+            funcs={() => openDialog(injuryExes.strengthEndurance)}
+
+          />
         </List>
         )}
         {
-          posture && (
+          Object.keys(postureExes).length > 0 && (
             <List
               component="nav"
               disablePadding
@@ -48,21 +68,37 @@ class SimpleList extends React.PureComponent {
                 <Typography variant="h6" color="primary">{posture || 'Posture'}</Typography>
               </ListItem>
               <ListItem>
-                <Typography color="primary">Mobility</Typography>
+                <Typography color="primary"> Mobility</Typography>
               </ListItem>
-              <HOClistitem />
+              <HOClistitem
+                exeData={postureExes.mobility[0]}
+                funcs={() => openDialog(postureExes.mobility)}
+
+              />
               <ListItem>
-                <Typography color="primary">Mobility</Typography>
+                <Typography color="primary"> Mobility</Typography>
               </ListItem>
-              <HOClistitem />
+              <HOClistitem
+                exeData={postureExes.mobility[1]}
+                funcs={() => openDialog(postureExes.mobility)}
+
+              />
               <ListItem>
-                <Typography color="primary">Release</Typography>
+                <Typography color="primary"> Release</Typography>
               </ListItem>
-              <HOClistitem />
+              <HOClistitem
+                exeData={postureExes.releaseWork[0]}
+                funcs={() => openDialog(postureExes.releaseWork)}
+
+              />
               <ListItem>
-                <Typography color="primary">Strength</Typography>
+                <Typography color="primary"> Strength</Typography>
               </ListItem>
-              <HOClistitem />
+              <HOClistitem
+                exeData={postureExes.strengthEndurance[0]}
+                funcs={() => openDialog(postureExes.strengthEndurance)}
+
+              />
             </List>
           )
         }

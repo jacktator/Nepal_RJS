@@ -8,15 +8,16 @@ import Component from './component';
 import MainComponent from '../../../HOC/PageStructure';
 import { styles } from '../../styles';
 import {
-  getDailyRehab, getPosture, getInjury, createNewRehab, showQuestionnaireForCreate,
+  getDailyRehab, getPosture, getInjury, createNewRehab, showQuestionnaireForCreate, finishQuerryDailyData, destructure,
 } from '../../actions';
 import Dialog from '../../../HOC/Dialog';
 import Questionnaire from './questionnaire';
-
+import Loading from '../../../HOC/Loading';
+import Stepper from './stepper';
 
 const tapBarContent = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
 
-class MainRehab extends React.Component {
+class MainRehab extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,6 +27,10 @@ class MainRehab extends React.Component {
       postureSelected: 0,
       showDiscription: false,
       title: '',
+      showChangeDialog: false,
+      exerciseSelected: 0,
+      renderExercise: [],
+      dialogData: [],
     };
     this.midPartTabsValueHandleChange = this.midPartTabsValueHandleChange.bind(this);
     this.handleQuestionnaireClose = this.handleQuestionnaireClose.bind(this);
@@ -33,11 +38,33 @@ class MainRehab extends React.Component {
     this.handleDiscriptionClickClose = this.handleDiscriptionClickClose.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
     this.handleFinishQuestionnaireClick = this.handleFinishQuestionnaireClick.bind(this);
+    this.handleCloseChangeDialog = this.handleCloseChangeDialog.bind(this);
+    this.handleOpenChangeDialog = this.handleOpenChangeDialog.bind(this);
+    this.handleChangeDialogNext = this.handleChangeDialogNext.bind(this);
+    this.handleChangeDialogBack = this.handleChangeDialogBack.bind(this);
   }
 
   componentDidMount() {
     this.setState({ currentWeek: new Date().getUTCDay() - 1 });
-    this.props.getDailyRehab();
+    this.props.finishQuerryDailyData(true);
+    this.props.getDailyRehab(new Date().getUTCDay() - 1);
+  }
+
+  handleChangeDialogNext() {
+    this.setState(sta => ({ exerciseSelected: sta.exerciseSelected + 1 }));
+  }
+
+  handleChangeDialogBack() {
+    this.setState(sta => ({ exerciseSelected: sta.exerciseSelected - 1 }));
+  }
+
+  handleOpenChangeDialog(data) {
+    this.setState({ dialogData: data });
+    this.setState({ showChangeDialog: true });
+  }
+
+  handleCloseChangeDialog() {
+    this.setState({ showChangeDialog: false });
   }
 
   handleQuestionnaireClose() {
@@ -73,11 +100,19 @@ class MainRehab extends React.Component {
     this.setState({ midPartTabsValue: value });
   }
 
+  setRenderExercisesState(day) {
+    const a = destructure();
+    this.props.selectedRehabExercises;
+  }
+
   render() {
-    const { classes, showCreationQuestionnaire, querryCreating } = this.props;
+    const {
+      classes, showCreationQuestionnaire, querryCreating, querryDailyData, posture, injury,
+    } = this.props;
+    console.log(posture, injury);
     const {
       currentWeek, midPartTabsValue, showDiscription, title, injurySelected,
-      postureSelected,
+      postureSelected, exerciseSelected, dialogData, showChangeDialog,
     } = this.state;
     return (
       <MainComponent
@@ -94,6 +129,24 @@ class MainRehab extends React.Component {
         midComponent={(
           <Grid container style={{ flex: 1 }} justify="center" alignContent="space-around" alignItems="center">
             <Paper className={classes.midPaper} elevation={8}>
+              <Loading
+                open={querryDailyData}
+              />
+              <Dialog
+                open={showChangeDialog}
+                loadingStatus={false}
+                title="Select your Exercise"
+                discription=""
+                handleClose={this.handleCloseChangeDialog}
+                media={(
+                  <Stepper
+                    handleNext={this.handleChangeDialogNext}
+                    handleBack={this.handleChangeDialogBack}
+                    selected={exerciseSelected}
+                    data={dialogData}
+                  />
+                )}
+              />
               <Dialog
                 open={showDiscription}
                 loadingStatus={false}
@@ -118,9 +171,13 @@ class MainRehab extends React.Component {
                   />
                 )}
               />
+
               <Component
-                injury="1111"
-                posture="2222"
+                injury="Injury"
+                posture="Posture"
+                injuryExes={injury}
+                postureExes={posture}
+                openDialog={this.handleOpenChangeDialog}
               />
             </Paper>
           </Grid>
@@ -138,12 +195,12 @@ MainRehab.propTypes = {
 
 function mapStateToProps(state) {
   const {
-    posture, injury, showCreationQuestionnaire, querryCreating,
+    posture, injury, showCreationQuestionnaire, querryCreating, querryDailyData, selectedRehabExercises,
   } = state.Rehab;
   return {
-    posture, injury, showCreationQuestionnaire, querryCreating,
+    posture, injury, showCreationQuestionnaire, querryCreating, querryDailyData, selectedRehabExercises,
   };
 }
 export default connect(mapStateToProps, {
-  getDailyRehab, getPosture, getInjury, createNewRehab, showQuestionnaireForCreate,
+  getDailyRehab, getPosture, getInjury, createNewRehab, showQuestionnaireForCreate, finishQuerryDailyData,
 })(withStyles(styles)(MainRehab));
