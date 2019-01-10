@@ -19,11 +19,11 @@ const index = () => (
               <Route path="/user/Login" component={Login} />
               <Route path="/user/Register" component={Register} />
               <Route path="/user/Retrieve" component={Retrieve} />
+              <Redirect from="/user/" to="/user/Login" />
           </>
             )
         }
 
-    <Redirect from="/user/" to="/user/Login" />
   </Switch>
 );
 

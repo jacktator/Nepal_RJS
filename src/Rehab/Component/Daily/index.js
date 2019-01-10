@@ -31,6 +31,7 @@ class MainRehab extends React.PureComponent {
       exerciseSelected: 0,
       renderExercise: [],
       dialogData: [],
+      dialogIndex: 0,
     };
     this.midPartTabsValueHandleChange = this.midPartTabsValueHandleChange.bind(this);
     this.handleQuestionnaireClose = this.handleQuestionnaireClose.bind(this);
@@ -42,6 +43,7 @@ class MainRehab extends React.PureComponent {
     this.handleOpenChangeDialog = this.handleOpenChangeDialog.bind(this);
     this.handleChangeDialogNext = this.handleChangeDialogNext.bind(this);
     this.handleChangeDialogBack = this.handleChangeDialogBack.bind(this);
+    this.keepRenderExercisesState = this.keepRenderExercisesState.bind(this);
   }
 
   componentDidMount() {
@@ -105,6 +107,11 @@ class MainRehab extends React.PureComponent {
     const a = destructure(s[`day${day}`]);
   }
 
+  keepRenderExercisesState() {
+    const a = Object.assign({}, JSON.parse(JSON.stringify(this.state.dialogData[this.state.exerciseSelected])));
+    this.setState({ renderExercise: a, showChangeDialog: false });
+  }
+
   render() {
     const {
       classes, showCreationQuestionnaire, querryCreating, querryDailyData, posture, injury,
@@ -112,7 +119,7 @@ class MainRehab extends React.PureComponent {
     console.log(posture, injury);
     const {
       currentWeek, midPartTabsValue, showDiscription, title, injurySelected,
-      postureSelected, exerciseSelected, dialogData, showChangeDialog,
+      postureSelected, exerciseSelected, dialogData, showChangeDialog, renderExercise,
     } = this.state;
     return (
       <MainComponent
@@ -138,6 +145,8 @@ class MainRehab extends React.PureComponent {
                 title="Select your Exercise"
                 discription=""
                 handleClose={this.handleCloseChangeDialog}
+                other
+                otherClickFunction={this.keepRenderExercisesState}
                 media={(
                   <Stepper
                     handleNext={this.handleChangeDialogNext}
@@ -178,6 +187,7 @@ class MainRehab extends React.PureComponent {
                 injuryExes={injury}
                 postureExes={posture}
                 openDialog={this.handleOpenChangeDialog}
+                renderExercise={renderExercise}
               />
             </Paper>
           </Grid>
