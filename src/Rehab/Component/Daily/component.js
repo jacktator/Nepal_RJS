@@ -10,7 +10,7 @@ import { styles } from '../../styles';
 class SimpleList extends React.PureComponent {
   render() {
     const {
-      classes, injury, posture, injuryExes, postureExes, openDialog, renderExercise, keepFunc,
+      classes, injury, posture, injuryExes, postureExes, openDialog, renderExercise, keepFunc, keepExercise,
     } = this.props;
     console.log(renderExercise);
     return (
@@ -28,28 +28,33 @@ class SimpleList extends React.PureComponent {
           </ListItem>
           <HOClistitem
             exeData={renderExercise[0] || injuryExes.mobility[0]}
-            funcs={() => openDialog(injuryExes.mobility)}
+            funcs={() => openDialog(injuryExes.mobility, 0)}
+            keepExercise={keepExercise}
           />
           <ListItem>
             <Typography color="primary"> Mobility</Typography>
           </ListItem>
           <HOClistitem
             exeData={renderExercise[1] || injuryExes.mobility[1]}
-            funcs={() => openDialog(injuryExes.mobility)}
+            funcs={() => openDialog(injuryExes.mobility, 1)}
+            keepExercise={keepExercise}
           />
           <ListItem>
             <Typography color="primary"> Release</Typography>
           </ListItem>
           <HOClistitem
             exeData={renderExercise[2] || injuryExes.releaseWork[0]}
-            funcs={() => openDialog(injuryExes.releaseWork)}
+            funcs={() => openDialog(injuryExes.releaseWork, 2)}
+            keepExercise={keepExercise}
           />
           <ListItem>
             <Typography color="primary"> Strength</Typography>
           </ListItem>
           <HOClistitem
             exeData={renderExercise[3] || injuryExes.strengthEndurance[0]}
-            funcs={() => openDialog(injuryExes.strengthEndurance)}
+            funcs={() => openDialog(injuryExes.strengthEndurance, 3)}
+            keepExercise={keepExercise}
+
           />
         </List>
         )}
@@ -67,28 +72,35 @@ class SimpleList extends React.PureComponent {
               </ListItem>
               <HOClistitem
                 exeData={renderExercise[4] || postureExes.mobility[0]}
-                funcs={() => openDialog(postureExes.mobility)}
+                funcs={() => openDialog(postureExes.mobility, 4)}
+                keepExercise={keepExercise}
+
               />
               <ListItem>
                 <Typography color="primary"> Mobility</Typography>
               </ListItem>
               <HOClistitem
                 exeData={renderExercise[5] || postureExes.mobility[1]}
-                funcs={() => openDialog(postureExes.mobility)}
+                funcs={() => openDialog(postureExes.mobility, 5)}
+                keepExercise={keepExercise}
+
               />
               <ListItem>
                 <Typography color="primary"> Release</Typography>
               </ListItem>
               <HOClistitem
                 exeData={renderExercise[6] || postureExes.releaseWork[0]}
-                funcs={() => openDialog(postureExes.releaseWork)}
+                funcs={() => openDialog(postureExes.releaseWork, 6)}
+                keepExercise={keepExercise}
+
               />
               <ListItem>
                 <Typography color="primary"> Strength</Typography>
               </ListItem>
               <HOClistitem
                 exeData={renderExercise[7] || postureExes.strengthEndurance[0]}
-                funcs={() => openDialog(postureExes.strengthEndurance)}
+                funcs={() => openDialog(postureExes.strengthEndurance, 7)}
+                keepExercise={keepExercise}
               />
             </List>
           )
