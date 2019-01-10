@@ -9,22 +9,16 @@ export const destructure = (data) => {
   console.log('destructure', data);
   if (!data) { return []; }
   const a = data.split(';');
-  const result = {
-    injury: a[0] && [...a[0].split(',').map((v, k) => {
-      const obj = v.split('|');
-      return ({
-        name: obj[0], sets: obj[1], reps: obj[2], time: obj[3], selected: true,
-      });
-    })],
-    posture: a[1] && [...a[1].split(',').map((v, k) => {
-      const obj = v.split('|');
-      return ({
-        name: obj[0], sets: obj[1], reps: obj[2], time: obj[3], selected: true,
-      });
-    })],
-  };
+  const result1 = [...a.map((v) => {
+    const o = v.split(',');
+    if (o.length < 4) { return undefined; }
+    return ({
+      name: o[0], sets: o[1], reps: o[2], time: o[3], selected: true,
+
+    });
+  })];
   console.log('destructure Result', data);
-  return result;
+  return result1;
 };
 
 const destructureTemp = (data) => {
@@ -42,6 +36,24 @@ export const fetchingCreatingRehab = data => ({ type: 'QUERRY_CREATING', payload
 export const selectedRehabExercises = data => ({ type: 'SET_SELECTED_EXERCISES', payload: data });
 export const rehabExercisesRecorded = data => ({ type: 'SET_REHAB_EXERCISE_RECORDED', payload: data });
 export const finishQuerryDailyData = data => ({ type: 'FINISH_QUERRY_DAILY_DATA', payload: data });
+
+export const keepExercise = data => (dispatch) => {
+  console.log('keepExercise', data);
+  const a = data.map(v => Object.values(v).join()).join(';');
+  axios.post(`/rehab_program/${sessionStorage.rehabProgressID}`, { fields: { [`day${new Date().getDay()}`]: a } })
+    .then(
+      (res) => {
+        dispatch(selectedRehabExercises(res.data));
+        console.log(res);
+      },
+    )
+    .catch(
+      (err) => {
+        console.log(err);
+      },
+    );
+  console.log(a);
+};
 
 export const getRehabRecord = id => (dispatch) => {
   axios.get(`/rehab_record?filter[meta_key]=rehab_program_id&filter[meta_value]=${id}`)
@@ -75,7 +87,7 @@ export const createNewRehab = data => (dispatch) => {
   })
     .then(
       (res) => {
-        console.log(res);
+        dispatch(getDailyRehab());
       },
     )
     .catch(
