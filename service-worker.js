@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Nepal_RJS/precache-manifest.69d1929dd59e8c2d8d21eb7cb776d712.js"
+  "/Nepal_RJS/precache-manifest.514742c0a6c4a3bd38a9f7338ffbd60f.js"
 );
 
 workbox.clientsClaim();
