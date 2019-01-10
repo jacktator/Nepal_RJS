@@ -13,14 +13,22 @@ class Register extends React.Component {
       email: '',
       password: '',
       rePassword: '',
+      emailError: true,
+      passwordError: true,
+      rePasswordError: true,
       loading: false,
     };
     this.onChangeHandle = this.onChangeHandle.bind(this);
     this.onRegisterClick = this.onRegisterClick.bind(this);
+    this.onErrorChangeHandle = this.onErrorChangeHandle.bind(this);
   }
 
   onChangeHandle(event) {
     this.setState({ [event.target.name]: event.target.value });
+  }
+
+  onErrorChangeHandle(event, error) {
+    this.setState({ [`${event.target.name}Error`]: error });
   }
 
   onRegisterClick() {
@@ -39,8 +47,9 @@ class Register extends React.Component {
   render() {
     const { registerStatus } = this.props;
     const {
-      email, password, rePassword, loading,
+      email, password, rePassword, loading, emailError, passwordError, rePasswordError,
     } = this.state;
+    console.log(emailError, passwordError, rePasswordError );
     return (
       registerStatus ? (<Redirect to="/questionnaire" />) : (
         <Component
@@ -50,6 +59,8 @@ class Register extends React.Component {
           rePassword={rePassword}
           onChangeHandle={this.onChangeHandle}
           onRegisterClick={this.onRegisterClick}
+          onErrorChangeHandle={this.onErrorChangeHandle}
+          errorOrNot={!emailError && !passwordError && !rePasswordError}
         />
       )
     );

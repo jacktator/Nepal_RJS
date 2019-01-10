@@ -11,7 +11,7 @@ import styles from '../../styles';
 
 const Component = (props) => {
   const {
-    classes, loading, email, password, rePassword, onChangeHandle, onRegisterClick,
+    classes, loading, email, password, rePassword, onChangeHandle, onRegisterClick, onErrorChangeHandle, errorOrNot,
   } = props;
   return (
     <div className={classes.container}>
@@ -19,7 +19,7 @@ const Component = (props) => {
         <Grid container className={classes.autoFlex}>
           <Paper className={classes.paper}>
             <Grid container className={classes.gridRoot} direction="column">
-              
+
               <Grid container style={{ height: '33vh' }} justify="center" alignItems="flex-end">
                 <Typography variant="h2" component="h3" align="center" color="secondary" gutterBottom>Nepal</Typography>
               </Grid>
@@ -28,18 +28,21 @@ const Component = (props) => {
                 <Grid container alignContent="center">
                   <HOCInputFile
                     onChangeHandle={onChangeHandle}
+                    onErrorChangeHandle={onErrorChangeHandle}
                     value={email}
                     type="email"
                     fullwidth
                   />
                   <HOCInputFile
                     onChangeHandle={onChangeHandle}
+                    onErrorChangeHandle={onErrorChangeHandle}
                     value={password}
                     type="password"
                     fullwidth
                   />
                   <HOCInputFile
                     onChangeHandle={onChangeHandle}
+                    onErrorChangeHandle={onErrorChangeHandle}
                     confirm={password}
                     value={rePassword}
                     type="rePassword"
@@ -57,7 +60,7 @@ const Component = (props) => {
         </Grid>
 
         <Grid container style={{ height: '10vh' }} justify="center" alignItems="center">
-          {loading ? <CircularProgress size={30} /> : <Button onClick={onRegisterClick} fullWidth className={classes.button} color="primary">Register</Button>}
+          {loading ? <CircularProgress size={30} /> : <Button onClick={errorOrNot ? onRegisterClick : (event) => { event.preventDefault(); }} disabled={!errorOrNot} fullWidth className={classes.button} color="primary">Register</Button>}
         </Grid>
 
       </Grid>

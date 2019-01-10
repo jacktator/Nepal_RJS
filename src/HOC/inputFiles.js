@@ -91,15 +91,21 @@ class InputFiles extends React.Component {
       showPassword: false,
     };
     this.handleClickShowPassword = this.handleClickShowPassword.bind(this);
+    this.combineHandleOnchange = this.combineHandleOnchange.bind(this);
   }
 
   handleClickShowPassword() {
     this.setState(state => ({ showPassword: !state.showPassword }));
   }
 
+  combineHandleOnchange(event, error) {
+    this.props.onChangeHandle(event);
+    this.props.onErrorChangeHandle(event, error);
+  }
+
   render() {
     const {
-      classes, value, onChangeHandle, type, confirm, light, number, fullwidth,
+      classes, value, onChangeHandle, type, confirm, light, number, fullwidth, onErrorChangeHandle,
     } = this.props;
     const { showPassword } = this.state;
     const { error, resDiscription } = typeValidation(type, value, confirm);
@@ -117,7 +123,7 @@ class InputFiles extends React.Component {
         error={!number && !error}
         name={name}
         helperText={!number && (!error && resDiscription)}
-        onChange={onChangeHandle || null}
+        onChange={onErrorChangeHandle ? event => this.combineHandleOnchange(event, error) : onChangeHandle || null}
         value={value}
         FormHelperTextProps={{ style: { color: '#f9a49e' } }}
         InputProps={{
