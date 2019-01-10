@@ -18,7 +18,7 @@ const getRandomInt = () => {
 
 const typeValidation = (type, value, confirm) => {
   if (confirm && (value !== confirm)) {
-    return { error: false, resDiscription: 'should same as password' };
+    return { error: false, resDiscription: 'should be same as password' };
   }
   if (type === 'number') {
     return { error: false, resDiscription: '' };

@@ -2,6 +2,7 @@ export default function (state = {
   LoginStatus: false,
   RegisterStatus: false,
   queryLoginStatus: false,
+  queryRegisterStatus: false,
   error: false,
 }, action) {
   switch (action.type) {
@@ -20,6 +21,10 @@ export default function (state = {
     case 'SHOW_ERROR':
       return {
         ...state, error: action.payload,
+      };
+    case 'QUERY_REGISTER':
+      return {
+        ...state, queryRegisterStatus: action.payload,
       };
     default:
       return state;

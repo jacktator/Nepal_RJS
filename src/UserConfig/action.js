@@ -26,6 +26,10 @@ export const errorHappened = data => ({
   type: 'SHOW_ERROR',
   payload: data,
 });
+export const queryRegister = data => ({
+  type: 'QUERY_REGISTER',
+  payload: data,
+});
 
 export const loginAction = (userData, callBack) => (dispatch) => {
   axios.post('https://nepal.sk8tech.io/wp-json/jwt-auth/v1/token/', userData)
@@ -50,9 +54,9 @@ export const registerAction = userData => (dispatch) => {
         dispatch(loginAction({ username: userData.username, password: userData.password }, registerState));
       },
     )
-    .catch(
-      (err) => {
-        console.log(err);
-      },
-    );
+    .catch((err) => {
+      dispatch(queryRegister(false));
+      dispatch(errorHappened(true));
+      console.log(err);
+    });
 };

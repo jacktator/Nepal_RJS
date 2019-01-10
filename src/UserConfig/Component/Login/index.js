@@ -38,7 +38,7 @@ class Login extends React.Component {
     } = this.state;
     const { loginStatus, queryLoginStatus, error } = this.props;
     return (
-      (queryLogin && loginStatus) ? (<Redirect to="/mainmenu" />) : (
+      (queryLoginStatus && loginStatus) ? (<Redirect to="/mainmenu" />) : (
         <Component
           email={email}
           password={password}

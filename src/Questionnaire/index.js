@@ -40,7 +40,6 @@ class index extends React.PureComponent {
     const { activeStep } = this.state;
     const { page, files } = this.validation();
     if (activeStep < 6) {
-      console.log(page);
       if (page[activeStep]) {
         this.setState(prevState => ({
           activeStep: prevState.activeStep + 1,
