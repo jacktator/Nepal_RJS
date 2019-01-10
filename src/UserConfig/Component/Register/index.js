@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Component from './Component';
-import { registerAction } from '../../action';
+import { registerAction, queryRegister, errorHappened } from '../../action';
 
 
 class Register extends React.Component {
@@ -13,22 +13,23 @@ class Register extends React.Component {
       email: '',
       password: '',
       rePassword: '',
-      loading: false,
     };
     this.onChangeHandle = this.onChangeHandle.bind(this);
     this.onRegisterClick = this.onRegisterClick.bind(this);
+    this.handleErrorClose = this.handleErrorClose.bind(this);
   }
 
   onChangeHandle(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
 
+
   onRegisterClick() {
     const { email, password, rePassword } = this.state;
-    if (password !== rePassword) {
+    if (password !== rePassword || password === '' || rePassword === '') {
       return;
     }
-    this.setState({ loading: true });
+    this.props.queryRegister(true);
     this.props.registerAction({
       username: email,
       email,
@@ -36,20 +37,27 @@ class Register extends React.Component {
     });
   }
 
+  handleErrorClose() {
+    this.props.errorHappened(false);
+  }
+
+
   render() {
-    const { registerStatus } = this.props;
+    const { registerStatus, queryRegisterStatus, error } = this.props;
     const {
-      email, password, rePassword, loading,
+      email, password, rePassword,
     } = this.state;
     return (
-      registerStatus ? (<Redirect to="/questionnaire" />) : (
+      (registerStatus && queryRegisterStatus) ? (<Redirect to="/questionnaire" />) : (
         <Component
-          loading={loading}
+          loading={queryRegisterStatus}
           email={email}
           password={password}
           rePassword={rePassword}
           onChangeHandle={this.onChangeHandle}
           onRegisterClick={this.onRegisterClick}
+          error={error}
+          handleErrorClose={this.handleErrorClose}
         />
       )
     );
@@ -64,7 +72,9 @@ Register.propTypes = {
 function mapStateToProps(state) {
   return {
     registerStatus: state.UserConfig.RegisterStatus,
+    queryRegisterStatus: state.UserConfig.queryRegisterStatus,
+    error: state.UserConfig.error,
   };
 }
 
-export default connect(mapStateToProps, { registerAction })(Register);
+export default connect(mapStateToProps, { registerAction, queryRegister, errorHappened })(Register);

@@ -8,18 +8,26 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import HOCInputFile from '../../../HOC/inputFiles';
 import styles from '../../styles';
+import Dialog from '../../../HOC/Dialog';
 
 const Component = (props) => {
   const {
-    classes, loading, email, password, rePassword, onChangeHandle, onRegisterClick,
+    classes, loading, email, password, rePassword, onChangeHandle, onRegisterClick, error, handleErrorClose,
   } = props;
   return (
     <div className={classes.container}>
+      <Dialog
+        open={error}
+        title="Something Error"
+        discription="The email has been already registered"
+        loadingStatus={false}
+        handleClose={handleErrorClose}
+      />
       <Grid className={classes.gridRoot} container spacing={0} justify="space-between" alignItems="stretch" direction="column">
         <Grid container className={classes.autoFlex}>
           <Paper className={classes.paper}>
             <Grid container className={classes.gridRoot} direction="column">
-              
+
               <Grid container style={{ height: '33vh' }} justify="center" alignItems="flex-end">
                 <Typography variant="h2" component="h3" align="center" color="secondary" gutterBottom>Nepal</Typography>
               </Grid>
