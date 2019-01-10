@@ -95,7 +95,7 @@ const ExerciseStructure = (props) => {
           </Card>
           <CardMedia
             style={{ height: '100%', width: '100%' }}
-            image="/image/exerciseGif.gif"
+            image="https://nepal.sk8tech.io/wp-content/uploads/2019/01/exerciseGif.gif"
           />
         </Card>
       </Grid>

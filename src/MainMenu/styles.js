@@ -30,7 +30,7 @@ const styles = ({
   background: {
     height: '100vh',
     width: '100vw',
-    backgroundImage: 'url(\'/image/balance-beach-body.jpg\')',
+    backgroundImage: 'url(https://nepal.sk8tech.io/wp-content/uploads/2019/01/balance-beach-body.jpg)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     '@media screen and (orientation:portrait)': {

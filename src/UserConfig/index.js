@@ -9,19 +9,22 @@ import Profile from './Component/Profile';
 import PrivateRouter from '../HOC/PrivateRouter';
 
 const index = () => (
-  sessionStorage.getItem('token')
-    ? <Redirect to="/mainmenu" />
-    : (
-      <Switch>
-        <Route path="/user/Login" component={Login} />
-        <Route path="/user/Register" component={Register} />
-        <Route path="/user/Retrieve" component={Retrieve} />
-        <PrivateRouter path="/user/profile" component={Profile} />
-        <Redirect from="/user/" to="/user/Login" />
-      </Switch>
-    )
+  <Switch>
+    <PrivateRouter path="/user/profile" component={Profile} />
+    {
+          sessionStorage.getItem('token')
+            ? <Redirect to="/mainmenu" />
+            : (
+            <>
+              <Route path="/user/Login" component={Login} />
+              <Route path="/user/Register" component={Register} />
+              <Route path="/user/Retrieve" component={Retrieve} />
+          </>
+            )
+        }
 
-
+    <Redirect from="/user/" to="/user/Login" />
+  </Switch>
 );
 
 export default index;

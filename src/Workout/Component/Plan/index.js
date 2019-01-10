@@ -118,7 +118,7 @@ class index extends React.Component {
         <MainComponent
           top
           topDiscription
-          backgroundImage="image/sampleImage.jpeg"
+          backgroundImage="https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg"
           title={path || 'Workout'}
           progress={progress || 1}
           currentWeek={currentWeek}

@@ -49,7 +49,7 @@ class Calendar extends React.PureComponent {
 
         <MainComponent
           top
-          backgroundImage="image/sampleImage.jpeg"
+          backgroundImage="https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg"
           title={renderData ? renderData.program_name : 'history'}
           currentWeek={5}
           tabsValue={tabs}

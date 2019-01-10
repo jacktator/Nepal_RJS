@@ -9,18 +9,26 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import HOCInputFile from '../../../HOC/inputFiles';
 import styles from '../../styles';
+import Dialog from '../../../HOC/Dialog';
 
 const Component = (props) => {
   const {
-    classes, loading, email, password, onChangeHandle, onLoginClick,
+    classes, loading, email, password, onChangeHandle, onLoginClick, error, handleErrorClose,
   } = props;
   return (
     <div className={classes.container}>
+      <Dialog
+        open={error}
+        title="Something Error"
+        discription="Username or Password are not match"
+        loadingStatus={false}
+        handleClose={handleErrorClose}
+      />
       <Grid container className={classes.gridRoot} spacing={0} justify="space-between" alignItems="stretch" direction="column">
         <Grid container className={classes.autoFlex}>
           <Paper className={classes.paper}>
             <Grid container className={classes.gridRoot} direction="column">
-              
+
               <Grid container style={{ height: '33vh' }} justify="center" alignItems="flex-end">
                 <Typography variant="h2" component="h3" align="center" color="secondary" gutterBottom>Nepal</Typography>
               </Grid>
@@ -53,7 +61,7 @@ const Component = (props) => {
         <Grid container style={{ height: '10vh' }} justify="center" alignItems="center">
           {loading ? <CircularProgress size={30} /> : <Button className={classes.button} fullWidth color="primary" onClick={onLoginClick}>Login</Button>}
         </Grid>
-        
+
       </Grid>
     </div>
   );

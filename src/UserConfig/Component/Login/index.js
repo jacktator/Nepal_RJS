@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Component from './Component';
-import { loginAction } from '../../action';
+import { loginAction, queryLogin, errorHappened } from '../../action';
 
 class Login extends React.Component {
   constructor(props) {
@@ -11,10 +11,10 @@ class Login extends React.Component {
     this.state = {
       email: '',
       password: '',
-      loading: false,
     };
     this.onChangeHandle = this.onChangeHandle.bind(this);
     this.onLoginClick = this.onLoginClick.bind(this);
+    this.handleErrorClose = this.handleErrorClose.bind(this);
   }
 
   onChangeHandle(event) {
@@ -23,23 +23,30 @@ class Login extends React.Component {
 
   onLoginClick() {
     const { email, password } = this.state;
-    this.setState({ loading: true });
+    this.props.queryLogin(true);
     this.props.loginAction({ username: email, password });
   }
 
+  handleErrorClose() {
+    this.props.errorHappened(false);
+  }
+
+
   render() {
     const {
-      email, password, loading,
+      email, password,
     } = this.state;
-    const { loginStatus } = this.props;
+    const { loginStatus, queryLoginStatus, error } = this.props;
     return (
-      (loading && loginStatus) ? (<Redirect to="/mainmenu" />) : (
+      (queryLogin && loginStatus) ? (<Redirect to="/mainmenu" />) : (
         <Component
           email={email}
           password={password}
-          loading={loading}
+          loading={queryLoginStatus}
           onChangeHandle={this.onChangeHandle}
           onLoginClick={this.onLoginClick}
+          error={error}
+          handleErrorClose={this.handleErrorClose}
         />
       )
     );
@@ -49,6 +56,8 @@ class Login extends React.Component {
 function mapStateToProps(state) {
   return {
     loginStatus: state.UserConfig.LoginStatus,
+    queryLoginStatus: state.UserConfig.queryLoginStatus,
+    error: state.UserConfig.error,
   };
 }
 
@@ -56,4 +65,4 @@ Login.propTypes = {
   loginAction: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, { loginAction })(Login);
+export default connect(mapStateToProps, { queryLogin, loginAction, errorHappened })(Login);

@@ -145,7 +145,7 @@ class ExerciseIndex extends React.Component {
 
     return (
       <MainComponent
-        backgroundImage="image/sampleImage.jpeg"
+        backgroundImage="https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg"
         title="Workout"
         progress={this.props.progress}
         currentWeek={this.props.currentWeek}

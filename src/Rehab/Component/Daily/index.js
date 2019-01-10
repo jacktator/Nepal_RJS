@@ -101,8 +101,8 @@ class MainRehab extends React.PureComponent {
   }
 
   setRenderExercisesState(day) {
-    const a = destructure();
-    this.props.selectedRehabExercises;
+    const s = this.props.selectedRehabExercises;
+    const a = destructure(s[`day${day}`]);
   }
 
   render() {
@@ -117,7 +117,7 @@ class MainRehab extends React.PureComponent {
     return (
       <MainComponent
         top
-        backgroundImage="image/sampleImage.jpeg"
+        backgroundImage="https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg"
         title="Rehab"
         currentWeek={currentWeek}
         currentPage={1}

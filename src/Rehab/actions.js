@@ -124,7 +124,7 @@ export const getDailyRehab = day => (dispatch) => {
       if (res.data[0].finish === true) { dispatch(showQuestionnaireForCreate(true)); }
       const { injury, posture } = res.data[0].acf;
       sessionStorage.setItem('rehabProgressID', res.data[0].id);
-      dispatch(selectedRehabExercises(destructure(res.data[0])));
+      dispatch(selectedRehabExercises(res.data[0]));
       const a = axios.get(`/rehab_record?filter[meta_key]=rehab_program_id&filter[meta_value]=${res.data[0].id}`);
       const b = posture !== 'empty' && axios.get(`/${rehabProgramme.posture[posture]}?filter[posts_per_page]=30`);
       const c = injury !== 'empty' && axios.get(`/${rehabProgramme.injury[injury]}?filter[posts_per_page]=30`);
