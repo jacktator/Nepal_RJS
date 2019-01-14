@@ -15,12 +15,13 @@ class Register extends React.Component {
       rePassword: '',
       emailError: true,
       passwordError: true,
-      rePasswordError: true,
+      rePasswordError: false,
       loading: false,
     };
     this.onChangeHandle = this.onChangeHandle.bind(this);
     this.onRegisterClick = this.onRegisterClick.bind(this);
     this.onErrorChangeHandle = this.onErrorChangeHandle.bind(this);
+    this.handleErrorClose = this.handleErrorClose.bind(this);
   }
 
   onChangeHandle(event) {
@@ -33,7 +34,8 @@ class Register extends React.Component {
 
   onRegisterClick() {
     const { email, password, rePassword } = this.state;
-    if (password !== rePassword || password === '' || rePassword === '') {
+    if (password !== rePassword) {
+      // this.setState({ rePasswordError: true });
       return;
     }
     this.props.queryRegister(true);
@@ -65,7 +67,7 @@ class Register extends React.Component {
           onChangeHandle={this.onChangeHandle}
           onRegisterClick={this.onRegisterClick}
           onErrorChangeHandle={this.onErrorChangeHandle}
-          errorOrNot={!emailError && !passwordError && !rePasswordError}
+          errorOrNot={emailError && !passwordError && rePasswordError}
           errorDialogOpenStatus={error}
           handleErrorClose={this.handleErrorClose}
         />

@@ -18,11 +18,17 @@ const getRandomInt = () => {
 
 const typeValidation = (type, value, confirm) => {
   if (confirm && (value !== confirm)) {
+    console.log('not good');
     return { error: false, resDiscription: 'should be same as password' };
   }
-  if (type === 'number') {
-    return { error: false, resDiscription: '' };
+  if (confirm && value && (value === confirm)) {
+    console.log('perfect');
+    return { error: true, resDiscription: 'fits' };
   }
+  if (type === 'number') {
+    return { error: true, resDiscription: '' };
+  }
+  console.log('good');
   return validation(`${type}`, value);
 };
 
