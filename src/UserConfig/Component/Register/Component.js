@@ -9,12 +9,18 @@ import Typography from '@material-ui/core/Typography';
 import HOCInputFile from '../../../HOC/inputFiles';
 import styles from '../../styles';
 import Dialog from '../../../HOC/Dialog';
+import { validation } from '../../../HOC/Validation';
 
 const Component = (props) => {
   const {
-    classes, loading, email, password, rePassword, onChangeHandle, onRegisterClick, onErrorChangeHandle, errorOrNot,
+    classes, loading, email, password, rePassword, onChangeHandle, onRegisterClick, onErrorChangeHandle,
     errorDialogOpenStatus, handleErrorClose,
   } = props;
+  const emailError = validation('email', email).error;
+  const passwordError = validation('password', password).error;
+  const rePasswordError = password === rePassword;
+  const onClickValidation = (emailError && passwordError && rePasswordError);
+
   return (
     <div className={classes.container}>
       <Dialog
@@ -69,7 +75,7 @@ const Component = (props) => {
         </Grid>
 
         <Grid container style={{ height: '10vh' }} justify="center" alignItems="center">
-          {loading ? <CircularProgress size={30} /> : <Button onClick={errorOrNot ? onRegisterClick : (event) => { event.preventDefault(); }} disabled={!errorOrNot} fullWidth className={classes.button} color="primary">Register</Button>}
+          {loading ? <CircularProgress size={30} /> : <Button onClick={onClickValidation ? onRegisterClick : (event) => { event.preventDefault(); }} disabled={!onClickValidation} fullWidth className={classes.button} color="primary">Register</Button>}
         </Grid>
 
       </Grid>

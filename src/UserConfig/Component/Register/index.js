@@ -6,7 +6,7 @@ import Component from './Component';
 import { registerAction, queryRegister, errorHappened } from '../../action';
 
 
-class Register extends React.Component {
+class Register extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -56,7 +56,6 @@ class Register extends React.Component {
     const {
       email, password, rePassword, loading, emailError, passwordError, rePasswordError,
     } = this.state;
-    console.log(emailError, passwordError, rePasswordError);
     return (
       (registerStatus && queryRegisterStatus) ? (<Redirect to="/questionnaire" />) : (
         <Component
