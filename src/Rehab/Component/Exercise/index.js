@@ -7,73 +7,59 @@ import IconButton from '@material-ui/core/IconButton';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import LeftIcon from '@material-ui/icons/KeyboardArrowLeft';
+import { connect } from 'react-redux';
 import ExerciseComponent from './component';
 import MainComponent from '../../../HOC/PageStructure';
 import SpeedDialTooltipOpen from '../../../HOC/speedDial';
 import { add, min } from '../../../HOC/numberSelect';
 import { styles } from '../../styles';
+import { setRehabExercisesRecordsByDay } from '../../actions';
 
-class ExerciseIndex extends React.Component {
+class ExerciseIndex extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      value: 0,
-      midPartTabsValue: 0,
-      currentPage: 2,
-      weight: 0,
-      reps: 0,
-    };
-    this.weightAdd = this.weightAdd.bind(this);
-    this.weightMin = this.weightMin.bind(this);
-    this.setsAdd = this.setsAdd.bind(this);
-    this.setsMin = this.setsMin.bind(this);
+    this.handleSaveButtonClicked = this.handleSaveButtonClicked.bind(this);
+    this.dealRenderExerciseRecord = this.dealRenderExerciseRecord.bind(this);
   }
 
-  weightAdd() {
-    this.setState(add('weight'));
+  handleSaveButtonClicked() {
+    const m = [...this.props.dayRehabExercisesRecords.split(';')];
+    const { state } = this.props.location;
+    const { exe, itemID } = state;
+    const {
+      name, reps, sets, time,
+    } = exe;
+    const thisExerciseDetail = { name, sets, reps: reps === 'empty' ? time : reps };
+    m[itemID] ? m[itemID] = `${thisExerciseDetail.reps}` : m[itemID] = `${m[itemID]},${thisExerciseDetail.reps}`;
+    const result = m.join(';');
+    this.props.setRehabExercisesRecorded(result);
   }
 
-  weightMin() {
-    this.setState(min('weight'));
-  }
-
-  setsAdd() {
-    this.setState(add('reps'));
-  }
-
-  setsMin() {
-    this.setState(min('reps'));
+  dealRenderExerciseRecord(m) {
+    const n = m.data;
+    const f = n.split(';').map((v) => {
+      const s = v.split(',').map(vv => ({ reps: vv }));
+      return s;
+    });
+    return f;
   }
 
   render() {
-    const { classes, currentWeek, progress } = this.props;
-    const { weight, reps } = this.state;
-    const select = [
-      {
-        label: 'weight',
-        min: this.weightMin,
-        add: this.weightAdd,
-        value: weight,
-      }, {
-        label: 'reps',
-        min: this.setsMin,
-        add: this.setsAdd,
-        value: reps,
-      },
-    ];
-    const ExList = [
-      {
-        latest: true,
-        content: '10 weight X 10 reps',
-        status: 'Previous',
-      },
-    ];
-
+    const {
+      classes, currentWeek, location, dayRehabExercisesRecords,
+    } = this.props;
+    const { state } = location;
+    const { exe, itemID } = state;
+    const {
+      name, reps, sets, time,
+    } = exe;
+    const thisExerciseDetail = { name, sets, reps: reps === 'empty' ? time : reps };
+    const ExList = this.dealRenderExerciseRecord(dayRehabExercisesRecords)[itemID];
     return (
       <MainComponent
         backgroundImage="https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg"
-        title="Workout"
-        progress={progress}
+        progress={itemID}
+        tapBarContent={false}
         currentWeek={currentWeek}
         currentPage={2}
         FooterContent={1}
@@ -96,8 +82,8 @@ class ExerciseIndex extends React.Component {
 
             <ExerciseComponent
               step={10}
-              select={select}
               ExList={ExList}
+              thisExerciseDetail={thisExerciseDetail}
             />
 
           </Grid>
@@ -113,4 +99,14 @@ ExerciseIndex.propTypes = {
   currentWeek: PropTypes.number,
 };
 
-export default withStyles(styles)(ExerciseIndex);
+function mapStateToProps(state) {
+  const {
+    dayRehabExercisesRecords,
+  } = state.Rehab;
+  return {
+    dayRehabExercisesRecords,
+  };
+}
+
+
+export default connect(mapStateToProps, { setRehabExercisesRecordsByDay })(withStyles(styles)(ExerciseIndex));

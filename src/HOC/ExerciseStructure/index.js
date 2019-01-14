@@ -38,7 +38,7 @@ const styles = theme => ({
 const ExerciseStructure = (props) => {
   const {
     classes, select, ExList, onSaveClick, youtbueID, onOpen, finishCurrentExercise, dailyExerciseLength,
-    onClose, youtubeOpenStatus, title, history, thisExerciseDetail, currentExerciseOrder, onFinishAllExercise, historyForSpecificExercise,
+    onClose, youtubeOpenStatus, title, history, thisExerciseDetail, currentExerciseOrder, onFinishAllExercise, historyForSpecificExercise, needYoutube, needHistory,
   } = props;
   const onYoutubeOpen = () => {
     onOpen('youtube');
@@ -52,6 +52,8 @@ const ExerciseStructure = (props) => {
   const onHistoryOpen = () => {
     onOpen('history');
   };
+
+  console.log(thisExerciseDetail);
   return (
     <Grid
       container
@@ -65,29 +67,37 @@ const ExerciseStructure = (props) => {
       alignItems="stretch"
       spacing={24}
     >
+      {!needYoutube && (
       <Youtube
         title={title}
         open={!!youtubeOpenStatus}
         onYoutubeClose={onYoutubeClose}
         youtbueID={youtbueID}
       />
+      )}
+      {!needHistory && (
       <History
         title={title}
         onHistoryClose={onHistoryClose}
         history={history}
         historyForSpecificExercise={historyForSpecificExercise}
       />
+      )}
       <Grid container item>
         <Card style={{
           width: '100%', height: '25vh', borderRadius: '10px', position: 'relative',
         }}
         >
+          {!needHistory && (
           <div className={classes.card} onClick={onHistoryOpen} style={{ backgroundColor: 'unset' }}>
             <HistoryIcon style={{ fontSize: '30px' }} color="primary" />
           </div>
+          )}
+          {!needYoutube && (
           <div className={classes.card} onClick={onYoutubeOpen} style={{ bottom: '0', backgroundColor: 'unset' }}>
             <PlayCircleIcon color="primary" style={{ fontSize: '30px' }} />
           </div>
+          )}
           <Card color="primary" className={classes.card} style={{ right: '0' }}>
             <Typography className={classes.inlineT} color="secondary">{`${thisExerciseDetail ? thisExerciseDetail.sets : 0}`}</Typography>
             <Typography className={classes.inlineT} color="secondary">X</Typography>

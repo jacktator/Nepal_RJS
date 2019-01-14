@@ -176,7 +176,9 @@ export const getDailyProgramExercise = data => (dispatch) => {
       const dealedExercises = dealStringToExerciseArray(exercises);
       dispatch(setExercises(dealedExercises));
     })
-    .catch();
+    .catch(
+      err => console.log(err),
+    );
 };
 
 // create a new row at day_${number} table as a new record

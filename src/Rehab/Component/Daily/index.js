@@ -8,7 +8,7 @@ import Component from './component';
 import MainComponent from '../../../HOC/PageStructure';
 import { styles } from '../../styles';
 import {
-  getDailyRehab, getPosture, getInjury, createNewRehab, showQuestionnaireForCreate, finishQuerryDailyData, destructure, keepExercise,
+  getDailyRehab, getPosture, getInjury, createNewRehab, showQuestionnaireForCreate, finishQuerryDailyData, destructure, keepExercise, setRehabExercisesRecordsByDay, setRenderExercises,
 } from '../../actions';
 import Dialog from '../../../HOC/Dialog';
 import Questionnaire from './questionnaire';
@@ -32,6 +32,7 @@ class MainRehab extends React.PureComponent {
       renderExercise: [],
       dialogData: [],
       dialogIndex: 0,
+      ExList: [],
     };
     this.midPartTabsValueHandleChange = this.midPartTabsValueHandleChange.bind(this);
     this.handleQuestionnaireClose = this.handleQuestionnaireClose.bind(this);
@@ -46,6 +47,7 @@ class MainRehab extends React.PureComponent {
     this.keepRenderExercisesState = this.keepRenderExercisesState.bind(this);
     this.setRenderExercisesState = this.setRenderExercisesState.bind(this);
     this.keepExerciseFetch = this.keepExerciseFetch.bind(this);
+    this.setRenderExercisesRecord = this.setRenderExercisesRecord.bind(this);
   }
 
   componentDidMount() {
@@ -59,6 +61,7 @@ class MainRehab extends React.PureComponent {
   componentDidUpdate(prevProps, prevState) {
     if ((this.state.midPartTabsValue !== prevState.midPartTabsValue) || (this.props.selectedRehabExercises !== prevProps.selectedRehabExercises)) {
       this.setRenderExercisesState();
+      this.setRenderExercisesRecord();
       console.log('change!');
     }
   }
@@ -112,43 +115,57 @@ class MainRehab extends React.PureComponent {
     this.setState({ midPartTabsValue: value });
   }
 
+
   setRenderExercisesState() {
     const { acf } = this.props.selectedRehabExercises;
     const s = acf && acf[`day${this.state.midPartTabsValue}`];
-    console.log('s', s);
+    console.log(s);
     console.log('sdasdasd', this.props.selectedRehabExercises.acf);
     console.log(this.state.midPartTabsValue);
-    if (s === undefined || '') {
+    if (s === undefined || s === '') {
+      this.props.setRenderExercises([]);
       return;
     }
     const a = destructure(s);
-    const m = [].concat(JSON.parse(JSON.stringify(this.state.renderExercise)));
+    // const m = [].concat(JSON.parse(JSON.stringify(this.state.renderExercise)));
+    const m = [].concat(JSON.parse(JSON.stringify(this.props.renderExercises)));
     a.forEach((v, k) => {
       if (v === undefined) { return; }
       m[k] = v;
     });
-    this.setState({ renderExercise: m });
+    this.props.setRenderExercises(m);
+    // this.setState({ renderExercise: m });
   }
 
   keepRenderExercisesState() {
     const a = Object.assign({}, JSON.parse(JSON.stringify(this.state.dialogData[this.state.exerciseSelected])));
-    const m = [].concat(JSON.parse(JSON.stringify(this.state.renderExercise)));
+    // const m = [].concat(JSON.parse(JSON.stringify(this.state.renderExercise)));
+    const m = [].concat(JSON.parse(JSON.stringify(this.props.renderExercises)));
     m[this.state.dialogIndex] = a;
-    this.setState({ renderExercise: m, showChangeDialog: false });
+    this.props.setRenderExercises(m);
+    this.setState({ showChangeDialog: false });
+    // this.setState({ renderExercise: m, showChangeDialog: false });
     this.setState({ exerciseSelected: 0 });
   }
 
   keepExerciseFetch() {
-    this.props.keepExercise(this.state.renderExercise);
+    this.props.keepExercise(this.props.renderExercises);
   }
+
+  setRenderExercisesRecord() {
+    const data = this.props.rehabExercisesRecorded;
+    const m = [...data].find(v => v.acf.progress === `${this.state.midPartTabsValue}`);
+    this.props.setRehabExercisesRecordsByDay(m || []);
+  }
+
 
   render() {
     const {
-      classes, showCreationQuestionnaire, querryCreating, querryDailyData, posture, injury,
+      classes, showCreationQuestionnaire, querryCreating, querryDailyData, posture, injury, renderExercises,
     } = this.props;
     console.log(this.props.selectedRehabExercises.day1);
     const {
-      currentWeek, midPartTabsValue, showDiscription, title, injurySelected,
+      currentWeek, midPartTabsValue, showDiscription, title, injurySelected, ExList,
       postureSelected, exerciseSelected, dialogData, showChangeDialog, renderExercise,
     } = this.state;
     return (
@@ -217,8 +234,11 @@ class MainRehab extends React.PureComponent {
                 injuryExes={injury}
                 postureExes={posture}
                 openDialog={this.handleOpenChangeDialog}
-                renderExercise={renderExercise}
+                renderExercise={renderExercises}
                 keepExercise={this.keepExerciseFetch}
+                pre={this.state.midPartTabsValue < new Date().getDay()}
+                progress={midPartTabsValue}
+                ExList={ExList}
               />
             </Paper>
           </Grid>
@@ -236,12 +256,12 @@ MainRehab.propTypes = {
 
 function mapStateToProps(state) {
   const {
-    posture, injury, showCreationQuestionnaire, querryCreating, querryDailyData, selectedRehabExercises,
+    posture, injury, showCreationQuestionnaire, querryCreating, querryDailyData, selectedRehabExercises, rehabExercisesRecorded, renderExercises,
   } = state.Rehab;
   return {
-    posture, injury, showCreationQuestionnaire, querryCreating, querryDailyData, selectedRehabExercises,
+    posture, injury, showCreationQuestionnaire, querryCreating, querryDailyData, selectedRehabExercises, rehabExercisesRecorded, renderExercises,
   };
 }
 export default connect(mapStateToProps, {
-  getDailyRehab, getPosture, getInjury, createNewRehab, showQuestionnaireForCreate, finishQuerryDailyData, keepExercise,
+  getDailyRehab, getPosture, getInjury, createNewRehab, showQuestionnaireForCreate, finishQuerryDailyData, keepExercise, setRehabExercisesRecordsByDay, setRenderExercises,
 })(withStyles(styles)(MainRehab));

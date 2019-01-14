@@ -9,7 +9,7 @@ import ExercisePage from './Component/Exercise';
 const Rehab = props => (
   <Switch>
     <Route path="/rehab/content" component={DailyPage} />
-    <Route path="/rehab/training" component={ExercisePage} />
+    <Route path="/rehab/training/:exerciseOrder" component={ExercisePage} />
     <Redirect from="/rehab/" to="/rehab/content" />
   </Switch>
 );

@@ -34,13 +34,15 @@ export const setInjury = data => ({ type: 'SET_INJURY', payload: data });
 export const showQuestionnaireForCreate = data => ({ type: 'SHOW_QUESTIONNAIRE_CREATE', payload: data });
 export const fetchingCreatingRehab = data => ({ type: 'QUERRY_CREATING', payload: data });
 export const selectedRehabExercises = data => ({ type: 'SET_SELECTED_EXERCISES', payload: data });
-export const rehabExercisesRecorded = data => ({ type: 'SET_REHAB_EXERCISE_RECORDED', payload: data });
+export const setRenderExercises = data => ({ type: 'SET_RENDER_EXERCISES', payload: data });
+export const setRehabExercisesRecorded = data => ({ type: 'SET_REHAB_EXERCISE_RECORDED', payload: data });
+export const setRehabExercisesRecordsByDay = data => ({ type: 'SET_DAY_EXERCISE_DATA', payload: data });
 export const finishQuerryDailyData = data => ({ type: 'FINISH_QUERRY_DAILY_DATA', payload: data });
 
 export const keepExercise = data => (dispatch) => {
   console.log('keepExercise', data);
   const a = data.map(v => Object.values(v).join()).join(';');
-  axios.post(`/rehab_program/${sessionStorage.rehabProgressID}`, { fields: { [`day${new Date().getDay()}`]: a } })
+  axios.post(`/rehab_program/${sessionStorage.rehabProgrammeID}`, { fields: { [`day${new Date().getDay()}`]: a } })
     .then(
       (res) => {
         dispatch(selectedRehabExercises(res.data));
@@ -55,17 +57,22 @@ export const keepExercise = data => (dispatch) => {
   console.log(a);
 };
 
-export const getRehabRecord = id => (dispatch) => {
-  axios.get(`/rehab_record?filter[meta_key]=rehab_program_id&filter[meta_value]=${id}`)
-    .then(
-      (res) => {
-        console.log(res);
-        dispatch(rehabExercisesRecorded(res.data));
-      },
-    )
-    .catch(
-      err => console.log(err),
-    );
+
+export const createRehabRecord = () => (dispatch) => {
+  const date = new Date().getDay();
+  axios.post('/rehab_record', { fields: { progress: date, user_id: sessionStorage.user_id, data: '' }, status: 'publish' })
+    .then((res) => {
+      sessionStorage.setItem('rehabTodayRecordId', res.data.id);
+      console.log(res);
+    })
+    .catch(err => console.log(err));
+};
+
+export const updateRehabRecord = (data) => {
+  const { rehabTodayRecordId } = sessionStorage;
+  axios.post(`/rehab_record/${rehabTodayRecordId}`, { fields: { data } })
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
 };
 
 export const createNewRehab = data => (dispatch) => {
@@ -128,6 +135,19 @@ export const getInjury = data => (dispatch) => {
     );
 };
 
+export const getRehabRecordCallback = res => (dispatch) => {
+  const date = new Date().getDay();
+  console.log('callback', res);
+  const a = [...res.data];
+  const m = a.map(v => ({ id: v.id, progress: v.acf.progress, data: v.acf.data }));
+  const today = [...m].find(v => v.progress === `${date}`);
+  dispatch(setRehabExercisesRecorded(m));
+  if (today) {
+    sessionStorage.setItem('rehabTodayRecordId', today.id);
+    dispatch(setRehabExercisesRecordsByDay(today));
+  } dispatch(createRehabRecord());
+};
+
 export const getDailyRehab = day => (dispatch) => {
   axios.get(`/rehab_program?filter[author]=${sessionStorage.user_id}&orderby=date&order=desc`)
     .then((res) => {
@@ -135,7 +155,7 @@ export const getDailyRehab = day => (dispatch) => {
       if (res.data.length === 0) { dispatch(showQuestionnaireForCreate(true)); return; }
       if (res.data[0].finish === true) { dispatch(showQuestionnaireForCreate(true)); }
       const { injury, posture } = res.data[0].acf;
-      sessionStorage.setItem('rehabProgressID', res.data[0].id);
+      sessionStorage.setItem('rehabProgrammeID', res.data[0].id);
       dispatch(selectedRehabExercises(res.data[0]));
       const a = axios.get(`/rehab_record?filter[meta_key]=rehab_program_id&filter[meta_value]=${res.data[0].id}`);
       const b = posture !== 'empty' && axios.get(`/${rehabProgramme.posture[posture]}?filter[posts_per_page]=30`);
@@ -150,7 +170,7 @@ export const getDailyRehab = day => (dispatch) => {
             const injuryTemp = destructureTemp(cc.data);
             console.log(postureTemp);
             console.log(injuryTemp);
-            dispatch(rehabExercisesRecorded(aa.data));
+            dispatch(getRehabRecordCallback(aa));
             dispatch(setPosture(postureTemp));
             dispatch(setInjury(injuryTemp));
             dispatch(finishQuerryDailyData(false));
