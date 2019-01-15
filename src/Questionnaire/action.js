@@ -20,7 +20,7 @@ export const createProgram = () => (dispatch) => {
     exercise_place: location,
     select_finish: 0,
   };
-  axios.post('https://nepal.sk8tech.io/wp-json/wp/v2/program',
+  axios.post('/program',
     { status: 'publish', fields })
     .then((res) => {
       console.log(res);
@@ -62,7 +62,7 @@ export const createQuestionnaire = data => (dispatch) => {
     daily_activity: data.active,
     current_activity: data.exercise,
   };
-  axios.post('https://nepal.sk8tech.io/wp-json/wp/v2/questionnaire',
+  axios.post('/questionnaire',
     {
       status: 'publish',
       fields,
@@ -79,4 +79,10 @@ export const createQuestionnaire = data => (dispatch) => {
     .catch((error) => {
       console.log(error);
     });
+};
+
+export const updateUserInfo = data => (dispatch) => {
+  axios.post(`/users/${sessionStorage.user_id}`, { name: data.name, fields: { weight: data.weight, age: data.age, gender: data.gender } })
+    .then((res) => { console.log(res); })
+    .catch((err) => { console.log(err); });
 };

@@ -15,7 +15,7 @@ import renderComponent from './Component';
 import Dialog from '../HOC/Dialog';
 import styles from './styles';
 import { initialData } from './Component/contentData';
-import { createQuestionnaire } from './action';
+import { createQuestionnaire, updateUserInfo } from './action';
 
 class index extends React.PureComponent {
   constructor(props) {
@@ -37,8 +37,11 @@ class index extends React.PureComponent {
   }
 
   handleNext() {
-    const { activeStep } = this.state;
+    const { activeStep, first } = this.state;
     const { page, files } = this.validation();
+    const {
+      name, age, weight, gender,
+    } = first;
     if (activeStep < 6) {
       if (page[activeStep]) {
         this.setState(prevState => ({
@@ -50,6 +53,9 @@ class index extends React.PureComponent {
     }
     if (activeStep === 6 && page[activeStep]) {
       this.setState({ loading: true });
+      this.props.updateUserInfo({
+        name, age, weight, gender,
+      });
       this.props.createQuestionnaire(files);
       return;
     }
@@ -158,4 +164,4 @@ index.propTypes = {
   queryStatus: PropTypes.bool.isRequired,
 };
 
-export default connect(mapStateToProps, { createQuestionnaire })(withStyles(styles, { withTheme: true })(index));
+export default connect(mapStateToProps, { createQuestionnaire, updateUserInfo })(withStyles(styles, { withTheme: true })(index));
