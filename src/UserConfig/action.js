@@ -71,3 +71,38 @@ export const getUserData = callBack => (dispatch) => {
       dispatch(setQueryProfile(false));
     }).catch(error => console.log(error));
 };
+
+
+export const uploadPicture = file => (dispatch) => {
+  const data2 = new FormData();
+  data2.append('file', file);
+  return axios.post('/media', data2,
+    {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+    .then((res) => {
+      dispatch(updateAvatar(res.data.source_url));
+      console.log('uploadPicture');
+      console.log(res);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+
+export const updateAvatar = url => (dispatch) => {
+  axios.put(`/users/${sessionStorage.user_id}`,
+    { fields: { photo: url } })
+    .then((res) => {
+      dispatch(changeAvatar(res.data.acf.photo));
+      dispatch(setQueryProfile(false));
+      console.log('update');
+      console.log(res);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};

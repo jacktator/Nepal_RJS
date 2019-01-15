@@ -82,7 +82,7 @@ const styles = theme => ({
 const Profile = (props) => {
   const {
     classes, name, bod, avatar, weight, openInfo,
-    openPassword,
+    openPassword, handelAvatarChange,
   } = props;
   return (
     <Grid container className={classes.container} justify="center" alignItems="center">
@@ -91,7 +91,7 @@ const Profile = (props) => {
 
           <Grid className={classes.avatarGridContainer}>
             <Avatar className={classes.avatarContainer} component={Paper} alt="avatar" src={avatar} />
-            <input accept="image/*" className={classes.input} id="icon-button-file" type="file" />
+            <input accept="image/*" onChange={handelAvatarChange} className={classes.input} id="icon-button-file" type="file" />
             <label htmlFor="icon-button-file">
               <IconButton className={classes.avatarButton} component={Paper}>
                 <CloudUploadIcon style={{ fontSize: '5vmin' }} color="secondary" />

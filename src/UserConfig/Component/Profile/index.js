@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
 import Input from '@material-ui/core/Input';
 import Component from './Component';
-import { getUserData, setQueryProfile } from '../../action';
+import { getUserData, setQueryProfile, uploadPicture } from '../../action';
 import Loading from '../../../HOC/Loading';
 import Dialog from '../../../HOC/Dialog';
 
@@ -14,6 +14,9 @@ class UserProfile extends React.PureComponent {
       name: '',
       dob: '',
       weight: '',
+      oldPassword: '',
+      newPassword: '',
+      rePassword: '',
       updateInfoOpen: false,
       updatePasswordOpen: false,
     };
@@ -21,8 +24,9 @@ class UserProfile extends React.PureComponent {
     this.updataState = this.updataState.bind(this);
     this.openUpdataInfoDialog = this.openUpdataInfoDialog.bind(this);
     this.closeUpdataInfoDialog = this.closeUpdataInfoDialog.bind(this);
-    this.openUpdataPasswordDialog = this.openUpdataInfoDialog.bind(this);
-    this.closeUpdataPasswordDialog = this.closeUpdataInfoDialog.bind(this);
+    this.openUpdataPasswordDialog = this.openUpdataPasswordDialog.bind(this);
+    this.closeUpdataPasswordDialog = this.closeUpdataPasswordDialog.bind(this);
+    this.handelAvatarChange = this.handelAvatarChange.bind(this);
   }
 
   componentDidMount() {
@@ -35,6 +39,12 @@ class UserProfile extends React.PureComponent {
     this.setState({
       name, dob, weight,
     });
+  }
+
+  handelAvatarChange(event) {
+    console.log(event.target.files[0]);
+    this.props.setQueryProfile(true);
+    this.props.uploadPicture(event.target.files[0]);
   }
 
   updataState(event) {
@@ -60,7 +70,7 @@ class UserProfile extends React.PureComponent {
   render() {
     const { queryProfile } = this.props;
     const {
-      updateInfoOpen, updatePasswordOpen, name, dob, weight,
+      updateInfoOpen, updatePasswordOpen, name, dob, weight, oldPassword, newPassword, rePassword,
     } = this.state;
     return (
       <>
@@ -110,8 +120,35 @@ class UserProfile extends React.PureComponent {
           title="Change password"
           discription=""
           media={
-            <div>ssss</div>
-          }
+            <>
+              <Typography color="primary">Old Password</Typography>
+              <Input
+                value={oldPassword}
+                name="oldPassword"
+                onChange={this.updataState}
+                inputProps={{
+                  'aria-label': 'Description',
+                }}
+              />
+              <Typography color="primary">New Password</Typography>
+              <Input
+                value={newPassword}
+                name="newPassword"
+                onChange={this.updataState}
+                inputProps={{
+                  'aria-label': 'Description',
+                }}
+              />
+              <Typography color="primary">Repeat Password</Typography>
+              <Input
+                value={rePassword}
+                name="rePassword"
+                onChange={this.updataState}
+                inputProps={{
+                  'aria-label': 'Description',
+                }}
+              />
+            </>}
         />
         <Component
           {...this.state}
@@ -121,6 +158,7 @@ class UserProfile extends React.PureComponent {
           openPassword={this.openUpdataPasswordDialog}
           closeInfo={this.closeUpdataInfoDialog}
           closePassword={this.closeUpdataPasswordDialog}
+          handelAvatarChange={this.handelAvatarChange}
         />
       </>
     );
@@ -137,4 +175,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, { getUserData, setQueryProfile })(UserProfile);
+export default connect(mapStateToProps, { getUserData, setQueryProfile, uploadPicture })(UserProfile);
