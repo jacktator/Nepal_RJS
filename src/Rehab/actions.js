@@ -21,6 +21,17 @@ export const destructure = (data) => {
   return result1;
 };
 
+export const destructureExeData = (data) => {
+  if (!data) {
+    return [];
+  }
+  const m = data;
+  const result = [...m.split(';').map((v, k) => [...v.split(',').map(vv => vv)])];
+  console.log('destructureExeDatadahsodjhaoshspdojopasjdoihasdhiausgdiygasudgaksdhiuaisugdkjb', result);
+
+  return result;
+};
+
 const destructureTemp = (data) => {
   const result = {
     mobility: [...data.filter(v => v.acf.type === '0').map(v => v.acf)],
@@ -60,7 +71,13 @@ export const keepExercise = data => (dispatch) => {
 
 export const createRehabRecord = () => (dispatch) => {
   const date = new Date().getDay();
-  axios.post('/rehab_record', { fields: { progress: date, user_id: sessionStorage.user_id, data: '' }, status: 'publish' })
+  console.log('somethingwrongdate--------------------------------------------', date);
+  axios.post('/rehab_record', {
+    fields: {
+      progress: date, user_id: sessionStorage.user_id, rehab_program_id: sessionStorage.rehabProgrammeID, data: '',
+    },
+    status: 'publish',
+  })
     .then((res) => {
       sessionStorage.setItem('rehabTodayRecordId', res.data.id);
       console.log(res);
@@ -68,17 +85,22 @@ export const createRehabRecord = () => (dispatch) => {
     .catch(err => console.log(err));
 };
 
-export const updateRehabRecord = (data) => {
+export const updateRehabRecord = data => (dispatch) => {
   const { rehabTodayRecordId } = sessionStorage;
   axios.post(`/rehab_record/${rehabTodayRecordId}`, { fields: { data } })
-    .then(res => console.log(res))
+    .then((res) => {
+      const m = res.data.acf.data;
+      const result = destructureExeData(m);
+      dispatch(setRehabExercisesRecordsByDay({ id: res.data.id, progress: new Date().getDay(), data: result }));
+      console.log(res);
+    })
     .catch(err => console.log(err));
 };
 
 export const createNewRehab = data => (dispatch) => {
   axios.post('/rehab_program', {
     fields: {
-      progress: 1,
+      progress: new Date().getDay(),
       posture: data.posture >= arrayOfRehab.posture.length ? 'empty' : arrayOfRehab.posture[data.posture],
       injury: data.injury >= arrayOfRehab.injury.length ? 'empty' : arrayOfRehab.injury[data.injury],
       day0: '',
@@ -139,13 +161,21 @@ export const getRehabRecordCallback = res => (dispatch) => {
   const date = new Date().getDay();
   console.log('callback', res);
   const a = [...res.data];
-  const m = a.map(v => ({ id: v.id, progress: v.acf.progress, data: v.acf.data }));
-  const today = [...m].find(v => v.progress === `${date}`);
+  const m = a.map(v => ({ id: v.id, progress: v.acf.progress, data: destructureExeData(v.acf.data) }));
+  const today = [...m].find(v => `${v.progress}` === `${date}`);
   dispatch(setRehabExercisesRecorded(m));
   if (today) {
     sessionStorage.setItem('rehabTodayRecordId', today.id);
+    console.log('todaysssssssssssssssssssssssssssssssssssss', today);
     dispatch(setRehabExercisesRecordsByDay(today));
-  } dispatch(createRehabRecord());
+  } else { dispatch(createRehabRecord()); }
+};
+
+export const getRehabTempCallback = (res1, res2) => (dispatch) => {
+  const postureTemp = destructureTemp(res1);
+  const injuryTemp = destructureTemp(res2);
+  dispatch(setPosture(postureTemp));
+  dispatch(setInjury(injuryTemp));
 };
 
 export const getDailyRehab = day => (dispatch) => {
@@ -166,13 +196,8 @@ export const getDailyRehab = day => (dispatch) => {
             console.log('acct', aa);
             console.log('perms', bb);
             console.log('c', cc);
-            const postureTemp = destructureTemp(bb.data);
-            const injuryTemp = destructureTemp(cc.data);
-            console.log(postureTemp);
-            console.log(injuryTemp);
             dispatch(getRehabRecordCallback(aa));
-            dispatch(setPosture(postureTemp));
-            dispatch(setInjury(injuryTemp));
+            dispatch(getRehabTempCallback(bb.data, cc.data));
             dispatch(finishQuerryDailyData(false));
           }),
         );

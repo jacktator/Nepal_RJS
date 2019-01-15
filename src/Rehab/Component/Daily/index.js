@@ -51,6 +51,7 @@ class MainRehab extends React.PureComponent {
   }
 
   componentDidMount() {
+    console.log('history================', this.props.history.action);
     const nowDay = new Date().getDay();
     this.setState({ currentWeek: nowDay + 1, midPartTabsValue: nowDay });
     this.props.finishQuerryDailyData(true);
@@ -154,8 +155,8 @@ class MainRehab extends React.PureComponent {
 
   setRenderExercisesRecord() {
     const data = this.props.rehabExercisesRecorded;
-    const m = [...data].find(v => v.acf.progress === `${this.state.midPartTabsValue}`);
-    this.props.setRehabExercisesRecordsByDay(m || []);
+    const m = [...data].find(v => v.progress === `${this.state.midPartTabsValue}`);
+    this.props.setRehabExercisesRecordsByDay(m || { id: this.state.midPartTabsValue, progress: this.state.midPartTabsValue, data: [] });
   }
 
 

@@ -37,8 +37,10 @@ const styles = theme => ({
 
 const ExerciseStructure = (props) => {
   const {
-    classes, select, ExList, onSaveClick, youtbueID, onOpen, finishCurrentExercise, dailyExerciseLength,
-    onClose, youtubeOpenStatus, title, history, thisExerciseDetail, currentExerciseOrder, onFinishAllExercise, historyForSpecificExercise, needYoutube, needHistory,
+    classes, select, ExList, onSaveClick, youtbueID, onOpen, finishCurrentExercise,
+    dailyExerciseLength, rehab, onClose, youtubeOpenStatus, title,
+    history, thisExerciseDetail, currentExerciseOrder, onFinishAllExercise,
+    historyForSpecificExercise, needYoutube, needHistory,
   } = props;
   const onYoutubeOpen = () => {
     onOpen('youtube');
@@ -130,7 +132,7 @@ const ExerciseStructure = (props) => {
             finishCurrentExercise
               ? (
                 currentExerciseOrder * 1 < dailyExerciseLength
-                  ? <Button fullWidth variant="contained" color="primary" component={Link} to={`/workout/exercise/${currentExerciseOrder * 1 + 1}`}><Typography color="secondary">FINISH</Typography></Button>
+                  ? <Button fullWidth variant="contained" color="primary" component={Link} to={rehab ? `/rehab/training/${currentExerciseOrder * 1 + 1}` : `/workout/exercise/${currentExerciseOrder * 1 + 1}`}><Typography color="secondary">FINISH</Typography></Button>
                   : <Button fullWidth variant="contained" color="primary" onClick={onFinishAllExercise}><Typography color="secondary">FINISH</Typography></Button>
               )
               : <Button fullWidth variant="contained" color="primary" onClick={onSaveClick}><Typography color="secondary">SAVE</Typography></Button>

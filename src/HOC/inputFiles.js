@@ -100,7 +100,7 @@ class InputFiles extends React.Component {
 
   render() {
     const {
-      classes, value, onChangeHandle, type, confirm, light, number, fullwidth, onErrorChangeHandle,
+      classes, value, onChangeHandle, type, confirm, light, number, fullwidth,
     } = this.props;
     const { showPassword } = this.state;
     const { error, resDiscription } = typeValidation(type, value, confirm);

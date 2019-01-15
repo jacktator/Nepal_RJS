@@ -7,6 +7,7 @@ import Questionnaire from './Questionnaire';
 import MainMenu from './MainMenu';
 import Workout from './Workout';
 import Rehab from './Rehab';
+import Logout from './HOC/Logout';
 
 
 export default () => (
@@ -17,5 +18,6 @@ export default () => (
     <PrivateRouter path="/mainmenu" component={MainMenu} />
     <PrivateRouter path="/workout" component={Workout} />
     <PrivateRouter path="/rehab" component={Rehab} />
+    <Route path="/logout" component={Logout} />
   </Switch>
 );

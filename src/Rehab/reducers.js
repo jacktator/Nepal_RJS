@@ -6,7 +6,7 @@ export default function (state = {
   selectedRehabExercises: {},
   querryDailyData: false,
   rehabExercisesRecorded: [],
-  dayRehabExercisesRecords: [],
+  dayRehabExercisesRecords: { id: 0, progress: 0, data: [] },
   renderExercises: [],
 }, action) {
   switch (action.type) {

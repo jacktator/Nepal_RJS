@@ -13,52 +13,86 @@ import MainComponent from '../../../HOC/PageStructure';
 import SpeedDialTooltipOpen from '../../../HOC/speedDial';
 import { add, min } from '../../../HOC/numberSelect';
 import { styles } from '../../styles';
-import { setRehabExercisesRecordsByDay } from '../../actions';
+import { setRehabExercisesRecordsByDay, updateRehabRecord, destructureExeData } from '../../actions';
 
 class ExerciseIndex extends React.PureComponent {
   constructor(props) {
     super(props);
+    this.state = {
+      exe: {},
+    };
     this.handleSaveButtonClicked = this.handleSaveButtonClicked.bind(this);
     this.dealRenderExerciseRecord = this.dealRenderExerciseRecord.bind(this);
+    this.returnBack = this.returnBack.bind(this);
+  }
+
+  componentDidUpdate() {
+    console.log('componentDidMount------------------------------------------------------------', this.props.renderExercises.length);
+    if (!this.props.match.params.exerciseOrder) {
+      console.log('111111111111111111111');
+      console.log('exerciseOrder', this.props.match.params.exerciseOrder);
+      window.location.hash = '#/rehab/content';
+    }
+    if (this.props.match.params.exerciseOrder >= this.props.renderExercises.length) {
+      console.log('22222222222222222222222222');
+      console.log('exerciseOrder', this.props.match.params.exerciseOrder);
+      window.location.hash = '#/rehab/content';
+    }
   }
 
   handleSaveButtonClicked() {
-    const m = [...this.props.dayRehabExercisesRecords.split(';')];
-    const { state } = this.props.location;
-    const { exe, itemID } = state;
+    console.log(this.props.dayRehabExercisesRecords);
+    const m = JSON.parse(JSON.stringify([...this.props.dayRehabExercisesRecords.data]));
+    const itemID = this.props.match.params.exerciseOrder;
+    const exe = this.props.renderExercises[itemID];
     const {
       name, reps, sets, time,
     } = exe;
+    if (m[itemID].length >= sets * 1) {
+      return;
+    }
     const thisExerciseDetail = { name, sets, reps: reps === 'empty' ? time : reps };
-    m[itemID] ? m[itemID] = `${thisExerciseDetail.reps}` : m[itemID] = `${m[itemID]},${thisExerciseDetail.reps}`;
+    !m[itemID] ? m[itemID] = `${thisExerciseDetail.reps}` : m[itemID] = `${m[itemID].join(',')},${thisExerciseDetail.reps}`;
+    console.log('ssssssssssssssssssssssssssssssadsd', m);
     const result = m.join(';');
-    this.props.setRehabExercisesRecorded(result);
+    this.props.updateRehabRecord(result);
   }
 
   dealRenderExerciseRecord(m) {
     const n = m.data;
     const f = n.split(';').map((v) => {
-      const s = v.split(',').map(vv => ({ reps: vv }));
+      const s = v.split(',').map();
       return s;
     });
     return f;
   }
 
+  returnBack() {
+    this.props.history.goBack();
+  }
+
   render() {
     const {
-      classes, currentWeek, location, dayRehabExercisesRecords,
+      classes, currentWeek, dayRehabExercisesRecords,
     } = this.props;
-    const { state } = location;
-    const { exe, itemID } = state;
+    const exeOrder = this.props.match.params.exerciseOrder;
+    const exe = this.props.renderExercises[exeOrder];
     const {
       name, reps, sets, time,
-    } = exe;
-    const thisExerciseDetail = { name, sets, reps: reps === 'empty' ? time : reps };
-    const ExList = this.dealRenderExerciseRecord(dayRehabExercisesRecords)[itemID];
+    } = exe || {
+      name: 'rehab', reps: '20', sets: '3', time: '10s',
+    };
+    const thisExerciseDetail = {
+      name, sets, reps: reps === 'empty' ? time : reps, time: reps === 'empty',
+    };
+    console.log('record++++++++++++++++++++++++++++++++++++++++++++++++++++', dayRehabExercisesRecords);
+    const mmm = dayRehabExercisesRecords.data || [];
+    const ExList = mmm.length !== 0 ? mmm[exeOrder] ? mmm[exeOrder].map(v => ({ reps: v })) : [] : [];
+    console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', ExList);
     return (
       <MainComponent
         backgroundImage="https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg"
-        progress={itemID}
+        progress={exeOrder}
         tapBarContent={false}
         currentWeek={currentWeek}
         currentPage={2}
@@ -69,7 +103,7 @@ class ExerciseIndex extends React.PureComponent {
             <Grid container item direction="column" alignContent="space-between" alignItems="center">
               <AppBar position="static">
                 <Toolbar style={{ justifyContent: 'space-between' }}>
-                  <IconButton className={classes.menuButton} color="secondary" aria-label="Menu">
+                  <IconButton className={classes.menuButton} onClick={this.returnBack} color="secondary" aria-label="Menu">
                     <LeftIcon style={{ fontSize: '30px' }} />
                   </IconButton>
                   <Typography className={classes.grow} variant="h6" color="secondary">Title</Typography>
@@ -82,8 +116,13 @@ class ExerciseIndex extends React.PureComponent {
 
             <ExerciseComponent
               step={10}
+              onSaveClick={this.handleSaveButtonClicked}
               ExList={ExList}
               thisExerciseDetail={thisExerciseDetail}
+              finishCurrentExercise={thisExerciseDetail.sets >= ExList.length}
+              currentExerciseOrder={exeOrder}
+              dailyExerciseLength={8}
+              rehab
             />
 
           </Grid>
@@ -101,12 +140,12 @@ ExerciseIndex.propTypes = {
 
 function mapStateToProps(state) {
   const {
-    dayRehabExercisesRecords,
+    dayRehabExercisesRecords, renderExercises,
   } = state.Rehab;
   return {
-    dayRehabExercisesRecords,
+    dayRehabExercisesRecords, renderExercises,
   };
 }
 
 
-export default connect(mapStateToProps, { setRehabExercisesRecordsByDay })(withStyles(styles)(ExerciseIndex));
+export default connect(mapStateToProps, { setRehabExercisesRecordsByDay, updateRehabRecord })(withStyles(styles)(ExerciseIndex));

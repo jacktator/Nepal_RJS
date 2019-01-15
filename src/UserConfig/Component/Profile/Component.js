@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -10,6 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import { Link } from 'react-router-dom';
 
 const styles = theme => ({
   root: {
@@ -36,8 +38,8 @@ const styles = theme => ({
   avatarContainer: {
     backgroundColor: theme.palette.secondary.main,
     marginTop: '-15vmin',
-    height: 'max-content',
-    width: 'max-content',
+    height: '15vmax',
+    width: '15vmax',
     position: 'relative',
 
   },
@@ -78,16 +80,17 @@ const styles = theme => ({
 });
 
 const Profile = (props) => {
-  const { classes } = props;
+  const {
+    classes, name, bod, avatar, weight, openInfo,
+    openPassword,
+  } = props;
   return (
     <Grid container className={classes.container} justify="center" alignItems="center">
       <Paper className={classes.root}>
         <Grid container className={classes.avatarGridContainer} justify="center">
 
           <Grid className={classes.avatarGridContainer}>
-            <Avatar className={classes.avatarContainer} component={Paper}>
-              <AccountCircle className={classes.avatar} color="primary" />
-            </Avatar>
+            <Avatar className={classes.avatarContainer} component={Paper} alt="avatar" src={avatar} />
             <input accept="image/*" className={classes.input} id="icon-button-file" type="file" />
             <label htmlFor="icon-button-file">
               <IconButton className={classes.avatarButton} component={Paper}>
@@ -99,26 +102,26 @@ const Profile = (props) => {
           <Grid container className={classes.contentContainer} spacing={16} direction="column" justify="space-around">
             <Grid item container justify="flex-start">
               <Typography className={classes.detailedLableHead} variant="h6" color="secondary">Name:  </Typography>
-              <Typography variant="h6" color="secondary">UserName</Typography>
+              <Typography variant="h6" color="secondary">{name}</Typography>
             </Grid>
             <Divider className={classes.divider} />
             <Grid item container justify="flex-start">
               <Typography className={classes.detailedLableHead} variant="h6" color="secondary">DoB:  </Typography>
-              <Typography variant="h6" color="secondary">1999 - 12 - 12</Typography>
+              <Typography variant="h6" color="secondary">{bod}</Typography>
             </Grid>
             <Divider className={classes.divider} />
             <Grid item container justify="flex-start">
               <Typography className={classes.detailedLableHead} variant="h6" color="secondary">weight:  </Typography>
-              <Typography variant="h6" color="secondary">100kg</Typography>
+              <Typography variant="h6" color="secondary">{weight} KG</Typography>
             </Grid>
             <Divider className={classes.divider} />
           </Grid>
 
           <Grid className={classes.contentContainer} container direction="column" justify="center" alignItems="center">
-            <Button color="secondary">Update Information</Button>
-            <Button color="secondary">Change Password</Button>
+            <Button color="secondary" onClick={openInfo}>Update Information</Button>
+            <Button color="secondary" onClick={openPassword}>Change Password</Button>
             <Button color="secondary">View Terms and Conditions</Button>
-            <Button color="secondary">Logout</Button>
+            <Button color="secondary" component={Link} to="/logout">Logout</Button>
           </Grid>
 
         </Grid>

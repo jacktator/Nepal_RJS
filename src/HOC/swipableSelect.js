@@ -66,7 +66,7 @@ class SwipeableTemporaryDrawer extends React.Component {
     } = this.props;
     const { bottom } = this.state;
 
-    const fullList = (arr) => (
+    const fullList = arr => (
       <div className={classes.fullList}>
         {!!arr && arr.map(text => (
           <Typography

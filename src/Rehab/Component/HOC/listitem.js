@@ -11,11 +11,11 @@ import { styles } from '../../styles';
 
 const HOCListItem = (props) => {
   const {
-    classes, exeData, funcs, keepExercise, pre, itemID, progress, ExList,
+    classes, exeData, funcs, keepExercise, pre, itemID,
   } = props;
   return (
     <ListItem>
-      <Paper className={classes.listItemPaper} component={exeData.selected ? Link : 'div'} to={{ pathname: `/rehab/training/${itemID}`, state: { exe: exeData, itemID, ExList: ExList[itemID] } }}>
+      <Paper className={classes.listItemPaper} component={exeData.selected ? Link : 'div'} to={`/rehab/training/${itemID}`}>
         <Grid container className={classes.root} style={{ height: '100%' }}>
 
           <Grid container className={classes.itemleft} justify="space-around" alignContent="space-around" alignItems="center">
