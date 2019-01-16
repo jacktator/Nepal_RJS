@@ -81,8 +81,8 @@ const styles = theme => ({
 
 const Profile = (props) => {
   const {
-    classes, name, bod, avatar, weight, openInfo,
-    openPassword, handelAvatarChange,
+    classes, name, dob, avatar, weight, openInfo,
+    openPassword, handelAvatarChange, gender, age,
   } = props;
   return (
     <Grid container className={classes.container} justify="center" alignItems="center">
@@ -106,8 +106,18 @@ const Profile = (props) => {
             </Grid>
             <Divider className={classes.divider} />
             <Grid item container justify="flex-start">
+              <Typography className={classes.detailedLableHead} variant="h6" color="secondary">Gender:  </Typography>
+              <Typography variant="h6" color="secondary">{gender}</Typography>
+            </Grid>
+            <Divider className={classes.divider} />
+            <Grid item container justify="flex-start">
+              <Typography className={classes.detailedLableHead} variant="h6" color="secondary">Age:  </Typography>
+              <Typography variant="h6" color="secondary">{age}</Typography>
+            </Grid>
+            <Divider className={classes.divider} />
+            <Grid item container justify="flex-start">
               <Typography className={classes.detailedLableHead} variant="h6" color="secondary">DoB:  </Typography>
-              <Typography variant="h6" color="secondary">{bod}</Typography>
+              <Typography variant="h6" color="secondary">{dob}</Typography>
             </Grid>
             <Divider className={classes.divider} />
             <Grid item container justify="flex-start">

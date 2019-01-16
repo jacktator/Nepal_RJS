@@ -18,7 +18,9 @@ export const queryRegister = data => ({ type: 'QUERY_REGISTER', payload: data })
 export const changeName = data => ({ type: 'SET_NAME', payload: data });
 export const changeWeight = data => ({ type: 'SET_WEIGHT', payload: data });
 export const changeAvatar = data => ({ type: 'SET_AVATAR', payload: data });
-export const changeBirthDate = data => ({ type: 'SET_BOD', payload: data });
+export const changeBirthDate = data => ({ type: 'SET_DOB', payload: data });
+export const changeGender = data => ({ type: 'SET_GENDER', payload: data });
+export const changeAge = data => ({ type: 'SET_AGE', payload: data });
 export const setQueryProfile = data => ({ type: 'QUERY_PROFILE', payload: data });
 
 export const loginAction = (userData, callBack) => (dispatch) => {
@@ -62,11 +64,45 @@ export const getUserData = callBack => (dispatch) => {
       res.data.name && dispatch(changeName(res.data.name));
       res.data.acf.weight && dispatch(changeWeight(res.data.acf.weight));
       res.data.acf.photo && dispatch(changeAvatar(res.data.acf.photo));
+      res.data.acf.gender && dispatch(changeGender(res.data.acf.gender));
+      res.data.acf.age && dispatch(changeAge(res.data.acf.age));
       res.data.acf.dateofbirth && dispatch(changeBirthDate(res.data.acf.dateofbirth));
       callBack({
         name: res.data.name,
         weight: res.data.acf.weight,
         dob: res.data.acf.dateofbirth,
+        gender: res.data.acf.gender,
+        age: res.data.acf.age,
+      });
+      dispatch(setQueryProfile(false));
+    }).catch(error => console.log(error));
+};
+
+export const updateUserData = (data, callBack) => (dispatch) => {
+  const userId = sessionStorage.getItem('user_id');
+  const {
+    name, weight, gender, age, dob,
+  } = data;
+  axios.put(`/Users/${userId}`, {
+    name,
+    fields: {
+      weight, gender, age, dob,
+    },
+  })
+    .then((res) => {
+      console.log(res.data);
+      res.data.name && dispatch(changeName(res.data.name));
+      res.data.acf.weight && dispatch(changeWeight(res.data.acf.weight));
+      res.data.acf.photo && dispatch(changeAvatar(res.data.acf.photo));
+      res.data.acf.gender && dispatch(changeGender(res.data.acf.gender));
+      res.data.acf.age && dispatch(changeAge(res.data.acf.age));
+      res.data.acf.dateofbirth && dispatch(changeBirthDate(res.data.acf.dateofbirth));
+      callBack({
+        name: res.data.name,
+        weight: res.data.acf.weight,
+        dob: res.data.acf.dateofbirth,
+        gender: res.data.acf.gender,
+        age: res.data.acf.age,
       });
       dispatch(setQueryProfile(false));
     }).catch(error => console.log(error));

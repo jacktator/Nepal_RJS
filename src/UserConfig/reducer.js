@@ -1,9 +1,11 @@
 export default function (state = {
   LoginStatus: false,
   name: '',
-  bod: '',
+  dob: '1999-01-01',
   avatar: 'https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg',
   weight: '',
+  age: '',
+  gender: '',
   RegisterStatus: false,
   queryLoginStatus: false,
   queryRegisterStatus: false,
@@ -39,9 +41,17 @@ export default function (state = {
       return {
         ...state, avatar: action.payload,
       };
-    case 'SET_BOD':
+    case 'SET_DOB':
       return {
-        ...state, bod: action.payload,
+        ...state, dob: action.payload,
+      };
+    case 'SET_AGE':
+      return {
+        ...state, age: action.payload,
+      };
+    case 'SET_GENDER':
+      return {
+        ...state, gender: action.payload,
       };
     case 'QUERY_PROFILE':
       return {

@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
 import Input from '@material-ui/core/Input';
 import Component from './Component';
-import { getUserData, setQueryProfile, uploadPicture } from '../../action';
+import {
+  getUserData, setQueryProfile, uploadPicture, updateUserData,
+} from '../../action';
 import Loading from '../../../HOC/Loading';
 import Dialog from '../../../HOC/Dialog';
 
@@ -14,6 +16,8 @@ class UserProfile extends React.PureComponent {
       name: '',
       dob: '',
       weight: '',
+      age: '',
+      gender: '',
       oldPassword: '',
       newPassword: '',
       rePassword: '',
@@ -27,6 +31,7 @@ class UserProfile extends React.PureComponent {
     this.openUpdataPasswordDialog = this.openUpdataPasswordDialog.bind(this);
     this.closeUpdataPasswordDialog = this.closeUpdataPasswordDialog.bind(this);
     this.handelAvatarChange = this.handelAvatarChange.bind(this);
+    this.onUpdateOkClick = this.onUpdateOkClick.bind(this);
   }
 
   componentDidMount() {
@@ -35,9 +40,11 @@ class UserProfile extends React.PureComponent {
   }
 
   initialState(data) {
-    const { name, dob, weight } = data;
+    const {
+      name, dob, weight, age, gender,
+    } = data;
     this.setState({
-      name, dob, weight,
+      name, dob, weight, age, gender,
     });
   }
 
@@ -67,10 +74,37 @@ class UserProfile extends React.PureComponent {
     this.setState({ updatePasswordOpen: false });
   }
 
+  onUpdateOkClick() {
+    const {
+      name, dob, weight, age, gender,
+    } = this.state;
+    this.closeUpdataInfoDialog();
+    console.log(name !== this.props.name);
+    console.log(dob);
+    console.log(this.props.dob);
+    console.log(dob !== this.props.dob);
+    console.log(weight !== this.props.weight);
+    console.log(age !== this.props.age);
+    console.log(gender !== this.props.gender);
+
+    if (
+      name !== this.props.name
+      || dob !== this.props.dob
+      || weight !== this.props.weight
+      || age !== this.props.age
+      || gender !== this.props.gender
+    ) {
+      this.props.setQueryProfile(true);
+      this.props.updateUserData({
+        name, dob, weight, age, gender,
+      }, this.initialState);
+    }
+  }
+
   render() {
     const { queryProfile } = this.props;
     const {
-      updateInfoOpen, updatePasswordOpen, name, dob, weight, oldPassword, newPassword, rePassword,
+      updateInfoOpen, updatePasswordOpen, name, dob, weight, gender, age, oldPassword, newPassword, rePassword,
     } = this.state;
     return (
       <>
@@ -81,12 +115,32 @@ class UserProfile extends React.PureComponent {
           loadingStatus={queryProfile}
           title="Update information"
           discription=""
+          other
+          otherClickFunction={this.onUpdateOkClick}
           media={
             <>
               <Typography color="primary">Name</Typography>
               <Input
                 value={name}
                 name="name"
+                onChange={this.updataState}
+                inputProps={{
+                  'aria-label': 'Description',
+                }}
+              />
+              <Typography color="primary">Gender</Typography>
+              <Input
+                value={gender}
+                name="gender"
+                onChange={this.updataState}
+                inputProps={{
+                  'aria-label': 'Description',
+                }}
+              />
+              <Typography color="primary">Age</Typography>
+              <Input
+                value={age}
+                name="age"
                 onChange={this.updataState}
                 inputProps={{
                   'aria-label': 'Description',
@@ -167,12 +221,14 @@ class UserProfile extends React.PureComponent {
 
 function mapStateToProps(state) {
   const {
-    queryProfile, name, bod, avatar, weight,
+    queryProfile, name, dob, avatar, weight, age, gender,
   } = state.UserConfig;
   return ({
-    queryProfile, name, bod, avatar, weight,
+    queryProfile, name, dob, avatar, weight, age, gender,
   });
 }
 
 
-export default connect(mapStateToProps, { getUserData, setQueryProfile, uploadPicture })(UserProfile);
+export default connect(mapStateToProps, {
+  getUserData, setQueryProfile, uploadPicture, updateUserData,
+})(UserProfile);
