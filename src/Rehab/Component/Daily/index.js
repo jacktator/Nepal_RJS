@@ -150,7 +150,11 @@ class MainRehab extends React.PureComponent {
     this.setState({ exerciseSelected: 0 });
   }
 
-  keepExerciseFetch() {
+  keepExerciseFetch(id) {
+    if (!this.props.renderExercises[id]) {
+      this.handleClickDiscriptionOpen({ title: 'You need to select one of exercises before you keeping it' });
+      return;
+    }
     this.props.finishQuerryDailyData(true);
     this.props.keepExercise(this.props.renderExercises);
   }
@@ -210,8 +214,8 @@ class MainRehab extends React.PureComponent {
               <Dialog
                 open={showDiscription}
                 loadingStatus={false}
-                title={title}
-                discription=""
+                title=""
+                discription={title}
                 handleClose={this.handleDiscriptionClickClose}
               />
               <Dialog

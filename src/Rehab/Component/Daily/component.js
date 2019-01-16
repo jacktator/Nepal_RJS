@@ -29,7 +29,7 @@ class SimpleList extends React.PureComponent {
           <HOClistitem
             exeData={renderExercise[0] || injuryExes.mobility[0]}
             funcs={() => openDialog(injuryExes.mobility, 0)}
-            keepExercise={keepExercise}
+            keepExercise={() => keepExercise(0)}
             pre={pre ? !renderExercise[0] : false}
             itemID={0}
 
@@ -40,7 +40,7 @@ class SimpleList extends React.PureComponent {
           <HOClistitem
             exeData={renderExercise[1] || injuryExes.mobility[1]}
             funcs={() => openDialog(injuryExes.mobility, 1)}
-            keepExercise={keepExercise}
+            keepExercise={() => keepExercise(1)}
             pre={pre ? !renderExercise[1] : false}
             itemID={1}
 
@@ -54,6 +54,7 @@ class SimpleList extends React.PureComponent {
             funcs={() => openDialog(injuryExes.releaseWork, 2)}
             pre={pre ? !renderExercise[2] : false}
             itemID={2}
+            keepExercise={() => keepExercise(2)}
 
 
           />
@@ -65,6 +66,7 @@ class SimpleList extends React.PureComponent {
             funcs={() => openDialog(injuryExes.strengthEndurance, 3)}
             pre={pre ? !renderExercise[3] : false}
             itemID={3}
+            keepExercise={() => keepExercise(3)}
 
 
           />
@@ -85,7 +87,7 @@ class SimpleList extends React.PureComponent {
               <HOClistitem
                 exeData={renderExercise[4] || postureExes.mobility[0]}
                 funcs={() => openDialog(postureExes.mobility, 4)}
-                keepExercise={keepExercise}
+                keepExercise={() => keepExercise(4)}
                 pre={pre ? !renderExercise[4] : false}
                 itemID={4}
 
@@ -97,7 +99,7 @@ class SimpleList extends React.PureComponent {
               <HOClistitem
                 exeData={renderExercise[5] || postureExes.mobility[1]}
                 funcs={() => openDialog(postureExes.mobility, 5)}
-                keepExercise={keepExercise}
+                keepExercise={() => keepExercise(5)}
                 pre={pre ? !renderExercise[5] : false}
                 itemID={5}
 
@@ -109,7 +111,7 @@ class SimpleList extends React.PureComponent {
               <HOClistitem
                 exeData={renderExercise[6] || postureExes.releaseWork[0]}
                 funcs={() => openDialog(postureExes.releaseWork, 6)}
-                keepExercise={keepExercise}
+                keepExercise={() => keepExercise(6)}
                 pre={pre ? !renderExercise[6] : false}
                 itemID={6}
 
@@ -121,7 +123,7 @@ class SimpleList extends React.PureComponent {
               <HOClistitem
                 exeData={renderExercise[7] || postureExes.strengthEndurance[0]}
                 funcs={() => openDialog(postureExes.strengthEndurance, 7)}
-                keepExercise={keepExercise}
+                keepExercise={() => keepExercise(7)}
                 pre={pre ? !renderExercise[7] : false}
                 itemID={7}
 

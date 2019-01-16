@@ -30,7 +30,7 @@ const AlertDialog = (props) => {
             {discription}
           </DialogContentText>
           )}
-          {`${discription}`.length === 0 && !media ? <img src="image/Questionnaire/sport.jpg" alt="" width="250" /> : media}
+          {!discription && !media ? <img src="image/Questionnaire/sport.jpg" alt="" width="250" /> : media}
           {/* {!!media && media} */}
         </DialogContent>
         <DialogActions>
