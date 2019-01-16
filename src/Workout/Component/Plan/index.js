@@ -43,7 +43,7 @@ class index extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.directToQuestionnaire) {
-      window.location.href = '#/mainmenu';
+      window.location.hash = '#/questionnaire';
     }
     if (prevProps.programQuery !== this.props.programQuery) {
       this.setState({ tabsValue: Math.ceil(sessionStorage.progress / sessionStorage.days) - 1 });
