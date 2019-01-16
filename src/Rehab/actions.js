@@ -49,6 +49,7 @@ export const setRenderExercises = data => ({ type: 'SET_RENDER_EXERCISES', paylo
 export const setRehabExercisesRecorded = data => ({ type: 'SET_REHAB_EXERCISE_RECORDED', payload: data });
 export const setRehabExercisesRecordsByDay = data => ({ type: 'SET_DAY_EXERCISE_DATA', payload: data });
 export const finishQuerryDailyData = data => ({ type: 'FINISH_QUERRY_DAILY_DATA', payload: data });
+export const finishExerciseSaveQuery = data => ({ type: 'FINISH_REHAB_EXERCISE', payload: data });
 
 export const keepExercise = data => (dispatch) => {
   console.log('keepExercise', data);
@@ -57,6 +58,7 @@ export const keepExercise = data => (dispatch) => {
     .then(
       (res) => {
         dispatch(selectedRehabExercises(res.data));
+        dispatch(finishQuerryDailyData(false));
         console.log(res);
       },
     )
@@ -92,6 +94,7 @@ export const updateRehabRecord = data => (dispatch) => {
       const m = res.data.acf.data;
       const result = destructureExeData(m);
       dispatch(setRehabExercisesRecordsByDay({ id: res.data.id, progress: new Date().getDay(), data: result }));
+      dispatch(finishExerciseSaveQuery(false));
       console.log(res);
     })
     .catch(err => console.log(err));
@@ -183,7 +186,7 @@ export const getDailyRehab = day => (dispatch) => {
     .then((res) => {
       console.log(res);
       if (res.data.length === 0) { dispatch(showQuestionnaireForCreate(true)); return; }
-      if (res.data[0].finish === true) { dispatch(showQuestionnaireForCreate(true)); }
+      if (res.data[0].acf.finish === true) { dispatch(showQuestionnaireForCreate(true)); }
       const { injury, posture } = res.data[0].acf;
       sessionStorage.setItem('rehabProgrammeID', res.data[0].id);
       dispatch(selectedRehabExercises(res.data[0]));
@@ -202,5 +205,15 @@ export const getDailyRehab = day => (dispatch) => {
           }),
         );
     })
+    .catch(err => console.log(err));
+};
+
+export const finishAllRehab = () => (dispatch) => {
+  axios.post(`/rehab_program/${sessionStorage.rehabProgrammeID}`, {
+    fields: {
+      finish: true,
+    },
+  })
+    .then(res => console.log(res))
     .catch(err => console.log(err));
 };

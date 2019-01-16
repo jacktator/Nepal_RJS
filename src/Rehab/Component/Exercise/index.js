@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { instanceOf } from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
@@ -12,7 +12,10 @@ import ExerciseComponent from './component';
 import MainComponent from '../../../HOC/PageStructure';
 import SpeedDialTooltipOpen from '../../../HOC/speedDial';
 import { styles } from '../../styles';
-import { setRehabExercisesRecordsByDay, updateRehabRecord, destructureExeData } from '../../actions';
+import {
+  setRehabExercisesRecordsByDay, updateRehabRecord, finishAllRehab, finishExerciseSaveQuery,
+} from '../../actions';
+import Loading from '../../../HOC/Loading';
 
 class ExerciseIndex extends React.PureComponent {
   constructor(props) {
@@ -23,38 +26,39 @@ class ExerciseIndex extends React.PureComponent {
     this.handleSaveButtonClicked = this.handleSaveButtonClicked.bind(this);
     this.dealRenderExerciseRecord = this.dealRenderExerciseRecord.bind(this);
     this.returnBack = this.returnBack.bind(this);
+    this.handleFinishAllRehab = this.handleFinishAllRehab.bind(this);
   }
 
   componentDidUpdate() {
-    console.log('componentDidMount------------------------------------------------------------', this.props.renderExercises.length);
     if (!this.props.match.params.exerciseOrder) {
-      console.log('111111111111111111111');
-      console.log('exerciseOrder', this.props.match.params.exerciseOrder);
       window.location.hash = '#/rehab/content';
     }
     if (this.props.match.params.exerciseOrder >= this.props.renderExercises.length) {
-      console.log('22222222222222222222222222');
-      console.log('exerciseOrder', this.props.match.params.exerciseOrder);
       window.location.hash = '#/rehab/content';
     }
   }
 
   handleSaveButtonClicked() {
-    console.log(this.props.dayRehabExercisesRecords);
     const m = JSON.parse(JSON.stringify([...this.props.dayRehabExercisesRecords.data]));
     const itemID = this.props.match.params.exerciseOrder;
     const exe = this.props.renderExercises[itemID];
+    console.log('exe=================================', exe);
     const {
       name, reps, sets, time,
     } = exe;
-    if (m[itemID].length >= sets * 1) {
+    console.log('m=======================================', m);
+    if (m[itemID] && m[itemID].length >= sets * 1) {
       return;
     }
     const thisExerciseDetail = { name, sets, reps: reps === 'empty' ? time : reps };
     !m[itemID] ? m[itemID] = `${thisExerciseDetail.reps}` : m[itemID] = `${m[itemID].join(',')},${thisExerciseDetail.reps}`;
-    console.log('ssssssssssssssssssssssssssssssadsd', m);
     const result = m.join(';');
+    this.props.finishExerciseSaveQuery(true);
     this.props.updateRehabRecord(result);
+  }
+
+  handleFinishAllRehab() {
+    this.props.finishAllRehab();
   }
 
   dealRenderExerciseRecord(m) {
@@ -72,7 +76,7 @@ class ExerciseIndex extends React.PureComponent {
 
   render() {
     const {
-      classes, currentWeek, dayRehabExercisesRecords,
+      classes, currentWeek, dayRehabExercisesRecords, posture, injury, rehabExerciseQuery,
     } = this.props;
     const exeOrder = this.props.match.params.exerciseOrder;
     const exe = this.props.renderExercises[exeOrder];
@@ -84,49 +88,54 @@ class ExerciseIndex extends React.PureComponent {
     const thisExerciseDetail = {
       name, sets, reps: reps === 'empty' ? time : reps, time: reps === 'empty',
     };
-    console.log('record++++++++++++++++++++++++++++++++++++++++++++++++++++', dayRehabExercisesRecords);
     const mmm = dayRehabExercisesRecords.data || [];
     const ExList = mmm.length !== 0 ? mmm[exeOrder] ? mmm[exeOrder].map(v => ({ reps: v })) : [] : [];
-    console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', ExList);
+    const exerLength = (posture instanceof Array) ? ((injury instanceof Array) ? 0 : 4) : ((injury instanceof Array) ? 4 : 8);
     return (
-      <MainComponent
-        backgroundImage="https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg"
-        progress={exeOrder}
-        tapBarContent={false}
-        currentWeek={currentWeek}
-        currentPage={2}
-        FooterContent={1}
-        midComponent={(
-          <Grid container style={{ flex: 1 }} direction="column" justify="center" alignContent="space-between" alignItems="center">
+      <>
+        <Loading
+          open={rehabExerciseQuery}
+        />
+        <MainComponent
+          backgroundImage="https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg"
+          progress={exeOrder}
+          tapBarContent={false}
+          currentWeek={currentWeek}
+          currentPage={2}
+          FooterContent={1}
+          midComponent={(
+            <Grid container style={{ flex: 1 }} direction="column" justify="center" alignContent="space-between" alignItems="center">
 
-            <Grid container item direction="column" alignContent="space-between" alignItems="center">
-              <AppBar position="static">
-                <Toolbar style={{ justifyContent: 'space-between' }}>
-                  <IconButton className={classes.menuButton} onClick={this.returnBack} color="secondary" aria-label="Menu">
-                    <LeftIcon style={{ fontSize: '30px' }} />
-                  </IconButton>
-                  <Typography className={classes.grow} variant="h6" color="secondary">Title</Typography>
-                  <div style={{ minHeight: '56px', minWidth: '56px' }}>
-                    <SpeedDialTooltipOpen right secondary />
-                  </div>
-                </Toolbar>
-              </AppBar>
+              <Grid container item direction="column" alignContent="space-between" alignItems="center">
+                <AppBar position="static">
+                  <Toolbar style={{ justifyContent: 'space-between' }}>
+                    <IconButton className={classes.menuButton} onClick={this.returnBack} color="secondary" aria-label="Menu">
+                      <LeftIcon style={{ fontSize: '30px' }} />
+                    </IconButton>
+                    <Typography className={classes.grow} variant="h6" color="secondary">Title</Typography>
+                    <div style={{ minHeight: '56px', minWidth: '56px' }}>
+                      <SpeedDialTooltipOpen right secondary />
+                    </div>
+                  </Toolbar>
+                </AppBar>
+              </Grid>
+
+              <ExerciseComponent
+                onFinishAllExercise={this.handleFinishAllRehab}
+                step={10}
+                onSaveClick={this.handleSaveButtonClicked}
+                ExList={ExList}
+                thisExerciseDetail={thisExerciseDetail}
+                finishCurrentExercise={thisExerciseDetail.sets <= ExList.length}
+                currentExerciseOrder={exeOrder}
+                dailyExerciseLength={exerLength}
+                rehab
+              />
+
             </Grid>
-
-            <ExerciseComponent
-              step={10}
-              onSaveClick={this.handleSaveButtonClicked}
-              ExList={ExList}
-              thisExerciseDetail={thisExerciseDetail}
-              finishCurrentExercise={thisExerciseDetail.sets >= ExList.length}
-              currentExerciseOrder={exeOrder}
-              dailyExerciseLength={8}
-              rehab
-            />
-
-          </Grid>
         )}
-      />
+        />
+      </>
     );
   }
 }
@@ -139,12 +148,14 @@ ExerciseIndex.propTypes = {
 
 function mapStateToProps(state) {
   const {
-    dayRehabExercisesRecords, renderExercises,
+    dayRehabExercisesRecords, renderExercises, posture, injury, rehabExerciseQuery,
   } = state.Rehab;
   return {
-    dayRehabExercisesRecords, renderExercises,
+    dayRehabExercisesRecords, renderExercises, posture, injury, rehabExerciseQuery,
   };
 }
 
 
-export default connect(mapStateToProps, { setRehabExercisesRecordsByDay, updateRehabRecord })(withStyles(styles)(ExerciseIndex));
+export default connect(mapStateToProps, {
+  setRehabExercisesRecordsByDay, updateRehabRecord, finishAllRehab, finishExerciseSaveQuery,
+})(withStyles(styles)(ExerciseIndex));
