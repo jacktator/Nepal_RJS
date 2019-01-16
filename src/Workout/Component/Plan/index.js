@@ -58,7 +58,11 @@ class index extends React.Component {
   }
 
   handleQuestionnaireClose() {
-    this.props.selectDailyQuestionnaire(this.state.questionnaireSelected, refresh);
+    const m = sessionStorage.feedback_value;
+    const n = `${m}`.split(',');
+    n[sessionStorage.dayInWeek] = this.state.questionnaireSelected;
+    const s = n.join(',');
+    this.props.selectDailyQuestionnaire(s, refresh);
     this.setState({ dailyQuestionnaireOpen: false });
   }
 
