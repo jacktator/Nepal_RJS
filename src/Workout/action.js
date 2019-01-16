@@ -159,6 +159,10 @@ export const getCurrentProgram = getExe => (dispatch) => {
         };
         console.log('getprogram', exercises.length);
         dispatch(getExercisesSample(baseInfo, exercises.length));
+      } else {
+        const status = programSelectState(exercises.length, exercises.length);
+        dispatch(setProgramSelectedState(status));
+        dispatch(finishDailyQuery(false));
       }
     })
     .catch((error) => {
@@ -216,7 +220,11 @@ export const getDailyExercises = data => (dispatch) => {
     dayInWeek,
   };
   console.log('progress is not null');
-  finishDay < dayInWeek && dispatch(getExercisesSample(baseInfo, data.length));
+  if (finishDay < dayInWeek) {
+    dispatch(getExercisesSample(baseInfo, data.length));
+  } else {
+    dispatch(getCurrentProgram(false));
+  }
 };
 
 export const userKeepExercise = (data, fin) => (dispatch) => {
