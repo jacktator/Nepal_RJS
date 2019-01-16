@@ -184,15 +184,6 @@ class UserProfile extends React.PureComponent {
                   'aria-label': 'Description',
                 }}
               />
-              <Typography color="primary">Age</Typography>
-              <Input
-                value={age}
-                name="age"
-                onChange={this.updataState}
-                inputProps={{
-                  'aria-label': 'Description',
-                }}
-              />
               <Typography color="primary">Gender</Typography>
               <FormControl component="fieldset">
                 <RadioGroup

@@ -51,7 +51,7 @@ class FooterComponent extends React.PureComponent {
             color="secondary"
             disableRipple
             component={Link}
-            to={workout ? '/workout/exercise/0' : '/rehab/training/0'}
+            to={workout ? '/workout/exercise/1' : '/rehab/training/0'}
             onClick={FooterButtonClick}
           >
             { workout ? 'Start Workout' : 'Start Rehab' }

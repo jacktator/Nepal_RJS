@@ -59,6 +59,14 @@ class ExerciseIndex extends React.Component {
     this.setState({ reps: !/^[0-9]*$/.test(this.props.renderExercises[this.props.match.params.exerciseOrder - 1].reps) ? 1 : 1 * this.props.renderExercises[this.props.match.params.exerciseOrder - 1].reps });
   }
 
+  componentDidUpdate() {
+    if (this.props.renderExercises[this.props.match.params.exerciseOrder - 1].day !== undefined) {
+      console.log(this.props.renderExercises);
+      window.location.href = `#/workout/daily/${sessionStorage.dayInWeek}`;
+      console.log('this.props.renderExercises[this.props.match.params.exerciseOrder - 1].day', this.props.renderExercises[this.props.match.params.exerciseOrder - 1].day);
+    }
+  }
+
   onClose(input) {
     this.setState({ [input]: false });
   }

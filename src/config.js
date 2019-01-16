@@ -7,6 +7,7 @@ export const programmeTable = {
   FatLoss: 'fl',
   IncreaseFitness: 'if',
   MuscleGain: 'mg',
+  ImprovePosture: 'ip',
 };
 
 export const rehabProgramme = {
