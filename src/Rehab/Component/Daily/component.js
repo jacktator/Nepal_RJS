@@ -15,7 +15,7 @@ class SimpleList extends React.PureComponent {
     console.log(pre);
     return (
       <div className={classes.root}>
-        {Object.keys(injuryExes).length > 0 && (
+        {!(injuryExes instanceof Array) && (
         <List
           component="nav"
           disablePadding
@@ -31,7 +31,6 @@ class SimpleList extends React.PureComponent {
             funcs={() => openDialog(injuryExes.mobility, 0)}
             keepExercise={keepExercise}
             pre={pre ? !renderExercise[0] : false}
-
             itemID={0}
 
           />
@@ -43,7 +42,6 @@ class SimpleList extends React.PureComponent {
             funcs={() => openDialog(injuryExes.mobility, 1)}
             keepExercise={keepExercise}
             pre={pre ? !renderExercise[1] : false}
-
             itemID={1}
 
 
@@ -55,7 +53,6 @@ class SimpleList extends React.PureComponent {
             exeData={renderExercise[2] || injuryExes.releaseWork[0]}
             funcs={() => openDialog(injuryExes.releaseWork, 2)}
             pre={pre ? !renderExercise[2] : false}
-            pre={pre}
             itemID={2}
 
 
@@ -67,7 +64,6 @@ class SimpleList extends React.PureComponent {
             exeData={renderExercise[3] || injuryExes.strengthEndurance[0]}
             funcs={() => openDialog(injuryExes.strengthEndurance, 3)}
             pre={pre ? !renderExercise[3] : false}
-            pre={pre}
             itemID={3}
 
 
@@ -75,7 +71,7 @@ class SimpleList extends React.PureComponent {
         </List>
         )}
         {
-          Object.keys(postureExes).length > 0 && (
+          !(postureExes instanceof Array) && (
             <List
               component="nav"
               disablePadding

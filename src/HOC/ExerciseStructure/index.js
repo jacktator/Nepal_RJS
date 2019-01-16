@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -32,6 +33,8 @@ const styles = theme => ({
     fontSize: '0.6rem',
     lineHeight: 1,
     letterSpacing: 0,
+    whiteSpace: 'normal',
+    textAlign: 'center',
   },
 });
 
@@ -56,6 +59,8 @@ const ExerciseStructure = (props) => {
   };
 
   console.log(thisExerciseDetail);
+  console.log('allExercise length=======================================', dailyExerciseLength);
+  console.log('finish all===============================================', currentExerciseOrder * 1 < dailyExerciseLength);
   return (
     <Grid
       container
@@ -101,8 +106,7 @@ const ExerciseStructure = (props) => {
           </div>
           )}
           <Card color="primary" className={classes.card} style={{ right: '0' }}>
-            <Typography className={classes.inlineT} color="secondary">{`${thisExerciseDetail ? thisExerciseDetail.sets : 0}`}</Typography>
-            <Typography className={classes.inlineT} color="secondary">X</Typography>
+            <Typography className={classes.inlineT} color="secondary">{`${thisExerciseDetail ? thisExerciseDetail.sets : 0}`} X</Typography>
             <Typography className={classes.inlineT} color="secondary">{`${thisExerciseDetail ? thisExerciseDetail.reps : 0}`}</Typography>
           </Card>
           <CardMedia
@@ -147,7 +151,7 @@ const ExerciseStructure = (props) => {
               key={`${v.reps}${k}`}
               id={k}
               latest={k === ExList.length}
-              content={(v.hasOwnProperty('weight') && !!v.weight) ? `weight  ${v.weight}  reps  ${v.reps}` : `reps  ${v.reps}`}
+              content={(v.hasOwnProperty('weight') && !!v.weight) ? `weight  ${v.weight} reps  ${v.reps} ${thisExerciseDetail.time && 'secs'}` : `reps  ${v.reps}   ${thisExerciseDetail.time && 'secs'}`}
               status="p"
             />
           ))}

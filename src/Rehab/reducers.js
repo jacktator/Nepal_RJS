@@ -5,6 +5,7 @@ export default function (state = {
   querryCreating: false,
   selectedRehabExercises: {},
   querryDailyData: false,
+  rehabExerciseQuery: false,
   rehabExercisesRecorded: [],
   dayRehabExercisesRecords: { id: 0, progress: 0, data: [] },
   renderExercises: [],
@@ -45,6 +46,10 @@ export default function (state = {
     case 'FINISH_QUERRY_DAILY_DATA':
       return {
         ...state, querryDailyData: action.payload,
+      };
+    case 'FINISH_REHAB_EXERCISE':
+      return {
+        ...state, rehabExerciseQuery: action.payload,
       };
     default:
       return state;
