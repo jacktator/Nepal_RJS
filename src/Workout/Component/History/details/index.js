@@ -23,6 +23,7 @@ class Details extends React.PureComponent {
     super(props);
     this.state = {
       render: [],
+      renderData: {},
     };
     this.returnBack = this.returnBack.bind(this);
   }
@@ -41,6 +42,7 @@ class Details extends React.PureComponent {
     if (this.props.historyProgrammeList[index] && this.props.historyProgrammeList[index][`day_${dayInWeek * 1 + 1}_exe`]) {
       const str = this.props.historyProgrammeList[index][`day_${dayInWeek * 1 + 1}_exe`];
       const m = this.props.historyProgrammeList.length !== 0 && dealStringToExerciseArray(str.substring(1, str.length - 1).split(';'));
+      console.log('history----------------------------------------------m-------------------', m);
       this.setState({ render: m });
     }
   }
@@ -54,8 +56,10 @@ class Details extends React.PureComponent {
     const {
       dayInWeek, week,
     } = this.props.match.params;
-    const { render } = this.state;
-    console.log(specificProgrammeHistory);
+    const { render, renderData } = this.state;
+    const c = this.props.specificProgrammeHistory[dayInWeek];
+    console.log(c);
+    // const acf = c[this.props.match.params.week] && c[this.props.match.params.week].acf;
     return (
       <>
         <LoadingComponent open={historyQuery} />
@@ -70,8 +74,7 @@ class Details extends React.PureComponent {
                   <IconButton className={classes.menuButton} onClick={this.returnBack} color="secondary" aria-label="Menu">
                     <LeftIcon style={{ fontSize: '30px' }} />
                   </IconButton>
-                  {console.log(specificProgrammeHistory[dayInWeek])}
-                  {specificProgrammeHistory[dayInWeek] && (
+                  {c && (
                   <Typography variant="h6" color="secondary">
                     {new Date(specificProgrammeHistory[dayInWeek][week].date).toDateString()}
                   </Typography>
@@ -82,20 +85,20 @@ class Details extends React.PureComponent {
               </AppBar>
               <Paper style={{ height: '90%', marginBottom: '2.5%' }} className={classes.midPaper} elevation={8}>
                 <List className={classes.root} component="nav" disablePadding>
-                  {render.length > 0
-                    ? (
-                      <Component
-                        render={render}
-                        data={specificProgrammeHistory}
-                        week={week}
-                        dayInWeek={dayInWeek}
-                      />
-                    )
-                    : (
-                      <ListItem>
-                        <ListItemText primary={<Typography variant="body1">There is nothing</Typography>} />
-                      </ListItem>
-                    )
+                  {
+                   c && render.length > 0 ? (
+                     <Component
+                       render={render}
+                       data={c}
+                       week={week}
+                       dayInWeek={dayInWeek}
+                     />
+                   )
+                     : (
+                       <ListItem>
+                         <ListItemText primary={<Typography variant="body1">There is nothing</Typography>} />
+                       </ListItem>
+                     )
  }
                 </List>
               </Paper>
