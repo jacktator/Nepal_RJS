@@ -9,7 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+import LeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import { Link } from 'react-router-dom';
 
@@ -19,6 +19,10 @@ const styles = theme => ({
     marginTop: '20%',
     width: '92%',
     minHeight: '80vh',
+  },
+  menuButton: {
+    position: 'fixed',
+    top: '2vh',
   },
   container: {
     backgroundColor: '#e1e2e1',
@@ -87,8 +91,10 @@ const Profile = (props) => {
   return (
     <Grid container className={classes.container} justify="center" alignItems="center">
       <Paper className={classes.root}>
+        <IconButton className={classes.menuButton} component={Link} to="/mainmenu" color="primary" aria-label="Menu">
+          <LeftIcon style={{ fontSize: '30px' }} />
+        </IconButton>
         <Grid container className={classes.avatarGridContainer} justify="center">
-
           <Grid className={classes.avatarGridContainer}>
             <Avatar className={classes.avatarContainer} component={Paper} alt="avatar" src={avatar} />
             <input accept="image/*" onChange={handelAvatarChange} className={classes.input} id="icon-button-file" type="file" />

@@ -2,13 +2,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
 import Input from '@material-ui/core/Input';
-import Component from './Component';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+import { validation } from '../../../HOC/Validation';
+import Dialog from '../../../HOC/Dialog';
+import Loading from '../../../HOC/Loading';
 import {
   getUserData, setQueryProfile, uploadPicture, updateUserData, handleUpdatePassword,
 } from '../../action';
-import Loading from '../../../HOC/Loading';
-import Dialog from '../../../HOC/Dialog';
-import { validation } from '../../../HOC/Validation';
+import Component from './Component';
 
 class UserProfile extends React.PureComponent {
   constructor(props) {
@@ -178,15 +184,6 @@ class UserProfile extends React.PureComponent {
                   'aria-label': 'Description',
                 }}
               />
-              <Typography color="primary">Gender</Typography>
-              <Input
-                value={gender}
-                name="gender"
-                onChange={this.updataState}
-                inputProps={{
-                  'aria-label': 'Description',
-                }}
-              />
               <Typography color="primary">Age</Typography>
               <Input
                 value={age}
@@ -196,6 +193,19 @@ class UserProfile extends React.PureComponent {
                   'aria-label': 'Description',
                 }}
               />
+              <Typography color="primary">Gender</Typography>
+              <FormControl component="fieldset">
+                <RadioGroup
+                  aria-label="Gender"
+                  name="gender"
+                  value={gender}
+                  onChange={this.updataState}
+                >
+                  <FormControlLabel value="Female" control={<Radio color="primary" />} label="Female" />
+                  <FormControlLabel value="Male" control={<Radio color="primary" />} label="Male" />
+                  <FormControlLabel value="Other" control={<Radio color="primary" />} label="Other" />
+                </RadioGroup>
+              </FormControl>
               <Typography color="primary">DoB</Typography>
               <Input
                 value={dob}

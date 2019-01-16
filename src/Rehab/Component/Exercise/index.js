@@ -11,7 +11,6 @@ import { connect } from 'react-redux';
 import ExerciseComponent from './component';
 import MainComponent from '../../../HOC/PageStructure';
 import SpeedDialTooltipOpen from '../../../HOC/speedDial';
-import { add, min } from '../../../HOC/numberSelect';
 import { styles } from '../../styles';
 import { setRehabExercisesRecordsByDay, updateRehabRecord, destructureExeData } from '../../actions';
 
