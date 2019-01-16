@@ -140,8 +140,6 @@ export function updataPassword(password: string) {
       })
       .catch(error => console.log(error));
   }
-
-
 }
 
 export function changeAavatar(photo: string) {

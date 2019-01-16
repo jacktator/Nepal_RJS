@@ -4,10 +4,11 @@ import Typography from '@material-ui/core/Typography';
 import Input from '@material-ui/core/Input';
 import Component from './Component';
 import {
-  getUserData, setQueryProfile, uploadPicture, updateUserData,
+  getUserData, setQueryProfile, uploadPicture, updateUserData, handleUpdatePassword,
 } from '../../action';
 import Loading from '../../../HOC/Loading';
 import Dialog from '../../../HOC/Dialog';
+import { validation } from '../../../HOC/Validation';
 
 class UserProfile extends React.PureComponent {
   constructor(props) {
@@ -23,6 +24,8 @@ class UserProfile extends React.PureComponent {
       rePassword: '',
       updateInfoOpen: false,
       updatePasswordOpen: false,
+      error: false,
+      errorDiscription: '',
     };
     this.initialState = this.initialState.bind(this);
     this.updataState = this.updataState.bind(this);
@@ -31,7 +34,11 @@ class UserProfile extends React.PureComponent {
     this.openUpdataPasswordDialog = this.openUpdataPasswordDialog.bind(this);
     this.closeUpdataPasswordDialog = this.closeUpdataPasswordDialog.bind(this);
     this.handelAvatarChange = this.handelAvatarChange.bind(this);
-    this.onUpdateOkClick = this.onUpdateOkClick.bind(this);
+    this.openErrorDialog = this.openErrorDialog.bind(this);
+    this.closeErrorDialog = this.closeErrorDialog.bind(this);
+    this.onInfoUpdateOKClick = this.onInfoUpdateOKClick.bind(this);
+    this.onPassUpdateOkclick = this.onPassUpdateOkclick.bind(this);
+    this.redirectToLogout = this.redirectToLogout.bind(this);
   }
 
   componentDidMount() {
@@ -74,19 +81,19 @@ class UserProfile extends React.PureComponent {
     this.setState({ updatePasswordOpen: false });
   }
 
-  onUpdateOkClick() {
+  openErrorDialog() {
+    this.setState({ updatePasswordOpen: true });
+  }
+
+  closeErrorDialog() {
+    this.setState({ updatePasswordOpen: false });
+  }
+
+  onInfoUpdateOKClick() {
     const {
       name, dob, weight, age, gender,
     } = this.state;
     this.closeUpdataInfoDialog();
-    console.log(name !== this.props.name);
-    console.log(dob);
-    console.log(this.props.dob);
-    console.log(dob !== this.props.dob);
-    console.log(weight !== this.props.weight);
-    console.log(age !== this.props.age);
-    console.log(gender !== this.props.gender);
-
     if (
       name !== this.props.name
       || dob !== this.props.dob
@@ -101,14 +108,57 @@ class UserProfile extends React.PureComponent {
     }
   }
 
+  onPassUpdateOkclick() {
+    const { oldPassword, newPassword, rePassword } = this.state;
+    const passwordError = validation('password', newPassword);
+    if (
+      oldPassword === ''
+      && newPassword === ''
+      && rePassword === ''
+    ) {
+      this.closeUpdataPasswordDialog();
+      return;
+    }
+    if (oldPassword === newPassword) {
+      this.setState({ errorDiscription: 'new password should not be same as old password' });
+      this.openErrorDialog();
+      return;
+    }
+    if (newPassword !== rePassword) {
+      this.setState({ errorDiscription: 'confirm password should be same as new password' });
+      this.openErrorDialog();
+      return;
+    }
+    if (!passwordError.error) {
+      this.setState({ errorDiscription: passwordError.discription });
+      this.openErrorDialog();
+      return;
+    }
+    this.props.setQueryProfile(true);
+    this.closeUpdataPasswordDialog();
+    this.props.handleUpdatePassword({ password: oldPassword, newPassword }, this.redirectToLogout);
+  }
+
+  redirectToLogout() {
+    sessionStorage.clear();
+    window.location.reload(true);
+  }
+
   render() {
     const { queryProfile } = this.props;
     const {
-      updateInfoOpen, updatePasswordOpen, name, dob, weight, gender, age, oldPassword, newPassword, rePassword,
+      updateInfoOpen, updatePasswordOpen, name, dob, weight, gender, age, oldPassword, newPassword, rePassword, error, errorDiscription,
     } = this.state;
     return (
       <>
         <Loading open={queryProfile} />
+        <Dialog
+          open={error}
+          title="Error"
+          loadingStatus={false}
+          discription={errorDiscription}
+          handleClose={this.closeErrorDialog}
+        />
         <Dialog
           open={updateInfoOpen}
           handleClose={this.closeUpdataInfoDialog}
@@ -116,7 +166,7 @@ class UserProfile extends React.PureComponent {
           title="Update information"
           discription=""
           other
-          otherClickFunction={this.onUpdateOkClick}
+          otherClickFunction={this.onInfoUpdateOKClick}
           media={
             <>
               <Typography color="primary">Name</Typography>
@@ -172,6 +222,8 @@ class UserProfile extends React.PureComponent {
           handleClose={this.closeUpdataPasswordDialog}
           loadingStatus={queryProfile}
           title="Change password"
+          other
+          otherClickFunction={this.onPassUpdateOkclick}
           discription=""
           media={
             <>
@@ -230,5 +282,5 @@ function mapStateToProps(state) {
 
 
 export default connect(mapStateToProps, {
-  getUserData, setQueryProfile, uploadPicture, updateUserData,
+  getUserData, setQueryProfile, uploadPicture, updateUserData, handleUpdatePassword,
 })(UserProfile);

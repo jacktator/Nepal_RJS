@@ -108,6 +108,20 @@ export const updateUserData = (data, callBack) => (dispatch) => {
     }).catch(error => console.log(error));
 };
 
+export const handleUpdatePassword = (data, callBack) => (dispatch) => {
+  const { password, newPassword } = data;
+  dispatch(loginAction({ username: sessionStorage.user_email, password }, () => updatePassword(newPassword, callBack)));
+};
+
+export const updatePassword = (password, callBack) => (dispatch) => {
+  axios.put(`/users/${sessionStorage.user_id}`, { password })
+    .then((res) => {
+      console.log(res.data);
+      dispatch(setQueryProfile(false));
+      callBack && callBack();
+    })
+    .catch(error => console.log(error));
+};
 
 export const uploadPicture = file => (dispatch) => {
   const data2 = new FormData();
