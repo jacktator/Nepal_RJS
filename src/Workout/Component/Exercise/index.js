@@ -56,7 +56,7 @@ class ExerciseIndex extends React.Component {
     this.props.finishExercisePageQuery(true);
     this.props.getExerciseDetail({ exeLength: this.props.renderExercises.length });
     this.props.getThisExerciseHistory(this.props.match.params.exerciseOrder);
-    this.setState({ reps: !/^[0-9]*$/.test(this.props.renderExercises[this.props.match.params.exerciseOrder - 1].reps) ? 0 : 1 * this.props.renderExercises[this.props.match.params.exerciseOrder - 1].reps });
+    this.setState({ reps: !/^[0-9]*$/.test(this.props.renderExercises[this.props.match.params.exerciseOrder - 1].reps) ? 1 : 1 * this.props.renderExercises[this.props.match.params.exerciseOrder - 1].reps });
   }
 
   componentDidUpdate() {

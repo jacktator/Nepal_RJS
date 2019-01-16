@@ -17,7 +17,7 @@ export const add = name => (state, props) => {
 };
 
 export const min = name => (state, props) => {
-  if (state[name] >= 1) {
+  if (state[name] > 1) {
     return ({
       [name]: state[name] - 1,
     });
