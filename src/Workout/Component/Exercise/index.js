@@ -129,8 +129,15 @@ class ExerciseIndex extends React.Component {
     const { exerciseOrder } = this.props.match.params;
     const showedExercises = todayExercises[`exe_${exerciseOrder}`] || '';
     const a = showedExercises.split(';');
+
+    //check product value, assign champion cup to the largest one
+    let largest = 0;
     const res = a[0] !== '' && [...[...a].map((v) => {
       const b = [...v.substring(1, v.length - 1).split(',')];
+      const product = b.length > 1 ? 1 * b[0] * b[1] : 1 * b[0];
+      if (product > largest) {
+        largest = product;
+      }
       return ({ reps: b[0], weight: b.length > 1 ? b[1] : null });
     })];
     const thisExerciseDetail = renderExercises[exerciseOrder - 1];
@@ -149,7 +156,7 @@ class ExerciseIndex extends React.Component {
       },
     ];
     console.log('render exes', renderExercises);
-
+    console.log("Exercises List", res);
 
     return (
       <MainComponent
@@ -184,6 +191,7 @@ class ExerciseIndex extends React.Component {
               thisExerciseDetail={thisExerciseDetail}
               select={select}
               ExList={res}
+              largest={largest}
               onSaveClick={this.saveData}
               youtbueID={youtbueID}
               onOpen={this.onOpen}
