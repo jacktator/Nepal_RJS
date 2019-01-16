@@ -40,7 +40,7 @@ const ExerciseStructure = (props) => {
     classes, select, ExList, onSaveClick, youtbueID, onOpen, finishCurrentExercise,
     dailyExerciseLength, rehab, onClose, youtubeOpenStatus, title,
     history, thisExerciseDetail, currentExerciseOrder, onFinishAllExercise,
-    historyForSpecificExercise, needYoutube, needHistory,
+    historyForSpecificExercise, needYoutube, needHistory, largest
   } = props;
   const onYoutubeOpen = () => {
     onOpen('youtube');
@@ -146,9 +146,10 @@ const ExerciseStructure = (props) => {
             <ExListItem
               key={`${v.reps}${k}`}
               id={k}
-              latest={k === ExList.length}
+              latest={k === ExList.length - 1}
               content={(v.hasOwnProperty('weight') && !!v.weight) ? `weight  ${v.weight}  reps  ${v.reps}` : `reps  ${v.reps}`}
-              status="p"
+              status="Previous"
+              product={largest === ((v.hasOwnProperty('weight') && !!v.weight) ? 1 * v.weight * v.reps : 1 * v.reps)}
             />
           ))}
         </List>

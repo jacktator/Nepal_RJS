@@ -23,7 +23,7 @@ const styles = theme => ({
 
 function ResponsiveDialog(props) {
   const {
-    classes, fullScreen, history, title, onHistoryClose, historyForSpecificExercise,
+    classes, fullScreen, history, onHistoryClose, historyForSpecificExercise,
   } = props;
   return (
     <Dialog
@@ -32,7 +32,7 @@ function ResponsiveDialog(props) {
       onClose={onHistoryClose}
       aria-labelledby="responsive-dialog-title"
     >
-      <DialogTitle id="responsive-dialog-title">{title}</DialogTitle>
+      <DialogTitle id="responsive-dialog-title">History</DialogTitle>
       <DialogContent>
         <List className={classes.root}>
           {historyForSpecificExercise.length === 0
