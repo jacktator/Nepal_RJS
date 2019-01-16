@@ -86,7 +86,7 @@ export const updateUserData = (data, callBack) => (dispatch) => {
   axios.put(`/Users/${userId}`, {
     name,
     fields: {
-      weight, gender, age, dob,
+      weight, gender, age, dateofbirth: dob,
     },
   })
     .then((res) => {
