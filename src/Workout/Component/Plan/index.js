@@ -11,7 +11,9 @@ import FormControl from '@material-ui/core/FormControl';
 import Component from './component';
 import MainComponent from '../../../HOC/PageStructure';
 import { styles } from '../../styles';
-import { getCurrentProgram, finishQuery, selectDailyQuestionnaire } from '../../action';
+import {
+  getCurrentProgram, finishQuery, selectDailyQuestionnaire, noProgram,
+} from '../../action';
 import LoadingComponent from '../../../HOC/Loading';
 import Dialog from '../../../HOC/Dialog';
 
@@ -44,6 +46,7 @@ class index extends React.Component {
   componentDidUpdate(prevProps) {
     if (this.props.directToQuestionnaire) {
       window.location.hash = '#/questionnaire';
+      this.props.noProgram(false);
     }
     if (prevProps.programQuery !== this.props.programQuery) {
       this.setState({ tabsValue: Math.ceil(sessionStorage.progress / sessionStorage.days) - 1 });
@@ -160,4 +163,6 @@ index.propTypes = {
   currentWeek: PropTypes.number,
 };
 
-export default connect(mapStateToProps, { getCurrentProgram, finishQuery, selectDailyQuestionnaire })(withStyles(styles)(index));
+export default connect(mapStateToProps, {
+  getCurrentProgram, finishQuery, selectDailyQuestionnaire, noProgram,
+})(withStyles(styles)(index));

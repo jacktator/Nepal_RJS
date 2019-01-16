@@ -56,7 +56,7 @@ export const finishQuery = boo => ({ type: 'FINISH_Program_QUERY', payload: boo 
 export const finishDailyQuery = boo => ({ type: 'FINISH_Daily_QUERY', payload: boo });
 export const finishExercisePageQuery = data => ({ type: 'FINISH_EXERCISE_PAGE_QUERY', payload: data });
 export const finishHistoryQuery = data => ({ type: 'Finish_History_Query', payload: data });
-export const noProgram = () => ({ type: 'DIRECT_QUESTIONNAIRE', payload: true });
+export const noProgram = data => ({ type: 'DIRECT_QUESTIONNAIRE', payload: data });
 
 // daily page change button's dialog get exercises
 export const selectExercise = id => (dispatch) => {
@@ -88,7 +88,7 @@ export const getExerciseDetail = data => (dispatch) => {
     .then((res) => {
       console.log('getExerciseDetail', res);
       dispatch(setAllDayExercises(res.data));
-      const haveExercise = getExerciseDetailByProgress(res.data);
+      const haveExercise = getExerciseDetailByProgress(res.data, progress);
       if (typeof (haveExercise) === 'object') {
         sessionStorage.setItem('dayTableId', haveExercise.id);
         dispatch(setTodayExercises(haveExercise.acf));
@@ -131,7 +131,7 @@ export const getCurrentProgram = getExe => (dispatch) => {
     .then((res) => {
       // if user do not have any programme page redirect to the questionnaire page
       if (res.data.length === 0) {
-        dispatch(noProgram());
+        dispatch(noProgram(true));
         return;
       }
       // the newest programme as the current programme
