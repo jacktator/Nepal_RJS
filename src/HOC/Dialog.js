@@ -36,7 +36,9 @@ const AlertDialog = (props) => {
         <DialogActions>
           <Button
             onClick={
-            exe ? () => selectMidExercise({ name: exe.name, progression_model: exe.progression_model }) : other ? otherClickFunction : handleClose}
+              loadingStatus
+                ? e => e.preventDefault()
+                : (exe ? () => selectMidExercise({ name: exe.name, progression_model: exe.progression_model }) : other ? otherClickFunction : handleClose)}
             color="primary"
             autoFocus
           >
