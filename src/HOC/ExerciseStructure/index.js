@@ -15,6 +15,7 @@ import History from './history';
 import NumberSelect from '../numberSelect';
 import ExListItem from './ListItem';
 import Youtube from './youtubeDialog';
+import { IMAGE_URL } from '../../config';
 
 const styles = theme => ({
   card: {
@@ -111,7 +112,7 @@ const ExerciseStructure = (props) => {
           </Card>
           <CardMedia
             style={{ height: '100%', width: '100%' }}
-            image="https://nepal.sk8tech.io/wp-content/uploads/2019/01/exerciseGif.gif"
+            image={rehab ? 'https://nepal.sk8tech.io/wp-content/uploads/2019/01/exerciseGif.gif' : `${IMAGE_URL}${thisExerciseDetail.id}${`${thisExerciseDetail.name}`.replace(/ /g, '-')}.gif`}
           />
         </Card>
       </Grid>

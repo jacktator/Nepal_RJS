@@ -157,7 +157,7 @@ class MainRehab extends React.Component {
       classes, currentWeek, progress, dailyQuery, renderExercises, selectedExercises, selectedExercisesQuery,
     } = this.props;
     const {
-      err, dialogOpen, dialogSelected, dialogIndexSelected, midSelectExercise,
+      err, dialogOpen, dialogSelected, dialogIndexSelected, midSelectExercise, selectedFatherExercises,
     } = this.state;
     return (
       <MainComponent
@@ -191,7 +191,7 @@ class MainRehab extends React.Component {
                 selectMidExercise={this.selectMidExercise}
                 err={err}
                 handleErrClose={this.closeErrDialog}
-
+                selectedFatherExercises={selectedFatherExercises}
               />
             </Paper>
           </Grid>

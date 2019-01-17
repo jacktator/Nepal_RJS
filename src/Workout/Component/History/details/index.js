@@ -74,9 +74,9 @@ class Details extends React.PureComponent {
                   <IconButton className={classes.menuButton} onClick={this.returnBack} color="secondary" aria-label="Menu">
                     <LeftIcon style={{ fontSize: '30px' }} />
                   </IconButton>
-                  {c && (
+                  {c && c[week] && (
                   <Typography variant="h6" color="secondary">
-                    {new Date(specificProgrammeHistory[dayInWeek][week].date).toDateString()}
+                    {new Date(c[week].date).toDateString()}
                   </Typography>
 
                   )}

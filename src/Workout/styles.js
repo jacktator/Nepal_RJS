@@ -19,7 +19,7 @@ export const styles = theme => ({
     height: '100%',
   },
   picturePlaceholder: {
-    backgroundColor: 'gray',
+    backgroundColor: 'white',
     width: '90%',
     height: '80%',
   },
