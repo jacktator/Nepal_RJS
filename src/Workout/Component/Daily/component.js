@@ -32,7 +32,7 @@ class SimpleList extends React.PureComponent {
         <Dialog
           open={openDialog}
           handleClose={handleClose}
-          loadingStatus={false}
+          loadingStatus={selectedExercisesQuery}
           exe={selectedExercises.length !== 0 ? selectedExercises[dialogIndexSelected][dialogSelected] : { name: '', progression_model: '' }}
           selectMidExercise={selectMidExercise}
           media={(
