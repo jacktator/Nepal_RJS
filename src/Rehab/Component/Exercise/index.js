@@ -29,20 +29,11 @@ class ExerciseIndex extends React.PureComponent {
     this.handleFinishAllRehab = this.handleFinishAllRehab.bind(this);
   }
 
-  componentDidMount() {
-    if (!this.props.match.params.exerciseOrder) {
-      window.location.hash = '#/rehab/content';
-    }
-    if (this.props.renderExercises.length === 0 && !this.props.renderExercises[0]) {
-      window.location.hash = '#/rehab/content';
-    }
-  }
-
   componentDidUpdate() {
     if (!this.props.match.params.exerciseOrder) {
       window.location.hash = '#/rehab/content';
     }
-    if (this.props.renderExercises.length === 0 && !this.props.renderExercises[0]) {
+    if (this.props.match.params.exerciseOrder >= this.props.renderExercises.length) {
       window.location.hash = '#/rehab/content';
     }
   }
