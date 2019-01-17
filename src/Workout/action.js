@@ -47,7 +47,7 @@ export const setRenderExercise = data => ({ type: 'SET_RENDER_EXERCISE', payload
 export const setExerciseDetails = data => ({ type: 'SET_EXERCISE_DETAILS', payload: data });
 export const setAllDayExercises = data => ({ type: 'SET_ALLDAY_EXERCISES', payload: data });
 export const setTodayExercises = data => ({ type: 'SET_TODAY_EXERCISES', payload: data });
-export const setSelectedExercises = data => ({ type: 'SET_SELECTED_EXERCISES', payload: data });
+export const setSelectedExercises = data => ({ type: 'SET_SELECTED_WORKOUT_EXERCISES', payload: data });
 export const setSelectedExercisesQuery = data => ({ type: 'SELECTED_EXERCISES_QUERY', payload: data });
 export const setHistoryProgramme = data => ({ type: 'SET_HISTORY_PROGRAMME', payload: data });
 export const setSpecificExericseHistory = data => ({ type: 'SET_SPECIFIC_EXERCISE_HISTORY', payload: data });

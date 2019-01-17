@@ -54,7 +54,7 @@ export default function (state = {
       return {
         ...state, alldayExercises: action.payload,
       };
-    case 'SET_SELECTED_EXERCISES':
+    case 'SET_SELECTED_WORKOUT_EXERCISES':
       return {
         ...state, selectedExercises: action.payload,
       };

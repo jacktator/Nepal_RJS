@@ -44,7 +44,7 @@ export const setPosture = data => ({ type: 'SET_POSTURE', payload: data });
 export const setInjury = data => ({ type: 'SET_INJURY', payload: data });
 export const showQuestionnaireForCreate = data => ({ type: 'SHOW_QUESTIONNAIRE_CREATE', payload: data });
 export const fetchingCreatingRehab = data => ({ type: 'QUERRY_CREATING', payload: data });
-export const selectedRehabExercises = data => ({ type: 'SET_SELECTED_EXERCISES', payload: data });
+export const selectedRehabExercises = data => ({ type: 'SET_SELECTED_REHAB_EXERCISES', payload: data });
 export const setRenderExercises = data => ({ type: 'SET_RENDER_EXERCISES', payload: data });
 export const setRehabExercisesRecorded = data => ({ type: 'SET_REHAB_EXERCISE_RECORDED', payload: data });
 export const setRehabExercisesRecordsByDay = data => ({ type: 'SET_DAY_EXERCISE_DATA', payload: data });

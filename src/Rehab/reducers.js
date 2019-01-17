@@ -27,7 +27,7 @@ export default function (state = {
       return {
         ...state, querryCreating: action.payload,
       };
-    case 'SET_SELECTED_EXERCISES':
+    case 'SET_SELECTED_REHAB_EXERCISES':
       return {
         ...state, selectedRehabExercises: action.payload,
       };
