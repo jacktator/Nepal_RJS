@@ -17,7 +17,7 @@ import Stepper from './stepper';
 
 const tapBarContent = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
 
-class MainRehab extends React.PureComponent {
+class MainRehab extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

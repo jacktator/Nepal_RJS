@@ -3,7 +3,7 @@ import { programmeTable } from '../config';
 
 export const statusArray = ['SELECTED', 'UNFETCHED', 'UNSELECTED'];
 
-const programSelectState = (sampleLength, selectedLength) => {
+export const programSelectState = (sampleLength, selectedLength) => {
   const statusIndex = sampleLength - selectedLength;
   if (statusIndex > 0) {
     return statusArray[2];
@@ -220,11 +220,7 @@ export const getDailyExercises = data => (dispatch) => {
     dayInWeek,
   };
   console.log('progress is not null');
-  if (finishDay < dayInWeek) {
-    dispatch(getExercisesSample(baseInfo, data.length));
-  } else {
-    dispatch(getCurrentProgram(false));
-  }
+  dispatch(getExercisesSample(baseInfo, data.length));
 };
 
 export const userKeepExercise = (data, fin) => (dispatch) => {
