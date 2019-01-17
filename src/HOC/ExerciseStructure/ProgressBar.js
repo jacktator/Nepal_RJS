@@ -10,39 +10,14 @@ const styles = {
   },
 };
 
-class ProgressBar extends React.Component {
-// change to props for progress bar
-  state = {
-    completed: 0,
-  };
-
-  componentDidMount() {
-    this.timer = setInterval(this.progress, 500);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timer);
-  }
-
-  progress = () => {
-    const { completed } = this.state;
-    if (completed === 100) {
-      this.setState({ completed: 0 });
-    } else {
-      const diff = Math.random() * 10;
-      this.setState({ completed: Math.min(completed + diff, 100) });
-    }
-  };
-
-  render() {
-    const { classes, progress } = this.props;
+const ProgressBar = (props) => {
+    const { classes, progress } = props;
     return (
       <div className={classes.root}>
-        <Typography align="center" variant="body1" component="h6" color="textPrimary">Bottom Messages</Typography>
-        <LinearProgress variant="determinate" value={this.state.completed} />
+        <Typography align="center" variant="body1" component="h6" color="textPrimary">Do as much reps as possible</Typography>
+        <LinearProgress variant="determinate" value={progress} />
       </div>
     );
-  }
 }
 
 ProgressBar.propTypes = {

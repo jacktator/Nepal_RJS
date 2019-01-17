@@ -161,7 +161,7 @@ const ExerciseStructure = (props) => {
         </List>
       </Grid>
       
-      <ProgressBar />
+      <ProgressBar progress={thisExerciseDetail && ExList ? (ExList.length / thisExerciseDetail.sets) * 100 : 0 } />
 
     </Grid>
   );
