@@ -15,11 +15,8 @@ import History from './history';
 import NumberSelect from '../numberSelect';
 import ExListItem from './ListItem';
 import Youtube from './youtubeDialog';
-<<<<<<< HEAD
 import ProgressBar from './ProgressBar';
-=======
 import { IMAGE_URL } from '../../config';
->>>>>>> d34825a044e8568ff80bc038b85600be81d45007
 
 const styles = theme => ({
   card: {
