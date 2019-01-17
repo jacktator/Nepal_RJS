@@ -9,11 +9,11 @@ import MainComponent from '../../../HOC/PageStructure';
 import { styles } from '../../styles';
 import {
   statusArray, finishDailyQuery, getExercisesSample,
-  getCurrentProgram, getDailyExercises, setRenderExercise,
+  getCurrentProgram, getDailyExercises, setRenderExercise, programSelectState,
   selectExercise, setSelectedExercisesQuery, setSelectedExercises, userKeepExercise,
 } from '../../action';
 
-class MainRehab extends React.PureComponent {
+class MainRehab extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -131,8 +131,9 @@ class MainRehab extends React.PureComponent {
 
   renderExercise() {
     const {
-      exercises, unselectedExercises, programSelectStatus,
+      exercises, unselectedExercises,
     } = this.props;
+    const programSelectStatus = programSelectState(unselectedExercises.length, exercises.length);
     const statusIndex = statusArray.findIndex(v => v === programSelectStatus);
     switch (statusIndex) {
       case 0:
@@ -156,7 +157,7 @@ class MainRehab extends React.PureComponent {
       classes, currentWeek, progress, dailyQuery, renderExercises, selectedExercises, selectedExercisesQuery,
     } = this.props;
     const {
-      err, dialogOpen, dialogSelected, dialogIndexSelected, midSelectExercise,
+      err, dialogOpen, dialogSelected, dialogIndexSelected, midSelectExercise, selectedFatherExercises,
     } = this.state;
     return (
       <MainComponent
@@ -190,7 +191,7 @@ class MainRehab extends React.PureComponent {
                 selectMidExercise={this.selectMidExercise}
                 err={err}
                 handleErrClose={this.closeErrDialog}
-
+                selectedFatherExercises={selectedFatherExercises}
               />
             </Paper>
           </Grid>

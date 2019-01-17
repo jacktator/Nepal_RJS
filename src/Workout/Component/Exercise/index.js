@@ -142,6 +142,7 @@ class ExerciseIndex extends React.Component {
       return ({ reps: b[0], weight: b.length > 1 ? b[1] : null });
     })];
     const thisExerciseDetail = renderExercises[exerciseOrder - 1];
+    const imageId = thisExerciseDetail.id;
     const finishCurrentExercise = res.length >= thisExerciseDetail.sets * 1;
     const select = [
       {

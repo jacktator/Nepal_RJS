@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { styles } from '../../styles';
+import { IMAGE_URL } from '../../../config';
 
 class HOCListItem extends React.PureComponent {
   render() {
@@ -19,6 +20,7 @@ class HOCListItem extends React.PureComponent {
     const {
       feedback, icon_link, image_link, name, progression_model, reps, sets, video_link,
     } = data;
+    const finalName = midSelectExercise.length >= listID + 1 && !!midSelectExercise[listID] ? midSelectExercise[listID].name : name;
     return (
       <ListItem>
         <Paper className={classes.listItemPaper} component={!data.workout ? Link : 'div'} to={`/workout/exercise/${listID + 1}`}>
@@ -26,12 +28,12 @@ class HOCListItem extends React.PureComponent {
 
             <Grid container className={classes.itemleft} justify="space-around" alignContent="space-around" alignItems="center">
               <Card className={classes.picturePlaceholder}>
-                <CardMedia style={{ height: '100%', width: '100%' }} image="/image/workoutExercise.jpg" />
+                <CardMedia style={{ height: '100%', width: '100%', backgroundSize: 'contain' }} image={`${IMAGE_URL}${id}${`${finalName}`.replace(/ /g, '-')}.gif`} />
               </Card>
             </Grid>
 
             <Grid container className={classes.itemRight} justify="space-around" alignContent="center" alignItems="center">
-              <Typography color="secondary" variant="body1">{midSelectExercise.length >= listID + 1 && !!midSelectExercise[listID] ? midSelectExercise[listID].name : name}</Typography>
+              <Typography color="secondary" variant="body1">{finalName}</Typography>
               {!!data.workout && (
               <Grid container>
                 <Grid item container justify="center" xs={6} color="secondary" component={Typography} onClick={data.workout ? handleOpenDialog : null}>Change</Grid>

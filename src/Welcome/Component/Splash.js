@@ -6,10 +6,15 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import Card from '@material-ui/core/Card';
+import CardMedia from '@material-ui/core/CardMedia';
+import sk8 from '../../Assets/sk8tech.png';
+import am from '../../Assets/am.png';
+
 
 const styles = theme => ({
   root: {
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.splashPageBackground.color,
     width: '100%',
     height: '100%',
   },
@@ -39,7 +44,22 @@ const Splash = (props) => {
       <Grid className={classes.gridRoot} container spacing={0} justify="space-between" alignItems="stretch" direction="column">
         <Grid container className={classes.autoFlex}>
           <Paper className={classes.root}>
-            <Typography className={classes.titile} variant="h2" component="h3" align="center" color="textSecondary" gutterBottom>Nepal</Typography>
+            <Grid container style={{ height: '100%' }} direction="column" justify="space-around">
+              <Grid item container direction="column" justify="center">
+                <Grid item>
+                  <CardMedia style={{ height: '110px', backgroundSize: 'auto' }} image="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-200px.png" />
+                </Grid>
+                <Typography variant="h6" component="h6" align="center" color="primary" gutterBottom>Smarter Way To Buy & Sell</Typography>
+              </Grid>
+              <Grid container item direction="row" justify="space-around">
+                <Grid item style={{ width: '50%' }}>
+                  <CardMedia style={{ height: '50px', backgroundSize: 'auto' }} image={am} />
+                </Grid>
+                <Grid item style={{ width: '50%' }}>
+                  <CardMedia style={{ height: '50px', backgroundSize: 'auto' }} image={sk8} />
+                </Grid>
+              </Grid>
+            </Grid>
           </Paper>
         </Grid>
         <Grid container style={{ height: '10vh' }} justify="center">

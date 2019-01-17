@@ -8,7 +8,9 @@ import Component from './component';
 import MainComponent from '../../../HOC/PageStructure';
 import { styles } from '../../styles';
 import {
-  getDailyRehab, getPosture, getInjury, createNewRehab, showQuestionnaireForCreate, finishQuerryDailyData, destructure, keepExercise, setRehabExercisesRecordsByDay, setRenderExercises,
+  getDailyRehab, getPosture, getInjury, createNewRehab,
+  showQuestionnaireForCreate, finishQuerryDailyData, destructure,
+  keepExercise, setRehabExercisesRecordsByDay, setRenderExercises,
 } from '../../actions';
 import Dialog from '../../../HOC/Dialog';
 import Questionnaire from './questionnaire';
@@ -17,7 +19,7 @@ import Stepper from './stepper';
 
 const tapBarContent = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
 
-class MainRehab extends React.PureComponent {
+class MainRehab extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -162,13 +164,18 @@ class MainRehab extends React.PureComponent {
   setRenderExercisesRecord() {
     const data = this.props.rehabExercisesRecorded;
     const m = [...data].find(v => v.progress === `${this.state.midPartTabsValue}`);
-    this.props.setRehabExercisesRecordsByDay(m || { id: this.state.midPartTabsValue, progress: this.state.midPartTabsValue, data: [] });
+    this.props.setRehabExercisesRecordsByDay(m || {
+      id: this.state.midPartTabsValue,
+      progress: this.state.midPartTabsValue,
+      data: [],
+    });
   }
 
 
   render() {
     const {
-      classes, showCreationQuestionnaire, querryCreating, querryDailyData, posture, injury, renderExercises,
+      classes, showCreationQuestionnaire, querryCreating,
+      querryDailyData, posture, injury, renderExercises,
     } = this.props;
     console.log('sssssssssssssssssssssssssssssssssssssssssssssssssssssssss', injury);
     console.log(this.props.selectedRehabExercises.day1);
@@ -264,12 +271,28 @@ MainRehab.propTypes = {
 
 function mapStateToProps(state) {
   const {
-    posture, injury, showCreationQuestionnaire, querryCreating, querryDailyData, selectedRehabExercises, rehabExercisesRecorded, renderExercises,
+    posture, injury, showCreationQuestionnaire, querryCreating,
+    querryDailyData, selectedRehabExercises, rehabExercisesRecorded, renderExercises,
   } = state.Rehab;
   return {
-    posture, injury, showCreationQuestionnaire, querryCreating, querryDailyData, selectedRehabExercises, rehabExercisesRecorded, renderExercises,
+    posture,
+    injury,
+    showCreationQuestionnaire,
+    querryCreating,
+    querryDailyData,
+    selectedRehabExercises,
+    rehabExercisesRecorded,
+    renderExercises,
   };
 }
 export default connect(mapStateToProps, {
-  getDailyRehab, getPosture, getInjury, createNewRehab, showQuestionnaireForCreate, finishQuerryDailyData, keepExercise, setRehabExercisesRecordsByDay, setRenderExercises,
+  getDailyRehab,
+  getPosture,
+  getInjury,
+  createNewRehab,
+  showQuestionnaireForCreate,
+  finishQuerryDailyData,
+  keepExercise,
+  setRehabExercisesRecordsByDay,
+  setRenderExercises,
 })(withStyles(styles)(MainRehab));

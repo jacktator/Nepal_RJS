@@ -3,7 +3,7 @@ import { programmeTable } from '../config';
 
 export const statusArray = ['SELECTED', 'UNFETCHED', 'UNSELECTED'];
 
-const programSelectState = (sampleLength, selectedLength) => {
+export const programSelectState = (sampleLength, selectedLength) => {
   const statusIndex = sampleLength - selectedLength;
   if (statusIndex > 0) {
     return statusArray[2];
@@ -18,7 +18,15 @@ export const dealStringToExerciseArray = (input) => {
   const b = [...input.map((v) => {
     const vi = v.substring(1, v.length - 1).split(',');
     return Object.assign({}, {
-      name: vi[0], id: vi[1], icon_link: vi[2], feedback: vi[3], image_link: vi[4], progression_model: vi[5], reps: vi[6], sets: vi[7], video_link: vi[8],
+      name: vi[0],
+      id: vi[1],
+      icon_link: vi[2],
+      feedback: vi[3],
+      image_link: vi[4],
+      progression_model: vi[5],
+      reps: vi[6],
+      sets: vi[7],
+      video_link: vi[8],
     });
   })];
   return b;
@@ -47,7 +55,7 @@ export const setRenderExercise = data => ({ type: 'SET_RENDER_EXERCISE', payload
 export const setExerciseDetails = data => ({ type: 'SET_EXERCISE_DETAILS', payload: data });
 export const setAllDayExercises = data => ({ type: 'SET_ALLDAY_EXERCISES', payload: data });
 export const setTodayExercises = data => ({ type: 'SET_TODAY_EXERCISES', payload: data });
-export const setSelectedExercises = data => ({ type: 'SET_SELECTED_EXERCISES', payload: data });
+export const setSelectedExercises = data => ({ type: 'SET_SELECTED_WORKOUT_EXERCISES', payload: data });
 export const setSelectedExercisesQuery = data => ({ type: 'SELECTED_EXERCISES_QUERY', payload: data });
 export const setHistoryProgramme = data => ({ type: 'SET_HISTORY_PROGRAMME', payload: data });
 export const setSpecificExericseHistory = data => ({ type: 'SET_SPECIFIC_EXERCISE_HISTORY', payload: data });
@@ -220,11 +228,7 @@ export const getDailyExercises = data => (dispatch) => {
     dayInWeek,
   };
   console.log('progress is not null');
-  if (finishDay < dayInWeek) {
-    dispatch(getExercisesSample(baseInfo, data.length));
-  } else {
-    dispatch(getCurrentProgram(false));
-  }
+  dispatch(getExercisesSample(baseInfo, data.length));
 };
 
 export const userKeepExercise = (data, fin) => (dispatch) => {

@@ -23,6 +23,9 @@ const theme = createMuiTheme({
       hint: 'rgba(0, 0, 0, 0.38)',
     },
   },
+  splashPageBackground: {
+    color: 'white',
+  },
   questionnaireBackground: {
     color: 'white',
   },
