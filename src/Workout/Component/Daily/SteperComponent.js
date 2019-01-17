@@ -10,6 +10,7 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Chip from '@material-ui/core/Chip';
+import { IMAGE_URL } from '../../../config';
 
 const styles = theme => ({
   root: {
@@ -36,10 +37,11 @@ class TextMobileStepper extends React.PureComponent {
   render() {
     const {
       classes, theme, handleBack, handleNext, dialogSelected, tutorialSteps, dialogIndexSelected,
-      selectDialogIndex,
+      selectDialogIndex, id,
     } = this.props;
     const maxSteps = tutorialSteps.length > 1 ? tutorialSteps[dialogIndexSelected].length - 1 : (tutorialSteps[dialogIndexSelected] ? tutorialSteps[dialogIndexSelected].length : 1);
-    console.log('tutorialSteps;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;', tutorialSteps);
+    console.log('tutorialSteps;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;', id);
+    const imageID = id.id;
     return (
       tutorialSteps.length >= 1 && tutorialSteps[dialogIndexSelected].length > 0
         ? (
@@ -58,7 +60,7 @@ class TextMobileStepper extends React.PureComponent {
             </Paper>
             <img
               className={classes.img}
-              src="/image/workoutExercise.jpg"
+              src={`${IMAGE_URL}${imageID}${`${tutorialSteps[dialogIndexSelected][dialogSelected].name}`.replace(/ /g, '-')}.gif`}
               alt={tutorialSteps[dialogIndexSelected][dialogSelected].name}
             />
             <MobileStepper

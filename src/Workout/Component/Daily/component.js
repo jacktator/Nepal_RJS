@@ -12,7 +12,7 @@ class SimpleList extends React.PureComponent {
   render() {
     const {
       classes, renderExercise, dailyQuery, openDialog, handleOpenDialog,
-      handleClose, handleNext, handleBack, dialogSelected, selectedExercisesQuery,
+      handleClose, handleNext, handleBack, dialogSelected, selectedExercisesQuery, selectedFatherExercises,
       selectedExercises, dialogIndexSelected, selectDialogIndex, userKeepExercise, selectMidExercise, midSelectExercise,
       err, handleErrClose,
     } = this.props;
@@ -43,7 +43,7 @@ class SimpleList extends React.PureComponent {
               tutorialSteps={selectedExercises}
               dialogIndexSelected={dialogIndexSelected}
               selectDialogIndex={selectDialogIndex}
-
+              id={renderExercise[selectedFatherExercises]}
             />
           )}
           discription=""
