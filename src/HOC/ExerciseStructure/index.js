@@ -15,6 +15,7 @@ import History from './history';
 import NumberSelect from '../numberSelect';
 import ExListItem from './ListItem';
 import Youtube from './youtubeDialog';
+import ProgressBar from './ProgressBar';
 
 const styles = theme => ({
   card: {
@@ -150,7 +151,7 @@ const ExerciseStructure = (props) => {
             <ExListItem
               key={`${v.reps}${k}`}
               id={k}
-              latest={k === ExList.length}
+              latest={k === ExList.length - 1}
               content={(v.hasOwnProperty('weight') && !!v.weight) ? `weight  ${v.weight} reps  ${v.reps} ${thisExerciseDetail.time ? 'secs' : ''}` : `reps  ${v.reps}   ${thisExerciseDetail.time ? 'secs' : ''}`}
               status="Previous"
               product={largest === ((v.hasOwnProperty('weight') && !!v.weight) ? 1 * v.weight * v.reps : 1 * v.reps)}
@@ -158,6 +159,9 @@ const ExerciseStructure = (props) => {
           ))}
         </List>
       </Grid>
+      
+      <ProgressBar />
+
     </Grid>
   );
 };
