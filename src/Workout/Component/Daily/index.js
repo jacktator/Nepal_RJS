@@ -133,11 +133,7 @@ class MainRehab extends React.Component {
     const {
       exercises, unselectedExercises,
     } = this.props;
-<<<<<<< HEAD
-    programSelectStatus = programSelectState(unselectedExercises.length, exercises.length);
-=======
     const programSelectStatus = programSelectState(unselectedExercises.length, exercises.length);
->>>>>>> d4f4b0066e24da7846413c34894ed2253424cb1f
     const statusIndex = statusArray.findIndex(v => v === programSelectStatus);
     switch (statusIndex) {
       case 0:

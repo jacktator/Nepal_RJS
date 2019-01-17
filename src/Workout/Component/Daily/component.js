@@ -29,12 +29,10 @@ class SimpleList extends React.PureComponent {
           title="Error"
           discription="You need to select a exercise"
         />
-
-
         <Dialog
           open={openDialog}
           handleClose={handleClose}
-          loadingStatus={selectedExercisesQuery}
+          loadingStatus={false}
           exe={selectedExercises.length !== 0 ? selectedExercises[dialogIndexSelected][dialogSelected] : { name: '', progression_model: '' }}
           selectMidExercise={selectMidExercise}
           media={(
