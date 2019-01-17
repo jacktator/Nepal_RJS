@@ -105,6 +105,7 @@ class ExerciseIndex extends React.Component {
       result = showedExercises ? `${showedExercises};(${this.state.reps},${this.state.weight})` : `(${this.state.reps},${this.state.weight})`;
     }
     // const m = { ...this.props.todayExercises, [`exe_${exerciseOrder}`]: result };
+    this.props.finishExercisePageQuery(true);
     this.props.updataOneExercise({ exeNum: exerciseOrder, exeData: result });
     // this.props.setTodayExercises(m);
   }
@@ -130,7 +131,7 @@ class ExerciseIndex extends React.Component {
     const showedExercises = todayExercises[`exe_${exerciseOrder}`] || '';
     const a = showedExercises.split(';');
 
-    //check product value, assign champion cup to the largest one
+    // check product value, assign champion cup to the largest one
     let largest = 0;
     const res = a[0] !== '' && [...[...a].map((v) => {
       const b = [...v.substring(1, v.length - 1).split(',')];
@@ -156,7 +157,7 @@ class ExerciseIndex extends React.Component {
       },
     ];
     console.log('render exes', renderExercises);
-    console.log("Exercises List", res);
+    console.log('Exercises List', res);
 
     return (
       <MainComponent

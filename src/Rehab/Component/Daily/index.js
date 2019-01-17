@@ -182,7 +182,7 @@ class MainRehab extends React.PureComponent {
         backgroundImage="https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg"
         title="Rehab"
         currentWeek={currentWeek}
-        currentPage={1}
+        currentPage={3}
         FooterContent={3}
         onTagClick={this.midPartTabsValueHandleChange}
         tabsValue={midPartTabsValue}

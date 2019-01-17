@@ -255,6 +255,7 @@ export const updataOneExercise = data => (dispatch) => {
   axios.post(`/day_${dayInWeek}/${dayTableId}`, { fields: { [`exe_${data.exeNum}`]: data.exeData } })
     .then((res) => {
       dispatch(setTodayExercises(res.data.acf));
+      dispatch(finishExercisePageQuery(false));
       console.log(res.data.acf);
     })
     .catch(res => console.log(res));
