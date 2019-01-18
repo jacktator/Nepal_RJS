@@ -204,3 +204,10 @@ export const finishAllRehab = () => (dispatch) => {
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
+<<<<<<< HEAD
+
+export const getYoutubeLink = () => (dispatch) => {
+
+};
+=======
+>>>>>>> 1f9ca43c908a55da060dcb6272f18caf572de0a6
