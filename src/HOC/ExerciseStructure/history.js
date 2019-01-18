@@ -43,7 +43,7 @@ function ResponsiveDialog(props) {
             )
             : [...historyForSpecificExercise].map((v, k) => (
               <ListItem key={`${k}list`}>
-                <ListItemText primary={v.date} />
+                <ListItemText primary={new Date(v.date).toDateString()} />
                 {
               !!v.exe && [...v.exe.split(';').map(va => va.substring(1, va.length - 1))].map((vb, kb) => {
                 const a = vb.split(',');

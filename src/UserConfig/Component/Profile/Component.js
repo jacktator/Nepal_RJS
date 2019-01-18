@@ -87,6 +87,7 @@ const Profile = (props) => {
   const {
     classes, name, dob, avatar, weight, openInfo,
     openPassword, handelAvatarChange, gender, age,
+    openConditionDialog,
   } = props;
   return (
     <Grid container className={classes.container} justify="center" alignItems="center">
@@ -128,7 +129,7 @@ const Profile = (props) => {
             <Divider className={classes.divider} />
             <Grid item container justify="flex-start">
               <Typography className={classes.detailedLableHead} variant="h6" color="secondary">weight:  </Typography>
-              <Typography variant="h6" color="secondary">{weight} KG</Typography>
+              <Typography variant="h6" color="secondary">{weight}</Typography>
             </Grid>
             <Divider className={classes.divider} />
           </Grid>
@@ -136,7 +137,7 @@ const Profile = (props) => {
           <Grid className={classes.contentContainer} container direction="column" justify="center" alignItems="center">
             <Button color="secondary" onClick={openInfo}>Update Information</Button>
             <Button color="secondary" onClick={openPassword}>Change Password</Button>
-            <Button color="secondary">View Terms and Conditions</Button>
+            <Button color="secondary" onClick={openConditionDialog}>View Terms and Conditions</Button>
             <Button color="secondary" component={Link} to="/logout">Logout</Button>
           </Grid>
 

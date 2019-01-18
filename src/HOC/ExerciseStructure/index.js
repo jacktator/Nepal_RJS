@@ -45,7 +45,8 @@ const ExerciseStructure = (props) => {
     classes, select, ExList, onSaveClick, youtbueID, onOpen, finishCurrentExercise,
     dailyExerciseLength, rehab, onClose, youtubeOpenStatus, title,
     history, thisExerciseDetail, currentExerciseOrder, onFinishAllExercise,
-    historyForSpecificExercise, needYoutube, needHistory, largest,
+    historyForSpecificExercise, needYoutube, needHistory, largest, imageLink,
+    getYoutubeLink,
   } = props;
   const onYoutubeOpen = () => {
     onOpen('youtube');
@@ -82,6 +83,8 @@ const ExerciseStructure = (props) => {
         open={!!youtubeOpenStatus}
         onYoutubeClose={onYoutubeClose}
         youtbueID={youtbueID}
+        getYoutubeLink={getYoutubeLink}
+        queryName={`${IMAGE_URL}${thisExerciseDetail.id}${`${thisExerciseDetail.name}`.replace(/ /g, '-')}.gif`}
       />
       )}
       {!needHistory && (
@@ -113,7 +116,7 @@ const ExerciseStructure = (props) => {
           </Card>
           <CardMedia
             style={{ height: '100%', width: '100%' }}
-            image={rehab ? 'https://nepal.sk8tech.io/wp-content/uploads/2019/01/exerciseGif.gif' : `${IMAGE_URL}${thisExerciseDetail.id}${`${thisExerciseDetail.name}`.replace(/ /g, '-')}.gif`}
+            image={rehab ? `${IMAGE_URL}${imageLink}-${`${thisExerciseDetail.name}`.replace(/ /g, '-')}.gif` : `${IMAGE_URL}${thisExerciseDetail.id}${`${thisExerciseDetail.name}`.replace(/ /g, '-')}.gif`}
           />
         </Card>
       </Grid>
@@ -160,8 +163,8 @@ const ExerciseStructure = (props) => {
           ))}
         </List>
       </Grid>
-      
-      <ProgressBar progress={thisExerciseDetail && ExList ? (ExList.length / thisExerciseDetail.sets) * 100 : 0 } />
+
+      <ProgressBar progress={thisExerciseDetail && ExList ? (ExList.length / thisExerciseDetail.sets) * 100 : 0} />
 
     </Grid>
   );

@@ -43,6 +43,7 @@ export default function (state = {
       return {
         ...state, renderExercises: action.payload,
       };
+
     case 'FINISH_QUERRY_DAILY_DATA':
       return {
         ...state, querryDailyData: action.payload,
