@@ -1,12 +1,11 @@
 import axios from 'axios';
 import { rehabProgramme } from '../config';
 
-const arrayOfRehab = {
+export const arrayOfRehab = {
   posture: ['rs', 'apt', 'sp'],
   injury: ['lbp', 'np', 'sp', 'hp'],
 };
 export const destructure = (data) => {
-  console.log('destructure', data);
   if (!data) { return []; }
   const a = data.split(';');
   const result1 = [...a.map((v) => {
@@ -17,7 +16,6 @@ export const destructure = (data) => {
 
     });
   })];
-  console.log('destructure Result', data);
   return result1;
 };
 
@@ -27,8 +25,6 @@ export const destructureExeData = (data) => {
   }
   const m = data;
   const result = [...m.split(';').map((v, k) => [...v.split(',').map(vv => vv)])];
-  console.log('destructureExeDatadahsodjhaoshspdojopasjdoihasdhiausgdiygasudgaksdhiuaisugdkjb', result);
-
   return result;
 };
 
@@ -52,7 +48,6 @@ export const finishQuerryDailyData = data => ({ type: 'FINISH_QUERRY_DAILY_DATA'
 export const finishExerciseSaveQuery = data => ({ type: 'FINISH_REHAB_EXERCISE', payload: data });
 
 export const keepExercise = data => (dispatch) => {
-  console.log('keepExercise', data);
   const a = data.map(v => Object.values(v).join()).join(';');
   axios.post(`/rehab_program/${sessionStorage.rehabProgrammeID}`, { fields: { [`day${new Date().getDay()}`]: a } })
     .then(
@@ -67,13 +62,11 @@ export const keepExercise = data => (dispatch) => {
         console.log(err);
       },
     );
-  console.log(a);
 };
 
 
 export const createRehabRecord = () => (dispatch) => {
   const date = new Date().getDay();
-  console.log('somethingwrongdate--------------------------------------------', date);
   axios.post('/rehab_record', {
     fields: {
       progress: date, user_id: sessionStorage.user_id, rehab_program_id: sessionStorage.rehabProgrammeID, data: '',
@@ -130,7 +123,6 @@ export const createNewRehab = data => (dispatch) => {
 };
 
 export const getPosture = data => (dispatch) => {
-  console.log(rehabProgramme.posture[data]);
   axios.get(`/${rehabProgramme.posture[data]}?filter[posts_per_page]=30`)
     .then(
       (ref) => {
@@ -162,14 +154,12 @@ export const getInjury = data => (dispatch) => {
 
 export const getRehabRecordCallback = res => (dispatch) => {
   const date = new Date().getDay();
-  console.log('callback', res);
   const a = [...res.data];
   const m = a.map(v => ({ id: v.id, progress: v.acf.progress, data: destructureExeData(v.acf.data) }));
   const today = [...m].find(v => `${v.progress}` === `${date}`);
   dispatch(setRehabExercisesRecorded(m));
   if (today) {
     sessionStorage.setItem('rehabTodayRecordId', today.id);
-    console.log('todaysssssssssssssssssssssssssssssssssssss', today);
     dispatch(setRehabExercisesRecordsByDay(today));
   } else { dispatch(createRehabRecord()); }
 };
@@ -196,9 +186,6 @@ export const getDailyRehab = day => (dispatch) => {
       axios.all([a, b, c])
         .then(
           axios.spread((aa, bb, cc) => {
-            console.log('acct', aa);
-            console.log('perms', bb);
-            console.log('c', cc);
             dispatch(getRehabRecordCallback(aa));
             dispatch(getRehabTempCallback(bb.data, cc.data));
             dispatch(finishQuerryDailyData(false));

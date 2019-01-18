@@ -14,7 +14,6 @@ class SimpleList extends React.PureComponent {
       openDialog, renderExercise, keepFunc, keepExercise,
       pre, progress, ExList, injuryName, postureName,
     } = this.props;
-    console.log(pre);
     return (
       <div className={classes.root}>
         {!(injuryExes instanceof Array) && (

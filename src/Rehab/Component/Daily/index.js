@@ -54,7 +54,6 @@ class MainRehab extends React.Component {
   }
 
   componentDidMount() {
-    console.log('history================', this.props.history.action);
     const nowDay = new Date().getDay();
     this.setState({ currentWeek: nowDay + 1, midPartTabsValue: nowDay });
     this.props.finishQuerryDailyData(true);
@@ -66,7 +65,6 @@ class MainRehab extends React.Component {
     if ((this.state.midPartTabsValue !== prevState.midPartTabsValue) || (this.props.selectedRehabExercises !== prevProps.selectedRehabExercises)) {
       this.setRenderExercisesState();
       this.setRenderExercisesRecord();
-      console.log('change!');
     }
   }
 
@@ -124,9 +122,6 @@ class MainRehab extends React.Component {
   setRenderExercisesState() {
     const { acf } = this.props.selectedRehabExercises;
     const s = acf && acf[`day${this.state.midPartTabsValue}`];
-    console.log(s);
-    console.log('sdasdasd', this.props.selectedRehabExercises.acf);
-    console.log(this.state.midPartTabsValue);
     if (s === undefined || s === '') {
       this.props.setRenderExercises([]);
       return;
@@ -181,8 +176,6 @@ class MainRehab extends React.Component {
     const { acf } = this.props.selectedRehabExercises;
     const postureName = acf && acf.posture;
     const injuryName = acf && acf.injury;
-    console.log('sssssssssssssssssssssssssssssssssssssssssssssssssssssssss', rehabProgramme.posture);
-    console.log(this.props.selectedRehabExercises.acf);
     const {
       currentWeek, midPartTabsValue, showDiscription, title, injurySelected, ExList,
       postureSelected, exerciseSelected, dialogData, showChangeDialog, renderExercise,

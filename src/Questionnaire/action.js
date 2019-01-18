@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { second } from './Component/contentData';
 import { programmeTable } from '../config';
+import { createNewRehab, arrayOfRehab } from '../Workout/action';
 
 export const finishQuery = () => ({ type: 'FINISH_QUERY', payload: true });
 
@@ -19,6 +20,7 @@ export const createProgram = () => (dispatch) => {
     finish_for_day: false,
     exercise_place: location,
     select_finish: 0,
+    updatedate: new Date().toDateString(),
   };
   axios.post('/program',
     { status: 'publish', fields })
@@ -46,6 +48,7 @@ export const getExercises = resData => (dispatch) => {
       },
     );
 };
+
 
 export const createQuestionnaire = data => (dispatch) => {
   const fields = {
@@ -75,6 +78,9 @@ export const createQuestionnaire = data => (dispatch) => {
       sessionStorage.setItem('days', resData.days_per_week);
       console.log(res);
       dispatch(createProgram());
+      if (!(data.posture >= arrayOfRehab.posture.length && data.rehab >= arrayOfRehab.injury.length)) {
+        dispatch(createNewRehab({ user_id: sessionStorage.user_id, posture: data.posture, injury: data.rehab }));
+      }
     })
     .catch((error) => {
       console.log(error);

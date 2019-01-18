@@ -61,9 +61,6 @@ const ExerciseStructure = (props) => {
     onOpen('history');
   };
 
-  console.log(thisExerciseDetail);
-  console.log('allExercise length=======================================', dailyExerciseLength);
-  console.log('finish all===============================================', currentExerciseOrder * 1 < dailyExerciseLength);
   return (
     <Grid
       container

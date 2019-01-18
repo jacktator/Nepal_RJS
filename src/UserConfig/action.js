@@ -149,7 +149,6 @@ export const updateAvatar = url => (dispatch) => {
     .then((res) => {
       dispatch(changeAvatar(res.data.acf.photo));
       dispatch(setQueryProfile(false));
-      console.log('update');
       console.log(res);
     })
     .catch((error) => {

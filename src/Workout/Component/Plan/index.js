@@ -91,8 +91,10 @@ class index extends React.Component {
       progress, days, path, finish_for_day,
     } = sessionStorage;
     const finish = !!finish_for_day && JSON.parse(finish_for_day);
-    console.log('progress', progress, 'days', days);
     const currentWeek = Math.ceil(progress / days);
+    console.log(new Date().getDay() - new Date(sessionStorage.workoutUpdateDate).getDay());
+    console.log(new Date().getDay());
+    console.log(new Date(sessionStorage.workoutUpdateDate).getDay());
     return (
       <div>
         <LoadingComponent open={programQuery} />

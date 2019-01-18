@@ -24,7 +24,6 @@ class HistoryIndex extends React.PureComponent {
     const {
       classes, progress, historyProgrammeList,
     } = this.props;
-    console.log(historyProgrammeList);
     return (
       <MainComponent
         top

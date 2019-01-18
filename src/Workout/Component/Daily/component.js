@@ -16,7 +16,6 @@ class SimpleList extends React.PureComponent {
       selectedExercises, dialogIndexSelected, selectDialogIndex, userKeepExercise, selectMidExercise, midSelectExercise,
       err, handleErrClose,
     } = this.props;
-    console.log('selectedExercises--------------------------------------------------------------------------------------', selectedExercises);
     return (
       <div className={classes.root}>
         <LoadingComponent

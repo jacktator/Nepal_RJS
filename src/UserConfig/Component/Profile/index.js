@@ -66,7 +66,6 @@ class UserProfile extends React.PureComponent {
   }
 
   handelAvatarChange(event) {
-    console.log(event.target.files[0]);
     this.props.setQueryProfile(true);
     this.props.uploadPicture(event.target.files[0]);
   }

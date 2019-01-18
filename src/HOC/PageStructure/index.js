@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -20,7 +21,9 @@ class index extends React.PureComponent {
             <Grid container className={classes.top} style={{ backgroundImage: `url("${backgroundImage}")` }}>
               <Grid container className={classes.topInline} justify="center" direction="column">
                 <Typography variant="h5" color="secondary">{title}</Typography>
-                {topDiscription && <Typography variant="body2" color="secondary">You are currently at week 1</Typography>}
+                {topDiscription && (
+                <Typography variant="body2" color="secondary">You are currently at week{currentWeek}</Typography>
+                )}
                 {topDiscription && <Typography variant="body2" color="secondary">100% completed</Typography>}
               </Grid>
             </Grid>
