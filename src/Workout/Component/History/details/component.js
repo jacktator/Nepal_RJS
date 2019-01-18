@@ -5,7 +5,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
 
 const component = (props) => {
-  console.log(props.data);
   const { data, week } = props;
   const { acf } = !!data[week] && data[week];
 

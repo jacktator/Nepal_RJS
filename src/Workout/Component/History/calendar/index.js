@@ -26,7 +26,6 @@ class Calendar extends React.PureComponent {
   componentDidMount() {
     const urlProgrammeID = this.props.match.params.programmeID;
     const a = this.props.historyProgrammeList && [...this.props.historyProgrammeList].findIndex(v => v.id === urlProgrammeID * 1);
-    console.log([...this.props.historyProgrammeList].find((v, k) => { console.log('id', v.id); console.log('ID', urlProgrammeID); return (v.id === urlProgrammeID * 1); }));
     // this.props.finishHistoryQuery(true);
     if (a === -1) {
       window.location.href = '#/workout/history';
@@ -36,7 +35,6 @@ class Calendar extends React.PureComponent {
   }
 
   onTabsClick(event, value) {
-    console.log(value);
     this.setState({ tabs: value });
   }
 

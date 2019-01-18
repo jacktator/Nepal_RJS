@@ -40,7 +40,6 @@ class TextMobileStepper extends React.PureComponent {
       selectDialogIndex, id,
     } = this.props;
     const maxSteps = tutorialSteps.length > 1 ? tutorialSteps[dialogIndexSelected].length - 1 : (tutorialSteps[dialogIndexSelected] ? tutorialSteps[dialogIndexSelected].length : 1);
-    console.log('tutorialSteps;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;', id);
     const imageID = id.id;
     return (
       tutorialSteps.length >= 1 && tutorialSteps[dialogIndexSelected].length > 0

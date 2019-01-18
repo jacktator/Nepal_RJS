@@ -43,11 +43,9 @@ class ExerciseIndex extends React.PureComponent {
     const m = JSON.parse(JSON.stringify([...this.props.dayRehabExercisesRecords.data]));
     const itemID = this.props.match.params.exerciseOrder;
     const exe = this.props.renderExercises[itemID];
-    console.log('exe=================================', exe);
     const {
       name, reps, sets, time,
     } = exe;
-    console.log('m=======================================', m);
     if (m[itemID] && m[itemID].length >= sets * 1) {
       return;
     }

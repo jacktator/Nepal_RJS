@@ -30,10 +30,6 @@ class Details extends React.PureComponent {
 
   componentDidMount() {
     const { dayInWeek, programmeID, index } = this.props.match.params;
-    console.log('dayInWeek', dayInWeek);
-    console.log('programmeID', programmeID);
-    console.log('index', index);
-    console.log(this.props.specificProgrammeHistory);
     if (!this.props.specificProgrammeHistory[dayInWeek] && this.props.historyProgrammeList.length !== 0) {
       this.props.finishHistoryQuery(true);
       const a = this.props.specificProgrammeHistory;
@@ -42,7 +38,6 @@ class Details extends React.PureComponent {
     if (this.props.historyProgrammeList[index] && this.props.historyProgrammeList[index][`day_${dayInWeek * 1 + 1}_exe`]) {
       const str = this.props.historyProgrammeList[index][`day_${dayInWeek * 1 + 1}_exe`];
       const m = this.props.historyProgrammeList.length !== 0 && dealStringToExerciseArray(str.substring(1, str.length - 1).split(';'));
-      console.log('history----------------------------------------------m-------------------', m);
       this.setState({ render: m });
     }
   }
@@ -58,8 +53,6 @@ class Details extends React.PureComponent {
     } = this.props.match.params;
     const { render, renderData } = this.state;
     const c = this.props.specificProgrammeHistory[dayInWeek];
-    console.log(c);
-    // const acf = c[this.props.match.params.week] && c[this.props.match.params.week].acf;
     return (
       <>
         <LoadingComponent open={historyQuery} />

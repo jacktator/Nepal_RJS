@@ -44,13 +44,10 @@ class ExerciseIndex extends React.Component {
   componentDidMount() {
     if (this.props.renderExercises.length === 0) {
       window.location.href = `#/workout/daily/${sessionStorage.dayInWeek}`;
-      console.log('this.props.renderExercises.length', this.props.renderExercises.length);
       return;
     }
     if (this.props.renderExercises[this.props.match.params.exerciseOrder - 1].day !== undefined) {
-      console.log(this.props.renderExercises);
       window.location.href = `#/workout/daily/${sessionStorage.dayInWeek}`;
-      console.log('this.props.renderExercises[this.props.match.params.exerciseOrder - 1].day', this.props.renderExercises[this.props.match.params.exerciseOrder - 1].day);
       return;
     }
     this.props.finishExercisePageQuery(true);
@@ -61,9 +58,7 @@ class ExerciseIndex extends React.Component {
 
   componentDidUpdate() {
     if (this.props.renderExercises[this.props.match.params.exerciseOrder - 1].day !== undefined) {
-      console.log(this.props.renderExercises);
       window.location.href = `#/workout/daily/${sessionStorage.dayInWeek}`;
-      console.log('this.props.renderExercises[this.props.match.params.exerciseOrder - 1].day', this.props.renderExercises[this.props.match.params.exerciseOrder - 1].day);
     }
   }
 
@@ -157,8 +152,6 @@ class ExerciseIndex extends React.Component {
         value: reps,
       },
     ];
-    console.log('render exes', renderExercises);
-    console.log('Exercises List', res);
 
     return (
       <MainComponent
