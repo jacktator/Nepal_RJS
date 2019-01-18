@@ -218,6 +218,6 @@ export const finishAllRehab = () => (dispatch) => {
     .catch(err => console.log(err));
 };
 
-export getYoutubeLink = () => dispatch => {
+export const getYoutubeLink = () => (dispatch) => {
 
-}
+};
