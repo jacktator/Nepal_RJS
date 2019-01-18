@@ -10,11 +10,13 @@ export default function (state = {
   exerciseDetails: {},
   selectedExercisesQuery: false,
   selectedExercises: [],
+  programmeUpdateDate: '',
   exercisePageQuery: false,
   alldayExercises: [[], [], [], [], [], [], [], [], [], []],
   historyProgrammeList: [],
   historyForSpecificExercise: [],
   specificProgrammeHistory: [],
+  youtubeLink: '_e7AzzwpDUM',
   todayExercises: {
     exeLength: '',
     exe_1: '',
@@ -73,6 +75,14 @@ export default function (state = {
     case 'SET_SPECIFIC_PROGRAMME_HISTORY':
       return {
         ...state, specificProgrammeHistory: action.payload,
+      };
+    case 'SET_YOUTUBE_LINK':
+      return {
+        ...state, youtubeLink: action.payload,
+      };
+    case 'SET_PROGRAMME_DATE':
+      return {
+        ...state, programmeUpdateDate: action.payload,
       };
     case 'FINISH_Program_QUERY':
       return {

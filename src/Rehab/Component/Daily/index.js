@@ -16,6 +16,7 @@ import Dialog from '../../../HOC/Dialog';
 import Questionnaire from './questionnaire';
 import Loading from '../../../HOC/Loading';
 import Stepper from './stepper';
+import { rehabProgramme } from '../../../config';
 
 const tapBarContent = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
 
@@ -177,8 +178,11 @@ class MainRehab extends React.Component {
       classes, showCreationQuestionnaire, querryCreating,
       querryDailyData, posture, injury, renderExercises,
     } = this.props;
-    console.log('sssssssssssssssssssssssssssssssssssssssssssssssssssssssss', injury);
-    console.log(this.props.selectedRehabExercises.day1);
+    const { acf } = this.props.selectedRehabExercises;
+    const postureName = acf && acf.posture;
+    const injuryName = acf && acf.injury;
+    console.log('sssssssssssssssssssssssssssssssssssssssssssssssssssssssss', rehabProgramme.posture);
+    console.log(this.props.selectedRehabExercises.acf);
     const {
       currentWeek, midPartTabsValue, showDiscription, title, injurySelected, ExList,
       postureSelected, exerciseSelected, dialogData, showChangeDialog, renderExercise,
@@ -244,16 +248,18 @@ class MainRehab extends React.Component {
               />
 
               <Component
-                injury="Injury"
-                posture="Posture"
+                injury={`${rehabProgramme.injury[injuryName]}`.replace('_', ' ')}
+                posture={`${rehabProgramme.posture[postureName]}`.replace('_', ' ')}
                 injuryExes={injury}
                 postureExes={posture}
                 openDialog={this.handleOpenChangeDialog}
                 renderExercise={renderExercises}
                 keepExercise={this.keepExerciseFetch}
-                pre={this.state.midPartTabsValue < new Date().getDay()}
+                pre={midPartTabsValue < new Date().getDay()}
                 progress={midPartTabsValue}
                 ExList={ExList}
+                injuryName={injuryName}
+                postureName={postureName}
               />
             </Paper>
           </Grid>

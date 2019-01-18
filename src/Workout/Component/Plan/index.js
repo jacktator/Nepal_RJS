@@ -143,6 +143,7 @@ class index extends React.Component {
                   progress={progress}
                   handleQuestionnaireOpen={this.handleQuestionnaireOpen}
                   finish={finish}
+                  over24={(new Date().getDay() - new Date(sessionStorage.workoutUpdateDate).getDay()) >= 1}
                 />
               </Paper>
             </Grid>
