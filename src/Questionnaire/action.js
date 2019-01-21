@@ -78,6 +78,7 @@ export const createQuestionnaire = data => (dispatch) => {
       sessionStorage.setItem('days', resData.days_per_week);
       console.log(res);
       dispatch(createProgram());
+      console.log(data.posture >= arrayOfRehab.posture.length && data.rehab >= arrayOfRehab.injury.length);
       if (!(data.posture >= arrayOfRehab.posture.length && data.rehab >= arrayOfRehab.injury.length)) {
         dispatch(createNewRehab({ user_id: sessionStorage.user_id, posture: data.posture, injury: data.rehab }));
       }
