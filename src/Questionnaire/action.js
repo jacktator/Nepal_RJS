@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { second } from './Component/contentData';
 import { programmeTable } from '../config';
-import { createNewRehab, arrayOfRehab } from '../Workout/action';
+import { createNewRehab, arrayOfRehab } from '../Rehab/actions';
 
 export const finishQuery = () => ({ type: 'FINISH_QUERY', payload: true });
 

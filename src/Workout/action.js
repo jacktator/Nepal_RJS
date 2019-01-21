@@ -16,18 +16,21 @@ const handleExercise = data => [...data.map(v => v.acf)];
 
 export const dealStringToExerciseArray = (input) => {
   const b = [...input.map((v) => {
-    const vi = v.substring(1, v.length - 1).split(',');
-    return Object.assign({}, {
-      name: vi[0],
-      id: vi[1],
-      icon_link: vi[2],
-      feedback: vi[3],
-      image_link: vi[4],
-      progression_model: vi[5],
-      reps: vi[6],
-      sets: vi[7],
-      video_link: vi[8],
-    });
+    if (v) {
+      const vi = v.substring(1, v.length - 1).split(',');
+      return Object.assign({}, {
+        name: vi[0],
+        id: vi[1],
+        icon_link: vi[2],
+        feedback: vi[3],
+        image_link: vi[4],
+        progression_model: vi[5],
+        reps: vi[6],
+        sets: vi[7],
+        video_link: vi[8],
+      });
+    }
+    return ('unselected');
   })];
   return b;
 };
