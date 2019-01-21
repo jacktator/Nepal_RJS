@@ -33,9 +33,9 @@ class SimpleList extends React.PureComponent {
     } else if (~~data.current === ~~this.props.progress && data.finish) {
       event.preventDefault();
       this.props.handleQuestionnaireOpen();
-    } else if (!data.over24 && data.finish) {
-      event.preventDefault();
+    } else if (!data.over24) {
       this.props.handleOver24Open();
+      event.preventDefault();
     }
   }
 

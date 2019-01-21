@@ -242,13 +242,11 @@ export const userKeepExercise = (data, fin) => (dispatch) => {
   const pass = fin ? {
     fields: {
       [`day_${sessionStorage.dayInWeek}_exe`]: data,
-      updatedate: new Date().toDateString(),
       select_finish: sessionStorage.dayInWeek,
     },
   } : {
     fields: {
       [`day_${sessionStorage.dayInWeek}_exe`]: data,
-      updatedate: new Date().toDateString(),
     },
   };
   axios.post(`/program/${sessionStorage.programmeID}`, pass)
@@ -277,7 +275,7 @@ export const updataOneExercise = data => (dispatch) => {
 
 // When user finish final exercise update program
 export const finishAllDailyExercises = data => (dispatch) => {
-  axios.post(`/program/${sessionStorage.programmeID}`, { fields: { finish_for_day: true, updatedate: new Date().toDateString() } })
+  axios.post(`/program/${sessionStorage.programmeID}`, { fields: { finish_for_day: true } })
     .then((res) => {
       console.log(res);
       sessionStorage.setItem('finish_for_day', true);
