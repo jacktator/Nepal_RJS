@@ -20,7 +20,7 @@ export const createProgram = () => (dispatch) => {
     finish_for_day: false,
     exercise_place: location,
     select_finish: 0,
-    updatedate: new Date().toDateString(),
+    updatedate: 'begin',
   };
   axios.post('/program',
     { status: 'publish', fields })

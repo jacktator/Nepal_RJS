@@ -30,12 +30,12 @@ class SimpleList extends React.PureComponent {
   onItemClick(event, data) {
     if (~~data.current !== ~~this.props.progress) {
       event.preventDefault();
-    } else if (!data.over24) {
-      this.props.handleOver24Open();
-      event.preventDefault();
     } else if (~~data.current === ~~this.props.progress && data.finish) {
       event.preventDefault();
       this.props.handleQuestionnaireOpen();
+    } else if (!data.over24) {
+      this.props.handleOver24Open();
+      event.preventDefault();
     }
   }
 
