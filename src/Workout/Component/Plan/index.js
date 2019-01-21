@@ -44,6 +44,12 @@ class index extends React.Component {
   componentDidMount() {
     this.props.finishQuery(true);
     this.props.getCurrentProgram();
+    console.log(this.props.match);
+    console.log(window.history.state);
+    if (window.history.state.from === 'daily') {
+      this.setState({ over24Open: true });
+      window.history.pushState(null, null);
+    }
   }
 
   componentDidUpdate(prevProps) {

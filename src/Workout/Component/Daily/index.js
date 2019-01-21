@@ -45,7 +45,7 @@ class MainRehab extends React.Component {
       return;
     }
     if (!(sessionStorage.workoutUpdateDate === 'begin' ? true : (new Date().getDay() - new Date(sessionStorage.workoutUpdateDate).getDay()) >= 1)) {
-      window.location.hash = '#/workout/plan';
+      window.history.pushState({ from: 'daily' }, null, '#/workout/plan');
       return;
     }
     getDailyExercises({ length: exercises.length });
