@@ -49,6 +49,7 @@ class SimpleList extends React.PureComponent {
             [...Array(days || 5)].map((v, k) => (
               <Link key={`day${(starDayNumber || 0) + k + 1}`} onClick={event => this.onItemClick(event, { current: starDayNumber + k + 1, finish })} style={{ width: '100%', height: '100%' }} to={`/workout/daily/${k + 1}`}>
                 <ListItem divider disabled={!over24 && (~~starDayNumber + k + 1 !== ~~progress)} style={~~starDayNumber + k + 1 < ~~progress ? { backgroundColor: '#4caf50' } : null} className={classes.infoListItem} component={Paper} elevation={4}>
+                  {console.log(`day${(starDayNumber || 0) + k + 1}`, !over24 && (~~starDayNumber + k + 1 !== ~~progress))}
                   <ListItemText primary={(
                     <Typography variant="body1" color="secondary">{`Day ${starDayNumber + k + 1}`}</Typography>
                   )}
