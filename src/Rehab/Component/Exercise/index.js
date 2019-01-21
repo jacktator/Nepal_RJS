@@ -81,7 +81,9 @@ class ExerciseIndex extends React.PureComponent {
     const exe = this.props.renderExercises[exeOrder];
     const {
       name, reps, sets, time,
-    } = exe;
+    } = exe || {
+      name: '', reps: '', sets: '', time: '',
+    };
     const prefix = exeOrder < 4 ? 'injury' : 'posture';
     const imageLink = `${prefix}-${selectedRehabExercises.acf[prefix]}`;
     const thisExerciseDetail = {
