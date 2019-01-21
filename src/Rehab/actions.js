@@ -112,6 +112,7 @@ export const createNewRehab = data => (dispatch) => {
   })
     .then(
       (res) => {
+        console.log('createNewRehab-----------------------------', createNewRehab);
         dispatch(getDailyRehab());
       },
     )
@@ -165,16 +166,20 @@ export const getRehabRecordCallback = res => (dispatch) => {
 };
 
 export const getRehabTempCallback = (res1, res2) => (dispatch) => {
-  const postureTemp = destructureTemp(res1);
-  const injuryTemp = destructureTemp(res2);
-  dispatch(setPosture(postureTemp));
-  dispatch(setInjury(injuryTemp));
+  if (res1) {
+    const postureTemp = destructureTemp(res1);
+    dispatch(setPosture(postureTemp));
+  }
+  if (res2) {
+    const injuryTemp = destructureTemp(res2);
+    dispatch(setInjury(injuryTemp));
+  }
 };
 
 export const getDailyRehab = day => (dispatch) => {
   axios.get(`/rehab_program?filter[author]=${sessionStorage.user_id}&orderby=date&order=desc`)
     .then((res) => {
-      console.log(res);
+      console.log('getDailyRehab-----------------------------', res);
       if (res.data.length === 0) { dispatch(showQuestionnaireForCreate(true)); return; }
       if (res.data[0].acf.finish === true) { dispatch(showQuestionnaireForCreate(true)); }
       const { injury, posture } = res.data[0].acf;
@@ -186,6 +191,9 @@ export const getDailyRehab = day => (dispatch) => {
       axios.all([a, b, c])
         .then(
           axios.spread((aa, bb, cc) => {
+            console.log('aa-----------------------------', aa);
+            console.log('bb-----------------------------', bb);
+            console.log('cc-----------------------------', cc);
             dispatch(getRehabRecordCallback(aa));
             dispatch(getRehabTempCallback(bb.data, cc.data));
             dispatch(finishQuerryDailyData(false));
