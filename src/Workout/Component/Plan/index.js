@@ -29,6 +29,7 @@ class index extends React.Component {
       dailyQuestionnaireOpen: false,
       questionnaireSelected: 0,
       tabsValue: 0,
+      over24Open: false,
     };
     this.midPartTabsValueHandleChange = this.midPartTabsValueHandleChange.bind(this);
     this.handleQuestionnaireOpen = this.handleQuestionnaireOpen.bind(this);
@@ -36,6 +37,8 @@ class index extends React.Component {
     this.selectQuestionnaire = this.selectQuestionnaire.bind(this);
     this.handleQuestionnaireBlur = this.handleQuestionnaireBlur.bind(this);
     this.onTagClick = this.onTagClick.bind(this);
+    this.handleOver24Blur = this.handleOver24Blur.bind(this);
+    this.handleOver24Open = this.handleOver24Open.bind(this);
   }
 
   componentDidMount() {
@@ -74,6 +77,14 @@ class index extends React.Component {
     this.setState({ dailyQuestionnaireOpen: true });
   }
 
+  handleOver24Blur() {
+    this.setState({ over24Open: false });
+  }
+
+  handleOver24Open() {
+    this.setState({ over24Open: true });
+  }
+
   selectQuestionnaire(event) {
     this.setState({ questionnaireSelected: event.target.value });
   }
@@ -86,7 +97,9 @@ class index extends React.Component {
     const {
       classes, programQuery,
     } = this.props;
-    const { dailyQuestionnaireOpen, questionnaireSelected, tabsValue } = this.state;
+    const {
+      dailyQuestionnaireOpen, questionnaireSelected, tabsValue, over24Open,
+    } = this.state;
     const {
       progress, days, path, finish_for_day,
     } = sessionStorage;
@@ -98,6 +111,13 @@ class index extends React.Component {
     return (
       <div>
         <LoadingComponent open={programQuery} />
+        <Dialog
+          open={over24Open}
+          loadingStatus={false}
+          title=""
+          discription="You need to waiting for next day"
+          handleClose={this.handleOver24Blur}
+        />
         <Dialog
           open={dailyQuestionnaireOpen}
           loadingStatus={false}
@@ -146,6 +166,7 @@ class index extends React.Component {
                   handleQuestionnaireOpen={this.handleQuestionnaireOpen}
                   finish={finish}
                   over24={(new Date().getDay() - new Date(sessionStorage.workoutUpdateDate).getDay()) >= 1}
+                  handleOver24Open={this.handleOver24Open}
                 />
               </Paper>
             </Grid>
