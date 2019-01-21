@@ -78,16 +78,16 @@ class MainRehab extends React.Component {
   }
 
   keepExercise(data) {
-    const { midSelectExercise, selectedFatherExercises } = this.state;
-    if (midSelectExercise.length < selectedFatherExercises + 1 || !midSelectExercise[selectedFatherExercises]) {
+    const { midSelectExercise } = this.state;
+    if (!midSelectExercise[data.listID]) {
       this.setState({ err: true });
       return;
     }
     this.props.finishDailyQuery(true);
     const m = [].concat(this.props.exercises);
-    const replace = midSelectExercise[selectedFatherExercises];
-    m.push({ ...data, name: replace.name, progression_model: replace.progression_model });
-    const f = [...m.map(v => `(${[...Object.values(v)].join()})`)].join(';');
+    const replace = midSelectExercise[data.listID];
+    m[data.listID] = { ...data, name: replace.name, progression_model: replace.progression_model };
+    const f = [...m.map(v => (v === 'unselected' ? '' : `(${[...Object.values(v)].join()})`))].join(';');
     const fin = m.length === this.props.unselectedExercises.length;
     this.props.userKeepExercise(f, fin);
   }
@@ -135,6 +135,7 @@ class MainRehab extends React.Component {
     } = this.props;
     const programSelectStatus = programSelectState(unselectedExercises.length, exercises.length);
     const statusIndex = statusArray.findIndex(v => v === programSelectStatus);
+    const newArray = [];
     switch (statusIndex) {
       case 0:
         this.props.setRenderExercise(exercises);
@@ -143,7 +144,9 @@ class MainRehab extends React.Component {
         this.props.setRenderExercise(unselectedExercises);
         return;
       case 2:
-        const newArray = [].concat(exercises, unselectedExercises.slice(exercises.length));
+        for (let i = 0; i < unselectedExercises.length; i++) {
+          newArray[i] = exercises[i] ? (exercises[i] === 'unselected' ? unselectedExercises[i] : exercises[i]) : unselectedExercises[i];
+        }
         this.props.setRenderExercise(newArray);
         return;
       default:
