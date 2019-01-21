@@ -6,6 +6,9 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import LeftIcon from '@material-ui/icons/KeyboardArrowLeft';
+import { Link } from 'react-router-dom';
 import HOCInputFile from '../../../HOC/inputFiles';
 import styles from '../../styles';
 
@@ -16,12 +19,15 @@ const Component = (props) => {
   return (
     <div className={classes.container}>
       <Grid container className={classes.gridRoot} spacing={0} justify="space-between" alignItems="stretch" direction="column">
-        
+
         <Grid container className={classes.autoFlex}>
           <Paper className={classes.paper}>
+            <IconButton className={classes.menuButton} component={Link} to="/mainmenu" color="secondary" aria-label="Login">
+              <LeftIcon style={{ fontSize: '40px' }} />
+            </IconButton>
             <Grid container className={classes.gridRoot} direction="column">
-              
-              <Grid container style={{ height: '33vh' }} justify="center" alignItems="flex-end">
+
+              <Grid container style={{ height: '24.5vh' }} justify="center" alignItems="flex-end">
                 <Typography variant="h2" component="h3" align="center" color="secondary" gutterBottom>Nepal</Typography>
               </Grid>
 
