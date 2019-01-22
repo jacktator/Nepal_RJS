@@ -46,7 +46,7 @@ class index extends React.Component {
     this.props.getCurrentProgram();
     console.log(this.props.match);
     console.log(window.history.state);
-    if (window.history.state.from === 'daily') {
+    if (window.history.state && window.history.state.from === 'daily') {
       this.setState({ over24Open: true });
       window.history.pushState(null, null);
     }

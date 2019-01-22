@@ -8,8 +8,8 @@ import Component from './component';
 import MainComponent from '../../../HOC/PageStructure';
 import { styles } from '../../styles';
 import {
-  statusArray, finishDailyQuery, getExercisesSample,
-  getCurrentProgram, getDailyExercises, setRenderExercise, programSelectState,
+  finishDailyQuery, getExercisesSample,
+  getCurrentProgram, getDailyExercises, setRenderExercise,
   selectExercise, setSelectedExercisesQuery, setSelectedExercises, userKeepExercise,
 } from '../../action';
 
@@ -55,8 +55,7 @@ class MainRehab extends React.Component {
   componentDidUpdate(prevProps) {
     const sampleChanged = prevProps.unselectedExercises !== this.props.unselectedExercises;
     const exerciseChanged = prevProps.exercises !== this.props.exercises;
-    const statusChanged = prevProps.programSelectStatus !== this.props.programSelectStatus;
-    if (sampleChanged || statusChanged || exerciseChanged) {
+    if (sampleChanged || exerciseChanged) {
       this.renderExercise();
     }
   }
@@ -92,7 +91,7 @@ class MainRehab extends React.Component {
     const replace = midSelectExercise[data.listID];
     m[data.listID] = { ...data, name: replace.name, progression_model: replace.progression_model };
     const f = [...m.map(v => (v === 'unselected' ? '' : `(${[...Object.values(v)].join()})`))].join(';');
-    const fin = m.length === this.props.unselectedExercises.length;
+    const fin = !m.includes();
     this.props.userKeepExercise(f, fin);
   }
 
@@ -137,25 +136,11 @@ class MainRehab extends React.Component {
     const {
       exercises, unselectedExercises,
     } = this.props;
-    const programSelectStatus = programSelectState(unselectedExercises.length, exercises.length);
-    const statusIndex = statusArray.findIndex(v => v === programSelectStatus);
     const newArray = [];
-    switch (statusIndex) {
-      case 0:
-        this.props.setRenderExercise(exercises);
-        return;
-      case 1:
-        this.props.setRenderExercise(unselectedExercises);
-        return;
-      case 2:
-        for (let i = 0; i < unselectedExercises.length; i++) {
-          newArray[i] = exercises[i] ? (exercises[i] === 'unselected' ? unselectedExercises[i] : exercises[i]) : unselectedExercises[i];
-        }
-        this.props.setRenderExercise(newArray);
-        return;
-      default:
-        this.props.setRenderExercise(unselectedExercises);
+    for (let i = 0; i < unselectedExercises.length; i++) {
+      newArray[i] = exercises[i] ? (exercises[i] === 'unselected' ? unselectedExercises[i] : exercises[i]) : unselectedExercises[i];
     }
+    this.props.setRenderExercise(newArray);
   }
 
 
