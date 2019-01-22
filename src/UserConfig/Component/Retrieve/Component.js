@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
@@ -9,29 +8,34 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import LeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import { Link } from 'react-router-dom';
+import { withTheme } from '@material-ui/core/styles';
+import CardMedia from '@material-ui/core/CardMedia';
 import HOCInputFile from '../../../HOC/inputFiles';
 import styles from '../../styles';
 
+
 const Component = (props) => {
   const {
-    classes, loading, onChangeHandle, email,
+    theme, loading, onChangeHandle, email,
   } = props;
+  const { logo } = theme;
+  const tstyles = styles(theme);
   return (
-    <div className={classes.container}>
-      <Grid container className={classes.gridRoot} spacing={0} justify="space-between" alignItems="stretch" direction="column">
+    <div style={tstyles.container}>
+      <Grid container style={tstyles.gridRoot} spacing={0} justify="space-between" alignItems="stretch" direction="column">
 
-        <Grid container className={classes.autoFlex}>
-          <Paper className={classes.paper}>
-            <IconButton className={classes.menuButton} component={Link} to="/mainmenu" color="secondary" aria-label="Login">
+        <Grid container style={tstyles.autoFlex}>
+          <Paper style={tstyles.paper}>
+            <IconButton style={tstyles.menuButton} component={Link} to="/mainmenu" color="primary" aria-label="Login">
               <LeftIcon style={{ fontSize: '40px' }} />
             </IconButton>
-            <Grid container className={classes.gridRoot} direction="column">
+            <Grid container style={tstyles.gridRoot} direction="column">
 
-              <Grid container style={{ height: '24.5vh' }} justify="center" alignItems="flex-end">
-                <Typography variant="h2" component="h3" align="center" color="secondary" gutterBottom>Nepal</Typography>
+              <Grid container alignItems="flex-end" style={{ width: '100%', height: '25vh' }}>
+                <CardMedia style={{ width: '100%', height: '110px', backgroundSize: 'auto' }} image={logo} />
               </Grid>
 
-              <Grid container className={classes.autoFlex} direction="column" justify="space-evenly">
+              <Grid container style={tstyles.autoFlex} direction="column" justify="space-evenly">
                 <Grid container alignContent="center">
                   <HOCInputFile
                     onChangeHandle={onChangeHandle}
@@ -41,7 +45,7 @@ const Component = (props) => {
                   />
                 </Grid>
                 <Grid item>
-                  <Typography style={{ width: '80%', marginLeft: '10%' }} align="center" variant="body1" component="h6" color="secondary">Please enter your email for resetting password</Typography>
+                  <Typography style={{ width: '80%', marginLeft: '10%' }} align="center" variant="body1" component="h6" color="primary">Please enter your email for resetting password</Typography>
                 </Grid>
               </Grid>
 
@@ -50,7 +54,7 @@ const Component = (props) => {
         </Grid>
 
         <Grid container style={{ height: '10vh' }} justify="center">
-          {loading ? <CircularProgress size={30} /> : <Button className={classes.button} color="primary">Retrieve</Button>}
+          {loading ? <CircularProgress size={30} /> : <Button style={tstyles.button} color="primary">Retrieve</Button>}
         </Grid>
 
       </Grid>
@@ -59,10 +63,10 @@ const Component = (props) => {
 };
 
 Component.propTypes = {
-  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
   onChangeHandle: PropTypes.func.isRequired,
   email: PropTypes.string.isRequired,
   loading: PropTypes.bool.isRequired,
 };
 
-export default withStyles(styles)(Component);
+export default withTheme()(Component);

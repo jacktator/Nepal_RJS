@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { programmeTable } from '../config';
 
-export const compareOver24 = (pre) => {
+export const compareOver24 = (a) => {
   const now = new Date();
+  const pre = new Date(a);
   const monDiff = now - pre;
   const day = now.getDate() - pre.getDate();
   if (monDiff >= 86400000) {
