@@ -92,7 +92,9 @@ class MainRehab extends React.Component {
     const replace = midSelectExercise[data.listID];
     m[data.listID] = { ...data, name: replace.name, progression_model: replace.progression_model };
     const f = [...m.map(v => (v === 'unselected' ? '' : `(${[...Object.values(v)].join()})`))].join(';');
-    const fin = m.length === this.props.unselectedExercises.length;
+    const fin = !m.includes();
+    console.log(fin);
+    console.log(m);
     this.props.userKeepExercise(f, fin);
   }
 
@@ -140,22 +142,10 @@ class MainRehab extends React.Component {
     const programSelectStatus = programSelectState(unselectedExercises.length, exercises.length);
     const statusIndex = statusArray.findIndex(v => v === programSelectStatus);
     const newArray = [];
-    switch (statusIndex) {
-      case 0:
-        this.props.setRenderExercise(exercises);
-        return;
-      case 1:
-        this.props.setRenderExercise(unselectedExercises);
-        return;
-      case 2:
-        for (let i = 0; i < unselectedExercises.length; i++) {
-          newArray[i] = exercises[i] ? (exercises[i] === 'unselected' ? unselectedExercises[i] : exercises[i]) : unselectedExercises[i];
-        }
-        this.props.setRenderExercise(newArray);
-        return;
-      default:
-        this.props.setRenderExercise(unselectedExercises);
+    for (let i = 0; i < unselectedExercises.length; i++) {
+      newArray[i] = exercises[i] ? (exercises[i] === 'unselected' ? unselectedExercises[i] : exercises[i]) : unselectedExercises[i];
     }
+    this.props.setRenderExercise(newArray);
   }
 
 
