@@ -171,7 +171,7 @@ class index extends React.Component {
                   progress={progress}
                   handleQuestionnaireOpen={this.handleQuestionnaireOpen}
                   finish={finish}
-                  over24={sessionStorage.workoutUpdateDate === 'begin' ? true : (new Date().getDay() - new Date(sessionStorage.workoutUpdateDate).getDay()) >= 1}
+                  over24={sessionStorage.workoutUpdateDate === 'begin' ? true : (new Date().getDate() - new Date(sessionStorage.workoutUpdateDate).getDate()) >= 1}
                   handleOver24Open={this.handleOver24Open}
                 />
               </Paper>
