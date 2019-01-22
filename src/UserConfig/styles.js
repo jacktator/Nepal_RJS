@@ -1,6 +1,6 @@
 const styles = theme => ({
   paper: {
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.userCongifPageBackground,
     width: '100%',
     height: '100%',
   },
