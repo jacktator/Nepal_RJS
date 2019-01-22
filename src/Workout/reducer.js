@@ -5,7 +5,6 @@ export default function (state = {
   historyQuery: false,
   exercises: [],
   unselectedExercises: [],
-  programSelectStatus: 'UNFETCHED',
   renderExercises: [],
   exerciseDetails: {},
   selectedExercisesQuery: false,
@@ -39,10 +38,6 @@ export default function (state = {
     case 'SET_UNSELECTED_EXERCISES':
       return {
         ...state, unselectedExercises: action.payload,
-      };
-    case 'SET_PROGRAM_SELECTED_STATE':
-      return {
-        ...state, programSelectStatus: action.payload,
       };
     case 'SET_RENDER_EXERCISE':
       return {
