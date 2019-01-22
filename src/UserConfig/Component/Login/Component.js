@@ -52,8 +52,8 @@ const Component = (props) => {
                   />
                 </Grid>
                 <Grid item>
-                  <Button variant="text" color="secondary" component={Link} to="/user/Retrieve" fullWidth>Forget Password</Button>
-                  <Button variant="text" color="secondary" component={Link} to="/user/Register" fullWidth>Register</Button>
+                  <Button variant="text" color="primary" component={Link} to="/user/Retrieve" fullWidth>Forget Password</Button>
+                  <Button variant="text" color="primary" component={Link} to="/user/Register" fullWidth>Register</Button>
                 </Grid>
               </Grid>
 

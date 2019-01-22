@@ -68,14 +68,14 @@ const styles = theme => ({
     },
   },
   inputFileLableSecondary: {
-    color: theme.palette.secondary.main,
+    color: theme.palette.primary.main,
   },
   inputFileSecondary: {
     '&:before': {
-      borderBottom: `1px solid ${theme.palette.secondary.main}`,
+      borderBottom: `1px solid ${theme.palette.primary.main}`,
     },
     '&:hover:not($disabled):not($error):not($focused):before': {
-      borderBottom: `1px solid ${theme.palette.secondary.main}`,
+      borderBottom: `1px solid ${theme.palette.primary.main}`,
     },
   },
   disabled: {},
@@ -131,7 +131,7 @@ class InputFiles extends React.Component {
           },
           startAdornment: (
             <InputAdornment position="start">
-              <Typography variant="h6" component="h6" color="secondary">{adornmentText}</Typography>
+              <Typography variant="h6" component="h6" color="primary">{adornmentText}</Typography>
             </InputAdornment>
           ),
           endAdornment: password && (
