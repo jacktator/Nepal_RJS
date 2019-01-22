@@ -53,7 +53,6 @@ const getDayInWeek = (progress, days) => {
 
 export const setExercises = data => ({ type: 'SET_DAY_EXERCISES', payload: data });
 export const setUnselectedExercises = data => ({ type: 'SET_UNSELECTED_EXERCISES', payload: data });
-export const setProgramSelectedState = data => ({ type: 'SET_PROGRAM_SELECTED_STATE', payload: data });
 export const setRenderExercise = data => ({ type: 'SET_RENDER_EXERCISE', payload: data });
 export const setExerciseDetails = data => ({ type: 'SET_EXERCISE_DETAILS', payload: data });
 export const setAllDayExercises = data => ({ type: 'SET_ALLDAY_EXERCISES', payload: data });
@@ -120,7 +119,7 @@ export const getExerciseDetail = data => (dispatch) => {
 };
 
 
-export const getExercisesSample = (baseInfo, selectedLength) => (dispatch) => {
+export const getExercisesSample = baseInfo => (dispatch) => {
   const {
     location, path, days, dayInWeek,
   } = baseInfo;
@@ -129,8 +128,6 @@ export const getExercisesSample = (baseInfo, selectedLength) => (dispatch) => {
       console.log('sample', res);
       const data = handleExercise(res.data);
       dispatch(setUnselectedExercises(data));
-      const status = programSelectState(data.length, selectedLength);
-      dispatch(setProgramSelectedState(status));
       dispatch(finishDailyQuery(false));
     })
     .catch(err => console.log(err));
@@ -174,8 +171,6 @@ export const getCurrentProgram = getExe => (dispatch) => {
         console.log('getprogram', exercises.length);
         dispatch(getExercisesSample(baseInfo, exercises.length));
       } else {
-        const status = programSelectState(exercises.length, exercises.length);
-        dispatch(setProgramSelectedState(status));
         dispatch(finishDailyQuery(false));
       }
     })
@@ -235,7 +230,7 @@ export const getDailyExercises = data => (dispatch) => {
     dayInWeek,
   };
   console.log('progress is not null');
-  dispatch(getExercisesSample(baseInfo, data.length));
+  dispatch(getExercisesSample(baseInfo));
 };
 
 export const userKeepExercise = (data, fin) => (dispatch) => {
