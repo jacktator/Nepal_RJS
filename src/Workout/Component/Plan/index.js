@@ -12,7 +12,7 @@ import Component from './component';
 import MainComponent from '../../../HOC/PageStructure';
 import { styles } from '../../styles';
 import {
-  getCurrentProgram, finishQuery, selectDailyQuestionnaire, noProgram,
+  getCurrentProgram, finishQuery, selectDailyQuestionnaire, noProgram, compareOver24,
 } from '../../action';
 import LoadingComponent from '../../../HOC/Loading';
 import Dialog from '../../../HOC/Dialog';
@@ -171,7 +171,7 @@ class index extends React.Component {
                   progress={progress}
                   handleQuestionnaireOpen={this.handleQuestionnaireOpen}
                   finish={finish}
-                  over24={sessionStorage.workoutUpdateDate === 'begin' ? true : (new Date().getDate() - new Date(sessionStorage.workoutUpdateDate).getDate()) >= 1}
+                  over24={sessionStorage.workoutUpdateDate === 'begin' ? true : compareOver24(sessionStorage.workoutUpdateDate)}
                   handleOver24Open={this.handleOver24Open}
                 />
               </Paper>

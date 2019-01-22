@@ -68,4 +68,9 @@ export const styles = theme => ({
     },
   },
   selected: {},
+  progressBar: {
+    width: '90%',
+    height: '0.5vh',
+    marginTop: '50px',
+  },
 });

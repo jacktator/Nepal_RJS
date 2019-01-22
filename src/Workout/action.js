@@ -1,15 +1,18 @@
 import axios from 'axios';
 import { programmeTable } from '../config';
 
-export const statusArray = ['SELECTED', 'UNFETCHED', 'UNSELECTED'];
-
-export const programSelectState = (sampleLength, selectedLength) => {
-  const statusIndex = sampleLength - selectedLength;
-  if (statusIndex > 0) {
-    return statusArray[2];
-  } if (statusIndex === 0) {
-    return statusArray[0];
-  } return statusArray[1];
+export const compareOver24 = (a) => {
+  const now = new Date();
+  const pre = new Date(a);
+  const monDiff = now - pre;
+  const day = now.getDate() - pre.getDate();
+  if (monDiff >= 86400000) {
+    return true;
+  }
+  if (day >= 1) {
+    return true;
+  }
+  return false;
 };
 
 const handleExercise = data => [...data.map(v => v.acf)];

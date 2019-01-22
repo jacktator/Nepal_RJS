@@ -10,7 +10,7 @@ import { styles } from '../../styles';
 import {
   finishDailyQuery, getExercisesSample,
   getCurrentProgram, getDailyExercises, setRenderExercise,
-  selectExercise, setSelectedExercisesQuery, setSelectedExercises, userKeepExercise,
+  selectExercise, setSelectedExercisesQuery, setSelectedExercises, userKeepExercise, compareOver24,
 } from '../../action';
 
 class MainRehab extends React.Component {
@@ -44,7 +44,7 @@ class MainRehab extends React.Component {
     if (this.props.renderExercises.length !== 0) {
       return;
     }
-    if (!(sessionStorage.workoutUpdateDate === 'begin' ? true : (new Date().getDate() - new Date(sessionStorage.workoutUpdateDate).getDate()) >= 1)) {
+    if (!(sessionStorage.workoutUpdateDate === 'begin' ? true : compareOver24(sessionStorage.workoutUpdateDate))) {
       window.history.pushState({ from: 'daily' }, null, '#/workout/plan');
       return;
     }

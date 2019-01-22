@@ -26,12 +26,16 @@ const theme = createMuiTheme({
   splashPageBackground: {
     color: 'white',
   },
+  userCongifPageBackground: {
+    color: 'white',
+  },
   questionnaireBackground: {
     color: 'white',
   },
   headerTheme: {
     color: 'white',
   },
+  logo: 'https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-200px.png',
   typography: {
     useNextVariants: true,
   },
