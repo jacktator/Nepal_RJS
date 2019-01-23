@@ -71,6 +71,9 @@ export const styles = theme => ({
   progressBar: {
     width: '90%',
     height: '0.5vh',
-    marginTop: '50px',
+
+  },
+  progressData: {
+    marginTop: '40px',
   },
 });
