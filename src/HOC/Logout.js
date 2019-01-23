@@ -2,7 +2,8 @@ import React from 'react';
 
 const Logout = () => {
   sessionStorage.clear();
-  window.location.hash = '#/user/Login';
+  window.location.hash = '#/';
+  window.location.reload(true);
   return (
     <div />
   );
