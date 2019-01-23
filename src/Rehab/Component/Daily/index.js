@@ -103,7 +103,6 @@ class MainRehab extends React.Component {
       {
         posture: this.state.postureSelected * 1 - 1,
         injury: this.state.injurySelected * 1 - 1,
-        user_id: 4,
       },
     );
     this.props.finishQuerryDailyData(true);
