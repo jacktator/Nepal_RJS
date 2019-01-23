@@ -45,13 +45,13 @@ function ResponsiveDialog(props) {
               <ListItem key={`${k}list`}>
                 <ListItemText primary={new Date(v.date).toDateString()} />
                 {
-              !!v.exe && [...v.exe.split(';').map(va => va.substring(1, va.length - 1))].map((vb, kb) => {
-                const a = vb.split(',');
-                return (
-                  <ListItemText key={`${kb}listtext`} primary={a.length === 0 ? `reps: ${a[0]}` : `reps: ${a[0]} X weight: ${a[1]}`} />
-                );
-              })
-            }
+                  !!v.exe && [...v.exe.split(';').map(va => va.substring(1, va.length - 1))].map((vb, kb) => {
+                    const a = vb.split(',');
+                    return (
+                      <ListItemText key={`${kb}listtext`} primary={a.length === 1 ? `reps: ${a[0]}` : `reps: ${a[0]} X weight: ${a[1]}`} />
+                    );
+                  })
+                }
               </ListItem>
             )) }
         </List>
