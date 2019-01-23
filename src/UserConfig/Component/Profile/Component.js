@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 
 const styles = theme => ({
   root: {
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.profileBackground,
     marginTop: '20%',
     width: '92%',
     minHeight: '80vh',
@@ -40,7 +40,7 @@ const styles = theme => ({
     position: 'relative',
   },
   avatarContainer: {
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.primary.main,
     marginTop: '-15vmin',
     height: '15vmax',
     width: '15vmax',
@@ -79,7 +79,7 @@ const styles = theme => ({
     width: '30%',
   },
   divider: {
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.primary.main,
   },
 });
 
@@ -108,37 +108,38 @@ const Profile = (props) => {
 
           <Grid container className={classes.contentContainer} spacing={16} direction="column" justify="space-around">
             <Grid item container justify="flex-start">
-              <Typography className={classes.detailedLableHead} variant="h6" color="secondary">Name:  </Typography>
-              <Typography variant="h6" color="secondary">{name}</Typography>
+              <Typography className={classes.detailedLableHead} variant="h6" color="primary">Name:  </Typography>
+              <Typography variant="h6" color="primary">{name}</Typography>
             </Grid>
             <Divider className={classes.divider} />
             <Grid item container justify="flex-start">
-              <Typography className={classes.detailedLableHead} variant="h6" color="secondary">Gender:  </Typography>
-              <Typography variant="h6" color="secondary">{gender}</Typography>
+              <Typography className={classes.detailedLableHead} variant="h6" color="primary">Gender:  </Typography>
+              <Typography variant="h6" color="primary">{gender}</Typography>
             </Grid>
             <Divider className={classes.divider} />
             <Grid item container justify="flex-start">
-              <Typography className={classes.detailedLableHead} variant="h6" color="secondary">Age:  </Typography>
-              <Typography variant="h6" color="secondary">{age}</Typography>
+              <Typography className={classes.detailedLableHead} variant="h6" color="primary">Age:  </Typography>
+              <Typography variant="h6" color="primary">{age}</Typography>
             </Grid>
             <Divider className={classes.divider} />
             <Grid item container justify="flex-start">
-              <Typography className={classes.detailedLableHead} variant="h6" color="secondary">DoB:  </Typography>
-              <Typography variant="h6" color="secondary">{dob}</Typography>
+              <Typography className={classes.detailedLableHead} variant="h6" color="primary">DoB:  </Typography>
+              <Typography variant="h6" color="primary">{dob}</Typography>
             </Grid>
             <Divider className={classes.divider} />
             <Grid item container justify="flex-start">
-              <Typography className={classes.detailedLableHead} variant="h6" color="secondary">weight:  </Typography>
-              <Typography variant="h6" color="secondary">{weight}</Typography>
+              <Typography className={classes.detailedLableHead} variant="h6" color="primary">weight:  </Typography>
+              <Typography variant="h6" color="primary">{weight}</Typography>
             </Grid>
             <Divider className={classes.divider} />
           </Grid>
 
           <Grid className={classes.contentContainer} container direction="column" justify="center" alignItems="center">
-            <Button color="secondary" onClick={openInfo}>Update Information</Button>
-            <Button color="secondary" onClick={openPassword}>Change Password</Button>
-            <Button color="secondary" onClick={openConditionDialog}>View Terms and Conditions</Button>
-            <Button color="secondary" component={Link} to="/logout">Logout</Button>
+            <Button color="primary" component={Link} to="/questionnaire">Restart a new programme</Button>
+            <Button color="primary" onClick={openInfo}>Update Information</Button>
+            <Button color="primary" onClick={openPassword}>Change Password</Button>
+            <Button color="primary" onClick={openConditionDialog}>View Terms and Conditions</Button>
+            <Button color="primary" component={Link} to="/logout">Logout</Button>
           </Grid>
 
         </Grid>

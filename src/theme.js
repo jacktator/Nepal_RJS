@@ -32,6 +32,9 @@ const theme = createMuiTheme({
   questionnaireBackground: {
     color: 'white',
   },
+  profileBackground: {
+    color: 'white',
+  },
   headerTheme: {
     color: 'white',
   },
