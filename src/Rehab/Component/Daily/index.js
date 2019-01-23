@@ -121,18 +121,22 @@ class MainRehab extends React.Component {
   setRenderExercisesState() {
     const { acf } = this.props.selectedRehabExercises;
     const s = acf && acf[`day${this.state.midPartTabsValue}`];
+    console.log('setRenderExercisesState-------------------------------------------', s);
+    console.log(acf);
     if (s === undefined || s === '') {
       this.props.setRenderExercises([]);
       return;
     }
     const a = destructure(s);
-    // const m = [].concat(JSON.parse(JSON.stringify(this.state.renderExercise)));
-    const m = [].concat(JSON.parse(JSON.stringify(this.props.renderExercises)));
-    a.forEach((v, k) => {
-      if (v === undefined) { return; }
-      m[k] = v;
-    });
-    this.props.setRenderExercises(m);
+    // console.log(a);
+    // const m = [].concat(JSON.parse(JSON.stringify(this.props.renderExercises)));
+    // console.log(m);
+    // a.forEach((v, k) => {
+    //   if (v === undefined) { return; }
+    //   m[k] = v;
+    // });
+    // console.log(m);
+    this.props.setRenderExercises(a);
     // this.setState({ renderExercise: m });
   }
 
@@ -159,6 +163,7 @@ class MainRehab extends React.Component {
   setRenderExercisesRecord() {
     const data = this.props.rehabExercisesRecorded;
     const m = [...data].find(v => v.progress === `${this.state.midPartTabsValue}`);
+    console.log('setRenderExercisesRecord-------------------------------------------', m);
     this.props.setRehabExercisesRecordsByDay(m || {
       id: this.state.midPartTabsValue,
       progress: this.state.midPartTabsValue,
