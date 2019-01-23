@@ -106,7 +106,7 @@ export const createNewRehab = data => (dispatch) => {
       day4: '',
       day5: '',
       day6: '',
-      user_id: data.user_id,
+      user_id: sessionStorage.user_id,
     },
     status: 'publish',
   })

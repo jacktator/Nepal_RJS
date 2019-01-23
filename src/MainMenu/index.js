@@ -4,7 +4,9 @@ import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import CardMedia from '@material-ui/core/CardMedia';
 import SpeedDialTooltipOpen from '../HOC/speedDial';
+
 import styles from './styles';
 
 const menu = [{ name: 'Workout', color: 'rgba(0,96,100,0.5)', to: '/workout' }, { name: 'Rehab', color: 'rgba(86,200,216,0.5)', to: '/rehab' },
@@ -21,7 +23,7 @@ class Mainmenu extends React.PureComponent {
           <SpeedDialTooltipOpen shadow />
 
           <Grid container className={classes.topGrid} justify="center" alignContent="center" alignItems="center">
-            <Typography variant="h2" component="h2">Nepal</Typography>
+            <CardMedia style={{ width: '100%', height: '110px', backgroundSize: 'auto' }} image="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-200px.png" />
           </Grid>
 
           <Grid container className={classes.menuGrid} justify="center" alignContent="center" alignItems="center">
