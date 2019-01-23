@@ -25,7 +25,7 @@ class index extends React.PureComponent {
                 {topDiscription && (
                   <Typography variant="body2" color="secondary">You are currently at week{currentWeek}</Typography>
                 )}
-                {topDiscription && <Typography variant="body2" color="secondary">{sessionStorage.progress ? (((sessionStorage.progress - 1) / (sessionStorage.days * 5)) * 100).toFixed(1) : 0 }% completed</Typography>}
+                {topDiscription && <Typography className={classes.progressData} variant="body2" color="secondary">{sessionStorage.progress ? (((sessionStorage.progress - 1) / (sessionStorage.days * 5)) * 100).toFixed(1) : 0 }% completed</Typography>}
                 {topDiscription && <LinearProgress className={classes.progressBar} variant="determinate" value={sessionStorage.progress ? (((sessionStorage.progress - 1) / (sessionStorage.days * 5)) * 100) : 0} />}
               </Grid>
             </Grid>
