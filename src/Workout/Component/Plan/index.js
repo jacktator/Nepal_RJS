@@ -12,7 +12,7 @@ import Component from './component';
 import MainComponent from '../../../HOC/PageStructure';
 import { styles } from '../../styles';
 import {
-  getCurrentProgram, finishQuery, selectDailyQuestionnaire, noProgram,
+  getCurrentProgram, finishQuery, selectDailyQuestionnaire, noProgram, compareOver24,
 } from '../../action';
 import LoadingComponent from '../../../HOC/Loading';
 import Dialog from '../../../HOC/Dialog';
@@ -29,6 +29,7 @@ class index extends React.Component {
       dailyQuestionnaireOpen: false,
       questionnaireSelected: 0,
       tabsValue: 0,
+      over24Open: false,
     };
     this.midPartTabsValueHandleChange = this.midPartTabsValueHandleChange.bind(this);
     this.handleQuestionnaireOpen = this.handleQuestionnaireOpen.bind(this);
@@ -36,11 +37,19 @@ class index extends React.Component {
     this.selectQuestionnaire = this.selectQuestionnaire.bind(this);
     this.handleQuestionnaireBlur = this.handleQuestionnaireBlur.bind(this);
     this.onTagClick = this.onTagClick.bind(this);
+    this.handleOver24Blur = this.handleOver24Blur.bind(this);
+    this.handleOver24Open = this.handleOver24Open.bind(this);
   }
 
   componentDidMount() {
     this.props.finishQuery(true);
     this.props.getCurrentProgram();
+    console.log(this.props.match);
+    console.log(window.history.state);
+    if (window.history.state && window.history.state.from === 'daily') {
+      this.setState({ over24Open: true });
+      window.history.pushState(null, null);
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -74,6 +83,14 @@ class index extends React.Component {
     this.setState({ dailyQuestionnaireOpen: true });
   }
 
+  handleOver24Blur() {
+    this.setState({ over24Open: false });
+  }
+
+  handleOver24Open() {
+    this.setState({ over24Open: true });
+  }
+
   selectQuestionnaire(event) {
     this.setState({ questionnaireSelected: event.target.value });
   }
@@ -86,16 +103,27 @@ class index extends React.Component {
     const {
       classes, programQuery,
     } = this.props;
-    const { dailyQuestionnaireOpen, questionnaireSelected, tabsValue } = this.state;
+    const {
+      dailyQuestionnaireOpen, questionnaireSelected, tabsValue, over24Open,
+    } = this.state;
     const {
       progress, days, path, finish_for_day,
     } = sessionStorage;
     const finish = !!finish_for_day && JSON.parse(finish_for_day);
-    console.log('progress', progress, 'days', days);
     const currentWeek = Math.ceil(progress / days);
+    console.log(new Date().getDay() - new Date(sessionStorage.workoutUpdateDate).getDay());
+    console.log(new Date().getDay());
+    console.log(new Date(sessionStorage.workoutUpdateDate).getDay());
     return (
       <div>
         <LoadingComponent open={programQuery} />
+        <Dialog
+          open={over24Open}
+          loadingStatus={false}
+          title=""
+          discription="You need to waiting for next day"
+          handleClose={this.handleOver24Blur}
+        />
         <Dialog
           open={dailyQuestionnaireOpen}
           loadingStatus={false}
@@ -143,6 +171,8 @@ class index extends React.Component {
                   progress={progress}
                   handleQuestionnaireOpen={this.handleQuestionnaireOpen}
                   finish={finish}
+                  over24={sessionStorage.workoutUpdateDate === 'begin' ? true : compareOver24(sessionStorage.workoutUpdateDate)}
+                  handleOver24Open={this.handleOver24Open}
                 />
               </Paper>
             </Grid>

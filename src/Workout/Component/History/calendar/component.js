@@ -15,7 +15,6 @@ const Component = (props) => {
   const {
     classes, starDayNumber, days, week, programmeID, renderProgrammeIndex,
   } = props;
-  console.log('days', Array((days * 1 || 5)));
   return (
     <List className={classes.root} component="nav">
       {[...Array((days * 1 || 5)).keys()].map((v, k) => (

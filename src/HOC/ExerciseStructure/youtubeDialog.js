@@ -21,6 +21,10 @@ class ResponsiveDialog extends React.Component {
     this.onPauseVideo = this.onPauseVideo.bind(this);
   }
 
+  componentDidMount() {
+    this.props.getYoutubeLink(this.props.queryName);
+  }
+
   onReady(event) {
     this.setState({
       player: event.target,

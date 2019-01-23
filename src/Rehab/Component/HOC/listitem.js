@@ -7,19 +7,27 @@ import ListItem from '@material-ui/core/ListItem';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
+import Card from '@material-ui/core/Card';
+import CardMedia from '@material-ui/core/CardMedia';
 import { styles } from '../../styles';
+import { IMAGE_URL } from '../../../config';
+
 
 const HOCListItem = (props) => {
   const {
-    classes, exeData, funcs, keepExercise, pre, itemID,
+    classes, exeData, funcs, keepExercise, pre, itemID, prefix, postureName, injuryName,
+
   } = props;
   return (
     <ListItem>
       <Paper className={classes.listItemPaper} component={exeData.selected ? Link : 'div'} to={`/rehab/training/${itemID}`}>
         <Grid container className={classes.root} style={{ height: '100%' }}>
 
+
           <Grid container className={classes.itemleft} justify="space-around" alignContent="space-around" alignItems="center">
-            <Paper className={classes.picturePlaceholder} />
+            <Card className={classes.picturePlaceholder}>
+              <CardMedia style={{ height: '100%', width: '100%', backgroundSize: 'contain' }} image={`${IMAGE_URL}${prefix}-${postureName || injuryName}-${`${exeData.name}`.replace(/ /g, '-')}.gif`} />
+            </Card>
           </Grid>
 
           <Grid container className={classes.itemRight} justify="space-around" alignContent="center" alignItems="center">

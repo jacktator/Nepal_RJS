@@ -45,7 +45,7 @@ class HOCListItem extends React.PureComponent {
                   xs={6}
                   component={Typography}
                   onClick={() => userKeepExercise({
-                    name, id, icon_link, feedback, image_link, progression_model, reps, sets, video_link,
+                    name, id, icon_link, feedback, image_link, progression_model, reps, sets, video_link, listID,
                   })}
                 > Keep
                 </Grid>

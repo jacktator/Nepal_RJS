@@ -10,9 +10,10 @@ import { styles } from '../../styles';
 class SimpleList extends React.PureComponent {
   render() {
     const {
-      classes, injury, posture, injuryExes, postureExes, openDialog, renderExercise, keepFunc, keepExercise, pre, progress, ExList,
+      classes, injury, posture, injuryExes, postureExes,
+      openDialog, renderExercise, keepFunc, keepExercise,
+      pre, progress, ExList, injuryName, postureName,
     } = this.props;
-    console.log(pre);
     return (
       <div className={classes.root}>
         {!(injuryExes instanceof Array) && (
@@ -32,7 +33,8 @@ class SimpleList extends React.PureComponent {
             keepExercise={() => keepExercise(0)}
             pre={pre ? !renderExercise[0] : false}
             itemID={0}
-
+            prefix="injury"
+            injuryName={injuryName}
           />
           <ListItem>
             <Typography color="primary"> Mobility</Typography>
@@ -43,6 +45,8 @@ class SimpleList extends React.PureComponent {
             keepExercise={() => keepExercise(1)}
             pre={pre ? !renderExercise[1] : false}
             itemID={1}
+            prefix="injury"
+            injuryName={injuryName}
 
 
           />
@@ -55,6 +59,8 @@ class SimpleList extends React.PureComponent {
             pre={pre ? !renderExercise[2] : false}
             itemID={2}
             keepExercise={() => keepExercise(2)}
+            prefix="injury"
+            injuryName={injuryName}
 
 
           />
@@ -67,6 +73,8 @@ class SimpleList extends React.PureComponent {
             pre={pre ? !renderExercise[3] : false}
             itemID={3}
             keepExercise={() => keepExercise(3)}
+            prefix="injury"
+            injuryName={injuryName}
 
 
           />
@@ -90,6 +98,8 @@ class SimpleList extends React.PureComponent {
                 keepExercise={() => keepExercise(4)}
                 pre={pre ? !renderExercise[4] : false}
                 itemID={4}
+                prefix="posture"
+                postureName={postureName}
 
 
               />
@@ -102,6 +112,8 @@ class SimpleList extends React.PureComponent {
                 keepExercise={() => keepExercise(5)}
                 pre={pre ? !renderExercise[5] : false}
                 itemID={5}
+                prefix="posture"
+                postureName={postureName}
 
 
               />
@@ -114,6 +126,8 @@ class SimpleList extends React.PureComponent {
                 keepExercise={() => keepExercise(6)}
                 pre={pre ? !renderExercise[6] : false}
                 itemID={6}
+                prefix="posture"
+                postureName={postureName}
 
 
               />
@@ -126,6 +140,8 @@ class SimpleList extends React.PureComponent {
                 keepExercise={() => keepExercise(7)}
                 pre={pre ? !renderExercise[7] : false}
                 itemID={7}
+                prefix="posture"
+                postureName={postureName}
 
 
               />

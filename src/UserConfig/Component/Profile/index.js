@@ -15,6 +15,7 @@ import {
   getUserData, setQueryProfile, uploadPicture, updateUserData, handleUpdatePassword,
 } from '../../action';
 import Component from './Component';
+import ConditionDialog from './condition';
 
 class UserProfile extends React.PureComponent {
   constructor(props) {
@@ -32,6 +33,7 @@ class UserProfile extends React.PureComponent {
       updatePasswordOpen: false,
       error: false,
       errorDiscription: '',
+      conditionOpen: false,
     };
     this.initialState = this.initialState.bind(this);
     this.updataState = this.updataState.bind(this);
@@ -45,6 +47,8 @@ class UserProfile extends React.PureComponent {
     this.onInfoUpdateOKClick = this.onInfoUpdateOKClick.bind(this);
     this.onPassUpdateOkclick = this.onPassUpdateOkclick.bind(this);
     this.redirectToLogout = this.redirectToLogout.bind(this);
+    this.openConditionDialog = this.openConditionDialog.bind(this);
+    this.closeConditionDialog = this.closeConditionDialog.bind(this);
   }
 
   componentDidMount() {
@@ -62,7 +66,6 @@ class UserProfile extends React.PureComponent {
   }
 
   handelAvatarChange(event) {
-    console.log(event.target.files[0]);
     this.props.setQueryProfile(true);
     this.props.uploadPicture(event.target.files[0]);
   }
@@ -93,6 +96,14 @@ class UserProfile extends React.PureComponent {
 
   closeErrorDialog() {
     this.setState({ updatePasswordOpen: false });
+  }
+
+  openConditionDialog() {
+    this.setState({ conditionOpen: true });
+  }
+
+  closeConditionDialog() {
+    this.setState({ conditionOpen: false });
   }
 
   onInfoUpdateOKClick() {
@@ -153,10 +164,14 @@ class UserProfile extends React.PureComponent {
   render() {
     const { queryProfile } = this.props;
     const {
-      updateInfoOpen, updatePasswordOpen, name, dob, weight, gender, age, oldPassword, newPassword, rePassword, error, errorDiscription,
+      updateInfoOpen, updatePasswordOpen, name, dob, weight, gender, oldPassword, newPassword, rePassword, error, errorDiscription, conditionOpen,
     } = this.state;
     return (
       <>
+        <ConditionDialog
+          open={conditionOpen}
+          handleClose={this.closeConditionDialog}
+        />
         <Loading open={queryProfile} />
         <Dialog
           open={error}
@@ -266,6 +281,7 @@ class UserProfile extends React.PureComponent {
           closeInfo={this.closeUpdataInfoDialog}
           closePassword={this.closeUpdataPasswordDialog}
           handelAvatarChange={this.handelAvatarChange}
+          openConditionDialog={this.openConditionDialog}
         />
       </>
     );

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes, { instanceOf } from 'prop-types';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
@@ -8,6 +8,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import LeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import { connect } from 'react-redux';
+import { rehabProgramme } from '../../../config';
 import ExerciseComponent from './component';
 import MainComponent from '../../../HOC/PageStructure';
 import SpeedDialTooltipOpen from '../../../HOC/speedDial';
@@ -42,11 +43,9 @@ class ExerciseIndex extends React.PureComponent {
     const m = JSON.parse(JSON.stringify([...this.props.dayRehabExercisesRecords.data]));
     const itemID = this.props.match.params.exerciseOrder;
     const exe = this.props.renderExercises[itemID];
-    console.log('exe=================================', exe);
     const {
       name, reps, sets, time,
     } = exe;
-    console.log('m=======================================', m);
     if (m[itemID] && m[itemID].length >= sets * 1) {
       return;
     }
@@ -76,15 +75,17 @@ class ExerciseIndex extends React.PureComponent {
 
   render() {
     const {
-      classes, currentWeek, dayRehabExercisesRecords, posture, injury, rehabExerciseQuery,
+      classes, currentWeek, dayRehabExercisesRecords, posture, injury, rehabExerciseQuery, selectedRehabExercises,
     } = this.props;
     const exeOrder = this.props.match.params.exerciseOrder;
     const exe = this.props.renderExercises[exeOrder];
     const {
       name, reps, sets, time,
     } = exe || {
-      name: 'rehab', reps: '20', sets: '3', time: '10s',
+      name: '', reps: '', sets: '', time: '',
     };
+    const prefix = exeOrder < 4 ? 'injury' : 'posture';
+    const imageLink = `${prefix}-${selectedRehabExercises.acf[prefix]}`;
     const thisExerciseDetail = {
       name, sets, reps: reps === 'empty' ? time : reps, time: reps === 'empty',
     };
@@ -129,6 +130,7 @@ class ExerciseIndex extends React.PureComponent {
                 finishCurrentExercise={thisExerciseDetail.sets <= ExList.length}
                 currentExerciseOrder={exeOrder}
                 dailyExerciseLength={exerLength}
+                imageLink={imageLink}
                 rehab
               />
 
@@ -148,10 +150,10 @@ ExerciseIndex.propTypes = {
 
 function mapStateToProps(state) {
   const {
-    dayRehabExercisesRecords, renderExercises, posture, injury, rehabExerciseQuery,
+    dayRehabExercisesRecords, renderExercises, posture, injury, rehabExerciseQuery, selectedRehabExercises,
   } = state.Rehab;
   return {
-    dayRehabExercisesRecords, renderExercises, posture, injury, rehabExerciseQuery,
+    dayRehabExercisesRecords, renderExercises, posture, injury, rehabExerciseQuery, selectedRehabExercises,
   };
 }
 
@@ -159,3 +161,7 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps, {
   setRehabExercisesRecordsByDay, updateRehabRecord, finishAllRehab, finishExerciseSaveQuery,
 })(withStyles(styles)(ExerciseIndex));
+
+// || {
+//  name: 'rehab', reps: '20', sets: '3', time: '10s',
+// };

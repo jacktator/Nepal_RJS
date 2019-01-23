@@ -1,22 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { withTheme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+import CardMedia from '@material-ui/core/CardMedia';
 import HOCInputFile from '../../../HOC/inputFiles';
 import styles from '../../styles';
 import Dialog from '../../../HOC/Dialog';
 
 const Component = (props) => {
+  const { theme } = props;
+  const { logo } = theme;
+  const tstyles = styles(theme);
   const {
-    classes, loading, email, password, onChangeHandle, onLoginClick, error, handleErrorClose,
+    loading, email, password, onChangeHandle, onLoginClick, error, handleErrorClose,
   } = props;
   return (
-    <div className={classes.container}>
+    <div style={tstyles.container}>
       <Dialog
         open={error}
         title="Something Error"
@@ -24,16 +27,16 @@ const Component = (props) => {
         loadingStatus={false}
         handleClose={handleErrorClose}
       />
-      <Grid container className={classes.gridRoot} spacing={0} justify="space-between" alignItems="stretch" direction="column">
-        <Grid container className={classes.autoFlex}>
-          <Paper className={classes.paper}>
-            <Grid container className={classes.gridRoot} direction="column">
+      <Grid container style={tstyles.gridRoot} spacing={0} justify="space-between" alignItems="stretch" direction="column">
+        <Grid container style={tstyles.autoFlex}>
+          <Paper style={tstyles.paper}>
+            <Grid container style={tstyles.gridRoot} direction="column">
 
-              <Grid container style={{ height: '33vh' }} justify="center" alignItems="flex-end">
-                <Typography variant="h2" component="h3" align="center" color="secondary" gutterBottom>Nepal</Typography>
+              <Grid container alignItems="flex-end" style={{ width: '100%', height: '33vh' }}>
+                <CardMedia style={{ width: '100%', height: '110px', backgroundSize: 'auto' }} image={logo} />
               </Grid>
 
-              <Grid container className={classes.autoFlex} direction="column" justify="center">
+              <Grid container style={tstyles.autoFlex} direction="column" justify="center">
                 <Grid container alignContent="center">
                   <HOCInputFile
                     onChangeHandle={onChangeHandle}
@@ -49,8 +52,8 @@ const Component = (props) => {
                   />
                 </Grid>
                 <Grid item>
-                  <Button variant="text" color="secondary" component={Link} to="/user/Retrieve" fullWidth>Forget Password</Button>
-                  <Button variant="text" color="secondary" component={Link} to="/user/Register" fullWidth>Register</Button>
+                  <Button variant="text" color="primary" component={Link} to="/user/Retrieve" fullWidth>Forget Password</Button>
+                  <Button variant="text" color="primary" component={Link} to="/user/Register" fullWidth>Register</Button>
                 </Grid>
               </Grid>
 
@@ -59,7 +62,7 @@ const Component = (props) => {
         </Grid>
 
         <Grid container style={{ height: '10vh' }} justify="center" alignItems="center">
-          {loading ? <CircularProgress size={30} /> : <Button className={classes.button} fullWidth color="primary" onClick={onLoginClick}>Login</Button>}
+          {loading ? <CircularProgress size={30} /> : <Button style={tstyles.button} fullWidth color="primary" onClick={onLoginClick}>Login</Button>}
         </Grid>
 
       </Grid>
@@ -68,7 +71,7 @@ const Component = (props) => {
 };
 
 Component.propTypes = {
-  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired,
   onLoginClick: PropTypes.func.isRequired,
   email: PropTypes.string.isRequired,
@@ -76,4 +79,4 @@ Component.propTypes = {
   onChangeHandle: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(Component);
+export default withTheme()(Component);

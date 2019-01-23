@@ -1,33 +1,40 @@
 import axios from 'axios';
 import { programmeTable } from '../config';
 
-export const statusArray = ['SELECTED', 'UNFETCHED', 'UNSELECTED'];
+export const compareOver24 = (a) => {
+  const now = new Date();
+  const pre = new Date(a);
 
-export const programSelectState = (sampleLength, selectedLength) => {
-  const statusIndex = sampleLength - selectedLength;
-  if (statusIndex > 0) {
-    return statusArray[2];
-  } if (statusIndex === 0) {
-    return statusArray[0];
-  } return statusArray[1];
+  const monDiff = now - pre;
+  const day = now.getDate() - pre.getDate();
+  if (monDiff >= 86400000) {
+    return true;
+  }
+  if (day >= 1) {
+    return true;
+  }
+  return false;
 };
 
 const handleExercise = data => [...data.map(v => v.acf)];
 
 export const dealStringToExerciseArray = (input) => {
   const b = [...input.map((v) => {
-    const vi = v.substring(1, v.length - 1).split(',');
-    return Object.assign({}, {
-      name: vi[0],
-      id: vi[1],
-      icon_link: vi[2],
-      feedback: vi[3],
-      image_link: vi[4],
-      progression_model: vi[5],
-      reps: vi[6],
-      sets: vi[7],
-      video_link: vi[8],
-    });
+    if (v) {
+      const vi = v.substring(1, v.length - 1).split(',');
+      return Object.assign({}, {
+        name: vi[0],
+        id: vi[1],
+        icon_link: vi[2],
+        feedback: vi[3],
+        image_link: vi[4],
+        progression_model: vi[5],
+        reps: vi[6],
+        sets: vi[7],
+        video_link: vi[8],
+      });
+    }
+    return ('unselected');
   })];
   return b;
 };
@@ -50,7 +57,6 @@ const getDayInWeek = (progress, days) => {
 
 export const setExercises = data => ({ type: 'SET_DAY_EXERCISES', payload: data });
 export const setUnselectedExercises = data => ({ type: 'SET_UNSELECTED_EXERCISES', payload: data });
-export const setProgramSelectedState = data => ({ type: 'SET_PROGRAM_SELECTED_STATE', payload: data });
 export const setRenderExercise = data => ({ type: 'SET_RENDER_EXERCISE', payload: data });
 export const setExerciseDetails = data => ({ type: 'SET_EXERCISE_DETAILS', payload: data });
 export const setAllDayExercises = data => ({ type: 'SET_ALLDAY_EXERCISES', payload: data });
@@ -60,11 +66,13 @@ export const setSelectedExercisesQuery = data => ({ type: 'SELECTED_EXERCISES_QU
 export const setHistoryProgramme = data => ({ type: 'SET_HISTORY_PROGRAMME', payload: data });
 export const setSpecificExericseHistory = data => ({ type: 'SET_SPECIFIC_EXERCISE_HISTORY', payload: data });
 export const setHistoryForSpecificProgramme = data => ({ type: 'SET_SPECIFIC_PROGRAMME_HISTORY', payload: data });
+export const setYoutubeLink = data => ({ type: 'SET_YOUTUBE_LINK', payload: data });
 export const finishQuery = boo => ({ type: 'FINISH_Program_QUERY', payload: boo });
 export const finishDailyQuery = boo => ({ type: 'FINISH_Daily_QUERY', payload: boo });
 export const finishExercisePageQuery = data => ({ type: 'FINISH_EXERCISE_PAGE_QUERY', payload: data });
 export const finishHistoryQuery = data => ({ type: 'Finish_History_Query', payload: data });
 export const noProgram = data => ({ type: 'DIRECT_QUESTIONNAIRE', payload: data });
+export const setProgrammeUpdateDate = data => ({ type: 'SET_PROGRAMME_DATE', payload: data });
 
 // daily page change button's dialog get exercises
 export const selectExercise = id => (dispatch) => {
@@ -115,7 +123,7 @@ export const getExerciseDetail = data => (dispatch) => {
 };
 
 
-export const getExercisesSample = (baseInfo, selectedLength) => (dispatch) => {
+export const getExercisesSample = baseInfo => (dispatch) => {
   const {
     location, path, days, dayInWeek,
   } = baseInfo;
@@ -124,8 +132,6 @@ export const getExercisesSample = (baseInfo, selectedLength) => (dispatch) => {
       console.log('sample', res);
       const data = handleExercise(res.data);
       dispatch(setUnselectedExercises(data));
-      const status = programSelectState(data.length, selectedLength);
-      dispatch(setProgramSelectedState(status));
       dispatch(finishDailyQuery(false));
     })
     .catch(err => console.log(err));
@@ -158,6 +164,7 @@ export const getCurrentProgram = getExe => (dispatch) => {
       sessionStorage.setItem('finish_for_day', data.finish_for_day);
       sessionStorage.setItem('ask_feedback', data.ask_feedback);
       sessionStorage.setItem('feedback_value', data.feedback_value);
+      sessionStorage.setItem('workoutUpdateDate', data.updatedate);
       dispatch(setExercises(exercises));
       dispatch(finishQuery(false));
       dispatch(setHistoryProgramme([...res.data.map(v => ({ id: v.id, date: v.date, ...v.acf }))]));
@@ -168,8 +175,6 @@ export const getCurrentProgram = getExe => (dispatch) => {
         console.log('getprogram', exercises.length);
         dispatch(getExercisesSample(baseInfo, exercises.length));
       } else {
-        const status = programSelectState(exercises.length, exercises.length);
-        dispatch(setProgramSelectedState(status));
         dispatch(finishDailyQuery(false));
       }
     })
@@ -187,6 +192,7 @@ export const getDailyProgramExercise = data => (dispatch) => {
       const exercises = acf[`day_${data.day}_exe`].split(';');
       const dealedExercises = dealStringToExerciseArray(exercises);
       dispatch(setExercises(dealedExercises));
+      sessionStorage.setItem('workoutUpdateDate', res.data.acf.updatedate);
     })
     .catch(
       err => console.log(err),
@@ -228,7 +234,7 @@ export const getDailyExercises = data => (dispatch) => {
     dayInWeek,
   };
   console.log('progress is not null');
-  dispatch(getExercisesSample(baseInfo, data.length));
+  dispatch(getExercisesSample(baseInfo));
 };
 
 export const userKeepExercise = (data, fin) => (dispatch) => {
@@ -248,6 +254,7 @@ export const userKeepExercise = (data, fin) => (dispatch) => {
       dispatch(setExercises(exercises));
       dispatch(finishDailyQuery(false));
       sessionStorage.setItem('finishDay', res.data.acf.select_finish);
+      sessionStorage.setItem('workoutUpdateDate', res.data.acf.updatedate);
       console.log(res.data.acf.day_1_exe);
     })
     .catch(err => console.log(err));
@@ -268,17 +275,26 @@ export const updataOneExercise = data => (dispatch) => {
 // When user finish final exercise update program
 export const finishAllDailyExercises = data => (dispatch) => {
   axios.post(`/program/${sessionStorage.programmeID}`, { fields: { finish_for_day: true } })
-    .then((res) => { console.log(res); sessionStorage.setItem('finish_for_day', true); })
+    .then((res) => {
+      console.log(res);
+      sessionStorage.setItem('finish_for_day', true);
+      sessionStorage.setItem('workoutUpdateDate', res.data.acf.updatedate);
+    })
     .catch(err => console.log(err));
 };
 
 // When user finish daily questionnaire select
 export const selectDailyQuestionnaire = (data, callback) => (dispatch) => {
-  axios.post(`/program/${sessionStorage.programmeID}`, { fields: { feedback_value: data, progress: ~~sessionStorage.progress + 1, finish_for_day: false } })
+  axios.post(`/program/${sessionStorage.programmeID}`, {
+    fields: {
+      feedback_value: data, progress: ~~sessionStorage.progress + 1, finish_for_day: false, updatedate: new Date().toDateString(),
+    },
+  })
     .then((res) => {
       console.log(res);
       sessionStorage.setItem('finish_for_day', false);
       sessionStorage.setItem('progress', ~~sessionStorage.progress + 1);
+      sessionStorage.setItem('workoutUpdateDate', res.data.acf.updatedate);
       callback();
     })
     .catch(err => console.log(err));
@@ -311,4 +327,19 @@ export const getExerciseHistory = input => (dispatch) => {
       dispatch(finishHistoryQuery(false));
     })
     .catch(err => console.log(err));
+};
+
+export const getYoutubeLink = name => (dispatch) => {
+  axios.post(`/youtube_seacrch?filter[meta_key]=exercies_name&filter[meta_value]=${name}`)
+    .then(
+      (res) => {
+        console.log(res);
+        dispatch(setYoutubeLink(res.data.acf.youtubecode));
+      },
+    )
+    .catch(
+      (err) => {
+        console.log(err);
+      },
+    );
 };

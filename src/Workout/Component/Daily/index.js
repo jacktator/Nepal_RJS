@@ -8,9 +8,9 @@ import Component from './component';
 import MainComponent from '../../../HOC/PageStructure';
 import { styles } from '../../styles';
 import {
-  statusArray, finishDailyQuery, getExercisesSample,
-  getCurrentProgram, getDailyExercises, setRenderExercise, programSelectState,
-  selectExercise, setSelectedExercisesQuery, setSelectedExercises, userKeepExercise,
+  finishDailyQuery, getExercisesSample,
+  getCurrentProgram, getDailyExercises, setRenderExercise,
+  selectExercise, setSelectedExercisesQuery, setSelectedExercises, userKeepExercise, compareOver24,
 } from '../../action';
 
 class MainRehab extends React.Component {
@@ -44,6 +44,10 @@ class MainRehab extends React.Component {
     if (this.props.renderExercises.length !== 0) {
       return;
     }
+    if (!(sessionStorage.workoutUpdateDate === 'begin' ? true : compareOver24(sessionStorage.workoutUpdateDate))) {
+      window.history.pushState({ from: 'daily' }, null, '#/workout/plan');
+      return;
+    }
     getDailyExercises({ length: exercises.length });
     finishDailyQuery(true);
   }
@@ -51,8 +55,7 @@ class MainRehab extends React.Component {
   componentDidUpdate(prevProps) {
     const sampleChanged = prevProps.unselectedExercises !== this.props.unselectedExercises;
     const exerciseChanged = prevProps.exercises !== this.props.exercises;
-    const statusChanged = prevProps.programSelectStatus !== this.props.programSelectStatus;
-    if (sampleChanged || statusChanged || exerciseChanged) {
+    if (sampleChanged || exerciseChanged) {
       this.renderExercise();
     }
   }
@@ -78,17 +81,17 @@ class MainRehab extends React.Component {
   }
 
   keepExercise(data) {
-    const { midSelectExercise, selectedFatherExercises } = this.state;
-    if (midSelectExercise.length < selectedFatherExercises + 1 || !midSelectExercise[selectedFatherExercises]) {
+    const { midSelectExercise } = this.state;
+    if (!midSelectExercise[data.listID]) {
       this.setState({ err: true });
       return;
     }
     this.props.finishDailyQuery(true);
     const m = [].concat(this.props.exercises);
-    const replace = midSelectExercise[selectedFatherExercises];
-    m.push({ ...data, name: replace.name, progression_model: replace.progression_model });
-    const f = [...m.map(v => `(${[...Object.values(v)].join()})`)].join(';');
-    const fin = m.length === this.props.unselectedExercises.length;
+    const replace = midSelectExercise[data.listID];
+    m[data.listID] = { ...data, name: replace.name, progression_model: replace.progression_model };
+    const f = [...m.map(v => (v === 'unselected' ? '' : `(${[...Object.values(v)].join()})`))].join(';');
+    const fin = !m.includes();
     this.props.userKeepExercise(f, fin);
   }
 
@@ -133,22 +136,11 @@ class MainRehab extends React.Component {
     const {
       exercises, unselectedExercises,
     } = this.props;
-    const programSelectStatus = programSelectState(unselectedExercises.length, exercises.length);
-    const statusIndex = statusArray.findIndex(v => v === programSelectStatus);
-    switch (statusIndex) {
-      case 0:
-        this.props.setRenderExercise(exercises);
-        return;
-      case 1:
-        this.props.setRenderExercise(unselectedExercises);
-        return;
-      case 2:
-        const newArray = [].concat(exercises, unselectedExercises.slice(exercises.length));
-        this.props.setRenderExercise(newArray);
-        return;
-      default:
-        this.props.setRenderExercise(unselectedExercises);
+    const newArray = [];
+    for (let i = 0; i < unselectedExercises.length; i++) {
+      newArray[i] = exercises[i] ? (exercises[i] === 'unselected' ? unselectedExercises[i] : exercises[i]) : unselectedExercises[i];
     }
+    this.props.setRenderExercise(newArray);
   }
 
 

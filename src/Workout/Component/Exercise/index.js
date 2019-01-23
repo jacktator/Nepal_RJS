@@ -14,7 +14,7 @@ import SpeedDialTooltipOpen from '../../../HOC/speedDial';
 import { add, min } from '../../../HOC/numberSelect';
 import { styles } from '../../styles';
 import {
-  getExerciseDetail, setAllDayExercises, selectExercise, setTodayExercises,
+  getExerciseDetail, setAllDayExercises, selectExercise, setTodayExercises, getYoutubeLink,
   finishExercisePageQuery, updataOneExercise, finishAllDailyExercises, getThisExerciseHistory,
 } from '../../action';
 import LoadingComponent from '../../../HOC/Loading';
@@ -44,13 +44,10 @@ class ExerciseIndex extends React.Component {
   componentDidMount() {
     if (this.props.renderExercises.length === 0) {
       window.location.href = `#/workout/daily/${sessionStorage.dayInWeek}`;
-      console.log('this.props.renderExercises.length', this.props.renderExercises.length);
       return;
     }
     if (this.props.renderExercises[this.props.match.params.exerciseOrder - 1].day !== undefined) {
-      console.log(this.props.renderExercises);
       window.location.href = `#/workout/daily/${sessionStorage.dayInWeek}`;
-      console.log('this.props.renderExercises[this.props.match.params.exerciseOrder - 1].day', this.props.renderExercises[this.props.match.params.exerciseOrder - 1].day);
       return;
     }
     this.props.finishExercisePageQuery(true);
@@ -61,9 +58,7 @@ class ExerciseIndex extends React.Component {
 
   componentDidUpdate(pre) {
     if (this.props.renderExercises[this.props.match.params.exerciseOrder - 1].day !== undefined) {
-      console.log(this.props.renderExercises);
       window.location.href = `#/workout/daily/${sessionStorage.dayInWeek}`;
-      console.log('this.props.renderExercises[this.props.match.params.exerciseOrder - 1].day', this.props.renderExercises[this.props.match.params.exerciseOrder - 1].day);
     }
     if(pre.match.params.exerciseOrder !== this.props.match.params.exerciseOrder){
       this.props.getThisExerciseHistory(this.props.match.params.exerciseOrder);
@@ -126,7 +121,7 @@ class ExerciseIndex extends React.Component {
 
   render() {
     const {
-      classes, renderExercises, alldayExercises, exercisePageQuery, todayExercises, historyForSpecificExercise,
+      classes, renderExercises, alldayExercises, exercisePageQuery, todayExercises, historyForSpecificExercise, getYoutubeLink, youtubeLink,
     } = this.props;
     const {
       weight, reps, youtube, youtbueID, title, history,
@@ -161,8 +156,6 @@ class ExerciseIndex extends React.Component {
         value: reps,
       },
     ];
-    console.log('render exes', renderExercises);
-    console.log('Exercises List', res);
 
     return (
       <MainComponent
@@ -199,7 +192,7 @@ class ExerciseIndex extends React.Component {
               ExList={res}
               largest={largest}
               onSaveClick={this.saveData}
-              youtbueID={youtbueID}
+              youtbueID={youtubeLink}
               onOpen={this.onOpen}
               onClose={this.onClose}
               youtubeOpenStatus={youtube}
@@ -211,6 +204,7 @@ class ExerciseIndex extends React.Component {
               dailyExerciseLength={renderExercises.length}
               historyForSpecificExercise={historyForSpecificExercise}
               getThisExerciseHistory={getThisExerciseHistory}
+              getYoutubeLink={getYoutubeLink}
             />
 
           </Grid>
@@ -222,10 +216,10 @@ class ExerciseIndex extends React.Component {
 
 function mapStateToProps(state) {
   const {
-    renderExercises, alldayExercises, exercisePageQuery, todayExercises, historyForSpecificExercise,
+    renderExercises, alldayExercises, exercisePageQuery, todayExercises, historyForSpecificExercise, youtubeLink,
   } = state.Workout;
   return {
-    renderExercises, alldayExercises, exercisePageQuery, todayExercises, historyForSpecificExercise,
+    renderExercises, alldayExercises, exercisePageQuery, todayExercises, historyForSpecificExercise, youtubeLink,
   };
 }
 
@@ -236,5 +230,13 @@ ExerciseIndex.propTypes = {
 };
 
 export default connect(mapStateToProps, {
-  getExerciseDetail, setAllDayExercises, selectExercise, setTodayExercises, finishExercisePageQuery, updataOneExercise, finishAllDailyExercises, getThisExerciseHistory,
+  getExerciseDetail,
+  setAllDayExercises,
+  selectExercise,
+  setTodayExercises,
+  finishExercisePageQuery,
+  updataOneExercise,
+  finishAllDailyExercises,
+  getThisExerciseHistory,
+  getYoutubeLink,
 })(withStyles(styles)(ExerciseIndex));

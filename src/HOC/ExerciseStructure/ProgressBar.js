@@ -23,8 +23,8 @@ const ProgressBar = (props) => {
         }
         <LinearProgress variant="determinate" value={progress} />
       </div>
-    );
-}
+  );
+};
 
 ProgressBar.propTypes = {
   classes: PropTypes.object.isRequired,

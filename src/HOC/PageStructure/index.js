@@ -1,8 +1,10 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import Footer from './Footer';
 import MidPart from './MidPart';
 import { styles } from './style';
@@ -20,8 +22,11 @@ class index extends React.PureComponent {
             <Grid container className={classes.top} style={{ backgroundImage: `url("${backgroundImage}")` }}>
               <Grid container className={classes.topInline} justify="center" direction="column">
                 <Typography variant="h5" color="secondary">{title}</Typography>
-                {topDiscription && <Typography variant="body2" color="secondary">You are currently at week 1</Typography>}
-                {topDiscription && <Typography variant="body2" color="secondary">100% completed</Typography>}
+                {topDiscription && (
+                  <Typography variant="body2" color="secondary">You are currently at week{currentWeek}</Typography>
+                )}
+                {topDiscription && <Typography variant="body2" color="secondary">{sessionStorage.progress ? (((sessionStorage.progress - 1) / (sessionStorage.days * 5)) * 100).toFixed(1) : 0 }% completed</Typography>}
+                {topDiscription && <LinearProgress className={classes.progressBar} variant="determinate" value={sessionStorage.progress ? (((sessionStorage.progress - 1) / (sessionStorage.days * 5)) * 100) : 0} />}
               </Grid>
             </Grid>
           )}

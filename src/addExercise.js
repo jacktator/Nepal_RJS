@@ -238,8 +238,6 @@ class addExercise extends React.Component {
     console.log(a);
     const ki = Object.keys(a);
     for (const i in a) {
-      console.log(i);
-      console.log(ki);
       const ii = ki.findIndex(v => v === i);
       for (const m in a[i]) {
         const mm = type[m];
@@ -249,9 +247,7 @@ class addExercise extends React.Component {
             name: n[0], sets: n[1], reps: n[2] === '' ? 'empty' : n[2], time: n[3] === '' ? 'empty' : n[3], type: type[m],
           };
           setTimeout(() => b(data, i), (ii * 10) * mm * 2 * 1000 + (k + 1) * 1500);
-          console.log(data);
         });
-        console.log(m);
       }
     }
     // a.forEach((v) => {
