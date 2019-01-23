@@ -38,6 +38,15 @@ const styles = theme => ({
     whiteSpace: 'normal',
     textAlign: 'center',
   },
+  progressBar: {
+    position: 'absolute' ,
+    bottom: 70,
+    left: 0,
+    right: 0,
+    width: "100%",
+    justify: 'center',
+    alignItems: 'center',
+  }
 });
 
 const ExerciseStructure = (props) => {
@@ -161,7 +170,14 @@ const ExerciseStructure = (props) => {
         </List>
       </Grid>
       
-      <ProgressBar progress={thisExerciseDetail && ExList ? (ExList.length / thisExerciseDetail.sets) * 100 : 0 } />
+      <Grid component="div" className={classes.progressBar}>
+        <ProgressBar
+          message={true}
+          thisExerciseDetail={thisExerciseDetail}
+          ExList={ExList}
+          history={historyForSpecificExercise}
+          progress={thisExerciseDetail && ExList ? (ExList.length / thisExerciseDetail.sets) * 100 : 0 } />
+      </Grid>
 
     </Grid>
   );

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import Typography from '@material-ui/core/Typography';
+import BottomMsg from '../../Workout/Component/Exercise/BottomMsg';
 
 const styles = {
   root: {
@@ -11,10 +11,16 @@ const styles = {
 };
 
 const ProgressBar = (props) => {
-    const { classes, progress } = props;
+    const { classes, progress, message, thisExerciseDetail, ExList, history } = props;
     return (
       <div className={classes.root}>
-        <Typography align="center" variant="body1" component="h6" color="textPrimary">Do as much reps as possible</Typography>
+        {message && 
+          <BottomMsg
+            thisExerciseDetail={thisExerciseDetail}
+            ExList={ExList}
+            history={history}
+          />
+        }
         <LinearProgress variant="determinate" value={progress} />
       </div>
     );
@@ -22,6 +28,8 @@ const ProgressBar = (props) => {
 
 ProgressBar.propTypes = {
   classes: PropTypes.object.isRequired,
+  progress: PropTypes.number.isRequired,
+  message: PropTypes.bool,
 };
 
 export default withStyles(styles)(ProgressBar);
