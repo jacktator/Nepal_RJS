@@ -330,11 +330,11 @@ export const getExerciseHistory = input => (dispatch) => {
 };
 
 export const getYoutubeLink = name => (dispatch) => {
-  axios.post(`/youtube_seacrch?filter[meta_key]=exercies_name&filter[meta_value]=${name}`)
+  axios.get(`/youtube_seacrch?filter[meta_key]=exercies_name&filter[meta_value]=${name}`)
     .then(
       (res) => {
         console.log(res);
-        dispatch(setYoutubeLink(res.data.acf.youtubecode));
+        dispatch(setYoutubeLink([res.data.acf.youtubelongcode, res.data.acf.youtubeshortcode]));
       },
     )
     .catch(

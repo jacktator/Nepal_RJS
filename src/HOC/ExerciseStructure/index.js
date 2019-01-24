@@ -5,18 +5,18 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import HistoryIcon from '@material-ui/icons/History';
 import PlayCircleIcon from '@material-ui/icons/PlayCircleFilled';
+import Youtube from 'react-youtube';
 import History from './history';
 import NumberSelect from '../numberSelect';
 import ExListItem from './ListItem';
-import Youtube from './youtubeDialog';
+import YoutubeDialog from './youtubeDialog';
 import ProgressBar from './ProgressBar';
-import { IMAGE_URL } from '../../config';
+import { IMAGE_URL, VIDEO_URL } from '../../config';
 
 const styles = theme => ({
   card: {
@@ -39,14 +39,14 @@ const styles = theme => ({
     textAlign: 'center',
   },
   progressBar: {
-    position: 'absolute' ,
+    position: 'absolute',
     bottom: 70,
     left: 0,
     right: 0,
-    width: "100%",
+    width: '100%',
     justify: 'center',
     alignItems: 'center',
-  }
+  },
 });
 
 const ExerciseStructure = (props) => {
@@ -57,6 +57,13 @@ const ExerciseStructure = (props) => {
     historyForSpecificExercise, needYoutube, needHistory, largest, imageLink,
     getYoutubeLink,
   } = props;
+  const opts = {
+    width: '100%',
+    height: '100%',
+    playerVars: {
+      autoplay: 1,
+    },
+  };
   const onYoutubeOpen = () => {
     onOpen('youtube');
   };
@@ -84,7 +91,7 @@ const ExerciseStructure = (props) => {
       spacing={24}
     >
       {!needYoutube && (
-      <Youtube
+      <YoutubeDialog
         title={title}
         open={!!youtubeOpenStatus}
         onYoutubeClose={onYoutubeClose}
@@ -120,10 +127,18 @@ const ExerciseStructure = (props) => {
             <Typography className={classes.inlineT} color="secondary">{`${thisExerciseDetail ? thisExerciseDetail.sets : 0}`} X</Typography>
             <Typography className={classes.inlineT} color="secondary">{`${thisExerciseDetail ? thisExerciseDetail.reps : 0}`}</Typography>
           </Card>
-          <CardMedia
-            style={{ height: '100%', width: '100%' }}
-            image={rehab ? `${IMAGE_URL}${imageLink}-${`${thisExerciseDetail.name}`.replace(/ /g, '-')}.gif` : `${IMAGE_URL}${thisExerciseDetail.id}${`${thisExerciseDetail.name}`.replace(/ /g, '-')}.gif`}
+          <Youtube
+            // youtbueID={`${thisExerciseDetail.name}`}
+            youtubeID="IODxDxX7oi4"
+            opts={opts}
           />
+          {/* <CardMedia
+            style={{ height: '100%', width: '100%' }}
+            component="video"
+            image={rehab ? `${IMAGE_URL}${imageLink}-${`${thisExerciseDetail.name}`.replace(/ /g, '-')}.gif` : `${IMAGE_URL}${thisExerciseDetail.id}${`${thisExerciseDetail.name}`.replace(/ /g, '-')}.gif`}
+            src={rehab ? `${IMAGE_URL}${imageLink}-${`${thisExerciseDetail.name}`.replace(/ /g, '-')}.gif` : `${VIDEO_URL}${thisExerciseDetail.video_link}`}
+            src="https://www.youtube.com/watch?v=IODxDxX7oi4"
+          /> */}
         </Card>
       </Grid>
 
@@ -169,14 +184,15 @@ const ExerciseStructure = (props) => {
           ))}
         </List>
       </Grid>
-      
+
       <Grid component="div" className={classes.progressBar}>
         <ProgressBar
-          message={true}
+          message
           thisExerciseDetail={thisExerciseDetail}
           ExList={ExList}
           history={historyForSpecificExercise}
-          progress={thisExerciseDetail && ExList ? (ExList.length / thisExerciseDetail.sets) * 100 : 0 } />
+          progress={thisExerciseDetail && ExList ? (ExList.length / thisExerciseDetail.sets) * 100 : 0}
+        />
       </Grid>
 
     </Grid>
