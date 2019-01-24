@@ -154,38 +154,37 @@ class MainRehab extends React.Component {
     return (
       <MainComponent
         backgroundImage="https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg"
-        title="Workout"
+        title={`${sessionStorage.path}`.split(/(?=[A-Z])/).join(' ')}
         progress={progress}
         currentWeek={currentWeek}
         currentPage={3}
+        top
         FooterContent={1}
         workout
         showBottomButton
         tapBarContent={false}
         midComponent={(
-          <Grid container style={{ flex: 1 }} justify="center" alignContent="space-around" alignItems="center">
-            <Paper className={classes.midPaper} elevation={8}>
-              <Component
-                userKeepExercise={this.keepExercise}
-                renderExercise={renderExercises}
-                selectedExercisesQuery={selectedExercisesQuery}
-                selectedExercises={selectedExercises}
-                dailyQuery={dailyQuery}
-                openDialog={dialogOpen}
-                handleClose={this.closeDialog}
-                handleOpenDialog={this.openDialog}
-                midSelectExercise={midSelectExercise}
-                handleNext={this.handleNext}
-                handleBack={this.handleBack}
-                dialogIndexSelected={dialogIndexSelected}
-                dialogSelected={dialogSelected}
-                selectDialogIndex={this.selectDialogIndex}
-                selectMidExercise={this.selectMidExercise}
-                err={err}
-                handleErrClose={this.closeErrDialog}
-                selectedFatherExercises={selectedFatherExercises}
-              />
-            </Paper>
+          <Grid container style={{ flex: 1 }} justify="center" alignContent="space-around" alignItems="flex-start">
+            <Component
+              userKeepExercise={this.keepExercise}
+              renderExercise={renderExercises}
+              selectedExercisesQuery={selectedExercisesQuery}
+              selectedExercises={selectedExercises}
+              dailyQuery={dailyQuery}
+              openDialog={dialogOpen}
+              handleClose={this.closeDialog}
+              handleOpenDialog={this.openDialog}
+              midSelectExercise={midSelectExercise}
+              handleNext={this.handleNext}
+              handleBack={this.handleBack}
+              dialogIndexSelected={dialogIndexSelected}
+              dialogSelected={dialogSelected}
+              selectDialogIndex={this.selectDialogIndex}
+              selectMidExercise={this.selectMidExercise}
+              err={err}
+              handleErrClose={this.closeErrDialog}
+              selectedFatherExercises={selectedFatherExercises}
+            />
           </Grid>
           )}
       />

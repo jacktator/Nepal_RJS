@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import { connect } from 'react-redux';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -111,6 +110,7 @@ class index extends React.Component {
     } = sessionStorage;
     const finish = !!finish_for_day && JSON.parse(finish_for_day);
     const currentWeek = Math.ceil(progress / days);
+    const showTitle = `${path}`.split(/(?=[A-Z])/).join(' ');
     console.log(new Date().getDay() - new Date(sessionStorage.workoutUpdateDate).getDay());
     console.log(new Date().getDay());
     console.log(new Date(sessionStorage.workoutUpdateDate).getDay());
@@ -154,7 +154,7 @@ class index extends React.Component {
           top
           topDiscription
           backgroundImage="https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg"
-          title={path || 'Workout'}
+          title={showTitle || 'Workout'}
           progress={progress || 1}
           currentWeek={currentWeek}
           tabsValue={tabsValue}
@@ -163,18 +163,17 @@ class index extends React.Component {
           onTagClick={this.onTagClick}
           tapBarContent={tapBarContent}
           midComponent={(
-            <Grid container style={{ flex: 1 }} justify="center" alignContent="space-around" alignItems="center">
-              <Paper className={classes.midPaper} elevation={8}>
-                <Component
-                  days={days * 1}
-                  currentWeek={tabsValue}
-                  progress={progress}
-                  handleQuestionnaireOpen={this.handleQuestionnaireOpen}
-                  finish={finish}
-                  over24={sessionStorage.workoutUpdateDate === 'begin' ? true : compareOver24(sessionStorage.workoutUpdateDate)}
-                  handleOver24Open={this.handleOver24Open}
-                />
-              </Paper>
+            <Grid container style={{ flex: 1 }} justify="center" alignContent="space-around" alignItems="flex-start">
+              <Component
+                days={days * 1}
+                currentWeek={tabsValue}
+                progress={progress}
+                handleQuestionnaireOpen={this.handleQuestionnaireOpen}
+                finish={finish}
+                showTitle={showTitle}
+                over24={sessionStorage.workoutUpdateDate === 'begin' ? true : compareOver24(sessionStorage.workoutUpdateDate)}
+                handleOver24Open={this.handleOver24Open}
+              />
             </Grid>
         )}
         />

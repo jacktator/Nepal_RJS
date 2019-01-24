@@ -38,6 +38,15 @@ const theme = createMuiTheme({
   headerTheme: {
     color: 'white',
   },
+  ListItem: {
+    backgroundColor: 'white',
+  },
+  midPartNavigator: {
+    backgroundColor: 'white',
+  },
+  footer: {
+    backgroundColor: 'white',
+  },
   logo: 'https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-200px.png',
   typography: {
     useNextVariants: true,

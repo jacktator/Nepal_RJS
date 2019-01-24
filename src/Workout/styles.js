@@ -7,7 +7,7 @@ export const styles = theme => ({
   listItemPaper: {
     height: '30vmin',
     width: '100%',
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.ListItem.backgroundColor,
   },
   itemleft: {
     width: '60%',
@@ -25,12 +25,12 @@ export const styles = theme => ({
   },
   infoListItem: {
     margin: '10px 0 10px 0',
-    backgroundColor: theme.palette.primary.main,
+    justifyContent: 'space-between',
+    backgroundColor: theme.ListItem.backgroundColor,
   },
   midPaper: {
     width: '90%',
     height: '94%',
-    overflowY: 'scroll',
     backgroundColor: '#e0f7fa63',
     border: `2px solid ${theme.palette.primary.main}`,
   },

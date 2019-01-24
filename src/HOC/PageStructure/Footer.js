@@ -14,23 +14,25 @@ import HomeIcon from '@material-ui/icons/HomeOutlined';
 import PlanIcon from '@material-ui/icons/EventAvailableOutlined';
 import TrainingIcon from '@material-ui/icons/FitnessCenterOutlined';
 import WorkoutIcon from '@material-ui/icons/DirectionsRunOutlined';
+import Typography from '@material-ui/core/Typography';
 import { styles } from './style';
+
 
 const FooterContentSet = (type) => {
   switch (type) {
     case 1:
       return [
-        { label: 'Home', to: '/mainmenu', Icon: <HomeIcon /> },
-        { label: 'History', to: '/workout/history', Icon: <HistoryIcon /> },
-        { label: 'Plan', to: '/workout/plan', Icon: <PlanIcon /> },
-        { label: 'Workout', to: `/workout/daily/${sessionStorage.progress}`, Icon: <WorkoutIcon /> },
+        { label: 'Home', to: '/mainmenu', Icon: <HomeIcon color="primary" /> },
+        { label: 'History', to: '/workout/history', Icon: <HistoryIcon color="primary" /> },
+        { label: 'Plan', to: '/workout/plan', Icon: <PlanIcon color="primary" /> },
+        { label: 'Workout', to: `/workout/daily/${sessionStorage.progress}`, Icon: <WorkoutIcon color="primary" /> },
       ];
     default:
       return [
-        { label: 'Home', to: '/mainmenu', Icon: <HomeIcon /> },
-        { label: 'Information', to: '/mainmenu', Icon: <ClanderIcon /> },
-        { label: 'Content', to: '/mainmenu', Icon: <ContentIcon /> },
-        { label: 'Training', to: '/rehab', Icon: <TrainingIcon /> },
+        { label: 'Home', to: '/mainmenu', Icon: <HomeIcon color="primary" /> },
+        { label: 'Information', to: '/mainmenu', Icon: <ClanderIcon color="primary" /> },
+        { label: 'Content', to: '/mainmenu', Icon: <ContentIcon color="primary" /> },
+        { label: 'Training', to: '/rehab', Icon: <TrainingIcon color="primary" /> },
       ];
   }
 };
@@ -41,20 +43,21 @@ class FooterComponent extends React.PureComponent {
       classes, showBottomButton, currentPage, FooterContent, FooterButtonClick, workout,
     } = this.props;
     return (
-      <Paper className={classes.footerPaper}>
+      <Paper className={classes.footerPaper} elevation={10}>
 
         {showBottomButton
           && (
           <Button
             variant="contained"
             fullWidth
-            color="secondary"
+            color="primary"
             disableRipple
             component={Link}
             to={workout ? '/workout/exercise/1' : '/rehab/training/0'}
             onClick={FooterButtonClick}
           >
-            { workout ? 'Start Workout' : 'Start Rehab' }
+            <Typography color="secondary"> { workout ? 'Start Workout' : 'Start Rehab' } </Typography>
+
           </Button>
           )
         }

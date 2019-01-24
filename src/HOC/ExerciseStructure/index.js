@@ -39,14 +39,10 @@ const styles = theme => ({
     textAlign: 'center',
   },
   progressBar: {
-    position: 'absolute' ,
-    bottom: 70,
-    left: 0,
-    right: 0,
-    width: "100%",
+    width: '100%',
     justify: 'center',
     alignItems: 'center',
-  }
+  },
 });
 
 const ExerciseStructure = (props) => {
@@ -120,6 +116,7 @@ const ExerciseStructure = (props) => {
             <Typography className={classes.inlineT} color="secondary">{`${thisExerciseDetail ? thisExerciseDetail.sets : 0}`} X</Typography>
             <Typography className={classes.inlineT} color="secondary">{`${thisExerciseDetail ? thisExerciseDetail.reps : 0}`}</Typography>
           </Card>
+          {/* youtubeID[1] */}
           <CardMedia
             style={{ height: '100%', width: '100%' }}
             image={rehab ? `${IMAGE_URL}${imageLink}-${`${thisExerciseDetail.name}`.replace(/ /g, '-')}.gif` : `${IMAGE_URL}${thisExerciseDetail.id}${`${thisExerciseDetail.name}`.replace(/ /g, '-')}.gif`}
@@ -169,14 +166,15 @@ const ExerciseStructure = (props) => {
           ))}
         </List>
       </Grid>
-      
-      <Grid component="div" className={classes.progressBar}>
+
+      <Grid container item component="div" className={classes.progressBar}>
         <ProgressBar
-          message={true}
+          message
           thisExerciseDetail={thisExerciseDetail}
           ExList={ExList}
           history={historyForSpecificExercise}
-          progress={thisExerciseDetail && ExList ? (ExList.length / thisExerciseDetail.sets) * 100 : 0 } />
+          progress={thisExerciseDetail && ExList ? (ExList.length / thisExerciseDetail.sets) * 100 : 0}
+        />
       </Grid>
 
     </Grid>

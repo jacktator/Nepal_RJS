@@ -1,42 +1,41 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import ListItem from '@material-ui/core/ListItem';
-import Paper from '@material-ui/core/Paper';
 import Card from '@material-ui/core/Card';
 import { Link } from 'react-router-dom';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import { withTheme } from '@material-ui/core/styles';
 import { styles } from '../../styles';
 import { IMAGE_URL } from '../../../config';
 
 class HOCListItem extends React.PureComponent {
   render() {
     const {
-      classes, data, handleOpenDialog, id, userKeepExercise, midSelectExercise, listID,
+      theme, data, handleOpenDialog, id, userKeepExercise, midSelectExercise, listID,
     } = this.props;
+    const tstyles = styles(theme);
     const {
       feedback, icon_link, image_link, name, progression_model, reps, sets, video_link,
     } = data;
     const finalName = midSelectExercise.length >= listID + 1 && !!midSelectExercise[listID] ? midSelectExercise[listID].name : name;
     return (
-      <ListItem>
-        <Paper className={classes.listItemPaper} component={!data.workout ? Link : 'div'} to={`/workout/exercise/${listID + 1}`}>
-          <Grid container className={classes.root} style={{ height: '100%' }}>
+      <ListItem divider>
+        <Grid container style={tstyles.listItemPaper} component={!data.workout ? Link : 'div'} to={`/workout/exercise/${listID + 1}`}>
 
-            <Grid container className={classes.itemleft} justify="space-around" alignContent="space-around" alignItems="center">
-              <Card className={classes.picturePlaceholder}>
-                <CardMedia style={{ height: '100%', width: '100%', backgroundSize: 'contain' }} image={`${IMAGE_URL}${id}${`${finalName}`.replace(/ /g, '-')}.gif`} />
-              </Card>
-            </Grid>
+          <Grid container style={tstyles.itemleft} justify="flex-start" alignContent="space-around" alignItems="center">
+            <Card style={tstyles.picturePlaceholder}>
+              <CardMedia style={{ height: '100%', width: '100%', backgroundSize: 'contain' }} image={`${IMAGE_URL}${id}${`${finalName}`.replace(/ /g, '-')}.gif`} />
+            </Card>
+          </Grid>
 
-            <Grid container className={classes.itemRight} justify="space-around" alignContent="center" alignItems="center">
-              <Typography color="secondary" variant="body1">{finalName}</Typography>
-              {!!data.workout && (
-              <Grid container>
-                <Grid item container justify="center" xs={6} color="secondary" component={Typography} onClick={data.workout ? handleOpenDialog : null}>Change</Grid>
+          <Grid container style={tstyles.itemRight} justify="flex-start" alignContent="center" alignItems="center">
+            <Typography color="primary" variant="body1">{finalName}</Typography>
+            {!!data.workout && (
+              <Grid container style={{ borderTop: '1px solid', borderTopColor: theme.palette.primary.main }}>
+                <Grid item container justify="center" xs={6} color="primary" component={Typography} onClick={data.workout ? handleOpenDialog : null}>Change</Grid>
                 <Grid
                   item
                   container
@@ -50,18 +49,17 @@ class HOCListItem extends React.PureComponent {
                 > Keep
                 </Grid>
               </Grid>
-              )}
-            </Grid>
-
+            )}
           </Grid>
-        </Paper>
+
+        </Grid>
       </ListItem>
     );
   }
 }
 
 HOCListItem.propTypes = {
-  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(HOCListItem);
+export default withTheme()(HOCListItem);

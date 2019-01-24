@@ -11,18 +11,22 @@ const styles = {
 };
 
 const ProgressBar = (props) => {
-    const { classes, progress, message, thisExerciseDetail, ExList, history } = props;
-    return (
-      <div className={classes.root}>
-        {message && 
+  const {
+    classes, progress, message, thisExerciseDetail, ExList, history,
+  } = props;
+  return (
+    <div className={classes.root}>
+      {message
+          && (
           <BottomMsg
             thisExerciseDetail={thisExerciseDetail}
             ExList={ExList}
             history={history}
           />
+          )
         }
-        <LinearProgress variant="determinate" value={progress} />
-      </div>
+      <LinearProgress variant="determinate" value={progress} />
+    </div>
   );
 };
 

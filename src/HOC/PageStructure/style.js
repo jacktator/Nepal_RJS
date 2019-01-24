@@ -5,16 +5,15 @@ export const styles = theme => ({
     width: '100vw',
   },
   containerGrid: {
-    height: '100%',
+    minHeight: '100%',
   },
   top: {
-    height: '20vh',
+    height: '32vh',
     backgroundSize: 'cover',
   },
   mid: {
     flex: '1',
-    backgroundColor: '#e1e2e1',
-    overflowY: 'scroll',
+    backgroundColor: 'white',
   },
   bottom: {
     backgroundColor: 'blue',
@@ -36,12 +35,10 @@ export const styles = theme => ({
   midWithBotton: {
     height: '65vh',
     width: '100%',
-    overflow: 'scroll',
   },
   midWithoutBotton: {
     height: '70vh',
     width: '100%',
-    overflow: 'scroll',
   },
   bottomWithBotton: {
     height: '12vh',
@@ -60,11 +57,11 @@ export const styles = theme => ({
   },
   footerNav: {
     width: '100%',
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.footer.backgroundColor,
   },
   bottomNavigator: {
     '&$selected': {
-      color: 'white',
+      color: theme.palette.primary.main,
     },
   },
   selected: {},
