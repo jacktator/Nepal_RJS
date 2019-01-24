@@ -8,6 +8,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import LockIcon from '@material-ui/icons/LockOutlined';
 import LockOpenIcon from '@material-ui/icons/LockOpenOutlined';
+import CheckIcon from '@material-ui/icons/CheckCircleOutlineOutlined';
 import Typography from '@material-ui/core/Typography';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import RightIcon from '@material-ui/icons/KeyboardArrowRight';
@@ -15,7 +16,7 @@ import { styles } from '../../styles';
 
 const iconDisplay = finish => (finish ? <FeedbackIcon color="primary" /> : <RightIcon color="primary" />);
 
-const lockOpen = open => (open ? <LockOpenIcon color="primary" /> : <LockIcon color="primary" />);
+const lockOpen = (finish, open) => (finish ? <CheckIcon color="primary" /> : (open ? <LockOpenIcon color="primary" /> : <LockIcon color="primary" />));
 
 class SimpleList extends React.PureComponent {
   constructor(props) {
@@ -48,16 +49,16 @@ class SimpleList extends React.PureComponent {
               height: '82%',
               position: 'absolute',
               width: '1px',
-              backgroundColor: 'silver',
               marginTop: '9%',
               zIndex: '20',
               marginLeft: '25%',
+              borderRight: '1px dashed silver',
             }}
             />
             {
             [...Array(days || 5)].map((v, k) => (
               <Link key={`day${(starDayNumber || 0) + k + 1}`} onClick={event => this.onItemClick(event, { current: starDayNumber + k + 1, finish, over24 })} style={{ width: '100%', height: '100%' }} to={`/workout/daily/${k + 1}`}>
-                <ListItem disabled={~~starDayNumber + k + 1 !== ~~progress} style={~~starDayNumber + k + 1 < ~~progress ? { backgroundColor: '#4caf50' } : null} className={classes.infoListItem}>
+                <ListItem disabled={~~starDayNumber + k + 1 !== ~~progress} className={classes.infoListItem}>
                   <ListItemText
                     style={{ width: '20%', flex: 'unset' }}
                     primary={(
@@ -67,7 +68,7 @@ class SimpleList extends React.PureComponent {
                       </>
                   )}
                   />
-                  <ListItemIcon style={{ zIndex: '22', backgroundColor: 'white' }}>{lockOpen(~~starDayNumber + k + 1 === ~~progress)}</ListItemIcon>
+                  <ListItemIcon style={{ zIndex: '22', backgroundColor: 'white' }}>{lockOpen(~~starDayNumber + k + 1 < ~~progress, ~~starDayNumber + k + 1 === ~~progress)}</ListItemIcon>
                   <ListItemText
                     primary={(
                       <Typography align="center" variant="body1" color="primary">{showTitle}</Typography>
