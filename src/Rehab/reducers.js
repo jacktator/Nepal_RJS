@@ -9,6 +9,7 @@ export default function (state = {
   rehabExercisesRecorded: [],
   dayRehabExercisesRecords: { id: 0, progress: 0, data: [] },
   renderExercises: [],
+  youtubeLink: '_e7AzzwpDUM',
 }, action) {
   switch (action.type) {
     case 'SET_POSTURE':
