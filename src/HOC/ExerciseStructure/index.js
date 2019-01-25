@@ -10,7 +10,7 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import HistoryIcon from '@material-ui/icons/History';
 import PlayCircleIcon from '@material-ui/icons/PlayCircleFilled';
-import Youtube from 'react-youtube';
+import ReactPlayer from 'react-player';
 import History from './history';
 import NumberSelect from '../numberSelect';
 import ExListItem from './ListItem';
@@ -56,8 +56,10 @@ const ExerciseStructure = (props) => {
   const opts = {
     width: '100%',
     height: '100%',
+    playing: true,
     playerVars: {
       autoplay: 1,
+      player: 1,
     },
   };
   const onYoutubeOpen = () => {
@@ -123,10 +125,22 @@ const ExerciseStructure = (props) => {
             <Typography className={classes.inlineT} color="secondary">{`${thisExerciseDetail ? thisExerciseDetail.sets : 0}`} X</Typography>
             <Typography className={classes.inlineT} color="secondary">{`${thisExerciseDetail ? thisExerciseDetail.reps : 0}`}</Typography>
           </Card>
-          <Youtube
-            // youtbueID={`${thisExerciseDetail.name}`}
-            youtubeID="IODxDxX7oi4"
-            opts={opts}
+          <ReactPlayer
+            // videoId={`${thisExerciseDetail.video_link}`}
+            // opts={opts}
+            url={`${VIDEO_URL}${thisExerciseDetail.video_link}`}
+            // eslint-disable-next-line react/jsx-boolean-value
+            playing={true}
+            // eslint-disable-next-line react/jsx-boolean-value
+            loop={true}
+            controls={false}
+            width="100%"
+            height="100%"
+            config={{
+              youtube: {
+                playerVars: { showinfo: 1 },
+              },
+            }}
           />
           {/* <CardMedia
             style={{ height: '100%', width: '100%' }}
