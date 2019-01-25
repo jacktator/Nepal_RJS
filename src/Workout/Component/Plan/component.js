@@ -45,16 +45,6 @@ class SimpleList extends React.PureComponent {
       isNaN(progress) ? <div />
         : (
           <List className={classes.root} component="nav" disablePadding>
-            {/* <div style={{
-              height: '82%',
-              position: 'absolute',
-              width: '1px',
-              marginTop: '9%',
-              zIndex: '20',
-              marginLeft: '25%',
-              borderRight: '1px dashed silver',
-            }}
-            /> */}
             {
             [...Array(days || 5)].map((v, k) => (
               <Link key={`day${(starDayNumber || 0) + k + 1}`} onClick={event => this.onItemClick(event, { current: starDayNumber + k + 1, finish, over24 })} style={{ width: '100%', minHeight: '48px' }} to={`/workout/daily/${k + 1}`}>

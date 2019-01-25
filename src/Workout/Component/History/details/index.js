@@ -47,7 +47,9 @@ class Details extends React.PureComponent {
   }
 
   render() {
-    const { classes, historyQuery, specificProgrammeHistory } = this.props;
+    const {
+      classes, theme, historyQuery, specificProgrammeHistory,
+    } = this.props;
     const {
       dayInWeek, week,
     } = this.props.match.params;
@@ -61,14 +63,14 @@ class Details extends React.PureComponent {
           FooterContent={1}
           tapBarContent={false}
           midComponent={(
-            <Grid container style={{ flex: 1 }} justify="center" alignContent="space-between" alignItems="center">
-              <AppBar position="static">
+            <Grid container style={{ flex: 1 }} justify="center" alignContent="flex-start" alignItems="center">
+              <AppBar position="static" style={{ backgroundColor: theme.appBar.backgroundColor }}>
                 <Toolbar style={{ justifyContent: 'space-between' }}>
-                  <IconButton className={classes.menuButton} onClick={this.returnBack} color="secondary" aria-label="Menu">
+                  <IconButton className={classes.menuButton} onClick={this.returnBack} color="primary" aria-label="Menu">
                     <LeftIcon style={{ fontSize: '30px' }} />
                   </IconButton>
                   {c && c[week] && (
-                  <Typography variant="h6" color="secondary">
+                  <Typography variant="h6" color="primary">
                     {new Date(c[week].date).toDateString()}
                   </Typography>
 
@@ -76,9 +78,8 @@ class Details extends React.PureComponent {
                   <div style={{ height: '54px', minWidth: '54px' }} />
                 </Toolbar>
               </AppBar>
-              <Paper style={{ height: '90%', marginBottom: '2.5%' }} className={classes.midPaper} elevation={8}>
-                <List className={classes.root} component="nav" disablePadding>
-                  {
+              <List className={classes.root} component="nav" disablePadding>
+                {
                    c && render.length > 0 ? (
                      <Component
                        render={render}
@@ -93,8 +94,7 @@ class Details extends React.PureComponent {
                        </ListItem>
                      )
  }
-                </List>
-              </Paper>
+              </List>
             </Grid>
             )}
         />
@@ -112,4 +112,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { getExerciseHistory, finishHistoryQuery })(withStyles(styles)(Details));
+export default connect(mapStateToProps, { getExerciseHistory, finishHistoryQuery })(withStyles(styles, { withTheme: true })(Details));

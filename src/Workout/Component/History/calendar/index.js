@@ -56,16 +56,14 @@ class Calendar extends React.PureComponent {
           onTagClick={this.onTabsClick}
           tapBarContent={tapBarContent}
           midComponent={(
-            <Grid container style={{ flex: 1 }} justify="center" alignContent="space-around" alignItems="center">
-              <Paper className={classes.midPaper} elevation={8}>
-                <Component
-                  starDayNumber={tabs * renderData.days}
-                  days={renderData ? renderData.days : 4}
-                  week={tabs}
-                  programmeID={this.props.match.params.programmeID}
-                  renderProgrammeIndex={renderProgrammeIndex}
-                />
-              </Paper>
+            <Grid container style={{ flex: 1 }} justify="center" alignContent="space-around" alignItems="flex-start">
+              <Component
+                starDayNumber={tabs * renderData.days}
+                days={renderData ? renderData.days : 4}
+                week={tabs}
+                programmeID={this.props.match.params.programmeID}
+                renderProgrammeIndex={renderProgrammeIndex}
+              />
             </Grid>
             )}
         />
