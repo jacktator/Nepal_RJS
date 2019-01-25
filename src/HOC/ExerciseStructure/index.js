@@ -10,7 +10,7 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import HistoryIcon from '@material-ui/icons/History';
 import PlayCircleIcon from '@material-ui/icons/PlayCircleFilled';
-import Youtube from 'react-youtube';
+import YouTube from 'react-youtube';
 import History from './history';
 import NumberSelect from '../numberSelect';
 import ExListItem from './ListItem';
@@ -51,13 +51,14 @@ const ExerciseStructure = (props) => {
     dailyExerciseLength, rehab, onClose, youtubeOpenStatus, title,
     history, thisExerciseDetail, currentExerciseOrder, onFinishAllExercise,
     historyForSpecificExercise, needYoutube, needHistory, largest, imageLink,
-    getYoutubeLink,
+    getYoutubeLink, onReady, onPlayVideo, onPauseVideo, onStopVideo,
   } = props;
   const opts = {
     width: '100%',
     height: '100%',
     playerVars: {
       autoplay: 1,
+      controls: 0,
     },
   };
   const onYoutubeOpen = () => {
@@ -93,7 +94,6 @@ const ExerciseStructure = (props) => {
         onYoutubeClose={onYoutubeClose}
         youtbueID={youtbueID}
         getYoutubeLink={getYoutubeLink}
-        queryName={`${IMAGE_URL}${thisExerciseDetail.id}${`${thisExerciseDetail.name}`.replace(/ /g, '-')}.gif`}
       />
       )}
       {!needHistory && (
@@ -123,18 +123,12 @@ const ExerciseStructure = (props) => {
             <Typography className={classes.inlineT} color="secondary">{`${thisExerciseDetail ? thisExerciseDetail.sets : 0}`} X</Typography>
             <Typography className={classes.inlineT} color="secondary">{`${thisExerciseDetail ? thisExerciseDetail.reps : 0}`}</Typography>
           </Card>
-          <Youtube
-            // youtbueID={`${thisExerciseDetail.name}`}
-            youtubeID="IODxDxX7oi4"
+          <YouTube
+            videoId={youtbueID[1]}
             opts={opts}
+            onReady={onReady}
+            onEnd={onStopVideo}
           />
-          {/* <CardMedia
-            style={{ height: '100%', width: '100%' }}
-            component="video"
-            image={rehab ? `${IMAGE_URL}${imageLink}-${`${thisExerciseDetail.name}`.replace(/ /g, '-')}.gif` : `${IMAGE_URL}${thisExerciseDetail.id}${`${thisExerciseDetail.name}`.replace(/ /g, '-')}.gif`}
-            src={rehab ? `${IMAGE_URL}${imageLink}-${`${thisExerciseDetail.name}`.replace(/ /g, '-')}.gif` : `${VIDEO_URL}${thisExerciseDetail.video_link}`}
-            src="https://www.youtube.com/watch?v=IODxDxX7oi4"
-          /> */}
         </Card>
       </Grid>
 

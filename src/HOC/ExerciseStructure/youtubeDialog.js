@@ -21,9 +21,6 @@ class ResponsiveDialog extends React.Component {
     this.onPauseVideo = this.onPauseVideo.bind(this);
   }
 
-  componentDidMount() {
-    this.props.getYoutubeLink(this.props.queryName);
-  }
 
   onReady(event) {
     this.setState({
@@ -46,6 +43,7 @@ class ResponsiveDialog extends React.Component {
     const opts = {
       width: '100%',
     };
+    console.log(youtbueID);
     return (
       <Dialog
         fullScreen={fullScreen}
