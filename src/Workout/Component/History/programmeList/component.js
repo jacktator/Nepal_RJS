@@ -23,14 +23,14 @@ class History extends React.PureComponent {
             {
             [...historyProgrammeList].map((v, k) => (
               <Link key={v.id} to={`/workout/history/${v.id}`} style={{ height: '100%', width: '100%' }}>
-                <ListItem className={classes.infoListItem} component={Paper} divider elevation={4}>
+                <ListItem className={classes.infoListItem} divider>
                   <ListItemText primary={(
-                    <Typography variant="body2" color="secondary">{v.program_name}</Typography>)}
+                    <Typography variant="body2" color="primary">{v.program_name}</Typography>)}
                   />
                   <ListItemText primary={(
-                    <Typography variant="body2" color="secondary">{new Date(v.date).toDateString()}</Typography>)}
+                    <Typography variant="body2" color="primary">{new Date(v.date).toDateString()}</Typography>)}
                   />
-                  <ListItemIcon><RightIcon /></ListItemIcon>
+                  <ListItemIcon><RightIcon color="primary" /></ListItemIcon>
                 </ListItem>
 
               </Link>

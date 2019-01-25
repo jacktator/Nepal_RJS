@@ -19,9 +19,9 @@ const Component = (props) => {
     <List className={classes.root} component="nav">
       {[...Array((days * 1 || 5)).keys()].map((v, k) => (
         <Link key={starDayNumber + k + 1 || k} to={`./${programmeID}/${k}&${week}&${renderProgrammeIndex}`}>
-          <ListItem className={classes.infoListItem} component={Paper} elevation={4}>
+          <ListItem className={classes.infoListItem} divider>
             <ListItemText
-              primary={<Typography variant="body2" color="secondary">{`Day${starDayNumber + k + 1}`}</Typography>}
+              primary={<Typography variant="body2" color="primary">{`Day${starDayNumber + k + 1}`}</Typography>}
             />
             <ListItemIcon><RightIcon /></ListItemIcon>
           </ListItem>

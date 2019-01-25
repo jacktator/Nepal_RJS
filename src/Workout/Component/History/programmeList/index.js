@@ -34,12 +34,10 @@ class HistoryIndex extends React.PureComponent {
         FooterContent={1}
         tapBarContent={false}
         midComponent={(
-          <Grid container style={{ flex: 1 }} justify="center" alignContent="space-around" alignItems="center">
-            <Paper className={classes.midPaper} elevation={8}>
-              <Component
-                historyProgrammeList={historyProgrammeList}
-              />
-            </Paper>
+          <Grid container style={{ flex: 1 }} justify="center" alignContent="space-around" alignItems="flex-start">
+            <Component
+              historyProgrammeList={historyProgrammeList}
+            />
           </Grid>
         )}
       />

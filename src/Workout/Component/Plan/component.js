@@ -38,27 +38,22 @@ class SimpleList extends React.PureComponent {
 
   render() {
     const {
-      classes, finish, days, currentWeek, progress, over24, showTitle,
+      classes, theme, finish, days, currentWeek, progress, over24, showTitle,
     } = this.props;
     const starDayNumber = days * (currentWeek);
     return (
       isNaN(progress) ? <div />
         : (
           <List className={classes.root} component="nav" disablePadding>
-            <div style={{
-              height: '82%',
-              position: 'absolute',
-              width: '1px',
-              marginTop: '9%',
-              zIndex: '20',
-              marginLeft: '25%',
-              borderRight: '1px dashed silver',
-            }}
-            />
             {
             [...Array(days || 5)].map((v, k) => (
-              <Link key={`day${(starDayNumber || 0) + k + 1}`} onClick={event => this.onItemClick(event, { current: starDayNumber + k + 1, finish, over24 })} style={{ width: '100%', height: '100%' }} to={`/workout/daily/${k + 1}`}>
-                <ListItem disabled={~~starDayNumber + k + 1 !== ~~progress} className={classes.infoListItem}>
+              <Link key={`day${(starDayNumber || 0) + k + 1}`} onClick={event => this.onItemClick(event, { current: starDayNumber + k + 1, finish, over24 })} style={{ width: '100%', minHeight: '48px' }} to={`/workout/daily/${k + 1}`}>
+                <ListItem
+                  disabled={~~starDayNumber + k + 1 !== ~~progress}
+                  style={{
+                    justifyContent: 'space-between', backgroundColor: theme.ListItem.backgroundColor, paddingTop: '0', paddingBottom: '0', marginTop: '4px', marginBottom: '4px', height: '96px',
+                  }}
+                >
                   <ListItemText
                     style={{ width: '20%', flex: 'unset' }}
                     primary={(
@@ -68,7 +63,20 @@ class SimpleList extends React.PureComponent {
                       </>
                   )}
                   />
-                  <ListItemIcon style={{ zIndex: '22', backgroundColor: 'white' }}>{lockOpen(~~starDayNumber + k + 1 < ~~progress, ~~starDayNumber + k + 1 === ~~progress)}</ListItemIcon>
+                  <div style={{
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column',
+                  }}
+                  >
+                    <div style={{
+                      height: '36px', width: '1px', borderRight: k !== 0 ? '2px dashed silver' : '0',
+                    }}
+                    />
+                    {lockOpen(~~starDayNumber + k + 1 < ~~progress, ~~starDayNumber + k + 1 === ~~progress)}
+                    <div style={{
+                      height: '36px', width: '1px', borderRight: k !== [...Array(days || 5)].length - 1 ? '2px dashed silver' : 0,
+                    }}
+                    />
+                  </div>
                   <ListItemText
                     primary={(
                       <Typography align="center" variant="body1" color="primary">{showTitle}</Typography>
@@ -96,4 +104,4 @@ SimpleList.defaultProps = {
   finish: false,
 };
 
-export default withStyles(styles)(SimpleList);
+export default withStyles(styles, { withTheme: true })(SimpleList);
