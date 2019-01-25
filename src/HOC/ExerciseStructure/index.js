@@ -126,13 +126,9 @@ const ExerciseStructure = (props) => {
             <Typography className={classes.inlineT} color="secondary">{`${thisExerciseDetail ? thisExerciseDetail.reps : 0}`}</Typography>
           </Card>
           <ReactPlayer
-            // videoId={`${thisExerciseDetail.video_link}`}
-            // opts={opts}
             url={`${VIDEO_URL}${thisExerciseDetail.video_link}`}
-            // eslint-disable-next-line react/jsx-boolean-value
-            playing={true}
-            // eslint-disable-next-line react/jsx-boolean-value
-            loop={true}
+            playing
+            loop
             controls={false}
             width="100%"
             height="100%"
@@ -142,13 +138,7 @@ const ExerciseStructure = (props) => {
               },
             }}
           />
-          {/* <CardMedia
-            style={{ height: '100%', width: '100%' }}
-            component="video"
-            image={rehab ? `${IMAGE_URL}${imageLink}-${`${thisExerciseDetail.name}`.replace(/ /g, '-')}.gif` : `${IMAGE_URL}${thisExerciseDetail.id}${`${thisExerciseDetail.name}`.replace(/ /g, '-')}.gif`}
-            src={rehab ? `${IMAGE_URL}${imageLink}-${`${thisExerciseDetail.name}`.replace(/ /g, '-')}.gif` : `${VIDEO_URL}${thisExerciseDetail.video_link}`}
-            src="https://www.youtube.com/watch?v=IODxDxX7oi4"
-          /> */}
+
         </Card>
       </Grid>
 

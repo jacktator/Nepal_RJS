@@ -334,6 +334,9 @@ export const getYoutubeLink = name => (dispatch) => {
     .then(
       (res) => {
         console.log(res);
+        console.log('!!!');
+        console.log(res.data.acf.youtubelongcode);
+        console.log('!!!');
         dispatch(setYoutubeLink([res.data.acf.youtubelongcode, res.data.acf.youtubeshortcode]));
       },
     )
