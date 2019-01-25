@@ -11,6 +11,7 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import { styles } from '../../styles';
 import { IMAGE_URL } from '../../../config';
+import theme from '../../../theme';
 
 
 const HOCListItem = (props) => {
@@ -19,20 +20,17 @@ const HOCListItem = (props) => {
 
   } = props;
   return (
-    <ListItem>
-      <Paper className={classes.listItemPaper} component={exeData.selected ? Link : 'div'} to={`/rehab/training/${itemID}`}>
-        <Grid container className={classes.root} style={{ height: '100%' }}>
+    <ListItem divider>
+      <Grid container className={classes.listItemPaper} component={exeData.selected ? Link : 'div'} to={`/rehab/training/${itemID}`}>
+        <Grid container className={classes.itemleft} justify="flex-start" alignContent="space-around" alignItems="center">
+          <Card className={classes.picturePlaceholder}>
+            <CardMedia style={{ height: '100%', width: '100%', backgroundSize: 'contain' }} image={`${IMAGE_URL}${prefix}-${postureName || injuryName}-${`${exeData.name}`.replace(/ /g, '-')}.gif`} />
+          </Card>
+        </Grid>
 
-
-          <Grid container className={classes.itemleft} justify="space-around" alignContent="space-around" alignItems="center">
-            <Card className={classes.picturePlaceholder}>
-              <CardMedia style={{ height: '100%', width: '100%', backgroundSize: 'contain' }} image={`${IMAGE_URL}${prefix}-${postureName || injuryName}-${`${exeData.name}`.replace(/ /g, '-')}.gif`} />
-            </Card>
-          </Grid>
-
-          <Grid container className={classes.itemRight} justify="space-around" alignContent="center" alignItems="center">
-            <Typography color="secondary" variant="body1">{exeData.name}</Typography>
-            {
+        <Grid container className={classes.itemRight} justify="flex-start" alignContent="center" alignItems="center">
+          <Typography color="primary" variant="body1">{exeData.name}</Typography>
+          {
               pre
                 ? (
                   <Typography style={{ color: '#ffcccb' }}>
@@ -40,17 +38,16 @@ const HOCListItem = (props) => {
                   </Typography>
                 ) : (
                   !exeData.selected && (
-                  <Grid container>
-                    <Grid item container justify="center" xs={6} color="secondary" component={Typography} onClick={funcs}>Change</Grid>
+                  <Grid container style={{ borderTop: '1px solid', borderTopColor: theme.palette.primary.main }}>
+                    <Grid item container justify="center" xs={6} color="primary" component={Typography} onClick={funcs}>Change</Grid>
                     <Grid item container style={{ color: '#98ee99' }} justify="center" xs={6} component={Typography} onClick={keepExercise}>Keep</Grid>
                   </Grid>
                   )
                 )
 
           }
-          </Grid>
         </Grid>
-      </Paper>
+      </Grid>
     </ListItem>
   );
 };

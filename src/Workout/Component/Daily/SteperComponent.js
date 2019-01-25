@@ -10,12 +10,17 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Chip from '@material-ui/core/Chip';
+import CardMedia from '@material-ui/core/CardMedia';
 import { IMAGE_URL } from '../../../config';
 
 const styles = theme => ({
   root: {
-    maxWidth: 400,
+    width: '100%',
     flexGrow: 1,
+  },
+  mobileStepper: {
+    width: '100%',
+    padding: '0',
   },
   header: {
     display: 'flex',
@@ -27,6 +32,8 @@ const styles = theme => ({
     overflow: 'hidden',
     display: 'block',
     width: '100%',
+    maxHeight: '300px',
+    minHeight: '100px',
   },
   chip: {
     width: '100%',
@@ -57,10 +64,9 @@ class TextMobileStepper extends React.PureComponent {
             <Paper square elevation={0} className={classes.header}>
               <Typography>{tutorialSteps[dialogIndexSelected][dialogSelected].name}</Typography>
             </Paper>
-            <img
+            <CardMedia
               className={classes.img}
-              src={`${IMAGE_URL}${imageID}${`${tutorialSteps[dialogIndexSelected][dialogSelected].name}`.replace(/ /g, '-')}.gif`}
-              alt={tutorialSteps[dialogIndexSelected][dialogSelected].name}
+              image={`${IMAGE_URL}${imageID}${`${tutorialSteps[dialogIndexSelected][dialogSelected].name}`.replace(/ /g, '-')}.gif`}
             />
             <MobileStepper
               steps={maxSteps}

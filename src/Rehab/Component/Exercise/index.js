@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { withTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
@@ -8,7 +8,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import LeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import { connect } from 'react-redux';
-import { rehabProgramme } from '../../../config';
 import ExerciseComponent from './component';
 import MainComponent from '../../../HOC/PageStructure';
 import SpeedDialTooltipOpen from '../../../HOC/speedDial';
@@ -75,8 +74,9 @@ class ExerciseIndex extends React.PureComponent {
 
   render() {
     const {
-      classes, currentWeek, dayRehabExercisesRecords, posture, injury, rehabExerciseQuery, selectedRehabExercises,
+      theme, currentWeek, dayRehabExercisesRecords, posture, injury, rehabExerciseQuery, selectedRehabExercises,
     } = this.props;
+    const tstyles = styles(theme);
     const exeOrder = this.props.match.params.exerciseOrder;
     const exe = this.props.renderExercises[exeOrder];
     const {
@@ -102,20 +102,20 @@ class ExerciseIndex extends React.PureComponent {
           progress={exeOrder}
           tapBarContent={false}
           currentWeek={currentWeek}
-          currentPage={2}
-          FooterContent={1}
+          currentPage={3}
+          FooterContent={2}
           midComponent={(
             <Grid container style={{ flex: 1 }} direction="column" justify="center" alignContent="space-between" alignItems="center">
 
               <Grid container item direction="column" alignContent="space-between" alignItems="center">
-                <AppBar position="static">
+                <AppBar position="static" style={{ backgroundColor: theme.appBar.backgroundColor }}>
                   <Toolbar style={{ justifyContent: 'space-between' }}>
-                    <IconButton className={classes.menuButton} onClick={this.returnBack} color="secondary" aria-label="Menu">
+                    <IconButton className={tstyles.menuButton} onClick={this.returnBack} color="primary" aria-label="Menu">
                       <LeftIcon style={{ fontSize: '30px' }} />
                     </IconButton>
-                    <Typography className={classes.grow} variant="h6" color="secondary">Title</Typography>
+                    <Typography className={tstyles.grow} variant="h6" color="primary">Title</Typography>
                     <div style={{ minHeight: '56px', minWidth: '56px' }}>
-                      <SpeedDialTooltipOpen right secondary />
+                      <SpeedDialTooltipOpen right primary />
                     </div>
                   </Toolbar>
                 </AppBar>
@@ -143,7 +143,6 @@ class ExerciseIndex extends React.PureComponent {
 }
 
 ExerciseIndex.propTypes = {
-  classes: PropTypes.object.isRequired,
   progress: PropTypes.object,
   currentWeek: PropTypes.number,
 };
@@ -160,7 +159,7 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, {
   setRehabExercisesRecordsByDay, updateRehabRecord, finishAllRehab, finishExerciseSaveQuery,
-})(withStyles(styles)(ExerciseIndex));
+})(withTheme()(ExerciseIndex));
 
 // || {
 //  name: 'rehab', reps: '20', sets: '3', time: '10s',
