@@ -121,7 +121,7 @@ class ExerciseIndex extends React.Component {
 
   render() {
     const {
-      classes, renderExercises, alldayExercises, exercisePageQuery, todayExercises, historyForSpecificExercise, getYoutubeLink, youtubeLink,
+      classes, theme, renderExercises, alldayExercises, exercisePageQuery, todayExercises, historyForSpecificExercise, getYoutubeLink, youtubeLink,
     } = this.props;
     const {
       weight, reps, youtube, youtbueID, title, history,
@@ -172,14 +172,14 @@ class ExerciseIndex extends React.Component {
               open={exercisePageQuery}
             />
             <Grid container item direction="column" alignContent="space-between" alignItems="center">
-              <AppBar position="static">
+              <AppBar position="static" style={{ backgroundColor: theme.appBar.backgroundColor }}>
                 <Toolbar style={{ justifyContent: 'space-between' }}>
-                  <IconButton className={classes.menuButton} onClick={this.returnBack} color="secondary" aria-label="Menu">
+                  <IconButton className={classes.menuButton} onClick={this.returnBack} color="primary" aria-label="Menu">
                     <LeftIcon style={{ fontSize: '30px' }} />
                   </IconButton>
-                  <Typography className={classes.grow} style={{ fontSize: 'x-small' }} color="secondary">{thisExerciseDetail ? thisExerciseDetail.name : 'title'}</Typography>
+                  <Typography className={classes.grow} style={{ fontSize: 'x-small' }} color="primary">{thisExerciseDetail ? thisExerciseDetail.name : 'title'}</Typography>
                   <div style={{ minHeight: '56px', minWidth: '56px' }}>
-                    <SpeedDialTooltipOpen right secondary />
+                    <SpeedDialTooltipOpen right primary />
                   </div>
                 </Toolbar>
               </AppBar>
@@ -239,4 +239,4 @@ export default connect(mapStateToProps, {
   finishAllDailyExercises,
   getThisExerciseHistory,
   getYoutubeLink,
-})(withStyles(styles)(ExerciseIndex));
+})(withStyles(styles, { withTheme: true })(ExerciseIndex));

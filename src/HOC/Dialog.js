@@ -9,7 +9,9 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import LoadingComponent from './Loading';
 
+const styles = (theme) => {
 
+};
 const AlertDialog = (props) => {
   const {
     title, discription, open, handleClose, media, loadingStatus, selectMidExercise, exe, other, otherClickFunction,
@@ -18,13 +20,14 @@ const AlertDialog = (props) => {
     <div>
       <LoadingComponent open={loadingStatus} />
       <Dialog
+        fullWidth
         open={open}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
-        <DialogContent>
+        <DialogContent style={{ padding: '0' }}>
           {!!discription && (
           <DialogContentText color="primary" id="alert-dialog-description">
             {discription}

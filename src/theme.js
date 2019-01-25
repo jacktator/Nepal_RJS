@@ -47,6 +47,9 @@ const theme = createMuiTheme({
   footer: {
     backgroundColor: 'white',
   },
+  appBar: {
+    backgroundColor: 'white',
+  },
   logo: 'https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-200px.png',
   typography: {
     useNextVariants: true,
