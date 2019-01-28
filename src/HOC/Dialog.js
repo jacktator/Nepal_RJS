@@ -27,7 +27,7 @@ const AlertDialog = (props) => {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
-        <DialogContent style={{ padding: '0' }}>
+        <DialogContent style={{ padding: media ? '0' : '24px' }}>
           {!!discription && (
           <DialogContentText color="primary" id="alert-dialog-description">
             {discription}

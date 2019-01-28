@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import HistoryIcon from '@material-ui/icons/History';
 import PlayCircleIcon from '@material-ui/icons/PlayCircleFilled';
 import ReactPlayer from 'react-player';
+// import YouTube from 'react-youtube';
 import History from './history';
 import NumberSelect from '../numberSelect';
 import ExListItem from './ListItem';
@@ -51,15 +52,14 @@ const ExerciseStructure = (props) => {
     dailyExerciseLength, rehab, onClose, youtubeOpenStatus, title,
     history, thisExerciseDetail, currentExerciseOrder, onFinishAllExercise,
     historyForSpecificExercise, needYoutube, needHistory, largest, imageLink,
-    getYoutubeLink,
+    getYoutubeLink, onReady, onPlayVideo, onPauseVideo, onStopVideo,
   } = props;
   const opts = {
     width: '100%',
     height: '100%',
-    playing: true,
     playerVars: {
       autoplay: 1,
-      player: 1,
+      controls: 0,
     },
   };
   const onYoutubeOpen = () => {
@@ -95,7 +95,6 @@ const ExerciseStructure = (props) => {
         onYoutubeClose={onYoutubeClose}
         youtbueID={youtbueID}
         getYoutubeLink={getYoutubeLink}
-        queryName={`${IMAGE_URL}${thisExerciseDetail.id}${`${thisExerciseDetail.name}`.replace(/ /g, '-')}.gif`}
       />
       )}
       {!needHistory && (
@@ -126,7 +125,7 @@ const ExerciseStructure = (props) => {
             <Typography className={classes.inlineT} color="secondary">{`${thisExerciseDetail ? thisExerciseDetail.reps : 0}`}</Typography>
           </Card>
           <ReactPlayer
-            url={`${VIDEO_URL}${thisExerciseDetail.video_link}`}
+            url={`${VIDEO_URL}${youtbueID[0]}`}
             playing
             loop
             controls={false}
@@ -139,6 +138,12 @@ const ExerciseStructure = (props) => {
             }}
           />
 
+          {/* <YouTube
+            videoId={youtbueID[1]}
+            opts={opts}
+            onReady={onReady}
+            onEnd={onStopVideo}
+          /> */}
         </Card>
       </Grid>
 

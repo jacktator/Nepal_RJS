@@ -333,11 +333,13 @@ export const getYoutubeLink = name => (dispatch) => {
   axios.get(`/youtube_seacrch?filter[meta_key]=exercies_name&filter[meta_value]=${name}`)
     .then(
       (res) => {
-        console.log(res);
-        console.log('!!!');
-        console.log(res.data.acf.youtubelongcode);
-        console.log('!!!');
-        dispatch(setYoutubeLink([res.data.acf.youtubelongcode, res.data.acf.youtubeshortcode]));
+        console.log(res.data[0].acf.youtubeshortcode);
+        const result = res.data[0];
+        if (result) {
+          const { acf } = result;
+          const n = [acf.youtubeshortcode, acf.youtubelongcode];
+          dispatch(setYoutubeLink(n));
+        }
       },
     )
     .catch(

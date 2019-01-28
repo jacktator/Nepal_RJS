@@ -25,10 +25,10 @@ class ExerciseIndex extends React.Component {
     this.state = {
       weight: 0,
       reps: 0,
-      youtbueID: '_e7AzzwpDUM',
       youtube: false,
       history: false,
       title: 'youtube',
+      shortPlayer: null,
     };
     this.weightAdd = this.weightAdd.bind(this);
     this.weightMin = this.weightMin.bind(this);
@@ -39,6 +39,10 @@ class ExerciseIndex extends React.Component {
     this.onClose = this.onClose.bind(this);
     this.onOpen = this.onOpen.bind(this);
     this.onFinishAllExercise = this.onFinishAllExercise.bind(this);
+    this.onReady = this.onReady.bind(this);
+    this.onPlayVideo = this.onPlayVideo.bind(this);
+    this.onPauseVideo = this.onPauseVideo.bind(this);
+    this.onStopVideo = this.onStopVideo.bind(this);
   }
 
   componentDidMount() {
@@ -50,9 +54,12 @@ class ExerciseIndex extends React.Component {
       window.location.href = `#/workout/daily/${sessionStorage.dayInWeek}`;
       return;
     }
+    const thisExerciseDetail = this.props.renderExercises[this.props.match.params.exerciseOrder - 1];
+    const queryName = `${thisExerciseDetail.id}${`${thisExerciseDetail.name}`}`;
     this.props.finishExercisePageQuery(true);
     this.props.getExerciseDetail({ exeLength: this.props.renderExercises.length });
     this.props.getThisExerciseHistory(this.props.match.params.exerciseOrder);
+    this.props.getYoutubeLink(queryName);
     this.setState({ reps: !/^[0-9]*$/.test(this.props.renderExercises[this.props.match.params.exerciseOrder - 1].reps) ? 1 : 1 * this.props.renderExercises[this.props.match.params.exerciseOrder - 1].reps });
   }
 
@@ -64,6 +71,24 @@ class ExerciseIndex extends React.Component {
       this.props.getThisExerciseHistory(this.props.match.params.exerciseOrder);
       this.setState({ reps: !/^[0-9]*$/.test(this.props.renderExercises[this.props.match.params.exerciseOrder - 1].reps) ? 1 : 1 * this.props.renderExercises[this.props.match.params.exerciseOrder - 1].reps });
     }
+  }
+
+  onReady(event) {
+    this.setState({
+      shortPlayer: event.target,
+    });
+  }
+
+  onPlayVideo() {
+    this.state.shortPlayer.playVideo();
+  }
+
+  onPauseVideo() {
+    this.state.shortPlayer.pauseVideo();
+  }
+
+  onStopVideo() {
+    this.state.shortPlayer.playVideo();
   }
 
   onClose(input) {
@@ -124,7 +149,7 @@ class ExerciseIndex extends React.Component {
       classes, theme, renderExercises, alldayExercises, exercisePageQuery, todayExercises, historyForSpecificExercise, getYoutubeLink, youtubeLink,
     } = this.props;
     const {
-      weight, reps, youtube, youtbueID, title, history,
+      weight, reps, youtube, title, history,
     } = this.state;
     const { exerciseOrder } = this.props.match.params;
     const showedExercises = todayExercises[`exe_${exerciseOrder}`] || '';
@@ -205,6 +230,10 @@ class ExerciseIndex extends React.Component {
               historyForSpecificExercise={historyForSpecificExercise}
               getThisExerciseHistory={getThisExerciseHistory}
               getYoutubeLink={getYoutubeLink}
+              onReady={this.onReady}
+              onPlayVideo={this.onPlayVideo}
+              onPauseVideo={this.onPauseVideo}
+              onStopVideo={this.onStopVideo}
             />
 
           </Grid>

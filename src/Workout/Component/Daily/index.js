@@ -89,7 +89,17 @@ class MainRehab extends React.Component {
     this.props.finishDailyQuery(true);
     const m = [].concat(this.props.exercises);
     const replace = midSelectExercise[data.listID];
-    m[data.listID] = { ...data, name: replace.name, progression_model: replace.progression_model };
+    m[data.listID] = {
+      name: replace.name,
+      id: data.id,
+      icon_link: data.icon_link,
+      feedback: data.feedback,
+      image_link: data.image_link,
+      progression_model: replace.progression_model,
+      reps: data.reps,
+      sets: data.sets,
+      video_link: data.video_link,
+    };
     const f = [...m.map(v => (v === 'unselected' ? '' : `(${[...Object.values(v)].join()})`))].join(';');
     const fin = !m.includes();
     this.props.userKeepExercise(f, fin);
