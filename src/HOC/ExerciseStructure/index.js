@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import HistoryIcon from '@material-ui/icons/History';
 import PlayCircleIcon from '@material-ui/icons/PlayCircleFilled';
 import ReactPlayer from 'react-player';
-// import YouTube from 'react-youtube';
+import YouTube from 'react-youtube';
 import History from './history';
 import NumberSelect from '../numberSelect';
 import ExListItem from './ListItem';
@@ -124,7 +124,7 @@ const ExerciseStructure = (props) => {
             <Typography className={classes.inlineT} color="secondary">{`${thisExerciseDetail ? thisExerciseDetail.sets : 0}`} X</Typography>
             <Typography className={classes.inlineT} color="secondary">{`${thisExerciseDetail ? thisExerciseDetail.reps : 0}`}</Typography>
           </Card>
-          <ReactPlayer
+          {/* <ReactPlayer
             url={`${VIDEO_URL}${youtbueID[0]}`}
             playing
             loop
@@ -136,14 +136,14 @@ const ExerciseStructure = (props) => {
                 playerVars: { showinfo: 1 },
               },
             }}
-          />
+          /> */}
 
-          {/* <YouTube
-            videoId={youtbueID[1]}
+          <YouTube
+            videoId={youtbueID[0]}
             opts={opts}
             onReady={onReady}
             onEnd={onStopVideo}
-          /> */}
+          />
         </Card>
       </Grid>
 

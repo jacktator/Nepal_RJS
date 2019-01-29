@@ -54,7 +54,7 @@ class ResponsiveDialog extends React.Component {
         <DialogContent>
           <YouTube
             opts={opts}
-            videoId={youtbueID}
+            videoId={youtbueID[1]}
             onReady={this.onReady}
           />
         </DialogContent>

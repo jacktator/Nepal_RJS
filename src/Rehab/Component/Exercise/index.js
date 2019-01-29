@@ -13,7 +13,7 @@ import MainComponent from '../../../HOC/PageStructure';
 import SpeedDialTooltipOpen from '../../../HOC/speedDial';
 import { styles } from '../../styles';
 import {
-  setRehabExercisesRecordsByDay, updateRehabRecord, finishAllRehab, finishExerciseSaveQuery,
+  setRehabExercisesRecordsByDay, updateRehabRecord, finishAllRehab, finishExerciseSaveQuery, getYoutubeLink,
 } from '../../actions';
 import Loading from '../../../HOC/Loading';
 
@@ -22,11 +22,16 @@ class ExerciseIndex extends React.PureComponent {
     super(props);
     this.state = {
       exe: {},
+      shortPlayer: null,
     };
     this.handleSaveButtonClicked = this.handleSaveButtonClicked.bind(this);
     this.dealRenderExerciseRecord = this.dealRenderExerciseRecord.bind(this);
     this.returnBack = this.returnBack.bind(this);
     this.handleFinishAllRehab = this.handleFinishAllRehab.bind(this);
+    this.onReady = this.onReady.bind(this);
+    this.onPlayVideo = this.onPlayVideo.bind(this);
+    this.onPauseVideo = this.onPauseVideo.bind(this);
+    this.onStopVideo = this.onStopVideo.bind(this);
   }
 
   componentDidUpdate() {
@@ -36,6 +41,24 @@ class ExerciseIndex extends React.PureComponent {
     if (this.props.match.params.exerciseOrder >= this.props.renderExercises.length) {
       window.location.hash = '#/rehab/content';
     }
+  }
+
+  onReady(event) {
+    this.setState({
+      shortPlayer: event.target,
+    });
+  }
+
+  onPlayVideo() {
+    this.state.shortPlayer.playVideo();
+  }
+
+  onPauseVideo() {
+    this.state.shortPlayer.pauseVideo();
+  }
+
+  onStopVideo() {
+    this.state.shortPlayer.playVideo();
   }
 
   handleSaveButtonClicked() {
@@ -74,7 +97,7 @@ class ExerciseIndex extends React.PureComponent {
 
   render() {
     const {
-      theme, currentWeek, dayRehabExercisesRecords, posture, injury, rehabExerciseQuery, selectedRehabExercises,
+      theme, currentWeek, dayRehabExercisesRecords, posture, injury, rehabExerciseQuery, selectedRehabExercises, youtubeLink, getYoutubeLink,
     } = this.props;
     const tstyles = styles(theme);
     const exeOrder = this.props.match.params.exerciseOrder;
@@ -89,6 +112,8 @@ class ExerciseIndex extends React.PureComponent {
     const thisExerciseDetail = {
       name, sets, reps: reps === 'empty' ? time : reps, time: reps === 'empty',
     };
+    const queryName = `${prefix} ${selectedRehabExercises.acf[prefix]} ${thisExerciseDetail.name}`;
+    getYoutubeLink(queryName);
     const mmm = dayRehabExercisesRecords.data || [];
     const ExList = mmm.length !== 0 ? mmm[exeOrder] ? mmm[exeOrder].map(v => ({ reps: v })) : [] : [];
     const exerLength = (posture instanceof Array) ? ((injury instanceof Array) ? 0 : 4) : ((injury instanceof Array) ? 4 : 8);
@@ -130,7 +155,11 @@ class ExerciseIndex extends React.PureComponent {
                 finishCurrentExercise={thisExerciseDetail.sets <= ExList.length}
                 currentExerciseOrder={exeOrder}
                 dailyExerciseLength={exerLength}
-                imageLink={imageLink}
+                youtbueID={youtubeLink}
+                onReady={this.onReady}
+                onPlayVideo={this.onPlayVideo}
+                onPauseVideo={this.onPlayVideo}
+                onStopVideo={this.onStopVideo}
                 rehab
               />
 
@@ -149,10 +178,10 @@ ExerciseIndex.propTypes = {
 
 function mapStateToProps(state) {
   const {
-    dayRehabExercisesRecords, renderExercises, posture, injury, rehabExerciseQuery, selectedRehabExercises,
+    dayRehabExercisesRecords, renderExercises, posture, injury, rehabExerciseQuery, selectedRehabExercises, youtubeLink,
   } = state.Rehab;
   return {
-    dayRehabExercisesRecords, renderExercises, posture, injury, rehabExerciseQuery, selectedRehabExercises,
+    dayRehabExercisesRecords, renderExercises, posture, injury, rehabExerciseQuery, selectedRehabExercises, youtubeLink,
   };
 }
 
