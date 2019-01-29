@@ -44,6 +44,7 @@ export const selectedRehabExercises = data => ({ type: 'SET_SELECTED_REHAB_EXERC
 export const setRenderExercises = data => ({ type: 'SET_RENDER_EXERCISES', payload: data });
 export const setRehabExercisesRecorded = data => ({ type: 'SET_REHAB_EXERCISE_RECORDED', payload: data });
 export const setRehabExercisesRecordsByDay = data => ({ type: 'SET_DAY_EXERCISE_DATA', payload: data });
+export const setRehubYoutubeLink = data => ({ type: 'SET_REHAB_YOUTUBE_LINK', payload: data });
 export const finishQuerryDailyData = data => ({ type: 'FINISH_QUERRY_DAILY_DATA', payload: data });
 export const finishExerciseSaveQuery = data => ({ type: 'FINISH_REHAB_EXERCISE', payload: data });
 
@@ -211,4 +212,25 @@ export const finishAllRehab = () => (dispatch) => {
   })
     .then(res => console.log(res))
     .catch(err => console.log(err));
+};
+
+
+export const getYoutubeLink = name => (dispatch) => {
+  axios.get(`/youtube_seacrch?filter[meta_key]=exercies_name&filter[meta_value]=${name}`)
+    .then(
+      (res) => {
+        console.log(res.data[0].acf.youtubeshortcode);
+        const result = res.data[0];
+        if (result) {
+          const { acf } = result;
+          const n = [acf.youtubeshortcode, acf.youtubelongcode];
+          dispatch(setRehubYoutubeLink(n));
+        }
+      },
+    )
+    .catch(
+      (err) => {
+        console.log(err);
+      },
+    );
 };

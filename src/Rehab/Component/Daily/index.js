@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import { connect } from 'react-redux';
 import Component from './component';
 import MainComponent from '../../../HOC/PageStructure';
@@ -169,7 +168,7 @@ class MainRehab extends React.Component {
 
   render() {
     const {
-      classes, showCreationQuestionnaire, querryCreating,
+      classes, theme, showCreationQuestionnaire, querryCreating,
       querryDailyData, posture, injury, renderExercises,
     } = this.props;
     const { acf } = this.props.selectedRehabExercises;
@@ -182,7 +181,7 @@ class MainRehab extends React.Component {
     return (
       <MainComponent
         top
-        backgroundImage="https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg"
+        backgroundImage={theme.rehabHeader.daily}
         title="Rehab"
         currentWeek={currentWeek}
         currentPage={3}
@@ -291,4 +290,4 @@ export default connect(mapStateToProps, {
   keepExercise,
   setRehabExercisesRecordsByDay,
   setRenderExercises,
-})(withStyles(styles)(MainRehab));
+})(withStyles(styles, { withTheme: true })(MainRehab));

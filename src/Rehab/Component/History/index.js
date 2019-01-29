@@ -25,11 +25,13 @@ class HistoryIndex extends React.Component {
   }
 
   render() {
-    const { classes, progress, currentWeek } = this.props;
+    const {
+      classes, theme, progress, currentWeek,
+    } = this.props;
     return (
       <MainComponent
         top
-        backgroundImage="https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg"
+        backgroundImage={theme.workoutHeader.history}
         title="Workout"
         progress={progress}
         currentWeek={currentWeek}
@@ -54,4 +56,4 @@ HistoryIndex.propTypes = {
   currentWeek: PropTypes.number,
 };
 
-export default withStyles(styles)(HistoryIndex);
+export default withStyles(styles, { withTheme: true })(HistoryIndex);

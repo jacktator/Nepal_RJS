@@ -13,7 +13,7 @@ import MainComponent from '../../../HOC/PageStructure';
 import SpeedDialTooltipOpen from '../../../HOC/speedDial';
 import { styles } from '../../styles';
 import {
-  setRehabExercisesRecordsByDay, updateRehabRecord, finishAllRehab, finishExerciseSaveQuery,
+  setRehabExercisesRecordsByDay, updateRehabRecord, finishAllRehab, finishExerciseSaveQuery, getYoutubeLink,
 } from '../../actions';
 import Loading from '../../../HOC/Loading';
 
@@ -27,14 +27,22 @@ class ExerciseIndex extends React.PureComponent {
     this.dealRenderExerciseRecord = this.dealRenderExerciseRecord.bind(this);
     this.returnBack = this.returnBack.bind(this);
     this.handleFinishAllRehab = this.handleFinishAllRehab.bind(this);
+    this.handleGetYoutubeLink = this.handleGetYoutubeLink.bind(this);
   }
 
-  componentDidUpdate() {
+  componentDidMount() {
+    this.handleGetYoutubeLink();
+  }
+
+  componentDidUpdate(prevProps) {
     if (!this.props.match.params.exerciseOrder) {
       window.location.hash = '#/rehab/content';
     }
     if (this.props.match.params.exerciseOrder >= this.props.renderExercises.length) {
       window.location.hash = '#/rehab/content';
+    }
+    if (!!this.props.match.params.exerciseOrder && prevProps.match.params.exerciseOrder !== this.props.match.params.exerciseOrder) {
+      this.handleGetYoutubeLink();
     }
   }
 
@@ -72,9 +80,16 @@ class ExerciseIndex extends React.PureComponent {
     this.props.history.goBack();
   }
 
+  handleGetYoutubeLink() {
+    const exeOrder = this.props.match.params.exerciseOrder;
+    const prefix = exeOrder < 4 ? 'injury' : 'posture';
+    const imageLink = `${prefix} ${this.props.selectedRehabExercises.acf[prefix]}`;
+    this.props.getYoutubeLink(imageLink);
+  }
+
   render() {
     const {
-      theme, currentWeek, dayRehabExercisesRecords, posture, injury, rehabExerciseQuery, selectedRehabExercises,
+      theme, currentWeek, dayRehabExercisesRecords, posture, injury, rehabExerciseQuery, selectedRehabExercises, rehabYoutubeLink, getYoutubeLink,
     } = this.props;
     const tstyles = styles(theme);
     const exeOrder = this.props.match.params.exerciseOrder;
@@ -98,7 +113,7 @@ class ExerciseIndex extends React.PureComponent {
           open={rehabExerciseQuery}
         />
         <MainComponent
-          backgroundImage="https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg"
+          backgroundImage={theme.rehabHeader.exercises}
           progress={exeOrder}
           tapBarContent={false}
           currentWeek={currentWeek}
@@ -132,6 +147,8 @@ class ExerciseIndex extends React.PureComponent {
                 dailyExerciseLength={exerLength}
                 imageLink={imageLink}
                 rehab
+                getYoutubeLink={this.handleGetYoutubeLink}
+                youtbueID={rehabYoutubeLink}
               />
 
             </Grid>
@@ -149,16 +166,16 @@ ExerciseIndex.propTypes = {
 
 function mapStateToProps(state) {
   const {
-    dayRehabExercisesRecords, renderExercises, posture, injury, rehabExerciseQuery, selectedRehabExercises,
+    dayRehabExercisesRecords, renderExercises, posture, injury, rehabExerciseQuery, selectedRehabExercises, rehabYoutubeLink,
   } = state.Rehab;
   return {
-    dayRehabExercisesRecords, renderExercises, posture, injury, rehabExerciseQuery, selectedRehabExercises,
+    dayRehabExercisesRecords, renderExercises, posture, injury, rehabExerciseQuery, selectedRehabExercises, rehabYoutubeLink,
   };
 }
 
 
 export default connect(mapStateToProps, {
-  setRehabExercisesRecordsByDay, updateRehabRecord, finishAllRehab, finishExerciseSaveQuery,
+  setRehabExercisesRecordsByDay, updateRehabRecord, finishAllRehab, finishExerciseSaveQuery, getYoutubeLink,
 })(withTheme()(ExerciseIndex));
 
 // || {
