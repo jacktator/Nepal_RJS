@@ -62,9 +62,11 @@ const ExerciseStructure = (props) => {
     },
   };
   const onYoutubeOpen = () => {
+    onPauseVideo && onPauseVideo();
     onOpen('youtube');
   };
   const onYoutubeClose = () => {
+    onPlayVideo && onPlayVideo();
     onClose('youtube');
   };
   const onHistoryClose = () => {
