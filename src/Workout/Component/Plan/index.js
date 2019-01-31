@@ -100,7 +100,7 @@ class index extends React.Component {
 
   render() {
     const {
-      classes, programQuery,
+      classes, programQuery, theme,
     } = this.props;
     const {
       dailyQuestionnaireOpen, questionnaireSelected, tabsValue, over24Open,
@@ -153,7 +153,7 @@ class index extends React.Component {
         <MainComponent
           top
           topDiscription
-          backgroundImage="https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg"
+          backgroundImage={theme.workoutHeader.plan}
           title={showTitle || 'Workout'}
           progress={progress || 1}
           currentWeek={currentWeek}
@@ -198,4 +198,4 @@ index.propTypes = {
 
 export default connect(mapStateToProps, {
   getCurrentProgram, finishQuery, selectDailyQuestionnaire, noProgram,
-})(withStyles(styles)(index));
+})(withStyles(styles, { withTheme: true })(index));

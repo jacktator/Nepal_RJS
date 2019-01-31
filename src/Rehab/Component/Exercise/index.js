@@ -23,43 +23,47 @@ class ExerciseIndex extends React.PureComponent {
     this.state = {
       exe: {},
       shortPlayer: null,
+      youtube: false,
+      title: 'youtube',
     };
     this.handleSaveButtonClicked = this.handleSaveButtonClicked.bind(this);
     this.dealRenderExerciseRecord = this.dealRenderExerciseRecord.bind(this);
     this.returnBack = this.returnBack.bind(this);
     this.handleFinishAllRehab = this.handleFinishAllRehab.bind(this);
-    this.onReady = this.onReady.bind(this);
-    this.onPlayVideo = this.onPlayVideo.bind(this);
-    this.onPauseVideo = this.onPauseVideo.bind(this);
-    this.onStopVideo = this.onStopVideo.bind(this);
+    this.handleGetYoutubeLink = this.handleGetYoutubeLink.bind(this);
+    this.onOpen = this.onOpen.bind(this);
+    this.onClose = this.onClose.bind(this);
   }
 
-  componentDidUpdate() {
+  componentDidMount() {
+    // this.handleGetYoutubeLink();
+    const exeOrder = this.props.match.params.exerciseOrder;
+    const exe = this.props.renderExercises[exeOrder];
+    const prefix = exeOrder < 4 ? 'injury' : 'posture';
+    const queryName = `${prefix} ${this.props.selectedRehabExercises.acf[prefix]} ${exe.name}`;
+    this.props.getYoutubeLink(queryName);
+  }
+
+  componentDidUpdate(prevProps) {
     if (!this.props.match.params.exerciseOrder) {
       window.location.hash = '#/rehab/content';
     }
     if (this.props.match.params.exerciseOrder >= this.props.renderExercises.length) {
       window.location.hash = '#/rehab/content';
     }
+    if (!!this.props.match.params.exerciseOrder && prevProps.match.params.exerciseOrder !== this.props.match.params.exerciseOrder) {
+      this.handleGetYoutubeLink();
+    }
   }
 
-  onReady(event) {
-    this.setState({
-      shortPlayer: event.target,
-    });
+  onClose(input) {
+    this.setState({ [input]: false });
   }
 
-  onPlayVideo() {
-    this.state.shortPlayer.playVideo();
+  onOpen(input) {
+    this.setState({ [input]: true });
   }
 
-  onPauseVideo() {
-    this.state.shortPlayer.pauseVideo();
-  }
-
-  onStopVideo() {
-    this.state.shortPlayer.playVideo();
-  }
 
   handleSaveButtonClicked() {
     const m = JSON.parse(JSON.stringify([...this.props.dayRehabExercisesRecords.data]));
@@ -95,13 +99,21 @@ class ExerciseIndex extends React.PureComponent {
     this.props.history.goBack();
   }
 
+  handleGetYoutubeLink() {
+    const exeOrder = this.props.match.params.exerciseOrder;
+    const prefix = exeOrder < 4 ? 'injury' : 'posture';
+    const imageLink = `${prefix} ${this.props.selectedRehabExercises.acf[prefix]}`;
+    this.props.getYoutubeLink(imageLink);
+  }
+
   render() {
     const {
-      theme, currentWeek, dayRehabExercisesRecords, posture, injury, rehabExerciseQuery, selectedRehabExercises, youtubeLink, getYoutubeLink,
+      theme, currentWeek, dayRehabExercisesRecords, posture, injury, rehabExerciseQuery, selectedRehabExercises, rehabYoutubeLink, getYoutubeLink,
     } = this.props;
     const tstyles = styles(theme);
     const exeOrder = this.props.match.params.exerciseOrder;
     const exe = this.props.renderExercises[exeOrder];
+    const { title, youtube } = this.state;
     const {
       name, reps, sets, time,
     } = exe || {
@@ -112,8 +124,8 @@ class ExerciseIndex extends React.PureComponent {
     const thisExerciseDetail = {
       name, sets, reps: reps === 'empty' ? time : reps, time: reps === 'empty',
     };
-    const queryName = `${prefix} ${selectedRehabExercises.acf[prefix]} ${thisExerciseDetail.name}`;
-    getYoutubeLink(queryName);
+    // const queryName = `${prefix} ${selectedRehabExercises.acf[prefix]} ${thisExerciseDetail.name}`;
+    // getYoutubeLink(queryName);
     const mmm = dayRehabExercisesRecords.data || [];
     const ExList = mmm.length !== 0 ? mmm[exeOrder] ? mmm[exeOrder].map(v => ({ reps: v })) : [] : [];
     const exerLength = (posture instanceof Array) ? ((injury instanceof Array) ? 0 : 4) : ((injury instanceof Array) ? 4 : 8);
@@ -123,9 +135,10 @@ class ExerciseIndex extends React.PureComponent {
           open={rehabExerciseQuery}
         />
         <MainComponent
-          backgroundImage="https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg"
+          backgroundImage={theme.rehabHeader.exercises}
           progress={exeOrder}
           tapBarContent={false}
+          title="Rehab"
           currentWeek={currentWeek}
           currentPage={3}
           FooterContent={2}
@@ -155,12 +168,17 @@ class ExerciseIndex extends React.PureComponent {
                 finishCurrentExercise={thisExerciseDetail.sets <= ExList.length}
                 currentExerciseOrder={exeOrder}
                 dailyExerciseLength={exerLength}
-                youtbueID={youtubeLink}
                 onReady={this.onReady}
                 onPlayVideo={this.onPlayVideo}
                 onPauseVideo={this.onPlayVideo}
                 onStopVideo={this.onStopVideo}
                 rehab
+                getYoutubeLink={this.getYoutubeLink}
+                youtbueID={rehabYoutubeLink}
+                youtubeOpenStatus={youtube}
+                title={title}
+                onOpen={this.onOpen}
+                onClose={this.onClose}
               />
 
             </Grid>
@@ -178,16 +196,16 @@ ExerciseIndex.propTypes = {
 
 function mapStateToProps(state) {
   const {
-    dayRehabExercisesRecords, renderExercises, posture, injury, rehabExerciseQuery, selectedRehabExercises, youtubeLink,
+    dayRehabExercisesRecords, renderExercises, posture, injury, rehabExerciseQuery, selectedRehabExercises, rehabYoutubeLink,
   } = state.Rehab;
   return {
-    dayRehabExercisesRecords, renderExercises, posture, injury, rehabExerciseQuery, selectedRehabExercises, youtubeLink,
+    dayRehabExercisesRecords, renderExercises, posture, injury, rehabExerciseQuery, selectedRehabExercises, rehabYoutubeLink,
   };
 }
 
 
 export default connect(mapStateToProps, {
-  setRehabExercisesRecordsByDay, updateRehabRecord, finishAllRehab, finishExerciseSaveQuery,
+  setRehabExercisesRecordsByDay, updateRehabRecord, finishAllRehab, finishExerciseSaveQuery, getYoutubeLink,
 })(withTheme()(ExerciseIndex));
 
 // || {

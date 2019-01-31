@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import HistoryIcon from '@material-ui/icons/History';
 import PlayCircleIcon from '@material-ui/icons/PlayCircleFilled';
 import ReactPlayer from 'react-player';
-import YouTube from 'react-youtube';
+// import YouTube from 'react-youtube';
 import History from './history';
 import NumberSelect from '../numberSelect';
 import ExListItem from './ListItem';
@@ -52,7 +52,7 @@ const ExerciseStructure = (props) => {
     dailyExerciseLength, rehab, onClose, youtubeOpenStatus, title,
     history, thisExerciseDetail, currentExerciseOrder, onFinishAllExercise,
     historyForSpecificExercise, needYoutube, needHistory, largest, imageLink,
-    getYoutubeLink, onReady, onPlayVideo, onPauseVideo, onStopVideo,
+    getYoutubeLink, onReady, onPlayVideo, onPauseVideo, onStopVideo, playing,
   } = props;
   const opts = {
     width: '100%',
@@ -60,12 +60,16 @@ const ExerciseStructure = (props) => {
     playerVars: {
       autoplay: 1,
       controls: 0,
+      fs: 0,
+      loop: 0,
     },
   };
   const onYoutubeOpen = () => {
+    onPauseVideo && onPauseVideo();
     onOpen('youtube');
   };
   const onYoutubeClose = () => {
+    onPlayVideo && onPlayVideo();
     onClose('youtube');
   };
   const onHistoryClose = () => {
@@ -88,14 +92,14 @@ const ExerciseStructure = (props) => {
       alignItems="stretch"
       spacing={24}
     >
-      {!needYoutube && (
-      <YoutubeDialog
-        title={title}
-        open={!!youtubeOpenStatus}
-        onYoutubeClose={onYoutubeClose}
-        youtbueID={youtbueID}
-        getYoutubeLink={getYoutubeLink}
-      />
+      {(
+        <YoutubeDialog
+          title={title}
+          open={!!youtubeOpenStatus}
+          onYoutubeClose={onYoutubeClose}
+          youtbueID={youtbueID}
+          getYoutubeLink={getYoutubeLink}
+        />
       )}
       {!needHistory && (
       <History
@@ -115,19 +119,22 @@ const ExerciseStructure = (props) => {
             <HistoryIcon style={{ fontSize: '30px' }} color="primary" />
           </div>
           )}
-          {!needYoutube && (
-          <div className={classes.card} onClick={onYoutubeOpen} style={{ bottom: '0', backgroundColor: 'unset' }}>
-            <PlayCircleIcon color="primary" style={{ fontSize: '30px' }} />
-          </div>
+          {(
+            <div className={classes.card} onClick={onYoutubeOpen} style={{ bottom: '0', backgroundColor: 'unset' }}>
+              <PlayCircleIcon color="primary" style={{ fontSize: '30px' }} />
+            </div>
           )}
           <Card color="primary" className={classes.card} style={{ right: '0' }}>
             <Typography className={classes.inlineT} color="secondary">{`${thisExerciseDetail ? thisExerciseDetail.sets : 0}`} X</Typography>
             <Typography className={classes.inlineT} color="secondary">{`${thisExerciseDetail ? thisExerciseDetail.reps : 0}`}</Typography>
           </Card>
-          {/* <ReactPlayer
+          <ReactPlayer
             url={`${VIDEO_URL}${youtbueID[0]}`}
-            playing
-            loop
+            // eslint-disable-next-line react/jsx-boolean-value
+            playing={playing}
+            // eslint-disable-next-line react/jsx-boolean-value
+            loop={true}
+            // eslint-disable-next-line react/jsx-boolean-value
             controls={false}
             width="100%"
             height="100%"
@@ -136,14 +143,14 @@ const ExerciseStructure = (props) => {
                 playerVars: { showinfo: 1 },
               },
             }}
-          /> */}
+          />
 
-          <YouTube
+          {/* <YouTube
             videoId={youtbueID[0]}
             opts={opts}
             onReady={onReady}
             onEnd={onStopVideo}
-          />
+          /> */}
         </Card>
       </Grid>
 

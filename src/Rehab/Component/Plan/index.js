@@ -25,11 +25,13 @@ class index extends React.Component {
   }
 
   render() {
-    const { classes, currentWeek, progress } = this.props;
+    const {
+      classes, theme, currentWeek, progress,
+    } = this.props;
     return (
       <MainComponent
         top
-        backgroundImage="https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg"
+        backgroundImage={theme.workoutHeader.plan}
         title="Workout"
         progress={progress}
         currentWeek={currentWeek}
@@ -54,4 +56,4 @@ index.propTypes = {
   currentWeek: PropTypes.number,
 };
 
-export default withStyles(styles)(index);
+export default withStyles(styles, { withTheme: true })(index);

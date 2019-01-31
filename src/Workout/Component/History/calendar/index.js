@@ -39,7 +39,7 @@ class Calendar extends React.PureComponent {
   }
 
   render() {
-    const { classes, historyQuery } = this.props;
+    const { classes, theme, historyQuery } = this.props;
     const { tabs, renderData, renderProgrammeIndex } = this.state;
     return (
       <div>
@@ -47,7 +47,7 @@ class Calendar extends React.PureComponent {
 
         <MainComponent
           top
-          backgroundImage="https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg"
+          backgroundImage={theme.workoutHeader.history}
           title={renderData ? renderData.program_name : 'history'}
           currentWeek={5}
           tabsValue={tabs}
@@ -79,4 +79,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { finishHistoryQuery, getExerciseHistory })(withStyles(styles)(Calendar));
+export default connect(mapStateToProps, { finishHistoryQuery, getExerciseHistory })(withStyles(styles, { withTheme: true })(Calendar));

@@ -22,12 +22,12 @@ class HistoryIndex extends React.PureComponent {
 
   render() {
     const {
-      classes, progress, historyProgrammeList,
+      classes, theme, progress, historyProgrammeList,
     } = this.props;
     return (
       <MainComponent
         top
-        backgroundImage="https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg"
+        backgroundImage={theme.workoutHeader.history}
         title="History"
         progress={progress}
         currentPage={1}
@@ -59,4 +59,4 @@ HistoryIndex.propTypes = {
   progress: PropTypes.string,
 };
 
-export default connect(mapStateToProps, { getExerciseHistory, finishHistoryQuery })(withStyles(styles)(HistoryIndex));
+export default connect(mapStateToProps, { getExerciseHistory, finishHistoryQuery })(withStyles(styles, { withTheme: true })(HistoryIndex));

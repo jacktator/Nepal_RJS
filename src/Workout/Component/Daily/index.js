@@ -156,14 +156,14 @@ class MainRehab extends React.Component {
 
   render() {
     const {
-      classes, currentWeek, progress, dailyQuery, renderExercises, selectedExercises, selectedExercisesQuery,
+      classes, theme, currentWeek, progress, dailyQuery, renderExercises, selectedExercises, selectedExercisesQuery,
     } = this.props;
     const {
       err, dialogOpen, dialogSelected, dialogIndexSelected, midSelectExercise, selectedFatherExercises,
     } = this.state;
     return (
       <MainComponent
-        backgroundImage="https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg"
+        backgroundImage={theme.workoutHeader.daily}
         title={`${sessionStorage.path}`.split(/(?=[A-Z])/).join(' ')}
         progress={progress}
         currentWeek={currentWeek}
@@ -231,4 +231,4 @@ export default connect(mapStateToProps, {
   setSelectedExercisesQuery,
   setSelectedExercises,
   userKeepExercise,
-})(withStyles(styles)(MainRehab));
+})(withStyles(styles, { withTheme: true })(MainRehab));

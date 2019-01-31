@@ -44,6 +44,7 @@ export const selectedRehabExercises = data => ({ type: 'SET_SELECTED_REHAB_EXERC
 export const setRenderExercises = data => ({ type: 'SET_RENDER_EXERCISES', payload: data });
 export const setRehabExercisesRecorded = data => ({ type: 'SET_REHAB_EXERCISE_RECORDED', payload: data });
 export const setRehabExercisesRecordsByDay = data => ({ type: 'SET_DAY_EXERCISE_DATA', payload: data });
+export const setRehubYoutubeLink = data => ({ type: 'SET_REHAB_YOUTUBE_LINK', payload: data });
 export const finishQuerryDailyData = data => ({ type: 'FINISH_QUERRY_DAILY_DATA', payload: data });
 export const finishExerciseSaveQuery = data => ({ type: 'FINISH_REHAB_EXERCISE', payload: data });
 export const setYoutubeLink = data => ({ type: 'SET_YOUTUBE_LINK', payload: data });
@@ -223,7 +224,7 @@ export const getYoutubeLink = name => (dispatch) => {
         if (result) {
           const { acf } = result;
           const n = [acf.youtubeshortcode, acf.youtubelongcode];
-          dispatch(setYoutubeLink(n));
+          dispatch(setRehubYoutubeLink(n));
         }
       },
     )
