@@ -56,6 +56,10 @@ export default function (state = {
       return {
         ...state, rehabExerciseQuery: action.payload,
       };
+    case 'SET_YOUTUBE_LINK':
+      return {
+        ...state, youtubeLink: action.payload,
+      };
     default:
       return state;
   }

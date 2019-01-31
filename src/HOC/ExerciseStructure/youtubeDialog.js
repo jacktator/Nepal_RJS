@@ -7,7 +7,10 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
-import YouTube from 'react-youtube';
+// import YouTube from 'react-youtube';
+import ReactPlayer from 'react-player';
+import { VIDEO_URL } from '../../config';
+
 
 class ResponsiveDialog extends React.Component {
   constructor(props) {
@@ -20,7 +23,6 @@ class ResponsiveDialog extends React.Component {
     this.onPlayVideo = this.onPlayVideo.bind(this);
     this.onPauseVideo = this.onPauseVideo.bind(this);
   }
-
 
   onReady(event) {
     this.setState({
@@ -42,6 +44,9 @@ class ResponsiveDialog extends React.Component {
     } = this.props;
     const opts = {
       width: '100%',
+      iv_load_policy: 3,
+      modestbranding: 1,
+      playsinline: 1,
     };
     console.log(youtbueID);
     return (
@@ -53,10 +58,26 @@ class ResponsiveDialog extends React.Component {
       >
         <DialogTitle id="responsive-dialog-title">{title}</DialogTitle>
         <DialogContent>
-          <YouTube
+          {/* <YouTube
             opts={opts}
-            videoId={youtbueID[0]}
+            videoId={youtbueID[1]}
             onReady={this.onReady}
+          /> */}
+          <ReactPlayer
+            url={`${VIDEO_URL}${youtbueID[1]}`}
+            // eslint-disable-next-line react/jsx-boolean-value
+            playing={true}
+            // eslint-disable-next-line react/jsx-boolean-value
+            loop={true}
+            // eslint-disable-next-line react/jsx-boolean-value
+            controls={true}
+            width="100%"
+            height="400px"
+            config={{
+              youtube: {
+                playerVars: { showinfo: 1 },
+              },
+            }}
           />
         </DialogContent>
         <DialogActions>

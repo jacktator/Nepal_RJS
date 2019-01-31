@@ -29,6 +29,7 @@ class ExerciseIndex extends React.Component {
       history: false,
       title: 'youtube',
       shortPlayer: null,
+      playing: null,
     };
     this.weightAdd = this.weightAdd.bind(this);
     this.weightMin = this.weightMin.bind(this);
@@ -75,16 +76,16 @@ class ExerciseIndex extends React.Component {
 
   onReady(event) {
     this.setState({
-      shortPlayer: event.target,
+      playing: event.target,
     }, this.onPlayVideo);
   }
 
   onPlayVideo() {
-    this.state.shortPlayer.playVideo();
+    this.setState({ playing: true });
   }
 
   onPauseVideo() {
-    this.state.shortPlayer.pauseVideo();
+    this.setState({ playing: false });
   }
 
   onStopVideo() {
@@ -149,7 +150,7 @@ class ExerciseIndex extends React.Component {
       classes, theme, renderExercises, alldayExercises, exercisePageQuery, todayExercises, historyForSpecificExercise, getYoutubeLink, youtubeLink,
     } = this.props;
     const {
-      weight, reps, youtube, title, history,
+      weight, reps, youtube, title, history, playing,
     } = this.state;
     const { exerciseOrder } = this.props.match.params;
     const showedExercises = todayExercises[`exe_${exerciseOrder}`] || '';
@@ -234,6 +235,7 @@ class ExerciseIndex extends React.Component {
               onPlayVideo={this.onPlayVideo}
               onPauseVideo={this.onPauseVideo}
               onStopVideo={this.onStopVideo}
+              playing={this.playing}
             />
 
           </Grid>
