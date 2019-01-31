@@ -76,7 +76,7 @@ class ExerciseIndex extends React.Component {
   onReady(event) {
     this.setState({
       shortPlayer: event.target,
-    });
+    }, this.onPlayVideo);
   }
 
   onPlayVideo() {

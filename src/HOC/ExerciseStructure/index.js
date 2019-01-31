@@ -50,7 +50,7 @@ const ExerciseStructure = (props) => {
     classes, select, ExList, onSaveClick, youtbueID, onOpen, finishCurrentExercise,
     dailyExerciseLength, rehab, onClose, youtubeOpenStatus, title,
     history, thisExerciseDetail, currentExerciseOrder, onFinishAllExercise,
-    historyForSpecificExercise, needYoutube, needHistory, largest, imageLink,
+    historyForSpecificExercise, needYoutube, needHistory, largest,
     getYoutubeLink, onReady, onPlayVideo, onPauseVideo, onStopVideo,
   } = props;
   const opts = {
