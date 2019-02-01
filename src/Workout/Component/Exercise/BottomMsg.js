@@ -10,12 +10,12 @@ const styles = {
 };
 
 class BottomMsg extends React.Component {
-  // week-week progression
+  // week-week home progression
   homeWeekProgression(reps, history, goal_ini, type, sets) {
     console.log('history', history);
 
     // have at least one-day history without error
-    if (history && !(history.length == 1 && !--[0].exe)) {
+    if (history && !(history.length === 1 && history[0].exe)) {
       const his = [];
       for (let i = 0; i < history.length; i++) {
         history[i].exe && his.push(history[i].exe.split(';'));
@@ -48,9 +48,13 @@ class BottomMsg extends React.Component {
     return reps;
   }
 
-  // set-set progression
+  // set-set home progression
   homeProgression(ExList, sets, reps, history) {
     console.log('Home--ExList', ExList);
+    // if home exercises has 'till failture'
+    if (!/^[0-9]*$/.test(reps.split(' ')[0])) {
+      return ('Do as much as possible !');
+    }
     const goal_ini = sets * reps.split(' ')[0];
     const type = reps.split(' ').length;
     console.log('goal_ini', goal_ini);
@@ -61,10 +65,10 @@ class BottomMsg extends React.Component {
     // at least one set done
     if (ExList) {
       // finish exercise
-      if (ExList.length == sets) {
+      if (ExList.length === sets) {
         return ('Well done !');
       // last set begins
-      } if (ExList.length == sets - 1) {
+      } if (ExList.length === sets - 1) {
         return ('Last Set - Do as many reps as possible !');
       // others
       }
@@ -73,29 +77,90 @@ class BottomMsg extends React.Component {
     return (`Set 1 - Aim at ${new_reps}`);
   }
 
+  // TO DO linears
   // set-set progression
-  linearProgression(ExList, reps, sets, weight) {
+  linearProgression(ExList, sets, reps, weight, history) {
     return ('Do as much as possible !');
   }
 
-  doubleProgression() {
+  // week-week linear progression
+  linearWeekProgression(ExList, reps, sets, weight, history) {
     return ('Do as much as possible !');
+  }
+
+  // week-week double progression
+  doubleWeekProgression(history, goal_ini) {
+    console.log('check double week progression');
+    console.log('history', history);
+
+    // have at least one-day history without error
+    if (history && !(history.length === 1 && !history[0].exe)) {
+      const his = [];
+      for (let i = 0; i < history.length; i++) {
+        history[i].exe && his.push(history[i].exe.split(';'));
+      }
+      console.log('hhhhhhhhh', his);
+
+      // compare with goal
+      if (his.length && his[his.length - 1]) {
+        const len = his[his.length - 1].length;
+        console.log("aaaaaaaaaaa0", his[his.length - 1][len - 1].substring(1, his[his.length - 1][len - 1].length - 1));
+        const new_msg = (his[his.length - 1][len - 1].substring(1, his[his.length - 1][len - 1].length - 1) >= goal_ini) ? 'Increase the weight' : 'Do more reps';
+        return new_msg;
+      }
+      // no correct exe values
+      return (`Aim at ${goal_ini} reps`);
+    }
+    // no history, keep the original reps
+    return (`Aim at ${goal_ini} reps`);
+  }
+
+  // set-set double progression
+  doubleProgression(ExList, sets, reps, history) {
+    console.log('Double--ExList', ExList);
+    // if double exercises has 'till failture'
+    if (!/^[0-9]*$/.test(reps.split('-')[0])) {
+      return ('Do as much as possible !');
+    }
+    // max reps in range
+    const goal_ini = reps.split('-')[1];
+    console.log('goal_ini', goal_ini);
+
+    // new reps will be changed based on last week
+    const new_msg = this.doubleWeekProgression(history, goal_ini);
+
+    // at least one set done
+    if (ExList) {
+      // finish exercise
+      if (ExList.length === sets) {
+        return ('Well done !');
+      // last set begins
+      } if (ExList.length === sets - 1) {
+        return ('Last Set - Do as many reps as possible !');
+      // others
+      }
+      return (`Set ${ExList.length + 1} - ` + new_msg);
+    }
+    return ('Set 1 - ' + new_msg);
   }
 
   checkProgression(model, ExList, sets, reps, weight, history) {
+    //TO DO
+    // week 5 deload week
+
     if (model.toUpperCase().includes('LINEAR')) {
       console.log('Linear', model);
-      return (this.linearProgression(ExList, sets, reps, weight));
+      return (this.linearProgression(ExList, sets, reps, weight, history));
     } if (model.toUpperCase().includes('DOUBLE')) {
       console.log('Double', model);
-      return (this.doubleProgression());
+      return (this.doubleProgression(ExList, sets, reps, history));
     } if (model.toUpperCase().includes('HOME')) {
       console.log('Home', model);
       return (this.homeProgression(ExList, sets, reps, history));
     }
     console.log('Other', model);
     // finish exercise
-    if (ExList && ExList.length == sets) {
+    if (ExList && ExList.length === sets) {
       return ('Well done !');
     }
     return ('Do as much as possible !');
@@ -113,7 +178,7 @@ class BottomMsg extends React.Component {
       <div className={classes.root}>
         <Typography align="center" variant="body1" component="h6" color="textPrimary">
           {progression_model
-            ? this.checkProgression(progression_model, ExList, sets, reps, weight, history) : 'Do as much as possible !'}
+            ? this.checkProgression(progression_model, ExList, parseInt(sets), reps, weight, history) : 'Do as much as possible !'}
         </Typography>
       </div>
     );
