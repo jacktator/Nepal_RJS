@@ -265,6 +265,9 @@ export const updataOneExercise = data => (dispatch) => {
   const { dayInWeek, dayTableId } = sessionStorage;
   axios.post(`/day_${dayInWeek}/${dayTableId}`, { fields: { [`exe_${data.exeNum}`]: data.exeData } })
     .then((res) => {
+      dispatch(setSpecificExericseHistory(res.data.map(v => ({
+        date: v.date, exe: v.acf[`exe_${data.exeNum}`],
+      }))));
       dispatch(setTodayExercises(res.data.acf));
       dispatch(finishExercisePageQuery(false));
       console.log(res.data.acf);

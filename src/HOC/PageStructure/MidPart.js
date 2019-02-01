@@ -16,8 +16,7 @@ class MidPartComponent extends React.PureComponent {
           value={tabsValue || 0}
           indicatorColor="primary"
           textColor="primary"
-          scrollable
-          variant="fullWidth"
+          variant="scrollable"
           onChange={onTagClick}
           scrollButtons="auto"
           style={{

@@ -130,11 +130,8 @@ const ExerciseStructure = (props) => {
           </Card>
           <ReactPlayer
             url={`${VIDEO_URL}${youtbueID[0]}`}
-            // eslint-disable-next-line react/jsx-boolean-value
             playing={playing}
-            // eslint-disable-next-line react/jsx-boolean-value
-            loop={true}
-            // eslint-disable-next-line react/jsx-boolean-value
+            loop
             controls={false}
             width="100%"
             height="100%"
@@ -156,7 +153,7 @@ const ExerciseStructure = (props) => {
 
       <Grid container item direction="column" alignItems="stretch">
         <Grid>
-          {!!select && select.map(v => ((v.label === 'weight' ? (thisExerciseDetail.progression_model.toUpperCase().includes('LINEAR') || thisExerciseDetail.progression_model.toUpperCase().includes('DOUBLE') ) : true)
+          {!!select && select.map(v => ((v.label === 'weight' ? (thisExerciseDetail.progression_model.toUpperCase().includes('LINEAR') || thisExerciseDetail.progression_model.toUpperCase().includes('DOUBLE')) : true)
             && (
             <NumberSelect
               key={v.label}
