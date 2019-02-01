@@ -24,7 +24,7 @@ const styles = ({
     backgroundColor: 'rgba(255,255,255,0.6)',
   },
   topGrid: {
-    height: '20%',
+    height: '12%',
     borderBottom: '1px solid darkgrey',
   },
   background: {

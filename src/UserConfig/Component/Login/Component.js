@@ -22,8 +22,8 @@ const Component = (props) => {
     <div style={tstyles.container}>
       <Dialog
         open={error}
-        title="Something Error"
-        discription="Username or Password are not match"
+        title="Oops"
+        discription="Please check your username and password then try again"
         loadingStatus={false}
         handleClose={handleErrorClose}
       />
@@ -39,16 +39,16 @@ const Component = (props) => {
               <Grid container style={tstyles.autoFlex} direction="column" justify="center">
                 <Grid container alignContent="center">
                   <HOCInputFile
-                    onChangeHandle={onChangeHandle}
-                    value={email}
-                    type="email"
                     fullwidth
+                    type="email"
+                    value={email}
+                    onChangeHandle={onChangeHandle}
                   />
                   <HOCInputFile
-                    onChangeHandle={onChangeHandle}
-                    value={password}
-                    type="password"
                     fullwidth
+                    type="password"
+                    value={password}
+                    onChangeHandle={onChangeHandle}
                   />
                 </Grid>
                 <Grid item>

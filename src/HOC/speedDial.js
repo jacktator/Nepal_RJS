@@ -33,6 +33,11 @@ const styles = theme => ({
     top: theme.spacing.unit,
     left: theme.spacing.unit * 2,
   },
+  speedDialRightMainMenu: {
+    position: 'absolute',
+    top: theme.spacing.unit * 2.5,
+    right: theme.spacing.unit * 2,
+  },
   buttonClass: {
     height: '10vw',
     width: '10vw',
@@ -99,7 +104,7 @@ class SpeedDialTooltipOpen extends React.Component {
 
   render() {
     const {
-      classes, right, secondary, shadow,
+      classes, right, secondary, shadow, mainmenu,
     } = this.props;
     const { open } = this.state;
 
@@ -107,7 +112,7 @@ class SpeedDialTooltipOpen extends React.Component {
       <SpeedDial
         ButtonProps={{ style: { backgroundColor: 'unset', transform: 'scale(0.8)', boxShadow: shadow ? '' : 'unset' }, disableRipple: true }}
         ariaLabel="SpeedDial tooltip example"
-        className={right ? classes.speedDialRight : classes.speedDialLeft}
+        className={right ? (mainmenu ? classes.speedDialRightMainMenu : classes.speedDialRight) : classes.speedDialLeft}
         icon={<SpeedDialIcon icon={<ViewHandleIcon className={classes.rootIcon} color={secondary ? 'secondary' : 'primary'} />} />}
         onBlur={this.handleClose}
         onClick={this.handleClick}

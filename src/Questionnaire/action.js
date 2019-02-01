@@ -3,9 +3,9 @@ import { second } from './Component/contentData';
 import { programmeTable } from '../config';
 import { createNewRehab, arrayOfRehab } from '../Rehab/actions';
 
-export const finishQuery = () => ({ type: 'FINISH_QUERY', payload: true });
+export const finishQuery = data => ({ type: 'FINISH_QUERY', payload: data });
 
-export const createProgram = () => (dispatch) => {
+export const createProgram = callback => (dispatch) => {
   const {
     user_id, path, days, location,
   } = sessionStorage;
@@ -27,7 +27,7 @@ export const createProgram = () => (dispatch) => {
     .then((res) => {
       console.log(res);
       sessionStorage.setItem('progress', 1);
-      dispatch(finishQuery());
+      callback();
     })
     .catch((error) => {
       console.log(error);
@@ -50,7 +50,7 @@ export const getExercises = resData => (dispatch) => {
 };
 
 
-export const createQuestionnaire = data => (dispatch) => {
+export const createQuestionnaire = (data, callback) => (dispatch) => {
   const fields = {
     user_id: sessionStorage.user_id,
     exercise_place: data.location,
@@ -77,7 +77,7 @@ export const createQuestionnaire = data => (dispatch) => {
       sessionStorage.setItem('location', resData.exercise_place);
       sessionStorage.setItem('days', resData.days_per_week);
       console.log(res);
-      dispatch(createProgram());
+      dispatch(createProgram(callback));
       console.log(data.posture >= arrayOfRehab.posture.length && data.rehab >= arrayOfRehab.injury.length);
       if (!(data.posture >= arrayOfRehab.posture.length && data.rehab >= arrayOfRehab.injury.length)) {
         dispatch(createNewRehab({ user_id: sessionStorage.user_id, posture: data.posture, injury: data.rehab }));

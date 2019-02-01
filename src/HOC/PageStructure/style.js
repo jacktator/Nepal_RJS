@@ -21,6 +21,13 @@ export const styles = theme => ({
   topInline: {
     backgroundColor: 'rgba(224,247,250, 0.2)',
     paddingLeft: '10%',
+    paddingBottom: '20%',
+    paddingTop: '5%',
+  },
+  menuButton: {
+    width: 'fit-content',
+    padding: '0',
+    color: 'white',
   },
   title: {
     color: 'white',
