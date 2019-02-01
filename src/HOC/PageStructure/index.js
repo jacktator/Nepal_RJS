@@ -5,6 +5,9 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import IconButton from '@material-ui/core/IconButton';
+import LeftIcon from '@material-ui/icons/KeyboardArrowLeft';
+import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import MidPart from './MidPart';
 import { styles } from './style';
@@ -12,7 +15,7 @@ import { styles } from './style';
 class index extends React.PureComponent {
   render() {
     const {
-      classes, backgroundImage, tapBarContent, title, top, workout, showBottomButton, midComponent, FooterContent, currentPage, currentWeek, tabsValue, onTagClick, topDiscription,
+      classes, backgroundImage, tapBarContent, title, top, workout, showBottomButton, midComponent, FooterContent, currentPage, currentWeek, tabsValue, onTagClick, topDiscription, planPage,
     } = this.props;
     return (
       <div className={classes.container}>
@@ -20,13 +23,20 @@ class index extends React.PureComponent {
 
           {top && (
             <Grid container className={classes.top} style={{ backgroundImage: `url("${backgroundImage}")` }}>
-              <Grid container className={classes.topInline} justify="center" direction="column">
+              <Grid container className={classes.topInline} justify={planPage ? 'space-between' : 'center'} direction="column">
+                {planPage && (
+                <IconButton className={classes.menuButton} component={Link} to="/mainmenu" color="primary" aria-label="Menu">
+                  <LeftIcon style={{ fontSize: '30px' }} />
+                </IconButton>
+                )}
                 <Typography variant="h5" color="secondary">{title}</Typography>
                 {topDiscription && (
-                  <Typography variant="body2" color="secondary">You are currently at week{currentWeek}</Typography>
+                  <>
+                    <Typography variant="body2" color="secondary">You are currently at week{currentWeek}</Typography>
+                    <Typography className={classes.progressData} variant="body2" color="secondary">{sessionStorage.progress ? (((sessionStorage.progress - 1) / (sessionStorage.days * 5)) * 100).toFixed(1) : 0 }% completed</Typography>
+                    <LinearProgress className={classes.progressBar} variant="determinate" value={sessionStorage.progress ? (((sessionStorage.progress - 1) / (sessionStorage.days * 5)) * 100) : 0} />
+                  </>
                 )}
-                {topDiscription && <Typography className={classes.progressData} variant="body2" color="secondary">{sessionStorage.progress ? (((sessionStorage.progress - 1) / (sessionStorage.days * 5)) * 100).toFixed(1) : 0 }% completed</Typography>}
-                {topDiscription && <LinearProgress className={classes.progressBar} variant="determinate" value={sessionStorage.progress ? (((sessionStorage.progress - 1) / (sessionStorage.days * 5)) * 100) : 0} />}
               </Grid>
             </Grid>
           )}

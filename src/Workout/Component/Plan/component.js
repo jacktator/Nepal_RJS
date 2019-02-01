@@ -51,7 +51,7 @@ class SimpleList extends React.PureComponent {
                 <ListItem
                   disabled={~~starDayNumber + k + 1 !== ~~progress}
                   style={{
-                    justifyContent: 'space-between', backgroundColor: theme.ListItem.backgroundColor, paddingTop: '0', paddingBottom: '0', marginTop: '4px', marginBottom: '4px', height: '96px',
+                    justifyContent: 'space-between', backgroundColor: theme.ListItem.backgroundColor, paddingTop: '0', paddingBottom: '0', marginTop: '4px', marginBottom: '4px', height: '88px',
                   }}
                 >
                   <ListItemText
@@ -68,12 +68,12 @@ class SimpleList extends React.PureComponent {
                   }}
                   >
                     <div style={{
-                      height: '36px', width: '1px', borderRight: k !== 0 ? '2px dashed silver' : '0',
+                      height: '32px', width: '1px', borderRight: k !== 0 ? '2px dashed silver' : '0',
                     }}
                     />
                     {lockOpen(~~starDayNumber + k + 1 < ~~progress, ~~starDayNumber + k + 1 === ~~progress)}
                     <div style={{
-                      height: '36px', width: '1px', borderRight: k !== [...Array(days || 5)].length - 1 ? '2px dashed silver' : 0,
+                      height: '32px', width: '1px', borderRight: k !== [...Array(days || 5)].length - 1 ? '2px dashed silver' : 0,
                     }}
                     />
                   </div>

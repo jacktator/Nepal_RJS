@@ -49,6 +49,33 @@ const theme = createMuiTheme({
   appBar: {
     backgroundColor: 'white',
   },
+  mainMenu: {
+    fontColor: 'darkcyan',
+    workout: {
+      color: 'rgba(0,96,100)',
+      opacity: 0.5,
+    },
+    profile: {
+      color: 'rgba(111,249,255)',
+      opacity: 0.4,
+    },
+    question: {
+      color: 'rgba(38,198,218)',
+      opacity: 0.3,
+    },
+    rehab: {
+      color: 'rgba(86,200,216)',
+      opacity: 0.5,
+    },
+    content: {
+      color: 'rgba(0,172,193)',
+      opacity: 0.4,
+    },
+    FAQ: {
+      color: 'rgba(136,255,255)',
+      opacity: 0.3,
+    },
+  },
   workoutHeader: {
     plan: 'https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg',
     exercises: 'https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg',

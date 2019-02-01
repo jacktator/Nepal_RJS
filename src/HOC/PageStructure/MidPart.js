@@ -5,12 +5,6 @@ import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import { Paper } from '@material-ui/core';
 
-const styles = ({
-  disabled: {
-    textDecoration: 'line-through',
-  },
-});
-
 class MidPartComponent extends React.PureComponent {
   render() {
     const {
@@ -33,7 +27,6 @@ class MidPartComponent extends React.PureComponent {
           {tapBarContent.map((v, k) => (
             <Tab
               style={{ minHeight: '30px' }}
-              classes={{ disabled: classes.disabled }}
               disabled={(k >= (currentWeek || 1))}
               disableRipple
               key={v}
@@ -55,4 +48,4 @@ MidPartComponent.propTypes = {
   currentProcess: PropTypes.number,
 };
 
-export default withStyles(styles, { withTheme: true })(MidPartComponent);
+export default withStyles(null, { withTheme: true })(MidPartComponent);

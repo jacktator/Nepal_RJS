@@ -22,6 +22,8 @@ export const styles = theme => ({
     backgroundColor: 'white',
     width: '90%',
     height: '80%',
+    display: 'flex',
+    justifyContent: 'center',
   },
   infoListItem: {
     margin: '10px 0 10px 0',

@@ -12,8 +12,8 @@ class Login extends React.Component {
       email: '',
       password: '',
     };
-    this.onChangeHandle = this.onChangeHandle.bind(this);
     this.onLoginClick = this.onLoginClick.bind(this);
+    this.onChangeHandle = this.onChangeHandle.bind(this);
     this.handleErrorClose = this.handleErrorClose.bind(this);
   }
 
@@ -40,12 +40,12 @@ class Login extends React.Component {
     return (
       (queryLoginStatus && loginStatus) ? (<Redirect to="/mainmenu" />) : (
         <Component
+          error={error}
           email={email}
           password={password}
           loading={queryLoginStatus}
-          onChangeHandle={this.onChangeHandle}
           onLoginClick={this.onLoginClick}
-          error={error}
+          onChangeHandle={this.onChangeHandle}
           handleErrorClose={this.handleErrorClose}
         />
       )
@@ -55,9 +55,9 @@ class Login extends React.Component {
 
 function mapStateToProps(state) {
   return {
+    error: state.UserConfig.error,
     loginStatus: state.UserConfig.LoginStatus,
     queryLoginStatus: state.UserConfig.queryLoginStatus,
-    error: state.UserConfig.error,
   };
 }
 

@@ -152,16 +152,17 @@ class index extends React.Component {
         />
         <MainComponent
           top
+          planPage
           topDiscription
-          backgroundImage={theme.workoutHeader.plan}
-          title={showTitle || 'Workout'}
-          progress={progress || 1}
-          currentWeek={currentWeek}
-          tabsValue={tabsValue}
           currentPage={2}
           FooterContent={1}
+          tabsValue={tabsValue}
+          progress={progress || 1}
+          currentWeek={currentWeek}
           onTagClick={this.onTagClick}
           tapBarContent={tapBarContent}
+          title={showTitle || 'Workout'}
+          backgroundImage={theme.workoutHeader.plan}
           midComponent={(
             <Grid container style={{ flex: 1 }} justify="center" alignContent="space-around" alignItems="flex-start">
               <Component

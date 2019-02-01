@@ -34,6 +34,11 @@ class index extends React.PureComponent {
     this.handleClose = this.handleClose.bind(this);
     this.handleChangeState = this.handleChangeState.bind(this);
     this.validation = this.validation.bind(this);
+    this.toMainmenu = this.toMainmenu.bind(this);
+  }
+
+  toMainmenu() {
+    window.location.hash = '#/mainmenu';
   }
 
   handleNext() {
@@ -56,7 +61,7 @@ class index extends React.PureComponent {
       this.props.updateUserInfo({
         name, age, weight, gender,
       });
-      this.props.createQuestionnaire(files);
+      this.props.createQuestionnaire(files, this.toMainmenu);
       return;
     }
     this.setState({ open: true, title: 'error', discription: 'You need to finish each question' });
@@ -145,7 +150,6 @@ class index extends React.PureComponent {
               )
 }
           </Grid>
-          {queryStatus && <Redirect to="/mainmenu" />}
         </Grid>
       </div>
     );

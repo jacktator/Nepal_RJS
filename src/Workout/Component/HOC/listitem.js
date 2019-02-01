@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import { withTheme } from '@material-ui/core/styles';
 import { styles } from '../../styles';
 import { IMAGE_URL } from '../../../config';
-
+// this.src = 'https://nepal.sk8tech.io/wp-content/uploads/placeholder.png'
 class HOCListItem extends React.PureComponent {
   render() {
     const {
@@ -27,7 +27,19 @@ class HOCListItem extends React.PureComponent {
 
           <Grid container style={tstyles.itemleft} justify="flex-start" alignContent="space-around" alignItems="center">
             <Card style={tstyles.picturePlaceholder}>
-              <CardMedia style={{ height: '100%', width: '100%', backgroundSize: 'contain' }} image={`${IMAGE_URL}${id}${`${finalName}`.replace(/ /g, '-')}.gif`} />
+              <CardMedia
+                style={{
+                  height: '100%',
+                  width: 'auto',
+                  backgroundSize: 'cover',
+                }}
+                component="img"
+                onError={(event) => {
+                  event.target.src = 'https://nepal.sk8tech.io/wp-content/uploads/placeholder.png';
+                  console.log(event.target);
+                }}
+                image={`${IMAGE_URL}${id}${`${finalName}`.replace(/ /g, '-')}.png`}
+              />
             </Card>
           </Grid>
 

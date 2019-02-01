@@ -183,6 +183,7 @@ class MainRehab extends React.Component {
         top
         backgroundImage={theme.rehabHeader.daily}
         title="Rehab"
+        planPage
         currentWeek={currentWeek}
         currentPage={3}
         FooterContent={3}
