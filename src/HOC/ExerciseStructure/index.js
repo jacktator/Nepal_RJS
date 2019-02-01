@@ -156,7 +156,7 @@ const ExerciseStructure = (props) => {
 
       <Grid container item direction="column" alignItems="stretch">
         <Grid>
-          {!!select && select.map(v => ((v.label === 'weight' ? (!!thisExerciseDetail.weight) : true)
+          {!!select && select.map(v => ((v.label === 'weight' ? (thisExerciseDetail.progression_model.toUpperCase().includes('LINEAR') || thisExerciseDetail.progression_model.toUpperCase().includes('DOUBLE') ) : true)
             && (
             <NumberSelect
               key={v.label}
