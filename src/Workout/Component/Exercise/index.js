@@ -120,11 +120,14 @@ class ExerciseIndex extends React.Component {
     this.setState(min('reps'));
   }
 
-  saveData(wei) {
+  saveData() {
     const { exerciseOrder } = this.props.match.params;
     const showedExercises = this.props.todayExercises[`exe_${exerciseOrder}`];
     let result = '';
-    if (wei) {
+    const model = this.props.renderExercises[exerciseOrder - 1].progression_model;
+    const wei = model.toUpperCase().includes('LINEAR') || model.toUpperCase().includes('DOUBLE');
+    console.log("weight values", wei);
+    if (!wei) {
       result = showedExercises ? `${showedExercises};(${this.state.reps})` : `(${this.state.reps})`;
     } else {
       result = showedExercises ? `${showedExercises};(${this.state.reps},${this.state.weight})` : `(${this.state.reps},${this.state.weight})`;
@@ -164,6 +167,7 @@ class ExerciseIndex extends React.Component {
       if (product > largest) {
         largest = product;
       }
+      console.log("check weight value", weight);
       return ({ reps: b[0], weight: b.length > 1 ? b[1] : null });
     })];
     const thisExerciseDetail = renderExercises[exerciseOrder - 1];

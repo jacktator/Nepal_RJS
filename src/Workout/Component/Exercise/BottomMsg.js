@@ -9,6 +9,10 @@ const styles = {
   },
 };
 
+// linea rules
+// const linearSetRule = [-10,-7.5,-7.5,-5,-5,-2.5,-2.5,0,0,0,0,2.5,2.5,5];
+// const linearWeekRule = [-10,-7.5,-7.5,-5,-2.5,-2.5,0,0,2.5,2.5,5,5,5,7.5];
+
 class BottomMsg extends React.Component {
   // week-week home progression
   homeWeekProgression(reps, history, goal_ini, type, sets) {
@@ -78,14 +82,61 @@ class BottomMsg extends React.Component {
   }
 
   // TO DO linears
-  // set-set progression
-  linearProgression(ExList, sets, reps, weight, history) {
-    return ('Do as much as possible !');
+  // set-set linear progression
+  linearProgression(ExList, sets, reps, history) {
+    // all weight comes from history, not prescribed
+    console.log('Linear--ExList', ExList);
+    // if linear exercises has 'till failture'
+    if (!/^[0-9]*$/.test(reps.split('-')[0])) {
+      return ('Do as much as possible !');
+    }
+    // min reps in range
+    const goal_ini = reps.split('-')[0];
+    console.log('goal_ini', goal_ini);
+
+    // new reps will be changed based on last week
+    const new_msg = this.linearWeekProgression(history, goal_ini);
+
+    // at least one set done
+    if (ExList) {
+      // finish exercise
+      if (ExList.length === sets) {
+        return ('Well done !');
+      // last set begins
+      } if (ExList.length === sets - 1) {
+        return (`Last Set - Do as many reps as possible with ${new_msg}`);
+      // others
+      }
+      return (`Set ${ExList.length + 1} - Aim for ${new_msg} ${goal_ini} reps`);
+    }
+    return (`Set 1 - Aim for ${new_msg} ${goal_ini} reps`);
   }
 
   // week-week linear progression
-  linearWeekProgression(ExList, reps, sets, weight, history) {
-    return ('Do as much as possible !');
+  linearWeekProgression(history, goal_ini) {
+    console.log('check linear week progression');
+    console.log('history', history);
+
+    // have at least one-day history without error
+    if (history && !(history.length === 1 && !history[0].exe)) {
+      const his = [];
+      for (let i = 0; i < history.length; i++) {
+        history[i].exe && his.push(history[i].exe.split(';'));
+      }
+      console.log('hhhhhhhhh', his);
+
+      // compare with goal
+      if (his.length && his[his.length - 1]) {
+        const len = his[his.length - 1].length;
+        console.log("aaaaaaaaaaa0", his[his.length - 1][len - 1].substring(1, his[his.length - 1][len - 1].length - 1));
+        const new_msg = (his[his.length - 1][len - 1].substring(1, his[his.length - 1][len - 1].length - 1) >= goal_ini) ? 'Increase the weight' : 'Do more reps';
+        return new_msg;
+      }
+      // no correct exe values
+      return ('');
+    }
+    // no history, keep the original weight
+    return ('');
   }
 
   // week-week double progression
@@ -144,13 +195,13 @@ class BottomMsg extends React.Component {
     return ('Set 1 - ' + new_msg);
   }
 
-  checkProgression(model, ExList, sets, reps, weight, history) {
+  checkProgression(model, ExList, sets, reps, history) {
     //TO DO
     // week 5 deload week
 
     if (model.toUpperCase().includes('LINEAR')) {
       console.log('Linear', model);
-      return (this.linearProgression(ExList, sets, reps, weight, history));
+      return (this.linearProgression(ExList, sets, reps, history));
     } if (model.toUpperCase().includes('DOUBLE')) {
       console.log('Double', model);
       return (this.doubleProgression(ExList, sets, reps, history));
@@ -171,14 +222,14 @@ class BottomMsg extends React.Component {
       classes, thisExerciseDetail, ExList, history,
     } = this.props;
     const {
-      progression_model, sets, reps, weight,
+      progression_model, sets, reps,
     } = thisExerciseDetail;
     console.log('Bmsg/thisExerciseDetail', this.props.thisExerciseDetail);
     return (
       <div className={classes.root}>
         <Typography align="center" variant="body1" component="h6" color="textPrimary">
           {progression_model
-            ? this.checkProgression(progression_model, ExList, parseInt(sets), reps, weight, history) : 'Do as much as possible !'}
+            ? this.checkProgression(progression_model, ExList, parseInt(sets), reps, history) : 'Do as much as possible !'}
         </Typography>
       </div>
     );
