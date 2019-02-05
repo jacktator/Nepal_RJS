@@ -186,7 +186,7 @@ const ExerciseStructure = (props) => {
               key={`${v.reps}${k}`}
               id={k}
               latest={k === ExList.length - 1}
-              content={(v.hasOwnProperty('weight') && !!v.weight) ? `weight  ${v.weight} reps  ${v.reps} ${thisExerciseDetail.time ? 'secs' : ''}` : `reps  ${v.reps}   ${thisExerciseDetail.time ? 'secs' : ''}`}
+              content={(v.hasOwnProperty('weight') && !!v.weight) ? `${v.weight} Kgs X ${v.reps} ${thisExerciseDetail.time ? 'secs' : ''} Reps` : `${v.reps}   ${thisExerciseDetail.time ? 'secs' : ''} Reps`}
               status="Previous"
               product={largest === ((v.hasOwnProperty('weight') && !!v.weight) ? 1 * v.weight * v.reps : 1 * v.reps)}
             />
