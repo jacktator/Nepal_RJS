@@ -22,6 +22,7 @@ const theme = createMuiTheme({
       hint: 'rgba(0, 0, 0, 0.38)',
     },
   },
+  burgerBar: { rootColor: 'white', childColor: 'white' },
   splashPageBackground: {
     color: 'white',
   },

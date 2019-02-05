@@ -19,7 +19,7 @@ const styles = theme => ({
     height: 'auto',
   },
   rootIcon: {
-    color: theme.palette.primary.light,
+    color: theme.burgerBar.rootColor,
     height: '24px',
     backgroundColor: 'unset',
   },
@@ -104,7 +104,7 @@ class SpeedDialTooltipOpen extends React.Component {
 
   render() {
     const {
-      classes, right, secondary, shadow, mainmenu,
+      classes, theme, right, secondary, shadow, mainmenu,
     } = this.props;
     const { open } = this.state;
 
@@ -122,7 +122,7 @@ class SpeedDialTooltipOpen extends React.Component {
       >
         {actions.map(action => (
           <SpeedDialAction
-            style={{ backgroundColor: 'snow' }}
+            style={{ backgroundColor: theme.burgerBar.childColor }}
             key={action.name}
             icon={action.icon}
             tooltipTitle={action.name}
@@ -142,4 +142,4 @@ SpeedDialTooltipOpen.propTypes = {
   shadow: PropTypes.bool,
 };
 
-export default withStyles(styles)(SpeedDialTooltipOpen);
+export default withStyles(styles, { withTheme: true })(SpeedDialTooltipOpen);

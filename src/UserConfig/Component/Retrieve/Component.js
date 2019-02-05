@@ -16,7 +16,7 @@ import styles from '../../styles';
 
 const Component = (props) => {
   const {
-    theme, loading, onChangeHandle, email,
+    theme, loading, onChangeHandle, email, onRetrieveClick, emailError,
   } = props;
   const { logo } = theme;
   const tstyles = styles(theme);
@@ -40,6 +40,8 @@ const Component = (props) => {
                   <HOCInputFile
                     onChangeHandle={onChangeHandle}
                     value={email}
+                    error={emailError.error}
+                    resDiscription={emailError.resDiscription}
                     type="email"
                     fullwidth
                   />
@@ -54,7 +56,7 @@ const Component = (props) => {
         </Grid>
 
         <Grid container style={{ height: '10vh' }} justify="center">
-          {loading ? <CircularProgress size={30} /> : <Button style={tstyles.button} color="primary">Retrieve</Button>}
+          {loading ? <CircularProgress size={30} /> : <Button style={tstyles.button} onClick={onRetrieveClick} color="primary">Retrieve</Button>}
         </Grid>
 
       </Grid>

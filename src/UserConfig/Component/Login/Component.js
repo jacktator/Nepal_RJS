@@ -16,7 +16,7 @@ const Component = (props) => {
   const { logo } = theme;
   const tstyles = styles(theme);
   const {
-    loading, email, password, onChangeHandle, onLoginClick, error, handleErrorClose,
+    loading, email, password, onChangeHandle, onLoginClick, error, handleErrorClose, emailError, passwordError,
   } = props;
   return (
     <div style={tstyles.container}>
@@ -41,12 +41,16 @@ const Component = (props) => {
                   <HOCInputFile
                     fullwidth
                     type="email"
+                    error={emailError.error}
+                    resDiscription={emailError.resDiscription}
                     value={email}
                     onChangeHandle={onChangeHandle}
                   />
                   <HOCInputFile
                     fullwidth
                     type="password"
+                    error={passwordError.error}
+                    resDiscription={passwordError.resDiscription}
                     value={password}
                     onChangeHandle={onChangeHandle}
                   />

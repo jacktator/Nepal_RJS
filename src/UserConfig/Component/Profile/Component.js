@@ -135,13 +135,11 @@ const Profile = (props) => {
           </Grid>
 
           <Grid className={classes.contentContainer} container direction="column" justify="center" alignItems="center">
-            <Button color="primary" component={Link} to="/questionnaire">Restart a new programme</Button>
             <Button color="primary" onClick={openInfo}>Update Information</Button>
             <Button color="primary" onClick={openPassword}>Change Password</Button>
             <Button color="primary" onClick={openConditionDialog}>View Terms and Conditions</Button>
             <Button color="primary" component={Link} to="/logout">Logout</Button>
           </Grid>
-
         </Grid>
       </Paper>
     </Grid>

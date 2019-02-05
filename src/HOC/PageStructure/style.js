@@ -20,8 +20,9 @@ export const styles = theme => ({
   },
   topInline: {
     backgroundColor: 'rgba(224,247,250, 0.2)',
-    paddingLeft: '10%',
-    paddingBottom: '20%',
+    paddingLeft: '7%',
+    paddingRight: '7%',
+    paddingBottom: '10%',
     paddingTop: '5%',
   },
   menuButton: {
@@ -76,8 +77,5 @@ export const styles = theme => ({
     width: '90%',
     height: '0.5vh',
 
-  },
-  progressData: {
-    marginTop: '40px',
   },
 });

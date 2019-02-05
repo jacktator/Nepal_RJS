@@ -131,7 +131,7 @@ class ExerciseIndex extends React.Component {
     }
     // const m = { ...this.props.todayExercises, [`exe_${exerciseOrder}`]: result };
     this.props.finishExercisePageQuery(true);
-    this.props.updataOneExercise({ exeNum: exerciseOrder, exeData: result });
+    this.props.updataOneExercise({ exeNum: exerciseOrder, exeData: result }, this.props.historyForSpecificExercise);
     // this.props.setTodayExercises(m);
   }
 

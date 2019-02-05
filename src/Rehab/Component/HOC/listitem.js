@@ -24,7 +24,19 @@ const HOCListItem = (props) => {
       <Grid container className={classes.listItemPaper} component={exeData.selected ? Link : 'div'} to={`/rehab/training/${itemID}`}>
         <Grid container className={classes.itemleft} justify="flex-start" alignContent="space-around" alignItems="center">
           <Card className={classes.picturePlaceholder}>
-            <CardMedia style={{ height: '100%', width: '100%', backgroundSize: 'contain' }} image={`${IMAGE_URL}${prefix}-${postureName || injuryName}-${`${exeData.name}`.replace(/ /g, '-')}.gif`} />
+            <CardMedia
+              component="img"
+              onError={(event) => {
+                event.target.src = 'https://nepal.sk8tech.io/wp-content/uploads/placeholder.png';
+                console.log(event.target);
+              }}
+              style={{
+                height: '100%',
+                width: 'auto',
+                backgroundSize: 'cover',
+              }}
+              image={`${IMAGE_URL}${prefix}-${postureName || injuryName}-${`${exeData.name}`.replace(/ /g, '-')}.png`}
+            />
           </Card>
         </Grid>
 

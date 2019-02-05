@@ -16,6 +16,7 @@ import Questionnaire from './questionnaire';
 import Loading from '../../../HOC/Loading';
 import Stepper from './stepper';
 import { rehabProgramme } from '../../../config';
+import RestartDialog from '../../../HOC/reStartDialog';
 
 const tapBarContent = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
 
@@ -35,6 +36,9 @@ class MainRehab extends React.Component {
       dialogData: [],
       dialogIndex: 0,
       ExList: [],
+      restartDialog: false,
+      queRehab: '',
+      quePosture: '',
     };
     this.midPartTabsValueHandleChange = this.midPartTabsValueHandleChange.bind(this);
     this.handleQuestionnaireClose = this.handleQuestionnaireClose.bind(this);
@@ -50,6 +54,9 @@ class MainRehab extends React.Component {
     this.setRenderExercisesState = this.setRenderExercisesState.bind(this);
     this.keepExerciseFetch = this.keepExerciseFetch.bind(this);
     this.setRenderExercisesRecord = this.setRenderExercisesRecord.bind(this);
+    this.handleRestartChange = this.handleRestartChange.bind(this);
+    this.handleRestartBlur = this.handleRestartBlur.bind(this);
+    this.handleRestartOpen = this.handleRestartOpen.bind(this);
   }
 
   componentDidMount() {
@@ -165,6 +172,18 @@ class MainRehab extends React.Component {
     });
   }
 
+  handleRestartBlur() {
+    this.setState({ restartDialog: false });
+  }
+
+  handleRestartOpen() {
+    this.setState({ restartDialog: true });
+  }
+
+  handleRestartChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+
 
   render() {
     const {
@@ -176,9 +195,20 @@ class MainRehab extends React.Component {
     const injuryName = acf && acf.injury;
     const {
       currentWeek, midPartTabsValue, showDiscription, title, injurySelected, ExList,
-      postureSelected, exerciseSelected, dialogData, showChangeDialog, renderExercise,
+      postureSelected, exerciseSelected, dialogData, showChangeDialog, restartDialog,
+      queRehab, quePosture,
     } = this.state;
     return (
+    <>
+      <RestartDialog
+        rehabS
+        title="Rehab"
+        open={restartDialog}
+        rehab={queRehab}
+        posture={quePosture}
+        handleChange={this.handleRestartChange}
+        handleClose={this.handleRestartBlur}
+      />
       <MainComponent
         top
         backgroundImage={theme.rehabHeader.daily}
@@ -190,6 +220,8 @@ class MainRehab extends React.Component {
         onTagClick={this.midPartTabsValueHandleChange}
         tabsValue={midPartTabsValue}
         showBottomButton
+        restartClick={this.handleRestartOpen}
+
         tapBarContent={tapBarContent}
         midComponent={(
           <Grid container className={classes.midPaper} style={{ flex: 1 }} justify="center" alignContent="space-around" alignItems="center">
@@ -255,6 +287,7 @@ class MainRehab extends React.Component {
           </Grid>
           )}
       />
+      </>
     );
   }
 }

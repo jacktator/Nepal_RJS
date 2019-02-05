@@ -15,6 +15,7 @@ import {
 } from '../../action';
 import LoadingComponent from '../../../HOC/Loading';
 import Dialog from '../../../HOC/Dialog';
+import RestartDialog from '../../../HOC/reStartDialog';
 
 const tapBarContent = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'];
 const refresh = () => {
@@ -29,15 +30,22 @@ class index extends React.Component {
       questionnaireSelected: 0,
       tabsValue: 0,
       over24Open: false,
+      restartDialog: false,
+      queLocation: 'home',
+      queDays: '',
+      queGoal: '',
     };
-    this.midPartTabsValueHandleChange = this.midPartTabsValueHandleChange.bind(this);
-    this.handleQuestionnaireOpen = this.handleQuestionnaireOpen.bind(this);
-    this.handleQuestionnaireClose = this.handleQuestionnaireClose.bind(this);
-    this.selectQuestionnaire = this.selectQuestionnaire.bind(this);
-    this.handleQuestionnaireBlur = this.handleQuestionnaireBlur.bind(this);
     this.onTagClick = this.onTagClick.bind(this);
     this.handleOver24Blur = this.handleOver24Blur.bind(this);
     this.handleOver24Open = this.handleOver24Open.bind(this);
+    this.handleRestartBlur = this.handleRestartBlur.bind(this);
+    this.handleRestartOpen = this.handleRestartOpen.bind(this);
+    this.selectQuestionnaire = this.selectQuestionnaire.bind(this);
+    this.handleRestartChange = this.handleRestartChange.bind(this);
+    this.handleQuestionnaireBlur = this.handleQuestionnaireBlur.bind(this);
+    this.handleQuestionnaireOpen = this.handleQuestionnaireOpen.bind(this);
+    this.handleQuestionnaireClose = this.handleQuestionnaireClose.bind(this);
+    this.midPartTabsValueHandleChange = this.midPartTabsValueHandleChange.bind(this);
   }
 
   componentDidMount() {
@@ -90,6 +98,14 @@ class index extends React.Component {
     this.setState({ over24Open: true });
   }
 
+  handleRestartBlur() {
+    this.setState({ restartDialog: false });
+  }
+
+  handleRestartOpen() {
+    this.setState({ restartDialog: true });
+  }
+
   selectQuestionnaire(event) {
     this.setState({ questionnaireSelected: event.target.value });
   }
@@ -98,12 +114,16 @@ class index extends React.Component {
     this.setState({ tabsValue: value });
   }
 
+  handleRestartChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+
   render() {
     const {
       classes, programQuery, theme,
     } = this.props;
     const {
-      dailyQuestionnaireOpen, questionnaireSelected, tabsValue, over24Open,
+      dailyQuestionnaireOpen, restartDialog, questionnaireSelected, tabsValue, over24Open, queLocation, queDays, queGoal,
     } = this.state;
     const {
       progress, days, path, finish_for_day,
@@ -111,27 +131,34 @@ class index extends React.Component {
     const finish = !!finish_for_day && JSON.parse(finish_for_day);
     const currentWeek = Math.ceil(progress / days);
     const showTitle = `${path}`.split(/(?=[A-Z])/).join(' ');
-    console.log(new Date().getDay() - new Date(sessionStorage.workoutUpdateDate).getDay());
-    console.log(new Date().getDay());
-    console.log(new Date(sessionStorage.workoutUpdateDate).getDay());
     return (
       <div>
         <LoadingComponent open={programQuery} />
-        <Dialog
-          open={over24Open}
-          loadingStatus={false}
-          title=""
-          discription="You need to waiting for next day"
-          handleClose={this.handleOver24Blur}
+        <RestartDialog
+          workoutS
+          title="Workout"
+          goal={queGoal}
+          days={queDays}
+          open={restartDialog}
+          location={queLocation}
+          handleChange={this.handleRestartChange}
+          handleClose={this.handleRestartBlur}
         />
         <Dialog
-          open={dailyQuestionnaireOpen}
+          title=""
+          open={over24Open}
           loadingStatus={false}
-          handleClose={this.handleQuestionnaireBlur}
+          handleClose={this.handleOver24Blur}
+          discription="You need to waiting for next day"
+        />
+        <Dialog
           other
-          otherClickFunction={this.handleQuestionnaireClose}
           title="Feedback"
+          loadingStatus={false}
+          open={dailyQuestionnaireOpen}
+          handleClose={this.handleQuestionnaireBlur}
           discription="How do you feel of today's exercises"
+          otherClickFunction={this.handleQuestionnaireClose}
           media={
             (
               <FormControl component="fieldset">
@@ -162,6 +189,7 @@ class index extends React.Component {
           onTagClick={this.onTagClick}
           tapBarContent={tapBarContent}
           title={showTitle || 'Workout'}
+          restartClick={this.handleRestartOpen}
           backgroundImage={theme.workoutHeader.plan}
           midComponent={(
             <Grid container style={{ flex: 1 }} justify="center" alignContent="space-around" alignItems="flex-start">
