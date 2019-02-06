@@ -66,7 +66,13 @@ class TextMobileStepper extends React.PureComponent {
             </Paper>
             <CardMedia
               className={classes.img}
-              image={`${IMAGE_URL}${imageID}${`${tutorialSteps[dialogIndexSelected][dialogSelected].name}`.replace(/ /g, '-')}.gif`}
+              image={`${IMAGE_URL}${imageID}${`${tutorialSteps[dialogIndexSelected][dialogSelected].name}`.replace(/ /g, '-')}.png`}
+              component="img"
+              onError={(event) => {
+                event.target.src = 'https://nepal.sk8tech.io/wp-content/uploads/placeholder.png';
+                console.log(event.target);
+              }}
+
             />
             <MobileStepper
               steps={maxSteps}
