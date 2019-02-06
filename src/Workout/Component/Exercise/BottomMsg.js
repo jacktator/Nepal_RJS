@@ -81,7 +81,6 @@ class BottomMsg extends React.Component {
     return (`Set 1 - Aim at ${new_reps}`);
   }
 
-  // TO DO linears
   // set-set linear progression
   linearProgression(ExList, sets, reps, history) {
     // all weight comes from history, not prescribed
@@ -125,12 +124,22 @@ class BottomMsg extends React.Component {
       }
       console.log('hhhhhhhhh', his);
 
+      const linearSetRule = [-10,-7.5,-7.5,-5,-5,-2.5,-2.5,0,0,0,0,2.5,2.5,5];
+      const linearWeekRule = [-10,-7.5,-7.5,-5,-2.5,-2.5,0,0,2.5,2.5,5,5,5,7.5];
       // compare with goal
       if (his.length && his[his.length - 1]) {
+        // compare with the last history
         const len = his[his.length - 1].length;
         console.log("aaaaaaaaaaa0", his[his.length - 1][len - 1].substring(1, his[his.length - 1][len - 1].length - 1));
-        const new_msg = (his[his.length - 1][len - 1].substring(1, his[his.length - 1][len - 1].length - 1) >= goal_ini) ? 'Increase the weight' : 'Do more reps';
-        return new_msg;
+        // old weight value + modification value
+        const last_history = his[his.length - 1][len - 1].substring(1, his[his.length - 1][len - 1].length - 1).split(",");
+        const old_weight = parseInt(last_history[1]);
+        console.log("old_weight", old_weight);
+        const new_index = parseInt(last_history[0]) - goal_ini + 7;
+        console.log("new_index", new_index);
+        const new_weight = old_weight + linearSetRule[new_index >= 0 && new_index <= 13 ? new_index:(new_index < 0 ? 0:13)];
+        const new_msg = new_weight >= 0 ? `${new_weight} Kg` : '0 Kg';
+        return (new_msg);
       }
       // no correct exe values
       return ('');
