@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { programmeTable } from '../config';
+import { createProgram } from '../Questionnaire/action';
 
 export const compareOver24 = (a) => {
   const now = new Date();
@@ -353,4 +354,16 @@ export const getYoutubeLink = name => (dispatch) => {
         console.log(err);
       },
     );
+};
+
+export const restartProgramme = (data, callback) => (dispatch) => {
+  const { token, user_email, user_id } = sessionStorage;
+  sessionStorage.clear();
+  sessionStorage.setItem('token', token);
+  sessionStorage.setItem('user_id', user_id);
+  sessionStorage.setItem('user_email', user_email);
+  Object.entries(data).forEach((v) => {
+    sessionStorage.setItem(v[0], v[1]);
+  });
+  dispatch(createProgram(callback));
 };

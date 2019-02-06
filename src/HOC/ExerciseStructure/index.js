@@ -141,13 +141,6 @@ const ExerciseStructure = (props) => {
               },
             }}
           />
-
-          {/* <YouTube
-            videoId={youtbueID[0]}
-            opts={opts}
-            onReady={onReady}
-            onEnd={onStopVideo}
-          /> */}
         </Card>
       </Grid>
 

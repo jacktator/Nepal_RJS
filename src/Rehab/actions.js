@@ -95,7 +95,7 @@ export const updateRehabRecord = data => (dispatch) => {
     .catch(err => console.log(err));
 };
 
-export const createNewRehab = data => (dispatch) => {
+export const createNewRehab = (data, callback) => (dispatch) => {
   axios.post('/rehab_program', {
     fields: {
       progress: new Date().getDay(),
@@ -115,7 +115,7 @@ export const createNewRehab = data => (dispatch) => {
     .then(
       (res) => {
         console.log('createNewRehab-----------------------------', createNewRehab);
-        dispatch(getDailyRehab());
+        !!callback && callback();
       },
     )
     .catch(

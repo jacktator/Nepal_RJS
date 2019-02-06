@@ -11,11 +11,12 @@ import Component from './component';
 import MainComponent from '../../../HOC/PageStructure';
 import { styles } from '../../styles';
 import {
-  getCurrentProgram, finishQuery, selectDailyQuestionnaire, noProgram, compareOver24,
+  getCurrentProgram, finishQuery, selectDailyQuestionnaire, noProgram, compareOver24, restartProgramme,
 } from '../../action';
 import LoadingComponent from '../../../HOC/Loading';
 import Dialog from '../../../HOC/Dialog';
 import RestartDialog from '../../../HOC/reStartDialog';
+import { second } from '../../../Questionnaire/Component/contentData';
 
 const tapBarContent = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'];
 const refresh = () => {
@@ -40,6 +41,7 @@ class index extends React.Component {
     this.handleOver24Open = this.handleOver24Open.bind(this);
     this.handleRestartBlur = this.handleRestartBlur.bind(this);
     this.handleRestartOpen = this.handleRestartOpen.bind(this);
+    this.handleRestartSave = this.handleRestartSave.bind(this);
     this.selectQuestionnaire = this.selectQuestionnaire.bind(this);
     this.handleRestartChange = this.handleRestartChange.bind(this);
     this.handleQuestionnaireBlur = this.handleQuestionnaireBlur.bind(this);
@@ -106,6 +108,14 @@ class index extends React.Component {
     this.setState({ restartDialog: true });
   }
 
+  handleRestartSave() {
+    const { queLocation, queDays, queGoal } = this.state;
+    const { path } = second[queLocation].find(v => v.id === (1 * queGoal));
+    this.handleRestartBlur();
+    this.props.finishQuery(true);
+    this.props.restartProgramme({ location: queLocation, path, days: queDays }, () => { this.props.finishQuery(false); window.location.reload(true); });
+  }
+
   selectQuestionnaire(event) {
     this.setState({ questionnaireSelected: event.target.value });
   }
@@ -143,6 +153,7 @@ class index extends React.Component {
           location={queLocation}
           handleChange={this.handleRestartChange}
           handleClose={this.handleRestartBlur}
+          handleRestartSave={this.handleRestartSave}
         />
         <Dialog
           title=""
@@ -226,5 +237,5 @@ index.propTypes = {
 };
 
 export default connect(mapStateToProps, {
-  getCurrentProgram, finishQuery, selectDailyQuestionnaire, noProgram,
+  getCurrentProgram, finishQuery, selectDailyQuestionnaire, noProgram, restartProgramme,
 })(withStyles(styles, { withTheme: true })(index));

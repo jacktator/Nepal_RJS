@@ -37,7 +37,7 @@ const Rehab = (props) => {
                 style={{ justifyContent: 'space-between' }}
                 labelPlacement="start"
                 key={v.id}
-                name="queRehab"
+                name="injury"
                 onClick={() => handleClickOpen({ discription: v.describe || '', title: v.title })}
                 control={
                   <Checkbox color="primary" checked={rehab === `${v.id}`} onChange={handleChange} value={`${v.id}`} />
@@ -57,7 +57,7 @@ const Rehab = (props) => {
                 style={{ justifyContent: 'space-between' }}
                 labelPlacement="start"
                 key={v.id}
-                name="quePosture"
+                name="posture"
                 onClick={() => handleClickOpen({ discription: v.describe || '', title: v.title })}
                 control={
                   <Checkbox color="primary" checked={posture === `${v.id}`} onChange={handleChange} value={`${v.id}`} />
@@ -161,7 +161,7 @@ class RestartDialog extends React.PureComponent {
   render() {
     const {
       open, handleClose, title, workoutS, rehabS, rehab, posture,
-      location, days, goal, handleChange, error,
+      location, days, goal, handleChange, error, handleRestartSave,
     } = this.props;
     const { discription, directionTitle, showDiscription } = this.state;
     return (
@@ -177,9 +177,9 @@ class RestartDialog extends React.PureComponent {
               <CloseIcon />
             </IconButton>
             <Typography variant="h6" color="primary" style={{ flexGrow: 1 }}>
-              {`Restart ${title}`}
+              {`Start ${title}`}
             </Typography>
-            <Button color="primary" onClick={handleClose}>
+            <Button color="primary" onClick={handleRestartSave}>
                 Submit
             </Button>
           </Toolbar>
