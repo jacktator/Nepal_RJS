@@ -20,9 +20,15 @@ const styles = theme => ({
     width: '92%',
     minHeight: '80vh',
   },
-  menuButton: {
+  menuButtonLeft: {
     position: 'fixed',
     top: '2vh',
+  },
+  menuButtonRight: {
+    padding: '12px',
+    position: 'fixed',
+    top: '2vh',
+    right: '4vw',
   },
   container: {
     backgroundColor: '#e1e2e1',
@@ -92,9 +98,10 @@ const Profile = (props) => {
   return (
     <Grid container className={classes.container} justify="center" alignItems="center">
       <Paper className={classes.root}>
-        <IconButton className={classes.menuButton} component={Link} to="/mainmenu" color="primary" aria-label="Menu">
+        <IconButton className={classes.menuButtonLeft} component={Link} to="/mainmenu" color="primary" aria-label="Menu">
           <LeftIcon style={{ fontSize: '30px' }} />
         </IconButton>
+        <Button className={classes.menuButtonRight} color="primary" onClick={openInfo}>Edit</Button>
         <Grid container className={classes.avatarGridContainer} justify="center">
           <Grid className={classes.avatarGridContainer}>
             <Avatar className={classes.avatarContainer} component={Paper} alt="avatar" src={avatar} />
@@ -135,8 +142,7 @@ const Profile = (props) => {
           </Grid>
 
           <Grid className={classes.contentContainer} container direction="column" justify="center" alignItems="center">
-            <Button color="primary" onClick={openInfo}>Update Information</Button>
-            <Button color="primary" onClick={openPassword}>Change Password</Button>
+            <Button style={{ color: 'red' }} onClick={openPassword}>Change Password</Button>
             <Button color="primary" onClick={openConditionDialog}>View Terms and Conditions</Button>
             <Button color="primary" component={Link} to="/logout">Logout</Button>
           </Grid>

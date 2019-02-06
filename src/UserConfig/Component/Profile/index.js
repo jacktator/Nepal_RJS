@@ -184,13 +184,13 @@ class UserProfile extends React.PureComponent {
           open={updateInfoOpen}
           handleClose={this.closeUpdataInfoDialog}
           loadingStatus={queryProfile}
-          title="Update information"
+          title="Edit information"
           discription=""
           other
           otherClickFunction={this.onInfoUpdateOKClick}
-          media={
-            <>
-              <Typography color="primary">Name</Typography>
+          media={(
+            <div style={{ padding: '24px' }}>
+              <Typography style={{ marginTop: '12px' }} color="primary" variant="body1">NAME</Typography>
               <Input
                 value={name}
                 name="name"
@@ -199,7 +199,7 @@ class UserProfile extends React.PureComponent {
                   'aria-label': 'Description',
                 }}
               />
-              <Typography color="primary">Gender</Typography>
+              <Typography style={{ marginTop: '12px' }} color="primary">GENDER</Typography>
               <FormControl component="fieldset">
                 <RadioGroup
                   aria-label="Gender"
@@ -212,7 +212,7 @@ class UserProfile extends React.PureComponent {
                   <FormControlLabel value="Other" control={<Radio color="primary" />} label="Other" />
                 </RadioGroup>
               </FormControl>
-              <Typography color="primary">DoB</Typography>
+              <Typography style={{ marginTop: '12px' }} color="primary">DoB</Typography>
               <Input
                 value={dob}
                 name="dob"
@@ -221,7 +221,7 @@ class UserProfile extends React.PureComponent {
                   'aria-label': 'Description',
                 }}
               />
-              <Typography color="primary">Weight</Typography>
+              <Typography style={{ marginTop: '12px' }} color="primary">WEIGHT</Typography>
               <Input
                 value={weight}
                 name="weight"
@@ -230,8 +230,8 @@ class UserProfile extends React.PureComponent {
                   'aria-label': 'Description',
                 }}
               />
-            </>
-          }
+            </div>
+          )}
         />
         <Dialog
           open={updatePasswordOpen}
@@ -241,8 +241,8 @@ class UserProfile extends React.PureComponent {
           other
           otherClickFunction={this.onPassUpdateOkclick}
           discription=""
-          media={
-            <>
+          media={(
+            <div style={{ padding: '24px' }}>
               <Typography color="primary">Old Password</Typography>
               <Input
                 value={oldPassword}
@@ -270,7 +270,8 @@ class UserProfile extends React.PureComponent {
                   'aria-label': 'Description',
                 }}
               />
-            </>}
+            </div>
+          )}
         />
         <Component
           {...this.state}

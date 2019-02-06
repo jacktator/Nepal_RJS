@@ -9,30 +9,9 @@ import SpeedDialTooltipOpen from '../HOC/speedDial';
 
 import styles from './styles';
 
-const menu = (theme) => {
-  const {
-    workout, profile, question, rehab, content, FAQ,
-  } = theme.mainMenu;
-  return ([
-    {
-      name: 'Workout', color: workout.color, opacity: workout.opacity, to: '/workout',
-    },
-    {
-      name: 'Rehab', color: rehab.color, opacity: rehab.opacity, to: '/rehab',
-    },
-    {
-      name: 'Profile', color: profile.color, opacity: profile.opacity, to: '/user/profile',
-    },
-    {
-      name: 'Question', color: question.color, opacity: question.opacity, to: '/mainmenu',
-    },
-    {
-      name: 'Content', color: content.color, opacity: content.opacity, to: '/mainmenu',
-    },
-    {
-      name: 'FAQ', color: FAQ.color, opacity: FAQ.opacity, to: '/mainmenu',
-    }]);
-};
+const menu = [{ name: 'Workout', color: 'rgba(0,96,100,0.5)', to: '/workout' }, { name: 'Rehab', color: 'rgba(86,200,216,0.5)', to: '/rehab' },
+  { name: 'Profile', color: 'rgba(111,249,255,0.4)', to: '/user/profile' }, { name: 'Content', color: 'rgba(0,172,193,0.4)', to: '/mainmenu' },
+  { name: 'Question', color: 'rgba(38,198,218,0.3)', to: '/mainmenu' }, { name: 'FAQ', color: 'rgba(136,255,255,0.3)', to: '/mainmenu' }];
 class Mainmenu extends React.PureComponent {
   render() {
     const { classes, theme } = this.props;
@@ -45,7 +24,7 @@ class Mainmenu extends React.PureComponent {
           </Grid>
 
           <Grid container className={classes.menuGrid} justify="center" alignContent="center" alignItems="center">
-            {menu(theme).map(v => (
+            {menu.map(v => (
               <Grid key={v.name} justify="center" alignItems="center" container className={classes.childGrid} component={Link} to={v.to}>
                 <div style={{ backgroundColor: v.color, opacity: v.opacity, textDecoration: 'unset' }} className={classes.childGrid} />
                 <Typography style={{ color: 'darkcyan', position: 'absolute' }} variant="h6" component="h6">{v.name}</Typography>

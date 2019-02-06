@@ -1,11 +1,11 @@
 // eslint-disable-next-line import/prefer-default-export
 export const styles = theme => ({
   container: {
-    height: '100vh',
+    minHeight: '100vh',
     width: '100vw',
   },
   containerGrid: {
-    minHeight: '100%',
+    minHeight: '100vh',
   },
   top: {
     height: '32vh',
