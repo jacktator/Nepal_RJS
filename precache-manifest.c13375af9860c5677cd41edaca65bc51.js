@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/Nepal_RJS/static/js/runtime~main.467ce6cb.js"
   },
   {
-    "revision": "c4a1a3d5e3fc3281bfa7",
-    "url": "/Nepal_RJS/static/js/main.c4a1a3d5.chunk.js"
+    "revision": "9ecba8dba43542f6b457",
+    "url": "/Nepal_RJS/static/js/main.9ecba8db.chunk.js"
   },
   {
     "revision": "4ddd9e374ea7475dd09f",
     "url": "/Nepal_RJS/static/js/1.4ddd9e37.chunk.js"
   },
   {
-    "revision": "c4a1a3d5e3fc3281bfa7",
+    "revision": "9ecba8dba43542f6b457",
     "url": "/Nepal_RJS/static/css/main.832f4f2f.chunk.css"
   },
   {
-    "revision": "bb6127e769941b8e47992a67ba88831e",
+    "revision": "75777b6aace11eaed1d174d4e925bcba",
     "url": "/Nepal_RJS/index.html"
   }
 ];
