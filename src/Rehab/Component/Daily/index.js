@@ -12,10 +12,10 @@ import {
   keepExercise, setRehabExercisesRecordsByDay, setRenderExercises,
 } from '../../actions';
 import Dialog from '../../../HOC/Dialog';
-import Questionnaire from './questionnaire';
 import Loading from '../../../HOC/Loading';
 import Stepper from './stepper';
 import { rehabProgramme } from '../../../config';
+import RestartDialog from '../../../HOC/reStartDialog';
 
 const tapBarContent = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
 
@@ -35,6 +35,9 @@ class MainRehab extends React.Component {
       dialogData: [],
       dialogIndex: 0,
       ExList: [],
+      restartDialog: false,
+      queRehab: '',
+      quePosture: '',
     };
     this.midPartTabsValueHandleChange = this.midPartTabsValueHandleChange.bind(this);
     this.handleQuestionnaireClose = this.handleQuestionnaireClose.bind(this);
@@ -50,6 +53,9 @@ class MainRehab extends React.Component {
     this.setRenderExercisesState = this.setRenderExercisesState.bind(this);
     this.keepExerciseFetch = this.keepExerciseFetch.bind(this);
     this.setRenderExercisesRecord = this.setRenderExercisesRecord.bind(this);
+    this.handleRestartChange = this.handleRestartChange.bind(this);
+    this.handleRestartBlur = this.handleRestartBlur.bind(this);
+    this.handleRestartOpen = this.handleRestartOpen.bind(this);
   }
 
   componentDidMount() {
@@ -58,6 +64,9 @@ class MainRehab extends React.Component {
     this.props.finishQuerryDailyData(true);
     this.props.getDailyRehab(nowDay);
     this.setRenderExercisesState();
+    if (nowDay === 0) {
+      this.props.showQuestionnaireForCreate(true);
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -103,6 +112,7 @@ class MainRehab extends React.Component {
         posture: this.state.postureSelected * 1 - 1,
         injury: this.state.injurySelected * 1 - 1,
       },
+      () => { window.location.reload(true); },
     );
     this.props.finishQuerryDailyData(true);
     this.props.showQuestionnaireForCreate(false);
@@ -165,20 +175,43 @@ class MainRehab extends React.Component {
     });
   }
 
+  handleRestartBlur() {
+    this.setState({ restartDialog: false });
+  }
+
+  handleRestartOpen() {
+    this.setState({ restartDialog: true });
+  }
+
+  handleRestartChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+
 
   render() {
     const {
       classes, theme, showCreationQuestionnaire, querryCreating,
-      querryDailyData, posture, injury, renderExercises,
+      querryDailyData, posture, injury, renderExercises, showQuestionnaireForCreate,
     } = this.props;
     const { acf } = this.props.selectedRehabExercises;
     const postureName = acf && acf.posture;
     const injuryName = acf && acf.injury;
     const {
       currentWeek, midPartTabsValue, showDiscription, title, injurySelected, ExList,
-      postureSelected, exerciseSelected, dialogData, showChangeDialog, renderExercise,
+      postureSelected, exerciseSelected, dialogData, showChangeDialog,
     } = this.state;
     return (
+    <>
+      <RestartDialog
+        rehabS
+        title="Rehab"
+        open={showCreationQuestionnaire}
+        rehab={injurySelected}
+        posture={postureSelected}
+        handleChange={this.handleSelectChange}
+        handleClose={this.handleQuestionnaireClose}
+        handleRestartSave={this.handleFinishQuestionnaireClick}
+      />
       <MainComponent
         top
         backgroundImage={theme.rehabHeader.daily}
@@ -190,6 +223,8 @@ class MainRehab extends React.Component {
         onTagClick={this.midPartTabsValueHandleChange}
         tabsValue={midPartTabsValue}
         showBottomButton
+        restartClick={() => showQuestionnaireForCreate(true)}
+
         tapBarContent={tapBarContent}
         midComponent={(
           <Grid container className={classes.midPaper} style={{ flex: 1 }} justify="center" alignContent="space-around" alignItems="center">
@@ -220,23 +255,7 @@ class MainRehab extends React.Component {
               discription={title}
               handleClose={this.handleDiscriptionClickClose}
             />
-            <Dialog
-              open={showCreationQuestionnaire}
-              loadingStatus={querryCreating}
-              handleClose={this.handleQuestionnaireClose}
-              title="Rehab Questionnaire"
-              discription=""
-              other
-              otherClickFunction={this.handleFinishQuestionnaireClick}
-              media={(
-                <Questionnaire
-                  handleClickOpen={this.handleClickDiscriptionOpen}
-                  handleSelectChange={this.handleSelectChange}
-                  injury={injurySelected}
-                  posture={postureSelected}
-                />
-                )}
-            />
+
 
             <Component
               injury={`${rehabProgramme.injury[injuryName]}`.split('_').map(v => (`${v[0]}`).toUpperCase() + v.substring(1)).join(' ')}
@@ -255,6 +274,7 @@ class MainRehab extends React.Component {
           </Grid>
           )}
       />
+      </>
     );
   }
 }

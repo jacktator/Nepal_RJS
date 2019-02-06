@@ -141,16 +141,33 @@ const ExerciseStructure = (props) => {
               },
             }}
           />
-
-          {/* <YouTube
-            videoId={youtbueID[0]}
-            opts={opts}
-            onReady={onReady}
-            onEnd={onStopVideo}
-          /> */}
         </Card>
       </Grid>
 
+      <Grid container item style={{ minHeight: '30vh' }}>
+        <List component="nav" style={{ width: '100%' }}>
+          {!!ExList && ExList.map((v, k) => (
+            <ExListItem
+              key={`${v.reps}${k}`}
+              id={k}
+              latest={k === ExList.length - 1}
+              content={(v.hasOwnProperty('weight') && !!v.weight) ? `${v.weight} Kgs X ${v.reps} ${thisExerciseDetail.time ? 'secs' : ''} Reps` : `${v.reps}   ${thisExerciseDetail.time ? 'secs' : ''} Reps`}
+              status="Previous"
+              product={largest === ((v.hasOwnProperty('weight') && !!v.weight) ? 1 * v.weight * v.reps : 1 * v.reps)}
+            />
+          ))}
+        </List>
+      </Grid>
+
+      <Grid container item component="div" className={classes.progressBar}>
+        <ProgressBar
+          message
+          thisExerciseDetail={thisExerciseDetail}
+          ExList={ExList}
+          history={historyForSpecificExercise}
+          progress={thisExerciseDetail && ExList ? (ExList.length / thisExerciseDetail.sets) * 100 : 0}
+        />
+      </Grid>
       <Grid container item direction="column" alignItems="stretch">
         <Grid>
           {!!select && select.map(v => ((v.label === 'weight' ? (thisExerciseDetail.progression_model.toUpperCase().includes('LINEAR') || thisExerciseDetail.progression_model.toUpperCase().includes('DOUBLE')) : true)
@@ -178,32 +195,6 @@ const ExerciseStructure = (props) => {
           }
         </Grid>
       </Grid>
-
-      <Grid container item>
-        <List component="nav" style={{ width: '100%' }}>
-          {!!ExList && ExList.map((v, k) => (
-            <ExListItem
-              key={`${v.reps}${k}`}
-              id={k}
-              latest={k === ExList.length - 1}
-              content={(v.hasOwnProperty('weight') && !!v.weight) ? `${v.weight} Kgs X ${v.reps} ${thisExerciseDetail.time ? 'secs' : ''} Reps` : `${v.reps}   ${thisExerciseDetail.time ? 'secs' : ''} Reps`}
-              status="Previous"
-              product={largest === ((v.hasOwnProperty('weight') && !!v.weight) ? 1 * v.weight * v.reps : 1 * v.reps)}
-            />
-          ))}
-        </List>
-      </Grid>
-
-      <Grid container item component="div" className={classes.progressBar}>
-        <ProgressBar
-          message
-          thisExerciseDetail={thisExerciseDetail}
-          ExList={ExList}
-          history={historyForSpecificExercise}
-          progress={thisExerciseDetail && ExList ? (ExList.length / thisExerciseDetail.sets) * 100 : 0}
-        />
-      </Grid>
-
     </Grid>
   );
 };

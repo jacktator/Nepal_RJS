@@ -19,14 +19,10 @@ import { validation } from '../../../HOC/Validation';
 const Component = (props) => {
   const {
     theme, loading, email, password, rePassword, onChangeHandle, onRegisterClick, onErrorChangeHandle,
-    errorDialogOpenStatus, handleErrorClose,
+    errorDialogOpenStatus, handleErrorClose, emailError, passwordError, rePasswordError,
   } = props;
   const { logo } = theme;
   const tstyles = styles(theme);
-  const emailError = validation('email', email).error;
-  const passwordError = validation('password', password).error;
-  const rePasswordError = password === rePassword;
-  const onClickValidation = (emailError && passwordError && rePasswordError);
 
   return (
     <div style={tstyles.container}>
@@ -51,22 +47,24 @@ const Component = (props) => {
                 <Grid container alignContent="center">
                   <HOCInputFile
                     onChangeHandle={onChangeHandle}
-                    onErrorChangeHandle={onErrorChangeHandle}
                     value={email}
+                    error={emailError.error}
+                    resDiscription={emailError.resDiscription}
                     type="email"
                     fullwidth
                   />
                   <HOCInputFile
                     onChangeHandle={onChangeHandle}
-                    onErrorChangeHandle={onErrorChangeHandle}
+                    error={passwordError.error}
+                    resDiscription={passwordError.resDiscription}
                     value={password}
                     type="password"
                     fullwidth
                   />
                   <HOCInputFile
                     onChangeHandle={onChangeHandle}
-                    onErrorChangeHandle={onErrorChangeHandle}
-                    confirm={password}
+                    error={rePasswordError.error}
+                    resDiscription={rePasswordError.resDiscription}
                     value={rePassword}
                     type="rePassword"
                     fullwidth
@@ -83,7 +81,7 @@ const Component = (props) => {
         </Grid>
 
         <Grid container style={{ height: '10vh' }} justify="center" alignItems="center">
-          {loading ? <CircularProgress size={30} /> : <Button onClick={onClickValidation ? onRegisterClick : (event) => { event.preventDefault(); }} disabled={!onClickValidation} fullWidth style={tstyles.button} color="primary">Register</Button>}
+          {loading ? <CircularProgress size={30} /> : <Button onClick={onRegisterClick} fullWidth style={tstyles.button} color="primary">Register</Button>}
         </Grid>
 
       </Grid>

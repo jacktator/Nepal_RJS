@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Component from './Component';
 import { registerAction, queryRegister, errorHappened } from '../../action';
-
+import { validation } from '../../../HOC/Validation';
 
 class Register extends React.PureComponent {
   constructor(props) {
@@ -13,37 +13,65 @@ class Register extends React.PureComponent {
       email: '',
       password: '',
       rePassword: '',
-      emailError: true,
-      passwordError: true,
-      rePasswordError: false,
+      emailError: {
+        error: true,
+        resDiscription: '',
+      },
+      passwordError: {
+        error: true,
+        resDiscription: '',
+      },
+      rePasswordError: {
+        error: true,
+        resDiscription: '',
+      },
       loading: false,
+      clicked: false,
     };
     this.onChangeHandle = this.onChangeHandle.bind(this);
     this.onRegisterClick = this.onRegisterClick.bind(this);
     this.onErrorChangeHandle = this.onErrorChangeHandle.bind(this);
     this.handleErrorClose = this.handleErrorClose.bind(this);
+    this.handleCheckInputs = this.handleCheckInputs.bind(this);
   }
 
   onChangeHandle(event) {
     this.setState({ [event.target.name]: event.target.value });
+    this.state.clicked && this.onErrorChangeHandle(event);
   }
 
-  onErrorChangeHandle(event, error) {
-    this.setState({ [`${event.target.name}Error`]: error });
+  onErrorChangeHandle(event) {
+    if (event.target.name === 'rePassword') {
+      const rePasswordError = event.target.value === this.state.password ? validation('password', event.target.value) : { error: false, resDiscription: 'should be same as password' };
+      this.setState({ rePasswordError });
+      return;
+    }
+    this.setState({ [`${event.target.name}Error`]: validation(event.target.name, event.target.value) });
   }
 
   onRegisterClick() {
-    const { email, password, rePassword } = this.state;
-    if (password !== rePassword) {
-      // this.setState({ rePasswordError: true });
+    const { emailError, passwordError, rePasswordError } = this.handleCheckInputs();
+    if (!emailError.error && !passwordError.error && !rePasswordError.error) {
+      this.setState({
+        emailError, passwordError, rePasswordError, clicked: true,
+      });
       return;
     }
+    const { email, password } = this.state;
     this.props.queryRegister(true);
     this.props.registerAction({
       username: email,
       email,
       password,
     });
+  }
+
+  handleCheckInputs() {
+    const { email, password, rePassword } = this.state;
+    const emailError = validation('email', email);
+    const passwordError = validation('password', password);
+    const rePasswordError = rePassword === password ? validation('password', rePassword) : { error: false, resDiscription: 'should be same as password' };
+    return { emailError, passwordError, rePasswordError };
   }
 
   handleErrorClose() {
@@ -66,9 +94,11 @@ class Register extends React.PureComponent {
           onChangeHandle={this.onChangeHandle}
           onRegisterClick={this.onRegisterClick}
           onErrorChangeHandle={this.onErrorChangeHandle}
-          errorOrNot={emailError && !passwordError && rePasswordError}
           errorDialogOpenStatus={error}
           handleErrorClose={this.handleErrorClose}
+          emailError={emailError}
+          passwordError={passwordError}
+          rePasswordError={rePasswordError}
         />
       )
     );

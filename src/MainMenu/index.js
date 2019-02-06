@@ -9,30 +9,24 @@ import SpeedDialTooltipOpen from '../HOC/speedDial';
 
 import styles from './styles';
 
-const menu = (theme) => {
-  const {
-    workout, profile, question, rehab, content, FAQ,
-  } = theme.mainMenu;
-  return ([
-    {
-      name: 'Workout', color: workout.color, opacity: workout.opacity, to: '/workout',
-    },
-    {
-      name: 'Rehab', color: rehab.color, opacity: rehab.opacity, to: '/rehab',
-    },
-    {
-      name: 'Profile', color: profile.color, opacity: profile.opacity, to: '/user/profile',
-    },
-    {
-      name: 'Question', color: question.color, opacity: question.opacity, to: '/mainmenu',
-    },
-    {
-      name: 'Content', color: content.color, opacity: content.opacity, to: '/mainmenu',
-    },
-    {
-      name: 'FAQ', color: FAQ.color, opacity: FAQ.opacity, to: '/mainmenu',
-    }]);
-};
+const menu = theme => ([{
+  name: 'Workout', color: theme.mainMenu.workout.color, opacity: theme.mainMenu.workout.opacity, to: '/workout',
+},
+{
+  name: 'Rehab', color: theme.mainMenu.rehab.color, opacity: theme.mainMenu.rehab.opacity, to: '/rehab',
+},
+{
+  name: 'Profile', color: theme.mainMenu.profile.color, opacity: theme.mainMenu.profile.opacity, to: '/user/profile',
+},
+{
+  name: 'Content', color: theme.mainMenu.content.color, opacity: theme.mainMenu.content.opacity, to: '/mainmenu',
+},
+{
+  name: 'Question', color: theme.mainMenu.question.color, opacity: theme.mainMenu.question.opacity, to: '/mainmenu',
+},
+{
+  name: 'FAQ', color: theme.mainMenu.FAQ.color, opacity: theme.mainMenu.FAQ.opacity, to: '/mainmenu',
+}]);
 class Mainmenu extends React.PureComponent {
   render() {
     const { classes, theme } = this.props;

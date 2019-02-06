@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import LinearProgress from '@material-ui/core/LinearProgress';
@@ -15,7 +16,7 @@ import { styles } from './style';
 class index extends React.PureComponent {
   render() {
     const {
-      classes, backgroundImage, tapBarContent, title, top, workout, showBottomButton, midComponent, FooterContent, currentPage, currentWeek, tabsValue, onTagClick, topDiscription, planPage,
+      classes, backgroundImage, tapBarContent, title, top, workout, showBottomButton, midComponent, FooterContent, currentPage, currentWeek, tabsValue, onTagClick, topDiscription, planPage, restartClick,
     } = this.props;
     return (
       <div className={classes.container}>
@@ -23,20 +24,33 @@ class index extends React.PureComponent {
 
           {top && (
             <Grid container className={classes.top} style={{ backgroundImage: `url("${backgroundImage}")` }}>
-              <Grid container className={classes.topInline} justify={planPage ? 'space-between' : 'center'} direction="column">
-                {planPage && (
-                <IconButton className={classes.menuButton} component={Link} to="/mainmenu" color="primary" aria-label="Menu">
-                  <LeftIcon style={{ fontSize: '30px' }} />
-                </IconButton>
-                )}
-                <Typography variant="h5" color="secondary">{title}</Typography>
-                {topDiscription && (
+              <Grid container className={classes.topInline} justify="space-between" direction="column">
+                <Grid container direction="row" justify="space-between">
+
+                  {planPage && (
                   <>
-                    <Typography variant="body2" color="secondary">You are currently at week{currentWeek}</Typography>
-                    <Typography className={classes.progressData} variant="body2" color="secondary">{sessionStorage.progress ? (((sessionStorage.progress - 1) / (sessionStorage.days * 5)) * 100).toFixed(1) : 0 }% completed</Typography>
-                    <LinearProgress className={classes.progressBar} variant="determinate" value={sessionStorage.progress ? (((sessionStorage.progress - 1) / (sessionStorage.days * 5)) * 100) : 0} />
-                  </>
-                )}
+                    <IconButton className={classes.menuButton} component={Link} to="/mainmenu" color="primary" aria-label="Menu">
+                      <LeftIcon style={{ fontSize: '30px' }} />
+                    </IconButton>
+                    {/* <Button style={{ color: 'white' }} onClick={restartClick}>
+                        Restart
+                    </Button> */}
+                </>
+                  )}
+                </Grid>
+
+                <div>
+                  <Typography variant="h5" color="secondary">{title}</Typography>
+                  <div style={{ height: '50px' }}>
+                    {topDiscription && (
+                    <>
+                      <Typography variant="body2" color="secondary">You are currently at week{currentWeek}</Typography>
+                      <Typography variant="body2" color="secondary">{sessionStorage.progress ? (((sessionStorage.progress - 1) / (sessionStorage.days * 5)) * 100).toFixed(1) : 0 }% completed</Typography>
+                      <LinearProgress className={classes.progressBar} variant="determinate" value={sessionStorage.progress ? (((sessionStorage.progress - 1) / (sessionStorage.days * 5)) * 100) : 0} />
+                    </>
+                    )}
+                  </div>
+                </div>
               </Grid>
             </Grid>
           )}
