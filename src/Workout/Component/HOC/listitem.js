@@ -26,12 +26,30 @@ class HOCListItem extends React.PureComponent {
         <Grid container style={tstyles.listItemPaper} component={!data.workout ? Link : 'div'} to={`/workout/exercise/${listID + 1}`}>
 
           <Grid container style={tstyles.itemleft} justify="flex-start" alignContent="space-around" alignItems="center">
-            <Card style={tstyles.picturePlaceholder}>
+            <Card style={Object.assign({ position: 'relative' }, tstyles.picturePlaceholder)}>
+              <CardMedia
+                style={{
+                  height: '100%',
+                  width: '100%',
+                  backgroundSize: 'cover',
+                  position: 'absolute',
+                  zIndex: '10',
+                  filter: 'blur(3px)',
+                }}
+                component="img"
+                onError={(event) => {
+                  event.target.src = 'https://nepal.sk8tech.io/wp-content/uploads/placeholder.png';
+                  console.log(event.target);
+                }}
+                image={`${IMAGE_URL}${id}${`${finalName}`.replace(/ /g, '-')}.png`}
+              />
+
               <CardMedia
                 style={{
                   height: '100%',
                   width: 'auto',
                   backgroundSize: 'cover',
+                  zIndex: '20',
                 }}
                 component="img"
                 onError={(event) => {
