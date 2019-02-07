@@ -169,6 +169,7 @@ class MainRehab extends React.Component {
         currentWeek={currentWeek}
         currentPage={3}
         top
+        dailyPage
         FooterContent={1}
         workout
         showBottomButton

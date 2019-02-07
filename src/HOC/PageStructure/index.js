@@ -16,7 +16,7 @@ import { styles } from './style';
 class index extends React.PureComponent {
   render() {
     const {
-      classes, backgroundImage, tapBarContent, title, top, workout, showBottomButton, midComponent, FooterContent, currentPage, currentWeek, tabsValue, onTagClick, topDiscription, planPage, restartClick,
+      classes, backgroundImage, tapBarContent, title, top, workout, showBottomButton, dailyPage, midComponent, FooterContent, currentPage, currentWeek, tabsValue, onTagClick, topDiscription, planPage, restartClick,
     } = this.props;
     return (
       <div className={classes.container}>
@@ -27,9 +27,9 @@ class index extends React.PureComponent {
               <Grid container className={classes.topInline} justify="space-between" direction="column">
                 <Grid container direction="row" justify="space-between">
 
-                  {planPage && (
+                  {(planPage || dailyPage) && (
                   <>
-                    <IconButton className={classes.menuButton} component={Link} to="/mainmenu" color="primary" aria-label="Menu">
+                    <IconButton className={classes.menuButton} component={Link} to={dailyPage ? '/workout' : '/mainmenu'} color="primary" aria-label="Menu">
                       <LeftIcon style={{ fontSize: '30px' }} />
                     </IconButton>
                     {/* <Button style={{ color: 'white' }} onClick={restartClick}>
