@@ -26,11 +26,11 @@ class HOCListItem extends React.PureComponent {
         <Grid container style={tstyles.listItemPaper} component={!data.workout ? Link : 'div'} to={`/workout/exercise/${listID + 1}`}>
 
           <Grid container style={tstyles.itemleft} justify="flex-start" alignContent="space-around" alignItems="center">
-            <Card style={Object.assign({ position: 'relative' }, tstyles.picturePlaceholder)}>
+            <Card style={Object.assign({ position: 'relative', alignItems: 'center' }, tstyles.picturePlaceholder)}>
               <CardMedia
                 style={{
-                  height: '100%',
-                  width: '100%',
+                  height: '98%',
+                  width: '98%',
                   backgroundSize: 'cover',
                   position: 'absolute',
                   zIndex: '10',
