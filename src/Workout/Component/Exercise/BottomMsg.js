@@ -94,7 +94,8 @@ class BottomMsg extends React.Component {
     console.log('goal_ini', goal_ini);
 
     // new reps will be changed based on last week
-    const new_msg = this.linearWeekProgression(history, goal_ini);
+    const isWeekChange = ExList && ExList.length > 0 ? false:true;
+    const new_msg = this.linearWeekProgression(history, goal_ini, isWeekChange);
 
     // at least one set done
     if (ExList) {
@@ -104,15 +105,15 @@ class BottomMsg extends React.Component {
       // last set begins
       } if (ExList.length === sets - 1) {
         return (`Last Set - Do as many reps as possible with ${new_msg}`);
-      // others
       }
+      // others
       return (`Set ${ExList.length + 1} - Aim for ${new_msg} ${goal_ini} reps`);
     }
     return (`Set 1 - Aim for ${new_msg} ${goal_ini} reps`);
   }
 
   // week-week linear progression
-  linearWeekProgression(history, goal_ini) {
+  linearWeekProgression(history, goal_ini, isWeekChange) {
     console.log('check linear week progression');
     console.log('history', history);
 
@@ -124,20 +125,18 @@ class BottomMsg extends React.Component {
       }
       console.log('hhhhhhhhh', his);
 
-      const linearSetRule = [-10,-7.5,-7.5,-5,-5,-2.5,-2.5,0,0,0,0,2.5,2.5,5];
-      const linearWeekRule = [-10,-7.5,-7.5,-5,-2.5,-2.5,0,0,2.5,2.5,5,5,5,7.5];
+      const changeRule = isWeekChange ? [-10,-7.5,-7.5,-5,-2.5,-2.5,0,0,2.5,2.5,5,5,5,7.5] : [-10,-7.5,-7.5,-5,-5,-2.5,-2.5,0,0,0,0,2.5,2.5,5];
+
       // compare with goal
       if (his.length && his[his.length - 1]) {
         // compare with the last history
         const len = his[his.length - 1].length;
-        console.log("aaaaaaaaaaa0", his[his.length - 1][len - 1].substring(1, his[his.length - 1][len - 1].length - 1));
+        console.log('aaaaaaaaaaa0', his[his.length - 1][len - 1].substring(1, his[his.length - 1][len - 1].length - 1));
         // old weight value + modification value
-        const last_history = his[his.length - 1][len - 1].substring(1, his[his.length - 1][len - 1].length - 1).split(",");
+        const last_history = his[his.length - 1][len - 1].substring(1, his[his.length - 1][len - 1].length - 1).split(',');
         const old_weight = parseInt(last_history[1]);
-        console.log("old_weight", old_weight);
         const new_index = parseInt(last_history[0]) - goal_ini + 7;
-        console.log("new_index", new_index);
-        const new_weight = old_weight + linearSetRule[new_index >= 0 && new_index <= 13 ? new_index:(new_index < 0 ? 0:13)];
+        const new_weight = old_weight + changeRule[new_index >= 0 && new_index <= 13 ? new_index:(new_index < 0 ? 0:13)];
         const new_msg = new_weight >= 0 ? `${new_weight} Kg` : '0 Kg';
         return (new_msg);
       }
