@@ -64,7 +64,7 @@ class index extends React.PureComponent {
       this.props.createQuestionnaire(files, this.toMainmenu);
       return;
     }
-    this.setState({ open: true, title: 'error', discription: 'You need to finish each question' });
+    this.setState({ open: true, title: '', discription: 'You need to finish each question' });
   }
 
   handleBack() {

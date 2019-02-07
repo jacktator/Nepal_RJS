@@ -34,7 +34,7 @@ class HOCListItem extends React.PureComponent {
                   backgroundSize: 'cover',
                   position: 'absolute',
                   zIndex: '10',
-                  filter: 'blur(3px)',
+                  filter: 'blur(3px) opacity(0.6)',
                 }}
                 component="img"
                 onError={(event) => {

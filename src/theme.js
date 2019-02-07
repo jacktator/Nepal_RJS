@@ -17,7 +17,7 @@ const theme = createMuiTheme({
     },
     text: {
       primary: '#222D65',
-      secondary: '#222D65',
+      secondary: 'rgba(34, 45, 101, 0.5)',
       disabled: 'rgba(0, 0, 0, 0.38)',
       hint: 'rgba(0, 0, 0, 0.38)',
     },
@@ -53,27 +53,27 @@ const theme = createMuiTheme({
   mainMenu: {
     fontColor: 'darkcyan',
     workout: {
-      color: 'rgba(0,96,100)',
+      color: 'rgb(0,96,100)',
       opacity: 0.5,
     },
     profile: {
-      color: 'rgba(111,249,255)',
+      color: 'rgb(111,249,255)',
       opacity: 0.4,
     },
     question: {
-      color: 'rgba(38,198,218)',
+      color: 'rgb(38,198,218)',
       opacity: 0.3,
     },
     rehab: {
-      color: 'rgba(86,200,216)',
+      color: 'rgb(86,200,216)',
       opacity: 0.5,
     },
     content: {
-      color: 'rgba(0,172,193)',
+      color: 'rgb(0,172,193)',
       opacity: 0.4,
     },
     FAQ: {
-      color: 'rgba(136,255,255)',
+      color: 'rgb(136,255,255)',
       opacity: 0.3,
     },
   },
