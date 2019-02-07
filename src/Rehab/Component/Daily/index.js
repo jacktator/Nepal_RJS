@@ -198,7 +198,7 @@ class MainRehab extends React.Component {
     const injuryName = acf && acf.injury;
     const {
       currentWeek, midPartTabsValue, showDiscription, title, injurySelected, ExList,
-      postureSelected, exerciseSelected, dialogData, showChangeDialog,
+      postureSelected, exerciseSelected, dialogData, showChangeDialog, dialogIndex,
     } = this.state;
     return (
     <>
@@ -245,6 +245,9 @@ class MainRehab extends React.Component {
                   handleBack={this.handleChangeDialogBack}
                   selected={exerciseSelected}
                   data={dialogData}
+                  dialogIndex={dialogIndex}
+                  injuryName={injuryName}
+                  postureName={postureName}
                 />
                 )}
             />

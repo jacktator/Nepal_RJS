@@ -4,11 +4,14 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import MobileStepper from '@material-ui/core/MobileStepper';
 import Paper from '@material-ui/core/Paper';
+import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { IMAGE_URL } from '../../../config';
+
 
 const styles = theme => ({
   root: {
@@ -34,9 +37,10 @@ const styles = theme => ({
 class SelectRehabDialog extends React.PureComponent {
   render() {
     const {
-      classes, theme, handleBack, handleNext, selected, data,
+      classes, theme, handleBack, handleNext, selected, data, postureName, injuryName, dialogIndex,
     } = this.props;
     const maxSteps = data.length - 1;
+    console.log(data);
     return (
       data.length > 0
         ? (
@@ -44,9 +48,13 @@ class SelectRehabDialog extends React.PureComponent {
             <Paper square elevation={0} className={classes.header}>
               <Typography>{data[selected].name}</Typography>
             </Paper>
-            <img
+            <CardMedia
               className={classes.img}
-              src="/image/workoutExercise.jpg"
+              image={`${IMAGE_URL}${dialogIndex > 3 ? 'posture' : 'injury'}-${dialogIndex > 3 ? postureName : injuryName}-${`${data[selected].name}`.replace(/ /g, '-')}.png`}
+              onError={(event) => {
+                event.target.src = 'https://nepal.sk8tech.io/wp-content/uploads/placeholder.png';
+              }}
+              component="img"
               alt={data[selected].name}
             />
             <MobileStepper

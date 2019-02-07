@@ -20,7 +20,7 @@ class MidPartComponent extends React.PureComponent {
           onChange={onTagClick}
           scrollButtons="auto"
           style={{
-            height: '30px', minHeight: '30px', backgroundColor: theme.midPartNavigator.backgroundColor,
+            height: '36px', minHeight: '36px', backgroundColor: theme.midPartNavigator.backgroundColor,
           }}
         >
           {tapBarContent.map((v, k) => (
