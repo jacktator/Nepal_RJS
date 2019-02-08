@@ -37,7 +37,7 @@ class Details extends React.PureComponent {
     }
     if (this.props.historyProgrammeList[index] && this.props.historyProgrammeList[index][`day_${dayInWeek * 1 + 1}_exe`]) {
       const str = this.props.historyProgrammeList[index][`day_${dayInWeek * 1 + 1}_exe`];
-      const m = this.props.historyProgrammeList.length !== 0 && dealStringToExerciseArray(str.substring(1, str.length - 1).split(';'));
+      const m = this.props.historyProgrammeList.length !== 0 && dealStringToExerciseArray(str.substring(0, str.length - 1).split(';'));
       this.setState({ render: m });
     }
   }

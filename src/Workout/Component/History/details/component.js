@@ -34,7 +34,7 @@ const component = (props) => {
                 : (
                   <ListItem key={`${kk}${m[0]}`}>
                     <ListItemText
-                      primary={<Typography variant="body2">{`reps: ${m[0]}  sets: ${m[1]}`}</Typography>}
+                      primary={<Typography variant="body2">{`reps: ${m[0]}  weight: ${m[1]}`}</Typography>}
                     />
 
                   </ListItem>
