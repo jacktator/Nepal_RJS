@@ -55,6 +55,12 @@ class BottomMsg extends React.Component {
   // set-set home progression
   homeProgression(ExList, sets, reps, history) {
     console.log('Home--ExList', ExList);
+
+    // finish exercise
+    if (ExList && ExList.length === sets) {
+      return ('Well done !');
+    }
+
     // if home exercises has 'till failture'
     if (!/^[0-9]*$/.test(reps.split(' ')[0])) {
       return ('Do as much as possible !');
@@ -68,14 +74,11 @@ class BottomMsg extends React.Component {
 
     // at least one set done
     if (ExList) {
-      // finish exercise
-      if (ExList.length === sets) {
-        return ('Well done !');
       // last set begins
-      } if (ExList.length === sets - 1) {
+      if (ExList.length === sets - 1) {
         return ('Last Set - Do as many reps as possible !');
-      // others
       }
+      // others
       return (`Set ${ExList.length + 1} - Aim at ${new_reps}`);
     }
     return (`Set 1 - Aim at ${new_reps}`);
@@ -85,6 +88,12 @@ class BottomMsg extends React.Component {
   linearProgression(ExList, sets, reps, history) {
     // all weight comes from history, not prescribed
     console.log('Linear--ExList', ExList);
+
+    // finish exercise
+    if (ExList && ExList.length === sets) {
+      return ('Well done !');
+    }
+
     // if linear exercises has 'till failture'
     if (!/^[0-9]*$/.test(reps.split('-')[0])) {
       return ('Do as much as possible !');
@@ -99,11 +108,8 @@ class BottomMsg extends React.Component {
 
     // at least one set done
     if (ExList) {
-      // finish exercise
-      if (ExList.length === sets) {
-        return ('Well done !');
       // last set begins
-      } if (ExList.length === sets - 1) {
+      if (ExList.length === sets - 1) {
         return (`Last Set - Do as many reps as possible with ${new_msg}`);
       }
       // others
@@ -177,6 +183,12 @@ class BottomMsg extends React.Component {
   // set-set double progression
   doubleProgression(ExList, sets, reps, history) {
     console.log('Double--ExList', ExList);
+
+    // finish exercise
+    if (ExList && ExList.length === sets) {
+      return ('Well done !');
+    }
+
     // if double exercises has 'till failture'
     if (!/^[0-9]*$/.test(reps.split('-')[0])) {
       return ('Do as much as possible !');
@@ -190,11 +202,8 @@ class BottomMsg extends React.Component {
 
     // at least one set done
     if (ExList) {
-      // finish exercise
-      if (ExList.length === sets) {
-        return ('Well done !');
       // last set begins
-      } if (ExList.length === sets - 1) {
+      if (ExList.length === sets - 1) {
         return ('Last Set - Do as many reps as possible !');
       // others
       }
