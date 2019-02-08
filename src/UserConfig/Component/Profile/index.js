@@ -16,6 +16,7 @@ import {
 } from '../../action';
 import Component from './Component';
 import ConditionDialog from './condition';
+import Edit from './edit';
 
 class UserProfile extends React.PureComponent {
   constructor(props) {
@@ -49,6 +50,8 @@ class UserProfile extends React.PureComponent {
     this.redirectToLogout = this.redirectToLogout.bind(this);
     this.openConditionDialog = this.openConditionDialog.bind(this);
     this.closeConditionDialog = this.closeConditionDialog.bind(this);
+    this.updateDoD = this.updateDoD.bind(this);
+    this.handleErrorUpdatePassword = this.handleErrorUpdatePassword.bind(this);
   }
 
   componentDidMount() {
@@ -74,6 +77,10 @@ class UserProfile extends React.PureComponent {
     this.setState({ [event.target.name]: event.target.value });
   }
 
+  updateDoD(v) {
+    this.setState({ dob: v });
+  }
+
   openUpdataInfoDialog() {
     this.setState({ updateInfoOpen: true });
   }
@@ -91,11 +98,11 @@ class UserProfile extends React.PureComponent {
   }
 
   openErrorDialog() {
-    this.setState({ updatePasswordOpen: true });
+    this.setState({ error: true });
   }
 
   closeErrorDialog() {
-    this.setState({ updatePasswordOpen: false });
+    this.setState({ error: false });
   }
 
   openConditionDialog() {
@@ -147,13 +154,23 @@ class UserProfile extends React.PureComponent {
       return;
     }
     if (!passwordError.error) {
-      this.setState({ errorDiscription: passwordError.discription });
+      this.setState({ errorDiscription: passwordError.resDiscription });
       this.openErrorDialog();
       return;
     }
     this.props.setQueryProfile(true);
     this.closeUpdataPasswordDialog();
-    this.props.handleUpdatePassword({ password: oldPassword, newPassword }, this.redirectToLogout);
+    this.props.handleUpdatePassword(
+      { password: oldPassword, newPassword },
+      this.redirectToLogout,
+      this.handleErrorUpdatePassword,
+    );
+  }
+
+  handleErrorUpdatePassword() {
+    this.setState({ errorDiscription: 'old password is wrong' });
+    this.setState({ oldPassword: '', newPassword: '', rePassword: '' });
+    this.openErrorDialog();
   }
 
   redirectToLogout() {
@@ -164,7 +181,7 @@ class UserProfile extends React.PureComponent {
   render() {
     const { queryProfile } = this.props;
     const {
-      updateInfoOpen, updatePasswordOpen, name, dob, weight, gender, oldPassword, newPassword, rePassword, error, errorDiscription, conditionOpen,
+      updateInfoOpen, updatePasswordOpen, name, dob, weight, oldPassword, newPassword, rePassword, error, errorDiscription, conditionOpen,
     } = this.state;
     return (
       <>
@@ -173,112 +190,33 @@ class UserProfile extends React.PureComponent {
           handleClose={this.closeConditionDialog}
         />
         <Loading open={queryProfile} />
-        <Dialog
-          open={error}
-          title="Error"
-          loadingStatus={false}
-          discription={errorDiscription}
-          handleClose={this.closeErrorDialog}
-        />
-        <Dialog
+
+        <Edit
           open={updateInfoOpen}
           handleClose={this.closeUpdataInfoDialog}
-          loadingStatus={queryProfile}
-          title="Edit information"
-          discription=""
-          other
-          otherClickFunction={this.onInfoUpdateOKClick}
-          media={(
-            <div style={{ padding: '24px' }}>
-              <Typography style={{ marginTop: '12px' }} color="primary" variant="body1">NAME</Typography>
-              <Input
-                value={name}
-                name="name"
-                onChange={this.updataState}
-                inputProps={{
-                  'aria-label': 'Description',
-                }}
-              />
-              <Typography style={{ marginTop: '12px' }} color="primary">GENDER</Typography>
-              <FormControl component="fieldset">
-                <RadioGroup
-                  aria-label="Gender"
-                  name="gender"
-                  value={gender}
-                  onChange={this.updataState}
-                >
-                  <FormControlLabel value="Female" control={<Radio color="primary" />} label="Female" />
-                  <FormControlLabel value="Male" control={<Radio color="primary" />} label="Male" />
-                  <FormControlLabel value="Other" control={<Radio color="primary" />} label="Other" />
-                </RadioGroup>
-              </FormControl>
-              <Typography style={{ marginTop: '12px' }} color="primary">DoB</Typography>
-              <Input
-                value={dob}
-                name="dob"
-                onChange={this.updataState}
-                inputProps={{
-                  'aria-label': 'Description',
-                }}
-              />
-              <Typography style={{ marginTop: '12px' }} color="primary">WEIGHT</Typography>
-              <Input
-                value={weight}
-                name="weight"
-                onChange={this.updataState}
-                inputProps={{
-                  'aria-label': 'Description',
-                }}
-              />
-            </div>
-          )}
-        />
-        <Dialog
-          open={updatePasswordOpen}
-          handleClose={this.closeUpdataPasswordDialog}
-          loadingStatus={queryProfile}
-          title="Change password"
-          other
-          otherClickFunction={this.onPassUpdateOkclick}
-          discription=""
-          media={(
-            <div style={{ padding: '24px' }}>
-              <Typography color="primary">Old Password</Typography>
-              <Input
-                value={oldPassword}
-                name="oldPassword"
-                onChange={this.updataState}
-                inputProps={{
-                  'aria-label': 'Description',
-                }}
-              />
-              <Typography color="primary">New Password</Typography>
-              <Input
-                value={newPassword}
-                name="newPassword"
-                onChange={this.updataState}
-                inputProps={{
-                  'aria-label': 'Description',
-                }}
-              />
-              <Typography color="primary">Repeat Password</Typography>
-              <Input
-                value={rePassword}
-                name="rePassword"
-                onChange={this.updataState}
-                inputProps={{
-                  'aria-label': 'Description',
-                }}
-              />
-            </div>
-          )}
+          handleSave={this.onInfoUpdateOKClick}
+          updateDoD={this.updateDoD}
+          dob={dob}
+          weight={weight}
+          name={name}
+          error={error}
+          updataState={this.updataState}
+          closeUpdataPasswordDialog={this.closeUpdataPasswordDialog}
+          onPassUpdateOkclick={this.onPassUpdateOkclick}
+          updatePasswordOpen={updatePasswordOpen}
+          queryProfile={queryProfile}
+          errorDiscription={errorDiscription}
+          closeErrorDialog={this.closeErrorDialog}
+          oldPassword={oldPassword}
+          rePassword={rePassword}
+          newPassword={newPassword}
+          openPassword={this.openUpdataPasswordDialog}
         />
         <Component
           {...this.state}
           {...this.props}
           update={this.updataState}
           openInfo={this.openUpdataInfoDialog}
-          openPassword={this.openUpdataPasswordDialog}
           closeInfo={this.closeUpdataInfoDialog}
           closePassword={this.closeUpdataPasswordDialog}
           handelAvatarChange={this.handelAvatarChange}

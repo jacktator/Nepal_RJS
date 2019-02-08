@@ -23,7 +23,7 @@ export const changeGender = data => ({ type: 'SET_GENDER', payload: data });
 export const changeAge = data => ({ type: 'SET_AGE', payload: data });
 export const setQueryProfile = data => ({ type: 'QUERY_PROFILE', payload: data });
 
-export const loginAction = (userData, callBack) => (dispatch) => {
+export const loginAction = (userData, callBack, catchCallback) => (dispatch) => {
   axios.post('https://nepal.sk8tech.io/wp-json/jwt-auth/v1/token/', userData)
     .then((res) => {
       console.log(res);
@@ -36,6 +36,7 @@ export const loginAction = (userData, callBack) => (dispatch) => {
     .catch((err) => {
       dispatch(queryLogin(false));
       dispatch(errorHappened(true));
+      catchCallback();
       console.log(err);
     });
 };
@@ -108,9 +109,13 @@ export const updateUserData = (data, callBack) => (dispatch) => {
     }).catch(error => console.log(error));
 };
 
-export const handleUpdatePassword = (data, callBack) => (dispatch) => {
+export const handleUpdatePassword = (data, callBack, catchCallback) => (dispatch) => {
   const { password, newPassword } = data;
-  dispatch(loginAction({ username: sessionStorage.user_email, password }, () => updatePassword(newPassword, callBack)));
+  dispatch(loginAction(
+    { username: sessionStorage.user_email, password },
+    () => updatePassword(newPassword, callBack),
+    () => { catchCallback(); dispatch(setQueryProfile(false)); },
+  ));
 };
 
 export const updatePassword = (password, callBack) => (dispatch) => {

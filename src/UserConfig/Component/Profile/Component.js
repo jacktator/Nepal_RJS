@@ -125,24 +125,18 @@ const Profile = (props) => {
             </Grid>
             <Divider className={classes.divider} />
             <Grid item container justify="flex-start">
-              <Typography className={classes.detailedLableHead} variant="h6" color="primary">Age:  </Typography>
-              <Typography variant="h6" color="primary">{age}</Typography>
-            </Grid>
-            <Divider className={classes.divider} />
-            <Grid item container justify="flex-start">
               <Typography className={classes.detailedLableHead} variant="h6" color="primary">DoB:  </Typography>
               <Typography variant="h6" color="primary">{dob}</Typography>
             </Grid>
             <Divider className={classes.divider} />
             <Grid item container justify="flex-start">
-              <Typography className={classes.detailedLableHead} variant="h6" color="primary">weight:  </Typography>
+              <Typography className={classes.detailedLableHead} variant="h6" color="primary">Weight:  </Typography>
               <Typography variant="h6" color="primary">{weight}</Typography>
             </Grid>
             <Divider className={classes.divider} />
           </Grid>
 
           <Grid className={classes.contentContainer} container direction="column" justify="center" alignItems="center">
-            <Button style={{ color: 'red' }} onClick={openPassword}>Change Password</Button>
             <Button color="primary" onClick={openConditionDialog}>View Terms and Conditions</Button>
             <Button color="primary" component={Link} to="/logout">Logout</Button>
           </Grid>
