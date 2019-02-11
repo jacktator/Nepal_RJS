@@ -65,7 +65,8 @@ class ExerciseIndex extends React.Component {
   }
 
   componentDidUpdate(pre) {
-    if (this.props.renderExercises[this.props.match.params.exerciseOrder - 1].day !== undefined) {
+    const thisExerciseDetail = this.props.renderExercises[this.props.match.params.exerciseOrder - 1];
+    if (!thisExerciseDetail && thisExerciseDetail.day !== undefined) {
       window.location.href = `#/workout/daily/${sessionStorage.dayInWeek}`;
     }
     if (pre.match.params.exerciseOrder !== this.props.match.params.exerciseOrder) {
@@ -126,7 +127,7 @@ class ExerciseIndex extends React.Component {
     let result = '';
     const model = this.props.renderExercises[exerciseOrder - 1].progression_model;
     const wei = model.toUpperCase().includes('LINEAR') || model.toUpperCase().includes('DOUBLE');
-    console.log("weight values", wei);
+    console.log('weight values', wei);
     if (!wei) {
       result = showedExercises ? `${showedExercises};(${this.state.reps})` : `(${this.state.reps})`;
     } else {
@@ -167,12 +168,12 @@ class ExerciseIndex extends React.Component {
       if (product > largest) {
         largest = product;
       }
-      console.log("check weight value", weight);
+      console.log('check weight value', weight);
       return ({ reps: b[0], weight: b.length > 1 ? b[1] : null });
     })];
-    const thisExerciseDetail = renderExercises[exerciseOrder - 1];
+    const thisExerciseDetail = renderExercises[exerciseOrder - 1] || {};
     const imageId = thisExerciseDetail.id;
-    const finishCurrentExercise = res.length >= thisExerciseDetail.sets * 1;
+    const finishCurrentExercise = thisExerciseDetail && (res.length >= thisExerciseDetail.sets * 1);
     const select = [
       {
         label: 'weight',

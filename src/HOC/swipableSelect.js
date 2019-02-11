@@ -62,7 +62,7 @@ class SwipeableTemporaryDrawer extends React.Component {
 
   render() {
     const {
-      classes, content, id, unit, label, value,
+      classes, content, id, unit, label, value, profile,
     } = this.props;
     const { bottom } = this.state;
 
@@ -92,7 +92,8 @@ class SwipeableTemporaryDrawer extends React.Component {
           value={value}
           onClick={this.toggleDrawer('bottom', true)}
           InputProps={{
-            classes: { underline: classes.inputFile },
+            style: { height: profile ? '16vmin' : 'unset' },
+            inputProps: { style: { textAlign: 'right' } },
             endAdornment: (
               <InputAdornment position="end">
                 <DropdownIcon />

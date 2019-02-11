@@ -17,25 +17,30 @@ const styles = theme => ({
   root: {
     backgroundColor: theme.profileBackground,
     marginTop: '20%',
-    width: '92%',
+    width: '100%',
     minHeight: '80vh',
   },
   menuButtonLeft: {
+    color: theme.profile.button.color,
     position: 'fixed',
     top: '2vh',
   },
   menuButtonRight: {
-    padding: '12px',
+    color: theme.profile.button.color,
+    padding: '15px',
     position: 'fixed',
     top: '2vh',
     right: '4vw',
   },
   container: {
-    backgroundColor: '#e1e2e1',
+    overflowY: 'hidden',
+    backgroundImage: `url("${theme.profile.backgroundImage}")`,
     flexGrow: 1,
     height: '100vh',
     width: '100vw',
-    overflowY: 'scroll',
+    backgroundPosition: 'center',
+    backgroundSize: 'contain',
+    backgroundRepeat: 'space',
   },
   contentContainer: {
     position: 'relative',
@@ -96,12 +101,12 @@ const Profile = (props) => {
     openConditionDialog,
   } = props;
   return (
-    <Grid container className={classes.container} justify="center" alignItems="center">
+    <Grid container className={classes.container} justify="center" alignItems="flex-end">
       <Paper className={classes.root}>
         <IconButton className={classes.menuButtonLeft} component={Link} to="/mainmenu" color="primary" aria-label="Menu">
           <LeftIcon style={{ fontSize: '30px' }} />
         </IconButton>
-        <Button className={classes.menuButtonRight} color="primary" onClick={openInfo}>Edit</Button>
+        <Button className={classes.menuButtonRight} onClick={openInfo}>Edit</Button>
         <Grid container className={classes.avatarGridContainer} justify="center">
           <Grid className={classes.avatarGridContainer}>
             <Avatar className={classes.avatarContainer} component={Paper} alt="avatar" src={avatar} />
@@ -138,7 +143,7 @@ const Profile = (props) => {
 
           <Grid className={classes.contentContainer} container direction="column" justify="center" alignItems="center">
             <Button color="primary" onClick={openConditionDialog}>View Terms and Conditions</Button>
-            <Button color="primary" component={Link} to="/logout">Logout</Button>
+            <Button color="primary" style={{ color: 'red' }} component={Link} to="/logout">Logout</Button>
           </Grid>
         </Grid>
       </Paper>

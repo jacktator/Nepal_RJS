@@ -10,14 +10,15 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import HistoryIcon from '@material-ui/icons/History';
 import PlayCircleIcon from '@material-ui/icons/PlayCircleFilled';
-import ReactPlayer from 'react-player';
+import YouTubePlayer from 'react-player/lib/players/YouTube';
 // import YouTube from 'react-youtube';
 import History from './history';
 import NumberSelect from '../numberSelect';
 import ExListItem from './ListItem';
 import YoutubeDialog from './youtubeDialog';
 import ProgressBar from './ProgressBar';
-import { IMAGE_URL, VIDEO_URL } from '../../config';
+import { VIDEO_URL } from '../../config';
+
 
 const styles = theme => ({
   card: {
@@ -51,8 +52,8 @@ const ExerciseStructure = (props) => {
     classes, select, ExList, onSaveClick, youtbueID, onOpen, finishCurrentExercise,
     dailyExerciseLength, rehab, onClose, youtubeOpenStatus, title,
     history, thisExerciseDetail, currentExerciseOrder, onFinishAllExercise,
-    historyForSpecificExercise, needYoutube, needHistory, largest, imageLink,
-    getYoutubeLink, onReady, onPlayVideo, onPauseVideo, onStopVideo, playing,
+    historyForSpecificExercise, needHistory, largest, getYoutubeLink, onPlayVideo,
+    onPauseVideo, playing,
   } = props;
   const opts = {
     width: '100%',
@@ -128,16 +129,25 @@ const ExerciseStructure = (props) => {
             <Typography className={classes.inlineT} color="secondary">{`${thisExerciseDetail ? thisExerciseDetail.sets : 0}`} X</Typography>
             <Typography className={classes.inlineT} color="secondary">{`${thisExerciseDetail ? thisExerciseDetail.reps : 0}`}</Typography>
           </Card>
-          <ReactPlayer
+          <YouTubePlayer
             url={`${VIDEO_URL}${youtbueID[0]}`}
-            playing={playing}
-            loop
+            playing
             controls={false}
             width="100%"
             height="100%"
             config={{
               youtube: {
-                playerVars: { showinfo: 1 },
+                playerVars: {
+                  playlist: youtbueID[0],
+                  modestbranding: 1,
+                  showinfo: 0,
+                  autoplay: 1,
+                  controls: 0,
+                  fs: 0,
+                  loop: 1,
+                  rel: 0,
+                  iv_load_policy: 3,
+                },
               },
             }}
           />
@@ -146,16 +156,25 @@ const ExerciseStructure = (props) => {
 
       <Grid container item style={{ minHeight: '30vh' }}>
         <List component="nav" style={{ width: '100%' }}>
-          {!!ExList && ExList.map((v, k) => (
-            <ExListItem
-              key={`${v.reps}${k}`}
-              id={k}
-              latest={k === ExList.length - 1}
-              content={(v.hasOwnProperty('weight') && !!v.weight) ? `${v.weight} Kgs X ${v.reps} ${thisExerciseDetail.time ? 'secs' : ''} Reps` : `${v.reps}   ${thisExerciseDetail.time ? 'secs' : ''} Reps`}
-              status="Previous"
-              product={largest === ((v.hasOwnProperty('weight') && !!v.weight) ? 1 * v.weight * v.reps : 1 * v.reps)}
-            />
-          ))}
+          {!ExList
+            ? (
+              <Typography style={{
+                weight: '100%',
+                textAlign: 'center',
+              }}
+              >Follow the Video to exercise, Add Set once Completed.
+              </Typography>
+            )
+            : ExList.map((v, k) => (
+              <ExListItem
+                key={`${v.reps}${k}`}
+                id={k}
+                latest={k === ExList.length - 1}
+                content={(v.hasOwnProperty('weight') && !!v.weight) ? `${v.weight} Kgs X ${v.reps} ${thisExerciseDetail.time ? 'secs' : ''} Reps` : `${v.reps}   ${thisExerciseDetail.time ? 'secs' : ''} Reps`}
+                status="Previous"
+                product={largest === ((v.hasOwnProperty('weight') && !!v.weight) ? 1 * v.weight * v.reps : 1 * v.reps)}
+              />
+            ))}
         </List>
       </Grid>
 
@@ -170,7 +189,7 @@ const ExerciseStructure = (props) => {
       </Grid>
       <Grid container item direction="column" alignItems="stretch">
         <Grid>
-          {!!select && select.map(v => ((v.label === 'weight' ? (thisExerciseDetail.progression_model.toUpperCase().includes('LINEAR') || thisExerciseDetail.progression_model.toUpperCase().includes('DOUBLE')) : true)
+          {(!!select && Object.keys(thisExerciseDetail).length !== 0) && select.map(v => ((v.label === 'weight' ? (thisExerciseDetail.progression_model.toUpperCase().includes('LINEAR') || thisExerciseDetail.progression_model.toUpperCase().includes('DOUBLE')) : true)
             && (
             <NumberSelect
               key={v.label}

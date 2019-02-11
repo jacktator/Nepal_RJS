@@ -34,7 +34,6 @@ const AlertDialog = (props) => {
           </DialogContentText>
           )}
           {!discription && !media ? <img src="image/Questionnaire/sport.jpg" alt="" width="100%" /> : media}
-          {/* {!!media && media} */}
         </DialogContent>
         <DialogActions>
           <Button

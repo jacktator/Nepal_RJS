@@ -9,13 +9,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import Input from '@material-ui/core/Input';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
 import Grid from '@material-ui/core/Grid';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, DatePicker } from 'material-ui-pickers';
 import HOCDialog from '../../../HOC/Dialog';
@@ -123,6 +117,7 @@ const EditPage = (props) => {
             <DatePicker
               fullWidth
               value={dob}
+              disableFuture
               InputProps={
                 {
                   style: { height: '16vmin' },
@@ -138,19 +133,16 @@ const EditPage = (props) => {
               initialFocusedDate={new Date()}
             />
           </MuiPickersUtilsProvider>
-          <Input
-            style={{ height: '16vmin' }}
-            fullWidth
+          <SwipeableTemporaryDrawer
+            profile
+            id="weight"
+            label="WEIGHT"
             value={weight}
-            name="weight"
             onChange={updataState}
-            inputProps={{
-              style: { textAlign: 'right' },
-              'aria-label': 'Description',
-            }}
-            startAdornment={
-              <Typography color="primary" variant="body1">WEIGHT: </Typography>
-        }
+            unit="kg"
+            content={
+                [...Array(280).keys()].map(v => `${v + 20} kg`)
+              }
           />
         </div>
         <Button style={{ color: 'red' }} disableRipple onClick={openPassword}>Change Password</Button>

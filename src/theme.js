@@ -91,6 +91,10 @@ const theme = createMuiTheme({
   typography: {
     useNextVariants: true,
   },
+  profile: {
+    backgroundImage: 'https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg',
+    button: { color: 'white' },
+  },
 });
 
 export default theme;

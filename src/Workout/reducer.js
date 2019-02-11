@@ -15,7 +15,7 @@ export default function (state = {
   historyProgrammeList: [],
   historyForSpecificExercise: [],
   specificProgrammeHistory: [],
-  youtubeLink: ['_e7AzzwpDUM', '_e7AzzwpDUM'],
+  youtubeLink: ['Lwcqvnc7q58', 'Lwcqvnc7q58'],
   todayExercises: {
     exeLength: '',
     exe_1: '',
