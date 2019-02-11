@@ -80,6 +80,8 @@ const ExerciseStructure = (props) => {
     onOpen('history');
   };
 
+  console.log('ExList------------------', dailyExerciseLength);
+
   return (
     <Grid
       container
@@ -131,7 +133,7 @@ const ExerciseStructure = (props) => {
           </Card>
           <YouTubePlayer
             url={`${VIDEO_URL}${youtbueID[0]}`}
-            playing
+            playing={playing}
             controls={false}
             width="100%"
             height="100%"
@@ -156,7 +158,7 @@ const ExerciseStructure = (props) => {
 
       <Grid container item style={{ minHeight: '30vh' }}>
         <List component="nav" style={{ width: '100%' }}>
-          {!ExList
+          {(!ExList || ExList.length === 0)
             ? (
               <Typography style={{
                 weight: '100%',
@@ -178,7 +180,7 @@ const ExerciseStructure = (props) => {
         </List>
       </Grid>
 
-      <Grid container item component="div" className={classes.progressBar}>
+      <Grid style={{ height: '25vh' }} container item justify="flex-end" direction="column" alignItems="stretch">
         <ProgressBar
           message
           thisExerciseDetail={thisExerciseDetail}
@@ -186,9 +188,8 @@ const ExerciseStructure = (props) => {
           history={historyForSpecificExercise}
           progress={thisExerciseDetail && ExList ? (ExList.length / thisExerciseDetail.sets) * 100 : 0}
         />
-      </Grid>
-      <Grid container item direction="column" alignItems="stretch">
-        <Grid>
+
+        <Grid style={{ minHeight: '20px' }}>
           {(!!select && Object.keys(thisExerciseDetail).length !== 0) && select.map(v => ((v.label === 'weight' ? (thisExerciseDetail.progression_model.toUpperCase().includes('LINEAR') || thisExerciseDetail.progression_model.toUpperCase().includes('DOUBLE')) : true)
             && (
             <NumberSelect
@@ -207,8 +208,8 @@ const ExerciseStructure = (props) => {
             finishCurrentExercise
               ? (
                 currentExerciseOrder * 1 < dailyExerciseLength
-                  ? <Button fullWidth variant="contained" color="primary" component={Link} to={rehab ? `/rehab/training/${currentExerciseOrder * 1 + 1}` : `/workout/exercise/${currentExerciseOrder * 1 + 1}`}><Typography color="secondary">FINISH</Typography></Button>
-                  : <Button fullWidth variant="contained" color="primary" onClick={onFinishAllExercise}><Typography color="secondary">FINISH</Typography></Button>
+                  ? <Button fullWidth variant="contained" color="primary" component={Link} to={rehab ? `/rehab/training/${currentExerciseOrder * 1 + 1}` : `/workout/exercise/${currentExerciseOrder * 1 + 1}`}><Typography color="secondary">FINISHED! Next</Typography></Button>
+                  : <Button fullWidth variant="contained" color="primary" onClick={onFinishAllExercise}><Typography color="secondary">FINISHED! Next</Typography></Button>
               )
               : <Button fullWidth variant="contained" color="primary" onClick={onSaveClick}><Typography color="secondary">SAVE</Typography></Button>
           }

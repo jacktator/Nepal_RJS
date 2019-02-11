@@ -31,13 +31,9 @@ class MainRehab extends React.Component {
       title: '',
       showChangeDialog: false,
       exerciseSelected: 0,
-      renderExercise: [],
       dialogData: [],
       dialogIndex: 0,
       ExList: [],
-      restartDialog: false,
-      queRehab: '',
-      quePosture: '',
     };
     this.midPartTabsValueHandleChange = this.midPartTabsValueHandleChange.bind(this);
     this.handleQuestionnaireClose = this.handleQuestionnaireClose.bind(this);
@@ -64,15 +60,15 @@ class MainRehab extends React.Component {
     this.props.finishQuerryDailyData(true);
     this.props.getDailyRehab(nowDay);
     this.setRenderExercisesState();
-    if (nowDay === 0) {
-      this.props.showQuestionnaireForCreate(true);
-    }
   }
 
   componentDidUpdate(prevProps, prevState) {
     if ((this.state.midPartTabsValue !== prevState.midPartTabsValue) || (this.props.selectedRehabExercises !== prevProps.selectedRehabExercises)) {
       this.setRenderExercisesState();
       this.setRenderExercisesRecord();
+    }
+    if (new Date().getDate - new Date(this.props.selectedRehabExercises.date).getDate >= 7) {
+      this.props.showQuestionnaireForCreate(true);
     }
   }
 
@@ -146,7 +142,8 @@ class MainRehab extends React.Component {
   }
 
   keepRenderExercisesState() {
-    const a = Object.assign({}, JSON.parse(JSON.stringify(this.state.dialogData[this.state.exerciseSelected])));
+    const a = Object.assign({},
+      JSON.parse(JSON.stringify(this.state.dialogData[this.state.exerciseSelected])));
     // const m = [].concat(JSON.parse(JSON.stringify(this.state.renderExercise)));
     const m = [].concat(JSON.parse(JSON.stringify(this.props.renderExercises)));
     m[this.state.dialogIndex] = a;

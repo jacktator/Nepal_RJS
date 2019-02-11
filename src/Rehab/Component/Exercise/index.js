@@ -25,6 +25,7 @@ class ExerciseIndex extends React.PureComponent {
       shortPlayer: null,
       youtube: false,
       title: 'youtube',
+      playing: true,
     };
     this.handleSaveButtonClicked = this.handleSaveButtonClicked.bind(this);
     this.dealRenderExerciseRecord = this.dealRenderExerciseRecord.bind(this);
@@ -64,6 +65,13 @@ class ExerciseIndex extends React.PureComponent {
     this.setState({ [input]: true });
   }
 
+  onPlayVideo() {
+    this.setState({ playing: true });
+  }
+
+  onPauseVideo() {
+    this.setState({ playing: false });
+  }
 
   handleSaveButtonClicked() {
     const m = JSON.parse(JSON.stringify([...this.props.dayRehabExercisesRecords.data]));
@@ -99,6 +107,7 @@ class ExerciseIndex extends React.PureComponent {
     this.props.history.goBack();
   }
 
+
   handleGetYoutubeLink() {
     const exeOrder = this.props.match.params.exerciseOrder;
     const prefix = exeOrder < 4 ? 'injury' : 'posture';
@@ -113,7 +122,7 @@ class ExerciseIndex extends React.PureComponent {
     const tstyles = styles(theme);
     const exeOrder = this.props.match.params.exerciseOrder;
     const exe = this.props.renderExercises[exeOrder];
-    const { title, youtube } = this.state;
+    const { title, youtube, playing } = this.state;
     const {
       name, reps, sets, time,
     } = exe || {
@@ -168,10 +177,9 @@ class ExerciseIndex extends React.PureComponent {
                 finishCurrentExercise={thisExerciseDetail.sets <= ExList.length}
                 currentExerciseOrder={exeOrder}
                 dailyExerciseLength={exerLength}
-                onReady={this.onReady}
                 onPlayVideo={this.onPlayVideo}
-                onPauseVideo={this.onPlayVideo}
-                onStopVideo={this.onStopVideo}
+                playing={playing}
+                onPauseVideo={this.onPauseVideo}
                 rehab
                 getYoutubeLink={this.getYoutubeLink}
                 youtbueID={rehabYoutubeLink}

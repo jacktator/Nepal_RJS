@@ -4,18 +4,12 @@ import { withStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import BottomMsg from '../../Workout/Component/Exercise/BottomMsg';
 
-const styles = {
-  root: {
-    flexGrow: 1,
-  },
-};
-
 const ProgressBar = (props) => {
   const {
-    classes, progress, message, thisExerciseDetail, ExList, history,
+    progress, message, thisExerciseDetail, ExList, history,
   } = props;
   return (
-    <div className={classes.root}>
+    <div>
       {message
           && (
           <BottomMsg
@@ -31,9 +25,8 @@ const ProgressBar = (props) => {
 };
 
 ProgressBar.propTypes = {
-  classes: PropTypes.object.isRequired,
   progress: PropTypes.number.isRequired,
   message: PropTypes.bool,
 };
 
-export default withStyles(styles)(ProgressBar);
+export default ProgressBar;

@@ -93,11 +93,11 @@ class SimpleList extends React.PureComponent {
                 <Typography color="primary"> Mobility</Typography>
               </ListItem>
               <HOClistitem
-                exeData={renderExercise[4] || postureExes.mobility[0]}
-                funcs={() => openDialog(postureExes.mobility, 4)}
-                keepExercise={() => keepExercise(4)}
-                pre={pre ? !renderExercise[4] : false}
-                itemID={4}
+                exeData={renderExercise[(injuryExes instanceof Array) ? 0 : 4] || postureExes.mobility[0]}
+                funcs={() => openDialog(postureExes.mobility, (injuryExes instanceof Array) ? 0 : 4)}
+                keepExercise={() => keepExercise((injuryExes instanceof Array) ? 0 : 4)}
+                pre={pre ? !renderExercise[(injuryExes instanceof Array) ? 0 : 4] : false}
+                itemID={(injuryExes instanceof Array) ? 0 : 4}
                 prefix="posture"
                 postureName={postureName}
 
@@ -107,11 +107,11 @@ class SimpleList extends React.PureComponent {
                 <Typography color="primary"> Mobility</Typography>
               </ListItem>
               <HOClistitem
-                exeData={renderExercise[5] || postureExes.mobility[1]}
-                funcs={() => openDialog(postureExes.mobility, 5)}
-                keepExercise={() => keepExercise(5)}
-                pre={pre ? !renderExercise[5] : false}
-                itemID={5}
+                exeData={renderExercise[(injuryExes instanceof Array) ? 1 : 5] || postureExes.mobility[1]}
+                funcs={() => openDialog(postureExes.mobility, (injuryExes instanceof Array) ? 1 : 5)}
+                keepExercise={() => keepExercise((injuryExes instanceof Array) ? 1 : 5)}
+                pre={pre ? !renderExercise[(injuryExes instanceof Array) ? 1 : 5] : false}
+                itemID={(injuryExes instanceof Array) ? 1 : 5}
                 prefix="posture"
                 postureName={postureName}
 
@@ -121,11 +121,11 @@ class SimpleList extends React.PureComponent {
                 <Typography color="primary"> Release</Typography>
               </ListItem>
               <HOClistitem
-                exeData={renderExercise[6] || postureExes.releaseWork[0]}
-                funcs={() => openDialog(postureExes.releaseWork, 6)}
-                keepExercise={() => keepExercise(6)}
-                pre={pre ? !renderExercise[6] : false}
-                itemID={6}
+                exeData={renderExercise[(injuryExes instanceof Array) ? 2 : 6] || postureExes.releaseWork[0]}
+                funcs={() => openDialog(postureExes.releaseWork, (injuryExes instanceof Array) ? 2 : 6)}
+                keepExercise={() => keepExercise((injuryExes instanceof Array) ? 2 : 6)}
+                pre={pre ? !renderExercise[(injuryExes instanceof Array) ? 2 : 6] : false}
+                itemID={(injuryExes instanceof Array) ? 2 : 6}
                 prefix="posture"
                 postureName={postureName}
 
@@ -135,14 +135,13 @@ class SimpleList extends React.PureComponent {
                 <Typography color="primary"> Strength</Typography>
               </ListItem>
               <HOClistitem
-                exeData={renderExercise[7] || postureExes.strengthEndurance[0]}
-                funcs={() => openDialog(postureExes.strengthEndurance, 7)}
-                keepExercise={() => keepExercise(7)}
-                pre={pre ? !renderExercise[7] : false}
-                itemID={7}
+                exeData={renderExercise[(injuryExes instanceof Array) ? 3 : 7] || postureExes.strengthEndurance[0]}
+                funcs={() => openDialog(postureExes.strengthEndurance, (injuryExes instanceof Array) ? 3 : 7)}
+                keepExercise={() => keepExercise((injuryExes instanceof Array) ? 3 : 7)}
+                pre={pre ? !renderExercise[(injuryExes instanceof Array) ? 3 : 7] : false}
+                itemID={(injuryExes instanceof Array) ? 3 : 7}
                 prefix="posture"
                 postureName={postureName}
-
 
               />
             </List>

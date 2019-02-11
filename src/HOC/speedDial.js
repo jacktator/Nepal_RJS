@@ -35,7 +35,7 @@ const styles = theme => ({
   },
   speedDialRightMainMenu: {
     position: 'absolute',
-    top: theme.spacing.unit * 2.5,
+    top: '4vh',
     right: theme.spacing.unit * 2,
   },
   buttonClass: {
@@ -89,7 +89,8 @@ class SpeedDialTooltipOpen extends React.Component {
   }
 
   handleOpen() {
-    if (!this.state.hidden) {
+    const { hidden } = this.state;
+    if (!hidden) {
       this.setState({
         open: true,
       });

@@ -29,7 +29,7 @@ class ExerciseIndex extends React.Component {
       history: false,
       title: 'youtube',
       shortPlayer: null,
-      playing: null,
+      playing: true,
     };
     this.weightAdd = this.weightAdd.bind(this);
     this.weightMin = this.weightMin.bind(this);
@@ -40,10 +40,8 @@ class ExerciseIndex extends React.Component {
     this.onClose = this.onClose.bind(this);
     this.onOpen = this.onOpen.bind(this);
     this.onFinishAllExercise = this.onFinishAllExercise.bind(this);
-    this.onReady = this.onReady.bind(this);
     this.onPlayVideo = this.onPlayVideo.bind(this);
     this.onPauseVideo = this.onPauseVideo.bind(this);
-    this.onStopVideo = this.onStopVideo.bind(this);
   }
 
   componentDidMount() {
@@ -66,7 +64,7 @@ class ExerciseIndex extends React.Component {
 
   componentDidUpdate(pre) {
     const thisExerciseDetail = this.props.renderExercises[this.props.match.params.exerciseOrder - 1];
-    if (!thisExerciseDetail && thisExerciseDetail.day !== undefined) {
+    if (!thisExerciseDetail || thisExerciseDetail.day !== undefined) {
       window.location.href = `#/workout/daily/${sessionStorage.dayInWeek}`;
     }
     if (pre.match.params.exerciseOrder !== this.props.match.params.exerciseOrder) {
@@ -75,22 +73,12 @@ class ExerciseIndex extends React.Component {
     }
   }
 
-  onReady(event) {
-    this.setState({
-      playing: event.target,
-    }, this.onPlayVideo);
-  }
-
   onPlayVideo() {
     this.setState({ playing: true });
   }
 
   onPauseVideo() {
     this.setState({ playing: false });
-  }
-
-  onStopVideo() {
-    this.state.shortPlayer.playVideo();
   }
 
   onClose(input) {
@@ -239,8 +227,7 @@ class ExerciseIndex extends React.Component {
               onReady={this.onReady}
               onPlayVideo={this.onPlayVideo}
               onPauseVideo={this.onPauseVideo}
-              onStopVideo={this.onStopVideo}
-              playing={this.playing}
+              playing={playing}
             />
 
           </Grid>
