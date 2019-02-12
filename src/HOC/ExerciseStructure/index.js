@@ -74,7 +74,7 @@ const ExerciseStructure = (props) => {
       container
       item
       style={{
-        flex: 1, overflowY: 'scroll', whiteSpace: 'nowrap',
+        flex: 1, overflowY: 'hidden', whiteSpace: 'nowrap',
       }}
       wrap="nowrap"
       direction="column"
