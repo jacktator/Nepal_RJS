@@ -50,14 +50,14 @@ class ResponsiveDialog extends React.Component {
         aria-labelledby="responsive-dialog-title"
       >
         <DialogTitle id="responsive-dialog-title">{title}</DialogTitle>
-        <DialogContent>
+        <DialogContent style={{ height: 'unset' }}>
           <ReactPlayer
             url={`${VIDEO_URL}${youtbueID[1]}`}
             playing
             loop
             controls
+            height="unset"
             width="100%"
-            height="400px"
             config={{
               youtube: {
                 playerVars: { showinfo: 1 },

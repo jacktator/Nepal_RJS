@@ -168,7 +168,7 @@ const ExerciseStructure = (props) => {
         </List>
       </Grid>
 
-      <Grid style={{ height: '25vh' }} container item justify="flex-end" direction="column" alignItems="stretch">
+      <Grid style={{ minHeight: '25vh' }} container item justify="flex-end" direction="column" alignItems="stretch">
         <ProgressBar
           message
           thisExerciseDetail={thisExerciseDetail}
