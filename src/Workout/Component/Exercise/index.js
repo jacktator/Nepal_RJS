@@ -121,10 +121,8 @@ class ExerciseIndex extends React.Component {
     } else {
       result = showedExercises ? `${showedExercises};(${this.state.reps},${this.state.weight})` : `(${this.state.reps},${this.state.weight})`;
     }
-    // const m = { ...this.props.todayExercises, [`exe_${exerciseOrder}`]: result };
     this.props.finishExercisePageQuery(true);
     this.props.updataOneExercise({ exeNum: exerciseOrder, exeData: result }, this.props.historyForSpecificExercise);
-    // this.props.setTodayExercises(m);
   }
 
   onFinishAllExercise() {
@@ -139,7 +137,7 @@ class ExerciseIndex extends React.Component {
 
   render() {
     const {
-      classes, theme, renderExercises, alldayExercises, exercisePageQuery, todayExercises, historyForSpecificExercise, getYoutubeLink, youtubeLink, youtubeDis,
+      classes, theme, renderExercises, exercisePageQuery, todayExercises, historyForSpecificExercise, getYoutubeLink, youtubeLink, youtubeDis,
     } = this.props;
     const {
       weight, reps, youtube, title, history, playing,
@@ -160,7 +158,6 @@ class ExerciseIndex extends React.Component {
       return ({ reps: b[0], weight: b.length > 1 ? b[1] : null });
     })];
     const thisExerciseDetail = renderExercises[exerciseOrder - 1] || {};
-    const imageId = thisExerciseDetail.id;
     const finishCurrentExercise = thisExerciseDetail && (res.length >= thisExerciseDetail.sets * 1);
     const select = [
       {

@@ -13,7 +13,8 @@ import MainComponent from '../../../HOC/PageStructure';
 import SpeedDialTooltipOpen from '../../../HOC/speedDial';
 import { styles } from '../../styles';
 import {
-  setRehabExercisesRecordsByDay, updateRehabRecord, finishAllRehab, finishExerciseSaveQuery, getYoutubeLink,
+  setRehabExercisesRecordsByDay, updateRehabRecord,
+  finishAllRehab, finishExerciseSaveQuery, getYoutubeLink,
 } from '../../actions';
 import Loading from '../../../HOC/Loading';
 
@@ -27,19 +28,18 @@ class ExerciseIndex extends React.PureComponent {
       title: 'youtube',
       playing: true,
     };
-    this.handleSaveButtonClicked = this.handleSaveButtonClicked.bind(this);
-    this.dealRenderExerciseRecord = this.dealRenderExerciseRecord.bind(this);
-    this.returnBack = this.returnBack.bind(this);
-    this.handleFinishAllRehab = this.handleFinishAllRehab.bind(this);
-    this.handleGetYoutubeLink = this.handleGetYoutubeLink.bind(this);
     this.onOpen = this.onOpen.bind(this);
     this.onClose = this.onClose.bind(this);
+    this.returnBack = this.returnBack.bind(this);
     this.onPlayVideo = this.onPlayVideo.bind(this);
     this.onPauseVideo = this.onPauseVideo.bind(this);
+    this.handleFinishAllRehab = this.handleFinishAllRehab.bind(this);
+    this.handleGetYoutubeLink = this.handleGetYoutubeLink.bind(this);
+    this.handleSaveButtonClicked = this.handleSaveButtonClicked.bind(this);
+    this.dealRenderExerciseRecord = this.dealRenderExerciseRecord.bind(this);
   }
 
   componentDidMount() {
-    // this.handleGetYoutubeLink();
     const exeOrder = this.props.match.params.exerciseOrder;
     const exe = this.props.renderExercises[exeOrder];
     const prefix = exeOrder < 4 ? 'injury' : 'posture';
@@ -119,7 +119,8 @@ class ExerciseIndex extends React.PureComponent {
 
   render() {
     const {
-      theme, currentWeek, dayRehabExercisesRecords, posture, injury, rehabExerciseQuery, selectedRehabExercises, rehabYoutubeLink, rehubYoutubeDis,
+      theme, currentWeek, dayRehabExercisesRecords, posture, injury,
+      rehabExerciseQuery, rehabYoutubeLink, rehubYoutubeDis,
     } = this.props;
     const tstyles = styles(theme);
     const exeOrder = this.props.match.params.exerciseOrder;
@@ -130,13 +131,9 @@ class ExerciseIndex extends React.PureComponent {
     } = exe || {
       name: '', reps: '', sets: '', time: '',
     };
-    const prefix = exeOrder < 4 ? 'injury' : 'posture';
-    const imageLink = `${prefix}-${selectedRehabExercises.acf[prefix]}`;
     const thisExerciseDetail = {
       name, sets, reps: reps === 'empty' ? time : reps, time: reps === 'empty',
     };
-    // const queryName = `${prefix} ${selectedRehabExercises.acf[prefix]} ${thisExerciseDetail.name}`;
-    // getYoutubeLink(queryName);
     const mmm = dayRehabExercisesRecords.data || [];
     const ExList = mmm.length !== 0 ? mmm[exeOrder] ? mmm[exeOrder].map(v => ({ reps: v })) : [] : [];
     const exerLength = (posture instanceof Array) ? ((injury instanceof Array) ? 0 : 4) : ((injury instanceof Array) ? 4 : 8);
@@ -146,13 +143,13 @@ class ExerciseIndex extends React.PureComponent {
           open={rehabExerciseQuery}
         />
         <MainComponent
-          backgroundImage={theme.rehabHeader.exercises}
-          progress={exeOrder}
-          tapBarContent={false}
           title="Rehab"
-          currentWeek={currentWeek}
           currentPage={3}
           FooterContent={2}
+          progress={exeOrder}
+          tapBarContent={false}
+          currentWeek={currentWeek}
+          backgroundImage={theme.rehabHeader.exercises}
           midComponent={(
             <Grid container style={{ flex: 1 }} direction="column" justify="center" alignContent="space-between" alignItems="center">
 
@@ -162,7 +159,7 @@ class ExerciseIndex extends React.PureComponent {
                     <IconButton className={tstyles.menuButton} onClick={this.returnBack} color="primary" aria-label="Menu">
                       <LeftIcon style={{ fontSize: '30px' }} />
                     </IconButton>
-                    <Typography className={tstyles.grow} variant="h6" color="primary">Title</Typography>
+                    <Typography className={tstyles.grow} variant="h6" color="primary">{thisExerciseDetail.name}</Typography>
                     <div style={{ minHeight: '56px', minWidth: '56px' }}>
                       <SpeedDialTooltipOpen right primary />
                     </div>
@@ -171,25 +168,25 @@ class ExerciseIndex extends React.PureComponent {
               </Grid>
 
               <ExerciseComponent
-                onFinishAllExercise={this.handleFinishAllRehab}
-                youtubeDiscription={rehubYoutubeDis}
-                step={10}
-                onSaveClick={this.handleSaveButtonClicked}
-                ExList={ExList}
-                thisExerciseDetail={thisExerciseDetail}
-                finishCurrentExercise={thisExerciseDetail.sets <= ExList.length}
-                currentExerciseOrder={exeOrder}
-                dailyExerciseLength={exerLength}
-                onPlayVideo={this.onPlayVideo}
-                playing={playing}
-                onPauseVideo={this.onPauseVideo}
                 rehab
-                getYoutubeLink={this.getYoutubeLink}
-                youtbueID={rehabYoutubeLink}
-                youtubeOpenStatus={youtube}
+                step={10}
                 title={title}
+                ExList={ExList}
+                playing={playing}
                 onOpen={this.onOpen}
                 onClose={this.onClose}
+                youtubeOpenStatus={youtube}
+                youtbueID={rehabYoutubeLink}
+                onPlayVideo={this.onPlayVideo}
+                currentExerciseOrder={exeOrder}
+                dailyExerciseLength={exerLength}
+                onPauseVideo={this.onPauseVideo}
+                getYoutubeLink={this.getYoutubeLink}
+                youtubeDiscription={rehubYoutubeDis}
+                thisExerciseDetail={thisExerciseDetail}
+                onSaveClick={this.handleSaveButtonClicked}
+                onFinishAllExercise={this.handleFinishAllRehab}
+                finishCurrentExercise={thisExerciseDetail.sets <= ExList.length}
               />
 
             </Grid>
@@ -207,10 +204,18 @@ ExerciseIndex.propTypes = {
 
 function mapStateToProps(state) {
   const {
-    dayRehabExercisesRecords, renderExercises, posture, injury, rehabExerciseQuery, selectedRehabExercises, rehabYoutubeLink, rehubYoutubeDis,
+    dayRehabExercisesRecords, renderExercises, posture,
+    injury, rehabExerciseQuery, selectedRehabExercises, rehabYoutubeLink, rehubYoutubeDis,
   } = state.Rehab;
   return {
-    dayRehabExercisesRecords, renderExercises, posture, injury, rehabExerciseQuery, selectedRehabExercises, rehabYoutubeLink, rehubYoutubeDis,
+    dayRehabExercisesRecords,
+    renderExercises,
+    posture,
+    injury,
+    rehabExerciseQuery,
+    selectedRehabExercises,
+    rehabYoutubeLink,
+    rehubYoutubeDis,
   };
 }
 

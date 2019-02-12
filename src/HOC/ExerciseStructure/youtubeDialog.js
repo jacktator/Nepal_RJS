@@ -7,7 +7,6 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
-// import YouTube from 'react-youtube';
 import ReactPlayer from 'react-player';
 import { Typography } from '@material-ui/core';
 import { VIDEO_URL } from '../../config';
@@ -43,13 +42,6 @@ class ResponsiveDialog extends React.Component {
     const {
       fullScreen, open, title, youtbueID, onYoutubeClose, youtubeDiscription,
     } = this.props;
-    const opts = {
-      width: '100%',
-      iv_load_policy: 3,
-      modestbranding: 1,
-      playsinline: 1,
-    };
-    console.log(youtbueID);
     return (
       <Dialog
         fullScreen={fullScreen}
@@ -61,12 +53,9 @@ class ResponsiveDialog extends React.Component {
         <DialogContent>
           <ReactPlayer
             url={`${VIDEO_URL}${youtbueID[1]}`}
-            // eslint-disable-next-line react/jsx-boolean-value
-            playing={true}
-            // eslint-disable-next-line react/jsx-boolean-value
-            loop={true}
-            // eslint-disable-next-line react/jsx-boolean-value
-            controls={true}
+            playing
+            loop
+            controls
             width="100%"
             height="400px"
             config={{

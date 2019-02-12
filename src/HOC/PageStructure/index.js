@@ -32,9 +32,6 @@ class index extends React.PureComponent {
                     <IconButton className={classes.menuButton} component={Link} to={dailyPage ? '/workout' : '/mainmenu'} color="primary" aria-label="Menu">
                       <LeftIcon style={{ fontSize: '30px' }} />
                     </IconButton>
-                    {/* <Button style={{ color: 'white' }} onClick={restartClick}>
-                        Restart
-                    </Button> */}
                 </>
                   )}
                 </Grid>

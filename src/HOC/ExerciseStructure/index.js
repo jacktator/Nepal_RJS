@@ -11,7 +11,6 @@ import Typography from '@material-ui/core/Typography';
 import HistoryIcon from '@material-ui/icons/History';
 import PlayCircleIcon from '@material-ui/icons/PlayCircleFilled';
 import YouTubePlayer from 'react-player/lib/players/YouTube';
-// import YouTube from 'react-youtube';
 import History from './history';
 import NumberSelect from '../numberSelect';
 import ExListItem from './ListItem';
@@ -55,16 +54,6 @@ const ExerciseStructure = (props) => {
     historyForSpecificExercise, needHistory, largest, getYoutubeLink, onPlayVideo,
     onPauseVideo, playing, youtubeDiscription,
   } = props;
-  const opts = {
-    width: '100%',
-    height: '100%',
-    playerVars: {
-      autoplay: 1,
-      controls: 0,
-      fs: 0,
-      loop: 0,
-    },
-  };
   const onYoutubeOpen = () => {
     onPauseVideo && onPauseVideo();
     onOpen('youtube');
@@ -79,8 +68,6 @@ const ExerciseStructure = (props) => {
   const onHistoryOpen = () => {
     onOpen('history');
   };
-
-  console.log('ExList------------------', dailyExerciseLength);
 
   return (
     <Grid
@@ -191,7 +178,9 @@ const ExerciseStructure = (props) => {
         />
 
         <Grid style={{ minHeight: '20px' }}>
-          {(!!select && Object.keys(thisExerciseDetail).length !== 0 && !finishCurrentExercise) && select.map(v => ((v.label === 'weight' ? (thisExerciseDetail.progression_model.toUpperCase().includes('LINEAR') || thisExerciseDetail.progression_model.toUpperCase().includes('DOUBLE')) : true)
+          {(!!select && Object.keys(thisExerciseDetail).length !== 0 && !finishCurrentExercise) && select.map(v => ((v.label === 'weight'
+            ? (thisExerciseDetail.progression_model.toUpperCase().includes('LINEAR') || thisExerciseDetail.progression_model.toUpperCase().includes('DOUBLE'))
+            : true)
             && (
             <NumberSelect
               key={v.label}
