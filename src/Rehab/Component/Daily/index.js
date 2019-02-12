@@ -131,25 +131,16 @@ class MainRehab extends React.Component {
       return;
     }
     const a = destructure(s);
-    // const m = [].concat(JSON.parse(JSON.stringify(this.state.renderExercise)));
-    const m = [].concat(JSON.parse(JSON.stringify(this.props.renderExercises)));
-    a.forEach((v, k) => {
-      if (v === undefined) { return; }
-      m[k] = v;
-    });
-    this.props.setRenderExercises(m);
-    // this.setState({ renderExercise: m });
+    this.props.setRenderExercises(a);
   }
 
   keepRenderExercisesState() {
     const a = Object.assign({},
       JSON.parse(JSON.stringify(this.state.dialogData[this.state.exerciseSelected])));
-    // const m = [].concat(JSON.parse(JSON.stringify(this.state.renderExercise)));
     const m = [].concat(JSON.parse(JSON.stringify(this.props.renderExercises)));
     m[this.state.dialogIndex] = a;
     this.props.setRenderExercises(m);
     this.setState({ showChangeDialog: false });
-    // this.setState({ renderExercise: m, showChangeDialog: false });
     this.setState({ exerciseSelected: 0 });
   }
 
@@ -202,74 +193,74 @@ class MainRehab extends React.Component {
       <RestartDialog
         rehabS
         title="Rehab"
-        open={showCreationQuestionnaire}
         rehab={injurySelected}
         posture={postureSelected}
+        open={showCreationQuestionnaire}
         handleChange={this.handleSelectChange}
         handleClose={this.handleQuestionnaireClose}
         handleRestartSave={this.handleFinishQuestionnaireClick}
       />
       <MainComponent
         top
-        backgroundImage={theme.rehabHeader.daily}
-        title="Rehab"
         planPage
-        currentWeek={currentWeek}
+        title="Rehab"
         currentPage={3}
-        FooterContent={3}
-        onTagClick={this.midPartTabsValueHandleChange}
-        tabsValue={midPartTabsValue}
         showBottomButton
-        restartClick={() => showQuestionnaireForCreate(true)}
-
+        FooterContent={3}
+        currentWeek={currentWeek}
+        tabsValue={midPartTabsValue}
         tapBarContent={tapBarContent}
+        backgroundImage={theme.rehabHeader.daily}
+        onTagClick={this.midPartTabsValueHandleChange}
+        restartClick={() => showQuestionnaireForCreate(true)}
         midComponent={(
           <Grid container className={classes.midPaper} style={{ flex: 1 }} justify="center" alignContent="space-around" alignItems="center">
             <Loading
               open={querryDailyData}
             />
             <Dialog
-              open={showChangeDialog}
-              loadingStatus={false}
-              title="Select your Exercise"
-              discription=""
-              handleClose={this.handleCloseChangeDialog}
               other
+              picture
+              discription=""
+              loadingStatus={false}
+              open={showChangeDialog}
+              title="Select your Exercise"
+              handleClose={this.handleCloseChangeDialog}
               otherClickFunction={this.keepRenderExercisesState}
               media={(
                 <Stepper
-                  handleNext={this.handleChangeDialogNext}
-                  handleBack={this.handleChangeDialogBack}
-                  selected={exerciseSelected}
                   data={dialogData}
-                  dialogIndex={dialogIndex}
                   injuryName={injuryName}
                   postureName={postureName}
+                  dialogIndex={dialogIndex}
+                  selected={exerciseSelected}
+                  handleNext={this.handleChangeDialogNext}
+                  handleBack={this.handleChangeDialogBack}
                 />
                 )}
             />
             <Dialog
-              open={showDiscription}
-              loadingStatus={false}
               title=""
               discription={title}
+              loadingStatus={false}
+              open={showDiscription}
               handleClose={this.handleDiscriptionClickClose}
             />
 
 
             <Component
-              injury={`${rehabProgramme.injury[injuryName]}`.split('_').map(v => (`${v[0]}`).toUpperCase() + v.substring(1)).join(' ')}
-              posture={`${rehabProgramme.posture[postureName]}`.split('_').map(v => (`${v[0]}`).toUpperCase() + v.substring(1)).join(' ')}
+              ExList={ExList}
               injuryExes={injury}
               postureExes={posture}
-              openDialog={this.handleOpenChangeDialog}
-              renderExercise={renderExercises}
-              keepExercise={this.keepExerciseFetch}
-              pre={midPartTabsValue < new Date().getDay()}
-              progress={midPartTabsValue}
-              ExList={ExList}
               injuryName={injuryName}
               postureName={postureName}
+              progress={midPartTabsValue}
+              renderExercise={renderExercises}
+              keepExercise={this.keepExerciseFetch}
+              openDialog={this.handleOpenChangeDialog}
+              pre={midPartTabsValue < new Date().getDay()}
+              injury={`${rehabProgramme.injury[injuryName]}`.split('_').map(v => (`${v[0]}`).toUpperCase() + v.substring(1)).join(' ')}
+              posture={`${rehabProgramme.posture[postureName]}`.split('_').map(v => (`${v[0]}`).toUpperCase() + v.substring(1)).join(' ')}
             />
           </Grid>
           )}

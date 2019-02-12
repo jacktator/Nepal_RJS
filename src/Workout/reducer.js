@@ -16,6 +16,7 @@ export default function (state = {
   historyForSpecificExercise: [],
   specificProgrammeHistory: [],
   youtubeLink: ['Lwcqvnc7q58', 'Lwcqvnc7q58'],
+  youtubeDis: 'This is discription',
   todayExercises: {
     exeLength: '',
     exe_1: '',
@@ -102,6 +103,10 @@ export default function (state = {
     case 'SELECTED_EXERCISES_QUERY':
       return {
         ...state, selectedExercisesQuery: action.payload,
+      };
+    case 'SET_YOUTUBE_DIS':
+      return {
+        ...state, youtubeDis: action.payload,
       };
     default:
       return state;

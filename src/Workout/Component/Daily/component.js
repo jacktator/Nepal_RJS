@@ -34,6 +34,7 @@ class SimpleList extends React.PureComponent {
           loadingStatus={selectedExercisesQuery}
           exe={selectedExercises.length !== 0 ? selectedExercises[dialogIndexSelected][dialogSelected] : { name: '', progression_model: '' }}
           selectMidExercise={selectMidExercise}
+          picture
           media={(
             <Steper
               handleNext={handleNext}

@@ -74,6 +74,8 @@ export const finishExercisePageQuery = data => ({ type: 'FINISH_EXERCISE_PAGE_QU
 export const finishHistoryQuery = data => ({ type: 'Finish_History_Query', payload: data });
 export const noProgram = data => ({ type: 'DIRECT_QUESTIONNAIRE', payload: data });
 export const setProgrammeUpdateDate = data => ({ type: 'SET_PROGRAMME_DATE', payload: data });
+export const setYoutubeDis = data => ({ type: 'SET_YOUTUBE_DIS', payload: data });
+
 
 // daily page change button's dialog get exercises
 export const selectExercise = id => (dispatch) => {
@@ -276,7 +278,7 @@ export const updataOneExercise = (data, historyData) => (dispatch) => {
       console.log(res.data.acf);
     })
     .catch(res => console.log(res));
- };
+};
 
 // When user finish final exercise update program
 export const finishAllDailyExercises = data => (dispatch) => {
@@ -345,6 +347,7 @@ export const getYoutubeLink = name => (dispatch) => {
         if (result) {
           const { acf } = result;
           const n = [acf.youtubeshortcode, acf.youtubelongcode];
+          !!acf.discription && dispatch(setYoutubeDis(acf.discription));
           dispatch(setYoutubeLink(n));
         }
       },

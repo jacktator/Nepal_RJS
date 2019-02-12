@@ -48,6 +48,8 @@ export const setRehubYoutubeLink = data => ({ type: 'SET_REHAB_YOUTUBE_LINK', pa
 export const finishQuerryDailyData = data => ({ type: 'FINISH_QUERRY_DAILY_DATA', payload: data });
 export const finishExerciseSaveQuery = data => ({ type: 'FINISH_REHAB_EXERCISE', payload: data });
 export const setYoutubeLink = data => ({ type: 'SET_YOUTUBE_LINK', payload: data });
+export const setYoutubeDis = data => ({ type: 'SET_REHUB_YOUTUBE_DIS', payload: data });
+
 
 export const keepExercise = data => (dispatch) => {
   const a = data.map(v => Object.values(v).join()).join(';');
@@ -224,6 +226,7 @@ export const getYoutubeLink = name => (dispatch) => {
         if (result) {
           const { acf } = result;
           const n = [acf.youtubeshortcode, acf.youtubelongcode];
+          !!acf.discription && dispatch(setYoutubeDis(acf.discription));
           dispatch(setRehubYoutubeLink(n));
         }
       },

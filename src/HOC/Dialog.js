@@ -14,7 +14,7 @@ const styles = (theme) => {
 };
 const AlertDialog = (props) => {
   const {
-    title, discription, open, handleClose, media, loadingStatus, selectMidExercise, exe, other, otherClickFunction,
+    title, discription, open, handleClose, media, loadingStatus, selectMidExercise, exe, other, otherClickFunction, picture,
   } = props;
   return (
     <div>
@@ -27,7 +27,7 @@ const AlertDialog = (props) => {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
-        <DialogContent style={{ padding: media ? '0' : '24px' }}>
+        <DialogContent style={{ padding: picture ? '0' : '24px' }}>
           {!!discription && (
           <DialogContentText color="primary" id="alert-dialog-description">
             {discription}

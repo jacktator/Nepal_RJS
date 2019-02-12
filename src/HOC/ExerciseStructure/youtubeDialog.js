@@ -9,6 +9,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
 // import YouTube from 'react-youtube';
 import ReactPlayer from 'react-player';
+import { Typography } from '@material-ui/core';
 import { VIDEO_URL } from '../../config';
 
 
@@ -40,7 +41,7 @@ class ResponsiveDialog extends React.Component {
 
   render() {
     const {
-      fullScreen, open, title, youtbueID, onYoutubeClose,
+      fullScreen, open, title, youtbueID, onYoutubeClose, youtubeDiscription,
     } = this.props;
     const opts = {
       width: '100%',
@@ -58,11 +59,6 @@ class ResponsiveDialog extends React.Component {
       >
         <DialogTitle id="responsive-dialog-title">{title}</DialogTitle>
         <DialogContent>
-          {/* <YouTube
-            opts={opts}
-            videoId={youtbueID[1]}
-            onReady={this.onReady}
-          /> */}
           <ReactPlayer
             url={`${VIDEO_URL}${youtbueID[1]}`}
             // eslint-disable-next-line react/jsx-boolean-value
@@ -79,6 +75,7 @@ class ResponsiveDialog extends React.Component {
               },
             }}
           />
+          <Typography style={{ marginTop: '20px' }} variant="body2" color="primary">{youtubeDiscription}</Typography>
         </DialogContent>
         <DialogActions>
           <Button onClick={onYoutubeClose} color="primary" autoFocus>

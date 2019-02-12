@@ -34,6 +34,8 @@ class ExerciseIndex extends React.PureComponent {
     this.handleGetYoutubeLink = this.handleGetYoutubeLink.bind(this);
     this.onOpen = this.onOpen.bind(this);
     this.onClose = this.onClose.bind(this);
+    this.onPlayVideo = this.onPlayVideo.bind(this);
+    this.onPauseVideo = this.onPauseVideo.bind(this);
   }
 
   componentDidMount() {
@@ -117,7 +119,7 @@ class ExerciseIndex extends React.PureComponent {
 
   render() {
     const {
-      theme, currentWeek, dayRehabExercisesRecords, posture, injury, rehabExerciseQuery, selectedRehabExercises, rehabYoutubeLink, getYoutubeLink,
+      theme, currentWeek, dayRehabExercisesRecords, posture, injury, rehabExerciseQuery, selectedRehabExercises, rehabYoutubeLink, rehubYoutubeDis,
     } = this.props;
     const tstyles = styles(theme);
     const exeOrder = this.props.match.params.exerciseOrder;
@@ -170,6 +172,7 @@ class ExerciseIndex extends React.PureComponent {
 
               <ExerciseComponent
                 onFinishAllExercise={this.handleFinishAllRehab}
+                youtubeDiscription={rehubYoutubeDis}
                 step={10}
                 onSaveClick={this.handleSaveButtonClicked}
                 ExList={ExList}
@@ -204,10 +207,10 @@ ExerciseIndex.propTypes = {
 
 function mapStateToProps(state) {
   const {
-    dayRehabExercisesRecords, renderExercises, posture, injury, rehabExerciseQuery, selectedRehabExercises, rehabYoutubeLink,
+    dayRehabExercisesRecords, renderExercises, posture, injury, rehabExerciseQuery, selectedRehabExercises, rehabYoutubeLink, rehubYoutubeDis,
   } = state.Rehab;
   return {
-    dayRehabExercisesRecords, renderExercises, posture, injury, rehabExerciseQuery, selectedRehabExercises, rehabYoutubeLink,
+    dayRehabExercisesRecords, renderExercises, posture, injury, rehabExerciseQuery, selectedRehabExercises, rehabYoutubeLink, rehubYoutubeDis,
   };
 }
 

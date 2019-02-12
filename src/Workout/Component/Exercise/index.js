@@ -139,7 +139,7 @@ class ExerciseIndex extends React.Component {
 
   render() {
     const {
-      classes, theme, renderExercises, alldayExercises, exercisePageQuery, todayExercises, historyForSpecificExercise, getYoutubeLink, youtubeLink,
+      classes, theme, renderExercises, alldayExercises, exercisePageQuery, todayExercises, historyForSpecificExercise, getYoutubeLink, youtubeLink, youtubeDis,
     } = this.props;
     const {
       weight, reps, youtube, title, history, playing,
@@ -217,6 +217,7 @@ class ExerciseIndex extends React.Component {
               youtubeOpenStatus={youtube}
               title={title}
               history={history}
+              youtubeDiscription={youtubeDis}
               currentExerciseOrder={exerciseOrder}
               finishCurrentExercise={finishCurrentExercise}
               onFinishAllExercise={this.onFinishAllExercise}
@@ -239,10 +240,10 @@ class ExerciseIndex extends React.Component {
 
 function mapStateToProps(state) {
   const {
-    renderExercises, alldayExercises, exercisePageQuery, todayExercises, historyForSpecificExercise, youtubeLink,
+    renderExercises, alldayExercises, exercisePageQuery, todayExercises, historyForSpecificExercise, youtubeLink, youtubeDis,
   } = state.Workout;
   return {
-    renderExercises, alldayExercises, exercisePageQuery, todayExercises, historyForSpecificExercise, youtubeLink,
+    renderExercises, alldayExercises, exercisePageQuery, todayExercises, historyForSpecificExercise, youtubeLink, youtubeDis,
   };
 }
 

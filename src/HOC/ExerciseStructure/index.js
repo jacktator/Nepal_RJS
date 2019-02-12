@@ -53,7 +53,7 @@ const ExerciseStructure = (props) => {
     dailyExerciseLength, rehab, onClose, youtubeOpenStatus, title,
     history, thisExerciseDetail, currentExerciseOrder, onFinishAllExercise,
     historyForSpecificExercise, needHistory, largest, getYoutubeLink, onPlayVideo,
-    onPauseVideo, playing,
+    onPauseVideo, playing, youtubeDiscription,
   } = props;
   const opts = {
     width: '100%',
@@ -102,6 +102,7 @@ const ExerciseStructure = (props) => {
           onYoutubeClose={onYoutubeClose}
           youtbueID={youtbueID}
           getYoutubeLink={getYoutubeLink}
+          youtubeDiscription={youtubeDiscription}
         />
       )}
       {!needHistory && (
