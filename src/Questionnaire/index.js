@@ -125,7 +125,6 @@ class index extends React.PureComponent {
               open={open}
               discription={discription}
               title={title}
-              picture
               handleClose={this.handleClose}
             />
           </Grid>

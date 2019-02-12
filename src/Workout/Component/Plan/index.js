@@ -63,7 +63,7 @@ class index extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.directToQuestionnaire) {
-      window.location.hash = '#/questionnaire';
+      this.handleRestartOpen();
       this.props.noProgram(false);
     }
     if (prevProps.programQuery !== this.props.programQuery) {

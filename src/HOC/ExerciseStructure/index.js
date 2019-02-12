@@ -191,7 +191,7 @@ const ExerciseStructure = (props) => {
         />
 
         <Grid style={{ minHeight: '20px' }}>
-          {(!!select && Object.keys(thisExerciseDetail).length !== 0) && select.map(v => ((v.label === 'weight' ? (thisExerciseDetail.progression_model.toUpperCase().includes('LINEAR') || thisExerciseDetail.progression_model.toUpperCase().includes('DOUBLE')) : true)
+          {(!!select && Object.keys(thisExerciseDetail).length !== 0 && !finishCurrentExercise) && select.map(v => ((v.label === 'weight' ? (thisExerciseDetail.progression_model.toUpperCase().includes('LINEAR') || thisExerciseDetail.progression_model.toUpperCase().includes('DOUBLE')) : true)
             && (
             <NumberSelect
               key={v.label}
