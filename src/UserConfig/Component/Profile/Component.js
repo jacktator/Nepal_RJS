@@ -97,7 +97,7 @@ const styles = theme => ({
 const Profile = (props) => {
   const {
     classes, name, dob, avatar, weight, openInfo,
-    openPassword, handelAvatarChange, gender, age,
+    handelAvatarChange, gender,
     openConditionDialog,
   } = props;
   return (

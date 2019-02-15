@@ -8,7 +8,6 @@ import MobileStepper from '@material-ui/core/MobileStepper';
 import Paper from '@material-ui/core/Paper';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import renderComponent from './Component';
@@ -105,7 +104,7 @@ class index extends React.PureComponent {
   }
 
   render() {
-    const { classes, theme, queryStatus } = this.props;
+    const { classes, theme } = this.props;
     const {
       activeStep, open, loading, discription, title, ...data
     } = this.state;

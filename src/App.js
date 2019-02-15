@@ -3,11 +3,10 @@ import { HashRouter } from 'react-router-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import RootRouter from './Router';
-import theme from './theme';
 
-const App = () => (
+const App = props => (
   <HashRouter>
-    <MuiThemeProvider theme={theme}>
+    <MuiThemeProvider theme={props.themeRendered}>
       <CssBaseline />
       <RootRouter />
     </MuiThemeProvider>

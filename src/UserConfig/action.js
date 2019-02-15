@@ -36,7 +36,7 @@ export const loginAction = (userData, callBack, catchCallback) => (dispatch) => 
     .catch((err) => {
       dispatch(queryLogin(false));
       dispatch(errorHappened(true));
-      catchCallback();
+      catchCallback && catchCallback();
       console.log(err);
     });
 };

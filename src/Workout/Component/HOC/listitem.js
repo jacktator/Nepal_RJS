@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import { withTheme } from '@material-ui/core/styles';
 import { styles } from '../../styles';
 import { IMAGE_URL } from '../../../config';
-// this.src = 'https://nepal.sk8tech.io/wp-content/uploads/placeholder.png'
+
 class HOCListItem extends React.PureComponent {
   render() {
     const {

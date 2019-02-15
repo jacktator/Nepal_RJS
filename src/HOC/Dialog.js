@@ -9,9 +9,6 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import LoadingComponent from './Loading';
 
-const styles = (theme) => {
-
-};
 const AlertDialog = (props) => {
   const {
     title, discription, open, handleClose, media, loadingStatus, selectMidExercise, exe, other, otherClickFunction, picture,

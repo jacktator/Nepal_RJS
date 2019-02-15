@@ -130,7 +130,7 @@ class index extends React.Component {
 
   render() {
     const {
-      classes, programQuery, theme,
+      programQuery, theme,
     } = this.props;
     const {
       dailyQuestionnaireOpen, restartDialog, questionnaireSelected, tabsValue, over24Open, queLocation, queDays, queGoal,

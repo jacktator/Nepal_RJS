@@ -42,9 +42,12 @@ function ResponsiveDialog(props) {
               </ListItem>
             )
             : [...historyForSpecificExercise].map((v, k) => (
-              <ListItem key={`${k}list`}>
-                <ListItemText primary={new Date(v.date).toDateString()} />
-                {
+              <React.Fragment key={`${k}list`}>
+                <ListItem>
+                  <ListItemText primary={new Date(v.date).toLocaleDateString('en-AU', { year: 'numeric', month: 'numeric', day: 'numeric' })} />
+                </ListItem>
+                <ListItem>
+                  {
                   !!v.exe && [...v.exe.split(';').map(va => va.substring(1, va.length - 1))].map((vb, kb) => {
                     const a = vb.split(',');
                     return (
@@ -52,7 +55,8 @@ function ResponsiveDialog(props) {
                     );
                   })
                 }
-              </ListItem>
+                </ListItem>
+              </React.Fragment>
             )) }
         </List>
       </DialogContent>

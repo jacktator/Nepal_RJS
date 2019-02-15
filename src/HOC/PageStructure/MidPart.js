@@ -8,7 +8,7 @@ import { Paper } from '@material-ui/core';
 class MidPartComponent extends React.PureComponent {
   render() {
     const {
-      classes, theme, tapBarContent, onTagClick, currentWeek, tabsValue,
+      theme, tapBarContent, onTagClick, currentWeek, tabsValue,
     } = this.props;
     return (
       <Paper square style={{ minWidth: '100%', maxWidth: '100%' }}>
