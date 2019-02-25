@@ -1,13 +1,13 @@
 {
-  "main.css": "/static/css/main.c9cccf00.chunk.css",
-  "main.js": "/static/js/main.b34afb77.chunk.js",
-  "main.js.map": "/static/js/main.b34afb77.chunk.js.map",
-  "runtime~main.js": "/static/js/runtime~main.fdfcfda2.js",
-  "runtime~main.js.map": "/static/js/runtime~main.fdfcfda2.js.map",
-  "static/js/2.4e17b193.chunk.js": "/static/js/2.4e17b193.chunk.js",
-  "static/js/2.4e17b193.chunk.js.map": "/static/js/2.4e17b193.chunk.js.map",
-  "index.html": "/index.html",
-  "precache-manifest.f486d117e015369a3bec0f5fbcf6e9a3.js": "/precache-manifest.f486d117e015369a3bec0f5fbcf6e9a3.js",
-  "service-worker.js": "/service-worker.js",
-  "static/css/main.c9cccf00.chunk.css.map": "/static/css/main.c9cccf00.chunk.css.map"
+  "main.css": "/Nepal_RJS/static/css/main.c9cccf00.chunk.css",
+  "main.js": "/Nepal_RJS/static/js/main.b34afb77.chunk.js",
+  "main.js.map": "/Nepal_RJS/static/js/main.b34afb77.chunk.js.map",
+  "runtime~main.js": "/Nepal_RJS/static/js/runtime~main.9ba483b3.js",
+  "runtime~main.js.map": "/Nepal_RJS/static/js/runtime~main.9ba483b3.js.map",
+  "static/js/2.4e17b193.chunk.js": "/Nepal_RJS/static/js/2.4e17b193.chunk.js",
+  "static/js/2.4e17b193.chunk.js.map": "/Nepal_RJS/static/js/2.4e17b193.chunk.js.map",
+  "index.html": "/Nepal_RJS/index.html",
+  "precache-manifest.7bf8410644433a4bfdef4a419c54d717.js": "/Nepal_RJS/precache-manifest.7bf8410644433a4bfdef4a419c54d717.js",
+  "service-worker.js": "/Nepal_RJS/service-worker.js",
+  "static/css/main.c9cccf00.chunk.css.map": "/Nepal_RJS/static/css/main.c9cccf00.chunk.css.map"
 }
