@@ -160,3 +160,20 @@ export const updateAvatar = url => (dispatch) => {
       console.log(error);
     });
 };
+
+//---------------------------------------------------------------------------------------------------------------------
+// lostpassword
+
+export const retrievePassword = (email, successCallback, errorCallback) => (dispatch) => {
+  axios.post('/users/lostpassword', { user_login: email })
+    .then((res) => {
+      console.log(res);
+      successCallback();
+    })
+    .catch(
+      (err) => {
+        console.log(err.response.data.message);
+        errorCallback(err.response.data.message);
+      },
+    );
+};

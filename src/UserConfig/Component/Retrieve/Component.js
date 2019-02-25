@@ -10,18 +10,26 @@ import LeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import { Link } from 'react-router-dom';
 import { withTheme } from '@material-ui/core/styles';
 import CardMedia from '@material-ui/core/CardMedia';
+import Dialog from '../../../HOC/Dialog';
 import HOCInputFile from '../../../HOC/inputFiles';
 import styles from '../../styles';
 
 
 const Component = (props) => {
   const {
-    theme, loading, onChangeHandle, email, onRetrieveClick, emailError,
+    theme, loading, onChangeHandle, email, onRetrieveClick, emailError, showDialog, handleCloseDialog, dialogDiscription,
   } = props;
   const { logo } = theme;
   const tstyles = styles(theme);
   return (
     <div style={tstyles.container}>
+      <Dialog
+        loadingStatus={false}
+        open={showDialog}
+        handleClose={handleCloseDialog}
+        title=""
+        discription={dialogDiscription}
+      />
       <Grid container style={tstyles.gridRoot} spacing={0} justify="space-between" alignItems="stretch" direction="column">
 
         <Grid container style={tstyles.autoFlex}>
@@ -55,7 +63,7 @@ const Component = (props) => {
           </Paper>
         </Grid>
 
-        <Grid container style={{ height: '10vh' }} justify="center">
+        <Grid container style={{ height: '10vh' }} justify="center" alignItems="center">
           {loading ? <CircularProgress size={30} /> : <Button style={tstyles.button} onClick={onRetrieveClick} color="primary">Retrieve</Button>}
         </Grid>
 

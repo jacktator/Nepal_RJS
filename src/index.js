@@ -35,7 +35,7 @@ const getTheme = (callback) => {
       },
     )
     .catch(
-      err => callback(defaultTheme),
+      () => callback(defaultTheme),
     );
 };
 
