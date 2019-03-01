@@ -1,11 +1,10 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 const Logout = () => {
   sessionStorage.clear();
-  window.location.hash = '#/';
-  window.location.reload(true);
   return (
-    <div />
+    <Redirect to="/" />
   );
 };
 

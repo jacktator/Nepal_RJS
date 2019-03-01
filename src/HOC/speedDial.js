@@ -83,9 +83,8 @@ class SpeedDialTooltipOpen extends React.Component {
   handleActionClick(to) {
     if (to === '/logout') {
       deleteAuthToken();
-      window.location.replace('/');
     }
-    window.location.hash = to;
+    window.location.href = to;
   }
 
   handleOpen() {

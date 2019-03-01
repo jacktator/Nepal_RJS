@@ -46,11 +46,11 @@ class ExerciseIndex extends React.Component {
 
   componentDidMount() {
     if (this.props.renderExercises.length === 0) {
-      window.location.href = `#/workout/daily/${sessionStorage.dayInWeek}`;
+      window.location.href = `/workout/daily/${sessionStorage.dayInWeek}`;
       return;
     }
     if (this.props.renderExercises[this.props.match.params.exerciseOrder - 1].day !== undefined) {
-      window.location.href = `#/workout/daily/${sessionStorage.dayInWeek}`;
+      window.location.href = `/workout/daily/${sessionStorage.dayInWeek}`;
       return;
     }
     const thisExerciseDetail = this.props.renderExercises[this.props.match.params.exerciseOrder - 1];
@@ -65,7 +65,7 @@ class ExerciseIndex extends React.Component {
   componentDidUpdate(pre) {
     const thisExerciseDetail = this.props.renderExercises[this.props.match.params.exerciseOrder - 1];
     if (!thisExerciseDetail || thisExerciseDetail.day !== undefined) {
-      window.location.href = `#/workout/daily/${sessionStorage.dayInWeek}`;
+      window.location.href = `/workout/daily/${sessionStorage.dayInWeek}`;
     }
     if (pre.match.params.exerciseOrder !== this.props.match.params.exerciseOrder) {
       this.props.getThisExerciseHistory(this.props.match.params.exerciseOrder);
@@ -131,7 +131,7 @@ class ExerciseIndex extends React.Component {
     const finish = b.some((item, k) => (item.sets * 1) > a[`exe_${k + 1}`].split(';').length);
     if (!finish) {
       this.props.finishAllDailyExercises();
-      window.location.hash = '#/workout';
+      window.location.href = '/workout';
     }
   }
 

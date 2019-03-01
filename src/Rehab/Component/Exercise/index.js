@@ -49,10 +49,10 @@ class ExerciseIndex extends React.PureComponent {
 
   componentDidUpdate(prevProps) {
     if (!this.props.match.params.exerciseOrder) {
-      window.location.hash = '#/rehab/content';
+      window.location.href = '/rehab/content';
     }
     if (this.props.match.params.exerciseOrder >= this.props.renderExercises.length) {
-      window.location.hash = '#/rehab/content';
+      window.location.href = '/rehab/content';
     }
     if (!!this.props.match.params.exerciseOrder && prevProps.match.params.exerciseOrder !== this.props.match.params.exerciseOrder) {
       this.handleGetYoutubeLink();

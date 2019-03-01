@@ -1,16 +1,16 @@
 import React from 'react';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import RootRouter from './Router';
 
 const App = props => (
-  <HashRouter>
+  <BrowserRouter>
     <MuiThemeProvider theme={props.themeRendered}>
       <CssBaseline />
       <RootRouter />
     </MuiThemeProvider>
-  </HashRouter>
+  </BrowserRouter>
 
 );
 

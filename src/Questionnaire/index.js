@@ -37,7 +37,7 @@ class index extends React.PureComponent {
   }
 
   toMainmenu() {
-    window.location.hash = '#/mainmenu';
+    window.location.href = '/mainmenu';
   }
 
   handleNext() {

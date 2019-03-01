@@ -27,9 +27,10 @@ if (sessionStorage.token) {
 const themeExist = themeName => localStorage.getItem(themeName);
 
 const getTheme = (callback) => {
-  axios.post('https://nepal.sk8tech.io/wp-json/jwt-auth/v1/token/', { username: 'boy@test.com', password: '?' })
+  axios.get('https://nepal.sk8tech.io/wp-json/am/v2/skin')
     .then(
       (res) => {
+        console.log(res);
         const themeJ = res.data;
         callback(createTheme(themeJ));
       },

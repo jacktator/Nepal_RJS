@@ -80,7 +80,7 @@ export const createQuestionnaire = (data, callback) => (dispatch) => {
       dispatch(createProgram(callback));
       console.log(data.posture >= arrayOfRehab.posture.length && data.rehab >= arrayOfRehab.injury.length);
       if (!(data.posture >= arrayOfRehab.posture.length && data.rehab >= arrayOfRehab.injury.length)) {
-        dispatch(createNewRehab({ user_id: sessionStorage.user_id, posture: data.posture, injury: data.rehab }));
+        dispatch(createNewRehab({ user_id: sessionStorage.user_id, posture: data.posture - 1, injury: data.rehab - 1 }));
       }
     })
     .catch((error) => {

@@ -43,7 +43,7 @@ class Details extends React.PureComponent {
   }
 
   returnBack() {
-    window.location.href = `#/workout/history/${this.props.match.params.programmeID}`;
+    window.location.href = `/workout/history/${this.props.match.params.programmeID}`;
   }
 
   render() {

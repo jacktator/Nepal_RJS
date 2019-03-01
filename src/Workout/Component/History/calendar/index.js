@@ -28,7 +28,7 @@ class Calendar extends React.PureComponent {
     const a = this.props.historyProgrammeList && [...this.props.historyProgrammeList].findIndex(v => v.id === urlProgrammeID * 1);
     // this.props.finishHistoryQuery(true);
     if (a === -1) {
-      window.location.href = '#/workout/history';
+      window.location.href = '/workout/history';
       return;
     }
     this.setState({ renderData: this.props.historyProgrammeList[a], renderProgrammeIndex: a });

@@ -64,7 +64,7 @@ class Retrieve extends React.Component {
       showDialog: false,
       dialogDiscription: '',
     });
-    this.state.succ && (window.location.hash = '#/');
+    this.state.succ && (window.location.href = '/');
   }
 
 
