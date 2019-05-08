@@ -10,10 +10,12 @@
    b. 后期可以更改天数
 3. 注册时密码没有任何限制(字母，特殊字符)，修改密码时却有
 4. 注册后性别，训练信息等无法更改
-5. Responsive:
+5. Responsive (questionnaire page responsive problem in register process):
    GalaxyS5 360x640 only shows the first column
    iPhone5/SE 320x568
    Pixel 2 411x731
+6. questionnaire page button click cannot be cancelled (checkbox used for multiple choice).
+
 ## Backend Bugs
 
 1. 注册用户后提交 questionnaire 会有 403 错误
