@@ -13,7 +13,7 @@
 5. Responsive:
    GalaxyS5 360x640 only shows the first column
    iPhone5/SE 320x568
-
+    Pixel 2 411x731
 ## Backend Bugs
 
 1. 注册用户后提交 questionnaire 会有 403 错误
