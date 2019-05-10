@@ -15,7 +15,7 @@
    iPhone5/SE 320x568
    Pixel 2 411x731
 6. questionnaire page button click cannot be cancelled (checkbox used for multiple choice).
-
+7. '/'->'/profile'
 ## Backend Bugs
 
 1. 注册用户后提交 questionnaire 会有 403 错误
