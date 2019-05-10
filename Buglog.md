@@ -8,7 +8,7 @@
    prob fix:
    a. 输入信息时就提示用户
    b. 后期可以更改天数
-3. 注册时密码没有任何限制(字母，特殊字符)，修改密码时却有
+3. 注册时密码没有任何限制(字母，特殊字符，长度)，修改密码时却有
 4. 注册后性别，训练信息等无法更改
 5. Responsive (questionnaire page responsive problem in register process):
    GalaxyS5 360x640 only shows the first column
