@@ -12,8 +12,7 @@
    GalaxyS5 360x640 only shows the first column
    iPhone5/SE 320x568
    Pixel 2 411x731
-5. questionnaire page button click cannot be cancelled (checkbox used for multiple choice).
-6. /mainmenu -> /user/profile -> /logout -> / -> /user -> /mainmenu
+5. /mainmenu -> /user/profile -> /logout -> / -> /user -> /mainmenu
    In console:
     Uncaught Invariant Violation: Maximum update depth exceeded. 
     The above error occurred in the <Redirect> component:
@@ -22,7 +21,6 @@
 
 1. 注册用户后提交 questionnaire 会有 403 错误
    (后台会将用户注册为 customer, 没有权限，应为 subscriber)
-2. 同一账号不同电脑(浏览器)可以同时登陆
 
 ## 交互逻辑
 
