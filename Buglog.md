@@ -25,7 +25,7 @@
 ## 交互逻辑
 
 1. in workout, the exercise(with specific title) cannot be [keep] directly
-2. 在 workout 界面，increase fitness 内，用户没有选择特定的项目时
+2. 在 workout 界面，program 内，用户没有选择特定的项目时
    按钮可由[change,keep]改为[ADD,MORE]以增加可读性
 3. 菜单栏是否应该一直在底端固定？
 4. 已经确定好的 exercise 是否应该允许用户 change
