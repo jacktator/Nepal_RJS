@@ -2,20 +2,22 @@
 
 ## Frontend Bugs
 
-1. 在屏幕较大时（iPad 或者大于 iPad 的屏幕）
-   主界面框体随着上下滑动位置会动，但中间的字体不动
-2. 注册时没有输入 program 的训练天数，workout plan 里面就会显示 NaN，workout 功能就不可用
+1. 注册时没有输入 program 的训练天数，workout plan 里面就会显示 NaN，workout 功能就不可用
    prob fix:
    a. 输入信息时就提示用户
    b. 后期可以更改天数
-3. 注册时密码没有任何限制(字母，特殊字符，长度)，修改密码时却有
-4. 注册后性别，训练信息等无法更改
-5. Responsive (questionnaire page responsive problem in register process):
+2. 注册时密码没有任何限制(字母，特殊字符，长度)，修改密码时却有
+3. 注册后性别，训练计划相关的选项等无法更改
+4. Responsive (questionnaire page responsive problem in register process):
    GalaxyS5 360x640 only shows the first column
    iPhone5/SE 320x568
    Pixel 2 411x731
-6. questionnaire page button click cannot be cancelled (checkbox used for multiple choice).
-7. '/'->'/profile'
+5. questionnaire page button click cannot be cancelled (checkbox used for multiple choice).
+6. /mainmenu -> /user/profile -> /logout -> / -> /user -> /mainmenu
+   In console:
+    Uncaught Invariant Violation: Maximum update depth exceeded. 
+    The above error occurred in the <Redirect> component:
+
 ## Backend Bugs
 
 1. 注册用户后提交 questionnaire 会有 403 错误
