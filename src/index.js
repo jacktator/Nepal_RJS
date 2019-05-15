@@ -24,6 +24,7 @@ if (sessionStorage.token) {
   setAuthTokenInHeader(sessionStorage.token);
 }
 
+// add setItem for different theme(should through personal setting`different company` from res)
 const themeExist = themeName => localStorage.getItem(themeName);
 
 const getTheme = (callback) => {
