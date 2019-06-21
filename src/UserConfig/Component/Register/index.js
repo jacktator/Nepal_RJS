@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Component from './Component';
 import { registerAction, queryRegister, errorHappened } from '../../action';
-import { validation } from '../../../HOC/Validation';
+import { validation } from '../../../HOC/Validation/index';
 
 class Register extends React.PureComponent {
   constructor(props) {
@@ -51,19 +51,21 @@ class Register extends React.PureComponent {
 
   onRegisterClick() {
     const { emailError, passwordError, rePasswordError } = this.handleCheckInputs();
-    if (!emailError.error && !passwordError.error && !rePasswordError.error) {
+    if (emailError.resDiscription != "" || passwordError.resDiscription != "" || rePasswordError.resDiscription != "") {
       this.setState({
-        emailError, passwordError, rePasswordError, clicked: true,
+        emailError, passwordError, rePasswordError
       });
-      return;
+      console.log("Js");
+    }else{
+      const { email, password } = this.state;
+      this.props.queryRegister(true);
+      this.props.registerAction({
+        username: email,
+        email,
+        password,
+
+      });
     }
-    const { email, password } = this.state;
-    this.props.queryRegister(true);
-    this.props.registerAction({
-      username: email,
-      email,
-      password,
-    });
   }
 
   handleCheckInputs() {

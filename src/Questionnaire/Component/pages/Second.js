@@ -30,7 +30,7 @@ class Second extends React.PureComponent {
     return (
       <Grid container style={{ height: '100%' }} direction="column" justify="space-around" alignItems="center">
 
-        <Grid container style={{ height: '20%' }} justify="center" alignItems="center">
+        <Grid container style={{ height: '15%' }} justify="center" alignItems="center">
           <Typography variant="h5" component="h5" color="textPrimary">Create Your Program</Typography>
         </Grid>
 
