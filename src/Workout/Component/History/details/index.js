@@ -90,10 +90,10 @@ class Details extends React.PureComponent {
                    )
                      : (
                        <ListItem>
-                         <ListItemText primary={<Typography variant="body1">There is nothing</Typography>} />
+                         <ListItemText primary={<Typography variant="body1">Not available now</Typography>} />
                        </ListItem>
                      )
- }
+                    }
               </List>
             </Grid>
             )}
