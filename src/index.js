@@ -15,7 +15,7 @@ axios.defaults.baseURL = BASE_URL;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 const createTheme = (themeJson) => {
-  const m = JSON.parse(themeJson);
+  const m = (typeof themeJson === 'string') ? JSON.parse(themeJson) : themeJson;
   return createMuiTheme(m);
 };
 
