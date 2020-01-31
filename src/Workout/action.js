@@ -88,7 +88,7 @@ export const setYoutubeDis = data => ({ type: 'SET_YOUTUBE_DIS', payload: data }
 export const selectExercise = id => dispatch => {
 	console.log('sdasdasdasd');
 	axios
-		.get(`https://nepal.sk8tech.io/wp-json/acf/v3/exercise?filter[meta_key]=id&filter[meta_value]=${id}`)
+		.get(`https://am.sk8.tech/wp-json/acf/v3/exercise?filter[meta_key]=id&filter[meta_value]=${id}`)
 		.then(res => {
 			let b = [...res.data[0].acf.childexercises.map(v => v.a)];
 			b = b.map(v => {
@@ -112,7 +112,7 @@ export const getExerciseDetail = data => dispatch => {
 	const { programmeID, progress, dayInWeek } = sessionStorage;
 	axios
 		.get(
-			`https://nepal.sk8tech.io/wp-json/acf/v3/day_${dayInWeek}?filter[meta_key]=programmeid&filter[meta_value]=${programmeID}`
+			`https://am.sk8.tech/wp-json/acf/v3/day_${dayInWeek}?filter[meta_key]=programmeid&filter[meta_value]=${programmeID}`
 		)
 		.then(res => {
 			console.log('getExerciseDetail', res);
@@ -144,7 +144,7 @@ export const getExercisesSample = baseInfo => dispatch => {
 	const { location, path, days, dayInWeek } = baseInfo;
 	axios
 		.get(
-			`https://nepal.sk8tech.io/wp-json/acf/v3/${location}_${programmeTable[
+			`https://am.sk8.tech/wp-json/acf/v3/${location}_${programmeTable[
 				path
 			]}_${days}?filter[meta_key]=day&filter[meta_value]=${dayInWeek}`
 		)
@@ -213,7 +213,7 @@ export const getCurrentProgram = getExe => dispatch => {
 
 export const getDailyProgramExercise = data => dispatch => {
 	axios
-		.get(`https://nepal.sk8tech.io/wp-json/acf/v3/program/${data.programmeID}`)
+		.get(`https://am.sk8.tech/wp-json/acf/v3/program/${data.programmeID}`)
 		.then(res => {
 			const { acf } = res.data;
 			const exercises = acf[`day_${data.day}_exe`].split(';');

@@ -69,7 +69,7 @@ class TextMobileStepper extends React.PureComponent {
               image={`${IMAGE_URL}${imageID}${`${tutorialSteps[dialogIndexSelected][dialogSelected].name}`.replace(/ /g, '-')}.png`}
               component="img"
               onError={(event) => {
-                event.target.src = 'https://nepal.sk8tech.io/wp-content/uploads/placeholder.png';
+                event.target.src = 'https://am.sk8.tech/wp-content/uploads/placeholder.png';
                 console.log(event.target);
               }}
 

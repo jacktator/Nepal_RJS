@@ -78,21 +78,21 @@ const theme = createMuiTheme({
     },
   },
   workoutHeader: {
-    plan: 'https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg',
-    exercises: 'https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg',
-    daily: 'https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg',
-    history: 'https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg',
+    plan: 'https://am.sk8.tech/wp-content/uploads/2019/01/sampleImage.jpeg',
+    exercises: 'https://am.sk8.tech/wp-content/uploads/2019/01/sampleImage.jpeg',
+    daily: 'https://am.sk8.tech/wp-content/uploads/2019/01/sampleImage.jpeg',
+    history: 'https://am.sk8.tech/wp-content/uploads/2019/01/sampleImage.jpeg',
   },
   rehabHeader: {
-    daily: 'https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg',
-    exercises: 'https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg',
+    daily: 'https://am.sk8.tech/wp-content/uploads/2019/01/sampleImage.jpeg',
+    exercises: 'https://am.sk8.tech/wp-content/uploads/2019/01/sampleImage.jpeg',
   },
   logo: 'https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-200px.png',
   typography: {
     useNextVariants: true,
   },
   profile: {
-    backgroundImage: 'https://nepal.sk8tech.io/wp-content/uploads/2019/01/sampleImage.jpeg',
+    backgroundImage: 'https://am.sk8.tech/wp-content/uploads/2019/01/sampleImage.jpeg',
     button: { color: 'white' },
   },
 });

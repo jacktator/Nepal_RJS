@@ -72,7 +72,7 @@ const MediaControlCard = (props) => {
         className={classes.cover}
         component={Link}
         to={to}
-        image="https://nepal.sk8tech.io/wp-content/uploads/2018/10/Icon-9.jpg"
+        image="https://am.sk8.tech/wp-content/uploads/2018/10/Icon-9.jpg"
         title={title}
       />
 
@@ -82,9 +82,9 @@ const MediaControlCard = (props) => {
 
 MediaControlCard.propTypes = {
   classes: PropTypes.object.isRequired,
-  to: PropTypes.string.isRequired, 
-  title: PropTypes.string.isRequired, 
-  onChange: PropTypes.func.isRequired, 
+  to: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
   finish: PropTypes.bool,
 };
 

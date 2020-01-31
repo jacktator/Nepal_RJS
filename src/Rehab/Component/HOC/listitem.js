@@ -35,7 +35,7 @@ const HOCListItem = (props) => {
               }}
               component="img"
               onError={(event) => {
-                event.target.src = 'https://nepal.sk8tech.io/wp-content/uploads/placeholder.png';
+                event.target.src = 'https://am.sk8.tech/wp-content/uploads/placeholder.png';
                 console.log(event.target);
               }}
               image={`${IMAGE_URL}${prefix}-${postureName || injuryName}-${`${exeData.name}`.replace(/ /g, '-')}.png`}
@@ -43,7 +43,7 @@ const HOCListItem = (props) => {
             <CardMedia
               component="img"
               onError={(event) => {
-                event.target.src = 'https://nepal.sk8tech.io/wp-content/uploads/placeholder.png';
+                event.target.src = 'https://am.sk8.tech/wp-content/uploads/placeholder.png';
                 console.log(event.target);
               }}
               style={{

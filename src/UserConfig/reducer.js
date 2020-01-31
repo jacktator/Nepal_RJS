@@ -2,7 +2,7 @@ export default function (state = {
   LoginStatus: false,
   name: '',
   dob: '1999-01-01',
-  avatar: 'https://nepal.sk8tech.io/wp-content/uploads/defaultAvatar.png',
+  avatar: 'https://am.sk8.tech/wp-content/uploads/defaultAvatar.png',
   weight: '',
   age: '',
   gender: '',

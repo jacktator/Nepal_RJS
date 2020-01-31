@@ -24,9 +24,8 @@ export const changeAge = data => ({ type: 'SET_AGE', payload: data });
 export const setQueryProfile = data => ({ type: 'QUERY_PROFILE', payload: data });
 
 export const loginAction = (userData, callBack, catchCallback) => (dispatch) => {
-  axios.post('https://nepal.sk8tech.io/wp-json/jwt-auth/v1/token/', userData)
+  axios.post('https://am.sk8.tech/wp-json/jwt-auth/v1/token/', userData)
     .then((res) => {
-      console.log(res);
       setAuthTokenInHeader(res.data.token.token);
       window.sessionStorage.setItem('user_id', res.data.user_id);
       window.sessionStorage.setItem('user_email', res.data.token.user_email);
@@ -37,7 +36,7 @@ export const loginAction = (userData, callBack, catchCallback) => (dispatch) => 
       dispatch(queryLogin(false));
       dispatch(errorHappened(true));
       catchCallback && catchCallback();
-      console.log(err);
+      console.error(err);
     });
 };
 export const registerAction = userData => (dispatch) => {
@@ -50,7 +49,7 @@ export const registerAction = userData => (dispatch) => {
     .catch((err) => {
       dispatch(queryRegister(false));
       dispatch(errorHappened(true));
-      console.log(err);
+      console.error(err);
     });
 };
 

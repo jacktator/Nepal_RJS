@@ -52,7 +52,7 @@ class SelectRehabDialog extends React.PureComponent {
               className={classes.img}
               image={`${IMAGE_URL}${dialogIndex > 3 ? 'posture' : 'injury'}-${dialogIndex > 3 ? postureName : injuryName}-${`${data[selected].name}`.replace(/ /g, '-')}.png`}
               onError={(event) => {
-                event.target.src = 'https://nepal.sk8tech.io/wp-content/uploads/placeholder.png';
+                event.target.src = 'https://am.sk8.tech/wp-content/uploads/placeholder.png';
               }}
               component="img"
               alt={data[selected].name}

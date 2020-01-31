@@ -37,7 +37,7 @@ export const createProgram = callback => (dispatch) => {
 export const getExercises = resData => (dispatch) => {
   const { location, path, days } = sessionStorage;
 
-  axios.get(`https://nepal.sk8tech.io/wp-json/acf/v3/${location}_${programmeTable[path]}_${days}/`)
+  axios.get(`https://am.sk8.tech/wp-json/acf/v3/${location}_${programmeTable[path]}_${days}/`)
     .then((res) => {
       console.log(res);
       dispatch(createProgram({ exercises: res.data.exercises, ...resData }));

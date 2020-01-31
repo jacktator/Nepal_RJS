@@ -28,16 +28,18 @@ if (sessionStorage.token) {
 const themeExist = themeName => localStorage.getItem(themeName);
 
 const getTheme = (callback) => {
-  axios.get('https://nepal.sk8tech.io/wp-json/am/v2/skin')
+  axios.get('https://am.sk8.tech/wp-json/am/v2/skin')
     .then(
       (res) => {
-        console.log(res);
         const themeJ = res.data;
         callback(createTheme(themeJ));
       },
     )
     .catch(
-      () => callback(defaultTheme),
+      (err) => {
+        console.error(err);
+        callback(defaultTheme);
+      },
     );
 };
 
