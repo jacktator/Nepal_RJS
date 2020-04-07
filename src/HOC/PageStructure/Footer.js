@@ -38,10 +38,17 @@ const FooterContentSet = (type) => {
 };
 
 class FooterComponent extends React.PureComponent {
+
   render() {
+
     const {
-      classes, showBottomButton, currentPage, FooterContent, FooterButtonClick, workout,
+      classes,
+      showBottomButton,
+      currentPage,
+      FooterContent,
+      workout,
     } = this.props;
+
     return (
       <Paper className={classes.footerPaper} elevation={10}>
 
@@ -54,7 +61,6 @@ class FooterComponent extends React.PureComponent {
             disableRipple
             component={Link}
             to={workout ? '/workout/exercise/1' : '/rehab/training/0'}
-            onClick={FooterButtonClick}
           >
             <Typography color="secondary"> { workout ? 'Start Workout' : 'Start Rehab' } </Typography>
 
@@ -91,7 +97,6 @@ FooterComponent.propTypes = {
   showBottomButton: PropTypes.bool,
   currentPage: PropTypes.number,
   FooterContent: PropTypes.number,
-  FooterButtonClick: PropTypes.func,
 };
 
 export default withStyles(styles)(FooterComponent);

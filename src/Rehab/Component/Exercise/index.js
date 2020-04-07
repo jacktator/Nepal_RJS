@@ -122,6 +122,7 @@ class ExerciseIndex extends React.PureComponent {
       theme, currentWeek, dayRehabExercisesRecords, posture, injury,
       rehabExerciseQuery, rehabYoutubeLink, rehubYoutubeDis,
     } = this.props;
+
     const tstyles = styles(theme);
     const exeOrder = this.props.match.params.exerciseOrder;
     const exe = this.props.renderExercises[exeOrder];
@@ -134,9 +135,11 @@ class ExerciseIndex extends React.PureComponent {
     const thisExerciseDetail = {
       name, sets, reps: reps === 'empty' ? time : reps, time: reps === 'empty',
     };
+
     const mmm = dayRehabExercisesRecords.data || [];
     const ExList = mmm.length !== 0 ? mmm[exeOrder] ? mmm[exeOrder].map(v => ({ reps: v })) : [] : [];
     const exerLength = (posture instanceof Array) ? ((injury instanceof Array) ? 0 : 4) : ((injury instanceof Array) ? 4 : 8);
+
     return (
       <>
         <Loading

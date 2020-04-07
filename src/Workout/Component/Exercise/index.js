@@ -53,10 +53,12 @@ class ExerciseIndex extends React.Component {
 
 	componentDidMount() {
 		if (this.props.renderExercises.length === 0) {
+		  console.info("Workout: No Exercise Selected. Redirecting back to Daily page");
 			window.location.href = `/workout/daily/${sessionStorage.dayInWeek}`;
 			return;
 		}
 		if (this.props.renderExercises[this.props.match.params.exerciseOrder - 1].day !== undefined) {
+      console.info("Workout: Selected Exercise Day is NOT undefined. Redirecting back to Daily page");
 			window.location.href = `/workout/daily/${sessionStorage.dayInWeek}`;
 			return;
 		}
