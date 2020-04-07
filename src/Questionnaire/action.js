@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { second } from './Component/contentData';
-import { programmeTable } from '../config';
+import {API_ACF, programmeTable} from '../config';
 import { createNewRehab, arrayOfRehab } from '../Rehab/actions';
 
 export const finishQuery = data => ({ type: 'FINISH_QUERY', payload: data });
@@ -37,7 +37,7 @@ export const createProgram = callback => (dispatch) => {
 export const getExercises = resData => (dispatch) => {
   const { location, path, days } = sessionStorage;
 
-  axios.get(`https://am.sk8.tech/wp-json/acf/v3/${location}_${programmeTable[path]}_${days}/`)
+  axios.get(`${API_ACF}/${location}_${programmeTable[path]}_${days}/`)
     .then((res) => {
       console.log(res);
       dispatch(createProgram({ exercises: res.data.exercises, ...resData }));

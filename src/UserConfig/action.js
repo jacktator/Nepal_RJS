@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {API_JWT} from "../config";
 
 export const setAuthTokenInHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -24,7 +25,7 @@ export const changeAge = data => ({ type: 'SET_AGE', payload: data });
 export const setQueryProfile = data => ({ type: 'QUERY_PROFILE', payload: data });
 
 export const loginAction = (userData, callBack, catchCallback) => (dispatch) => {
-  axios.post('https://am.sk8.tech/wp-json/jwt-auth/v1/token/', userData)
+  axios.post(`${API_JWT}/token`, userData)
     .then((res) => {
       setAuthTokenInHeader(res.data.token.token);
       window.sessionStorage.setItem('user_id', res.data.user_id);

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { programmeTable } from '../config';
+import {API_ACF, programmeTable} from '../config';
 import { createProgram } from '../Questionnaire/action';
 
 export const compareOver24 = a => {
@@ -86,9 +86,8 @@ export const setYoutubeDis = data => ({ type: 'SET_YOUTUBE_DIS', payload: data }
 
 // daily page change button's dialog get exercises
 export const selectExercise = id => dispatch => {
-	console.log('sdasdasdasd');
 	axios
-		.get(`https://am.sk8.tech/wp-json/acf/v3/exercise?filter[meta_key]=id&filter[meta_value]=${id}`)
+		.get(`${API_ACF}/exercise?filter[meta_key]=id&filter[meta_value]=${id}`)
 		.then(res => {
 			let b = [...res.data[0].acf.childexercises.map(v => v.a)];
 			b = b.map(v => {
@@ -112,7 +111,7 @@ export const getExerciseDetail = data => dispatch => {
 	const { programmeID, progress, dayInWeek } = sessionStorage;
 	axios
 		.get(
-			`https://am.sk8.tech/wp-json/acf/v3/day_${dayInWeek}?filter[meta_key]=programmeid&filter[meta_value]=${programmeID}`
+			`${API_ACF}/day_${dayInWeek}?filter[meta_key]=programmeid&filter[meta_value]=${programmeID}`
 		)
 		.then(res => {
 			console.log('getExerciseDetail', res);
@@ -144,7 +143,7 @@ export const getExercisesSample = baseInfo => dispatch => {
 	const { location, path, days, dayInWeek } = baseInfo;
 	axios
 		.get(
-			`https://am.sk8.tech/wp-json/acf/v3/${location}_${programmeTable[
+			`${API_ACF}/${location}_${programmeTable[
 				path
 			]}_${days}?filter[meta_key]=day&filter[meta_value]=${dayInWeek}`
 		)
@@ -213,7 +212,7 @@ export const getCurrentProgram = getExe => dispatch => {
 
 export const getDailyProgramExercise = data => dispatch => {
 	axios
-		.get(`https://am.sk8.tech/wp-json/acf/v3/program/${data.programmeID}`)
+		.get(`${API_ACF}/program/${data.programmeID}`)
 		.then(res => {
 			const { acf } = res.data;
 			const exercises = acf[`day_${data.day}_exe`].split(';');
