@@ -8,7 +8,7 @@ export const API_ACF = `${API_URL}/acf/v3`;
 export const API_JWT = `${API_URL}/jwt-auth/v1`;
 export const API_AM = `${API_URL}/am/v1`;
 
-export const IMAGE_URL = `${BASE_URL}/uploads/`;
+export const IMAGE_URL = `${BASE_URL}/wp-content/uploads/`;
 export const VIDEO_URL = 'https://www.youtube.com/watch?v=';
 // am.sk8.tech/wp-json/wp/v2/users/register
 // two type : https://am.sk8.tech/wp-json/wp/v2/program?filter[author]=4

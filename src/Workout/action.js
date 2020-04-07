@@ -7,7 +7,7 @@ export const compareOver24 = a => {
 	const pre = new Date(a);
 
 	const monDiff = now - pre;
-	console.log('Diff' + monDiff);
+
 	const day = now.getDate() - pre.getDate();
 	if (monDiff >= 86400000) {
 		return true;
@@ -169,9 +169,8 @@ export const getCurrentProgram = getExe => dispatch => {
 			}
 			// the newest programme as the current programme
 			const data = res.data[0].acf;
-			console.log(data);
 			const dayInWeek = getDayInWeek(data.progress, data.days);
-			console.info(`Day ${dayInWeek} of the Week`);
+			console.info(`Day ${dayInWeek} of the Week. `, data);
 			const exercises =
 				data[`day_${dayInWeek}_exe`] && data[`day_${dayInWeek}_exe`] !== ''
 					? dealStringToExerciseArray(data[`day_${dayInWeek}_exe`].split(';'))
