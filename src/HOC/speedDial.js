@@ -48,13 +48,14 @@ const actions = [
   { icon: <WorkoutIcon color="primary" />, name: 'Workout', to: '/workout' },
   { icon: <TrainingIcon color="primary" />, name: 'Rehab and Posture', to: '/rehab' },
   { icon: <PersonIcon color="primary" />, name: 'Profile', to: '/user/profile' },
-  { icon: <ContentIcon color="primary" />, name: 'Content', to: '/' },
-  { icon: <ClanderIcon color="primary" />, name: 'Ask a Question', to: '/' },
-  { icon: <HelpIcon color="primary" />, name: 'FAQ', to: '/' },
+  // { icon: <ContentIcon color="primary" />, name: 'Content', to: '/' },
+  // { icon: <ClanderIcon color="primary" />, name: 'Ask a Question', to: '/' },
+  // { icon: <HelpIcon color="primary" />, name: 'FAQ', to: '/' },
   { icon: <LogoutIcon color="primary" />, name: 'Logout', to: '/logout' },
 ];
 
 class SpeedDialTooltipOpen extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {

@@ -25,7 +25,7 @@ const EditPage = (props) => {
     closeErrorDialog, openPassword, queryProfile, onPassUpdateOkclick,
     newPassword, oldPassword, rePassword,
   } = props;
-  console.log(error);
+
   return (
     <Dialog
       fullScreen

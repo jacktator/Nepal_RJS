@@ -4,14 +4,14 @@ import axios from 'axios';
 import { Provider } from 'react-redux';
 import { createMuiTheme } from '@material-ui/core/styles';
 import App from './App';
-import { BASE_URL } from './config';
+import { API_WP, API_AM } from './config';
 import { setAuthTokenInHeader } from './UserConfig/action';
 import store from './store';
 import './index.css';
 import defaultTheme from './theme';
 
 // Set base URL in request
-axios.defaults.baseURL = BASE_URL;
+axios.defaults.baseURL = API_WP;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 const createTheme = (themeJson) => {
@@ -27,8 +27,11 @@ if (sessionStorage.token) {
 // add setItem for different theme(should through personal setting`different company` from res)
 const themeExist = themeName => localStorage.getItem(themeName);
 
+// const company = 'paypal';
+const company = 'westpac';
+
 const getTheme = (callback) => {
-  axios.get('https://am.sk8.tech/wp-json/am/v2/skin')
+  axios.get(`${API_AM}/${company}`)
     .then(
       (res) => {
         const themeJ = res.data;

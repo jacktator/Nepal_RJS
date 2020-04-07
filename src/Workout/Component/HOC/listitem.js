@@ -39,7 +39,6 @@ class HOCListItem extends React.PureComponent {
                 component="img"
                 onError={(event) => {
                   event.target.src = 'https://am.sk8.tech/wp-content/uploads/placeholder.png';
-                  console.log(event.target);
                 }}
                 image={`${IMAGE_URL}${id}${`${finalName}`.replace(/ /g, '-')}.png`}
               />
@@ -54,7 +53,6 @@ class HOCListItem extends React.PureComponent {
                 component="img"
                 onError={(event) => {
                   event.target.src = 'https://am.sk8.tech/wp-content/uploads/placeholder.png';
-                  console.log(event.target);
                 }}
                 image={`${IMAGE_URL}${id}${`${finalName}`.replace(/ /g, '-')}.png`}
               />

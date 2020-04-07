@@ -171,7 +171,7 @@ export const getCurrentProgram = getExe => dispatch => {
 			const data = res.data[0].acf;
 			console.log(data);
 			const dayInWeek = getDayInWeek(data.progress, data.days);
-			console.log(dayInWeek);
+			console.info(`Day ${dayInWeek} of the Week`);
 			const exercises =
 				data[`day_${dayInWeek}_exe`] && data[`day_${dayInWeek}_exe`] !== ''
 					? dealStringToExerciseArray(data[`day_${dayInWeek}_exe`].split(';'))
@@ -197,7 +197,7 @@ export const getCurrentProgram = getExe => dispatch => {
 					days: data.days,
 					dayInWeek
 				};
-				console.log('getprogram', exercises.length);
+				console.log('getCurrentProgram: Current Program has ', exercises.length, ' exercies');
 				dispatch(getExercisesSample(baseInfo, exercises.length));
 			} else {
 				dispatch(finishDailyQuery(false));
