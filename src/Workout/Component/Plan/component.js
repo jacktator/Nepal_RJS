@@ -47,7 +47,9 @@ class SimpleList extends React.PureComponent {
           <List className={classes.root} component="nav" disablePadding>
             {
             [...Array(days || 5)].map((v, k) => (
-              <Link key={`day${(starDayNumber || 0) + k + 1}`} onClick={event => this.onItemClick(event, { current: starDayNumber + k + 1, finish, over24 })} style={{ width: '100%', minHeight: '48px' }} to={`/workout/daily/${k + 1}`}>
+              <Link key={`day${(starDayNumber || 0) + k + 1}`}
+                    onClick={event => this.onItemClick(event, { current: starDayNumber + k + 1, finish, over24 })}
+                    style={{ width: '100%', minHeight: '48px' }} to={`/workout/daily/${k + 1}`}>
                 <ListItem
                   disabled={~~starDayNumber + k + 1 !== ~~progress}
                   style={{

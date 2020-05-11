@@ -50,17 +50,19 @@ class SimpleList extends React.PureComponent {
           title="Select your exercises"
         />
         <List component="nav" disablePadding>
-          {!!renderExercise && renderExercise.length >= 0 && renderExercise.map((v, k) => (
-            <HOClistitem
-              key={`${v.name}${k}`}
-              data={v}
-              midSelectExercise={midSelectExercise}
-              id={v.id}
-              listID={k}
-              handleOpenDialog={() => handleOpenDialog(v.id, k)}
-              userKeepExercise={userKeepExercise}
-            />
-          ))}
+          {
+            !!renderExercise && renderExercise.length >= 0 && renderExercise.map((v, k) => (
+              <HOClistitem
+                key={`${v.name}${k}`}
+                data={v}
+                midSelectExercise={midSelectExercise}
+                id={v.id}
+                listID={k}
+                handleOpenDialog={() => handleOpenDialog(v.id, k)}
+                userKeepExercise={userKeepExercise}
+              />
+            ))
+          }
         </List>
 
       </div>
