@@ -1,5 +1,7 @@
 # Nepal_RJS
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5152d449-8366-4636-80e3-16c34e7f14ec/deploy-status)](https://app.netlify.com/sites/amsoftware/deploys)
+
 Coding is done on 'master' branch
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
