@@ -2,6 +2,7 @@ export const PROTOCOL = "https";
 export const DOMAIN = "am.sk8.tech";
 export const BASE_URL = `${PROTOCOL}://${DOMAIN}`;
 
+export const SALES_HOME = `${BASE_URL}`
 export const API_URL = `${BASE_URL}/wp-json`;
 export const API_WP = `${API_URL}/wp/v2`;
 export const API_ACF = `${API_URL}/acf/v3`;

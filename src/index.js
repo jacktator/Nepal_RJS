@@ -4,11 +4,11 @@ import axios from 'axios';
 import { Provider } from 'react-redux';
 import { createMuiTheme } from '@material-ui/core/styles';
 import App from './App';
-import { API_WP, API_AM } from './config';
+import {API_WP, API_AM, SALES_HOME} from './config';
 import { setAuthTokenInHeader } from './UserConfig/action';
 import store from './store';
 import './index.css';
-import defaultTheme from './theme';
+// import defaultTheme from './theme';
 import {getCompany} from "./utils/getCompany";
 
 // Set base URL in request
@@ -43,7 +43,8 @@ const getTheme = (callback) => {
       (err) => {
         console.log('Default Theme Loaded: ', company);
         console.error(err);
-        callback(defaultTheme);
+        window.location.href = SALES_HOME;
+        // callback(defaultTheme);
       },
     );
 };
