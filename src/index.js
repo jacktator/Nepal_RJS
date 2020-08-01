@@ -9,6 +9,7 @@ import { setAuthTokenInHeader } from './UserConfig/action';
 import store from './store';
 import './index.css';
 import defaultTheme from './theme';
+import {getCompany} from "./utils/getCompany";
 
 // Set base URL in request
 axios.defaults.baseURL = API_WP;
@@ -27,8 +28,7 @@ if (sessionStorage.token) {
 // add setItem for different theme(should through personal setting`different company` from res)
 const themeExist = themeName => localStorage.getItem(themeName);
 
-// const company = 'paypal';
-const company = 'westpac';
+const company = getCompany();
 
 const getTheme = (callback) => {
   axios.get(`${API_AM}/${company}`)
