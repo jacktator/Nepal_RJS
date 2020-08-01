@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import { Provider } from 'react-redux';
-import { createMuiTheme } from '@material-ui/core/styles';
 import App from './App';
 import {API_WP} from './config';
 import { setAuthTokenInHeader } from './UserConfig/action';
