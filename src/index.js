@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Provider } from 'react-redux';
 import { createMuiTheme } from '@material-ui/core/styles';
 import App from './App';
-import {API_WP, API_AM, SALES_HOME} from './config';
+import {API_WP} from './config';
 import { setAuthTokenInHeader } from './UserConfig/action';
 import store from './store';
 import './index.css';

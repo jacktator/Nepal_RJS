@@ -1,24 +1,21 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles, withTheme} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import ListItem from '@material-ui/core/ListItem';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import { styles } from '../../styles';
 import { IMAGE_URL } from '../../../config';
-import theme from '../../../theme'; // TODO: Deprecate
-
 
 const HOCListItem = (props) => {
   const {
-    classes, exeData, funcs, keepExercise, pre, itemID, prefix, postureName, injuryName,
-
+    classes, exeData, funcs, keepExercise, pre, itemID, prefix, postureName, injuryName, theme
   } = props;
+
   return (
     <ListItem divider>
       <Grid container className={classes.listItemPaper} component={exeData.selected ? Link : 'div'} to={`/rehab/training/${itemID}`}>
@@ -84,6 +81,7 @@ const HOCListItem = (props) => {
 
 HOCListItem.propTypes = {
   classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(HOCListItem);
+export default withStyles(styles)(withTheme()(HOCListItem));
