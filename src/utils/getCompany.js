@@ -4,7 +4,7 @@ export const getCompany = () => {
   const parts = full.split('.')
   const sub = parts[0]
 
-  const company = sub === "localhost:3000" ? "paypal" : sub;
+  const company = sub.includes("localhost:3000") ? "paypal" : sub;
   console.log('Welcome to AM Software. Company: ', company);
 
   return company

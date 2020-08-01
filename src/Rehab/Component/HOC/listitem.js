@@ -11,7 +11,7 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import { styles } from '../../styles';
 import { IMAGE_URL } from '../../../config';
-import theme from '../../../theme';
+import theme from '../../../theme'; // TODO: Deprecate
 
 
 const HOCListItem = (props) => {
