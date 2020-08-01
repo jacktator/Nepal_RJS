@@ -34,12 +34,14 @@ const getTheme = (callback) => {
   axios.get(`${API_AM}/theme/${company}`)
     .then(
       (res) => {
+        console.log('Company Theme Loaded: ', company);
         const themeJ = res.data;
         callback(createTheme(themeJ));
       },
     )
     .catch(
       (err) => {
+        console.log('Default Theme Loaded: ', company);
         console.error(err);
         callback(defaultTheme);
       },
