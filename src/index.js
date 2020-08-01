@@ -31,7 +31,7 @@ const themeExist = themeName => localStorage.getItem(themeName);
 const company = getCompany();
 
 const getTheme = (callback) => {
-  axios.get(`${API_AM}/${company}`)
+  axios.get(`${API_AM}/theme/${company}`)
     .then(
       (res) => {
         const themeJ = res.data;
