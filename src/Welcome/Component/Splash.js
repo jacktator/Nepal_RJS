@@ -13,7 +13,7 @@ import am from '../../Assets/am.png';
 
 const Splash = (props) => {
   const { theme } = props;
-  const { logo } = theme;
+  const { logo, slogan } = theme;
   const styles = {
     root: {
       backgroundColor: theme.splashPageBackground.color,
@@ -48,7 +48,7 @@ const Splash = (props) => {
                 <Grid item>
                   <CardMedia style={{ height: '110px', backgroundSize: 'auto' }} image={logo} />
                 </Grid>
-                <Typography variant="h6" component="h6" align="center" color="primary" gutterBottom>Smarter Way To Buy & Sell</Typography>
+                <Typography variant="h6" component="h6" align="center" color="primary" gutterBottom>{slogan}</Typography>
               </Grid>
               <Grid container item direction="row" justify="space-around">
                 <Grid item style={{ width: '50%' }}>
