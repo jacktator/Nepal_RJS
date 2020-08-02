@@ -19,6 +19,7 @@ import {
 	selectExercise,
 	setTodayExercises,
 	getYoutubeLink,
+  getYoutubeLinkByID,
 	finishExercisePageQuery,
 	updataOneExercise,
 	finishAllDailyExercises,

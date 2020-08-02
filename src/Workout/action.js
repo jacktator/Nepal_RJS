@@ -141,11 +141,10 @@ export const getExerciseDetail = data => dispatch => {
 
 export const getExercisesSample = baseInfo => dispatch => {
 	const { location, path, days, dayInWeek } = baseInfo;
+	const slug = `${location}_${programmeTable[path]}_${days}`;
 	axios
 		.get(
-			`${API_ACF}/${location}_${programmeTable[
-				path
-			]}_${days}?filter[meta_key]=day&filter[meta_value]=${dayInWeek}`
+			`${slug}?filter[meta_key]=day&filter[meta_value]=${dayInWeek}`
 		)
 		.then(res => {
 			console.log('sample', res);
@@ -380,6 +379,29 @@ export const getExerciseHistory = input => dispatch => {
 		})
 		.catch(err => console.log(err));
 };
+
+export const getYoutubeLinkByID = exerciseId => dispatch => {
+  axios
+    .get(`/youtube_seacrch?filter[meta_key]=exercie&filter[meta_value]=${exerciseId}`)
+    .then(res => {
+      const {
+        exercise,
+        youtubelongcode,
+        youtubeshortcode,
+      } = res.data[0].acf;
+      console.log(`Retrieved Youtube for ${exercise.post_title} (${exercise.ID}), Long: ${youtubelongcode}, Short: ${youtubeshortcode}`)
+      const result = res.data[0];
+      if (result) {
+        const { acf } = result;
+        const n = [acf.youtubeshortcode, acf.youtubelongcode];
+        !!acf.discription && dispatch(setYoutubeDis(acf.discription));
+        dispatch(setYoutubeLink(n));
+      }
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}
 
 export const getYoutubeLink = name => dispatch => {
 	axios
